@@ -14,15 +14,14 @@ deploy:
   variables:
     USER: root
     HOST: lav15.ventsdouest.dev
-    HOST_IP: 51.210.243.20
   before_script:
-    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh)' 
+    - apk add --no-cache sshpass
+    - 'command -v ssh-agent >/dev/null || ( apk add --no-cache --update openssh)' 
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | ssh-add -
-    - echo $HOST_IP >> ~/.ssh/known_hosts
+    - echo "$SSH_PRIVATE_KEY" | sshpass -Ppassphrase -f <(printf '%s\n' chantepie) ssh-add -
   script:
     - echo "Pulling repository..."
-    - ssh $USER@$HOST "cd /docker/sae/data/web && git pull"
+    - ssh StrictHostKeyChecking=accept-new $USER@$HOST "cd /docker/sae/data/web && git pull"
     - echo "Pulled"
   #when: manual
   #only:
