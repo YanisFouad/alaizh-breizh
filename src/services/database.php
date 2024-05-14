@@ -5,5 +5,5 @@ try {
     // define $db as a global variable while is required in a file
     global $db;
 } catch(Exception $e) {
-    print_r("Something went wrong: ".$e->getMessage());
+    print_r("Failed to connect to the database: ".$e->getMessage());
 }
