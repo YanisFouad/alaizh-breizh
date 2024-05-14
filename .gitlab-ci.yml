@@ -23,7 +23,6 @@ deploy:
     - echo "Pulling repository..."
     - ssh -o StrictHostKeyChecking=accept-new $USER@$HOST "cd /docker/sae/data/web && git pull"
     - echo "Pulled"
-  #when: manual
-  #only:
-  #  refs:
-  #    - main
+  only:
+    refs:
+      - main
