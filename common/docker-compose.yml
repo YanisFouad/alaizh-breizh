@@ -1,0 +1,28 @@
+version: "3"
+name: ${IMAGE_NAME}
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-dev
+    image: bigpapoo/r408-php:8.2-apache
+    ports:
+      - 8080:80
+    volumes:
+      - ../src:/var/www/html
+    environment:
+      - MYSQL_DATABASE=alaizhbreizh
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=chantepie
+  mysql:
+    image: bigpapoo/r408-mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=chantepie # useless to put a strong password there
+      - MYSQL_DATABASE=alaizhbreizh
+      - MYSQL_USER=root
+  phpmyadmin:
+    image: bigpapoo/r408-phpmyadmin:5.2
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mysql:3306
