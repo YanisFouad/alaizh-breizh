@@ -10,20 +10,19 @@ stages:
 
 deploy:
   stage: deploy
-  image: docker:26.1.2-dind-alpine3.19
+  image: alpine:latest
   variables:
     USER: root
     HOST: lav15.ventsdouest.dev
   before_script:
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - chmod 400 "$SSH_PRIVATE_KEY"
-    - ssh-add "$SSH_PRIVATE_KEY"
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
+    - eval $(ssh-agent -v)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add —
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh $USER@$HOST "cd /docker/sae/data/web && git pull"
   script:
-    - echo "waiting..."
+    - echo "Pulling repository..."
+    - ssh $USER@$HOST "cd /docker/sae/data/web && git pull"
   #when: manual
   #only:
   #  refs:
