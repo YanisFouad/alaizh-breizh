@@ -1,2 +1,2 @@
-export IMAGE_NAME=alaizhbreizh
+export IMAGE_NAME=alaihzbreizh
 include common/local.mk
