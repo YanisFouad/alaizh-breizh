@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(186, 186, 255);
+}   
+
+.liste_reservation_proprietaire{
+    margin: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid yellow 1px;
+    border-radius: 20px;
+    border-color: 804E2E;
+    justify-content:space-around;
+}
+
+.liste_reservation_proprietaire img {
+    width: 10%;
+    border-radius: 15px;
+}
+
+.liste_reservation_proprietaire article {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+}
+
+.liste_reservation_proprietaire article div{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
