@@ -1,0 +1,45 @@
+*, *::after, *::before {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../assets/fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../assets/fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../../assets/fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../assets/fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../assets/fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../assets/fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../assets/fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../assets/fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../assets/fonts/poppins-regular.ttf);
+}
+/* IMPORT HERE ALL STYLES FROM VIEWS */

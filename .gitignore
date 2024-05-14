@@ -1,0 +1,9 @@
+# ignore global IDE
+.idea/*
+.vscode/*
+
+# For MacOS
+.DS_Store
+
+# ignore prepros config
+prepros.config

@@ -1,0 +1,18 @@
+$fonts: (
+    "comfortaa-bold",
+    "comfortaa-light",
+    "comfortaa-medium",
+    "comfortaa-regular",
+    "comfortaa-semibold",
+    "poppins-bold",
+    "poppins-light",
+    "poppins-medium",
+    "poppins-regular"
+);
+
+@each $font in $fonts {
+    @font-face {
+        font-family: $font;
+        src: url(../../assets/fonts/#{$font}.ttf);
+    }
+}

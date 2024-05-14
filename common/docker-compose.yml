@@ -1,0 +1,30 @@
+version: "3"
+name: ${IMAGE_NAME}
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ../html:/var/www/html
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=alhaizbreizh
+      - DB_USER=root
+      - DB_PASSWORD=chantepie
+  postgres:
+    image: postgres:15.7-alpine3.19
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=chantepie # useless to put a strong password there
+      - POSTGRES_DB=alhaizbreizh
+      - POSTGRES_USER=root
+    volumes:
+      - db_data:/var/lib/postgresql
+
+volumes:
+  db_data:

@@ -1,0 +1,10 @@
+*, *::after, *::before {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import "assets/font-loader.scss";
+
+/* IMPORT HERE ALL STYLES FROM VIEWS */
