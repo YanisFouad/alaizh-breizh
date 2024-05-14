@@ -21,7 +21,7 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" | sshpass -Ppassphrase -f <(printf '%s\n' chantepie) ssh-add -
   script:
     - echo "Pulling repository..."
-    - ssh StrictHostKeyChecking=accept-new $USER@$HOST "cd /docker/sae/data/web && git pull"
+    - ssh -o StrictHostKeyChecking=accept-new $USER@$HOST "cd /docker/sae/data/web && git pull"
     - echo "Pulled"
   #when: manual
   #only:
