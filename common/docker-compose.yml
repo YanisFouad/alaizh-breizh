@@ -11,19 +11,18 @@ services:
     volumes:
       - ../src:/var/www/html
     environment:
-      - MYSQL_HOST=mysql:3306
-      - MYSQL_DATABASE=alaizhbreizh
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=chantepie
-  mysql:
-    image: bigpapoo/r408-mysql:5.7
+      - DB_HOST=postgres:3306
+      - DB_DATABASE=alhaizbreizh
+      - DB_USER=root
+      - DB_PASSWORD=chantepie
+  postgres:
+    image: postgres:15.7-alpine3.19
     environment:
-      - MYSQL_ROOT_PASSWORD=chantepie # useless to put a strong password there
-      - MYSQL_DATABASE=alaizhbreizh
-      - MYSQL_USER=root
-  phpmyadmin:
-    image: bigpapoo/r408-phpmyadmin:5.2
-    ports:
-      - 8081:80
-    environment:
-      - PMA_HOST=mysql:3306
+      - POSTGRES_PASSWORD=chantepie # useless to put a strong password there
+      - POSTGRES_DB=alhaizbreizh
+      - POSTGRES_USER=root
+    volumes:
+      - db_data:/var/lib/postgresql
+
+volumes:
+  db_data:
