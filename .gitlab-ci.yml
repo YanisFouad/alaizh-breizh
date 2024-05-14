@@ -1,12 +1,12 @@
 stages:
-  - test
+  #- test
   - deploy
 
-w3c-html-test:
-  stage: test
-  image: docker:26.1.2-dind-alpine3.19
-  script:
-    - echo "testing..."
+# w3c-html-test:
+#   stage: test
+#   image: docker:26.1.2-dind-alpine3.19
+#   script:
+#     - echo "testing..."
 
 deploy:
   stage: deploy
