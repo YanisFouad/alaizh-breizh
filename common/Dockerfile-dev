@@ -1,2 +1,3 @@
-FROM r408-php:8.2-apache
-RUN docker-php-ext-install pdo pdo_pgsql
+FROM bigpapoo/r408-php:8.2-apache
+RUN apt update -y && apt-get -y install libpq-dev
+RUN docker-php-ext-install pgsql pdo_pgsql

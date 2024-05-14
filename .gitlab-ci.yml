@@ -1,11 +1,18 @@
 stages:
+  - test
   - deploy
+
+w3c-html-test:
+  stage: test
+  image: docker:26.1.2-dind-alpine3.19
+  script:
+    - echo "testing..."
 
 deploy:
   stage: deploy
-  image: 26.1.2-dind
+  image: docker:26.1.2-dind-alpine3.19
   script:
-    - echo "bah je dois attendre le serveur mdr"
+    - echo "waiting..."
   #when: manual
   #only:
   #  refs:

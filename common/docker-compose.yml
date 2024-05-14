@@ -4,19 +4,21 @@ services:
   apache:
     build:
       context: .
-      dockerfile: ./Dockerfile-dev
-    image: bigpapoo/r408-php:8.2-apache
+      dockerfile: Dockerfile-dev
+    restart: always
     ports:
       - 8080:80
     volumes:
       - ../src:/var/www/html
     environment:
-      - DB_HOST=postgres:3306
+      - DB_HOST=postgres
+      - DB_PORT=5432
       - DB_DATABASE=alhaizbreizh
       - DB_USER=root
       - DB_PASSWORD=chantepie
   postgres:
     image: postgres:15.7-alpine3.19
+    restart: always
     environment:
       - POSTGRES_PASSWORD=chantepie # useless to put a strong password there
       - POSTGRES_DB=alhaizbreizh
