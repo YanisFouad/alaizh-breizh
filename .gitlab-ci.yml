@@ -2,10 +2,11 @@ stages:
   - deploy
 
 deploy:
-  #when: manual
+  stage: deploy
   image: 26.1.2-dind
   script:
     - echo "bah je dois attendre le serveur mdr"
+  #when: manual
   #only:
   #  refs:
   #    - main
