@@ -391,6 +391,9 @@ textarea {
   justify-content: space-between;
   align-items: center;
 }
+#liste-reservation-proprietaire-entete #export-reservation {
+  box-shadow: 0px 0px 2px #804e2e;
+}
 
 .liste-reservation-proprietaire-recherche {
   display: flex;
@@ -398,7 +401,7 @@ textarea {
   align-items: center;
 }
 .liste-reservation-proprietaire-recherche div {
-  padding: 1em;
+  padding: 0.6em;
   background-color: #f7f7f7;
   border: 1px solid #eaeaea;
   border-radius: 10px;
@@ -416,7 +419,7 @@ textarea {
   margin: 0;
   border: none;
 }
-.liste-reservation-proprietaire-recherche .button.primary {
+.liste-reservation-proprietaire-recherche .primary.backoffice {
   border-radius: 10px;
 }
 
@@ -434,12 +437,12 @@ textarea {
   padding: 0.5em 1em;
 }
 #liste-reservation-proprietaire-onglet a:is(:focus, .active) {
-  color: #1b5734;
-  border-bottom: 2px solid #1b5734;
+  color: #804e2e;
+  border-bottom: 2px solid #804e2e;
 }
 #liste-reservation-proprietaire-onglet a:hover {
-  color: #1b5734;
-  border-bottom: 2px solid #1b5734;
+  color: #804e2e;
+  border-bottom: 2px solid #804e2e;
 }
 
 #liste-reservation-proprietaire-float-left {
@@ -460,9 +463,9 @@ textarea {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: solid #1b5734 1px;
+  border: solid #804e2e 1px;
   border-radius: 20px;
-  box-shadow: 0px 0px 2px #1b5734;
+  box-shadow: 0px 0px 2px #804e2e;
 }
 .liste-reservation-proprietaire-logement div {
   display: flex;
@@ -552,27 +555,27 @@ textarea {
   gap: 0.75em;
 }
 #liste-reservation-proprietaire-pagination .button-cliquable, #liste-reservation-proprietaire-pagination #button-clique {
-  border: 1px solid #1b5734;
+  border: 1px solid #804e2e;
   border-radius: 50%;
   font-family: "comfortaa-bold";
   text-align: center;
-  color: #1b5734;
+  color: #804e2e;
 }
 #liste-reservation-proprietaire-pagination .button-cliquable:hover, #liste-reservation-proprietaire-pagination #button-clique:hover {
   color: white;
-  background-color: #1b5734;
+  background-color: #804e2e;
   transition: all 0.5s ease;
 }
 #liste-reservation-proprietaire-pagination #button-clique {
   color: white;
-  background-color: #1b5734;
+  background-color: #804e2e;
 }
 #liste-reservation-proprietaire-pagination .button-non-cliquable {
-  border: 1px solid #abbdc0;
+  border: 1px solid #b6896c;
   border-radius: 50%;
   font-family: "comfortaa-bold";
   text-align: center;
-  color: #abbdc0;
+  color: #b6896c;
   pointer-events: none !important;
 }
 #liste-reservation-proprietaire-pagination span {

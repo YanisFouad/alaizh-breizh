@@ -14,6 +14,10 @@
     flex-direction: row;
     justify-content:space-between;
     align-items: center;
+
+    #export-reservation{
+        box-shadow: 0px 0px 2px $primary-backoffice-1;
+    }
 }
 
 // Entete mes reservation + recherche
@@ -23,7 +27,7 @@
     align-items: center;
 
     div{
-        padding:1em;
+        padding:0.6em;
         background-color: $gray-4;
         border: 1px solid $gray-3;
         border-radius: 10px;
@@ -43,7 +47,7 @@
         }
     }
 
-    .button.primary{
+    .primary.backoffice{
         border-radius: 10px;
     }
 }
@@ -63,13 +67,13 @@
         padding: 0.5em 1em;
 
         &:is(:focus, .active) {
-            color:$primary-1;
-            border-bottom: 2px solid $primary-1;
+            color:$primary-backoffice-1;
+            border-bottom: 2px solid $primary-backoffice-1;
         }
 
         &:hover{
-            color:$primary-1;
-            border-bottom: 2px solid $primary-1;
+            color:$primary-backoffice-1;
+            border-bottom: 2px solid $primary-backoffice-1;
         }
     }   
 }
@@ -94,9 +98,9 @@
     flex-direction: row;
     align-items: center; 
     justify-content: space-between;   
-    border: solid $primary-1 1px;
+    border: solid $primary-backoffice-1 1px;
     border-radius: 20px;
-    box-shadow: 0px 0px 2px $primary-1;
+    box-shadow: 0px 0px 2px $primary-backoffice-1;
 
     div{
         display: flex;
@@ -201,30 +205,30 @@
     gap:0.75em;
 
     .button-cliquable,#button-clique{
-        border: 1px solid $primary-1;
+        border: 1px solid $primary-backoffice-1;
         border-radius: 50%;
         font-family: "comfortaa-bold";
         text-align: center;
-        color: $primary-1;
+        color: $primary-backoffice-1;
         
         &:hover{
             color:white;
-            background-color: $primary-1;
+            background-color: $primary-backoffice-1;
             transition: all .5s ease;
         }
     }
 
     #button-clique{
         color:white;
-        background-color: $primary-1;
+        background-color: $primary-backoffice-1;
     }
 
     .button-non-cliquable{
-        border: 1px solid $primary-3;
+        border: 1px solid $primary-backoffice-3;
         border-radius: 50%;
         font-family: "comfortaa-bold";
         text-align: center;
-        color: $primary-3;
+        color: $primary-backoffice-3;
         pointer-events: none !important;
     }
 

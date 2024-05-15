@@ -12,6 +12,7 @@ class BookingModel extends Model {
             "id_reservation" => array(),
             "id_locataire" => array(),
             "id_logement" => array(),
+            "titre_logement" => array(),
             "nb_nuit" => array(),
             "date_arrivee" => array("type" => "date"),
             "date_depart" => array("type" => "date"),
@@ -25,10 +26,28 @@ class BookingModel extends Model {
         ), $data, $isNew);
     }
 
-    public static function find($offset = 0, $limit = 10, $projection = "*") {
+    public static function find($owner_id, $period,$offset = 0, $limit = 10) {
+        $date_du_jour = new DateTime();
+        $date_du_jour = $date_du_jour->format('Y-m-d');
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
             ->limit($limit)
+            ->where("id_proprietaire = ?", $owner_id);
+        //réservation à venir
+        if($period == "a_venir"){
+            $result = $result->where("date_arrivee > ?", $date_du_jour);
+        }
+        //réservation en cours
+        elseif($period == "en_cours"){
+            $result = $result->where("date_depart >= ? AND date_arrivee <= ?", $date_du_jour, $date_du_jour);
+        }
+        //réservation passée
+        else{
+            $result = $result->where("date_depart < ?", $date_du_jour);
+        }
+        $result = $result
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->offset($offset)
             ->execute()
             ->fetchMany();
@@ -48,4 +67,30 @@ class BookingModel extends Model {
         return new self($result, false);
     }
 
+    public static function countByPeriod($period, $owner_id) {
+        $date_du_jour = new DateTime();
+        $date_du_jour = $date_du_jour->format('Y-m-d');
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("count(*)")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
+            ->where("id_proprietaire = ?", $owner_id);
+
+        //réservation à venir
+        if($period == "a_venir"){
+            $result = $result->where("date_arrivee > ?", $date_du_jour);
+        }
+        //réservation en cours
+        elseif($period == "en_cours"){
+            $result = $result->where("date_depart >= ? AND date_arrivee <= ?", $date_du_jour, $date_du_jour);
+        }
+        //réservation passée
+        else{
+            $result = $result->where("date_depart < ?", $date_du_jour);
+        }
+        $result = $result
+            ->execute()
+            ->fetchOne();
+        return $result["count"] ?? 0;
+    }
 }
