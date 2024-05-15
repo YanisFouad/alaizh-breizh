@@ -2,8 +2,7 @@
   outline: none;
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -81,7 +80,6 @@ p {
 
 /* IMPORT HERE ALL STYLES FROM VIEWS */
 button {
-  -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
   background-color: transparent;
@@ -91,8 +89,7 @@ button {
   padding: 0.8em 1.3em;
 }
 button:is(.primary, .secondary):not(:disabled):focus {
-  -webkit-box-shadow: 0 0 0 3px #abbdc0;
-          box-shadow: 0 0 0 3px #abbdc0;
+  box-shadow: 0 0 0 3px #abbdc0;
 }
 button.primary:disabled, button.secondary:disabled {
   opacity: 60%;
@@ -112,4 +109,24 @@ button.secondary {
 button.secondary:not(:disabled):is(:hover, :focus) {
   background-color: #1b5734;
   color: white;
+}
+
+input {
+  font-family: "comfortaa-regular", sans-serif;
+  padding: 0.8em 0.5em;
+  border-radius: 7px;
+  border: 1px solid #676767;
+}
+input:disabled {
+  opacity: 60%;
+}
+input:is(:hover, :focus) {
+  border-color: #804e2e;
+}
+input.error {
+  position: relative;
+  border-color: #ce4b4b;
+}
+input.error, input.error::placeholder {
+  color: #ce4b4b;
 }

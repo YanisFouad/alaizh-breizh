@@ -1,0 +1,37 @@
+input { 
+    font-family: "comfortaa-regular", sans-serif;
+    padding: .8em .5em;
+    border-radius: 7px;
+    border: 1px solid $secondary-2;
+
+    //width: 100%;
+
+    &:disabled {
+        opacity: 60%;
+    }
+
+    &:is(:hover, :focus) {
+        border-color: $primary-back-1;
+    }
+
+    &.error {
+        position: relative;
+        border-color: $other-3;
+
+        &, &::placeholder {
+            color: $other-3;
+        }
+
+        // &::before {
+        //     //position: absolute;
+        //     //right: 10px;
+        //     //top: 50%;
+
+        //     font-family: "Material Design Icons", sans-serif;
+        //     content: "\F02FC";
+        //     position: absolute;
+        //     display: block;
+        //     font-size: 1em;
+        // }
+    }
+}

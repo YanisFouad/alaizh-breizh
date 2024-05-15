@@ -1,17 +1,7 @@
 <?php require_once("layout/header.php"); ?>
 
-<button class="primary">
-    Primary button
-</button>
-<button class="primary" disabled>
-    Primary button
-</button>
-
-<button class="secondary">
-    Secondary button
-</button>
-<button class="secondary" disabled>
-    Secondary button
-</button>
+<input type="text" placeholder="placeholder" />
+<input type="text" class="error" placeholder="placeholder" />
+<input type="text" placeholder="placeholder" disabled />
 
 <?php require_once("layout/footer.php"); ?>
