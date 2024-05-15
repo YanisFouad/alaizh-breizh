@@ -42,6 +42,10 @@
   font-family: "poppins-regular";
   src: url(../fonts/poppins-regular.ttf);
 }
+@font-face {
+  font-family: "Material Design Icons";
+  src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
+}
 body {
   font-family: "comfortaa-regular", sans-serif;
 }
