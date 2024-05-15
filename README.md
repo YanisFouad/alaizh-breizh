@@ -6,6 +6,12 @@
 ## go to the local server
 `http://localhost:8080`
 
+## local pgAdmin dashbaord
+`http://localhost:8081`
+
+login: `admin@alhaizbreizh.com`
+password: `chantepie`
+
 ## pgAdmin dashboard
 `https://pgadmin-lav15.ventsdouest.dev/`
 
