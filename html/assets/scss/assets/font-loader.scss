@@ -13,6 +13,11 @@ $fonts: (
 @each $font in $fonts {
     @font-face {
         font-family: $font;
-        src: url(../../assets/fonts/#{$font}.ttf);
+        src: url(../fonts/#{$font}.ttf);
     }
+}
+
+@font-face {
+    font-family: "Material Design Icons";
+    src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
 }

@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     outline: none;
     padding: 0;
     margin: 0;
@@ -6,5 +8,9 @@
 }
 
 @import "assets/font-loader.scss";
+
+body {
+    font-family: "comfortaa-regular", sans-serif;
+}
 
 /* IMPORT HERE ALL STYLES FROM VIEWS */
