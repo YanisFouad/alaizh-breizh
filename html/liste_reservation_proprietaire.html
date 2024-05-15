@@ -10,9 +10,13 @@
     <h1>Mes reservation</h1>
 
     <!--Rechercher une réservation-->
-    <div>
-        <p>Rechercher...</p>
-        <p>Dates de réservation</p>
+    <div class="liste_reservation_proprietaire_recherche">
+        <div>
+            <!-- Textarea Rechercher -->
+            <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1">Rechercher...</textarea>
+            <!-- Textarea date -->
+            <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1">Dates de réservation...</textarea>
+        </div>
         <img src="http://placehold.it/" alt="loupe de recherche">
     </div>
 
@@ -35,12 +39,17 @@
         <p>trier par date</p>     
     </div>
 
+
     <!-- Liste réservation -->
     <section>
         <!-- réservation -->
         <article class="liste_reservation_proprietaire">
-            <img src="images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
-            <p>Nom de la maison</p>
+            <!-- Photo maison + nom maison -->
+            <article class="liste_reservation_proprietaire_photo_nom_maison">
+                <img src="images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+                <p>Nom de la maison</p>
+            </article>
+            <!-- Description maison -->
             <article>
                 <div>
                     <p>Date de réservation</p> 
