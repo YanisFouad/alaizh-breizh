@@ -1,4 +1,4 @@
-# Alaizh Breizh (à l'aise mon gars)
+# Alhaiz Breizh (à l'aise breizh)
 
 ## run dev env
 `make env`
@@ -7,7 +7,10 @@
 `http://localhost:8080`
 
 ## pgAdmin dashboard
-> coming soon...
+`https://pgadmin-lav15.ventsdouest.dev/`
+
+login: `lav15@pgadmin-sae.com`
+password: `************`
 
 ## dev & production server URL
 `https://lav15.ventsdouest.dev/`
