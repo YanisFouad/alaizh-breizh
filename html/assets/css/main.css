@@ -50,4 +50,66 @@ body {
   font-family: "comfortaa-regular", sans-serif;
 }
 
+h1, h2 {
+  font-family: "poppins-semibold";
+}
+
+h3, h4 {
+  font-family: "poppins-medium";
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 16em;
+}
+
+p {
+  font-family: "comfortaa-medium";
+  font-size: 1em;
+}
+
 /* IMPORT HERE ALL STYLES FROM VIEWS */
+button {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-family: "comfortaa-regular", sans-serif;
+  background-color: transparent;
+  border: unset;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 0.8em 1.3em;
+}
+button:is(.primary, .secondary):not(:disabled):focus {
+  -webkit-box-shadow: 0 0 0 3px #abbdc0;
+          box-shadow: 0 0 0 3px #abbdc0;
+}
+button.primary:disabled, button.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.primary {
+  background-color: #1b5734;
+  color: white;
+}
+button.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #337d51;
+}
+button.secondary {
+  border: 1px solid #1b5734;
+  color: #1b5734;
+}
+button.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #1b5734;
+  color: white;
+}
