@@ -10,7 +10,8 @@
 @import "assets/font-loader.scss";
 
 body {
-    font-family: "comfortaa-regular", sans-serif;
+   font-family: "comfortaa-regular", sans-serif;
+   color: $other-4;
 }
 
 h1, h2 {
@@ -42,3 +43,8 @@ h1, h2 {
 /* IMPORT HERE ALL STYLES FROM VIEWS */
 @import "assets/buttons.scss";
 @import "assets/inputs.scss";
+
+// views
+
+// authentication
+@import "views/authentication/login.scss";

@@ -1,7 +1,7 @@
 <?php require_once("layout/header.php"); ?>
 
-<input type="text" placeholder="placeholder" />
-<input type="text" class="error" placeholder="placeholder" />
-<input type="text" placeholder="placeholder" disabled />
+ACCUEIL
+
+<?php require_once("authentication/login.php") ?>
 
 <?php require_once("layout/footer.php"); ?>
