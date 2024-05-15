@@ -1,7 +1,7 @@
 <div role="dialog" class="modal" id="authentication-modal">
     <div class="center">
         <h3>Connexion/Inscription</h3>
-        <button onclick="closeModal()" class="close">&times;</button>
+        <button onclick="closeLoginModal()" class="close">&times;</button>
 
         <img src="../../assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
 
@@ -37,7 +37,9 @@
 
 <script>
 
+    const authenticationModalElement = document.getElementById("authentication-modal");
     const errorMessageElement = document.getElementById("error-message");
+
     function setErrorMessage(message) {
         if(!message) {
             errorMessageElement.style.display = "none";
@@ -47,8 +49,12 @@
         }
     }
 
-    function closeModal() {
-        document.getElementById("authentication-modal").style.display = "none";
+    function closeLoginModal() {
+        authenticationModalElement.style.display = "none";
+    }
+
+    function openLoginModal() {
+        authenticationModalElement.style.display = "block";
     }
 
     async function handleLogin(event) {
@@ -79,7 +85,4 @@
             console.error(e);
         }
     }
-
-
-
 </script>

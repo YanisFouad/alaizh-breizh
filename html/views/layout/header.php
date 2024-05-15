@@ -12,5 +12,7 @@
 <body>
     <header>
         BLABLABLA
+        <button onclick="openLoginModal()">Connexion/Inscription</button>
     </header>
+    <?php require_once("views/authentication/login.php") ?>
     <main>
