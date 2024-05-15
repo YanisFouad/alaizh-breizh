@@ -6,9 +6,54 @@
 }
 
 @import "assets/font-loader.scss";
+@import "utils/_variables.scss";
 
 body {
     font-family: "comfortaa-regular", sans-serif;
 }
 
 /* IMPORT HERE ALL STYLES FROM VIEWS */
+/* IMPORT HERE ALL STYLES FROM VIEWS */
+
+@import "details-logement.scss";
+
+/* HEADER */
+header {
+    font-family: "comfortaa-regular";
+    background-color: white;
+    padding: 1em;
+    border-bottom: 2px solid $secondary-3;
+    img {
+        height: 3em;
+    }
+    nav {
+        ul {
+            display: flex;
+            li {
+                list-style: none;
+            }
+        }
+    }
+  }
+
+/* FOOTER */
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "comfortaa-regular";
+    color: white;
+    a:visited {
+        color: white;
+    }
+    background-color: black;
+    padding: 1em;
+    margin-top: auto; /* pour conserver le footer en bas de page */
+    nav {
+        display: flex;
+        flex-direction: row;
+        a {
+            padding-left: 1em;
+        }
+      }
+  }

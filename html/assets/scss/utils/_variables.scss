@@ -1,0 +1,54 @@
+// couleurs frontoffice
+$primary-front-1: #1b5734 !default;
+$primary-front-2: #337d51 !default;
+$primary-front-3: #abbdc0 !default;
+$primary-front-4: #e0ffee !default;
+
+// couleurs backoffice
+$primary-back-1: #804e2e !default;
+$primary-back-2: #9f6844 !default;
+$primary-back-3: #b6896c !default;
+$primary-back-4: #ffd6bb !default;
+
+$secondary-1: #424645 !default;
+$secondary-2: #676767 !default;
+$secondary-3: #eaeaea !default;
+$secondary-4: #f7f7f7 !default;
+
+$other-1: #fff1cc !default;
+$other-1: #fff7e2 !default;
+$other-1: #ce4b4b !default;
+$other-1: #222524 !default;
+
+$size-h1: 2em !default;
+$size-h2: 1.5em !default;
+$size-h3: 1.25em !default;
+$size-h4: 16em !default;
+
+$size-paragraph: 1em !default;
+
+h1, h2 {
+   font-family: "poppins-semibold";
+}
+
+h3, h4 {
+   font-family: "poppins-medium";
+}
+
+h1 {
+   font-size: $size-h1;
+}
+h2 {
+   font-size: $size-h2;
+}
+h3 {
+   font-size: $size-h3;
+}
+h4 {
+   font-size: $size-h4;
+}
+
+p {
+   font-family: "comfortaa-medium";
+   font-size: $size-paragraph;
+}

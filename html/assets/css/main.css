@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *::after, *::before {
   outline: none;
   padding: 0;
@@ -27,6 +28,10 @@
   src: url(../fonts/comfortaa-semibold.ttf);
 }
 @font-face {
+  font-family: "poppins-semibold";
+  src: url(../fonts/poppins-semibold.ttf);
+}
+@font-face {
   font-family: "poppins-bold";
   src: url(../fonts/poppins-bold.ttf);
 }
@@ -46,8 +51,130 @@
   font-family: "Material Design Icons";
   src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
 }
+h1, h2 {
+  font-family: "poppins-semibold";
+}
+
+h3, h4 {
+  font-family: "poppins-medium";
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 16em;
+}
+
+p {
+  font-family: "comfortaa-medium";
+  font-size: 1em;
+}
+
 body {
   font-family: "comfortaa-regular", sans-serif;
 }
 
 /* IMPORT HERE ALL STYLES FROM VIEWS */
+/* IMPORT HERE ALL STYLES FROM VIEWS */
+/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+
+#image-cover {
+  height: 250px;
+  background-image: url("../../images/image-cover.png");
+  border-radius: 1em;
+  margin: 1em 2.5em;
+  padding: 2em;
+  color: white;
+}
+
+#search-bar {
+  width: 50em;
+  padding: 0.5em;
+  margin: 0 auto;
+}
+#search-bar input {
+  border: none;
+  background-color: #eaeaea;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+/* HEADER */
+header {
+  font-family: "comfortaa-regular";
+  background-color: white;
+  padding: 1em;
+  border-bottom: 2px solid #eaeaea;
+}
+header img {
+  height: 3em;
+}
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header nav ul li {
+  list-style: none;
+}
+
+/* FOOTER */
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "comfortaa-regular";
+  color: white;
+  background-color: black;
+  padding: 1em;
+  margin-top: auto; /* pour conserver le footer en bas de page */
+}
+footer a:visited {
+  color: white;
+}
+footer nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+footer nav a {
+  padding-left: 1em;
+}
