@@ -8,11 +8,15 @@ class Model {
     private $schema = array();
     private $data = array();
 
-    public function __construct($tableName, $schema, $defaultData = null) {
+    // is it a new row ?
+    private $isNew;
+
+    public function __construct($tableName, $schema, $defaultData = null, $isNew = true) {
         $this->tableName = $tableName;
         $this->schema = $schema;
         if($defaultData)
             $this->data = $defaultData;
+        $this->isNew = $isNew;
     }
 
     /**
@@ -32,44 +36,6 @@ class Model {
         return $this->data[$key] ?? null;
     }
 
-    // /**
-    //  * find one row by cretirias
-    //  * @param $fields a single or a list of field needed to be returned
-    //  * @param $conditon a list of conditions "equivalent of a WHERE condition" 
-    //  */
-    // public function findOne($fields, $condition = []) {
-    //     global $db;
-        
-    //     // build a WHERE expression (if needed)
-    //     $expr = "";
-    //     if(sizeof($condition) > 0) {
-    //         $expr = " WHERE ";
-    //         $expressions = array();
-    //         foreach($condition as $v) { 
-    //             if(sizeof($v) !== 3)
-    //                 throw new Exception("Invalid amount of parameters, required 3");
-    //             [$field, $symbol] = $v;
-    //             $expressions[] = $field." ".$symbol." ?";
-    //         }
-    //         $expr .= " " . join(" AND ", $expressions);
-    //     }
-
-    //     // if project is an instance of array then just join all elements into a single string
-    //     if(is_array($fields))
-    //         $fields = join(",", $fields);
-
-    //     // then do the request on the table
-    //     $request = $db->prepare("SELECT ".$fields." FROM ".$this->tableName . $expr);
-    //     foreach(array_values($condition) as $index => $v)
-    //         $request->bindParam($index+1, $v[2]);
-    //     $request->execute();
-
-    //     $row = $request->fetch(PDO::FETCH_ASSOC);
-    //     if(sizeof($row) < 1)
-    //         return null;
-    //     return $row;
-    // }
-
     /**
      * compare setted data to the schema to see if it match with the defined schema
      */
@@ -86,6 +52,15 @@ class Model {
         }
     }
 
+    private function getPrimaryField() {
+        $field = null;
+        foreach($this->schema as $k => $v) {
+            if(array_key_exists("primary", $v) && $v["primary"])
+                $field = $k;
+        }
+        return $field;
+    }
+
     /**
      * insert or update the model data
      * @return $request the request used to save the delegate or throws an error
@@ -94,13 +69,33 @@ class Model {
         // before saving, check if it's correspond to the schema
         $this->checkSchema();
 
-        // @todo gérer l'upsert
         $keys = array_keys($this->data);
-        $fill = array_fill(0, sizeof($keys), "?");
-        $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
-        // bind all variables
-        foreach(array_values($this->data) as $k => $v)
+        $values = array_values($this->data);
+        $primaryField = $this->getPrimaryField();
+
+        // if it's a new row then insert it
+        if($primaryField === null || $this->isNew) {
+            $fill = array_fill(0, sizeof($keys), "?");
+            $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
+        } else {
+            // remove all primary keys
+            $expr = array_filter($keys, function ($k) use($primaryField) { 
+                return $k != $primaryField;
+            });
+
+            // add all :key = ? in "set" expr
+            $expr = array_map(function ($k) { return $k ."= ?"; }, $expr);
+            $expr = join(",", $expr);
+            // build the request
+            $request = Database::getConnection()->prepare("UPDATE ".$this->tableName." SET " . $expr . " WHERE ".$primaryField." = ?");
+        }
+
+        foreach($values as $k => &$v)
             $request->bindParam($k+1, $v);
+
+        if(!$this->isNew && array_key_exists($primaryField, $this->data))
+            $request->bindParam(sizeof($values), $this->data[$primaryField]);
+        
         $request->execute();
 
         return $request;
