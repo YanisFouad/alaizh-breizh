@@ -1,11 +1,11 @@
 <?php
 require_once(__DIR__."/../services/Model.php");
-include_once(__DIR__."/../services/database.php");
+require_once(__DIR__."/../services/Database.php");
 
 class AccountModel extends Model {
 
     public function __construct() {
-        // define the model of the user
+        // define the model of an account
         parent::__construct("compte", array(
             "identifiant" => array(),
             "nom"  => array("required" => true),
@@ -26,11 +26,10 @@ class AccountModel extends Model {
      * @return array|null the row found or null if the row wasn't found
      */
     public static function findOneByMail($mail, $projection = "*") {
-        global $db;
         if(is_array($projection))
             $projection = join(",", $projection);
         
-        $request = $db->prepare("SELECT " . $projection . " FROM compte WHERE mail = ?");
+        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE mail = ?");
         $request->bindParam(1, $mail);
         $request->execute();
         
@@ -48,11 +47,10 @@ class AccountModel extends Model {
      */
     public static function findOneById($id, $projection = "*") {
         // @todo try to avoid code duplication (with findOneByMail ....)
-        global $db;
         if(is_array($projection))
             $projection = join(",", $projection);
-        
-        $request = $db->prepare("SELECT " . $projection . " FROM compte WHERE identifiant = ?");
+
+        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE identifiant = ?");
         $request->bindParam(1, $id);
         $request->execute();
         

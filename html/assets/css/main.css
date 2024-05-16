@@ -51,11 +51,11 @@ body {
 }
 
 h1, h2 {
-  font-family: "poppins-semibold";
+  font-family: "poppins-semibold", sans-serif;
 }
 
 h3, h4 {
-  font-family: "poppins-medium";
+  font-family: "poppins-medium", sans-serif;
 }
 
 h1 {
@@ -71,7 +71,7 @@ h3 {
 }
 
 h4 {
-  font-size: 16em;
+  font-size: 1.15em;
 }
 
 p {
@@ -79,7 +79,6 @@ p {
   font-size: 1em;
 }
 
-/* IMPORT HERE ALL STYLES FROM VIEWS */
 button {
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
@@ -140,7 +139,16 @@ input:disabled {
   opacity: 60%;
 }
 input:is(:hover, :focus) {
-  border-color: #804e2e;
+  border-color: #1b5734;
+}
+
+/* VIEWS */
+.center {
+  text-align: center;
+  margin: 1em 0;
+}
+.center > * {
+  font-weight: normal;
 }
 
 .modal {
@@ -245,4 +253,43 @@ input:is(:hover, :focus) {
   to {
     opacity: 1;
   }
+}
+
+.profile-area {
+  width: fit-content;
+  margin: 1em auto;
+  border-radius: 15px;
+}
+.profile-area > h1 {
+  margin-bottom: 1em;
+  color: #424645;
+}
+.profile-area > img {
+  margin: auto;
+  display: block;
+  width: 12em;
+  border-radius: 100px;
+  margin-bottom: 1em;
+}
+.profile-area > h2 {
+  text-align: center;
+  margin-bottom: 1em;
+  font-family: "poppins-regular", sans-serif;
+}
+.profile-area > h3 {
+  padding: 0.5em 0.8em;
+  border: 1px solid #222524;
+  border-radius: 15px;
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+.profile-area > h3 > span {
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: #424645;
+}
+.profile-area > .edit {
+  margin-top: 1em;
+  margin-left: auto;
+  display: block;
 }

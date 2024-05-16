@@ -33,6 +33,6 @@ input {
     }
 
     &:is(:hover, :focus) {
-        border-color: $primary-back-1;
+        border-color: $primary-1;
     }
 }
