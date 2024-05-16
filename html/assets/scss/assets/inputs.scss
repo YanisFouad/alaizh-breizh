@@ -1,0 +1,38 @@
+.form-field {
+    &.error {
+        &>label {
+            color: $red-1;
+        }
+
+        &>input {
+            position: relative;
+            border-color: $red-1;
+    
+            &, &::placeholder {
+                color: $red-1;
+            }
+        }
+    }
+    &>label {
+        font-size: .9em;
+        display: block;
+        color: $gray-2;
+        margin-bottom: .5em;
+    }
+}
+input { 
+    font-family: "comfortaa-regular", sans-serif;
+    padding: .8em .5em;
+    border-radius: 7px;
+    border: 1px solid $gray-2;
+
+    width: 100%;
+
+    &:disabled {
+        opacity: 60%;
+    }
+
+    &:is(:hover, :focus) {
+        border-color: $primary-back-1;
+    }
+}

@@ -1,3 +1,6 @@
+@import "utils/variables";
+@import "utils/variables-front-office";
+
 *, *::after, *::before {
     outline: none;
     padding: 0;
@@ -7,4 +10,45 @@
 
 @import "assets/font-loader.scss";
 
-/* IMPORT HERE ALL STYLES FROM VIEWS */
+body {
+   font-family: "comfortaa-regular", sans-serif;
+   color: $black;
+}
+
+h1, h2 {
+    font-family: "poppins-semibold";
+ }
+ 
+ h3, h4 {
+    font-family: "poppins-medium";
+ }
+ 
+ h1 {
+    font-size: $size-h1;
+ }
+ h2 {
+    font-size: $size-h2;
+ }
+ h3 {
+    font-size: $size-h3;
+ }
+ h4 {
+    font-size: $size-h4;
+ }
+ 
+ p {
+    font-family: "comfortaa-medium";
+    font-size: $size-paragraph;
+ }
+
+// default components
+@import "assets/buttons";
+@import "assets/inputs";
+
+/* VIEWS */
+
+// errors
+@import "views/errors/404";
+
+// authentication
+@import "views/authentication/login";
