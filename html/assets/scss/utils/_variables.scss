@@ -23,32 +23,6 @@ $other-1: #222524 !default;
 $size-h1: 2em !default;
 $size-h2: 1.5em !default;
 $size-h3: 1.25em !default;
-$size-h4: 16em !default;
+$size-h4: 1em !default;
 
 $size-paragraph: 1em !default;
-
-h1, h2 {
-   font-family: "poppins-semibold";
-}
-
-h3, h4 {
-   font-family: "poppins-medium";
-}
-
-h1 {
-   font-size: $size-h1;
-}
-h2 {
-   font-size: $size-h2;
-}
-h3 {
-   font-size: $size-h3;
-}
-h4 {
-   font-size: $size-h4;
-}
-
-p {
-   font-family: "comfortaa-medium";
-   font-size: $size-paragraph;
-}
