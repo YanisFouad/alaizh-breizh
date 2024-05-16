@@ -5,5 +5,16 @@
 # For MacOS
 .DS_Store
 
+# ignore all files from css file except theses
+html/assets/css/*
+!html/assets/css/main.css
+!html/assets/css/materialdesignicons.min.css
+
+html/assets/scss/**/*.css
+html/assets/scss/**/*.css.map
+
+# WSL smell files
+*.Identifier
+
 # ignore prepros config
 prepros.config

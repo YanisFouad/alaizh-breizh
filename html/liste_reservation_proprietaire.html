@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/scss/assets/buttons.css">
     <title>Liste réservation</title>
 </head>
-<body>
+<body id="liste-reservation-proprietaire-body">
     
     <div id="liste-reservation-proprietaire-entete">
         <h1>Mes réservations</h1>
@@ -42,7 +42,7 @@
         </button>
 
         <!-- Bouton trie -->
-        <button class="liste-reservation-proprietaire-flex-row">
+        <button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre">
             <span class="mdi mdi-sort-ascending"></span>
             trier par date    
         </button>
@@ -51,11 +51,14 @@
 
     <!-- Liste réservation -->
     <section id="liste-reservation-proprietaire">
+        <!-- réservation -->
         <article class="liste-reservation-proprietaire-logement">
+            <!-- Photo maison + nom maison -->
             <div>
                 <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
                 <h4>Nom de la maison</h4>
             </div>
+            <!-- Description maison -->
             <div class="liste-reservation-proprietaire-logement-detail">
                 <div>
                     <h5>Date de réservation</h5>
@@ -78,40 +81,119 @@
         <!-- réservation -->
         <article class="liste-reservation-proprietaire-logement">
             <!-- Photo maison + nom maison -->
-            <article class="liste-reservation-proprietaire-photo-nom-maison">
+            <div>
                 <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
-                <p>Nom de la maison</p>
-            </article>
+                <h4>Nom de la maison</h4>
+            </div>
             <!-- Description maison -->
-            <article>
+            <div class="liste-reservation-proprietaire-logement-detail">
                 <div>
-                    <p>Date de réservation</p> 
-                    <p>12 Février 2024</p> 
+                    <h5>Date de réservation</h5>
+                    <h4>12 février 2024</h4>
                 </div>
                 <div>
-                    <p>Nombre de nuit</p>     
-                    <p>10</p>
-                </div>  
-                <div id="marge-gauche-zero">
-                    <p>prix total</p>  
-                    <p>600 €</p>   
+                    <h5>Nombre de nuit</h5>
+                    <h4>10</h4>
                 </div>
-            </article> 
-            <button class="button primary">
-                <div class="liste-reservation-proprietaire-flex-row">
+                <div>
+                    <h5>Prix total</h5>
+                    <h4>12€</h4>
+                </div>
+                <button class="button primary liste-reservation-proprietaire-flex-row">
                     <span class="mdi mdi-eye-outline"></span>
-                    <p>Facture</p>
+                    Facture
+                </button>
+            </div>
+        </article>
+        <!-- réservation -->
+        <article class="liste-reservation-proprietaire-logement">
+            <!-- Photo maison + nom maison -->
+            <div>
+                <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+                <h4>Nom de la maison</h4>
+            </div>
+            <!-- Description maison -->
+            <div class="liste-reservation-proprietaire-logement-detail">
+                <div>
+                    <h5>Date de réservation</h5>
+                    <h4>12 février 2024</h4>
                 </div>
-            </button> 
+                <div>
+                    <h5>Nombre de nuit</h5>
+                    <h4>10</h4>
+                </div>
+                <div>
+                    <h5>Prix total</h5>
+                    <h4>12€</h4>
+                </div>
+                <button class="button primary liste-reservation-proprietaire-flex-row">
+                    <span class="mdi mdi-eye-outline"></span>
+                    Facture
+                </button>
+            </div>
+        </article>
+        <!-- réservation -->
+        <article class="liste-reservation-proprietaire-logement">
+            <!-- Photo maison + nom maison -->
+            <div>
+                <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+                <h4>Nom de la maison</h4>
+            </div>
+            <!-- Description maison -->
+            <div class="liste-reservation-proprietaire-logement-detail">
+                <div>
+                    <h5>Date de réservation</h5>
+                    <h4>12 février 2024</h4>
+                </div>
+                <div>
+                    <h5>Nombre de nuit</h5>
+                    <h4>10</h4>
+                </div>
+                <div>
+                    <h5>Prix total</h5>
+                    <h4>12€</h4>
+                </div>
+                <button class="button primary liste-reservation-proprietaire-flex-row">
+                    <span class="mdi mdi-eye-outline"></span>
+                    Facture
+                </button>
+            </div>
+        </article>
+        <!-- réservation -->
+        <article class="liste-reservation-proprietaire-logement">
+            <!-- Photo maison + nom maison -->
+            <div>
+                <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+                <h4>Nom de la maison</h4>
+            </div>
+            <!-- Description maison -->
+            <div class="liste-reservation-proprietaire-logement-detail">
+                <div>
+                    <h5>Date de réservation</h5>
+                    <h4>12 février 2024</h4>
+                </div>
+                <div>
+                    <h5>Nombre de nuit</h5>
+                    <h4>10</h4>
+                </div>
+                <div>
+                    <h5>Prix total</h5>
+                    <h4>12€</h4>
+                </div>
+                <button class="button primary liste-reservation-proprietaire-flex-row">
+                    <span class="mdi mdi-eye-outline"></span>
+                    Facture
+                </button>
+            </div>
         </article>
     </section>
 
     <!-- Changement de page de réservation -->
-    <div>
-        <p>e</p>
-        <p>1</p>
-        <p>2</p>
-        <p>></p>
+    <div id="liste-reservation-proprietaire-pagination">
+        <span class="mdi mdi-chevron-left"></span>
+        <h4>1</h4>
+        <h4>49</h4>
+        <span class="mdi mdi-chevron-right"></span>
     </div>
 
 </body>
