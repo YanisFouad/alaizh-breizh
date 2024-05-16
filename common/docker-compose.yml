@@ -35,6 +35,13 @@ services:
       PGADMIN_DEFAULT_PASSWORD: chantepie
     depends_on:
       - postgres
+  scss-compiler:
+    build:
+      context: .
+      dockerfile: Dockerfile-scss
+    volumes:
+      - ../html/assets/scss:/sass
+      - ../html/assets/css:/css
 
 volumes:
   db_data:

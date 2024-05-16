@@ -41,7 +41,6 @@ class Router {
         }
         try {
             $viewPath = $this->routes[$path];
-            // @todo pouvoir passer des variables php dans une vue (feature à rajouter si le temps)
             require_once($viewPath);
         } catch(Exception $e) {
             print_r("Failed to load view '".$viewPath."': " . $e->getMessage());
