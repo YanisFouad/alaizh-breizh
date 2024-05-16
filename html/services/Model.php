@@ -8,9 +8,11 @@ class Model {
     private $schema = array();
     private $data = array();
 
-    public function __construct($tableName, $schema) {
+    public function __construct($tableName, $schema, $defaultData = null) {
         $this->tableName = $tableName;
         $this->schema = $schema;
+        if($defaultData)
+            $this->data = $defaultData;
     }
 
     /**
@@ -20,6 +22,14 @@ class Model {
         if(!in_array($key, array_keys($this->schema)))
             throw new Exception("Table column: '" . $key . "' not found in defined schema");
         $this->data[$key] = $value;
+    }
+
+    /**
+     * retrieve a key from data
+     * @return object|null the data associated, or null if not found.
+     */
+    public function get($key) {
+        return $this->data[$key] ?? null;
     }
 
     // /**
@@ -77,13 +87,14 @@ class Model {
     }
 
     /**
-     * save the created model
+     * insert or update the model data
      * @return $request the request used to save the delegate or throws an error
      */
     public function save() {
         // before saving, check if it's correspond to the schema
         $this->checkSchema();
 
+        // @todo gérer l'upsert
         $keys = array_keys($this->data);
         $fill = array_fill(0, sizeof($keys), "?");
         $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");

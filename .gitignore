@@ -10,8 +10,11 @@ html/assets/css/*
 !html/assets/css/main.css
 !html/assets/css/materialdesignicons.min.css
 
+html/assets/scss/**/*.css
+html/assets/scss/**/*.css.map
+
 # WSL smell files
-*.Zone.Identifier
+*.Identifier
 
 # ignore prepros config
 prepros.config
