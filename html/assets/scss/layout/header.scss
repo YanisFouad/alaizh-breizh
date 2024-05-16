@@ -1,0 +1,33 @@
+header {
+   /*position: fixed;
+   top: 0;
+   width: 100%;*/
+   font-family: "comfortaa-regular";
+   background-color: white;
+   padding: 1em 2.5em 0 2.5em;
+   img {
+       height: 3em;
+   }
+   nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ul {
+         display: flex;
+         align-items: center;
+         li {
+            list-style: none;
+            margin-left: .5em;
+         }
+      }
+   }
+   #sign-in-button a, #sign-up-button a {
+      color: $primary-front-1;
+   }
+
+   div {
+      height: 2px;
+      background-color: $secondary-3;
+      margin: 1em 0 0 0;
+   }
+}

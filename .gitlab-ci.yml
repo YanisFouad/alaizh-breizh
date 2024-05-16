@@ -2,12 +2,6 @@ stages:
   #- test
   - deploy
 
-# w3c-html-test:
-#   stage: test
-#   image: docker:26.1.2-dind-alpine3.19
-#   script:
-#     - echo "testing..."
-
 deploy:
   stage: deploy
   image: alpine:latest
@@ -15,8 +9,7 @@ deploy:
     USER: root
     HOST: lav15.ventsdouest.dev
   before_script:
-    - apk add --no-cache sshpass
-    - 'command -v ssh-agent >/dev/null || ( apk add --no-cache --update openssh)' 
+    - apk add --no-cache sshpass openssh
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | sshpass -Ppassphrase -f <(printf '%s\n' chantepie) ssh-add -
   script:

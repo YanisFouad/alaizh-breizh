@@ -1,16 +1,62 @@
+@import "utils/variables";
+@import "utils/variables-front-office";
+
 *,
 *::after,
 *::before {
-    outline: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+   outline: none;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
 
 @import "assets/font-loader.scss";
+@import "utils/_variables.scss";
 
 body {
-    font-family: "comfortaa-regular", sans-serif;
+   font-family: "comfortaa-regular", sans-serif;
+   color: $black;
 }
 
-/* IMPORT HERE ALL STYLES FROM VIEWS */
+h1,
+h2 {
+   font-family: "poppins-semibold";
+}
+
+h3,
+h4 {
+   font-family: "poppins-medium";
+}
+
+h1 {
+   font-size: $size-h1;
+}
+
+h2 {
+   font-size: $size-h2;
+}
+
+h3 {
+   font-size: $size-h3;
+}
+
+h4 {
+   font-size: $size-h4;
+}
+
+p {
+   font-family: "comfortaa-medium";
+   font-size: $size-paragraph;
+}
+
+// default components
+@import "assets/buttons";
+@import "assets/inputs";
+
+/* VIEWS */
+
+// errors
+@import "views/errors/404";
+
+// authentication
+@import "views/authentication/login";

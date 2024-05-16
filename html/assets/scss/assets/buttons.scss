@@ -1,0 +1,38 @@
+button {
+    transition: all .5s ease;
+    font-family: "comfortaa-regular", sans-serif;
+    
+    background-color: transparent;
+    border: unset;
+    
+    cursor: pointer;
+    
+    border-radius: 100px;
+    padding: 1em 1.3em;
+
+    &:is(.primary, .secondary):not(:disabled):focus {
+     box-shadow: 0 0 0 3px $primary-3;       
+    }
+
+    &.primary:disabled, &.secondary:disabled {
+        opacity: 60%;
+        cursor: unset;
+    }
+    &.primary {
+        background-color: $primary-1;
+        color: $white;
+
+        &:not(:disabled):is(:hover, :focus) {
+            background-color: $primary-2;
+        }
+    }
+    &.secondary {
+        border: 1px solid $primary-1;
+        color: $primary-1;
+
+        &:not(:disabled):is(:hover, :focus) {
+            background-color: $primary-1;
+            color: $white;
+        }
+    }
+}

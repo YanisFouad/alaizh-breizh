@@ -1,0 +1,21 @@
+footer {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   font-family: "comfortaa-regular";
+   color: white;
+   a:visited {
+       color: white;
+   }
+   background-color: black;
+   padding: 1em;
+   margin-top: auto; /* pour conserver le footer en bas de page */
+   nav {
+       display: flex;
+       flex-direction: row;
+       a {
+           padding-left: 1em;
+       }
+     }
+}
