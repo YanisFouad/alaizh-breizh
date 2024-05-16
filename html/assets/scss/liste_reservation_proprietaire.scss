@@ -1,0 +1,346 @@
+@import "utils/_variables";
+@import "assets/font-loader.scss";
+
+body {
+    margin:4em;
+}  
+
+h1{
+    margin:1em 0;
+}
+
+///////////////////////////////////////////////////////////
+
+#liste-reservation-proprietaire-entete{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+
+// Entete mes reservation + recherche
+.liste-reservation-proprietaire-recherche{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+
+    > div{
+        padding:1em;
+        background-color: $secondary-4;
+        border: 1px solid $secondary-3;
+        border-radius: 10px;
+        margin-right: 1em;
+        display: flex;
+        flex-direction: row; 
+        align-items: center;
+
+        textarea {
+            resize: none;
+            font-size: 13px;
+            font-family: "comfortaa-bold", sans-serif;
+            color:$secondary-2;
+            background-color:$secondary-4;
+            margin:0;
+            border: none;
+        }
+    }
+}
+
+// Onglets
+#liste-reservation-proprietaire-onglet{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+    > p {
+        margin : 1em 1em 1em 0;
+    }
+
+    > button{
+        color:$secondary-2;
+        font-family: "poppins-semibold", sans-serif;;
+        font-size: 14px;
+
+        &:focus{
+            color:$primary-back-1;
+            border-bottom: 2px solid $primary-back-1;
+            border-radius: 0;
+        }
+
+        &:hover{
+            color:$primary-back-1;
+            border-bottom: 2px solid $primary-back-1;
+            border-radius: 0;
+        }
+    }   
+}
+
+#liste-reservation-proprietaire-float-left{
+    display:flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start;
+    margin : 1em 0em;
+}
+
+.liste-reservation-proprietaire-logement{
+    margin: 1.5em 0; 
+    padding: 1em 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;   
+    border: solid $primary-back-1 1px;
+    border-radius: 20px;
+
+    div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            width: 20%;
+            border-radius: 15px;
+            margin-right: 1em;
+        } 
+    } 
+
+    .liste-reservation-proprietaire-logement-detail{
+        display: flex;
+        flex-direction: row;
+        gap:5em;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+.liste-reservation-proprietaire-flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    /**********************/
+    /* Filtre             */
+    /**********************/
+    .mdi.mdi-filter-variant{
+        color: white;
+        font-size: 2em;
+    }
+
+    /**********************/
+    /* Oeil facture       */
+    /**********************/
+    .mdi.mdi-eye-outline{
+        font-size: 2em;
+        color:white;
+    }
+
+    .mdi.mdi-eye-outline,.mdi.mdi-filter-variant, .mdi.mdi-sort-ascending{
+        margin-right: 0.2em;
+    }
+}
+
+#liste-reservation-proprietaire{
+    margin:2em 0;
+}
+
+        // + article > div {
+        //     width: 15em;
+        //     margin-left: 1em;
+
+        //     + div{
+        //         width: 13em;
+        //     }
+
+        //     + div + div {
+        //         width: 7em;
+        //     }
+
+        //     > p {
+        //         margin: 0.4em;
+        //         font-family: "poppins-medium";
+        //         font-size: 12px;
+        //         color:$secondary-2;
+
+        //         + p {
+        //             margin: 0.4em;
+        //             font-family: "poppins-medium";
+        //             font-size: 16px;
+        //             color:black;
+        //         }
+        //     }
+        // }
+    
+// Texte facture
+.liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
+    margin-left: 0.2em;
+    color: white;
+    font-size: 100px;
+}
+
+///////////////////////////////////////////////////////////
+
+///////////////////////////
+// // Entete mes reservation + recherche
+
+// #liste-reservation-proprietaire-entete{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content:space-between;
+//     align-items: center;
+// }
+
+// .liste-reservation-proprietaire-recherche div{
+//     padding:1em;
+//     background-color: $secondary-4;
+//     border: 1px solid $secondary-3;
+//     border-radius: 10px;
+//     margin-right: 1em;
+// }
+
+// .liste-reservation-proprietaire-recherche,.liste-reservation-proprietaire-recherche > div{
+//     display: flex;
+//     flex-direction: row; 
+//     align-items: center;
+// }
+
+// .liste-reservation-proprietaire-recherche div textarea {
+//     resize: none;
+//     font-size: 13px;
+//     font-family: "comfortaa-bold", sans-serif;
+//     color:$secondary-2;
+//     background-color:$secondary-4;
+//     margin:0;
+//     border: none;
+// }
+// ///////////////////////////
+
+// ///////////////////////////
+// // Onglets
+// #liste-reservation-proprietaire-onglet{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+// }
+
+// #liste-reservation-proprietaire-onglet > p {
+//     margin : 1em 1em 1em 0;
+// }
+
+// #liste-reservation-proprietaire-onglet > button{
+//     color:$secondary-2;
+//     transition: all .5s ease;
+//     font-family: "poppins-semibold", sans-serif;;
+//     font-size: 14px;
+// }
+
+// #liste-reservation-proprietaire-onglet > button:focus{
+//     color:$primary-back-1;
+//     border-bottom: 2px solid $primary-back-1;
+//     border-radius: 0;
+//     transition:none;
+// }
+// ///////////////////////////
+
+// #liste-reservation-proprietaire-float-left{
+//     display:flex;
+//     flex-direction: row;
+//     align-items: center; 
+//     justify-content: flex-start;
+//     margin : 1em 0em;
+// }
+
+
+
+
+
+// /**********************/
+// /* Filtre             */
+// /**********************/
+// .mdi.mdi-filter-variant{
+//     color: white;
+//     font-size: 2em;
+// }
+
+// /**********************/
+// /* Trie               */
+// /**********************/
+// .liste-reservation-proprietaire-flex-row{
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center; 
+// }
+
+// #liste-reservation-proprietaire{
+//     margin:2em 0;
+// }
+
+// ///////////////////////////
+// // Logement
+// .liste-reservation-proprietaire-logement{
+//     margin: 1.5em 0; 
+//     padding: 1em 1em;
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;    
+//     border: solid $primary-back-1 1px;
+//     border-radius: 20px;
+//     border-color: 804E2E;
+// }
+
+// .liste-reservation-proprietaire-logement > article > img {
+//     width: 20%;
+//     border-radius: 15px;
+//     margin-right: 1em;
+// } 
+
+// .liste-reservation-proprietaire-logement article {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// } 
+
+// // date de réservation
+// .liste-reservation-proprietaire-logement article + article > div {
+//     width: 15em;
+//     margin-left: 1em;
+// }
+
+// // date de réservation
+// .liste-reservation-proprietaire-logement article + article > div + div{
+//     width: 13em;
+// }
+
+// // date de réservation
+// .liste-reservation-proprietaire-logement article + article > div + div + div {
+//     width: 7em;
+// }
+
+// .liste-reservation-proprietaire-logement > article + article div > p {
+//     margin: 0.4em;
+//     font-family: "poppins-medium";
+//     font-size: 12px;
+//     color:$secondary-2;
+// }
+
+// .liste-reservation-proprietaire-logement > article + article div > p + p {
+//     margin: 0.4em;
+//     font-family: "poppins-medium";
+//     font-size: 16px;
+//     color:black;
+// }
+
+// .mdi.mdi-eye-outline{
+//     font-size: 2em;
+//     color:white;
+// }
+// ///////////////////////////
+
+// button > .liste-reservation-proprietaire-flex-row > p {
+//     margin-left: 0.2em;
+//     color: white;
+// }

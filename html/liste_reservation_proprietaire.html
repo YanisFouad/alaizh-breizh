@@ -3,50 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles_liste_reservation_proprietaire.css">
+    <link rel="stylesheet" href="assets/scss/main.css">
+    <link rel="stylesheet" href="assets/scss/liste_reservation_proprietaire.css">
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/scss/assets/buttons.css">
     <title>Liste réservation</title>
 </head>
 <body>
-    <h1>Mes reservation</h1>
-
-    <!--Rechercher une réservation-->
-    <div class="liste_reservation_proprietaire_recherche">
-        <div>
-            <!-- Textarea Rechercher -->
-            <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1">Rechercher...</textarea>
-            <!-- Textarea date -->
-            <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1">Dates de réservation...</textarea>
+    
+    <div id="liste-reservation-proprietaire-entete">
+        <h1>Mes réservations</h1>
+        <!--Rechercher une réservation-->
+        <div class="liste-reservation-proprietaire-recherche">
+            <div>
+                <!-- Textarea Rechercher -->
+                <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1">Rechercher...</textarea>
+                <!-- Textarea date -->
+                <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1">Dates de réservation...</textarea>
+            </div>
+            <button class="button primary">
+                <span class="mdi mdi-magnify"></span>
+            </button>
         </div>
-        <img src="http://placehold.it/" alt="loupe de recherche">
     </div>
-
     <!-- Onglets affichages des réservations -->
-    <nav>
-        <p>A venir</p>
-        <p>En cours</p>
-        <p>Passée</p>
+    <nav id="liste-reservation-proprietaire-onglet">
+        <button>A venir</button>
+        <button>En cours</button>
+        <button>Passée</button>
     </nav>
+    <hr>
 
-    <!-- Bouton filtre -->
-    <div>
-        <img src="http://placehold.it/" alt="Filtre">
-        <p>Filtre</p>
-    </div>
+    <div id="liste-reservation-proprietaire-float-left">
+        <!-- Bouton filtre -->
+        <button class="button primary liste-reservation-proprietaire-flex-row">
+            <span class="mdi mdi-filter-variant"></span>
+            Filtre
+        </button>
 
-    <!-- Bouton trie -->
-    <div>
-        <img src="" alt="trie">
-        <p>trier par date</p>     
+        <!-- Bouton trie -->
+        <button class="liste-reservation-proprietaire-flex-row">
+            <span class="mdi mdi-sort-ascending"></span>
+            trier par date    
+        </button>
     </div>
 
 
     <!-- Liste réservation -->
-    <section>
+    <section id="liste-reservation-proprietaire">
+        <article class="liste-reservation-proprietaire-logement">
+            <div>
+                <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+                <h4>Nom de la maison</h4>
+            </div>
+            <div class="liste-reservation-proprietaire-logement-detail">
+                <div>
+                    <h5>Date de réservation</h5>
+                    <h4>12 février 2024</h4>
+                </div>
+                <div>
+                    <h5>Nombre de nuit</h5>
+                    <h4>10</h4>
+                </div>
+                <div>
+                    <h5>Prix total</h5>
+                    <h4>12€</h4>
+                </div>
+                <button class="button primary liste-reservation-proprietaire-flex-row">
+                    <span class="mdi mdi-eye-outline"></span>
+                    Facture
+                </button>
+            </div>
+        </article>
         <!-- réservation -->
-        <article class="liste_reservation_proprietaire">
+        <article class="liste-reservation-proprietaire-logement">
             <!-- Photo maison + nom maison -->
-            <article class="liste_reservation_proprietaire_photo_nom_maison">
-                <img src="images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
+            <article class="liste-reservation-proprietaire-photo-nom-maison">
+                <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
                 <p>Nom de la maison</p>
             </article>
             <!-- Description maison -->
@@ -59,12 +92,17 @@
                     <p>Nombre de nuit</p>     
                     <p>10</p>
                 </div>  
-                <div>
+                <div id="marge-gauche-zero">
                     <p>prix total</p>  
                     <p>600 €</p>   
                 </div>
-                <p>bouton facture</p>
-            </article>
+            </article> 
+            <button class="button primary">
+                <div class="liste-reservation-proprietaire-flex-row">
+                    <span class="mdi mdi-eye-outline"></span>
+                    <p>Facture</p>
+                </div>
+            </button> 
         </article>
     </section>
 
