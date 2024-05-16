@@ -55,7 +55,7 @@
             top: 15px;
             right: 15px;
 
-            background-color: $secondary-4;
+            background-color: $gray-4;
             font-size: 1.1em;
 
             padding: .3em .6em;
@@ -73,7 +73,7 @@
             }
     
             &>.forgot-password {
-                color: $secondary-1;
+                color: $gray-1;
                 display: block;
                 text-align: end;
                 font-size: .9em;
@@ -89,7 +89,7 @@
             &>.another-choice {
                 display: block;
                 margin: 1.5em 0;
-                color: $secondary-2;
+                color: $gray-2;
                 text-align: center;
                 position: relative;
 
@@ -114,7 +114,7 @@
 
                     transform: translateY(-50%);
 
-                    background-color: $secondary-2;
+                    background-color: $gray-2;
                 }
             }
 

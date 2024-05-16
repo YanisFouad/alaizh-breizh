@@ -11,7 +11,7 @@ button {
     padding: 1em 1.3em;
 
     &:is(.primary, .secondary):not(:disabled):focus {
-     box-shadow: 0 0 0 3px $primary-front-3;       
+     box-shadow: 0 0 0 3px $primary-3;       
     }
 
     &.primary:disabled, &.secondary:disabled {
@@ -19,19 +19,19 @@ button {
         cursor: unset;
     }
     &.primary {
-        background-color: $primary-front-1;
+        background-color: $primary-1;
         color: $white;
 
         &:not(:disabled):is(:hover, :focus) {
-            background-color: $primary-front-2;
+            background-color: $primary-2;
         }
     }
     &.secondary {
-        border: 1px solid $primary-front-1;
-        color: $primary-front-1;
+        border: 1px solid $primary-1;
+        color: $primary-1;
 
         &:not(:disabled):is(:hover, :focus) {
-            background-color: $primary-front-1;
+            background-color: $primary-1;
             color: $white;
         }
     }

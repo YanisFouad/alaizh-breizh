@@ -60,10 +60,9 @@
     async function handleLogin(event) {
         event.preventDefault();
 
-        //setErrorMessage("test");
         try {
             const formData = new FormData(event.target);
-            const response = await fetch("/controllers/loginController.php", {
+            const response = await fetch("/controllers/authentication/loginController.php", {
                 method: "POST",
                 body: formData
             });
@@ -77,11 +76,11 @@
                 setErrorMessage(data.error);
                 return;
             }
-            console.log(data);
-            // remove error message if we have one
-            setErrorMessage(null);
+
+            // then reload the window to take in count the user session
+            window.location.reload();
         } catch(e) {
-            setErrorMessage("Impossible d'établir la connexion avec le serveur.");
+            setErrorMessage(`Erreur interne a eu lieu: ${e}`);
             console.error(e);
         }
     }
