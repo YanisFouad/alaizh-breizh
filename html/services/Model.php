@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__."/database.php");
+require_once(__DIR__."/Database.php");
 
 class SchemaValidationException extends Exception { }
 
@@ -81,13 +81,12 @@ class Model {
      * @return $request the request used to save the delegate or throws an error
      */
     public function save() {
-        global $db;
         // before saving, check if it's correspond to the schema
         $this->checkSchema();
 
         $keys = array_keys($this->data);
         $fill = array_fill(0, sizeof($keys), "?");
-        $request = $db->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
+        $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
         // bind all variables
         foreach(array_values($this->data) as $k => $v)
             $request->bindParam($k+1, $v);
