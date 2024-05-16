@@ -1,3 +1,4 @@
 FROM bigpapoo/r408-php:8.2-apache
+RUN a2enmod rewrite
 RUN apt update -y && apt-get -y install libpq-dev
 RUN docker-php-ext-install pgsql pdo_pgsql

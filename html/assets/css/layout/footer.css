@@ -1,0 +1,32 @@
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "comfortaa-regular";
+  color: white;
+  background-color: black;
+  padding: 1em;
+  margin-top: auto; /* pour conserver le footer en bas de page */
+}
+footer a:visited {
+  color: white;
+}
+footer nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+footer nav a {
+  padding-left: 1em;
+}

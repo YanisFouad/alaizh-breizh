@@ -1,0 +1,36 @@
+header {
+  /*position: fixed;
+  top: 0;
+  width: 100%;*/
+  font-family: "comfortaa-regular";
+  background-color: white;
+  padding: 1em;
+}
+header img {
+  height: 3em;
+}
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header nav ul li {
+  list-style: none;
+  margin-left: 0.5em;
+}
+header div {
+  height: 1px;
+  background-color: red;
+  margin: 1em;
+}
