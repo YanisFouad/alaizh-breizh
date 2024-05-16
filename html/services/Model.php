@@ -8,9 +8,11 @@ class Model {
     private $schema = array();
     private $data = array();
 
-    public function __construct($tableName, $schema) {
+    public function __construct($tableName, $schema, $defaultData = null) {
         $this->tableName = $tableName;
         $this->schema = $schema;
+        if($defaultData)
+            $this->data = $defaultData;
     }
 
     /**
@@ -20,6 +22,14 @@ class Model {
         if(!in_array($key, array_keys($this->schema)))
             throw new Exception("Table column: '" . $key . "' not found in defined schema");
         $this->data[$key] = $value;
+    }
+
+    /**
+     * retrieve a key from data
+     * @return object|null the data associated, or null if not found.
+     */
+    public function get($key) {
+        return $this->data[$key] ?? null;
     }
 
     // /**

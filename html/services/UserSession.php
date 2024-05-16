@@ -15,18 +15,21 @@ class UserSession {
 
     /**
      * get the current user session
-     * @return array|null the user session, null otherwise
+     * @return AccountModel|null the user session, null otherwise
      */
     public static function get() {
-        return $_SESSION[self::SESSION_NAME] ?? null;
+        $session = $_SESSION[self::SESSION_NAME] ?? null;
+        if($session == null)
+            return null;
+        return unserialize($session);
     }
 
     /**
      * update the user's session
      */
-    public static function updateSession($data) {
+    public static function updateSession($accountModel) {
         session_start();
-        $_SESSION[self::SESSION_NAME] = $data;
+        $_SESSION[self::SESSION_NAME] = serialize($accountModel);
     }
 
     /**
