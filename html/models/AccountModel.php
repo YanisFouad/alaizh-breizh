@@ -4,9 +4,11 @@ require_once(__DIR__."/../services/Database.php");
 
 class AccountModel extends Model {
 
+    private static const TABLE_NAME = "compte";   
+
     public function __construct($data = null) {
         // define the model of an account
-        parent::__construct("compte", array(
+        parent::__construct(self::TABLE_NAME, array(
             "identifiant" => array(),
             "nom"  => array("required" => true),
             "prenom"  => array("required" => true),
@@ -29,7 +31,7 @@ class AccountModel extends Model {
         if(is_array($projection))
             $projection = join(",", $projection);
         
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE mail = ?");
+        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM ".self::TABLE_NAME." WHERE mail = ?");
         $request->bindParam(1, $mail);
         $request->execute();
         
@@ -50,7 +52,7 @@ class AccountModel extends Model {
         if(is_array($projection))
             $projection = join(",", $projection);
 
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE identifiant = ?");
+        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM ".self::TABLE_NAME." WHERE identifiant = ?");
         $request->bindParam(1, $id);
         $request->execute();
         

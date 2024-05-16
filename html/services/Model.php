@@ -87,13 +87,14 @@ class Model {
     }
 
     /**
-     * save the created model
+     * insert or update the model data
      * @return $request the request used to save the delegate or throws an error
      */
     public function save() {
         // before saving, check if it's correspond to the schema
         $this->checkSchema();
 
+        // @todo gérer l'upsert
         $keys = array_keys($this->data);
         $fill = array_fill(0, sizeof($keys), "?");
         $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
