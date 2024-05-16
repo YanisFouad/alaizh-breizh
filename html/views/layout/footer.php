@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     </main>
     <footer>
         <div>&copy; Copyright - ALHaiZ Breizh - 2024</div>
@@ -7,4 +8,11 @@
         </nav>
     </footer>
 </body>
+=======
+    </main>
+    <footer>
+        &copy; BLABLABLA
+    </footer>
+</body>
+>>>>>>> 6a1f5da470a542107709de9ada761192bcaa2708
 </html>
