@@ -1,4 +1,5 @@
 @import "utils/variables";
+@import "utils/variables-front-office";
 
 *, *::after, *::before {
     outline: none;
@@ -10,7 +11,8 @@
 @import "assets/font-loader.scss";
 
 body {
-    font-family: "comfortaa-regular", sans-serif;
+   font-family: "comfortaa-regular", sans-serif;
+   color: $black;
 }
 
 h1, h2 {
@@ -39,6 +41,14 @@ h1, h2 {
     font-size: $size-paragraph;
  }
 
-/* IMPORT HERE ALL STYLES FROM VIEWS */
-@import "assets/buttons.scss";
-@import "assets/inputs.scss";
+// default components
+@import "assets/buttons";
+@import "assets/inputs";
+
+/* VIEWS */
+
+// errors
+@import "views/errors/404";
+
+// authentication
+@import "views/authentication/login";

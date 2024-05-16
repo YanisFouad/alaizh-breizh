@@ -1,10 +1,32 @@
+.form-field {
+    &.error {
+        &>label {
+            color: $red-1;
+        }
+
+        &>input {
+            position: relative;
+            border-color: $red-1;
+    
+            &, &::placeholder {
+                color: $red-1;
+            }
+        }
+    }
+    &>label {
+        font-size: .9em;
+        display: block;
+        color: $gray-2;
+        margin-bottom: .5em;
+    }
+}
 input { 
     font-family: "comfortaa-regular", sans-serif;
     padding: .8em .5em;
     border-radius: 7px;
-    border: 1px solid $secondary-2;
+    border: 1px solid $gray-2;
 
-    //width: 100%;
+    width: 100%;
 
     &:disabled {
         opacity: 60%;
@@ -12,26 +34,5 @@ input {
 
     &:is(:hover, :focus) {
         border-color: $primary-back-1;
-    }
-
-    &.error {
-        position: relative;
-        border-color: $other-3;
-
-        &, &::placeholder {
-            color: $other-3;
-        }
-
-        // &::before {
-        //     //position: absolute;
-        //     //right: 10px;
-        //     //top: 50%;
-
-        //     font-family: "Material Design Icons", sans-serif;
-        //     content: "\F02FC";
-        //     position: absolute;
-        //     display: block;
-        //     font-size: 1em;
-        // }
     }
 }

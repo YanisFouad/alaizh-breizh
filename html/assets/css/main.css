@@ -47,6 +47,7 @@
 }
 body {
   font-family: "comfortaa-regular", sans-serif;
+  color: #222524;
 }
 
 h1, h2 {
@@ -86,7 +87,7 @@ button {
   border: unset;
   cursor: pointer;
   border-radius: 100px;
-  padding: 0.8em 1.3em;
+  padding: 1em 1.3em;
 }
 button:is(.primary, .secondary):not(:disabled):focus {
   box-shadow: 0 0 0 3px #abbdc0;
@@ -111,11 +112,29 @@ button.secondary:not(:disabled):is(:hover, :focus) {
   color: white;
 }
 
+.form-field.error > label {
+  color: #ce4b4b;
+}
+.form-field.error > input {
+  position: relative;
+  border-color: #ce4b4b;
+}
+.form-field.error > input, .form-field.error > input::placeholder {
+  color: #ce4b4b;
+}
+.form-field > label {
+  font-size: 0.9em;
+  display: block;
+  color: #676767;
+  margin-bottom: 0.5em;
+}
+
 input {
   font-family: "comfortaa-regular", sans-serif;
   padding: 0.8em 0.5em;
   border-radius: 7px;
   border: 1px solid #676767;
+  width: 100%;
 }
 input:disabled {
   opacity: 60%;
@@ -123,10 +142,107 @@ input:disabled {
 input:is(:hover, :focus) {
   border-color: #804e2e;
 }
-input.error {
-  position: relative;
-  border-color: #ce4b4b;
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
 }
-input.error, input.error::placeholder {
+.modal > .center {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2em 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30em;
+  animation: modal-open 0.5s forwards;
+  transform: translate(-50%, -50%);
+}
+.modal > .center > .error-message {
+  background-color: #ffd0d0;
   color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+.modal > .center > .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+.modal > .center > h3 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+}
+.modal > .center > .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #f7f7f7;
+  font-size: 1.1em;
+  padding: 0.3em 0.6em;
+}
+.modal > .center > img {
+  width: 14em;
+  margin: 0.5em auto;
+  display: block;
+}
+.modal > .center > form > .form-field {
+  margin: 1em 0;
+}
+.modal > .center > form > .forgot-password {
+  color: #424645;
+  display: block;
+  text-align: end;
+  font-size: 0.9em;
+  margin-bottom: 0.7em;
+}
+.modal > .center > form > button {
+  width: 100%;
+}
+.modal > .center > form > button:first-of-type {
+  margin-top: 1em;
+}
+.modal > .center > form > .another-choice {
+  display: block;
+  margin: 1.5em 0;
+  color: #676767;
+  text-align: center;
+  position: relative;
+}
+.modal > .center > form > .another-choice > .text {
+  display: block;
+  background-color: white;
+  margin: auto;
+  width: fit-content;
+  padding: 0 1em;
+  position: relative;
+  z-index: 99;
+}
+.modal > .center > form > .another-choice > .line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #676767;
+}
+@keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
