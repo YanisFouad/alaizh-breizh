@@ -18,6 +18,7 @@
         display: block;
         color: $gray-2;
         margin-bottom: .5em;
+        text-align: start;
     }
 }
 input { 
@@ -33,6 +34,6 @@ input {
     }
 
     &:is(:hover, :focus) {
-        border-color: $primary-back-1;
+        border-color: $primary-1;
     }
 }

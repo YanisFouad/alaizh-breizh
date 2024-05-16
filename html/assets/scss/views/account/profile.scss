@@ -1,0 +1,47 @@
+.profile-area {
+    width: fit-content;
+    margin: 1em auto;
+    border-radius: 15px;
+
+    &>h1 {
+        margin-bottom: 1em;
+        color: $gray-1;
+    }
+
+    &>img {
+        margin: auto;
+        display: block;
+
+        width: 12em;
+        border-radius: 100px;
+        margin-bottom: 1em;
+    }
+
+    &>h2 {
+        text-align: center;
+        margin-bottom: 1em;
+        font-family: "poppins-regular", sans-serif;
+    }
+
+    &>h3 {
+        padding: .5em .8em;
+        border: 1px solid $black;
+        border-radius: 15px;
+
+        margin: .5em 0;
+
+        font-size: 1em;
+
+        &>span {
+            font-weight: normal;
+            font-family: "poppins-regular", sans-serif;
+            color: $gray-1;
+        }
+    }
+
+    &>.edit {
+        margin-top: 1em;
+        margin-left: auto;
+        display: block;
+    }
+}

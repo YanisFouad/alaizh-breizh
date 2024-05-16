@@ -1,0 +1,26 @@
+h1 + img {
+  width: 32em;
+  height: 20em;
+  border-radius: 10px;
+}
+
+main > div {
+  display: flex;
+}
+main > div button {
+  background-color: white;
+  border: none;
+}
+main > div .mdi.mdi-chevron-right {
+  position: relative;
+  top: 3px;
+  font-size: 1.3em;
+}
+main > div div {
+  display: flex;
+  margin-left: 1em;
+  align-items: center;
+}
+main > div a {
+  color: #1b5734;
+}/*# sourceMappingURL=detailsLogement.css.map */

@@ -20,12 +20,12 @@ body {
 
 h1,
 h2 {
-   font-family: "poppins-semibold";
+   font-family: "poppins-semibold", sans-serif;
 }
 
 h3,
 h4 {
-   font-family: "poppins-medium";
+   font-family: "poppins-medium", sans-serif;
 }
 
 h1 {
@@ -60,3 +60,6 @@ p {
 
 // authentication
 @import "views/authentication/login";
+
+// account
+@import "views/account/profile";

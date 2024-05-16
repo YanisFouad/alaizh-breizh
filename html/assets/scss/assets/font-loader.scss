@@ -1,4 +1,4 @@
-<<<<<<< HEAD $fonts: (
+$fonts: (
     "comfortaa-bold",
     "comfortaa-light",
     "comfortaa-medium",
@@ -21,23 +21,11 @@
 @font-face {
     font-family: "Material Design Icons";
     src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
-    =======$fonts: (
-        "comfortaa-bold",
-        "comfortaa-light",
-        "comfortaa-medium",
-        "comfortaa-regular",
-        "comfortaa-semibold",
-        "poppins-bold",
-        "poppins-light",
-        "poppins-medium",
-        "poppins-regular"
-    );
+}
 
 @each $font in $fonts {
     @font-face {
         font-family: $font;
         src: url(../../assets/fonts/#{$font}.ttf);
     }
-
-    >>>>>>>6a1f5da470a542107709de9ada761192bcaa2708
 }
