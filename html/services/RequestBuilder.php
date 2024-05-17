@@ -1,0 +1,120 @@
+<?php
+
+require_once(__DIR__."/Database.php");
+
+enum RequestType {
+    case UPDATE;
+    case SELECT;
+    case INSERT;
+    case DELETE;
+}
+
+class RequestBuilder {
+
+    private $tableName;
+    private $method;
+    private $result;
+    private $limit;
+    private $offset;
+    private $whereClausures = array();
+    private $fields = array();
+
+
+    public function __construct($tableName, $method) {
+        $this->tableName = $tableName;
+        $this->method = $method;
+    }
+
+    public function projection(...$fields) {
+        $this->fields = $fields;
+        return $this;
+    }
+
+    public function where($clausure, $data) {
+        $this->whereClausures[$clausure] = $data;
+        return $this;
+    }
+
+    public function limit($limit) {
+        $this->limit = $limit;
+        return $this;
+    }
+
+    public function offset($offset) {
+        $this->offset = $offset;
+        return $this;
+    }
+
+    public function execute() {
+        $query = array($this->method);
+        $params = array();
+        
+        $query[] = join($this->fields, ",");
+        
+        // avoid "from" for some request type
+        if(!in_array($this->method, [RequestType::UPDATE]))
+            $query[] = "FROM";
+        
+        $query[] = $this->tableName;
+
+        // build clausures
+        if(count($this->whereClausures) > 0) {
+            $query[] = "WHERE";
+            foreach($this->whereClausures as $clausure => $data) {
+                $query[] = $clausure;
+                $params[] = $data;
+            }
+        }
+
+        if($this->offset)
+            $query[] = "OFFSET " . $this->offset;
+        if($this->limit)
+            $query[] = "LIMIT " . $this->limit;
+
+        $request = Database::getConnection()->prepare(join($query, " "));
+        
+        foreach($params as $k => &$v)
+            $request->bindParam($k+1, $v);
+        
+        $request->execute();
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->result = $result;
+        return $this;
+    }
+
+    public function fetchOne() {
+        $this->checkResults();
+        $result = $this->result;
+        if(count($result) < 1)
+            return null;
+        return $this->result[0];
+    }
+
+    public function fetchMany() {
+        $this->checkResults();
+        return $this->result;
+    }
+
+    private function checkResults() {
+        if($this->result == null)
+            throw new Exception("Please use execute() function before fetching results");
+    }
+
+    public static function select($tableName) {
+        return new RequestBuilder($tableName, RequestType::SELECT);
+    }
+
+    public static function update($tableName) {
+        return new RequestBuilder($tableName, RequestType::UPDATE);
+    }
+
+    public static function insert($tableName) {
+        return new RequestBuilder($tableName, RequestType::INSERT);
+    }
+
+    public static function delete($tableName) {
+        return new RequestBuilder($tableName, RequestType::DELETE);
+    }
+
+}
