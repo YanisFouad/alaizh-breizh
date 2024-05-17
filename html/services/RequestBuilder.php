@@ -88,7 +88,7 @@ class RequestBuilder {
     public function fetchOne() {
         $this->checkResults();
         $result = $this->result;
-        if(count($result) < 1)
+        if(count($result) === 0)
             return null;
         return $this->result[0];
     }
@@ -99,7 +99,7 @@ class RequestBuilder {
     }
 
     private function checkResults() {
-        if($this->result == null)
+        if(!isset($this->result))
             throw new Exception("Please use execute() function before trying to fetch results");
     }
 

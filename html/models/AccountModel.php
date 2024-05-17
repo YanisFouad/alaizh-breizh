@@ -33,6 +33,8 @@ class AccountModel extends Model {
             ->where("mail = ?", $mail)
             ->execute()
             ->fetchOne();
+        if($result == null)
+            return;
         return new self($result, false);
     }
 
@@ -47,6 +49,8 @@ class AccountModel extends Model {
             ->where("identifiant = ?", $id)
             ->execute()
             ->fetchMany();
+        if($result == null)
+            return;
         return new self($result, false);
     }
     
