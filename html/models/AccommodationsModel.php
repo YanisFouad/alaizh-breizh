@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
+require_once(__DIR__."/../services/RequestBuilder.php");
 
 class AccommodationsModel extends Model {
 
@@ -14,32 +15,24 @@ class AccommodationsModel extends Model {
     }
 
     public static function find($offset = 0, $limit = 10, $projection = "*", $orderField="date_arrivee", $orderDir="ASC") {
-        if(is_array($projection))
-            $projection = join(",", $projection);
-        $orderByExpr = "";
-        if($orderField != null && $orderDir != null)
-            $orderByExpr = "ORDER BY " . $orderField . " " . $orderDir;
-
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM " . self::$TABLE_NAME . $orderByExpr . " LIMIT " . $limit . " OFFSET " . $offset);
-        $request->execute();
-        $rows = $request->fetch(PDO::FETCH_ASSOC);
-        return array_map(function ($row) {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->limit($limit)
+            ->offset($offset)
+            ->execute()
+            ->fetchMany();
+        return array_map(function($row) {
             return new self($row, false);
-        }, $rows);
+        }, $result);
     }
 
     public static function findOneById($id, $projection = "*") {
-        if(is_array($projection))
-            $projection = join(",", $projection);
-
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM ".self::$TABLE_NAME." WHERE id_logement = ?");
-        $request->bindParam(1, $id);
-        $request->execute();
-        
-        $row = $request->fetch(PDO::FETCH_ASSOC);
-        if(sizeof($row) < 1)
-            return null;
-        return new self($row, false);
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->where("id_logement = ?", $id)
+            ->execute()
+            ->fetchOne();
+        return new self($result, false);
     }
 
 }
