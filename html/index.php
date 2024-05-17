@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
 require_once("services/Router.php");
@@ -9,13 +8,9 @@ $router = new Router();
 // home & default view
 $router->add("/", "views/home.php");
 
-// account profile & public profile view
+// account profile & public proqfile view
 $router->add("/profil", "views/account/profile.php");
 
 $router->set404View("views/errors/404.php");
 
 $router->start();
-=======
-<?php
-require_once("./services/database.php");
->>>>>>> 6a1f5da470a542107709de9ada761192bcaa2708
