@@ -2,11 +2,11 @@
 
 require_once(__DIR__."/Database.php");
 
-enum RequestType {
-    case UPDATE;
-    case SELECT;
-    case INSERT;
-    case DELETE;
+enum RequestType: string {
+    case UPDATE = "UPDATE";
+    case SELECT = "SELECT";
+    case INSERT = "INSERT";
+    case DELETE = "DELETE";
 }
 
 class RequestBuilder {
@@ -49,10 +49,10 @@ class RequestBuilder {
         $query = array($this->method);
         $params = array();
         
-        $query[] = join($this->fields, ",");
+        $query[] = join(",", $this->fields);
         
         // avoid "from" for some request type
-        if(!in_array($this->method, [RequestType::UPDATE]))
+        if(!in_array($this->method, [RequestType::UPDATE->value]))
             $query[] = "FROM";
         
         $query[] = $this->tableName;
@@ -71,7 +71,7 @@ class RequestBuilder {
         if($this->limit)
             $query[] = "LIMIT " . $this->limit;
 
-        $request = Database::getConnection()->prepare(join($query, " "));
+        $request = Database::getConnection()->prepare(join(" ", $query));
         
         foreach($params as $k => &$v)
             $request->bindParam($k+1, $v);
@@ -102,19 +102,19 @@ class RequestBuilder {
     }
 
     public static function select($tableName) {
-        return new RequestBuilder($tableName, RequestType::SELECT);
+        return new RequestBuilder($tableName, RequestType::SELECT->value);
     }
 
     public static function update($tableName) {
-        return new RequestBuilder($tableName, RequestType::UPDATE);
+        return new RequestBuilder($tableName, RequestType::UPDATE->value);
     }
 
     public static function insert($tableName) {
-        return new RequestBuilder($tableName, RequestType::INSERT);
+        return new RequestBuilder($tableName, RequestType::INSERT->value);
     }
 
     public static function delete($tableName) {
-        return new RequestBuilder($tableName, RequestType::DELETE);
+        return new RequestBuilder($tableName, RequestType::DELETE->value);
     }
 
 }

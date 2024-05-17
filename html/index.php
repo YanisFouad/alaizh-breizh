@@ -15,5 +15,5 @@ $router->set404View("views/errors/404.php");
 
 $router->start();
 
-require_once("models/AccountModel.php");
-var_dump(AccountModel::findOneById("1"));
+//require_once("models/AccountModel.php");
+//var_dump(AccountModel::findOneById("1"));
