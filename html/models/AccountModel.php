@@ -1,13 +1,16 @@
 <?php
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
+require_once(__DIR__."/../services/RequestBuilder.php");
 
 class AccountModel extends Model {
 
-    public function __construct() {
+    private static $TABLE_NAME = "compte";
+
+    public function __construct($data = null, $isNew = true) {
         // define the model of an account
-        parent::__construct("compte", array(
-            "identifiant" => array(),
+        parent::__construct(self::$TABLE_NAME, array(
+            "identifiant" => array("primary" => true),
             "nom"  => array("required" => true),
             "prenom"  => array("required" => true),
             "mot_passe"  => array(),
@@ -16,48 +19,39 @@ class AccountModel extends Model {
             "mail"  => array("required" => true),
             "civilite"  => array(),
             "photo"  => array()
-        ));
+        ), $data, $isNew);
     }
 
     /**
      * Find an account by email address
      * @param $mail string a provided email address
-     * @param $projection string|array (by default "*") selection of field (like nom or prenom) (optionnal)
-     * @return array|null the row found or null if the row wasn't found
+     * @return AccountModel|null the row found or null if the row wasn't found
      */
-    public static function findOneByMail($mail, $projection = "*") {
-        if(is_array($projection))
-            $projection = join(",", $projection);
-        
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE mail = ?");
-        $request->bindParam(1, $mail);
-        $request->execute();
-        
-        $row = $request->fetch(PDO::FETCH_ASSOC);
-        if(sizeof($row) < 1)
-            return null;
-        return $row;
+    public static function findOneByMail($mail) {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->where("mail = ?", $mail)
+            ->execute()
+            ->fetchOne();
+        if($result == null)
+            return;
+        return new self($result, false);
     }
 
     /**
      * Find an account by account id
      * @param $id string a provided account id
-     * @param $projection string|array (by default "*") selection of field (like nom or prenom) (optionnal)
-     * @return array|null the row found or null if the row wasn't found
+     * @return AccountModel|null the row found or null if the row wasn't found
      */
-    public static function findOneById($id, $projection = "*") {
-        // @todo try to avoid code duplication (with findOneByMail ....)
-        if(is_array($projection))
-            $projection = join(",", $projection);
-
-        $request = Database::getConnection()->prepare("SELECT " . $projection . " FROM compte WHERE identifiant = ?");
-        $request->bindParam(1, $id);
-        $request->execute();
-        
-        $row = $request->fetch(PDO::FETCH_ASSOC);
-        if(sizeof($row) < 1)
-            return null;
-        return $row;
+    public static function findOneById($id) {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->where("identifiant = ?", $id)
+            ->execute()
+            ->fetchMany();
+        if($result == null)
+            return;
+        return new self($result, false);
     }
     
 }

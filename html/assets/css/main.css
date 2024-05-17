@@ -1,5 +1,3 @@
-<<<<<<< HEAD @charset "UTF-8";
-
 *,
 *::after,
 *::before {
@@ -13,110 +11,99 @@
   font-family: "comfortaa-bold";
   src: url(../fonts/comfortaa-bold.ttf);
 }
-
 @font-face {
   font-family: "comfortaa-light";
   src: url(../fonts/comfortaa-light.ttf);
 }
-
 @font-face {
   font-family: "comfortaa-medium";
   src: url(../fonts/comfortaa-medium.ttf);
 }
-
 @font-face {
   font-family: "comfortaa-regular";
   src: url(../fonts/comfortaa-regular.ttf);
 }
-
 @font-face {
   font-family: "comfortaa-semibold";
   src: url(../fonts/comfortaa-semibold.ttf);
 }
-
 @font-face {
   font-family: "poppins-semibold";
   src: url(../fonts/poppins-semibold.ttf);
 }
-
 @font-face {
   font-family: "poppins-bold";
   src: url(../fonts/poppins-bold.ttf);
 }
-
 @font-face {
   font-family: "poppins-light";
   src: url(../fonts/poppins-light.ttf);
 }
-
 @font-face {
   font-family: "poppins-medium";
   src: url(../fonts/poppins-medium.ttf);
 }
-
 @font-face {
   font-family: "poppins-regular";
   src: url(../fonts/poppins-regular.ttf);
 }
-
 @font-face {
   font-family: "Material Design Icons";
   src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
 }
-
-h1,
-h2 {
-  font-family: "poppins-semibold";
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../assets/fonts/comfortaa-bold.ttf);
 }
-
-h3,
-h4 {
-  font-family: "poppins-medium";
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../assets/fonts/comfortaa-light.ttf);
 }
-
-h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 1.5em;
-}
-
-h3 {
-  font-size: 1.25em;
-}
-
-h4 {
-  font-size: 16em;
-}
-
-p {
+@font-face {
   font-family: "comfortaa-medium";
-  font-size: 1em;
+  src: url(../../assets/fonts/comfortaa-medium.ttf);
 }
-
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../assets/fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../assets/fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-semibold";
+  src: url(../../assets/fonts/poppins-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../assets/fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../assets/fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../assets/fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../assets/fonts/poppins-regular.ttf);
+}
 body {
   font-family: "comfortaa-regular", sans-serif;
   color: #222524;
 }
 
-<<<<<<< HEAD
 h1,
 h2 {
-  font-family: "poppins-semibold";
+  font-family: "poppins-semibold", sans-serif;
 }
 
 h3,
 h4 {
-  font-family: "poppins-medium";
-=======
-h1, h2 {
-  font-family: "poppins-semibold", sans-serif;
-}
-
-h3, h4 {
   font-family: "poppins-medium", sans-serif;
->>>>>>> ecae6951e0fb8433b7e7677e12d8e39017f29158
 }
 
 h1 {
@@ -149,51 +136,40 @@ button {
   border-radius: 100px;
   padding: 1em 1.3em;
 }
-
 button:is(.primary, .secondary):not(:disabled):focus {
   box-shadow: 0 0 0 3px #abbdc0;
 }
-
-button.primary:disabled,
-button.secondary:disabled {
+button.primary:disabled, button.secondary:disabled {
   opacity: 60%;
   cursor: unset;
 }
-
 button.primary {
   background-color: #1b5734;
   color: white;
 }
-
 button.primary:not(:disabled):is(:hover, :focus) {
   background-color: #337d51;
 }
-
 button.secondary {
   border: 1px solid #1b5734;
   color: #1b5734;
 }
-
 button.secondary:not(:disabled):is(:hover, :focus) {
   background-color: #1b5734;
   color: white;
 }
 
-.form-field.error>label {
+.form-field.error > label {
   color: #ce4b4b;
 }
-
-.form-field.error>input {
+.form-field.error > input {
   position: relative;
   border-color: #ce4b4b;
 }
-
-.form-field.error>input,
-.form-field.error>input::placeholder {
+.form-field.error > input, .form-field.error > input::placeholder {
   color: #ce4b4b;
 }
-
-.form-field>label {
+.form-field > label {
   font-size: 0.9em;
   display: block;
   color: #676767;
@@ -208,11 +184,9 @@ input {
   border: 1px solid #676767;
   width: 100%;
 }
-
 input:disabled {
   opacity: 60%;
 }
-
 input:is(:hover, :focus) {
   border-color: #1b5734;
 }
@@ -235,8 +209,7 @@ input:is(:hover, :focus) {
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
 }
-
-.modal>.center {
+.modal > .center {
   background-color: white;
   border-radius: 10px;
   padding: 2em 3em;
@@ -247,8 +220,7 @@ input:is(:hover, :focus) {
   animation: modal-open 0.5s forwards;
   transform: translate(-50%, -50%);
 }
-
-.modal>.center>.error-message {
+.modal > .center > .error-message {
   background-color: #ffd0d0;
   color: #ce4b4b;
   padding: 0.8em 1em;
@@ -259,20 +231,17 @@ input:is(:hover, :focus) {
   position: relative;
   padding-left: 2.3em;
 }
-
-.modal>.center>.error-message::before {
+.modal > .center > .error-message::before {
   position: absolute;
   left: 10px;
   font-size: 1.2em;
 }
-
-.modal>.center>h3 {
+.modal > .center > h3 {
   text-align: center;
   font-weight: normal;
   font-family: "poppins-regular", sans-serif;
 }
-
-.modal>.center>.close {
+.modal > .center > .close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -280,42 +249,35 @@ input:is(:hover, :focus) {
   font-size: 1.1em;
   padding: 0.3em 0.6em;
 }
-
-.modal>.center>img {
+.modal > .center > img {
   width: 14em;
   margin: 0.5em auto;
   display: block;
 }
-
-.modal>.center>form>.form-field {
+.modal > .center > form > .form-field {
   margin: 1em 0;
 }
-
-.modal>.center>form>.forgot-password {
+.modal > .center > form > .forgot-password {
   color: #424645;
   display: block;
   text-align: end;
   font-size: 0.9em;
   margin-bottom: 0.7em;
 }
-
-.modal>.center>form>button {
+.modal > .center > form > button {
   width: 100%;
 }
-
-.modal>.center>form>button:first-of-type {
+.modal > .center > form > button:first-of-type {
   margin-top: 1em;
 }
-
-.modal>.center>form>.another-choice {
+.modal > .center > form > .another-choice {
   display: block;
   margin: 1.5em 0;
   color: #676767;
   text-align: center;
   position: relative;
 }
-
-.modal>.center>form>.another-choice>.text {
+.modal > .center > form > .another-choice > .text {
   display: block;
   background-color: white;
   margin: auto;
@@ -324,8 +286,7 @@ input:is(:hover, :focus) {
   position: relative;
   z-index: 99;
 }
-
-.modal>.center>form>.another-choice>.line {
+.modal > .center > form > .another-choice > .line {
   display: block;
   height: 1px;
   width: 100%;
@@ -334,76 +295,15 @@ input:is(:hover, :focus) {
   transform: translateY(-50%);
   background-color: #676767;
 }
-
 @keyframes modal-open {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
 }
 
-<<<<<<< HEAD
-=======*,
-*::after,
-*::before {
-  outline: none;
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "comfortaa-bold";
-  src: url(../../assets/fonts/comfortaa-bold.ttf);
-}
-
-@font-face {
-  font-family: "comfortaa-light";
-  src: url(../../assets/fonts/comfortaa-light.ttf);
-}
-
-@font-face {
-  font-family: "comfortaa-medium";
-  src: url(../../assets/fonts/comfortaa-medium.ttf);
-}
-
-@font-face {
-  font-family: "comfortaa-regular";
-  src: url(../../assets/fonts/comfortaa-regular.ttf);
-}
-
-@font-face {
-  font-family: "comfortaa-semibold";
-  src: url(../../assets/fonts/comfortaa-semibold.ttf);
-}
-
-@font-face {
-  font-family: "poppins-bold";
-  src: url(../../assets/fonts/poppins-bold.ttf);
-}
-
-@font-face {
-  font-family: "poppins-light";
-  src: url(../../assets/fonts/poppins-light.ttf);
-}
-
-@font-face {
-  font-family: "poppins-medium";
-  src: url(../../assets/fonts/poppins-medium.ttf);
-}
-
-@font-face {
-  font-family: "poppins-regular";
-  src: url(../../assets/fonts/poppins-regular.ttf);
-}
-
-/* IMPORT HERE ALL STYLES FROM VIEWS */
->>>>>>>6a1f5da470a542107709de9ada761192bcaa2708
-=======
 .profile-area {
   width: fit-content;
   margin: 1em auto;
@@ -442,4 +342,3 @@ input:is(:hover, :focus) {
   margin-left: auto;
   display: block;
 }
->>>>>>> ecae6951e0fb8433b7e7677e12d8e39017f29158

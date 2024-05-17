@@ -1,0 +1,172 @@
+nom_activite,perimetre_activite,id_logement
+voile,20 km ou plus,1
+randonnée,moins de 5km,1
+golf,moins de 20km,1
+accrobranche,20 km ou plus,1
+voile,sur place,2
+golf,moins de 20km,2
+accrobranche,20 km ou plus,2
+canoë,moins de 20km,2
+voile,moins de 5km,3
+golf,20 km ou plus,3
+accrobranche,moins de 5km,3
+canoë,moins de 20km,3
+voile,moins de 20km,4
+accrobranche,20 km ou plus,4
+golf,moins de 5km,4
+canoë,moins de 20km,4
+voile,moins de 20km,5
+golf,20 km ou plus,5
+accrobranche,moins de 5km,5
+canoë,moins de 20km,5
+voile,moins de 5km,6
+accrobranche,20 km ou plus,6
+canoë,moins de 20km,6
+voile,sur place,7
+golf,moins de 20km,7
+accrobranche,moins de 5km,7
+canoë,moins de 20km,7
+baignade,moins de 5km,7
+randonnée,20 km ou plus,7
+voile,moins de 20km,8
+canoë,moins de 20km,8
+voile,moins de 20km,9
+accrobranche,20 km ou plus,9
+randonnée,20 km ou plus,9
+canoë,moins de 20km,9
+golf,20 km ou plus,9
+voile,moins de 5km,10
+golf,moins de 20km,10
+accrobranche,20 km ou plus,10
+baignade,moins de 5km,10
+randonnée,20 km ou plus,10
+canoë,moins de 20km,10
+randonnée,moins de 5km,11
+golf,20 km ou plus,11
+accrobranche,20 km ou plus,11
+canoë,moins de 20km,11
+golf,moins de 20km,12
+accrobranche,20 km ou plus,12
+canoë,moins de 20km,12
+voile,moins de 5km,12
+randonnée,20 km ou plus,12
+canoë,moins de 20km,13
+voile,moins de 20km,13
+accrobranche,20 km ou plus,13
+baignade,moins de 5km,13
+randonnée,moins de 5km,13
+golf,20 km ou plus,13
+golf,20 km ou plus,14
+baignade,moins de 5km,14
+accrobranche,20 km ou plus,14
+voile,moins de 20km,14
+canoë,moins de 20km,14
+golf,moins de 20km,15
+voile,moins de 20km,15
+baignade,moins de 5km,15
+accrobranche,20 km ou plus,15
+canoë,moins de 20km,15
+randonnée,20 km ou plus,15
+golf,20 km ou plus,16
+randonnée,20 km ou plus,16
+baignade,moins de 5km,16
+voile,moins de 20km,16
+accrobranche,20 km ou plus,16
+canoë,moins de 20km,16
+voile,moins de 20km,17
+baignade,moins de 5km,17
+randonnée,moins de 5km,17
+golf,20 km ou plus,17
+accrobranche,20 km ou plus,17
+canoë,moins de 20km,17
+voile,moins de 20km,18
+canoë,moins de 20km,18
+baignade,moins de 5km,18
+accrobranche,20 km ou plus,18
+golf,20 km ou plus,18
+randonnée,moins de 5km,18
+voile,moins de 20km,19
+accrobranche,20 km ou plus,19
+canoë,moins de 20km,19
+golf,20 km ou plus,19
+randonnée,moins de 5km,19
+baignade,20 km ou plus,19
+équitation,20 km ou plus,19
+voile,moins de 20km,20
+canoë,moins de 20km,20
+golf,moins de 20km,20
+accrobranche,20 km ou plus,20
+randonnée,moins de 5km,20
+baignade,20 km ou plus,20
+équitation,moins de 20km,20
+voile,moins de 20km,21
+golf,moins de 20km,21
+accrobranche,20 km ou plus,21
+randonnée,moins de 5km,21
+canoë,moins de 20km,21
+voile,moins de 20km,22
+canoë,moins de 20km,22
+accrobranche,20 km ou plus,22
+golf,moins de 20km,22
+randonnée,moins de 5km,22
+voile,moins de 5km,23
+canoë,moins de 20km,23
+golf,20 km ou plus,23
+accrobranche,20 km ou plus,23
+randonnée,moins de 5km,23
+voile,moins de 20km,24
+golf,20 km ou plus,24
+accrobranche,20 km ou plus,24
+canoë,moins de 20km,24
+randonnée,moins de 5km,24
+voile,moins de 20km,25
+canoë,moins de 20km,25
+golf,moins de 20km,25
+accrobranche,20 km ou plus,25
+randonnée,moins de 5km,25
+voile,moins de 20km,26
+golf,moins de 20km,26
+accrobranche,20 km ou plus,26
+randonnée,moins de 5km,26
+canoë,moins de 20km,26
+voile,sur place,27
+canoë,moins de 20km,27
+golf,20 km ou plus,27
+accrobranche,20 km ou plus,27
+randonnée,moins de 5km,27
+baignade,moins de 20km,27
+voile,moins de 20km,28
+golf,20 km ou plus,28
+accrobranche,20 km ou plus,28
+canoë,moins de 20km,28
+randonnée,moins de 5km,28
+voile,moins de 20km,30
+canoë,moins de 20km,30
+golf,moins de 20km,30
+accrobranche,20 km ou plus,30
+randonnée,moins de 5km,30
+voile,moins de 20km,31
+golf,moins de 20km,31
+accrobranche,20 km ou plus,31
+canoë,moins de 20km,31
+randonnée,moins de 5km,31
+voile,moins de 20km,32
+golf,moins de 20km,32
+accrobranche,20 km ou plus,32
+canoë,moins de 20km,32
+randonnée,moins de 5km,32
+voile,moins de 20km,33
+golf,moins de 20km,33
+accrobranche,20 km ou plus,33
+canoë,moins de 20km,33
+randonnée,moins de 5km,33
+voile,moins de 20km,34
+golf,moins de 20km,34
+accrobranche,20 km ou plus,34
+canoë,moins de 20km,34
+randonnée,moins de 5km,34
+voile,moins de 20km,35
+canoë,moins de 20km,35
+golf,moins de 20km,35
+accrobranche,20 km ou plus,35
+randonnée,moins de 5km,35
