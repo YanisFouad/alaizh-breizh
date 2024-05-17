@@ -42,6 +42,10 @@
   src: url(../fonts/poppins-regular.ttf);
 }
 @font-face {
+  font-family: "poppins-semibold";
+  src: url(../fonts/poppins-semibold.ttf);
+}
+@font-face {
   font-family: "Material Design Icons";
   src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
 }
