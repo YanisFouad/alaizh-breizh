@@ -1,0 +1,256 @@
+@import "../utils/_variables.scss";
+@import "../utils/variables-back-office.scss";
+
+*,
+*::after,
+*::before {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "comfortaa-bold";
+    src: url(../../fonts/comfortaa-bold.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-light";
+    src: url(../../fonts/comfortaa-light.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-medium";
+    src: url(../../fonts/comfortaa-medium.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-regular";
+    src: url(../../fonts/comfortaa-regular.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-semibold";
+    src: url(../../fonts/comfortaa-semibold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-bold";
+    src: url(../../fonts/poppins-bold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-light";
+    src: url(../../fonts/poppins-light.ttf);
+}
+
+@font-face {
+    font-family: "poppins-medium";
+    src: url(../../fonts/poppins-medium.ttf);
+}
+
+@font-face {
+    font-family: "poppins-regular";
+    src: url(../../fonts/poppins-regular.ttf);
+}
+
+@font-face {
+    font-family: "Material Design Icons";
+    src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+
+body {
+    font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "poppins-regular";
+}
+
+main {
+    margin: auto;
+    max-width: 80%;
+}
+
+main>div {
+    display: flex;
+
+    button {
+        background-color: white;
+        border: none
+    }
+
+    .mdi.mdi-chevron-right {
+        position: relative;
+        top: 1px;
+        font-size: 1.3em;
+    }
+
+    #cheminPage {
+        display: flex;
+        margin-left: 1em;
+        align-items: center;
+    }
+
+    a {
+        color: $primary-1;
+    }
+
+    h4 {
+        color: $gray-1;
+        font-weight: normal;
+    }
+
+    #page {
+        display: flex;
+        margin-top: 1em;
+    }
+}
+
+#imgLogement {
+    width: 45em;
+    height: 26em;
+    border-radius: 13px;
+}
+
+#modified-button {
+    display: flex;
+    justify-content: right;
+}
+
+#blockIntro {
+    display: flex;
+
+    //Media query pour gerer la disposition des elements 
+    //flex-wrap: wrap;
+
+    >div {
+        margin-left: 2.2em;
+    }
+
+    #titre {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 1.7em;
+            margin: 0;
+            color: $gray-1;
+        }
+    }
+    p{
+        text-align: justify;
+    }
+    h2 {
+        font-family: "comfortaa-regular";
+        margin: 0.6em 0 1em 0;
+        color: $gray-2;
+        font-size: 1em;
+    }
+
+    #caracteristiques-logement {
+        display: flex;
+
+        ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            place-items: center start;
+            margin-top: 1.6em;
+            border: solid 1px $gray-3;
+            border-radius: 17px;
+            padding: 1em;
+        }
+
+        .bulle-Rose {
+            background-color: $brown-1;
+            border-radius: 14.5px;
+            width: fit-content;
+            padding: 5px 10px 5px 10px;
+            margin: 0.2em 0;
+        }
+    }
+}
+
+#description {
+    h3 {
+        color: $gray-2;
+        font-size: 1.2em;
+        margin: 1.7em 0 0.5em 0;
+    }
+    p {
+        text-align: justify;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        margin-top: 0.7em;
+
+        h3 {
+            margin: 0;
+        }
+
+        img {
+            width: 3.5em;
+        }
+    }
+
+}
+
+#box-Activites-Amenagement {
+    display: flex;
+    justify-content: left;
+
+    >div {
+        display: flex;
+        box-shadow: 0 0 4px 2px #adadad22;
+        border-radius: 15px;
+        margin: 1em 0;
+        padding: 1em;
+        width: fit-content;
+
+        div {
+            margin: 1em 0 0 1em;
+        }
+
+        >div:first-child {
+            border-right: solid 2px $gray-2;
+        }
+
+        div+div {
+            margin-left: 3em;
+
+            ul {
+                grid-template-columns: 180px 1fr;
+            }
+        }
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: 283px 1fr;
+        list-style-type: none;
+        margin: 1em 3em 0 0;
+
+        li {
+            margin-top: 1em;
+
+            span {
+                font-size: 1.8em;
+                color: $gray-1;
+            }
+        }
+    }
+
+    h3 {
+        color: $gray-1;
+    }
+}
+
