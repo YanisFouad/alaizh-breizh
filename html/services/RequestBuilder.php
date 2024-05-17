@@ -60,10 +60,12 @@ class RequestBuilder {
         // build clausures
         if(count($this->whereClausures) > 0) {
             $query[] = "WHERE";
+            $clasures = array();
             foreach($this->whereClausures as $clausure => $data) {
-                $query[] = $clausure;
+                $clasures[] = $clausure;
                 $params[] = $data;
             }
+            $query[] = join(" AND ", $clasures);
         }
 
         if($this->offset)
@@ -98,7 +100,7 @@ class RequestBuilder {
 
     private function checkResults() {
         if($this->result == null)
-            throw new Exception("Please use execute() function before fetching results");
+            throw new Exception("Please use execute() function before trying to fetch results");
     }
 
     public static function select($tableName) {
