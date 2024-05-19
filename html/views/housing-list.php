@@ -1,29 +1,19 @@
 <?php require_once("layout/header.php"); ?>
 
-<section id="home-page">
-   <section id="cover-search-bar">
-      <div id="image-cover">
-         <h1>Le rêve commence ici...</h1>
-         <h2>Explorez la Bretagne en profitant de splendides vues.</h2>
-      </div>
+<section>
+   <section id="filter-container">
+      <h1>Filtres</h1>
+      <button>Tout effacer</button>
       
-      <form id="search-bar">
-         <input type="text" placeholder="Rechercher un séjour" class="search-input">
-         <input placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-         <input placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" />
-         <input type="text" placeholder="Nombre de personnes" class="travelers-number-input"><span class="mdi mdi-account"></span>
-         <button><span class="mdi mdi-magnify"></span></button>
-      </form>
+
+
    </section>
 
    <section id="housing-list-container">
 
-      <div id="list-title-container">
-         <h1 id="housing-list-title">Notre sélection de logements</h1>
-      </div>
-      <div class="show-more-button-container">
-         <button class="show-more-button">Afficher plus<span class="mdi mdi-chevron-right"></span></button>
-      </div>
+      <button id="back-button"><span class="mdi mdi-arrow-left"></span>Retour</button>
+      <h1>Logements (21)</h1>
+      <button>Filtres</button> <button>Trier par prix</button>
 
       <section class="housing-list">
          <?php for ($i = 1; $i <= 10; $i++) {?>
@@ -54,6 +44,14 @@
             <button class="show-all-button">Afficher tout<span class="mdi mdi-chevron-right"></span></button>
          </div>
       </section>
+
+      <ul class="pagination">
+         <li><span class="mdi mdi-chevron-left"></span></li>
+         <?php for ($i = 1; $i <= 3; $i++) {?>
+            <li class="page_number"><?php echo $i?></li>
+         <?php } ?>
+         <li><span class="mdi mdi-chevron-right"></span></li>
+      </ul>
    </section>
 </section>
 
