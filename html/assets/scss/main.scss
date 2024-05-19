@@ -21,7 +21,7 @@ body {
 h1,
 h2 {
    font-family: "poppins-semibold", sans-serif;
-}
+} 
 
 h3,
 h4 {
@@ -53,10 +53,17 @@ p {
 @import "assets/buttons";
 @import "assets/inputs";
 
+/* LAYOUT */
+@import "layout/header";
+@import "layout/footer"; 
+
 /* VIEWS */
 
 // errors
 @import "views/errors/404";
+
+// home page
+@import "views/home";
 
 // authentication
 @import "views/authentication/login";

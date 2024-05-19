@@ -11,6 +11,10 @@ $router->add("/", "views/home.php");
 // account profile & public proqfile view
 $router->add("/profil", "views/account/profile.php");
 
+$router->add("/housing-list", "views/housing-list.php");
+
 $router->set404View("views/errors/404.php");
 
 $router->start();
+
+?>

@@ -1,12 +1,24 @@
 header {
-   /*position: fixed;
+   position: sticky;
    top: 0;
-   width: 100%;*/
+   z-index: 998;
    font-family: "comfortaa-regular";
    background-color: white;
    padding: 1em 2.5em 0 2.5em;
+   .mdi {
+      font-size: 1.5em;
+   }
+   .mdi-menu {
+      display: none;
+   }
    img {
-       height: 3em;
+      height: 3em;
+   }
+   .fullsize-logo {
+      display: block;
+   }
+   .smallsize-logo {
+      display: none;
    }
    nav {
       display: flex;
@@ -18,16 +30,49 @@ header {
          li {
             list-style: none;
             margin-left: .5em;
+            a { 
+               color: black;
+               &:hover {
+                  font-family: "comfortaa-bold";
+                  color: $primary-1;
+               }
+            }
          }
       }
    }
-   #sign-in-button a, #sign-up-button a {
-      color: $primary-front-1;
+   #sign-in-up-container, #sign-in-up-button {
+      display: flex;
+      align-items: center;
+      color: $primary-1;
    }
 
-   div {
+   #header-bottom-stroke {
       height: 2px;
-      background-color: $secondary-3;
+      background-color: $gray-3;
       margin: 1em 0 0 0;
+   }
+}
+
+@media (max-width: 375px) {
+   header {
+      padding: 1em 1em 0 1em;
+      .mdi {
+         font-size: 2.5em;
+      }
+      .mdi-menu {
+         display: block;
+      }
+      .fullsize-logo {
+         display: none;
+      }
+      .smallsize-logo {
+         display: block;
+      }
+      nav ul {
+         display: none;
+      }
+      #sign-in-up-button {
+         display: none;
+      }
    }
 }
