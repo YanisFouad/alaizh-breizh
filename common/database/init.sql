@@ -538,8 +538,8 @@ CREATE TRIGGER tg_update_logement
     FOR EACH ROW
     EXECUTE PROCEDURE update_logement();
 
-COPY _adresse(id_adresse, code_postal_adresse, ville_adresse, rue_adresse, complement_adresse, pays_adresse) 
-FROM '/docker-entrypoint-initdb.d/csv.csv'
+COPY _adresse(id_adresse, numero, complement_numero, rue_adresse, complement_adresse, ville_adresse, code_postal_adresse, pays_adresse) 
+FROM '/docker-entrypoint-initdb.d/adresse.csv'
 DELIMITER ','
 CSV HEADER; 
 
