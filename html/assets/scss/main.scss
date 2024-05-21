@@ -70,5 +70,8 @@ p {
 // account
 @import "views/account/profile";
 
-//scss
-@import "views/detailsLogement.scss";
+
+// backoffice
+@import "views/backoffice/layout/header.scss";
+
+@import "views/backoffice/accomodations/new.scss";

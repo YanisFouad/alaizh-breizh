@@ -14,7 +14,13 @@ class Router {
      * @param string $viewPath the view path name (for instance "views/home.php")
      */
     public function add($path, $viewPath) {
-        $this->routes[$path] = dirname(__DIR__)."/".$viewPath;
+        $derivedPaths = [$path];
+        if(!str_ends_with("/", $path))
+            $derivedPaths[] = $path."/";
+        else 
+            $derivedPaths[] = substr($path, 0, -1);
+        foreach($derivedPaths as $p)
+            $this->routes[$p] = dirname(__DIR__)."/".$viewPath;
     }
 
     /**
