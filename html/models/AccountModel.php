@@ -5,7 +5,7 @@ require_once(__DIR__."/../services/RequestBuilder.php");
 
 class AccountModel extends Model {
 
-    private static $TABLE_NAME = "compte";
+    private static $TABLE_NAME = "pls._compte";
 
     public function __construct($data = null, $isNew = true) {
         // define the model of an account

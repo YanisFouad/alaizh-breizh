@@ -24,7 +24,7 @@ class Model {
      */
     public function set($key, $value) {
         if(!in_array($key, array_keys($this->schema)))
-            throw new Exception("Table column: '" . $key . "' not found in defined schema");
+            throw new SchemaValidationException("Table column: '" . $key . "' not found in defined schema");
         $this->data[$key] = $value;
     }
 
@@ -47,8 +47,10 @@ class Model {
                     throw new SchemaValidationException("Missing required field '" . $field . "'.");
                 }
             }
-
-            // we can imagine having more validation later if needed
+            
+            if(array_key_exists("type", $props) && array_key_exists($field, $this->data) && !is_a($this->data[$field], $props["type"])) {
+                throw new SchemaValidationException("Validation failed: invalid type for field '" . $field . "', type excepted: '" . $props["type"] . "', actual: '" . gettype($this->data[$field]) . "'");
+            }
         }
     }
 
@@ -66,15 +68,15 @@ class Model {
      * @return $request the request used to save the delegate or throws an error
      */
     public function save() {
-        // before saving, check if it's correspond to the schema
-        $this->checkSchema();
-
         $keys = array_keys($this->data);
         $values = array_values($this->data);
         $primaryField = $this->getPrimaryField();
 
         // if it's a new row then insert it
         if($primaryField === null || $this->isNew) {
+            // before inserting, check if it's correspond to the schema
+            $this->checkSchema();
+
             $fill = array_fill(0, sizeof($keys), "?");
             $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
         } else {
