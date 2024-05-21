@@ -19,14 +19,14 @@ id_adresse,numero,complement numero,rue,Complement adresse,ville,code_postal,Pay
 18,34,,Rue de la Loge,,Montpellier,34000,France
 19,22,,Rue Edmond Rostand,,Marseille,13006,France
 20,4,,Allée des Mimosas,,Ploemeur,56270,France
-21,12,,Rue des Juifs,Rue des Juifs,Strasbourg,67000,France
+21,12,,Rue des Juifs,Rue des Juifs,Rennes,35000,France
 22,14,,Rue des Vagues,,Pléneuf-Val-André,22560,France
 23,16,,Rue de la Mer,,Plougastel-Daoulas,29470,France
 24,18,,Rue des Navigateurs,,Port-Louis,56290,France
 25,23,,Quai d'Aiguillon,,Saint-Pol-de-Léon,29250,France
 26,91,,Avenue des Druides,,Carnac,56340,France
 27,71,,Rue de la Forêt,,Fréhel,22240,France
-28,2,,Rue du Mont Saint-Michel,,Beauvoir,50170,France
+28,2,,Rue Claude de Bretagne,,Locminé,56500,France
 29,1,,Avenue Louis Martin,,Saint-Malo,35400,France
 30,4,,Chemin des Falaises,,Plougasnou,29120,France
 31,34,,Avenue de la Côte de Granit Rose,,Lannion,22300,France
@@ -36,7 +36,7 @@ id_adresse,numero,complement numero,rue,Complement adresse,ville,code_postal,Pay
 35,10,,Quai d'Aiguillon,,Saint-Pol-de-Léon,29250,France
 36,11,,Avenue des Druides,,Carnac,56340,France
 37,13,,Rue de la Forêt,,Fréhel,22240,France
-38,34,,Rue du Mont Saint-Michel,,Beauvoir,50170,France
+38,34,,Rue du Mont Saint-Michel,,Paimpol,22500,France
 39,32,,Avenue Louis Martin,,Saint-Malo,35400,France
 40,65,,Chemin des Falaises,,Plougasnou,29120,France
 41,21,,Avenue de la Côte de Granit Rose,,Lannion,22300,France
