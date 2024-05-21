@@ -1,0 +1,119 @@
+header#backoffice {
+    background-color: $black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8em 2em;
+    color: $white;
+
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+
+    &>a>img {
+        width: 10em;
+        filter: invert(1);
+    }
+
+    &>nav>ul {
+        list-style: none;
+        &>li {           
+            &>a {
+                transition: .5s ease all;
+                &:hover {
+                    color: $primary-backoffice-4;
+                }
+            }
+        }
+    }
+    
+    &>aside {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        &>a>button {
+            border: 1px solid $white;
+            border-radius: 10px;
+            color: $white;
+            position: relative;
+            padding-right: 2.8em;
+            &>.mdi {
+                font-size: 1.8em;
+                position: absolute;
+                top: 20%;
+                right: 10px;
+            }
+
+            &:hover {
+                background-color: $white;
+                color: $black;
+            }
+        }
+
+        &>#profile {
+            position: relative;
+            &>.infos {
+                display: flex;
+                gap: 1em;
+                align-items: center;
+                
+                cursor: pointer;
+                position: relative;
+                padding-right: 2.5em;
+
+                &>img {
+                    width: 2.5em;
+                    border-radius: 100px;
+                }   
+
+                &>.mdi {
+                    font-size: 1.4em;
+                    position: absolute;
+                    right: 10px;
+                    top: 20%;
+                }
+            }
+
+            &>.dropdown {
+                position: absolute;
+                top: 3em;
+                
+                width: 100%;
+                display: none;
+                
+                background-color: #222524;
+                border-radius: 10px;
+
+                padding: 0.4em 0;
+                box-shadow: -1px 2px 3px #66666642;
+                
+                * {color: $white}
+
+                &>ul {
+                    list-style: none;
+                    &>li {
+                        cursor: pointer;
+                        &:hover {
+                            background-color: $gray-1;
+                            transition: .5s all ease;
+                            &>form>button {
+                                color: $primary-backoffice-4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &>span.owner {
+            border-radius: 10px;
+            color: $primary-backoffice-1;
+            background-color: $primary-backoffice-4;
+            font-family: "poppins-medium", sans-serif;
+            padding: .3em .8em;
+            font-size: .9em;
+        }
+    }
+}
