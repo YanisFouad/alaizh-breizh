@@ -1,5 +1,6 @@
 @import "utils/variables";
 @import "utils/variables-front-office";
+@import "utils/_variables-back-office.scss";
 
 *, *::after, *::before {
     outline: none;
@@ -61,3 +62,4 @@ h1, h2 {
 @import "views/backoffice/layout/header.scss";
 
 @import "views/backoffice/accomodations/new.scss";
+@import "views/backoffice/home.scss";

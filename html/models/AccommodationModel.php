@@ -14,7 +14,7 @@ class AccommodationModel extends Model {
             "id_logement" => array("primary" => true),
             "id_proprietaire" => array("required" => true),
             "id_adresse" => array("required" => true),
-            "titre_logement " => array("required" => true),
+            "titre_logement" => array("required" => true),
             "photo_logement" => array(
                 "get" => array($this, "computeAccomodationPicture")
             ),
@@ -112,7 +112,7 @@ class AccommodationModel extends Model {
     public function computeAccomodationPicture($model) {
         return FileLogement::get(
             $model->get("id_logement"),
-            $model->get("type_logement")
+            $model->get("categorie_logement")
         );
     }
 

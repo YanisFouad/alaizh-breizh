@@ -399,3 +399,46 @@ header#backoffice > aside > span.owner {
   padding: 0.3em 0.8em;
   font-size: 0.9em;
 }
+
+#page-home-backoffice {
+  margin: 35px 90px;
+}
+#page-home-backoffice .accueil-logements-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 22px;
+}
+#page-home-backoffice .accueil-logements-header .title-container {
+  display: flex;
+  align-items: center;
+}
+#page-home-backoffice .logements-container .row-logement {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement {
+  flex: 1 1 calc(25% - 10px);
+  width: 25%;
+  max-width: 270px;
+  min-width: 200px;
+  height: 350px;
+  background-color: gray;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1010px) {
+  #page-home-backoffice .logements-container .row-logement .card-logement {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement,
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

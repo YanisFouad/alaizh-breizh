@@ -56,8 +56,8 @@ class FileLogement {
 
     public static function get($logementId, $logementType) {
         $target_file = glob(self::FILE_PATH . $logementId . "_" . $logementType . "*")[0];
-        $target_file = empty($target_file) ? false : $target_file[0];
-        
+        $target_file = empty($target_file) ? false : $target_file;
+
         if ($target_file) {
             return $target_file;
         } else {
