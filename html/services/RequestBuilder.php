@@ -16,6 +16,7 @@ class RequestBuilder {
     private $result;
     private $limit;
     private $offset;
+    private $sort;
     private $whereClausures = array();
     private $fields = array();
 
@@ -44,6 +45,11 @@ class RequestBuilder {
         $this->offset = $offset;
         return $this;
     }
+    
+    public function sortBy($field, $dir) {
+        $this->sort = [$field, $dir];
+        return $this;
+    }
 
     public function execute() {
         $query = array($this->method);
@@ -68,6 +74,10 @@ class RequestBuilder {
             $query[] = join(" AND ", $clasures);
         }
 
+        if($this->sort) {
+            [$field, $dir] = $this->sort;
+            $query[] = " ORDER BY " . $field . " " . $dir;
+        }
         if($this->offset)
             $query[] = "OFFSET " . $this->offset;
         if($this->limit)
