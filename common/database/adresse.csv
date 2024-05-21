@@ -1,57 +1,56 @@
-,,,,,,,
-id_adresse,code_postal,ville,numero,complement numero,rue,Complement adresse,Pays
-1,35000,Rennes,12,,Rue de la Paix,,France
-2,56400,Auray,8,,Rue des Cerisiers,,France
-3,29200,Brest,45,,Avenue des Fleurs,,France
-4,35000,Rennes,27,,Rue du Moulin,,France
-5,56270,Ploemeur,3,bis,Rue des Lilas,,France
-6,29900,Concarneau,19,,Rue des Moulins,,France
-7,56100,Lorient,63,,Avenue des Chênes,,France
-8,35000,Rennes,14,,Rue des Acacias,,France
-9,56470,La Trinité-sur-Mer,26,,Boulevard des Roses,,France
-10,29300,Quimper,30,ter,Rue de la Liberté,,France
-11,35000,Rennes,34,,Rue de la Paix,,France
-12,13008,Marseille,100,,Avenue du Prado,,France
-13,69002,Lyon,23,,Rue de la République,,France
-14,33000,Bordeaux,12,,Cours de l'Intendance,,France
-15,59000,Lille,8,,Rue Faidherbe,,France
-16,67000,Strasbourg,7,C,Place Kléber,,France
-17,75009,Paris,65,,Rue de la Chaussée d'Antin,,France
-18,34000,Montpellier,34,,Rue de la Loge,,France
-19,13006,Marseille,22,,Rue Edmond Rostand,,France
-20,56270,Ploemeur,4,,Allée des Mimosas,,France
-21,67000,Strasbourg,12,,Rue des Juifs,Rue des Juifs,France
-22,22560,Pléneuf-Val-André,14,,Rue des Vagues,,France
-23,29470,Plougastel-Daoulas,16,,Rue de la Mer,,France
-24,56290,Port-Louis,18,,Rue des Navigateurs,,France
-25,29250,Saint-Pol-de-Léon,23,,Quai d'Aiguillon,,France
-26,56340,Carnac,91,,Avenue des Druides,,France
-27,22240,Fréhel,71,,Rue de la Forêt,,France
-28,50170,Beauvoir,2,,Rue du Mont Saint-Michel,,France
-29,35400,Saint-Malo,1,,Avenue Louis Martin,,France
-30,29120,Plougasnou,4,,Chemin des Falaises,,France
-31,22300,Lannion,34,,Avenue de la Côte de Granit Rose,,France
-32,22560,Pléneuf-Val-André,5,,Rue des Vagues,,France
-33,29470,Plougastel-Daoulas,6,,Rue de la Mer,,France
-34,56290,Port-Louis,9,,Rue des Navigateurs,,France
-35,29250,Saint-Pol-de-Léon,10,,Quai d'Aiguillon,,France
-36,56340,Carnac,11,,Avenue des Druides,,France
-37,22240,Fréhel,13,,Rue de la Forêt,,France
-38,50170,Beauvoir,34,,Rue du Mont Saint-Michel,,France
-39,35400,Saint-Malo,32,,Avenue Louis Martin,,France
-40,29120,Plougasnou,65,,Chemin des Falaises,,France
-41,22300,Lannion,21,,Avenue de la Côte de Granit Rose,,France
-42,22000,Saint-Brieuc,21,,Rue du Vieux Saint-Loup,,France
-43,29600,Morlaix,22,,Quai de Léon,,France
-44,56100,Lorient,23,,Rue de Belgique,,France
-45,56000,Vannes,24,,Rue des Trois Frères,,France
-46,56430,Concoret,25,,Rue du Pont de la Moussette,,France
-47,29570,Camaret-sur-Mer,26,,Rue des Pêcheurs,,France
-48,56170,Quiberon,27,,Avenue des Korrigans,,France
-49,35400,Saint-Malo,28,,Quai Duguay-Trouin,,France
-50,35800,Dinard,29,,Rue du Haut Chemin,,France
-51,29200,Brest,30,,Rue de la Fontaine Blanche,,France
-52,22300,Lannion,31,B,Rue de la Fontaine au Roy,,France
-53,56400,Auray,32,,Rue de la Marine,,France
-54,22500,Paimpol,33,,Rue Pierre Loti,,France
-55,29680,Roscoff,34,,Quai Charles de Gaulle,Bis,France
+id_adresse,numero,complement numero,rue,Complement adresse,ville,code_postal,Pays
+1,12,,Rue de la Paix,,Rennes,35000,France
+2,8,,Rue des Cerisiers,,Auray,56400,France
+3,45,,Avenue des Fleurs,,Brest,29200,France
+4,27,,Rue du Moulin,,Rennes,35000,France
+5,3,bis,Rue des Lilas,,Ploemeur,56270,France
+6,19,,Rue des Moulins,,Concarneau,29900,France
+7,63,,Avenue des Chênes,,Lorient,56100,France
+8,14,,Rue des Acacias,,Rennes,35000,France
+9,26,,Boulevard des Roses,,La Trinité-sur-Mer,56470,France
+10,30,ter,Rue de la Liberté,,Quimper,29300,France
+11,34,,Rue de la Paix,,Rennes,35000,France
+12,100,,Avenue du Prado,,Marseille,13008,France
+13,23,,Rue de la République,,Lyon,69002,France
+14,12,,Cours de l'Intendance,,Bordeaux,33000,France
+15,8,,Rue Faidherbe,,Lille,59000,France
+16,7,C,Place Kléber,,Strasbourg,67000,France
+17,65,,Rue de la Chaussée d'Antin,,Paris,75009,France
+18,34,,Rue de la Loge,,Montpellier,34000,France
+19,22,,Rue Edmond Rostand,,Marseille,13006,France
+20,4,,Allée des Mimosas,,Ploemeur,56270,France
+21,12,,Rue des Juifs,Rue des Juifs,Strasbourg,67000,France
+22,14,,Rue des Vagues,,Pléneuf-Val-André,22560,France
+23,16,,Rue de la Mer,,Plougastel-Daoulas,29470,France
+24,18,,Rue des Navigateurs,,Port-Louis,56290,France
+25,23,,Quai d'Aiguillon,,Saint-Pol-de-Léon,29250,France
+26,91,,Avenue des Druides,,Carnac,56340,France
+27,71,,Rue de la Forêt,,Fréhel,22240,France
+28,2,,Rue du Mont Saint-Michel,,Beauvoir,50170,France
+29,1,,Avenue Louis Martin,,Saint-Malo,35400,France
+30,4,,Chemin des Falaises,,Plougasnou,29120,France
+31,34,,Avenue de la Côte de Granit Rose,,Lannion,22300,France
+32,5,,Rue des Vagues,,Pléneuf-Val-André,22560,France
+33,6,,Rue de la Mer,,Plougastel-Daoulas,29470,France
+34,9,,Rue des Navigateurs,,Port-Louis,56290,France
+35,10,,Quai d'Aiguillon,,Saint-Pol-de-Léon,29250,France
+36,11,,Avenue des Druides,,Carnac,56340,France
+37,13,,Rue de la Forêt,,Fréhel,22240,France
+38,34,,Rue du Mont Saint-Michel,,Beauvoir,50170,France
+39,32,,Avenue Louis Martin,,Saint-Malo,35400,France
+40,65,,Chemin des Falaises,,Plougasnou,29120,France
+41,21,,Avenue de la Côte de Granit Rose,,Lannion,22300,France
+42,21,,Rue du Vieux Saint-Loup,,Saint-Brieuc,22000,France
+43,22,,Quai de Léon,,Morlaix,29600,France
+44,23,,Rue de Belgique,,Lorient,56100,France
+45,24,,Rue des Trois Frères,,Vannes,56000,France
+46,25,,Rue du Pont de la Moussette,,Concoret,56430,France
+47,26,,Rue des Pêcheurs,,Camaret-sur-Mer,29570,France
+48,27,,Avenue des Korrigans,,Quiberon,56170,France
+49,28,,Quai Duguay-Trouin,,Saint-Malo,35400,France
+50,29,,Rue du Haut Chemin,,Dinard,35800,France
+51,30,,Rue de la Fontaine Blanche,,Brest,29200,France
+52,31,B,Rue de la Fontaine au Roy,,Lannion,22300,France
+53,32,,Rue de la Marine,,Auray,56400,France
+54,33,,Rue Pierre Loti,,Paimpol,22500,France
+55,34,,Quai Charles de Gaulle,Bis,Roscoff,29680,France
