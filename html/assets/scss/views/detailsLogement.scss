@@ -108,11 +108,14 @@ main#pageDetaille>div {
         display: flex;
         margin-top: 1em;
     }
+
+    section {
+        width: 75%;
+    }
 }
 
 #imgLogement {
     width: 38em;
-    height: 26em;
     border-radius: 13px;
 }
 
@@ -147,12 +150,10 @@ main#pageDetaille>div {
     }
 
     #caracteristiques-logement {
-        display: flex;
-
         ul {
             list-style-type: none;
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 3fr 1fr;
             place-items: center start;
             margin-top: 1.6em;
             border: solid 1px $gray-3;
@@ -163,9 +164,12 @@ main#pageDetaille>div {
         .bulle-Rose {
             background-color: $brown-1;
             border-radius: 14.5px;
-            width: fit-content;
             padding: 5px 10px 5px 10px;
             margin: 0.2em 0;
+            max-width: 6em;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            overflow: hidden;
         }
     }
 }
@@ -247,7 +251,7 @@ aside {
     position: sticky;
     top: 10px;
     margin: 0 2em;
-    width: 75%;
+    width: 25%;
     height: fit-content;
 
     #profilPropriétaire {
@@ -408,8 +412,6 @@ aside {
         }
 
         #boutonDevis {
-            height: 1.5em;
-
             button {
                 position: relative;
                 color: $white;

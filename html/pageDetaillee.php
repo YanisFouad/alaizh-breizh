@@ -1,15 +1,28 @@
-    <?php 
-    require_once("./models/AccommodationModel.php");
-    $accomodation = AccomodationModel::findOneById(1);
+<?php 
+    require_once(__DIR__."/models/AccommodationModel.php");
+    $accomodation = AccommodationModel::findOneById(9);
 
     // s'il n'est pas trouvé
     if(!isset($accomodation)) {
-    echo "logement avec l'id machin introuvable";
+        echo "logement avec l'id machin introuvable";
     }
 
-    // on peut ensuite récupérer les champs comme l'autre, pour voir tous les champs se référer au constructor de AccomodationModel
-    echo $accomodation->get("id_logement");
+    $amenagements = array();
 
+
+    while($accomodation has $accomodation->get("amenagement_$i") != null){
+        $amenagements[$i] = $accomodation->get("amenagement_$i");
+    }
+
+    $tabActivites = [
+        "voile" => "mdi mdi-sail-boat",
+        "accrobranche" => "mdi mdi-pine-tree-variant",
+        "golf" => "mdi mdi-golf",
+        "canoë" => "mdi mdi-kayaking",
+        "randonnée" => "mdi mdi-hiking",
+        "baignade" => "mdi mdi-umbrella",
+        "équitation" => "mdi mdi-horse-human"
+    ];
 ?>
 
 
@@ -32,7 +45,7 @@
             <div id="cheminPage">
                 <a href="#Liste">Logements</a>
                 <span class="mdi mdi-chevron-right"></span>
-                <h4><?php echo $logement["titre_logement"]?></h4>
+                <h4><?php echo $accomodation->get("titre_logement");?></h4>
             </div>
         </div>
 
@@ -43,14 +56,11 @@
 
                     <div>
                         <div id="titre">
-                            <h1><?php echo $logement["titre_logement"]?></h1>
+                            <h1><?php echo $accomodation->get("titre_logement");?></h1>
                         </div>
 
                         <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2>
-                        <p>Somptueuse villa bretonne, située en bord de mer. Parfaite pour profiter de la Manche
-                            (très
-                            froide en
-                            ce moment) et faire la fête. Proche du port (attention à ne pas tomber dedans !).
+                        <p><?php echo $accomodation->get("description_logement");?>
                         </p>
 
                         <div id="caracteristiques-logement">
@@ -59,37 +69,37 @@
                                     <span class="mdi mdi-tag-multiple-outline"></span>
                                     Categorie
                                 </li>
-                                <li class="bulle-Rose">Villa</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo $accomodation->get("categorie_logement");?></li>
 
                                 <li>
                                     <span class="mdi mdi-tag-text-outline"></span>
                                     Type
                                 </li>
-                                <li class="bulle-Rose">T5</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("type_logement");?>"><?php echo $accomodation->get("type_logement");?></li>
 
                                 <li>
                                     <span class="mdi mdi-texture-box"></span>
                                     Surface
                                 </li>
-                                <li class="bulle-Rose">100m²</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("surface_logement");?>"><?php echo $accomodation->get("surface_logement");?>m²</li>
 
                                 <li>
                                     <span class="mdi mdi-bed-outline"></span>
                                     Nombre de lits simples
                                 </li>
-                                <li class="bulle-Rose">2</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_simples_logement");?>"><?php echo $accomodation->get("nb_lits_simples_logement");?></li>
 
                                 <li>
                                     <span class="mdi mdi-bunk-bed-outline"></span>
                                     Nombre de lits doubles
                                 </li>
-                                <li class="bulle-Rose">5</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_doubles_logement");?>"><?php echo $accomodation->get("nb_lits_doubles_logement");?></li>
 
                                 <li>
                                     <span class="mdi mdi-account-group-outline"></span>
                                     Nombre de personnes max
                                 </li>
-                                <li class="bulle-Rose">12</li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
                             </ul>
                         </div>
                     </div>
@@ -97,19 +107,7 @@
 
                 <article id="description">
                     <h3>Description</h3>
-                    <p>Bienvenue à la somptueuse Villa des Vagues, une résidence bretonne majestueuse idéalement perchée
-                        en
-                        bord de mer. Avec ses vues imprenables sur la Manche, cette demeure offre un refuge luxueux pour
-                        ceux en quête d'évasion et de divertissement. Imaginez-vous plonger dans les eaux fraîches de la
-                        mer, ressentant la brise marine caresser votre peau pendant que vous vous adonnez à des
-                        activités
-                        nautiques palpitantes.
-                    </p>
-
-                    <div>
-                        <h3>Classe energetique</h3>
-                        <img src="./images/labels/energyLabelF.png">
-                    </div>
+                    <p><?php echo $accomodation->get("description_logement");?></p>
                 </article>
 
                 <article id="box-Activites-Amenagement">
@@ -117,13 +115,13 @@
                         <div>
                             <h3>Activités</h3>
                             <ul>
-                                <li><span class="mdi mdi-sail-boat"></span> Voile - moins de 5Km</li>
-                                <li><span class="mdi mdi-golf"></span> Golf - 20Km ou plus</li>
-                                <li><span class="mdi mdi-kayaking"></span> Canoë - Moins de 20Km</li>
-                                <li><span class="mdi mdi-hiking"></span> Randonnée - Moins de 20Km</li>
-                                <li><span class="mdi mdi-umbrella-beach"></span> Baignade - Moins de 5Km</li>
-                                <li><span class="mdi mdi-pine-tree-variant"></span> Accrobranche - 20Km ou plus</li>
-                                <li><span class="mdi mdi-horse-human"></span>Equitation - 20Km ou plus</li>
+                                <li>
+                                    <span class="<?php 
+                                    for
+                                    $activite = $accomodation->get("activite_1");
+                                    echo $tabActivites[$activite]?>"></span>
+                                    <?php echo $activite;?>
+                                </li>
                             </ul>
                         </div>
 
@@ -161,7 +159,7 @@
                 </article>
 
                 <article id="box-reservation">
-                    <h2>150€ par nuit</h2>
+                    <h2><?php echo $accomodation->get("prix_ht_logement");?>€ par nuit</h2>
 
                     <div class="line"></div>
 
@@ -204,10 +202,10 @@
 
                         <div>
                             <div>
-                                <span>150€</span>
+                                <span><?php echo $accomodation->get("prix_ht_logement");?>€</span>
                                 <span>x 3 nuits</span>
                             </div>
-                            <h4>450€</h4>
+                            <h4><?php echo $accomodation->get("prix_ht_logement")*3;?>€</h4>
                         </div>
                     </div>
 
