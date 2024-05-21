@@ -23,7 +23,7 @@ if(isset($_POST)) {
         sendJson("error", "Le compte associé est introuvable.");
     }
 
-    if(!isset($password) || !password_verify($password, $account->get("mot_passe"))) {
+    if(!isset($password) || !password_verify($password, $account->get("mot_de_passe"))) {
         sendJson("error", "Mot de passe invalide.");
     }
 
