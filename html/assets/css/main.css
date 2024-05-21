@@ -138,25 +138,25 @@ button {
   padding: 1em 1.8em;
 }
 button:is(.primary, .secondary):not(:disabled):focus {
-  box-shadow: 0 0 0 3px #abbdc0;
+  box-shadow: 0 0 0 3px #b6896c;
 }
 button.primary:disabled, button.secondary:disabled {
   opacity: 60%;
   cursor: unset;
 }
 button.primary {
-  background-color: #1b5734;
+  background-color: #804e2e;
   color: white;
 }
 button.primary:not(:disabled):is(:hover, :focus) {
-  background-color: #337d51;
+  background-color: #9f6844;
 }
 button.secondary {
-  border: 1px solid #1b5734;
-  color: #1b5734;
+  border: 1px solid #804e2e;
+  color: #804e2e;
 }
 button.secondary:not(:disabled):is(:hover, :focus) {
-  background-color: #1b5734;
+  background-color: #804e2e;
   color: white;
 }
 

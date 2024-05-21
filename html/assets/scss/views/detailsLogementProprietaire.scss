@@ -8,7 +8,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    
 }
 
 @font-face {
@@ -73,12 +72,12 @@ h5 {
     font-family: "poppins-regular";
 }
 
-main {
+#mainProprietaireLogement {
     margin: auto;
     max-width: 80%;
 }
 
-main>div {
+#mainProprietaireLogement>div {
     display: flex;
 
     button {
@@ -114,8 +113,10 @@ main>div {
 }
 
 #imgLogement {
+    @media screen and (max-width: 600px) {
+        width:70%;
+    }
     width: 45em;
-    height: 26em;
     border-radius: 13px;
 }
 
@@ -127,8 +128,10 @@ main>div {
 #blockIntro {
     display: flex;
 
-    //Media query pour gerer la disposition des elements 
-    //flex-wrap: wrap;
+    @media screen and (max-width: 300px) {
+        display: flex;
+        flex-wrap: wrap;
+    }    
 
     >div {
         margin-left: 2.2em;
@@ -251,7 +254,6 @@ main>div {
     }
 
     h3 {
-        color: $gray-1;
+       color: $gray-1;
     }
 }
-
