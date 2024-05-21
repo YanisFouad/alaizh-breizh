@@ -21,6 +21,7 @@ button {
     &.primary {
         background-color: $primary-1;
         color: $white;
+        
 
         &:not(:disabled):is(:hover, :focus) {
             background-color: $primary-2;

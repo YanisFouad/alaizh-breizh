@@ -11,7 +11,9 @@ $router->add("/", "views/home.php");
 // account profile & public proqfile view
 $router->add("/profil", "views/account/profile.php");
 
-$router->add("/housing-list", "views/housing-list.php");
+// backoffices views
+$router->add("/backoffice/connexion", "views/backoffice/login.php");
+$router->add("/backoffice/logements/nouveau", "views/backoffice/accomodations/new.php");
 
 $router->set404View("views/errors/404.php");
 
