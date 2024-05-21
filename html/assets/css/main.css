@@ -838,7 +838,9 @@ abbr[title] {
 .profile-area > img {
   margin: auto;
   display: block;
-  width: 12em;
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
   border-radius: 100px;
   margin-bottom: 1em;
 }

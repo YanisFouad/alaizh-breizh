@@ -57,6 +57,7 @@ class FileLocataire {
 
     public static function get($locataireId) {
         $target_file = glob(self::FILE_PATH . $locataireId . "*");
+        //echo $target_file[0];
         $target_file = empty($target_file) ? false : $target_file[0];
         if ($target_file) {
             return $target_file;

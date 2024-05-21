@@ -3,6 +3,7 @@
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
 require_once(__DIR__."/../services/RequestBuilder.php");
+require_once(__DIR__."/../services/FileLogement.php");
 
 class AccommodationModel extends Model {
 
@@ -14,7 +15,9 @@ class AccommodationModel extends Model {
             "id_proprietaire" => array("required" => true),
             "id_adresse" => array("required" => true),
             "titre_logement " => array("required" => true),
-            "photo_logement" => array(),
+            "photo_logement" => array(
+                "get" => array($this, "computeAccomodationPicture")
+            ),
             "accroche_logement" => array(),
             "description_logement" => array(),
             "gps_longitude_logement" => array(),
@@ -71,6 +74,13 @@ class AccommodationModel extends Model {
             "id_amenagement_4" => array(),
             "id_amenagement_5" => array()
         ), $data, $isNew);
+    }
+
+    public function computeAccomodationPicture($model) {
+        return FileLogement::get(
+            $model->get("id_logement"),
+            $model->get("type_logement")
+        );
     }
 
     public static function find($offset = 0, $limit = 10, $projection = "*") {
