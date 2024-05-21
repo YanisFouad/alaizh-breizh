@@ -1,0 +1,95 @@
+<?php
+// fichier temporaire
+
+$tab_reservation = array(
+        array("id_reservation" => 1,
+        "id_logement" => 101,
+        "nom_logement" => "Maison du grand maitre suprême",
+        "date_arrive" => "20-12-2023",
+        "date_depart" => "30-12-2023",
+        "nb_voyageurs" => 2,
+        "date_reservation" => "01-01-2023",
+        "frais_de_service" => 50,
+        "prix_nuitee_TTC" => 100,
+        "prix_total" => 450,
+        "est_payee" => true,
+        "est_annulee" => false,
+        "nb_nuits" => 4
+    ),
+        array("id_reservation" => 2,
+        "id_logement" => 102,
+        "nom_logement" => "Maison du petit maitre",
+        "date_arrive" => "11-11-2025",
+        "date_depart" => "15-11-2025",
+        "nb_voyageurs" => 4,
+        "date_reservation" => "06-01-2025",
+        "frais_de_service" => 75,
+        "prix_nuitee_TTC" => 150,
+        "prix_total" => 825,
+        "est_payee" => false,
+        "est_annulee" => false,
+        "nb_nuits" => 5
+    ),
+        array("id_reservation" => 3,
+        "id_logement" => 103,
+        "nom_logement" => "Maison du grand maitre",
+        "date_arrive" => "20-05-2024",
+        "date_depart" => "27-05-2024",
+        "nb_voyageurs" => 3,
+        "date_reservation" => "01-01-2024",
+        "frais_de_service" => 60,
+        "prix_nuitee_TTC" => 120,
+        "prix_total" => 660,
+        "est_payee" => true,
+        "est_annulee" => true,
+        "nb_nuits" => 5
+    ),
+        array("id_reservation" => 1,
+        "id_logement" => 101,
+        "nom_logement" => "Maison du grand maitre suprême",
+        "date_arrive" => "01-01-2024",
+        "date_depart" => "01-01-2024",
+        "nb_voyageurs" => 2,
+        "date_reservation" => "01-01-2024",
+        "frais_de_service" => 50,
+        "prix_nuitee_TTC" => 100,
+        "prix_total" => 450,
+        "est_payee" => true,
+        "est_annulee" => false,
+        "nb_nuits" => 4
+    ),
+        array("id_reservation" => 2,
+        "id_logement" => 102,
+        "nom_logement" => "Maison du petit maitre",
+        "date_arrive" => "01-01-2024",
+        "date_depart" => "01-01-2024",
+        "nb_voyageurs" => 4,
+        "date_reservation" => "01-01-2024",
+        "frais_de_service" => 75,
+        "prix_nuitee_TTC" => 150,
+        "prix_total" => 825,
+        "est_payee" => false,
+        "est_annulee" => false,
+        "nb_nuits" => 5
+    ),
+        array("id_reservation" => 6,
+        "id_logement" => 103,
+        "nom_logement" => "Maison test6",
+        "date_arrive" => "01-01-2024",
+        "date_depart" => "01-01-2024",
+        "nb_voyageurs" => 3,
+        "date_reservation" => "01-01-2024",
+        "frais_de_service" => 60,
+        "prix_nuitee_TTC" => 120,
+        "prix_total" => 660,
+        "est_payee" => true,
+        "est_annulee" => true,
+        "nb_nuits" => 5
+    )
+);
+
+
+
+
+
+?>

@@ -1,9 +1,5 @@
-@import "utils/_variables";
-@import "assets/font-loader.scss";
-
 #liste-reservation-proprietaire-body {
     margin:4em;
-
     h1{
         margin:1em 0;
     }
@@ -54,15 +50,13 @@
     flex-direction: row;
     justify-content: flex-start;
 
-    a{
+    button{
         color:$gray-2;
         font-family: "poppins-semibold", sans-serif;;
         font-size: 14px;
         border-radius: 0;
-        text-decoration:none;
-        padding: 0.5em 1em;
 
-        &:is(:focus, .active) {
+        &:focus{
             color:$primary-1;
             border-bottom: 2px solid $primary-1;
         }
@@ -80,10 +74,6 @@
     align-items: center; 
     justify-content: flex-start;
     margin : 1em 0em;
-
-    a{
-        text-decoration: none;
-    }
 }
 
 // Ligne d'un logement
