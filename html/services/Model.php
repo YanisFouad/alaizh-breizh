@@ -29,6 +29,14 @@ class Model {
     }
 
     /**
+     * verify if a key exists or not
+     * @return boolean if the key exists or not
+     */
+    public function has($key) {
+        return array_key_exists($key, $this->data);
+    }
+
+    /**
      * retrieve a key from data
      * @return object|null the data associated, or null if not found.
      */

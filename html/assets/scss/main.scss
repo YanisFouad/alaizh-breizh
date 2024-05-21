@@ -55,3 +55,9 @@ h1, h2 {
 
 // account
 @import "views/account/profile";
+
+
+// backoffice
+@import "views/backoffice/layout/header.scss";
+
+@import "views/backoffice/accomodations/new.scss";
