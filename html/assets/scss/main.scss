@@ -73,11 +73,6 @@ p {
 
 // backoffice
 @import "views/backoffice/layout/header.scss";
+@import "views/backoffice/layout/footer.scss";
 
 @import "views/backoffice/accomodations/new.scss";
-
-@import "views/backoffice/accomodations/detailsLogementProprietaire.scss";
-
-
-//scss
-@import "views/detailsLogement.scss";
