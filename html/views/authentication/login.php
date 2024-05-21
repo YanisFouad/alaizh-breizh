@@ -49,6 +49,9 @@
         }
     }
 
+    // @todo #connection=owner
+    // @todo #connection=tenant
+
     function closeLoginModal() {
         authenticationModalElement.style.display = "none";
     }
@@ -84,4 +87,8 @@
             console.error(e);
         }
     }
+
+    // window.addEventListener("DOMContentLoaded", () => {
+
+    // });
 </script>

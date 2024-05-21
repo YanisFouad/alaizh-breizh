@@ -1,8 +1,10 @@
 <?php 
     if(!UserSession::isConnected()) {
-        header("Location: /backoffice/connexion");
+        header("Location: /#connection=owner");
         exit;
     }
+
+    $profile = UserSession::get();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,8 +40,8 @@
             </a>
             <div id="profile">
                 <div class="infos">
-                    <img src="/assets/images/default-user.jpg" alt="Lucas Aupry's picture" />
-                    <span>Lucas Aupry</span>
+                    <img src="<?php echo $profile->get("photo_profil"); ?>" alt="Lucas Aupry's picture" />
+                    <span><?php echo $profile->get("prenom") . " " . $profile->get("nom"); ?></span>
                     <span class="mdi mdi-chevron-up"></span>
                 </div>
 
