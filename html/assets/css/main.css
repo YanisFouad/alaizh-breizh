@@ -134,7 +134,7 @@ button {
   border: unset;
   cursor: pointer;
   border-radius: 100px;
-  padding: 1em 1.3em;
+  padding: 1em 1.8em;
 }
 button:is(.primary, .secondary):not(:disabled):focus {
   box-shadow: 0 0 0 3px #abbdc0;
