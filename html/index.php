@@ -24,4 +24,8 @@ $router->add("/housing-list", "views/housing-list.php");
 $router->set404View("views/errors/404.php");
 
 $router->start();
-?>
+
+// require_once("./models/AccommodationModel.php");
+// foreach(AccommodationModel::find(0, 10) as $accomodation) {
+//     var_dump($accomodation->get("id_logement"));
+// }
