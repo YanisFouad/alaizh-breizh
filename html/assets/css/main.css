@@ -241,6 +241,10 @@ header #sign-in-up-container, header #sign-in-up-button {
   align-items: center;
   color: #1b5734;
 }
+header #sign-in-up-container button:hover, header #sign-in-up-button button:hover {
+  font-family: "comfortaa-bold";
+  background-color: #e0ffee;
+}
 header #header-bottom-stroke {
   height: 2px;
   background-color: #eaeaea;
@@ -308,6 +312,14 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 1000px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 .housing-container {
@@ -328,7 +340,7 @@ a:visited {
 
 #image-cover {
   height: 350px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 20%;
@@ -383,24 +395,30 @@ a:visited {
 }
 
 .show-more-button-container {
+  display: flex;
+  justify-content: flex-end;
   text-align: right;
   margin-right: 2.5em;
   padding: 0.25em 0.5em;
 }
 
 .show-more-button {
+  display: flex;
+  align-items: center;
   color: #1b5734;
   border: solid 1px #1b5734;
   border-radius: 2em;
   margin-bottom: 1em;
+  position: relative;
+  top: -4em;
 }
 
 .housing-list {
-  display: flex;
+  display: grid;
   gap: 2em;
-  flex-wrap: wrap;
-  width: calc(100% - 80px);
-  margin: 0 auto 5em auto;
+  grid-template-columns: repeat(auto-fit, 250px);
+  margin: 0 2.5em 2.5em 2.5em;
+  justify-content: center;
 }
 
 .housing-image-item-container {
@@ -489,17 +507,13 @@ abbr[title] {
   display: none;
 }
 
-.pagination {
-  display: flex;
-}
-.pagination li {
-  list-style: none;
-}
-
 /*****************/
 /* MEDIA QUERIES */
 /*****************/
 @media (max-width: 375px) {
+  body {
+    min-width: inherit;
+  }
   #search-bar {
     width: 355px;
     justify-content: space-between;
@@ -536,6 +550,7 @@ abbr[title] {
   }
   .housing-list {
     justify-content: center;
+    grid-template-columns: 1fr;
   }
   .housing-image-item-container {
     width: 355px;
@@ -546,18 +561,166 @@ abbr[title] {
   .housing-description-container {
     width: 355px;
   }
+  .show-all-button-container {
+    display: flex;
+    justify-content: center;
+  }
   .show-all-button {
-    display: block;
-    padding: 0.25em 0.5em;
+    display: flex;
+    align-items: center;
+    padding: 0.25em 1em;
     color: white;
     background-color: #1b5734;
     border: solid 1px #1b5734;
     border-radius: 2em;
   }
-  .pagination {
-    display: none;
+  .show-all-button .mdi {
+    margin-left: 8px;
+    font-size: 20px;
   }
 }
+/***************************************/
+/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/***************************************/
+#filter-housing-container {
+  display: flex;
+}
+
+/* Menu des filtres */
+.displayed {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#filter-container {
+  position: sticky;
+  align-self: flex-start;
+  border-right: solid 2px #eaeaea;
+  padding: 2.5em;
+  min-width: 20em;
+  height: 100%;
+}
+#filter-container > section {
+  border-top: solid 1px #676767;
+  margin-bottom: 2em;
+}
+#filter-container > section > :first-child {
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+#filter-container > section > div, #filter-container > section li {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+#filter-container > section > div > input, #filter-container > section li > input {
+  width: auto;
+}
+
+#filter-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2.5em;
+}
+
+.stars-notation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stars-notation {
+  margin-bottom: 1em;
+  list-style: none;
+  gap: 0;
+}
+.stars-notation .mdi-star::before {
+  font-size: 25px;
+}
+
+/* Résultats logement */
+.back-button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+#housing-title-search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.compact-search-bar {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.5em;
+  border-bottom: 2px #eaeaea solid;
+  box-shadow: 0px 5px 5px #eaeaea;
+  background-color: white;
+  border-radius: 1em;
+}
+.compact-search-bar input, .compact-search-bar button {
+  border: none;
+  border-radius: 1em;
+}
+.compact-search-bar input {
+  font-family: "comfortaa-medium";
+  background-color: #f7f7f7;
+  padding: 1.5em;
+  width: auto;
+}
+.compact-search-bar button {
+  background-color: #1b5734;
+  padding: 1em;
+}
+.compact-search-bar .mdi-magnify {
+  color: white;
+}
+
+#filter-sort-buttons-container {
+  display: flex;
+}
+
+#filter-button {
+  border-radius: 1em;
+}
+
+.housing-list {
+  margin: 1em 0 2.5em 0;
+}
+
+#housing-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5em;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.75em;
+  font-family: "comfortaa-bold";
+  color: #1b5734;
+}
+.pagination li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.pagination .mdi-chevron-left, .pagination .page-number, .pagination .mdi-chevron-right {
+  border: solid 1px #1b5734;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
 .modal {
   position: fixed;
   top: 0;

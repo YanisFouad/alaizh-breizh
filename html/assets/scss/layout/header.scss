@@ -40,10 +40,17 @@ header {
          }
       }
    }
+   
    #sign-in-up-container, #sign-in-up-button {
       display: flex;
       align-items: center;
       color: $primary-1;
+      button {
+         &:hover {
+            font-family: "comfortaa-bold";
+            background-color: $primary-4;
+         }
+      }
    }
 
    #header-bottom-stroke {
