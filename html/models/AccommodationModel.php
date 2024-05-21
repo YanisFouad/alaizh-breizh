@@ -42,6 +42,12 @@ class AccommodationModel extends Model {
             "ville_adresse" => array(),
             "code_postal_adresse" => array(),
             "pays_adresse" => array(),
+            "activites" => array(
+                "get" => array($this, "computeActivities")
+            ),
+            "amenagements" => array(
+                "get" => array($this, "computeAmenagements")
+            ),
             "activite_1" => array(),
             "activite_2" => array(),
             "activite_3" => array(),
@@ -74,6 +80,33 @@ class AccommodationModel extends Model {
             "id_amenagement_4" => array(),
             "id_amenagement_5" => array()
         ), $data, $isNew);
+    }
+
+    public function computeActivities($model) {
+        $activites = [];
+        $i = 1;
+        do {
+            $activites[] = array(
+              "name" => $model->get("activite_".$i),
+              "id" => $model->get("id_activite_".$i),
+              "perimetre" => $model->get("perimetre_activite_".$i)
+            );
+            $i++;
+        } while($model->get("activite_".$i) !== null);
+        return $activites;
+    }
+
+    public function computeAmenagements($model) {
+        $amenagements = [];
+        $i = 1;
+        do {
+            $amenagements[] = array(
+              "name" => $model->get("amenagement_".$i),
+              "id" => $model->get("id_amenagement_".$i),
+            );
+            $i++;
+        } while($model->get("amenagement_".$i) !== null);
+        return $amenagements;
     }
 
     public function computeAccomodationPicture($model) {
