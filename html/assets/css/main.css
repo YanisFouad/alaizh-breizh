@@ -294,3 +294,106 @@ input:is(:hover, :focus) {
   margin-left: auto;
   display: block;
 }
+
+header#backoffice {
+  background-color: #222524;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 2em;
+  color: white;
+}
+header#backoffice a {
+  color: white;
+  text-decoration: none;
+}
+header#backoffice > a > img {
+  width: 10em;
+  filter: invert(1);
+}
+header#backoffice > nav > ul {
+  list-style: none;
+}
+header#backoffice > nav > ul > li > a {
+  transition: 0.5s ease all;
+}
+header#backoffice > nav > ul > li > a:hover {
+  color: #ffd6bb;
+}
+header#backoffice > aside {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+header#backoffice > aside > a > button {
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  padding-right: 2.8em;
+}
+header#backoffice > aside > a > button > .mdi {
+  font-size: 1.8em;
+  position: absolute;
+  top: 20%;
+  right: 10px;
+}
+header#backoffice > aside > a > button:hover {
+  background-color: white;
+  color: #222524;
+}
+header#backoffice > aside > #profile {
+  position: relative;
+}
+header#backoffice > aside > #profile > .infos {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-right: 2.5em;
+}
+header#backoffice > aside > #profile > .infos > img {
+  width: 2.5em;
+  border-radius: 100px;
+}
+header#backoffice > aside > #profile > .infos > .mdi {
+  font-size: 1.4em;
+  position: absolute;
+  right: 10px;
+  top: 20%;
+}
+header#backoffice > aside > #profile > .dropdown {
+  position: absolute;
+  top: 3em;
+  width: 100%;
+  display: none;
+  background-color: #222524;
+  border-radius: 10px;
+  padding: 0.4em 0;
+  box-shadow: -1px 2px 3px rgba(102, 102, 102, 0.2588235294);
+}
+header#backoffice > aside > #profile > .dropdown * {
+  color: white;
+}
+header#backoffice > aside > #profile > .dropdown > ul {
+  list-style: none;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li {
+  cursor: pointer;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover {
+  background-color: #424645;
+  transition: 0.5s all ease;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
+  color: #ffd6bb;
+}
+header#backoffice > aside > span.owner {
+  border-radius: 10px;
+  color: #804e2e;
+  background-color: #ffd6bb;
+  font-family: "poppins-medium", sans-serif;
+  padding: 0.3em 0.8em;
+  font-size: 0.9em;
+}
