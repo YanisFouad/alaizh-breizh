@@ -3,7 +3,6 @@
 class FileLocataire {
 
     private const FILE_PATH = "files/locataires/";
-    private const DEFAULT_LOCATAIRE_PATH = "files/locataires/default.webp";
 
     public static function save($locataireId, $file) {
         $target_dir = self::FILE_PATH;
@@ -61,7 +60,7 @@ class FileLocataire {
         if ($target_file) {
             return $target_file;
         } else {
-            return self::DEFAULT_LOCATAIRE_PATH;
+            return false;
         }
     }
 }
