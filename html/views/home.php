@@ -1,4 +1,14 @@
+<?php 
+   $pageTitle = "Page d'accueil"; 
+
+   $housingTitleDescription = "Petite maison, proche du port";
+   $housingCity = "Perros-Guirec";
+   $housingDepartment = "Côtes d'Armor";
+   $housingRating = "5,0";
+   $pricePerNight = "60";
+?>
 <?php require_once("layout/header.php"); ?>
+
 
 <section id="home-page">
    <section id="cover-search-bar">
@@ -26,25 +36,27 @@
       </div>
 
       <section class="housing-list">
+         <!-- PHP -->
          <?php for ($i = 1; $i <= 10; $i++) {?>
             <article class="housing-item">
                <div class="housing-image-item-container">
+                  <!-- PHP -->
                   <img src="../../images/logement-test.jpeg" alt="Logement">
                </div>
                <div class="housing-text-details">
                   <div class="housing-description-container">
-                     <h4 class="housing-description"><abbr title="Petite maison proche du port">Petite maison proche du port</abbr></h4>
+                     <h4 class="housing-description"><abbr title="<?php echo $housingTitleDescription; ?>"><?php echo $housingTitleDescription; ?></abbr></h4>
                      <div class="star-notation-container">
                         <span class="mdi mdi-star"></span>
-                        <h4>4,9</h4>
+                        <h4><?php echo $housingRating; ?></h4>
                      </div>
                   </div>
                   <div class="housing-location-container">
                      <span class="mdi mdi-map-marker"></span>
-                     <h4 class="housing-location"><abbr title="Perros-Guirec, Côtes d'Armor">Perros-Guirec, Côtes d'Armor</h4>
+                     <h4 class="housing-location"><abbr title="<?php echo $housingCity; ?>, <?php echo $housingDepartment; ?>"><?php echo $housingCity; ?>, <?php echo $housingDepartment; ?></h4>
                   </div>
                   <div class="housing-price-container">
-                     <span class="housing-price">30€</span><span class="per-night">par nuit</span>
+                     <span class="housing-price"><?php echo $pricePerNight; ?>€</span><span class="per-night">par nuit</span>
                   </div>
                </div>
             </article>
