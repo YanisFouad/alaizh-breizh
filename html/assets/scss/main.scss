@@ -11,7 +11,6 @@
 }
 
 @import "assets/font-loader.scss";
-@import "utils/_variables.scss";
 
 body {
    font-family: "comfortaa-regular", sans-serif;
@@ -63,3 +62,6 @@ p {
 
 // account
 @import "views/account/profile";
+
+//scss
+@import "views/detailsLogement.scss";

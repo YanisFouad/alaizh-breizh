@@ -1,22 +1,38 @@
+    <?php 
+    require_once("./models/AccommodationModel.php");
+    $accomodation = AccomodationModel::findOneById(1);
+
+    // s'il n'est pas trouvé
+    if(!isset($accomodation)) {
+    echo "logement avec l'id machin introuvable";
+    }
+
+    // on peut ensuite récupérer les champs comme l'autre, pour voir tous les champs se référer au constructor de AccomodationModel
+    echo $accomodation->get("id_logement");
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/scss/views/detailsLogement.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/materialdesignicons.min.css">
     <title>Page détaillée d'un logement</title>
 </head>
 
 <body>
-    <main>
+    <main id="pageDetaille">
         <div>
             <button><span class="mdi mdi-arrow-left"></span>Retour</button>
             <div id="cheminPage">
                 <a href="#Liste">Logements</a>
                 <span class="mdi mdi-chevron-right"></span>
-                <h4>Villa Bretonne</h4>
+                <h4><?php echo $logement["titre_logement"]?></h4>
             </div>
         </div>
 
@@ -27,11 +43,7 @@
 
                     <div>
                         <div id="titre">
-                            <h1>Villa Bretonne</h1>
-                            <div id="noteLogement">
-                                <span class="mdi mdi-star"></span>
-                                <span>5,0</span>
-                            </div>
+                            <h1><?php echo $logement["titre_logement"]?></h1>
                         </div>
 
                         <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2>
