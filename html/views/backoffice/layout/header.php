@@ -1,8 +1,9 @@
-<?php 
+<?php
+    /*
     if(!UserSession::isConnected()) {
         header("Location: /backoffice/connexion");
         exit;
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="fr">

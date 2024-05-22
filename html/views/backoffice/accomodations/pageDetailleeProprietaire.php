@@ -1,8 +1,10 @@
 <?php 
-    require_once(__DIR__."/../models/AccommodationsModel.php");
+    require_once(__DIR__."/../../../models/AccommodationModel.php");
+    require_once(__DIR__."/../../../services/FileLogement.php");
+    include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['logement_id'];
-    $logement = AccommodationsModel::findOneById($logement_id);
-    print_r($logement);
+    $logement = AccommodationModel::findOneById($logement_id);
+    //print_r($logement->get('id_logement'));
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,39 +12,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
     <title>Page détaillée d'un logement</title>
 </head>
 
 <body>
-    <main id ="mainProprietaireLogement">
-        <div>
-            <button><span class="mdi mdi-arrow-left"></span>Retour</button>
-            <div id="cheminPage">
-                <a href="#Liste">Logements</a>
-                <span class="mdi mdi-chevron-right"></span>
-                <h4>Villa Bretonne</h4>
-            </div>
-        </div>
 
+    
+
+    <main id ="mainProprietaireLogement">
+        
+            
+        <div id="cheminPage">
+            <button><span class="mdi mdi-arrow-left"></span>Retour</button>
+            <a href="#Liste">Logements</a>
+            <span class="mdi mdi-chevron-right"></span>
+            <h4><?=$logement->get('titre_logement');?></h4>
+        </div>
+       
         <div id="page">
             <section>
                 <article id="blockIntro">
-                    <img src="./images/rsz_1frames-for-your-heart-2d4laqalbda-unsplash.jpg" id="imgLogement">
+                    <img src="../../../files/logements/<? echo $logement->get('photo_logement')?>.jpg" id="imgLogement">
 
                     <div>
                         <div id="titre">
-                            <h1>Villa Bretonne</h1>
+                            <h1><?=$logement->get('titre_logement');?></h1>
 
                         </div>
 
-                        <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2>
-                        <p>Somptueuse villa bretonne, située en bord de mer. Parfaite pour profiter de la Manche
-                            (très
-                            froide en
-                            ce moment) et faire la fête. Proche du port (attention à ne pas tomber dedans !).
-                        </p>
+                        <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
+                        <p><?=$logement->get('accroche_logement')?></p>
 
                         <div id="caracteristiques-logement">
                             <ul>
@@ -50,37 +51,49 @@
                                     <span class="mdi mdi-tag-multiple-outline"></span>
                                     Categorie
                                 </li>
-                                <li class="bulle-Rose">Villa</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('categorie_logement')?>
+                                </li>
 
                                 <li>
                                     <span class="mdi mdi-tag-text-outline"></span>
                                     Type
                                 </li>
-                                <li class="bulle-Rose">T5</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('type_logement')?>
+                                </li>
 
                                 <li>
                                     <span class="mdi mdi-texture-box"></span>
                                     Surface
                                 </li>
-                                <li class="bulle-Rose">100m²</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('surface_logement')?>m²
+                                </li>
 
                                 <li>
                                     <span class="mdi mdi-bed-outline"></span>
                                     Nombre de lits simples
                                 </li>
-                                <li class="bulle-Rose">2</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('nb_lits_simples_logement')?>
+                                </li>
 
                                 <li>
                                     <span class="mdi mdi-bunk-bed-outline"></span>
                                     Nombre de lits doubles
                                 </li>
-                                <li class="bulle-Rose">5</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('nb_lits_doubles_logement')?>
+                                </li>
 
                                 <li>
                                     <span class="mdi mdi-account-group-outline"></span>
                                     Nombre de personnes max
                                 </li>
-                                <li class="bulle-Rose">12</li>
+                                <li class="bulle-Rose">
+                                    <?=$logement->get('max_personne_logement')?>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -88,13 +101,8 @@
 
                 <article id="description">
                     <h3>Description</h3>
-                    <p>Bienvenue à la somptueuse Villa des Vagues, une résidence bretonne majestueuse idéalement perchée
-                        en
-                        bord de mer. Avec ses vues imprenables sur la Manche, cette demeure offre un refuge luxueux pour
-                        ceux en quête d'évasion et de divertissement. Imaginez-vous plonger dans les eaux fraîches de la
-                        mer, ressentant la brise marine caresser votre peau pendant que vous vous adonnez à des
-                        activités
-                        nautiques palpitantes.
+                    <p>
+                        <?=$logement->get('description_logement')?>
                     </p>
 
                     <div>
@@ -132,13 +140,13 @@
 
                 </article>
             </section>
-
+            <div id="modified-button">
+                <button type="button" class ="primary" >
+                    Modifier
+                </button>
+            </div>
         </div>
-        <div id="modified-button">
-            <button type="button" class ="primary" >
-                Modifier
-            </button>
-        </div>
+        
         
     </main>
 </body>

@@ -1,5 +1,6 @@
-@import "../utils/_variables.scss";
-@import "../utils/variables-back-office.scss";
+@import "../../../utils/variables-back-office";
+@import "../../../utils/variables";
+@import "../../../assets/buttons.scss";
 
 *,
 *::after,
@@ -72,13 +73,20 @@ h5 {
     font-family: "poppins-regular";
 }
 
-#mainProprietaireLogement {
+#page {
     margin: auto;
+    margin-top: 2em;
     max-width: 80%;
+    display: flex;
+    h3 {
+        color: $gray-1;
+    }
+    
 }
 
-#mainProprietaireLogement>div {
+#mainProprietaireLogement {
     display: flex;
+    flex-direction: column;
 
     button {
         background-color: white;
@@ -106,9 +114,9 @@ h5 {
         font-weight: normal;
     }
 
-    #page {
-        display: flex;
-        margin-top: 1em;
+
+    h3 {
+       color: $gray-1;
     }
 }
 
@@ -253,7 +261,5 @@ h5 {
         }
     }
 
-    h3 {
-       color: $gray-1;
-    }
+    
 }
