@@ -57,12 +57,12 @@ class AccountModel extends Model {
         parent::__construct($table, $schema, $data, $isNew);
     }
 
-    public function computeProfilePicture($model) {
-        return FileLocataire::get($model->get("id_compte"));
+    public function computeProfilePicture($data) {
+        return FileLocataire::get($data["id_compte"]);
     }
 
-    public function computeDisplayName($model) {
-        return strtoupper($model->get("nom")) . " " . $model->get("prenom");
+    public function computeDisplayName($data) {
+        return strtoupper($data["nom"]) . " " . $data["prenom"];
     }
 
     /**
