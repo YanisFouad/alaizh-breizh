@@ -1,5 +1,4 @@
-<?php
-/*
+<?php 
     if(!UserSession::isConnected()) {
         require_once(__DIR__."/../authentication/login.php");
         exit;
@@ -8,7 +7,6 @@
     $profile = UserSession::get();
 
     ScriptLoader::load("backoffice/layout/header.js");
-*/
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,6 +17,7 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css">
 
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <title>Alhaiz Breizh - Backoffice</title>
 </head>
 <body>

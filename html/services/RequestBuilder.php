@@ -17,6 +17,7 @@ class RequestBuilder {
     private $limit;
     private $offset;
     private $sort;
+    private $distinct;
     private $fields2update = array();
     private $whereClausures = array();
     private $fields = array();
@@ -52,11 +53,16 @@ class RequestBuilder {
         return $this;
     }
 
+    public function distinct() {
+        $this->distinct = true;
+        return $this;
+    }
+
     public function innerJoin($otherTable, ...$on) {
         return $this->join("INNER", $otherTable, $on);
     }
 
-    public function naturalJoin($otherTable, $on) {
+    public function naturalJoin($otherTable, ...$on) {
         return $this->join("NATURAL", $otherTable, $on);
     }
 
@@ -85,6 +91,9 @@ class RequestBuilder {
         $params = array();
         
         $query[] = join(",", $this->fields);
+
+        if(isset($this->distinct))
+            $query[] = "DISTINCT";
         
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
@@ -102,7 +111,8 @@ class RequestBuilder {
         foreach($this->jointures as $jointure) {
             [$type, $otherTable, $on] = $jointure;
             $query[] = $type . " JOIN " . $otherTable . " ON";
-            $query[] = join($on, " AND ");
+            foreach($on as $cond) 
+                $query[] = join(" AND ", $cond);
         }
 
         // build clausures

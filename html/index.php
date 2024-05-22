@@ -16,6 +16,10 @@ $router->add("/profil", "views/account/profile.php");
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 
+// backoffices views
+$router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
+
 $router->add("/logement", "views/accomodations/pageDetaillee.php");
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/connexion", "views/backoffice/login.php");
