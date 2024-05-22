@@ -7,8 +7,12 @@ include:
 
 code_quality:
   stage: test
+  extends: code_quality
   allow_failure: true
+  variables:
+    REPORT_FORMAT: json
   artifacts:
+    paths: [gl-code-quality-report.json]
     reports:
       codequality:
         - gl-code-quality-report.json
@@ -16,7 +20,6 @@ code_quality:
 # accessilibity: 
 #   stage: test
 #   image: node:21-alpine
-  
 
 deploy:
   stage: deploy

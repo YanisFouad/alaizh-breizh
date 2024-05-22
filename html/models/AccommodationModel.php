@@ -112,7 +112,7 @@ class AccommodationModel extends Model {
     public function computeAccomodationPicture($model) {
         return FileLogement::get(
             $model->get("id_logement"),
-            $model->get("type_logement")
+            $model->get("categorie_logement")
         );
     }
 
