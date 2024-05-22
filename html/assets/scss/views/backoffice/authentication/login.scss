@@ -1,0 +1,110 @@
+#login {
+    height: 100vh;
+    background-color: $black;
+    
+    &>form {
+        width: 30em;
+        height: 90%;
+        align-content: center;
+        margin: 0 auto;
+
+        &>.error-message {
+            background-color: $red-1-200;
+            color: $red-1;
+            padding: .8em 1em;
+            border-radius: 10px;
+            margin: .8em 0;
+            font-size: .9em;
+    
+            display: none;
+    
+            position: relative;
+    
+            padding-left: 2.3em;
+            &::before {
+                position: absolute;
+                left: 10px;
+                font-size: 1.2em;
+            }
+        }
+    
+        &>h2 {
+            text-align: center;
+            font-weight: normal;
+            font-family: "poppins-regular", sans-serif;
+            color: $white;
+        }
+    
+        &>img {
+            width: 14em;
+            margin: .5em auto;
+            display: block;
+            filter: invert(1);
+        }
+    
+        &>.form-field {
+            margin: 1em 0;
+
+            &>label {
+                color: $white;
+            }
+
+            &>input {
+                background-color: $gray-1;
+                color: $white;
+                transition: .5s ease all;
+                &:is(:hover, :focus) {
+                    border-color: $white;
+                }
+            }
+        }
+
+        &>.forgot-password {
+            color: $black;
+            display: block;
+            text-align: end;
+            font-size: .9em;
+            margin-bottom: .7em;
+        }
+
+        &>button {
+            &:first-of-type {
+                margin-top: 1em;
+            }
+            width: 100%;
+        }
+        &>.another-choice {
+            display: block;
+            margin: 1.5em 0;
+            color: $gray-2;
+            text-align: center;
+            position: relative;
+
+            &>.text {
+                display: block;
+                background-color: $black;
+                margin: auto;
+                width: fit-content;
+                padding: 0 1em;
+
+                position: relative;
+                z-index: 99;
+                color: $white;
+            }
+
+            &>.line {
+                display: block;
+                height: 1px;
+                width: 100%;
+
+                position: absolute;
+                top: 50%;
+
+                transform: translateY(-50%);
+
+                background-color: $gray-4;
+            }
+        }
+    }
+
+}
