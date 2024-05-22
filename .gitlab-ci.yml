@@ -7,16 +7,13 @@ include:
   - template: Jobs/Code-Quality.gitlab-ci.yml
   - template: Verify/Accessibility.gitlab-ci.yml
 
-
 a11y:
   stage: web-accessilibity
   variables:
       a11y_urls: "https://lav15.ventsdouest.dev"
-  # artifacts:
-  #   paths: [gl-accessibility.json]
-  #   reports:
-  #     codequality:
-  #       - gl-accessibility.json
+  only:
+    refs:
+      - main
 
 code_quality:
   stage: test
@@ -27,10 +24,10 @@ code_quality:
     reports:
       codequality:
         - gl-code-quality-report.json
-
-# accessilibity: 
-#   stage: test
-#   image: node:21-alpine
+  only:
+    refs:
+      - develop
+      - feature/.*
 
 deploy:
   stage: deploy
