@@ -200,7 +200,7 @@
     justify-content: center;
     gap:0.75em;
 
-    span,h4{
+    .button-cliquable,#button-clique{
         border: 1px solid $primary-1;
         border-radius: 50%;
         font-family: "comfortaa-bold";
@@ -214,15 +214,24 @@
         }
     }
 
-    h4{
-        width: 2.8em;
-        height: 2.8em;
-        line-height: 2.8em;
+    #button-clique{
+        color:white;
+        background-color: $primary-1;
+    }
+
+    .button-non-cliquable{
+        border: 1px solid $primary-3;
+        border-radius: 50%;
+        font-family: "comfortaa-bold";
+        text-align: center;
+        color: $primary-3;
+        pointer-events: none !important;
     }
 
     span{
-        font-size: 2em;
-        padding: 0 0.08em;
+        height: 2em;
+        width: 2em;
     }
+
 }
 
