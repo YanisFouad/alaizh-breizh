@@ -50,8 +50,11 @@ class Model {
         }
 
         // getters are over than default variables
-        if(array_key_exists("get", $props))
-            return $props["get"]($this); 
+        if(array_key_exists("get", $props)) {
+            $getter = $props["get"];
+            return is_callable($getter) ? 
+                $getter($this) : $getter;
+        }
         if(!isset($value)) {
             if(array_key_exists("default", $props))
                 return $props["default"];
@@ -124,6 +127,10 @@ class Model {
         $request->execute();
 
         return $request;
+    }
+
+    public function __toString() {
+        return json_encode($this->data, JSON_PRETTY_PRINT);
     }
 
 }

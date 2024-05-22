@@ -14,10 +14,14 @@ function sendJson($key, $message) {
 if(isset($_POST)) {
     extract($_POST);
 
+    $accountType = AccountType::TENANT;
+    if($authType === "owner") 
+        $accountType = AccountType::OWNER;
+
     if(!isset($email) || !preg_match($EMAIL_REGEX_PATTERN, $email)) {
         sendJson("error", "Email invalide.");
     }
-    $account = AccountModel::findOneByMail($email);
+    $account = AccountModel::findOneByMail($email, $accountType);
 
     if(!isset($account)) {
         sendJson("error", "Le compte associé est introuvable.");

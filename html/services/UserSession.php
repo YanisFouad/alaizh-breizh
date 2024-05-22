@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__."/../models/AccountModel.php");
+
 class UserSession {
 
     // arbitrary session name
