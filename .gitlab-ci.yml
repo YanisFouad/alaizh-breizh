@@ -7,6 +7,16 @@ include:
 
 code_quality:
   stage: test
+  allow_failure: true
+  artifacts:
+    reports:
+      codequality:
+        - gl-code-quality-report.json
+
+accessilibity: 
+  stage: test
+  image: node:21-alpine
+  
 
 deploy:
   stage: deploy
