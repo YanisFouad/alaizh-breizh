@@ -48,23 +48,43 @@ textarea {
 }
 
 input[type="checkbox"] {
+    &.backoffice {
+        &:checked+label {
+            &::after {
+                background-color: $primary-backoffice-1;
+            }
+        }
+        &:not(:checked):hover+label {
+            &::before {
+                color: $primary-backoffice-1;
+            }
+        }
+        &:checked+label, &:focus+label {
+            &::after {
+                box-shadow: 0 0 0 2px rgba(128, 78, 46, .20);
+            }
+        }
+        &+label::after {
+            border-color: $primary-backoffice-1;
+        }
+    }
     display: none;
 
     &:checked+label {
         &::after {
-            background-color: $primary-backoffice-1;
+            background-color: $primary-frontoffice-1;
         }
     }
 
     &:not(:checked):hover+label {
         &::before {
-            color: $primary-backoffice-1;
+            color: $primary-frontoffice-1;
         }
     }
 
     &:checked+label, &:focus+label {
         &::after {
-            box-shadow: 0 0 0 2px rgba(128, 78, 46, .20);
+            box-shadow: 0 0 0 2px rgba(51, 125, 81, .20);
         }
     }
         
@@ -87,7 +107,7 @@ input[type="checkbox"] {
             $size: 20px;
             content: "";
             display: block;
-            border: 2px solid $primary-backoffice-1;
+            border: 2px solid $primary-frontoffice-1;
 
             width: $size;
             height: $size;

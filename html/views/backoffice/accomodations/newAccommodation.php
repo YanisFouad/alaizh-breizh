@@ -162,7 +162,7 @@
             <div class="layouts">
                 <?php foreach($layouts as $i => $layout) { ?>
                     <div class="form-field">
-                        <input type="checkbox" id="layout_<?=$i?>" name="<?=$layout?>">
+                        <input type="checkbox" class="backoffice" id="layout_<?=$i?>" name="<?=$layout?>">
                         <label class="mdi mdi-check" for="layout_<?=$i?>"><?=$layout?></label>
                     </div>
                 <?php } ?>
@@ -172,7 +172,7 @@
 
             <?php foreach($activities as $activity => $hasDistance) { ?>
                 <div class="form-field activities">
-                    <input type="checkbox" id="activity_<?=$activity?>" name="<?=$activity?>">
+                    <input type="checkbox" class="backoffice" id="activity_<?=$activity?>" name="<?=$activity?>">
                     <label class="mdi mdi-check" for="activity_<?=$activity?>"><?=$activity?></label>
 
                     <?php if($hasDistance) { ?>
