@@ -16,9 +16,12 @@ class RequestBuilder {
     private $result;
     private $limit;
     private $offset;
+    private $sort;
+    private $distinct;
+    private $fields2update = array();
     private $whereClausures = array();
     private $fields = array();
-
+    private $jointures = array();
 
     public function __construct($tableName, $method) {
         $this->tableName = $tableName;
@@ -44,30 +47,88 @@ class RequestBuilder {
         $this->offset = $offset;
         return $this;
     }
+    
+    public function sortBy($field, $dir) {
+        $this->sort = [$field, $dir];
+        return $this;
+    }
+
+    public function distinct() {
+        $this->distinct = true;
+        return $this;
+    }
+
+    public function innerJoin($otherTable, ...$on) {
+        return $this->join("INNER", $otherTable, $on);
+    }
+
+    public function naturalJoin($otherTable, ...$on) {
+        return $this->join("NATURAL", $otherTable, $on);
+    }
+
+    public function crossJoin($otherTable, ...$on) {
+        return $this->join("CROSS", $otherTable, $on);
+    }
+
+    public function leftJoin($otherTable, ...$on) {
+        return $this->join("LEFT", $otherTable, $on);
+    }
+    
+    public function join($type, $otherTable, ...$on) {
+        $this->jointures[] = [$type, $otherTable, $on];
+        return $this;
+    }
+
+    public function set($field, $value) {
+        if($this->method !== RequestType::UPDATE)
+            throw new Exception("Invalid request type, only works with 'UPDATE' requests.");
+        $this->fields2update[$field] = $value;
+        return $this;
+    }
 
     public function execute() {
         $query = array($this->method);
         $params = array();
         
         $query[] = join(",", $this->fields);
+
+        if(isset($this->distinct))
+            $query[] = "DISTINCT";
         
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
             $query[] = "FROM";
+
+        // if we have fields to update then add it to the query
+        foreach($this->fields2update as $field => &$value) {
+            $query[] = "SET " . $field . " = ?";
+            $params[] = $value;
+        }
         
         $query[] = $this->tableName;
+
+        // jointures
+        foreach($this->jointures as $jointure) {
+            [$type, $otherTable, $on] = $jointure;
+            $query[] = $type . " JOIN " . $otherTable . " ON";
+            $query[] = join($on, " AND ");
+        }
 
         // build clausures
         if(count($this->whereClausures) > 0) {
             $query[] = "WHERE";
             $clasures = array();
-            foreach($this->whereClausures as $clausure => $data) {
+            foreach($this->whereClausures as $clausure => &$data) {
                 $clasures[] = $clausure;
                 $params[] = $data;
             }
             $query[] = join(" AND ", $clasures);
         }
 
+        if($this->sort) {
+            [$field, $dir] = $this->sort;
+            $query[] = " ORDER BY " . $field . " " . $dir;
+        }
         if($this->offset)
             $query[] = "OFFSET " . $this->offset;
         if($this->limit)

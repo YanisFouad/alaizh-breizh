@@ -1,4 +1,4 @@
-.modal {
+.modal#authentication-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,14 +9,13 @@
 
     display: none;
 
-
     &>.center {
         background-color: $white;
         border-radius: 10px;
         padding: 2em 3em;
         
         position: absolute;
-        top: 50%;
+        top: 45%;
         left: 50%;
 
         width: 30em;
@@ -48,6 +47,7 @@
             text-align: center;
             font-weight: normal;
             font-family: "poppins-regular", sans-serif;
+            color: $black;
         }
 
         &>.close {
@@ -56,6 +56,7 @@
             right: 15px;
 
             background-color: $gray-4;
+            color: $black;
             font-size: 1.1em;
 
             padding: .3em .6em;
@@ -73,7 +74,7 @@
             }
     
             &>.forgot-password {
-                color: $gray-1;
+                color: $black;
                 display: block;
                 text-align: end;
                 font-size: .9em;
@@ -114,7 +115,7 @@
 
                     transform: translateY(-50%);
 
-                    background-color: $gray-2;
+                    background-color: $gray-4;
                 }
             }
 

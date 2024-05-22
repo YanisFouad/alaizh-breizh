@@ -158,13 +158,14 @@ CREATE TABLE _notification (
 
 CREATE TABLE _departement (
     num_departement VARCHAR(3) PRIMARY KEY,
-    nom_departement VARCHAR(20)
+    nom_departement VARCHAR(100)
 );
 
 CREATE TABLE _commune (
     num_departement VARCHAR(3),
-    nom_commune VARCHAR(40),
-    CONSTRAINT commune_pk PRIMARY KEY(num_departement,nom_commune),
+    nom_commune VARCHAR(200),
+    code_postal VARCHAR(10),
+    CONSTRAINT commune_pk PRIMARY KEY(code_postal,nom_commune),
     CONSTRAINT commune_fk_department FOREIGN KEY(num_departement) 
             REFERENCES _departement(num_departement)
 );
@@ -538,8 +539,8 @@ CREATE TRIGGER tg_update_logement
     FOR EACH ROW
     EXECUTE PROCEDURE update_logement();
 
-COPY _adresse(id_adresse, code_postal_adresse, ville_adresse, rue_adresse, complement_adresse, pays_adresse) 
-FROM '/docker-entrypoint-initdb.d/csv.csv'
+COPY _adresse(id_adresse, numero, complement_numero, rue_adresse, complement_adresse, ville_adresse, code_postal_adresse, pays_adresse) 
+FROM '/docker-entrypoint-initdb.d/adresse.csv'
 DELIMITER ','
 CSV HEADER; 
 
@@ -580,5 +581,20 @@ CSV HEADER;
 
 COPY _logement_amenagement(id_logement, nom_amenagement)
 FROM '/docker-entrypoint-initdb.d/amenagement.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY _reservation(id_reservation,id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_nuitee_ttc,est_payee,est_annulee,prix_total)
+FROM '/docker-entrypoint-initdb.d/reservation.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY _departement(num_departement, nom_departement)
+FROM '/docker-entrypoint-initdb.d/departement.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY _commune(nom_commune, num_departement, code_postal)
+FROM '/docker-entrypoint-initdb.d/commune.csv'
 DELIMITER ','
 CSV HEADER;

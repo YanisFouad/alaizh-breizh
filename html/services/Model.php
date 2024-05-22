@@ -24,8 +24,16 @@ class Model {
      */
     public function set($key, $value) {
         if(!in_array($key, array_keys($this->schema)))
-            throw new Exception("Table column: '" . $key . "' not found in defined schema");
+            throw new SchemaValidationException("Table column: '" . $key . "' not found in defined schema");
         $this->data[$key] = $value;
+    }
+
+    /**
+     * verify if a key exists or not
+     * @return boolean if the key exists or not
+     */
+    public function has($key) {
+        return array_key_exists($key, $this->data);
     }
 
     /**
@@ -33,7 +41,25 @@ class Model {
      * @return object|null the data associated, or null if not found.
      */
     public function get($key) {
-        return $this->data[$key] ?? null;
+        $value = $this->data[$key] ?? null;
+        $props = $this->schema[$key];
+
+        if(array_key_exists("type", $props)) {
+            if($props["type"] === "date")
+                $value = date_create($value);
+        }
+
+        // getters are over than default variables
+        if(array_key_exists("get", $props)) {
+            $getter = $props["get"];
+            return is_callable($getter) ? 
+                $getter($this) : $getter;
+        }
+        if(!isset($value)) {
+            if(array_key_exists("default", $props))
+                return $props["default"];
+        }
+        return $value;
     }
 
     /**
@@ -47,8 +73,10 @@ class Model {
                     throw new SchemaValidationException("Missing required field '" . $field . "'.");
                 }
             }
-
-            // we can imagine having more validation later if needed
+            
+            if(array_key_exists("type", $props) && array_key_exists($field, $this->data) && !is_a($this->data[$field], $props["type"])) {
+                throw new SchemaValidationException("Validation failed: invalid type for field '" . $field . "', type excepted: '" . $props["type"] . "', actual: '" . gettype($this->data[$field]) . "'");
+            }
         }
     }
 
@@ -66,15 +94,15 @@ class Model {
      * @return $request the request used to save the delegate or throws an error
      */
     public function save() {
-        // before saving, check if it's correspond to the schema
-        $this->checkSchema();
-
         $keys = array_keys($this->data);
         $values = array_values($this->data);
         $primaryField = $this->getPrimaryField();
 
         // if it's a new row then insert it
         if($primaryField === null || $this->isNew) {
+            // before inserting, check if it's correspond to the schema
+            $this->checkSchema();
+
             $fill = array_fill(0, sizeof($keys), "?");
             $request = Database::getConnection()->prepare("INSERT INTO " . $this->tableName . " (".join(",", $keys).") VALUES (".join(",", $fill).")");
         } else {
@@ -99,6 +127,10 @@ class Model {
         $request->execute();
 
         return $request;
+    }
+
+    public function __toString() {
+        return json_encode($this->data, JSON_PRETTY_PRINT);
     }
 
 }

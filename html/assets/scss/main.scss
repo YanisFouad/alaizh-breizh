@@ -58,3 +58,9 @@ h1, h2 {
 
 // liste réservation
 @import "liste_reservation_proprietaire";
+
+// backoffice
+@import "views/backoffice/layout/header.scss";
+@import "views/backoffice/authentication/login.scss";
+
+@import "views/backoffice/accomodations/new-accommodation.scss";
