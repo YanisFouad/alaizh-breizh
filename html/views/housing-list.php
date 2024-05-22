@@ -1,11 +1,11 @@
 <?php 
-   require_once("../models/AccommodationsModel.php");
-   require_once("layout/header.php"); 
-?>
-<?php 
-   $accomodations = AccommodationsModel::find(0, 10);
-
    $pageTitle = "Liste des logements"; 
+   
+   require_once("../models/AccommodationModel.php");
+   require_once("layout/header.php"); 
+
+   $accomodations = AccommodationModel::find(0, 10);
+
 
    $cityList = array ("Crozon", "Lannion", "Morlaix", "Nantes", "Perros-Guirec", "Rennes", "Saint-Philbert-de-Grand-Lieu", "Vannes");
    $departmentList = array ("Côtes d'Armor", "Finistère", "Ille-et-Vilaine", "Loire-Atlantique", "Morbihan");
@@ -21,7 +21,7 @@
    <section id="filter-container" class="hidden">
       <div id="filter-title-container">
          <h1>Filtres</h1>
-         <button>Tout effacer</button>
+         <button class="secondary">Tout effacer</button>
       </div>
       
       <section id="city-filter-container">
@@ -30,11 +30,11 @@
             <span id="city-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('city-list', 'city-chevron-down', 'city-chevron-up')"></span>
             <span id="city-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('city-list', 'city-chevron-down', 'city-chevron-up')"></span>
          </div>
-         <ul id="city-list" class="hidden">
+         <ul id="city-list" class="displayed">
          <?php foreach($accomodations as $accomodation) {?>
                <li>
-                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', $city)); ?>" name="<?php echo strtolower(str_replace(' ', '-', $city)); ?>"/>
-                  <label for="<?php echo strtolower(str_replace(' ', '-', $city)); ?>"><?php echo $accomodation->get("id_logement") ?></label>
+                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>" name="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>"/>
+                  <label for="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>"><?php echo $accomodation->get("id_logement") ?></label>
                </li>
             <?php } ?>
          </ul>
@@ -62,7 +62,7 @@
             <span id="price-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('price-min-max-container', 'price-chevron-down', 'price-chevron-up')"></span>
             <span id="price-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('price-min-max-container', 'price-chevron-down', 'price-chevron-up')"></span>
          </div>
-         <ul id="price-min-max-container" class="hidden">
+         <ul id="price-min-max-container" class="displayed">
             <div>
                <input type="text" id="min-price" name="min-price" placeholder="Prix minimum"/>
             </div>
@@ -72,7 +72,7 @@
          </ul>
       </section>
 
-      <section id="notation-filter-container">
+      <section id="notation-filter-container" class="hidden">
          <div>
             <h3>Note</h3>
             <span id="notation-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('stars-notation-container', 'notation-chevron-down', 'notation-chevron-up')"></span>
@@ -116,9 +116,11 @@
       <div id="housing-title-search-container">
          <h1>Logements (<?php echo $numberOfResults; ?>)</h1>
          <form class="compact-search-bar">
-            <input type="text" placeholder="Rechercher..." class="search-input">
-            <input placeholder="Date de séjour" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-            <input type="text" placeholder="2 voyageurs" class="travelers-number-input">
+            <div>
+               <input type="text" placeholder="Rechercher..." id="search-input-compact" class="search-input">
+               <input placeholder="Date de séjour" id="date-input-compact" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+               <input type="text" placeholder="2 voyageurs" id="travelers-input-compact" class="travelers-number-input">
+            </div>
             <button><span class="mdi mdi-magnify"></span></button>
          </form>
       </div>
@@ -128,26 +130,27 @@
       </div>
 
       <section class="housing-list">
-         <?php for ($i = 1; $i <= 10; $i++) {?>
+         <?php foreach($accomodations as $accomodation) {?>
             <article class="housing-item">
                <div class="housing-image-item-container">
                   <!-- PHP -->
+                  <!--<img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Logement">-->
                   <img src="../../images/logement-test.jpeg" alt="Logement">
                </div>
                <div class="housing-text-details">
                   <div class="housing-description-container">
-                     <h4 class="housing-description"><abbr title="<?php echo $housingTitleDescription; ?>"><?php echo $housingTitleDescription; ?></abbr></h4>
-                     <div class="star-notation-container">
+                     <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
+                     <!--<div class="star-notation-container hidden">
                         <span class="mdi mdi-star"></span>
-                        <h4><?php echo $housingRating; ?></h4>
-                     </div>
+                        <h4><?php //echo $housingRating; ?></h4>
+                     </div>-->
                   </div>
                   <div class="housing-location-container">
                      <span class="mdi mdi-map-marker"></span>
                      <h4 class="housing-location"><abbr title="<?php echo $housingCity; ?>, <?php echo $housingDepartment; ?>"><?php echo $housingCity; ?>, <?php echo $housingDepartment; ?></h4>
                   </div>
                   <div class="housing-price-container">
-                     <span class="housing-price"><?php echo $pricePerNight; ?>€</span><span class="per-night">par nuit</span>
+                     <span class="housing-price"><?php echo $accomodation->get("prix_ht_logement"); ?>€</span><span class="per-night">par nuit</span>
                   </div>
                </div>
             </article>

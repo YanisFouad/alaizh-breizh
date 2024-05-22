@@ -16,8 +16,8 @@
             <a class="fullsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_fullsizeh.svg" alt="Logo ALHaiZ Breizh"></a>
             <a class="smallsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_mini.svg" alt="Logo ALHaiZ Breizh"></a>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="">Logements</a></li>
+                <li><a href="../home.php">Accueil</a></li>
+                <li><a href="../housing-list.php">Logements</a></li>
             </ul>
             <div id="sign-in-up-container" onclick="openLoginModal()">
                 <span class="mdi mdi-account-circle-outline"></span>
@@ -37,8 +37,8 @@
             <a class="fullsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_fullsizeh.svg" alt="Logo ALHaiZ Breizh"></a>
             <a class="smallsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_mini.svg" alt="Logo ALHaiZ Breizh"></a>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="">Logements</a></li>
+                <li><a href="../home.php">Accueil</a></li>
+                <li><a href="../housing-list.php">Logements</a></li>
             </ul>
             <div id="sign-in-up-container" onclick="openLoginModal()">
                 <span class="mdi mdi-account-circle-outline"></span> <!-- Photo du mec -->

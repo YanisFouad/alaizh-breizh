@@ -1,14 +1,14 @@
 <?php 
    $pageTitle = "Page d'accueil"; 
+   require_once("layout/header.php");
+   require_once("../models/AccommodationModel.php");
+   $accomodations = AccommodationModel::find(0, 10);
 
-   $housingTitleDescription = "Petite maison, proche du port";
    $housingCity = "Perros-Guirec";
    $housingDepartment = "Côtes d'Armor";
    $housingRating = "5,0";
    $pricePerNight = "60";
 ?>
-<?php require_once("layout/header.php"); ?>
-
 
 <section id="home-page">
    <section id="cover-search-bar">
@@ -36,35 +36,32 @@
       </div>
 
       <section class="housing-list">
-         <!-- PHP -->
-         <?php for ($i = 1; $i <= 10; $i++) {?>
+         <?php foreach($accomodations as $accomodation) {?>
             <article class="housing-item">
                <div class="housing-image-item-container">
-                  <!-- PHP -->
-                  <img src="../../images/logement-test.jpeg" alt="Logement">
+                  <img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Photo logement">
                </div>
                <div class="housing-text-details">
                   <div class="housing-description-container">
-                     <h4 class="housing-description"><abbr title="<?php echo $housingTitleDescription; ?>"><?php echo $housingTitleDescription; ?></abbr></h4>
-                     <div class="star-notation-container">
+                     <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
+                     <!--<div class="star-notation-container">
                         <span class="mdi mdi-star"></span>
-                        <h4><?php echo $housingRating; ?></h4>
-                     </div>
+                        <h4><?php //echo $housingRating; ?></h4>
+                     </div>-->
                   </div>
                   <div class="housing-location-container">
                      <span class="mdi mdi-map-marker"></span>
                      <h4 class="housing-location"><abbr title="<?php echo $housingCity; ?>, <?php echo $housingDepartment; ?>"><?php echo $housingCity; ?>, <?php echo $housingDepartment; ?></h4>
                   </div>
                   <div class="housing-price-container">
-                     <span class="housing-price"><?php echo $pricePerNight; ?>€</span><span class="per-night">par nuit</span>
+                     <span class="housing-price"><?php echo $accomodation->get("prix_ht_logement"); ?>€</span><span class="per-night">par nuit</span>
                   </div>
                </div>
             </article>
          <?php } ?>
 
          <div class="show-all-button-container">
-            <button class="show-all-button">Afficher tout<span class="mdi mdi-chevron-right"></span></button>
-         </div>
+            <a href="./housing-list.php"><button class="show-all-button">Afficher tout<span class="mdi mdi-chevron-right"></span></button>
       </section>
    </section>
 </section>
