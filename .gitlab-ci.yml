@@ -17,8 +17,12 @@ a11y:
 code_quality:
   variables:
     SOURCE_CODE: /html/views
+    REPORT_FORMAT: html
+  artifacts:
+    paths: [gl-code-quality-report.html]
   rules:
     - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME =~ /feature\/.*/'
+  parallel: 2
 
 deploy:
   stage: deploy
