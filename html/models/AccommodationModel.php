@@ -3,6 +3,7 @@
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
 require_once(__DIR__."/../services/RequestBuilder.php");
+require_once(__DIR__."/../services/FileLogement.php");
 
 class AccommodationModel extends Model {
 
@@ -13,8 +14,10 @@ class AccommodationModel extends Model {
             "id_logement" => array("primary" => true),
             "id_proprietaire" => array("required" => true),
             "id_adresse" => array("required" => true),
-            "titre_logement " => array("required" => true),
-            "photo_logement" => array(),
+            "titre_logement" => array("required" => true),
+            "photo_logement" => array(
+                "get" => array($this, "computeAccomodationPicture")
+            ),
             "accroche_logement" => array(),
             "description_logement" => array(),
             "gps_longitude_logement" => array(),
@@ -39,6 +42,12 @@ class AccommodationModel extends Model {
             "ville_adresse" => array(),
             "code_postal_adresse" => array(),
             "pays_adresse" => array(),
+            "activites" => array(
+                "get" => array($this, "computeActivities")
+            ),
+            "amenagements" => array(
+                "get" => array($this, "computeAmenagements")
+            ),
             "activite_1" => array(),
             "activite_2" => array(),
             "activite_3" => array(),
@@ -73,6 +82,40 @@ class AccommodationModel extends Model {
         ), $data, $isNew);
     }
 
+    public function computeActivities($model) {
+        $activites = [];
+        $i = 1;
+        do {
+            $activites[] = array(
+              "name" => $model->get("activite_".$i),
+              "id" => $model->get("id_activite_".$i),
+              "perimetre" => $model->get("perimetre_activite_".$i)
+            );
+            $i++;
+        } while($model->get("activite_".$i) !== null);
+        return $activites;
+    }
+
+    public function computeAmenagements($model) {
+        $amenagements = [];
+        $i = 1;
+        do {
+            $amenagements[] = array(
+              "name" => $model->get("amenagement_".$i),
+              "id" => $model->get("id_amenagement_".$i),
+            );
+            $i++;
+        } while($model->get("amenagement_".$i) !== null);
+        return $amenagements;
+    }
+
+    public function computeAccomodationPicture($model) {
+        return FileLogement::get(
+            $model->get("id_logement"),
+            $model->get("type_logement")
+        );
+    }
+
     public static function find($offset = 0, $limit = 10, $projection = "*") {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
@@ -91,6 +134,8 @@ class AccommodationModel extends Model {
             ->where("id_logement = ?", $id)
             ->execute()
             ->fetchOne();
+        if($result == null)
+            return null;
         return new self($result, false);
     }
 

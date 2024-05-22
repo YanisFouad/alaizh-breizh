@@ -13,8 +13,8 @@ class BookingModel extends Model {
             "id_locataire" => array(),
             "id_logement" => array(),
             "nb_nuit" => array(),
-            "date_arrivee" => array(),
-            "date_depart" => array(),
+            "date_arrivee" => array("type" => "date"),
+            "date_depart" => array("type" => "date"),
             "nb_voyageur" => array(),
             "date_reservation" => array(),
             "frais_de_service" => array(),
@@ -43,6 +43,8 @@ class BookingModel extends Model {
             ->where("id_reservation = ?", $id)
             ->execute()
             ->fetchOne();
+        if($result == null)
+            return $result;
         return new self($result, false);
     }
 

@@ -2,8 +2,8 @@
 
 class FileLocataire {
 
-    private const FILE_PATH = "files/locataires/";
-    private const DEFAULT_LOCATAIRE_PATH = "files/locataires/default.webp";
+    private const FILE_PATH = "/files/locataires/";
+    private const DEFAULT_LOCATAIRE_PATH = "/files/locataires/default.webp";
 
     public static function save($locataireId, $file) {
         $target_dir = self::FILE_PATH;
@@ -57,6 +57,7 @@ class FileLocataire {
 
     public static function get($locataireId) {
         $target_file = glob(self::FILE_PATH . $locataireId . "*");
+        //echo $target_file[0];
         $target_file = empty($target_file) ? false : $target_file[0];
         if ($target_file) {
             return $target_file;

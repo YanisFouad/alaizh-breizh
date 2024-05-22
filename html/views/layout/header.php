@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/materialdesignicons.min.css">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <title><?php echo $pageTitle; ?></title>
 </head>
 <body>

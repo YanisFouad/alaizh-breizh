@@ -6,5 +6,7 @@
             <div><a href="">Conditions générales de vente <span class="mdi mdi-open-in-new"></span></a></div>
         </nav>
     </footer>
+
+    <?php ScriptLoader::render(); ?>
 </body>
 </html>

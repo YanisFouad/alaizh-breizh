@@ -96,6 +96,9 @@ header#backoffice {
                     list-style: none;
                     &>li {
                         cursor: pointer;
+                        & button {
+                            width: 100%;
+                        }
                         &:hover {
                             background-color: $gray-1;
                             transition: .5s all ease;

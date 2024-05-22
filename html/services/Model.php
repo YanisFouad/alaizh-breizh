@@ -41,7 +41,25 @@ class Model {
      * @return object|null the data associated, or null if not found.
      */
     public function get($key) {
-        return $this->data[$key] ?? null;
+        $value = $this->data[$key] ?? null;
+        $props = $this->schema[$key];
+
+        if(array_key_exists("type", $props)) {
+            if($props["type"] === "date")
+                $value = date_create($value);
+        }
+
+        // getters are over than default variables
+        if(array_key_exists("get", $props)) {
+            $getter = $props["get"];
+            return is_callable($getter) ? 
+                $getter($this) : $getter;
+        }
+        if(!isset($value)) {
+            if(array_key_exists("default", $props))
+                return $props["default"];
+        }
+        return $value;
     }
 
     /**
@@ -109,6 +127,10 @@ class Model {
         $request->execute();
 
         return $request;
+    }
+
+    public function __toString() {
+        return json_encode($this->data, JSON_PRETTY_PRINT);
     }
 
 }
