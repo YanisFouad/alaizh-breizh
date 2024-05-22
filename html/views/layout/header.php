@@ -11,7 +11,7 @@
     <title>Alhaiz Breizh</title>
 </head>
 <body>
-    <?=var_dump(UserSession::isConnected())?>;
+
     <?php if(!UserSession::isConnected()) { ?>
         <header>
             BLABLABLA

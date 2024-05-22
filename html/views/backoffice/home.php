@@ -39,7 +39,7 @@
             ?>
             <article class="card-logement">
                 <div class="img-logement-container">
-                    <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement" width="100">
+                    <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
                 </div>
                 <div class="description-logement-container">
                     <h2 class="title-logement"> <?= $logement->get("titre_logement") ?></h2>

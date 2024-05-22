@@ -14,7 +14,7 @@ class HomeBackofficeController {
     public function __construct() {
 
         if(!UserSession::isConnected()) {
-            require_once(__DIR__."/../authentication/login.php");
+            require_once("views/backoffice/authentication/login.php");
             exit;
         } else {
             $this->setUser(UserSession::get());
