@@ -139,4 +139,27 @@ class AccommodationModel extends Model {
         return new self($result, false);
     }
 
+    public static function findById($id, $offset = 0, $limit = 10, $projection = "*") {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->limit($limit)
+            ->where("id_proprietaire = ?", $id)
+            ->offset($offset)
+            ->execute()
+            ->fetchMany();
+
+        return array_map(function($row) {
+            return new self($row, false);
+        }, $result);
+    }
+
+    public static function findAllById($id, $projection = "*") {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection($projection)
+            ->where("id_proprietaire = ?", $id)
+            ->execute()
+            ->fetchMany();
+
+        return $result;
+    }
 }
