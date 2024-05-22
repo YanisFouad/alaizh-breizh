@@ -7,10 +7,15 @@ include:
   - template: Jobs/Code-Quality.gitlab-ci.yml
   - template: Verify/Accessibility.gitlab-ci.yml
 
-a11y:
-  variables:
-      a11y_urls: "https://lav15.ventsdouest.dev"
-  # artifacts:
+
+variables:
+  a11y_urls: "https://lav15.ventsdouest.dev"
+
+# a11y:
+#   stage: accessilibity
+#   variables:
+#       a11y_urls: "https://lav15.ventsdouest.dev"
+#   # artifacts:
   #   paths: [gl-accessibility.json]
   #   reports:
   #     codequality:
