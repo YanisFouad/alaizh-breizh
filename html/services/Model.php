@@ -129,7 +129,7 @@ class Model {
         return $request;
     }
 
-    public function asJSON() {
+    public function getData() {
         return $this->data;
     }
 
