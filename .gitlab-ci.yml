@@ -11,9 +11,8 @@ a11y:
   stage: web-accessilibity
   variables:
       a11y_urls: "https://lav15.ventsdouest.dev"
-  only:
-    refs:
-      - main
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
 
 code_quality:
   stage: test
@@ -24,10 +23,8 @@ code_quality:
     reports:
       codequality:
         - gl-code-quality-report.json
-  only:
-    refs:
-      - develop
-      - feature/.*
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME =~ /feature\/.*/'
 
 deploy:
   stage: deploy
