@@ -12,9 +12,9 @@
 <body>
     <main id="login">
         <form action="#" onsubmit="handleLogin(event)">
-            <h2>Connexion propriétaire</h2>
 
             <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
+            <h2>Connexion propriétaire</h2>
 
             <div role="dialog" class="error-message" class="mdi mdi-information error-message"></div>
 

@@ -539,6 +539,7 @@ header#backoffice > aside > span.owner {
   text-align: end;
   font-size: 0.9em;
   margin-bottom: 0.7em;
+  color: white;
 }
 #login > form > button {
   width: 100%;
