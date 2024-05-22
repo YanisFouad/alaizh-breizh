@@ -9,6 +9,9 @@ $router = new Router();
 // home & default view
 $router->add("/", "views/home.php");
 
+// bookings
+$router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
+
 // account profile & public profile view
 $router->add("/profil", "views/account/profile.php");
 

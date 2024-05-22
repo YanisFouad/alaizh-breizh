@@ -4,14 +4,18 @@ abstract class BaseFile {
 
     abstract protected static function getPath();
 
+    private static function formatFilename($fileName) {
+        return "/" . static::getPath() . $fileName;
+    }
+
     public static function get($fileName) {
         $path = realpath(static::getPath());
         $result = glob($path."/".$fileName."*");
         if(count($result) < 1)
-            throw new Exception("No found for for '".$fileName."'");
+            return self::formatFilename("default.webp");
         $file = $result[0];
         $file = basename($file);
-        return "/" . static::getPath() . $file;
+        return "/" . self::formatFilename($file);
     }
 
     public static function delete($fileName) {
