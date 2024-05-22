@@ -13,9 +13,9 @@ code_quality:
       codequality:
         - gl-code-quality-report.json
 
-accessilibity: 
-  stage: test
-  image: node:21-alpine
+# accessilibity: 
+#   stage: test
+#   image: node:21-alpine
   
 
 deploy:
