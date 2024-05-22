@@ -15,14 +15,8 @@ a11y:
     - if: '$CI_COMMIT_REF_NAME == "main"'
 
 code_quality:
-  stage: test
-  allow_failure: true
   variables:
-    REPORT_FORMAT: json
-  artifacts:
-    reports:
-      codequality:
-        - gl-code-quality-report.json
+    SOURCE_CODE: /html/views
   rules:
     - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME =~ /feature\/.*/'
 

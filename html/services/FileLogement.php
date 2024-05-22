@@ -1,5 +1,6 @@
 <?php
 
+
 class FileLogement {
 
     private const FILE_PATH = "files/logements/";
@@ -43,25 +44,18 @@ class FileLogement {
     }
 
     public static function delete($logementId, $logementType) {
-        $target_file = glob(self::FILE_PATH . $logementId . "_" . $logementType . "*")[0];
-        $target_file = empty($target_file) ? false : $target_file[0];
-        
-        if ($target_file) {
-            unlink($target_file);
-            return true;
-        } else {
-            return false;
-        }
+        $file = self::get($logementId, $logementType);
+        $file && unlink($file);
+        return !!$file;
     }
 
     public static function get($logementId, $logementType) {
-        $target_file = glob(self::FILE_PATH . $logementId . "_" . $logementType . "*")[0];
-        $target_file = empty($target_file) ? false : $target_file;
-
-        if ($target_file) {
-            return $target_file;
-        } else {
-            return false;
-        }
+        $path = realpath(self::FILE_PATH);
+        $target_file = glob($path . "/" . $logementId . "_" . $logementType . "*");
+        if(count($target_file) < 1)
+            throw new Exception("No file found for accommodation id: " . $logementId . " accommodation type: " . $logementType);
+        $target_file = $target_file[0];
+        $target_file = "/".self::FILE_PATH . str_replace($path."/", "", $target_file);
+        return empty($target_file) ? false : $target_file;
     }
 }
