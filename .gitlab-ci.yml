@@ -1,9 +1,20 @@
 stages:
   - test
   - deploy
+  - accessilibity
 
 include:
   - template: Jobs/Code-Quality.gitlab-ci.yml
+  - template: Verify/Accessibility.gitlab-ci.yml
+
+a11y:
+  variables:
+      a11y_urls: "https://lav15.ventsdouest.dev"
+  # artifacts:
+  #   paths: [gl-accessibility.json]
+  #   reports:
+  #     codequality:
+  #       - gl-accessibility.json
 
 code_quality:
   stage: test
@@ -11,7 +22,6 @@ code_quality:
   variables:
     REPORT_FORMAT: json
   artifacts:
-    paths: [gl-code-quality-report.json]
     reports:
       codequality:
         - gl-code-quality-report.json
@@ -36,5 +46,4 @@ deploy:
     - echo "Pulled"
   only:
     refs:
-      #- main
-      - feature/new-ci/cd
+      - main
