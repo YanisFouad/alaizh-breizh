@@ -1,7 +1,7 @@
 stages:
   - test
   - deploy
-  - accessilibity
+  - web-accessilibity
 
 include:
   - template: Jobs/Code-Quality.gitlab-ci.yml
@@ -9,7 +9,7 @@ include:
 
 
 a11y:
-  stage: accessilibity
+  stage: web-accessilibity
   variables:
       a11y_urls: "https://lav15.ventsdouest.dev"
   # artifacts:
