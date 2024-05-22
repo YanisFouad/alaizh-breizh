@@ -7,7 +7,6 @@ include:
 
 code_quality:
   stage: test
-  extends: code_quality
   allow_failure: true
   variables:
     REPORT_FORMAT: json
