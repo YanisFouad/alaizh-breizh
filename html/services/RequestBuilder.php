@@ -33,7 +33,7 @@ class RequestBuilder {
         return $this;
     }
 
-    public function where($clausure, $data) {
+    public function where($clausure, ...$data) {
         $this->whereClausures[$clausure] = $data;
         return $this;
     }
@@ -121,7 +121,8 @@ class RequestBuilder {
             $clasures = array();
             foreach($this->whereClausures as $clausure => &$data) {
                 $clasures[] = $clausure;
-                $params[] = $data;
+                foreach($data as $d)
+                    $params[] = $d;
             }
             $query[] = join(" AND ", $clasures);
         }
