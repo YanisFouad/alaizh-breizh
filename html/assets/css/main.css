@@ -895,205 +895,6 @@ abbr[title] {
   display: block;
 }
 
-header#backoffice {
-  background-color: #222524;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8em 2em;
-  color: white;
-}
-header#backoffice a {
-  color: white;
-  text-decoration: none;
-}
-header#backoffice > a > img {
-  width: 10em;
-  filter: invert(1);
-}
-header#backoffice > nav > ul {
-  list-style: none;
-}
-header#backoffice > nav > ul > li > a {
-  transition: 0.5s ease all;
-}
-header#backoffice > nav > ul > li > a:hover {
-  color: #ffd6bb;
-}
-header#backoffice > aside {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-header#backoffice > aside > a > button {
-  border: 1px solid white;
-  border-radius: 10px;
-  color: white;
-  position: relative;
-  padding-right: 2.8em;
-}
-header#backoffice > aside > a > button > .mdi {
-  font-size: 1.8em;
-  position: absolute;
-  top: 20%;
-  right: 10px;
-}
-header#backoffice > aside > a > button:hover {
-  background-color: white;
-  color: #222524;
-}
-header#backoffice > aside > #profile {
-  position: relative;
-}
-header#backoffice > aside > #profile > .infos {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  padding-right: 2.5em;
-}
-header#backoffice > aside > #profile > .infos > img {
-  width: 2.5em;
-  border-radius: 100px;
-}
-header#backoffice > aside > #profile > .infos > .mdi {
-  font-size: 1.4em;
-  position: absolute;
-  right: 10px;
-  top: 20%;
-}
-header#backoffice > aside > #profile > .dropdown {
-  position: absolute;
-  top: 3em;
-  width: 100%;
-  display: none;
-  background-color: #222524;
-  border-radius: 10px;
-  padding: 0.4em 0;
-  box-shadow: -1px 2px 3px rgba(102, 102, 102, 0.2588235294);
-}
-header#backoffice > aside > #profile > .dropdown * {
-  color: white;
-}
-header#backoffice > aside > #profile > .dropdown > ul {
-  list-style: none;
-}
-header#backoffice > aside > #profile > .dropdown > ul > li {
-  cursor: pointer;
-}
-header#backoffice > aside > #profile > .dropdown > ul > li button {
-  width: 100%;
-}
-header#backoffice > aside > #profile > .dropdown > ul > li:hover {
-  background-color: #424645;
-  transition: 0.5s all ease;
-}
-header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
-  color: #ffd6bb;
-}
-header#backoffice > aside > span.owner {
-  border-radius: 10px;
-  color: #804e2e;
-  background-color: #ffd6bb;
-  font-family: "poppins-medium", sans-serif;
-  padding: 0.3em 0.8em;
-  font-size: 0.9em;
-}
-
-#login {
-  height: 100vh;
-  background-color: #222524;
-}
-#login > form {
-  width: 30em;
-  height: 90%;
-  align-content: center;
-  margin: 0 auto;
-}
-#login > form > .error-message {
-  background-color: #ffd0d0;
-  color: #ce4b4b;
-  padding: 0.8em 1em;
-  border-radius: 10px;
-  margin: 0.8em 0;
-  font-size: 0.9em;
-  display: none;
-  position: relative;
-  padding-left: 2.3em;
-}
-#login > form > .error-message::before {
-  position: absolute;
-  left: 10px;
-  font-size: 1.2em;
-}
-#login > form > h2 {
-  text-align: center;
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-  color: white;
-}
-#login > form > img {
-  width: 14em;
-  margin: 0.5em auto;
-  display: block;
-  filter: invert(1);
-}
-#login > form > .form-field {
-  margin: 1em 0;
-}
-#login > form > .form-field > label {
-  color: white;
-}
-#login > form > .form-field > input {
-  background-color: #424645;
-  color: white;
-  transition: 0.5s ease all;
-}
-#login > form > .form-field > input:is(:hover, :focus) {
-  border-color: white;
-}
-#login > form > .forgot-password {
-  color: #222524;
-  display: block;
-  text-align: end;
-  font-size: 0.9em;
-  margin-bottom: 0.7em;
-  color: white;
-}
-#login > form > button {
-  width: 100%;
-}
-#login > form > button:first-of-type {
-  margin-top: 1em;
-}
-#login > form > .another-choice {
-  display: block;
-  margin: 1.5em 0;
-  color: #676767;
-  text-align: center;
-  position: relative;
-}
-#login > form > .another-choice > .text {
-  display: block;
-  background-color: #222524;
-  margin: auto;
-  width: fit-content;
-  padding: 0 1em;
-  position: relative;
-  z-index: 99;
-  color: white;
-}
-#login > form > .another-choice > .line {
-  display: block;
-  height: 1px;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #f7f7f7;
-}
-
 button {
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
@@ -1357,13 +1158,13 @@ h5 {
   grid-template-columns: 1.5fr 1fr;
   margin: auto;
   padding-bottom: 1em;
-  padding-right: 1em;
 }
 #box-Activites-Amenagement ul {
   display: grid;
-  grid-template-columns: 283px 1fr;
+  grid-template-columns: 1.5fr 1fr;
   list-style-type: none;
   margin: auto;
+  padding-right: 1em;
 }
 #box-Activites-Amenagement ul li {
   margin-top: 1em;
@@ -1371,4 +1172,203 @@ h5 {
 #box-Activites-Amenagement ul li span {
   font-size: 1.8em;
   color: #424645;
+}
+
+header#backoffice {
+  background-color: #222524;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 2em;
+  color: white;
+}
+header#backoffice a {
+  color: white;
+  text-decoration: none;
+}
+header#backoffice > a > img {
+  width: 10em;
+  filter: invert(1);
+}
+header#backoffice > nav > ul {
+  list-style: none;
+}
+header#backoffice > nav > ul > li > a {
+  transition: 0.5s ease all;
+}
+header#backoffice > nav > ul > li > a:hover {
+  color: #ffd6bb;
+}
+header#backoffice > aside {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+header#backoffice > aside > a > button {
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  padding-right: 2.8em;
+}
+header#backoffice > aside > a > button > .mdi {
+  font-size: 1.8em;
+  position: absolute;
+  top: 20%;
+  right: 10px;
+}
+header#backoffice > aside > a > button:hover {
+  background-color: white;
+  color: #222524;
+}
+header#backoffice > aside > #profile {
+  position: relative;
+}
+header#backoffice > aside > #profile > .infos {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-right: 2.5em;
+}
+header#backoffice > aside > #profile > .infos > img {
+  width: 2.5em;
+  border-radius: 100px;
+}
+header#backoffice > aside > #profile > .infos > .mdi {
+  font-size: 1.4em;
+  position: absolute;
+  right: 10px;
+  top: 20%;
+}
+header#backoffice > aside > #profile > .dropdown {
+  position: absolute;
+  top: 3em;
+  width: 100%;
+  display: none;
+  background-color: #222524;
+  border-radius: 10px;
+  padding: 0.4em 0;
+  box-shadow: -1px 2px 3px rgba(102, 102, 102, 0.2588235294);
+}
+header#backoffice > aside > #profile > .dropdown * {
+  color: white;
+}
+header#backoffice > aside > #profile > .dropdown > ul {
+  list-style: none;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li {
+  cursor: pointer;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li button {
+  width: 100%;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover {
+  background-color: #424645;
+  transition: 0.5s all ease;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
+  color: #ffd6bb;
+}
+header#backoffice > aside > span.owner {
+  border-radius: 10px;
+  color: #804e2e;
+  background-color: #ffd6bb;
+  font-family: "poppins-medium", sans-serif;
+  padding: 0.3em 0.8em;
+  font-size: 0.9em;
+}
+
+#login {
+  height: 100vh;
+  background-color: #222524;
+}
+#login > form {
+  width: 30em;
+  height: 90%;
+  align-content: center;
+  margin: 0 auto;
+}
+#login > form > .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#login > form > .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#login > form > h2 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: white;
+}
+#login > form > img {
+  width: 14em;
+  margin: 0.5em auto;
+  display: block;
+  filter: invert(1);
+}
+#login > form > .form-field {
+  margin: 1em 0;
+}
+#login > form > .form-field > label {
+  color: white;
+}
+#login > form > .form-field > input {
+  background-color: #424645;
+  color: white;
+  transition: 0.5s ease all;
+}
+#login > form > .form-field > input:is(:hover, :focus) {
+  border-color: white;
+}
+#login > form > .forgot-password {
+  color: #222524;
+  display: block;
+  text-align: end;
+  font-size: 0.9em;
+  margin-bottom: 0.7em;
+  color: white;
+}
+#login > form > button {
+  width: 100%;
+}
+#login > form > button:first-of-type {
+  margin-top: 1em;
+}
+#login > form > .another-choice {
+  display: block;
+  margin: 1.5em 0;
+  color: #676767;
+  text-align: center;
+  position: relative;
+}
+#login > form > .another-choice > .text {
+  display: block;
+  background-color: #222524;
+  margin: auto;
+  width: fit-content;
+  padding: 0 1em;
+  position: relative;
+  z-index: 99;
+  color: white;
+}
+#login > form > .another-choice > .line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f7f7f7;
 }

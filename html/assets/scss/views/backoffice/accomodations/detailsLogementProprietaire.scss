@@ -88,8 +88,6 @@ h5 {
     display: flex;
     flex-direction: column;
 
-    
-
     .mdi.mdi-chevron-right {
         position: relative;
         top: 1px;
@@ -240,17 +238,17 @@ h5 {
                 grid-template-columns: 1.5fr 1fr;
                 margin: auto;
                 padding-bottom: 1em;
-                padding-right: 1em;
+                
             }
         }
     }
 
     ul {
         display: grid;
-        grid-template-columns: 283px 1fr;
+        grid-template-columns: 1.5fr 1fr;
         list-style-type: none;
         margin: auto;
-
+        padding-right: 1em;
         li {
             margin-top: 1em;
 

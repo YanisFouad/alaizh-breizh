@@ -122,8 +122,10 @@
                     </p>
 
                     <div>
-                        <h3>Classe energetique</h3>
-                        <img src="./images/labels/energyLabelF.png">
+                        <?php if($logement->get('classe_energetique')){?>
+                            <h3>Classe energetique</h3>
+                            <img src="../../../images/labels/energyLabel<?=$logement->get('classe_energetique');?>.png">
+                        <?php } ?>
                     </div>
                 </article>
 
