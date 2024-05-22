@@ -150,23 +150,74 @@ button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
   margin-bottom: 0.5em;
   text-align: start;
 }
+.form-field > label.required::after {
+  content: " *";
+  color: #ce4b4b;
+}
 
-input, textarea {
+input, textarea, select {
   font-family: "comfortaa-regular", sans-serif;
   padding: 0.8em 0.5em;
   border-radius: 7px;
   border: 1px solid #676767;
   width: 100%;
 }
-input:disabled, textarea:disabled {
+input:disabled, textarea:disabled, select:disabled {
   opacity: 60%;
 }
-input:is(:hover, :focus), textarea:is(:hover, :focus) {
+input:is(:hover, :focus), textarea:is(:hover, :focus), select:is(:hover, :focus) {
   border-color: #1b5734;
 }
 
 textarea {
   resize: vertical;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox]:checked + label::after {
+  background-color: #804e2e;
+}
+input[type=checkbox]:not(:checked):hover + label::before {
+  color: #804e2e;
+}
+input[type=checkbox]:checked + label::after, input[type=checkbox]:focus + label::after {
+  box-shadow: 0 0 0 2px rgba(128, 78, 46, 0.2);
+}
+input[type=checkbox] + label {
+  position: relative;
+  display: block;
+  padding-left: 2em;
+  cursor: pointer;
+}
+input[type=checkbox] + label::before, input[type=checkbox] + label::after {
+  transition: 0.2s all ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[type=checkbox] + label::after {
+  left: 0;
+  content: "";
+  display: block;
+  border: 2px solid #804e2e;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+}
+input[type=checkbox] + label::before {
+  left: 3px;
+  color: white;
+  z-index: 1;
+}
+
+select {
+  position: relative;
+  cursor: pointer;
+  color: #676767;
+  appearance: none;
+  user-select: none;
 }
 
 /* VIEWS */
@@ -527,4 +578,155 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+
+#new-accommodation {
+  width: 58em;
+  margin: auto;
+}
+#new-accommodation > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#new-accommodation > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-accommodation > form > section:first-of-type {
+  margin-top: unset;
+}
+#new-accommodation > form > section > h2, #new-accommodation > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#new-accommodation > form > section > h2 {
+  color: #424645;
+}
+#new-accommodation > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-image-plus {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > input {
+  width: 40%;
+}
+#new-accommodation > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
 }
