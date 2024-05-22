@@ -11,67 +11,49 @@
 }
 
 @import "assets/font-loader.scss";
+@import "utils/_variables.scss";
 
-body {
-   font-family: "comfortaa-regular", sans-serif;
-   color: $black;
-}
+/* IMPORT HERE ALL STYLES FROM VIEWS */
 
-h1,
-h2 {
-   font-family: "poppins-semibold", sans-serif;
-} 
+@import "details-logement.scss";
 
-h3,
-h4 {
-   font-family: "poppins-medium", sans-serif;
-}
+/* HEADER */
+header {
+    font-family: "comfortaa-regular";
+    background-color: white;
+    padding: 1em;
+    border-bottom: 2px solid $secondary-3;
+    img {
+        height: 3em;
+    }
+    nav {
+        ul {
+            display: flex;
+            li {
+                list-style: none;
+            }
+        }
+    }
+  }
 
-h1 {
-   font-size: $size-h1;
-}
-
-h2 {
-   font-size: $size-h2;
-}
-
-h3 {
-   font-size: $size-h3;
-}
-
-h4 {
-   font-size: $size-h4;
-}
-
-p {
-   font-family: "comfortaa-medium";
-   font-size: $size-paragraph;
-}
-
-// default components
-@import "assets/buttons";
-@import "assets/inputs";
-
-/* LAYOUT */
-@import "layout/header";
-@import "layout/footer"; 
-
-/* VIEWS */
-
-// errors
-@import "views/errors/404";
-
-// home page
-@import "views/home";
-
-// authentication
-@import "views/authentication/login";
-
-// account
-@import "views/account/profile";
-
-
-// backoffice
-@import "views/backoffice/layout/header.scss";
-
-@import "views/backoffice/accomodations/new.scss";
+/* FOOTER */
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "comfortaa-regular";
+    color: white;
+    a:visited {
+        color: white;
+    }
+    background-color: black;
+    padding: 1em;
+    margin-top: auto; /* pour conserver le footer en bas de page */
+    nav {
+        display: flex;
+        flex-direction: row;
+        a {
+            padding-left: 1em;
+        }
+      }
+  }
