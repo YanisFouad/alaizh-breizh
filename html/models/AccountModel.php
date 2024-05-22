@@ -2,8 +2,8 @@
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
 require_once(__DIR__."/../services/RequestBuilder.php");
-require_once(__DIR__."/../services/FileProprietaire.php");
-require_once(__DIR__."/../services/FileLocataire.php");
+require_once(__DIR__."/../services/fileManager/FileProprietaire.php");
+require_once(__DIR__."/../services/fileManager/FileLocataire.php");
 
 enum AccountType: string {
     case TENANT = "pls.locataire";

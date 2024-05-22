@@ -89,11 +89,11 @@ class RequestBuilder {
     public function execute() {
         $query = array($this->method);
         $params = array();
-        
-        $query[] = join(",", $this->fields);
 
         if(isset($this->distinct))
             $query[] = "DISTINCT";
+        
+        $query[] = join(",", $this->fields);
         
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
