@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css">
 
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <title>Alhaiz Breizh - Backoffice</title>
 </head>
 <body>
