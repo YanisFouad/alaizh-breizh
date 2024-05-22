@@ -1,5 +1,12 @@
 stages:
+  - test
   - deploy
+
+include:
+  - template: Jobs/Code-Quality.gitlab-ci.yml
+
+code_quality:
+  stage: test
 
 deploy:
   stage: deploy
@@ -17,4 +24,5 @@ deploy:
     - echo "Pulled"
   only:
     refs:
-      - main
+      #- main
+      - feature/new-ci/cd
