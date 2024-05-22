@@ -56,7 +56,7 @@ class RequestBuilder {
         return $this->join("INNER", $otherTable, $on);
     }
 
-    public function naturalJoin($otherTable, $on) {
+    public function naturalJoin($otherTable, ...$on) {
         return $this->join("NATURAL", $otherTable, $on);
     }
 
