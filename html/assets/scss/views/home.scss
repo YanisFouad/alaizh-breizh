@@ -305,7 +305,7 @@ body {
 }
 
 #filter-container {
-   position: sticky;
+   //position: sticky;
    align-self: flex-start;
    padding: 2.5em;
    min-width: 20em;
@@ -455,5 +455,9 @@ body {
 @media (max-width: 375px) {
    .compact-search-bar {
       display: none;
+   }
+
+   #housing-list-container {
+      //display: none;
    }
 }

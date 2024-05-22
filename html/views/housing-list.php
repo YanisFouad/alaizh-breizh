@@ -2,6 +2,7 @@
    $pageTitle = "Liste des logements"; 
    
    require_once("../models/AccommodationModel.php");
+   require_once("../services/RequestBuilder.php");
    require_once("layout/header.php"); 
 
    $accomodations = AccommodationModel::find(0, 10);
@@ -18,7 +19,7 @@
 ?>
 
 <section id="filter-housing-container">
-   <section id="filter-container" class="hidden">
+   <form id="filter-container" class="hidden">
       <div id="filter-title-container">
          <h1>Filtres</h1>
          <button class="secondary">Tout effacer</button>
@@ -33,8 +34,9 @@
          <ul id="city-list" class="displayed">
          <?php foreach($accomodations as $accomodation) {?>
                <li>
-                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>" name="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>"/>
-                  <label for="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("id_logement"))); ?>"><?php echo $accomodation->get("id_logement") ?></label>
+                  <!--Retirer les doublons et tout afficher-->
+                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("ville_adresse"))); ?>" name="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("ville_adresse"))); ?>"/>
+                  <label for="<?php echo strtolower(str_replace(' ', '-', $accomodation->get("ville_adresse"))); ?>"><?php echo $accomodation->get("ville_adresse") ?></label>
                </li>
             <?php } ?>
          </ul>
@@ -47,10 +49,10 @@
             <span id="department-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('department-list', 'department-chevron-down', 'department-chevron-up')"></span>
          </div>
          <ul id="department-list" class="displayed">
-            <?php foreach ($departmentList as $department) {?>
+         <?php foreach($accomodations as $accomodation) {?>
                <li>
-                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', $department)); ?>" name="<?php echo strtolower(str_replace(' ', '-', $department)); ?>"/>
-                  <label for="<?php echo strtolower(str_replace(' ', '-', $department)); ?>"><?php echo $department; ?></label>
+                  <input type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', "gfddf")); ?>" name="<?php echo strtolower(str_replace(' ', '-', "gfdgdf")); ?>"/>
+                  <label for="<?php echo strtolower(str_replace(' ', '-', "gfdgfd")); ?>"><?php var_dump(findOneById(substr($accomodation->get("code_postal_adresse"), 0, 2))) ?></label>
                </li>
             <?php } ?>
          </ul>
@@ -107,7 +109,7 @@
                </li>
          </ul>
       </section>
-   </section>
+   </form>
 
    <section id="housing-list-container">
       <div>
@@ -172,7 +174,19 @@
    </section>
 </section>
 
+    <?php 
+      function findOneById($num) {
+         var_dump($num);
+        $result = RequestBuilder::select("pls._departement")
+            ->projection("nom_departement")
+            ->where("num_departement = ?", $num)
+            ->execute()
+            ->fetchOne();
+
+        return $result["nom_departement"];
+    }?>
 <script>
+
    function toggleFilterMenu() {
       document.getElementById("filter-container").classList.toggle("hidden");
       document.getElementById("filter-container").classList.toggle("displayed");
@@ -189,6 +203,10 @@
       chevronDown.classList.toggle("displayed");
       chevronUp.classList.toggle("hidden");
       chevronUp.classList.toggle("displayed");
+   }
+
+   function toggleMenuBurger() {
+
    }
 </script>
 
