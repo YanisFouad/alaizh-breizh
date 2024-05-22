@@ -7,9 +7,15 @@ class ScriptLoader {
     public static function load($path) {
         if(str_starts_with("/", $path))
             $path = substr($path, 0, 1);
-        if(!str_ends_with(".js", $path))
-            $path .= ".js";
         self::$scripts[] = "/scripts/".$path;
+    }
+
+    /**
+     * Load & render the script directly
+     */
+    public static function loadAndRender($path) {
+        self::load($path);
+        self::render();
     }
 
     public static function render() {

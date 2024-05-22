@@ -17,6 +17,7 @@ $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/new.php");
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/newAccommodation.php");
+$router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 
 $router->set404View("views/errors/404.php");
 

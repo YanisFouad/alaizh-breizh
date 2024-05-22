@@ -1,5 +1,4 @@
-const authenticationElement = document.getElementById("authentication-modal");
-const authenticationErrorElement = authenticationElement.querySelector(".error-message");
+const authenticationErrorElement = document.querySelector(".error-message");
 
 function setErrorMessage(message) {
     if(!message) {
@@ -10,20 +9,12 @@ function setErrorMessage(message) {
     }
 }
 
-function closeLoginModal() {
-    authenticationElement.style.display = "none";
-}
-
-function openLoginModal() {
-    authenticationElement.style.display = "block";
-}
-
 async function handleLogin(event) {
     event.preventDefault();
 
     try {
         const formData = new FormData(event.target);
-        formData.set("authType", "tenant");
+        formData.set("authType", "owner");
         const response = await fetch(`/controllers/authentication/loginController.php`, {
             method: "POST",
             body: formData

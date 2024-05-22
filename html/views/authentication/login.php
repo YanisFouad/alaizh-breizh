@@ -1,14 +1,10 @@
 <?php ScriptLoader::load("authentication/login.js"); ?>
 <div role="dialog" class="modal" id="authentication-modal">
     <div class="center">
-        <nav>
-            <button data-account-type="tenant" class="active">Locataire</button>
-            <button data-account-type="owner">Propriétaire</button>
-        </nav>
-        <h3>Connexion <span class="title">locataire</span></h3>
+        <h3>Connexion locataire</h3>
         <button onclick="closeLoginModal()" class="close">&times;</button>
 
-        <img src="../../assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
+        <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
 
         <div role="dialog" class="error-message" class="mdi mdi-information error-message"></div>
 
