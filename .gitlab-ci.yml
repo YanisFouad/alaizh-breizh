@@ -8,14 +8,11 @@ include:
   - template: Verify/Accessibility.gitlab-ci.yml
 
 
-variables:
-  a11y_urls: "https://lav15.ventsdouest.dev"
-
-# a11y:
-#   stage: accessilibity
-#   variables:
-#       a11y_urls: "https://lav15.ventsdouest.dev"
-#   # artifacts:
+a11y:
+  stage: accessilibity
+  variables:
+      a11y_urls: "https://lav15.ventsdouest.dev"
+  # artifacts:
   #   paths: [gl-accessibility.json]
   #   reports:
   #     codequality:
