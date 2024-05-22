@@ -78,16 +78,8 @@ class AccommodationModel extends Model {
         return $amenagements;
     }
 
-<<<<<<< HEAD
-    public function computeAccomodationPicture($model) {
-        return FileLogement::get(
-            $model->get("id_logement"),
-            $model->get("categorie_logement")
-        );
-=======
     public function computeAccomodationPicture($data) {
         return FileLogement::get($data["photo_logement"]);
->>>>>>> develop
     }
 
     public static function find($offset = 0, $limit = 10, $projection = "*") {

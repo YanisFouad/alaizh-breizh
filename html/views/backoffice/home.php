@@ -14,7 +14,7 @@
     <title>Accueil</title>
 </head>
 <body>
-    <?php require_once("layout/header.php"); ?>
+    <?php require ("views/backoffice/layout/header.php"); ?>
     <main id="page-home-backoffice">
     <section class="accueil-logements-header">
         <div class="title-container">

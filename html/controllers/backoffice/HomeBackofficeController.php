@@ -1,6 +1,5 @@
 <?php
 require_once("models/AccommodationModel.php");
-require_once("services/FileLogement.php");
 require_once("services/Adresse.php");
 require_once("services/UserSession.php");
 
@@ -13,6 +12,7 @@ class HomeBackofficeController {
     public $nbLogement;
 
     public function __construct() {
+
         if(!UserSession::isConnected()) {
             require_once(__DIR__."/../authentication/login.php");
             exit;
@@ -26,7 +26,12 @@ class HomeBackofficeController {
             $this->setOffset((intval($_GET["page"]) - 1) * self::NB_ITEM_HOME_BACK);
         }
         
-        $this->setCurrentPage(intval($_GET["page"]) == 0 ? 1 : intval($_GET["page"]));
+        if(isset($_GET["page"])) {
+            $this->setCurrentPage(intval($_GET["page"]) == 0 ? 1 : intval($_GET["page"]));
+        } else {
+            $this->setCurrentPage(1);
+        }
+
         $this->setLogements($this->getOffset(), $this->getUser()->get("id_compte"));
         $this->setNbLogement(sizeof($this->getLogements()));
         
