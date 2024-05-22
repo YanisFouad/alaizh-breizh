@@ -1,6 +1,6 @@
 <?php 
     if(!UserSession::isConnected()) {
-        header("Location: /#connection=owner");
+        require_once(__DIR__."/../authentication/login.php");
         exit;
     }
 

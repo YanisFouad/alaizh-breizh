@@ -187,7 +187,7 @@ textarea {
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
 }
-.modal#authentication-modal.tenant-authentication > .center {
+.modal#authentication-modal > .center {
   background-color: white;
   border-radius: 10px;
   padding: 2em 3em;
@@ -198,22 +198,7 @@ textarea {
   animation: modal-open 0.5s forwards;
   transform: translate(-50%, -50%);
 }
-.modal#authentication-modal.tenant-authentication > .center > nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5em;
-}
-.modal#authentication-modal.tenant-authentication > .center > nav > button {
-  border-bottom: 2px solid white;
-  border-radius: unset;
-  padding-bottom: 0.5em;
-  color: #222524;
-}
-.modal#authentication-modal.tenant-authentication > .center > nav > button:is(:hover, .active) {
-  border-color: #1b5734;
-  color: #1b5734;
-}
-.modal#authentication-modal.tenant-authentication > .center > .error-message {
+.modal#authentication-modal > .center > .error-message {
   background-color: #ffd0d0;
   color: #ce4b4b;
   padding: 0.8em 1em;
@@ -224,18 +209,18 @@ textarea {
   position: relative;
   padding-left: 2.3em;
 }
-.modal#authentication-modal.tenant-authentication > .center > .error-message::before {
+.modal#authentication-modal > .center > .error-message::before {
   position: absolute;
   left: 10px;
   font-size: 1.2em;
 }
-.modal#authentication-modal.tenant-authentication > .center > h3 {
+.modal#authentication-modal > .center > h3 {
   text-align: center;
   font-weight: normal;
   font-family: "poppins-regular", sans-serif;
   color: #222524;
 }
-.modal#authentication-modal.tenant-authentication > .center > .close {
+.modal#authentication-modal > .center > .close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -244,45 +229,35 @@ textarea {
   font-size: 1.1em;
   padding: 0.3em 0.6em;
 }
-.modal#authentication-modal.tenant-authentication > .center > img {
+.modal#authentication-modal > .center > img {
   width: 14em;
   margin: 0.5em auto;
   display: block;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > .form-field {
+.modal#authentication-modal > .center > form > .form-field {
   margin: 1em 0;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > .form-field > label {
-  color: #424645;
-}
-.modal#authentication-modal.tenant-authentication > .center > form > .form-field > input {
-  background-color: white;
-  color: #222524;
-}
-.modal#authentication-modal.tenant-authentication > .center > form > .form-field > input:is(:hover, :focus) {
-  border-color: #222524;
-}
-.modal#authentication-modal.tenant-authentication > .center > form > .forgot-password {
+.modal#authentication-modal > .center > form > .forgot-password {
   color: #222524;
   display: block;
   text-align: end;
   font-size: 0.9em;
   margin-bottom: 0.7em;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > button {
+.modal#authentication-modal > .center > form > button {
   width: 100%;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > button:first-of-type {
+.modal#authentication-modal > .center > form > button:first-of-type {
   margin-top: 1em;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > .another-choice {
+.modal#authentication-modal > .center > form > .another-choice {
   display: block;
   margin: 1.5em 0;
   color: #676767;
   text-align: center;
   position: relative;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > .another-choice > .text {
+.modal#authentication-modal > .center > form > .another-choice > .text {
   display: block;
   background-color: white;
   margin: auto;
@@ -290,133 +265,15 @@ textarea {
   padding: 0 1em;
   position: relative;
   z-index: 99;
-  color: #222524;
 }
-.modal#authentication-modal.tenant-authentication > .center > form > .another-choice > .line {
+.modal#authentication-modal > .center > form > .another-choice > .line {
   display: block;
   height: 1px;
   width: 100%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #676767;
-}
-.modal#authentication-modal.owner-authentication > .center {
-  background-color: #222524;
-  border-radius: 10px;
-  padding: 2em 3em;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 30em;
-  animation: modal-open 0.5s forwards;
-  transform: translate(-50%, -50%);
-}
-.modal#authentication-modal.owner-authentication > .center > nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5em;
-}
-.modal#authentication-modal.owner-authentication > .center > nav > button {
-  border-bottom: 2px solid white;
-  border-radius: unset;
-  padding-bottom: 0.5em;
-  color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > nav > button:is(:hover, .active) {
-  border-color: #ffd6bb;
-  color: #ffd6bb;
-}
-.modal#authentication-modal.owner-authentication > .center > .error-message {
-  background-color: #ffd0d0;
-  color: #ce4b4b;
-  padding: 0.8em 1em;
-  border-radius: 10px;
-  margin: 0.8em 0;
-  font-size: 0.9em;
-  display: none;
-  position: relative;
-  padding-left: 2.3em;
-}
-.modal#authentication-modal.owner-authentication > .center > .error-message::before {
-  position: absolute;
-  left: 10px;
-  font-size: 1.2em;
-}
-.modal#authentication-modal.owner-authentication > .center > h3 {
-  text-align: center;
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-  color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > .close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #ffd6bb;
-  color: #804e2e;
-  font-size: 1.1em;
-  padding: 0.3em 0.6em;
-}
-.modal#authentication-modal.owner-authentication > .center > img {
-  width: 14em;
-  margin: 0.5em auto;
-  display: block;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .form-field {
-  margin: 1em 0;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .form-field > label {
-  color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .form-field > input {
-  background-color: #424645;
-  color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .form-field > input:is(:hover, :focus) {
-  border-color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .forgot-password {
-  color: white;
-  display: block;
-  text-align: end;
-  font-size: 0.9em;
-  margin-bottom: 0.7em;
-}
-.modal#authentication-modal.owner-authentication > .center > form > button {
-  width: 100%;
-}
-.modal#authentication-modal.owner-authentication > .center > form > button:first-of-type {
-  margin-top: 1em;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .another-choice {
-  display: block;
-  margin: 1.5em 0;
-  color: #676767;
-  text-align: center;
-  position: relative;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .another-choice > .text {
-  display: block;
-  background-color: #222524;
-  margin: auto;
-  width: fit-content;
-  padding: 0 1em;
-  position: relative;
-  z-index: 99;
-  color: white;
-}
-.modal#authentication-modal.owner-authentication > .center > form > .another-choice > .line {
-  display: block;
-  height: 1px;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: white;
-}
-.modal#authentication-modal.owner-authentication img {
-  filter: invert(1);
+  background-color: #f7f7f7;
 }
 @keyframes modal-open {
   from {
@@ -572,4 +429,97 @@ header#backoffice > aside > span.owner {
   font-family: "poppins-medium", sans-serif;
   padding: 0.3em 0.8em;
   font-size: 0.9em;
+}
+
+#login {
+  height: 100vh;
+  background-color: #222524;
+}
+#login > form {
+  width: 30em;
+  height: 90%;
+  align-content: center;
+  margin: 0 auto;
+}
+#login > form > .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#login > form > .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#login > form > h2 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: white;
+}
+#login > form > img {
+  width: 14em;
+  margin: 0.5em auto;
+  display: block;
+  filter: invert(1);
+}
+#login > form > .form-field {
+  margin: 1em 0;
+}
+#login > form > .form-field > label {
+  color: white;
+}
+#login > form > .form-field > input {
+  background-color: #424645;
+  color: white;
+  transition: 0.5s ease all;
+}
+#login > form > .form-field > input:is(:hover, :focus) {
+  border-color: white;
+}
+#login > form > .forgot-password {
+  color: #222524;
+  display: block;
+  text-align: end;
+  font-size: 0.9em;
+  margin-bottom: 0.7em;
+  color: white;
+}
+#login > form > button {
+  width: 100%;
+}
+#login > form > button:first-of-type {
+  margin-top: 1em;
+}
+#login > form > .another-choice {
+  display: block;
+  margin: 1.5em 0;
+  color: #676767;
+  text-align: center;
+  position: relative;
+}
+#login > form > .another-choice > .text {
+  display: block;
+  background-color: #222524;
+  margin: auto;
+  width: fit-content;
+  padding: 0 1em;
+  position: relative;
+  z-index: 99;
+  color: white;
+}
+#login > form > .another-choice > .line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f7f7f7;
 }
