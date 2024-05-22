@@ -17,6 +17,7 @@ class RequestBuilder {
     private $limit;
     private $offset;
     private $sort;
+    private $distinct;
     private $fields2update = array();
     private $whereClausures = array();
     private $fields = array();
@@ -49,6 +50,11 @@ class RequestBuilder {
     
     public function sortBy($field, $dir) {
         $this->sort = [$field, $dir];
+        return $this;
+    }
+
+    public function distinct() {
+        $this->distinct = true;
         return $this;
     }
 
@@ -85,6 +91,9 @@ class RequestBuilder {
         $params = array();
         
         $query[] = join(",", $this->fields);
+
+        if(isset($this->distinct))
+            $query[] = "DISTINCT";
         
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
