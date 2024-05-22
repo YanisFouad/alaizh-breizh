@@ -284,6 +284,11 @@ textarea {
   }
 }
 
+@media screen and (max-width: 490px) {
+  .modal#authentication-modal > .center {
+    width: 23em;
+  }
+}
 .profile-area {
   width: fit-content;
   margin: 1em auto;

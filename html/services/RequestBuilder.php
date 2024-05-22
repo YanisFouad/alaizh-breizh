@@ -111,7 +111,8 @@ class RequestBuilder {
         foreach($this->jointures as $jointure) {
             [$type, $otherTable, $on] = $jointure;
             $query[] = $type . " JOIN " . $otherTable . " ON";
-            $query[] = join($on, " AND ");
+            foreach($on as $cond) 
+                $query[] = join(" AND ", $cond);
         }
 
         // build clausures
