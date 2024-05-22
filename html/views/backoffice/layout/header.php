@@ -5,6 +5,8 @@
     }
 
     $profile = UserSession::get();
+
+    ScriptLoader::load("backoffice/layout/header.js");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,8 +42,8 @@
             </a>
             <div id="profile">
                 <div class="infos">
-                    <img src="<?php echo $profile->get("photo_profil"); ?>" alt="Lucas Aupry's picture" />
-                    <span><?php echo $profile->get("prenom") . " " . $profile->get("nom"); ?></span>
+                    <img src="<?php echo $profile->get("photo_profil"); ?>" alt="profile picture" />
+                    <span><?php echo $profile->get("displayname"); ?></span>
                     <span class="mdi mdi-chevron-up"></span>
                 </div>
 
@@ -57,36 +59,5 @@
             </div>
             <span class="owner">Propriétaire</span>
         </aside>
-
-        <script type="text/javascript">
-            const profileElement = document.getElementById("profile");
-            let profileInfosIcon = profileElement?.querySelector(".infos>span.mdi");
-            let profileDropdown = profileElement?.querySelector(".dropdown");
-
-            function toggleDropdown(display) {
-                if(!display) {
-                    profileDropdown.style.display = "none";
-                    profileInfosIcon.classList.add("mdi-chevron-up");
-                    profileInfosIcon.classList.remove("mdi-chevron-down");
-                } else {
-                    profileDropdown.style.display = "block";
-                    profileInfosIcon.classList.remove("mdi-chevron-up");
-                    profileInfosIcon.classList.add("mdi-chevron-down");
-                }
-            }
-            
-            profileElement?.querySelector(".infos")?.addEventListener("click", () =>
-                toggleDropdown(profileDropdown.style.display !== "block")
-            , false);
-
-            window.addEventListener("click", ({target}) => {
-                let parent = target.parentElement;
-                do {
-                    parent = parent?.parentElement;
-                } while(parent && parent.id !== "profile");
-                if(!parent)
-                    toggleDropdown(false);
-            }, false);
-        </script>
     </header>
     <main>

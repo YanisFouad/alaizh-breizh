@@ -2,6 +2,7 @@
 session_start();
 require_once("services/Router.php");
 require_once("services/UserSession.php");
+require_once("services/ScriptLoader.php");
 
 $router = new Router();
 
@@ -15,6 +16,7 @@ $router->add("/profil", "views/account/profile.php");
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/new.php");
 $router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/newAccommodation.php");
 
 $router->set404View("views/errors/404.php");
 

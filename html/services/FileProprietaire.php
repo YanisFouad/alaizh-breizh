@@ -2,8 +2,8 @@
 
 class FileProprietaire {
 
-    private const FILE_PATH = "files/proprietaires/";
-    private const DEFAULT_PROPRIETAIRE_PATH = "files/proprietaires/default.webp";
+    private const FILE_PATH = "/files/proprietaires/";
+    private const DEFAULT_PROPRIETAIRE_PATH = "/files/proprietaires/default.webp";
 
     public static function save($prorietaireId, $file) {
         $target_dir = self::FILE_PATH;

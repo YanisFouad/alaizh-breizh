@@ -2,7 +2,7 @@
 
 class FileLogement {
 
-    private const FILE_PATH = "files/logements/";
+    private const FILE_PATH = "/files/logements/";
 
     public static function save($logementId, $logementType, $file) {
         $target_dir = self::FILE_PATH;

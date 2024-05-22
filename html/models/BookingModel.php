@@ -43,6 +43,8 @@ class BookingModel extends Model {
             ->where("id_reservation = ?", $id)
             ->execute()
             ->fetchOne();
+        if($result == null)
+            return $result;
         return new self($result, false);
     }
 

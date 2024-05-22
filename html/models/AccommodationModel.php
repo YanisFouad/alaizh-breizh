@@ -134,6 +134,8 @@ class AccommodationModel extends Model {
             ->where("id_logement = ?", $id)
             ->execute()
             ->fetchOne();
+        if($result == null)
+            return null;
         return new self($result, false);
     }
 

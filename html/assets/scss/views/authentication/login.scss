@@ -1,28 +1,49 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+@mixin modalRules(
+    $modal-background,
+    $main-color,
+    $default-nav-color,
+    $active-nav-color,
+    
+    $close-circle-background-color,
+    $close-circle-color,
 
-    width: 100%;
-    height: 100vh; 
-    background-color: rgba(0, 0, 0, .3);
+    $input-background-color,
+    $label-color,
 
-    display: none;
-
-
+    $line-color,
+    $line-background-color
+) {
     &>.center {
-        background-color: $white;
+        background-color: $modal-background;
         border-radius: 10px;
         padding: 2em 3em;
         
         position: absolute;
-        top: 50%;
+        top: 45%;
         left: 50%;
 
         width: 30em;
         animation: modal-open .5s forwards;
 
         transform: translate(-50%, -50%);
+
+        &>nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: .5em;
+
+            &>button {
+                border-bottom: 2px solid $default-nav-color;
+                border-radius: unset;
+                padding-bottom: .5em;
+                color: $main-color;
+
+                &:is(:hover, .active) {
+                    border-color: $active-nav-color;
+                    color: $active-nav-color;
+                }
+            }
+        }
 
         &>.error-message {
             background-color: $red-1-200;
@@ -48,6 +69,7 @@
             text-align: center;
             font-weight: normal;
             font-family: "poppins-regular", sans-serif;
+            color: $main-color;
         }
 
         &>.close {
@@ -55,7 +77,8 @@
             top: 15px;
             right: 15px;
 
-            background-color: $gray-4;
+            background-color: $close-circle-background-color;
+            color: $close-circle-color;
             font-size: 1.1em;
 
             padding: .3em .6em;
@@ -70,10 +93,22 @@
         &>form {
             &>.form-field {
                 margin: 1em 0;
+
+                &>label {
+                    color: $label-color;
+                }
+
+                &>input {
+                    background-color: $input-background-color;
+                    color: $main-color;
+                    &:is(:hover, :focus) {
+                        border-color: $main-color;
+                    }
+                }
             }
     
             &>.forgot-password {
-                color: $gray-1;
+                color: $main-color;
                 display: block;
                 text-align: end;
                 font-size: .9em;
@@ -95,13 +130,14 @@
 
                 &>.text {
                     display: block;
-                    background-color: $white;
+                    background-color: $line-background-color;
                     margin: auto;
                     width: fit-content;
                     padding: 0 1em;
 
                     position: relative;
                     z-index: 99;
+                    color: $main-color;
                 }
 
                 &>.line {
@@ -114,10 +150,39 @@
 
                     transform: translateY(-50%);
 
-                    background-color: $gray-2;
+                    background-color: $line-color;
                 }
             }
 
+        }
+    }
+}
+
+.modal#authentication-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh; 
+    background-color: rgba(0, 0, 0, .3);
+
+    display: none;
+
+    &.tenant-authentication {
+        @include modalRules(
+            $white, $black, $white, $primary-frontoffice-1,
+            $gray-4, $black, $white, $gray-1, $gray-2, $white
+        );
+    }
+    &.owner-authentication {
+        @include modalRules(
+            $black, $white, $white,
+            $primary-backoffice-4, $primary-backoffice-4,
+            $primary-backoffice-1, $gray-1, $white, $white, $black
+        );
+        & img {
+            filter: invert(1);
         }
     }
 
