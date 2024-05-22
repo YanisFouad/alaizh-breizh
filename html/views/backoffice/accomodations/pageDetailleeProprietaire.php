@@ -1,10 +1,26 @@
 <?php 
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/FileLogement.php");
-    include_once(__DIR__."/../layout/header.php");
+    //include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['logement_id'];
     $logement = AccommodationModel::findOneById($logement_id);
     //print_r($logement->get('id_logement'));
+    $tabActivites = [
+        "voile" => "mdi mdi-sail-boat",
+        "accrobranche" => "mdi mdi-pine-tree-variant",
+        "golf" => "mdi mdi-golf",
+        "canoë" => "mdi mdi-kayaking",
+        "randonnée" => "mdi mdi-hiking",
+        "baignade" => "mdi mdi-umbrella",
+        "équitation" => "mdi mdi-horse-human"
+    ];
+    $tabAmenagements = [
+        "jardin" => "mdi mdi-tree-outline",
+        "jacuzzi" => "mdi mdi-hot-tub",
+        "piscine" => "mdi mdi-pool",
+        "balcon" => "mdi mdi-balcony",
+        "terrasse" => "mdi mdi-land-plots"
+    ];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,7 +50,7 @@
         <div id="page">
             <section>
                 <article id="blockIntro">
-                    <img src="../../../files/logements/<? echo $logement->get('photo_logement')?>.jpg" id="imgLogement">
+                    <img src="" id="imgLogement">
 
                     <div>
                         <div id="titre">
@@ -116,38 +132,32 @@
                         <div>
                             <h3>Activités</h3>
                             <ul>
-                                <li><span class="mdi mdi-sail-boat"></span> Voile - moins de 5Km</li>
-                                <li><span class="mdi mdi-golf"></span> Golf - 20Km ou plus</li>
-                                <li><span class="mdi mdi-kayaking"></span> Canoë - Moins de 20Km</li>
-                                <li><span class="mdi mdi-hiking"></span> Randonnée - Moins de 20Km</li>
-                                <li><span class="mdi mdi-umbrella-beach"></span> Baignade - Moins de 5Km</li>
-                                <li><span class="mdi mdi-pine-tree-variant"></span> Accrobranche - 20Km ou plus</li>
-                                <li><span class="mdi mdi-horse-human"></span>Equitation - 20Km ou plus</li>
+                                <?php foreach ($logement->get('activites') as $key => $value) { ?>
+                                    <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                                <?php }?>
+                                
                             </ul>
                         </div>
 
                         <div>
                             <h3>Aménagements</h3>
                             <ul>
-                                <li><span class="mdi mdi-tree-outline"></span> Jardin</li>
-                                <li><span class="mdi mdi-hot-tub"></span> Jacuzzi</li>
-                                <li><span class="mdi mdi-pool"></span> Piscine</li>
-                                <li><span class="mdi mdi-balcony"></span> Balcon</li>
-                                <li><span class="mdi mdi-land-plots"></span> Terrasse</li>
+                                <?php foreach ($logement->get('amenagements') as $key => $value) { ?>
+                                    <li><span class="<?=$tabAmenagements[$value['name']];?>"></span> <?= ucfirst($value['name']);?></li>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
 
                 </article>
+                <div id="modified-button">
+                    <button type="button" class ="primary backoffice" >
+                        Modifier
+                    </button>
+                </div>
             </section>
-            <div id="modified-button">
-                <button type="button" class ="primary" >
-                    Modifier
-                </button>
-            </div>
+            
         </div>
-        
-        
     </main>
 </body>
 

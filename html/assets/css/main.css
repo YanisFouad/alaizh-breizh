@@ -131,11 +131,12 @@ p {
 button {
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
+  font-size: 1em;
   background-color: transparent;
   border: unset;
   cursor: pointer;
   border-radius: 100px;
-  padding: 1em 1.8em;
+  padding: 1em 2.5em;
 }
 button.primary:is(.primary, .secondary):not(:disabled):focus, button.secondary:is(.primary, .secondary):not(:disabled):focus {
   box-shadow: 0 0 0 3px #abbdc0;
@@ -211,11 +212,117 @@ input:disabled, textarea:disabled {
   opacity: 60%;
 }
 input:is(:hover, :focus), textarea:is(:hover, :focus) {
-  border-color: #1b5734;
+  border-color: #804e2e;
 }
 
 textarea {
   resize: vertical;
+}
+
+/* LAYOUT */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 998;
+  font-family: "comfortaa-regular";
+  background-color: white;
+  padding: 1em 2.5em 0 2.5em;
+}
+header .mdi {
+  font-size: 1.5em;
+}
+header .mdi-menu {
+  display: none;
+}
+header img {
+  height: 3em;
+}
+header .fullsize-logo {
+  display: block;
+}
+header .smallsize-logo {
+  display: none;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+}
+header nav ul li {
+  list-style: none;
+  margin-left: 0.5em;
+}
+header nav ul li a {
+  color: black;
+}
+header nav ul li a:hover {
+  font-family: "comfortaa-bold";
+  color: #804e2e;
+}
+header #sign-in-up-container, header #sign-in-up-button {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+}
+header #sign-in-up-container button:hover, header #sign-in-up-button button:hover {
+  font-family: "comfortaa-bold";
+  background-color: #ffd6bb;
+}
+header #header-bottom-stroke {
+  height: 2px;
+  background-color: #eaeaea;
+  margin: 1em 0 0 0;
+}
+
+@media (max-width: 375px) {
+  header {
+    padding: 1em 1em 0 1em;
+  }
+  header .mdi {
+    font-size: 2.5em;
+  }
+  header .mdi-menu {
+    display: block;
+  }
+  header .fullsize-logo {
+    display: none;
+  }
+  header .smallsize-logo {
+    display: block;
+  }
+  header nav ul {
+    display: none;
+  }
+  header #sign-in-up-button {
+    display: none;
+  }
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "comfortaa-regular";
+  color: white;
+  background-color: black;
+  padding: 1em;
+  margin-top: auto; /* pour conserver le footer en bas de page */
+}
+footer a:visited {
+  color: white;
+}
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+footer nav a {
+  padding-left: 1em;
 }
 
 /* VIEWS */
@@ -227,6 +334,420 @@ textarea {
   font-weight: normal;
 }
 
+/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 1000px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.housing-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mdi {
+  font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+
+#image-cover {
+  height: 350px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 20%;
+  border-radius: 1em;
+  margin: 1em 2.5em;
+  padding: 2em;
+  color: white;
+}
+#image-cover h1 {
+  font-family: "poppins-semibold";
+  font-size: 2.5em;
+}
+#image-cover h2 {
+  font-family: "poppins-regular";
+  font-size: 1.5em;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -2.5em;
+  gap: 0.5em;
+  width: fit-content;
+  padding: 0.5em;
+  border-bottom: 2px #eaeaea solid;
+  box-shadow: 0px 5px 5px #eaeaea;
+  background-color: white;
+  border-radius: 1em;
+  margin: 0 auto;
+}
+#search-bar input, #search-bar button {
+  border: none;
+  border-radius: 1em;
+}
+#search-bar input {
+  font-family: "comfortaa-medium";
+  background-color: #f7f7f7;
+  padding: 1.5em;
+  width: auto;
+}
+#search-bar button {
+  background-color: #804e2e;
+  padding: 1em;
+}
+#search-bar .mdi-magnify {
+  color: white;
+}
+
+#list-title-container {
+  text-align: center;
+}
+
+.show-more-button-container {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 2.5em;
+  padding: 0.25em 0.5em;
+}
+
+.show-more-button {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+  border: solid 1px #804e2e;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  position: relative;
+  top: -4em;
+}
+
+.housing-list {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, 250px);
+  margin: 0 2.5em 2.5em 2.5em;
+  justify-content: center;
+}
+
+.housing-image-item-container {
+  width: 250px;
+  height: 250px;
+  background-color: #eaeaea;
+  border-radius: 1em;
+}
+
+.housing-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1em;
+}
+.housing-item h4, .housing-item .housing-price-container {
+  font-size: 14px;
+}
+.housing-item .housing-price {
+  font-family: "comfortaa-bold";
+}
+.housing-item:hover {
+  cursor: pointer;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+.housing-description-container {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  width: 250px;
+  margin: 0.5em 0;
+}
+
+.housing-description {
+  font-family: "comfortaa-bold";
+  margin: 0 0.5em 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.housing-location-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #b6896c;
+  margin-bottom: 0.5em;
+  width: 250px;
+}
+
+.mdi-star {
+  font-size: 1em;
+}
+
+.housing-location {
+  font-family: "comfortaa-regular";
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.housing-price-container {
+  display: flex;
+  font-family: "comfortaa-regular";
+  font-size: small;
+  gap: 0.5em;
+}
+
+.star-notation-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  color: #804e2e;
+  border: solid 1px #804e2e;
+  border-radius: 1em;
+  padding: 0.25em 0.5em;
+  background-color: #ffd6bb;
+}
+
+.show-all-button {
+  display: none;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+@media (max-width: 375px) {
+  body {
+    min-width: inherit;
+  }
+  #search-bar {
+    width: 355px;
+    justify-content: space-between;
+  }
+  #search-bar .arrival-date-input, #search-bar .departure-date-input, #search-bar .travelers-number-input {
+    display: none;
+  }
+  #search-bar .mdi-account {
+    display: none;
+  }
+  #search-bar input {
+    width: inherit;
+  }
+  #image-cover {
+    height: 250px;
+    margin: 1em 0em;
+    padding: 1em;
+    border-radius: 0;
+  }
+  #image-cover h1 {
+    font-family: "poppins-semibold";
+    font-size: 2em;
+  }
+  #image-cover h2 {
+    font-family: "poppins-regular";
+    font-size: 1em;
+  }
+  #housing-list-title {
+    font-size: 1em;
+    margin: 0 auto 1em auto;
+  }
+  .show-more-button {
+    display: none;
+  }
+  .housing-list {
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+  .housing-image-item-container {
+    width: 355px;
+    height: 355px;
+    background-color: #eaeaea;
+    border-radius: 1em;
+  }
+  .housing-description-container {
+    width: 355px;
+  }
+  .show-all-button-container {
+    display: flex;
+    justify-content: center;
+  }
+  .show-all-button {
+    display: flex;
+    align-items: center;
+    padding: 0.25em 1em;
+    color: white;
+    background-color: #804e2e;
+    border: solid 1px #804e2e;
+    border-radius: 2em;
+  }
+  .show-all-button .mdi {
+    margin-left: 8px;
+    font-size: 20px;
+  }
+}
+/***************************************/
+/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/***************************************/
+#filter-housing-container {
+  display: flex;
+}
+
+/* Menu des filtres */
+.displayed {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#filter-container {
+  position: sticky;
+  align-self: flex-start;
+  border-right: solid 2px #eaeaea;
+  padding: 2.5em;
+  min-width: 20em;
+  height: 100%;
+}
+#filter-container > section {
+  border-top: solid 1px #676767;
+  margin-bottom: 2em;
+}
+#filter-container > section > :first-child {
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+#filter-container > section > div, #filter-container > section li {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+#filter-container > section > div > input, #filter-container > section li > input {
+  width: auto;
+}
+
+#filter-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2.5em;
+}
+
+.stars-notation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stars-notation {
+  margin-bottom: 1em;
+  list-style: none;
+  gap: 0;
+}
+.stars-notation .mdi-star::before {
+  font-size: 25px;
+}
+
+/* Résultats logement */
+.back-button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+#housing-title-search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.compact-search-bar {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.5em;
+  border-bottom: 2px #eaeaea solid;
+  box-shadow: 0px 5px 5px #eaeaea;
+  background-color: white;
+  border-radius: 1em;
+}
+.compact-search-bar input, .compact-search-bar button {
+  border: none;
+  border-radius: 1em;
+}
+.compact-search-bar input {
+  font-family: "comfortaa-medium";
+  background-color: #f7f7f7;
+  padding: 1.5em;
+  width: auto;
+}
+.compact-search-bar button {
+  background-color: #804e2e;
+  padding: 1em;
+}
+.compact-search-bar .mdi-magnify {
+  color: white;
+}
+
+#filter-sort-buttons-container {
+  display: flex;
+}
+
+#filter-button {
+  border-radius: 1em;
+}
+
+.housing-list {
+  margin: 1em 0 2.5em 0;
+}
+
+#housing-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5em;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.75em;
+  font-family: "comfortaa-bold";
+  color: #804e2e;
+}
+.pagination li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.pagination .mdi-chevron-left, .pagination .page-number, .pagination .mdi-chevron-right {
+  border: solid 1px #804e2e;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
 .modal#authentication-modal {
   position: fixed;
   top: 0;
@@ -235,7 +756,6 @@ textarea {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
-  z-index: 999;
 }
 .modal#authentication-modal > .center {
   background-color: white;
@@ -572,4 +1092,283 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+
+button {
+  transition: all 0.5s ease;
+  font-family: "comfortaa-regular", sans-serif;
+  font-size: 1em;
+  background-color: transparent;
+  border: unset;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 1em 2.5em;
+}
+button.primary:is(.primary, .secondary):not(:disabled):focus, button.secondary:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #abbdc0;
+}
+button.primary.primary:disabled, button.primary.secondary:disabled, button.secondary.primary:disabled, button.secondary.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.primary.primary, button.secondary.primary {
+  background-color: #1b5734;
+  color: white;
+}
+button.primary.primary:not(:disabled):is(:hover, :focus), button.secondary.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #337d51;
+}
+button.primary.secondary, button.secondary.secondary {
+  border: 1px solid #1b5734;
+  color: #1b5734;
+}
+button.primary.secondary:not(:disabled):is(:hover, :focus), button.secondary.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #1b5734;
+  color: white;
+}
+button.backoffice:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #b6896c;
+}
+button.backoffice.primary:disabled, button.backoffice.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.backoffice.primary {
+  background-color: #804e2e;
+  color: white;
+}
+button.backoffice.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #9f6844;
+}
+button.backoffice.secondary {
+  border: 1px solid #804e2e;
+  color: #804e2e;
+}
+button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #804e2e;
+  color: white;
+}
+
+*,
+*::after,
+*::before {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../../../fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../../../fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../../../../fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../../../fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../../../fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../../../fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../../../fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../../../fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../../../fonts/poppins-regular.ttf);
+}
+@font-face {
+  font-family: "Material Design Icons";
+  src: url(../../../../fonts/materialdesignicons-webfont.ttf);
+}
+body {
+  font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "poppins-regular";
+}
+
+#page {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 80%;
+  display: flex;
+}
+#page h3 {
+  color: #424645;
+}
+
+#mainProprietaireLogement {
+  display: flex;
+  flex-direction: column;
+}
+#mainProprietaireLogement .mdi.mdi-chevron-right {
+  position: relative;
+  top: 1px;
+  font-size: 1.3em;
+}
+#mainProprietaireLogement #cheminPage {
+  display: flex;
+  margin-left: 1em;
+  align-items: center;
+}
+#mainProprietaireLogement a {
+  color: #804e2e;
+}
+#mainProprietaireLogement h4 {
+  color: #424645;
+  font-weight: normal;
+}
+#mainProprietaireLogement h3 {
+  color: #424645;
+}
+
+#imgLogement {
+  width: 45em;
+  border-radius: 13px;
+}
+@media screen and (max-width: 600px) {
+  #imgLogement {
+    width: 70%;
+  }
+}
+
+#modified-button {
+  display: none;
+  justify-content: right;
+}
+
+#blockIntro {
+  display: flex;
+}
+@media screen and (max-width: 300px) {
+  #blockIntro {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+#blockIntro > div {
+  margin-left: 2.2em;
+}
+#blockIntro #titre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#blockIntro #titre h1 {
+  font-size: 1.7em;
+  margin: 0;
+  color: #424645;
+}
+#blockIntro p {
+  text-align: justify;
+}
+#blockIntro h2 {
+  font-family: "comfortaa-regular";
+  margin: 0.6em 0 1em 0;
+  color: #676767;
+  font-size: 1em;
+}
+#blockIntro #caracteristiques-logement {
+  display: flex;
+}
+#blockIntro #caracteristiques-logement ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  place-items: center start;
+  margin-top: 1.6em;
+  border: solid 1px #eaeaea;
+  border-radius: 17px;
+  padding: 1em;
+}
+#blockIntro #caracteristiques-logement .bulle-Rose {
+  background-color: #b6896c;
+  border-radius: 14.5px;
+  width: fit-content;
+  padding: 5px 10px 5px 10px;
+  margin: 0.2em 0;
+}
+
+#description h3 {
+  color: #676767;
+  font-size: 1.2em;
+  margin: 1.7em 0 0.5em 0;
+}
+#description p {
+  text-align: justify;
+}
+#description div {
+  display: flex;
+  align-items: center;
+  margin-top: 0.7em;
+}
+#description div h3 {
+  margin: 0;
+}
+#description div img {
+  width: 3.5em;
+}
+
+#box-Activites-Amenagement {
+  display: flex;
+  justify-content: left;
+}
+#box-Activites-Amenagement > div {
+  display: flex;
+  box-shadow: 0 0 4px 2px rgba(173, 173, 173, 0.1333333333);
+  border-radius: 15px;
+  margin: 1em 0;
+  padding: 1em;
+  width: fit-content;
+}
+#box-Activites-Amenagement > div div {
+  margin: 1em 0 0 1em;
+}
+#box-Activites-Amenagement > div > div:first-child {
+  border-right: solid 2px #676767;
+}
+#box-Activites-Amenagement > div div + div {
+  margin-left: 3em;
+}
+#box-Activites-Amenagement > div div + div ul {
+  grid-template-columns: 1.5fr 1fr;
+  margin: auto;
+  padding-bottom: 1em;
+  padding-right: 1em;
+}
+#box-Activites-Amenagement ul {
+  display: grid;
+  grid-template-columns: 283px 1fr;
+  list-style-type: none;
+  margin: auto;
+}
+#box-Activites-Amenagement ul li {
+  margin-top: 1em;
+}
+#box-Activites-Amenagement ul li span {
+  font-size: 1.8em;
+  color: #424645;
 }

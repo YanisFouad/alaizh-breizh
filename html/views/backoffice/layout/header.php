@@ -1,4 +1,5 @@
-<?php 
+<?php
+/*
     if(!UserSession::isConnected()) {
         require_once(__DIR__."/../authentication/login.php");
         exit;
@@ -7,6 +8,7 @@
     $profile = UserSession::get();
 
     ScriptLoader::load("backoffice/layout/header.js");
+*/
 ?>
 <!DOCTYPE html>
 <html lang="fr">

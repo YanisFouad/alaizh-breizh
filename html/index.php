@@ -17,11 +17,8 @@ $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 
 $router->add("/logement", "views/accomodations/pageDetaillee.php");
-
-// backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/connexion", "views/backoffice/login.php");
-$router->add("/backoffice/logements/nouveau", "views/backoffice/accomodations/new.php");
 $router->add("/backoffice/logements/pageDetailleeProprietaire", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
 
 $router->add("/housing-list", "views/housing-list.php");
