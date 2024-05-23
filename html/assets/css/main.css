@@ -162,23 +162,86 @@ button.tertiary.backoffice:not(:disabled):is(:hover, :focus) {
   margin-bottom: 0.5em;
   text-align: start;
 }
+.form-field > label.required::after {
+  content: " *";
+  color: #ce4b4b;
+}
 
-input, textarea {
+input, textarea, select {
   font-family: "comfortaa-regular", sans-serif;
   padding: 0.8em 0.5em;
   border-radius: 7px;
   border: 1px solid #676767;
   width: 100%;
 }
-input:disabled, textarea:disabled {
+input:disabled, textarea:disabled, select:disabled {
   opacity: 60%;
 }
-input:is(:hover, :focus), textarea:is(:hover, :focus) {
+input:is(:hover, :focus), textarea:is(:hover, :focus), select:is(:hover, :focus) {
   border-color: #1b5734;
 }
 
 textarea {
   resize: vertical;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox].backoffice:checked + label::after {
+  background-color: #804e2e;
+}
+input[type=checkbox].backoffice:not(:checked):hover + label::before {
+  color: #804e2e;
+}
+input[type=checkbox].backoffice:checked + label::after, input[type=checkbox].backoffice:focus + label::after {
+  box-shadow: 0 0 0 2px rgba(128, 78, 46, 0.2);
+}
+input[type=checkbox].backoffice + label::after {
+  border-color: #804e2e;
+}
+input[type=checkbox]:checked + label::after {
+  background-color: #1b5734;
+}
+input[type=checkbox]:not(:checked):hover + label::before {
+  color: #1b5734;
+}
+input[type=checkbox]:checked + label::after, input[type=checkbox]:focus + label::after {
+  box-shadow: 0 0 0 2px rgba(51, 125, 81, 0.2);
+}
+input[type=checkbox] + label {
+  position: relative;
+  display: block;
+  padding-left: 2em;
+  cursor: pointer;
+}
+input[type=checkbox] + label::before, input[type=checkbox] + label::after {
+  transition: 0.2s all ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[type=checkbox] + label::after {
+  left: 0;
+  content: "";
+  display: block;
+  border: 2px solid #1b5734;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+}
+input[type=checkbox] + label::before {
+  left: 3px;
+  color: white;
+  z-index: 1;
+}
+
+select {
+  position: relative;
+  cursor: pointer;
+  color: #676767;
+  appearance: none;
+  user-select: none;
 }
 
 /* VIEWS */
@@ -342,6 +405,263 @@ textarea {
   display: block;
 }
 
+#finalize-booking {
+  width: 60em;
+  margin: auto;
+}
+#finalize-booking > header {
+  text-align: center;
+}
+#finalize-booking > header > button {
+  float: left;
+}
+#finalize-booking > div[role=main] {
+  padding: 1em;
+  padding-bottom: 2em;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
+}
+#finalize-booking > div[role=main] > h2 {
+  position: relative;
+  width: 100%;
+  font-size: 1.7em;
+  margin: 0.5em 0;
+}
+#finalize-booking > div[role=main] > h2 > span {
+  display: block;
+}
+#finalize-booking > div[role=main] > h2 > span:first-of-type {
+  background-color: white;
+  width: fit-content;
+  padding: 0 0.5em;
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+  color: #424645;
+  position: relative;
+  z-index: 2;
+}
+#finalize-booking > div[role=main] > h2 > span:last-of-type {
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+  position: absolute;
+  bottom: 12px;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) {
+  display: flex;
+  gap: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > img {
+  width: 20em;
+  border-radius: 10px;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div {
+  padding: 1em;
+  border: 1px solid #eaeaea;
+  border-radius: 20px;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h3, #finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h4 {
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h3 {
+  font-size: 1.5em;
+  color: #424645;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h4 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > p {
+  color: #424645;
+  font-family: "comfortaa-regular", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button {
+  float: right;
+  margin-top: 1em;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) {
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin: 1em 0;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4 {
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4:last-of-type {
+  font-family: "poppins-bold", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 {
+  padding: 1em;
+  border: 1px solid #eaeaea;
+  border-radius: 15px;
+  color: #424645;
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 > span {
+  font-family: "poppins-bold", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) {
+  display: flex;
+  gap: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div {
+  flex-grow: 1;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio] {
+  display: none;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label {
+  border-color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label > h4 {
+  color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label {
+  border: 1px solid #eaeaea;
+  padding: 0.5em 2em;
+  border-radius: 15px;
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) {
+  border-color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) > h4 {
+  color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > h4 {
+  font-weight: normal;
+  margin-bottom: 1em;
+  font-size: 1.4em;
+  color: #424645;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > img {
+  display: block;
+  margin: auto;
+  position: relative;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+  width: 20em;
+  top: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+  width: 15em;
+  top: -1.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) {
+  padding: 0 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) > p {
+  font-family: "comfortaa-regular", sans-serif;
+  margin-bottom: 1em;
+}
+#finalize-booking > button.finalize {
+  float: right;
+  margin: 1.5em 0;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > button.finalize > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+@media screen and (max-width: 972px) {
+  #finalize-booking {
+    width: 90%;
+  }
+  div[role=main] > article:nth-of-type(3) {
+    display: block !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+    width: 10em !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+    width: 6em !important;
+    position: relative !important;
+    top: -8px !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label {
+    border-radius: 10px !important;
+    height: 3em !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-around !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > h4 {
+    font-size: 1em !important;
+    margin-bottom: unset !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > img {
+    position: unset !important;
+  }
+  div[role=main] > article:nth-of-type(2) {
+    display: block !important;
+    border: 1px solid #eaeaea !important;
+    padding: 1em !important;
+    border-radius: 15px !important;
+  }
+  div[role=main] > article:nth-of-type(2) h3 {
+    border: unset !important;
+    padding-left: unset !important;
+    padding-top: unset !important;
+    font-size: 1.15em !important;
+  }
+}
+@media screen and (max-width: 788px) {
+  div[role=main] > article:nth-of-type(1) {
+    flex-wrap: wrap;
+  }
+  div[role=main] > article:nth-of-type(1) > img {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 522px) {
+  #finalize-booking > header {
+    text-align: unset !important;
+  }
+  #finalize-booking > header > button {
+    margin-left: unset !important;
+    float: unset !important;
+  }
+  #finalize-booking > header > h1 {
+    text-align: center !important;
+  }
+}
+@media screen and (max-width: 432px) {
+  #finalize-booking > header > h1 {
+    font-size: 1.5em !important;
+  }
+}
 header#backoffice {
   background-color: #222524;
   display: flex;
@@ -694,4 +1014,155 @@ header#backoffice > aside > span.owner {
 #page-home-backoffice .nav-page ul .btn-page.is-active {
   background-color: #804e2e;
   color: white;
+}
+
+#new-accommodation {
+  width: 58em;
+  margin: auto;
+}
+#new-accommodation > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#new-accommodation > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-accommodation > form > section:first-of-type {
+  margin-top: unset;
+}
+#new-accommodation > form > section > h2, #new-accommodation > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#new-accommodation > form > section > h2 {
+  color: #424645;
+}
+#new-accommodation > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-image-plus {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > input {
+  width: 40%;
+}
+#new-accommodation > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
 }
