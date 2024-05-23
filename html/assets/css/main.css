@@ -136,11 +136,11 @@ button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
 .form-field.error > label {
   color: #ce4b4b;
 }
-.form-field.error > input {
+.form-field.error > input, .form-field.error > textarea, .form-field.error > select {
   position: relative;
   border-color: #ce4b4b;
 }
-.form-field.error > input, .form-field.error > input::placeholder {
+.form-field.error > input, .form-field.error > input::placeholder, .form-field.error > textarea, .form-field.error > textarea::placeholder, .form-field.error > select, .form-field.error > select::placeholder {
   color: #ce4b4b;
 }
 .form-field > label {
@@ -869,6 +869,9 @@ header#backoffice > aside > span.owner {
 #new-accommodation > form > section:first-of-type {
   margin-top: unset;
 }
+#new-accommodation > form > section:not(.active) {
+  opacity: 50%;
+}
 #new-accommodation > form > section > h2, #new-accommodation > form > section > h3 {
   font-family: "poppins-medium", sans-serif;
   font-weight: normal;
@@ -888,6 +891,22 @@ header#backoffice > aside > span.owner {
   padding-top: 1em;
   border-top: 1px solid #eaeaea;
 }
+#new-accommodation > form .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#new-accommodation > form .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
 #new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
   display: flex;
   gap: 2em;
@@ -896,6 +915,12 @@ header#backoffice > aside > span.owner {
   margin-top: 1em;
   margin-bottom: 3em;
   width: 50%;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label {
+  background-color: #ffd0d0;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label > .mdi {
+  color: #ce4b4b !important;
 }
 #new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
   position: relative;
@@ -906,7 +931,13 @@ header#backoffice > aside > span.owner {
   border-radius: 10px;
   cursor: pointer;
 }
-#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-image-plus {
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label.uploaded {
+  background-color: #e0ffee !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-check {
+  color: #1b5734 !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi {
   font-size: 4em;
   color: #424645;
   position: absolute;
@@ -949,10 +980,16 @@ header#backoffice > aside > span.owner {
   width: 20%;
 }
 #new-accommodation > form > section:nth-of-type(2) > .form-field > input {
-  width: 40%;
+  width: 41%;
 }
 #new-accommodation > form > section:nth-of-type(2) .form-field {
   margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-number {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-name {
+  width: 16em;
 }
 #new-accommodation > form > section:nth-of-type(2) .inline {
   margin-top: -1em;
@@ -977,6 +1014,9 @@ header#backoffice > aside > span.owner {
   border-width: 2px;
   font-size: 0.7em;
   padding: 0.5em 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > .distance {
+  display: none;
 }
 #new-accommodation > form > section:nth-of-type(4) > .form-field {
   margin: 1em 0;

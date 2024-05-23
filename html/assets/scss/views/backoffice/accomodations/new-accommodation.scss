@@ -21,6 +21,9 @@
             border-radius: 20px;
             box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
 
+            &:not(.active) {
+                opacity: 50%;
+            }
             &>h2, &>h3 {
                 font-family: "poppins-medium", sans-serif;
                 font-weight: normal;
@@ -46,6 +49,26 @@
             }
         }
 
+        & .error-message {
+            background-color: $red-1-200;
+            color: $red-1;
+            padding: .8em 1em;
+            border-radius: 10px;
+            margin: .8em 0;
+            font-size: .9em;
+
+            display: none;
+
+            position: relative;
+
+            padding-left: 2.3em;
+            &::before {
+                position: absolute;
+                left: 10px;
+                font-size: 1.2em;
+            }
+        }
+
         // global accommodation information
         &>section:nth-of-type(1) {
             // global infos
@@ -59,6 +82,12 @@
                     width: 50%;
  
                     &:first-of-type {
+                        &.error>label {
+                            background-color: $red-1-200;
+                            &>.mdi {
+                                color: $red-1 !important;
+                            }
+                        }
                         &>label {
                             position: relative;
                             display: block;
@@ -71,7 +100,15 @@
                             
                             cursor: pointer;
                             
-                            &>.mdi.mdi-image-plus {
+                            &.uploaded {
+                                background-color: $primary-frontoffice-4 !important;
+                            }
+
+                            &>.mdi.mdi-check {
+                                color: $primary-frontoffice-1 !important;
+                            }
+                            
+                            &>.mdi {
                                 font-size: 4em;
                                 color: $gray-1;
                                 position: absolute;
@@ -133,11 +170,17 @@
                 }
 
                 &>input {
-                    width: 40%;
+                    width: 41%;
                 }
             }
             & .form-field {
                 margin: 1em 0;
+            }
+            & .address-number {
+                width: 5em;
+            }
+            & .address-name {
+                width: 16em;
             }
             & .inline {
                 margin-top: -1em;
@@ -165,6 +208,10 @@
                         border-width: 2px;
                         font-size: .7em;
                         padding: .5em 1em;
+                    }
+
+                    &>.distance {
+                        display: none;
                     }
                 }
             }

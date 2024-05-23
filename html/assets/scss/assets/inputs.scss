@@ -4,7 +4,7 @@
             color: $red-1;
         }
 
-        &>input {
+        &>input,&>textarea,&>select {
             position: relative;
             border-color: $red-1;
     

@@ -23,8 +23,6 @@ class Model {
      * set a field value to the created model
      */
     public function set($key, $value) {
-        if(!in_array($key, array_keys($this->schema)))
-            throw new SchemaValidationException("Table column: '" . $key . "' not found in defined schema");
         $this->data[$key] = $value;
     }
 
@@ -93,7 +91,7 @@ class Model {
      * insert or update the model data
      * @return $request the request used to save the delegate or throws an error
      */
-    public function save() {
+    public function save($seqName = null) {
         $keys = array_keys($this->data);
         $values = array_values($this->data);
         $primaryField = $this->getPrimaryField();
@@ -125,8 +123,9 @@ class Model {
             $request->bindParam(sizeof($values), $this->data[$primaryField]);
         
         $request->execute();
-
-        return $request;
+        if(!isset($seqName))
+            return true;
+        return Database::getConnection()->lastInsertId($seqName);
     }
 
     public function getData() {
