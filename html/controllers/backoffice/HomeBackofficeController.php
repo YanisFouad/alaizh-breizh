@@ -1,7 +1,7 @@
 <?php
 require_once("models/AccommodationModel.php");
 require_once("services/Adresse.php");
-require_once("services/UserSession.php");
+require_once("services/session/UserSession.php");
 
 class HomeBackofficeController {
     const NB_ITEM_HOME_BACK = 8;
