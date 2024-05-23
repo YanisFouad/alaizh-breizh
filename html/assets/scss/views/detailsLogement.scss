@@ -1,0 +1,436 @@
+@import "../utils/_variables.scss";
+@import "../utils/variables-front-office.scss";
+
+*,
+*::after,
+*::before {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "comfortaa-bold";
+    src: url(../../fonts/comfortaa-bold.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-light";
+    src: url(../../fonts/comfortaa-light.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-medium";
+    src: url(../../fonts/comfortaa-medium.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-regular";
+    src: url(../../fonts/comfortaa-regular.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-semibold";
+    src: url(../../fonts/comfortaa-semibold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-bold";
+    src: url(../../fonts/poppins-bold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-light";
+    src: url(../../fonts/poppins-light.ttf);
+}
+
+@font-face {
+    font-family: "poppins-medium";
+    src: url(../../fonts/poppins-medium.ttf);
+}
+
+@font-face {
+    font-family: "poppins-regular";
+    src: url(../../fonts/poppins-regular.ttf);
+}
+
+@font-face {
+    font-family: "Material Design Icons";
+    src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+
+body {
+    font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "poppins-regular";
+}
+
+main#pageDetaille {
+    margin-left: 2em;
+}
+
+main#pageDetaille>div {
+    display: flex;
+
+    button {
+        background-color: white;
+        border: none
+    }
+
+    .mdi.mdi-chevron-right {
+        position: relative;
+        top: 1px;
+        font-size: 1.3em;
+    }
+
+    #cheminPage {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        color: $primary-1;
+    }
+
+    h4 {
+        color: $gray-1;
+        font-weight: normal;
+    }
+
+    #page {
+        display: flex;
+        margin-top: 1em;
+    }
+}
+
+#imgLogement {
+    width: 38em;
+    height: 26em;
+    border-radius: 13px;
+}
+
+
+#blockIntro {
+    display: flex;
+
+    //Media query pour gerer la disposition des elements 
+    //flex-wrap: wrap;
+
+    >div {
+        margin-left: 2.2em;
+    }
+
+    #titre {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 1.7em;
+            margin: 0;
+            color: $gray-1;
+        }
+    }
+
+    h2 {
+        font-family: "comfortaa-regular";
+        margin: 0.6em 0 1em 0;
+        color: $gray-2;
+        font-size: 1em;
+    }
+
+    #caracteristiques-logement {
+        display: flex;
+
+        ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            place-items: center start;
+            margin-top: 1.6em;
+            border: solid 1px $gray-3;
+            border-radius: 17px;
+            padding: 1em;
+        }
+
+        .bulle-Rose {
+            background-color: $brown-1;
+            border-radius: 14.5px;
+            width: fit-content;
+            padding: 5px 10px 5px 10px;
+            margin: 0.2em 0;
+        }
+    }
+}
+
+#description {
+    h3 {
+        color: $gray-2;
+        font-size: 0.8em;
+        margin: 1.7em 0 0.5em 0;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        margin-top: 0.7em;
+
+        h3 {
+            margin: 0;
+        }
+
+        img {
+            width: 3.5em;
+        }
+    }
+
+}
+
+#box-Activites-Amenagement {
+    display: flex;
+    justify-content: center;
+
+    >div {
+        display: flex;
+        box-shadow: 0 0 4px 2px #adadad22;
+        border-radius: 15px;
+        margin: 1em 0;
+        padding: 1em;
+        width: fit-content;
+
+        div {
+            margin: 1em 0 0 1em;
+        }
+
+        >div:first-child {
+            border-right: solid 2px $gray-2;
+        }
+
+        div+div {
+            margin-left: 3em;
+
+            ul {
+                grid-template-columns: 180px 1fr;
+            }
+        }
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: 283px 1fr;
+        list-style-type: none;
+        margin: 1em 3em 0 0;
+
+        li {
+            margin-top: 1em;
+
+            span {
+                font-size: 1.8em;
+                color: $gray-1;
+            }
+        }
+    }
+
+    h3 {
+        color: $gray-1;
+    }
+}
+
+aside {
+    position: sticky;
+    top: 10px;
+    margin: 0 2em;
+    width: 75%;
+    height: fit-content;
+
+    #profilPropriétaire {
+        display: flex;
+        align-items: center;
+        border: solid 1px $gray-3;
+        border-radius: 13px;
+        height: 5em;
+        margin-bottom: 1em;
+
+
+        >div {
+            h4 {
+                font-weight: normal;
+                color: $gray-1;
+                margin: 0;
+            }
+
+            margin-left: 10px;
+
+            .note {
+                display: flex;
+                align-items: center;
+                margin-top: 8px;
+            }
+
+            span {
+                margin: 0;
+                color: $primary-1;
+
+                #nbAvis {
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        img {
+            width: 4em;
+            height: 4em;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+    }
+
+    #box-reservation {
+        border: solid 1px $gray-3;
+        border-radius: 13px;
+        padding: 2em;
+
+        h2 {
+            color: $gray-1;
+            text-align: center;
+        }
+
+        .line {
+            border: solid 1px $gray-3;
+            margin: 1em 0;
+        }
+
+        >button {
+            border: solid 1px $gray-1;
+            border-radius: 10px;
+            padding: 0.2em 0;
+            width: 100%;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: $gray-3;
+            }
+
+            span {
+                color: $gray-1;
+            }
+
+            span:first-child {
+                margin-right: 0.5em;
+            }
+
+            .mdi.mdi-calendar-month {
+                font-size: 1.6em;
+            }
+
+            +div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+
+                div {
+                    h4 {
+                        color: $gray-2;
+                        text-align: center;
+                        font-size: 0.8em;
+
+                    }
+
+                    h3 {
+                        color: $gray-1;
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+
+
+
+        #nbVoyageurs {
+            color: $gray-2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span:first-child {
+                font-size: 0.9em;
+            }
+
+            div {
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin: 0 0.5em;
+                }
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+
+                height: 1.5em;
+                border: none;
+                background-color: #E0FFEE;
+                border-radius: 50%;
+                padding: 0.5em;
+            }
+        }
+
+        #nbNuits {
+            font-size: 0.9em;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                div {
+                    span:nth-child(2) {
+                        margin-left: 0.3em;
+                    }
+                }
+            }
+
+            span:nth-child(odd) {
+                color: $gray-2;
+            }
+        }
+
+        #boutonDevis {
+            height: 1.5em;
+
+            button {
+                position: relative;
+                color: $white;
+                background-color: $primary-1;
+                height: 3em;
+                width: 100%;
+                border-radius: 21px;
+                font-family: "comfortaa-regular";
+
+                &:hover {
+                    background-color: $primary-2;
+                }
+
+                .mdi.mdi-chevron-right {
+                    color: $white;
+                    position: absolute;
+                    right: 0.3em;
+                    top: 0.3em;
+                    font-size: 2em;
+                }
+            }
+        }
+    }
+}

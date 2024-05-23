@@ -133,9 +133,9 @@
                 }
 
                 &>input[type="radio"]:checked+label {
-                    border-color: $primary-frontoffice-1;
+                    border-color: $primary-1;
                     &>h4 {
-                        color: $primary-frontoffice-1;
+                        color: $primary-1;
                     }
                 }
 
@@ -150,9 +150,9 @@
                     transition: all .4s ease;
 
                     &:is(:hover, :focus) {
-                        border-color: $primary-frontoffice-1;
+                        border-color: $primary-1;
                         &>h4 {
-                            color: $primary-frontoffice-1;
+                            color: $primary-1;
                         }
                     }
     

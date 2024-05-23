@@ -1,5 +1,6 @@
 @import "utils/variables";
 @import "utils/variables-front-office";
+@import "utils/_variables-back-office.scss";
 
 *, *::after, *::before {
     outline: none;
@@ -45,8 +46,11 @@ h1, h2 {
 @import "assets/buttons";
 @import "assets/inputs";
 
-/* VIEWS */
+/* LAYOUT */
+@import "layout/header.scss";
+@import "layout/footer.scss";
 
+/* VIEWS */
 // errors
 @import "views/errors/404";
 
@@ -55,9 +59,10 @@ h1, h2 {
 
 // account
 @import "views/account/profile";
-
+ 
 // bookings
 @import "views/bookings/finalize-booking.scss";
+@import "views/home.scss";
 
 // backoffice
 @import "views/backoffice/layout/header.scss";
