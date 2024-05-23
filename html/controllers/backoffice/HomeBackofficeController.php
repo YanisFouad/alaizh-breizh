@@ -32,16 +32,16 @@ class HomeBackofficeController {
             $this->setCurrentPage(1);
         }
 
-        $this->setLogements($this->getOffset(), $this->getUser()->get("id_compte"));
+        $this->setLogements($this->getUser()->get("id_compte"), $this->getOffset());
         $this->setNbLogement(sizeof($this->getLogements()));
-        
+
         if($this->getNbLogement() == 0) {
             $this->setOffset(0);
-            $this->setLogements($this->getOffset(), $this->getUser()->get("id_compte"));
+            $this->setLogements($this->getUser()->get("id_compte"), $this->getOffset(), );
         }
     }
 
-    public function setLogements($offset, $userId) {
+    public function setLogements($userId, $offset) {
         $this->logements = AccommodationModel::findById($userId, $offset, self::NB_ITEM_HOME_BACK);
     }
     
@@ -54,7 +54,7 @@ class HomeBackofficeController {
     }
 
     public function setNbLogement($userId) {
-        $this->nbLogement = sizeof(AccommodationModel::findAllById("MarLe"));
+        $this->nbLogement = sizeof(AccommodationModel::findAllById($this->getUser()->get("id_compte")));
     }
     
     public function getCurrentPage() {

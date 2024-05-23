@@ -11,6 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css">
     <title>Accueil</title>
 </head>
 <body>
@@ -20,9 +22,11 @@
         <div class="title-container">
             <h1>Mes logements (<span class="nb-logement"><?= $controller->getNbLogement() ?></span>)</h1>
         </div>
-        <div class="new-logement-container">
-            <button class="tertiary backoffice"><span class="plus-icon mdi mdi-plus"></span>Ajouter un logement</button>
-        </div>
+        <a href="/backoffice/nouveau-logement" class="link-new-logement">
+            <div class="new-logement-container">
+                <button class="tertiary backoffice"><span class="plus-icon mdi mdi-plus"></span>Ajouter un logement</button>
+            </div>
+        </a>
     </section>
     <section>
     <div class="logements-container">
@@ -37,18 +41,21 @@
                 echo '<div class="row-logement">';
             }
             ?>
-            <article class="card-logement">
-                <div class="img-logement-container">
-                    <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
-                </div>
-                <div class="description-logement-container">
-                    <h2 class="title-logement"> <?= $logement->get("titre_logement") ?></h2>
-                    <p class="adresse-logement">
-                        <span class="mdi mdi-map-marker"></span>
-                        <?= $logement->get("ville_adresse") . ", " . Adresse::getDepartement($logement->get("code_postal_adresse")) ?>
-                    </p>
-                </div>
-            </article>
+
+            <a href="<?= "/backoffice/logements/details-logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
+                <article class="card-logement">
+                    <div class="img-logement-container">
+                        <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
+                    </div>
+                    <div class="description-logement-container">
+                        <h2 class="title-logement"> <?= $logement->get("titre_logement") ?></h2>
+                        <p class="adresse-logement">
+                            <span class="mdi mdi-map-marker"></span>
+                            <?= $logement->get("ville_adresse") . ", " . Adresse::getDepartement($logement->get("code_postal_adresse")) ?>
+                        </p>
+                    </div>
+                </article>
+            </a>
             <?php
         }
         // Fermez la dernière div "row-logement"

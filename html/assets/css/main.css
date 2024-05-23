@@ -544,24 +544,43 @@ header#backoffice > aside > span.owner {
 #page-home-backoffice {
   margin: 35px 90px;
 }
+@media screen and (max-width: 730px) {
+  #page-home-backoffice {
+    margin: 35px 20px;
+  }
+}
 #page-home-backoffice .accueil-logements-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
   padding: 13px 0;
   border-bottom: 1px solid #eaeaea;
   margin-bottom: 22px;
+  gap: 15px;
+}
+@media screen and (max-width: 535px) {
+  #page-home-backoffice .accueil-logements-header {
+    justify-content: center;
+  }
+  #page-home-backoffice .accueil-logements-header .link-new-logement {
+    margin-top: 20px;
+  }
 }
 #page-home-backoffice .accueil-logements-header .title-container {
   display: flex;
   align-items: center;
 }
-#page-home-backoffice .accueil-logements-header .new-logement-container button {
+#page-home-backoffice .accueil-logements-header .link-new-logement {
+  text-decoration: none;
+}
+#page-home-backoffice .accueil-logements-header .link-new-logement .new-logement-container button {
   display: flex;
   align-items: center;
   gap: 7px;
 }
-#page-home-backoffice .accueil-logements-header .new-logement-container button .plus-icon {
+#page-home-backoffice .accueil-logements-header .link-new-logement .new-logement-container button .plus-icon {
   width: 20px;
   height: 20px;
   padding: 4px;
@@ -578,6 +597,12 @@ header#backoffice > aside > span.owner {
   justify-content: center;
   width: 100%;
   gap: 10px;
+}
+#page-home-backoffice .logements-container .row-logement .link-logement {
+  all: unset;
+}
+#page-home-backoffice .logements-container .row-logement .link-logement:hover {
+  cursor: pointer;
 }
 #page-home-backoffice .logements-container .row-logement .card-logement {
   flex: 1 1 calc(25% - 10px);
@@ -596,12 +621,16 @@ header#backoffice > aside > span.owner {
   height: 250px;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 10px;
 }
 #page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container img {
-  width: max-content;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 #page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement,
 #page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
