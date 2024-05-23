@@ -39,7 +39,7 @@ input, textarea, select {
     }
 
     &:is(:hover, :focus) {
-        border-color: $primary-1;
+        border-color: $primary-frontoffice-1;
     }
 }
 
@@ -56,7 +56,7 @@ input[type="checkbox"] {
         }
         &:not(:checked):hover+label {
             &::before {
-                color: $primary-1;
+                color: $primary-backoffice-1;
             }
         }
         &:checked+label, &:focus+label {
@@ -72,13 +72,13 @@ input[type="checkbox"] {
 
     &:checked+label {
         &::after {
-            background-color: $primary-1;
+            background-color: $primary-frontoffice-1;
         }
     }
 
     &:not(:checked):hover+label {
         &::before {
-            color: $primary-1;
+            color: $primary-frontoffice-1;
         }
     }
 
@@ -107,7 +107,7 @@ input[type="checkbox"] {
             $size: 20px;
             content: "";
             display: block;
-            border: 2px solid $primary-1;
+            border: 2px solid $primary-frontoffice-1;
 
             width: $size;
             height: $size;

@@ -1,5 +1,5 @@
 
-header {
+header#frontoffice {
    position: sticky;
    top: 0;
    z-index: 998;
@@ -33,7 +33,7 @@ header {
                text-decoration: none;
                &:hover {
                   font-family: "comfortaa-bold";
-                  color: $primary-1;
+                  color: $primary-frontoffice-1;
                }
                &:visited {
                   color: black;
@@ -42,15 +42,47 @@ header {
          }
       }
    }
+   
+   #sign-in-up-container {
+      &>form {
+         border-left: 1px solid $gray-3;
+         padding-left: 1em;
+      }
+
+      &>a {
+         display: flex;
+         align-items: center;
+         gap: 1em;
+         text-decoration: none;
+         margin-right: 1em;
+   
+         padding: .5em .5em;
+         padding-right: 1em;
+         border-radius: 100px;
+
+         transition: all .3s ease;
+         font-size: .8em;
+   
+         &:hover {
+            background-color: $gray-4;
+         }
+   
+         &>img {
+            $size: 2.5em;
+            width: $size;
+            height: $size;
+            border-radius: 100px;
+         }
+      }
+   }
 
    #sign-in-up-container, .sign-in-up-buttons {
       display: flex;
       align-items: center;
-      color: $primary-1;
+      color: $primary-frontoffice-1;
       button {
          &:hover {
-            font-family: "comfortaa-bold";
-            background-color: $primary-4;
+            background-color: $primary-frontoffice-4;
          }
       }
    }
@@ -75,16 +107,16 @@ header {
       }     
       
       .fullsize-logo {
-         display: none;
+         display: none  !important;
       }
       .smallsize-logo {
-         display: block;
+         display: block  !important;
       }
       #top-header ul {
-         display: none;
+         display: none  !important;
       }
       .sign-in-up-buttons {
-         display: none;
+         display: none  !important;
       }
       // Empêcher la fenêtre d'être en-dessous quand ouvert ou on s'en cogne ? 
       #open-burger-menu {

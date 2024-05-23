@@ -1,12 +1,12 @@
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
 
-#home-page, #filter-housing-container {
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh;
-   min-width: 1000px;
-}
+// #home-page, #filter-housing-container {
+//    display: flex;
+//    flex-direction: column;
+//    min-height: 100vh;
+//    min-width: 1000px;
+// }
 
 #home-page {
    button {
@@ -195,11 +195,11 @@ abbr[title] {
    align-items: center;
    gap: .5em;
    width: fit-content;
-   color: $primary-1;
-   border: solid 1px $primary-1;
+   color: $primary-frontoffice-1;
+   border: solid 1px $primary-frontoffice-1;
    border-radius: 1em;
    padding: .25em .5em;
-   background-color: $primary-4;
+   background-color: $primary-frontoffice-4;
 }
 
 .show-all-button {
@@ -281,8 +281,8 @@ abbr[title] {
       align-items: center;
       padding: .25em 1em;
       color: white;
-      background-color: $primary-1;
-      border: solid 1px $primary-1;
+      background-color: $primary-frontoffice-1;
+      border: solid 1px $primary-frontoffice-1;
       border-radius: 2em;
    }
    
@@ -411,7 +411,7 @@ abbr[title] {
       width: 150px;
    }
    button {
-      background-color: $primary-1;
+      background-color: $primary-frontoffice-1;
       padding: 1em;
    }
    .mdi-magnify {
@@ -444,7 +444,7 @@ abbr[title] {
    justify-content: center;
    gap: .75em;
    font-family: "comfortaa-bold";
-   color: $primary-1;
+   color: $primary-frontoffice-1;
    margin-bottom: 2.5em;
    li {
       display: flex;
@@ -456,6 +456,14 @@ abbr[title] {
       width: 1em;
       height: 1em;
       padding: 1.6em;
+      position: relative;
+
+      &>span {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
    }
 }
 

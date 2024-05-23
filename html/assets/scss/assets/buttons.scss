@@ -40,9 +40,9 @@ button {
 
     &.primary, &.secondary {
         @include renderButton(
-            $primary-1,
-            $primary-2,
-            $primary-3,
+            $primary-frontoffice-1,
+            $primary-frontoffice-2,
+            $primary-frontoffice-3,
             $white
         );
     }

@@ -1,13 +1,11 @@
-<?php 
-   $pageTitle = "Liste des logements"; 
-   
-   require_once("../models/AccommodationModel.php");
-   require_once("../services/RequestBuilder.php");
+<?php    
+   require_once(__DIR__."/../models/AccommodationModel.php");
+   require_once(__DIR__."/../services/RequestBuilder.php");
    require_once("layout/header.php"); 
    
    // Paramètres de pagination
-   $articlesParPage = 10;
-   $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+   $articlesParPage = 20;
+   $currentPage = isset($_GET['page']) && is_numeric($_GET["page"]) ? intval($_GET['page']) : 1;
    
    // Calculer l'indice de début pour la pagination
    $indiceDebut = ($currentPage - 1) * $articlesParPage;
@@ -15,6 +13,17 @@
  
    $totalAccomodations = AccommodationModel::count();
    $totalPages = ceil($totalAccomodations / $articlesParPage);
+
+   function getDepartmentName($postCode) {
+      $result = RequestBuilder::select("pls._departement")
+          ->projection("nom_departement")
+          ->where("num_departement = ?", $postCode)
+          ->execute()
+          ->fetchOne();
+      return $result["nom_departement"];
+   }
+
+   ScriptLoader::load("housingList.js")
 ?>
 
 <section id="filter-housing-container">
@@ -134,7 +143,6 @@
 
 
    <section id="housing-list-container">
-      <!-- ⭕️🤔 Pas sûre que ça fonctionne, à revérifier avec d'autres pages -->      
       <form onsubmit="return false;">
         <button type="button" class="back-button" onclick="history.go(-1)">
             <span class="mdi mdi-arrow-left"></span>Retour
@@ -155,38 +163,39 @@
       </div>
 
       <div id="filter-sort-buttons-container">
-         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <!-- onclick="toggleFilterMenu()" -->
+         <button disabled id="filter-button" class="primary"><span class="mdi mdi-filter-variant"></span>Filtres</button>
          <button disabled><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
       </div>
 
 
       <section class="housing-list">
          <?php foreach($accomodations as $accomodation) {?>
-            <article class="housing-item">
-               <div class="housing-image-item-container">
-                  <!-- ⭕️ À REMPLACER PAR LE BON SERVICE -->
-                  <!--<img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Logement">-->
-                  <img src="../../images/logement-test.jpeg" alt="Logement">
-               </div>
-               <div class="housing-text-details">
-                  <div class="housing-description-container">
-                     <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
-                     <!-- NOTATION // RETIRÉE
-                        <div class="star-notation-container hidden">
-                        <span class="mdi mdi-star"></span>
-                        <h4><?php //echo $housingRating; ?></h4>
+            <a href="/logement?id_logement=<?=$accomodation->get("id_logement")?>">
+               <article class="housing-item">
+                  <div class="housing-image-item-container">
+                     <img src="<?=$accomodation->get("photo_logement")?>" alt="Logement">
+                  </div>
+                  <div class="housing-text-details">
+                     <div class="housing-description-container">
+                        <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
+                        <!-- NOTATION // RETIRÉE
+                           <div class="star-notation-container hidden">
+                           <span class="mdi mdi-star"></span>
+                           <h4><?php //echo $housingRating; ?></h4>
+                        </div>
+                        -->
                      </div>
-                     -->
+                     <div class="housing-location-container">
+                        <span class="mdi mdi-map-marker"></span>
+                        <h4 class="housing-location"><abbr title="<?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?>"><?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?></h4>
+                     </div>
+                     <div class="housing-price-container">
+                        <span class="housing-price"><?php echo $accomodation->get("prix_ht_logement"); ?>€</span><span class="per-night">par nuit</span>
+                     </div>
                   </div>
-                  <div class="housing-location-container">
-                     <span class="mdi mdi-map-marker"></span>
-                     <h4 class="housing-location"><abbr title="<?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?>"><?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?></h4>
-                  </div>
-                  <div class="housing-price-container">
-                     <span class="housing-price"><?php echo $accomodation->get("prix_ht_logement"); ?>€</span><span class="per-night">par nuit</span>
-                  </div>
-               </div>
-            </article>
+               </article>
+            </a>
          <?php } ?>
 
          <div class="show-all-button-container">
@@ -203,56 +212,22 @@
 
          <form class="pagination">
             
-            <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>"><span class="mdi mdi-chevron-left"></span></button>
+            <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+               <span class="mdi mdi-chevron-left"></span>
+            </button>
 
-            <?php if ($currentPage - 1 !== 0) { ?>
-               <button class="secondary" name="page" value="<?php echo $currentPage - 1 ?>"><?php echo $currentPage - 1?></button>
-            <?php } ?>
-   
-            <button class="secondary" name="page" value="<?php echo $currentPage?>"><?php echo $currentPage?></button>
-
-            <?php if ($currentPage + 1 <= $totalPages) { ?>
-               <button class="secondary" name="page" value="<?php echo $currentPage + 1 ?>"><?php echo $currentPage + 1?></button>
+            <?php for($i = 0; $i < $totalPages; $i++) { ?>
+               <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
+                  <span><?php echo $i+1?></span>
+               </button>
             <?php } ?>
 
-            <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>"><span class="mdi mdi-chevron-right"></span></button>
+            <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
+               <span class="mdi mdi-chevron-right"></span>
+            </button>
          </form>
       </div>
    </section>
 </section>
-
-    <?php 
-      function getDepartmentName($postCode) {
-        $result = RequestBuilder::select("pls._departement")
-            ->projection("nom_departement")
-            ->where("num_departement = ?", $postCode)
-            ->execute()
-            ->fetchOne();
-        return $result["nom_departement"];
-    }?>
-<script>
-
-   function toggleFilterMenu() {
-      document.getElementById("filter-container").classList.toggle("hidden");
-      document.getElementById("filter-container").classList.toggle("displayed");
-   }
-
-   function switchOpenClose(menuId, chevronDownId, chevronUpId) {
-      let menu = document.getElementById(menuId);
-      let chevronDown = document.getElementById(chevronDownId);
-      let chevronUp = document.getElementById(chevronUpId);
-
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("displayed");
-      chevronDown.classList.toggle("hidden");
-      chevronDown.classList.toggle("displayed");
-      chevronUp.classList.toggle("hidden");
-      chevronUp.classList.toggle("displayed");
-   }
-
-   function toggleMenuBurger() {
-
-   }
-</script>
 
 <?php require_once("layout/footer.php"); ?>
