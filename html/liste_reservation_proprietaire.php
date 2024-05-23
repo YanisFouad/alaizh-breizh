@@ -67,7 +67,9 @@
     $nb_page = ceil($nb_reservation_periode_en_cours/$nb_elem_par_page);
 
     //tableau de réservation pour la période
-    $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$page*$nb_elem_par_page);
+    $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
+
+    $tab_toutes_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
 ?>
 
 <!DOCTYPE html>
@@ -84,15 +86,24 @@
     <div id="liste-reservation-proprietaire-entete">
         <h1>Mes réservations</h1>
 
-        <!-- export des réservations -->
-        <form action="/controllers/csvExport.php" method="POST">
-            <button id="export-reservation" type="submit">Exporter mes réservations</button>
-            <input type="hidden" name="name" value="export_reservations.csv" />
-            <input type="hidden" name="array" value="<?php echo htmlentities(serialize($tab_reservation)); ?>" />
-        </form>
-
         <!--Rechercher une réservation-->
         <div class="liste-reservation-proprietaire-recherche">
+            
+        <!-- export des réservations -->
+            <form action="/controllers/csvExport.php" method="POST">
+                <!-- bouton d'export -->
+                <button id="export-reservation" class="primary backoffice export-reservation" type="submit">
+                    Exporter mes réservations
+                    <!-- <span class="mdi mdi-export-variant"></span> -->
+                </button> 
+                <!-- non de fichier pour l'export -->
+                <input type="hidden" name="name" value="export_reservations.csv" />
+                <!-- donnnée pour fichier -->
+                <input type="hidden" name="array" value="<?php echo htmlentities(serialize(array_map(function ($res){
+                return $res->getData();
+                } ,$tab_toutes_reservation_periode))); ?>" />
+            </form>
+
             <div>
                 <!-- Textarea Rechercher -->
                 <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1">Rechercher...</textarea>
@@ -172,7 +183,7 @@
                     </div>
                     <div>
                         <h5>Prix total</h5>
-                        <h4><?php echo $reservation->get("prix_total"); ?></h4>
+                        <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
                     </div>
                     <button class="primary backoffice liste-reservation-proprietaire-flex-row">
                         <span class="mdi mdi-eye-outline"></span>
@@ -187,7 +198,7 @@
     <form method="GET" action="#" id="liste-reservation-proprietaire-pagination">
     
         <!-- Bouton pagination précédent -->
-        <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-cliquable" : "button-non-cliquable" ?>" type="submit">
+        <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-chevron-cliquable" : "button-chevron-non-cliquable" ?>" type="submit">
             <span class="mdi mdi-chevron-left"></span>
         </button>
 
@@ -214,7 +225,7 @@
        ?>
 
         <!-- Bouton pagination page + 1 -->
-        <button name="page" value="<?php echo $page+1; ?>" class="<?php echo $page+1 <= $nb_page ? "button-cliquable" : "button-non-cliquable";?>" type="submit">
+        <button name="page" value="<?php echo $page+1; ?>" class="<?php echo $page+1 <= $nb_page ? "button-chevron-cliquable" : "button-chevron-non-cliquable";?>" type="submit">
             <span class="mdi mdi-chevron-right"></span>
         </button>
 

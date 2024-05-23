@@ -26,6 +26,11 @@
     flex-direction: row; 
     align-items: center;
 
+    #export-reservation{
+        margin-right:0.5em ;
+        padding:1.4em;
+    }
+
     div{
         padding:0.6em;
         background-color: $gray-4;
@@ -145,18 +150,11 @@
     flex-direction: row;
     align-items: center;
     
-    /**********************/
-    /* Filtre             */
-    /**********************/
-    .mdi.mdi-filter-variant{
+    /******************************/
+    /* Filtre,Oeil facture ,export*/
+    /******************************/
+    .mdi.mdi-filter-variant,.mdi.mdi-eye-outline,.mdi.mdi-export-variant{
         color: white;
-    }
-
-    /**********************/
-    /* Oeil facture       */
-    /**********************/
-    .mdi.mdi-eye-outline{
-        color:white;
     }
 
     .mdi.mdi-eye-outline,.mdi.mdi-filter-variant, .mdi.mdi-sort-ascending{
@@ -203,7 +201,8 @@
     justify-content: center;
     gap:0.75em;
 
-    .button-cliquable,#button-clique{
+    .button-cliquable,#button-clique,.button-chevron-cliquable
+    {
         border: 1px solid $primary-backoffice-1;
         border-radius: 50%;
         font-family: "comfortaa-bold";
@@ -222,7 +221,7 @@
         background-color: $primary-backoffice-1;
     }
 
-    .button-non-cliquable{
+    .button-non-cliquable,.button-chevron-non-cliquable{
         border: 1px solid $primary-backoffice-3;
         border-radius: 50%;
         font-family: "comfortaa-bold";
@@ -231,9 +230,13 @@
         pointer-events: none !important;
     }
 
+    .button-chevron-cliquable,.button-chevron-non-cliquable{
+        padding:0.45em 0.55em;
+    }
+
     span{
-        height: 2em;
-        width: 2em;
+        font-size: 2em;
+        
     }
 
 }
