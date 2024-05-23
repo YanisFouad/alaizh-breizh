@@ -210,7 +210,7 @@ abbr[title] {
 /* MEDIA QUERIES */
 /*****************/
 
-@media (max-width: 375px) {
+@media (max-width: 431px) {
 #home-page, #filter-housing-container {
    min-width: inherit;
 }
@@ -248,7 +248,7 @@ abbr[title] {
       margin: 0 auto 1em auto;
    }
    .show-more-button {
-      display: none;
+      display: none !important;
    }
 
    .housing-list {
@@ -465,7 +465,7 @@ abbr[title] {
 
 // 1231mini à droite
 
-@media (max-width: 375px) {
+@media (max-width: 431px) {
    .compact-search-bar {
       display: none;
    }
@@ -481,6 +481,7 @@ abbr[title] {
 
    #housing-list-container {
       padding: .5em;
+      align-items: center;
    }
    .show-all-button-container {
       display: none;
