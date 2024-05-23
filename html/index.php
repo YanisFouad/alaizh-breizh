@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("services/Router.php");
-require_once("services/UserSession.php");
+require_once("services/session/UserSession.php");
 require_once("services/ScriptLoader.php");
 
 $router = new Router();

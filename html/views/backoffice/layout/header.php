@@ -1,5 +1,5 @@
 <?php 
-    require_once(__DIR__."/../../../services/UserSession.php");
+    require_once(__DIR__."/../../../services/session/UserSession.php");
 
     if(!UserSession::isConnected()) {
         require_once(__DIR__."/../authentication/login.php");

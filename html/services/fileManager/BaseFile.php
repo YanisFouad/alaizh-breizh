@@ -10,7 +10,6 @@ abstract class BaseFile {
 
     public static function get($fileName) {
         $path = __DIR__. "/../../" . static::getPath();
-        var_dump($path);
         $result = glob($path."/".$fileName."*");
         if(count($result) < 1)
             return self::formatFilename("default.webp");
