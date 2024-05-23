@@ -1,7 +1,7 @@
 <?php
 
 require_once(__DIR__."/../../models/AccountModel.php");
-require_once(__DIR__."/../../services/UserSession.php");
+require_once(__DIR__."/../../services/session/UserSession.php");
 
 $EMAIL_REGEX_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 
@@ -31,7 +31,7 @@ if(isset($_POST)) {
         sendJson("error", "Mot de passe invalide.");
     }
 
-    UserSession::updateSession($account);
+    UserSession::set($account);
 
     // if everything is good then return a json with "success" true inside
     sendJson("success", true);

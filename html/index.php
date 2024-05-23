@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("services/Router.php");
-require_once("services/UserSession.php");
+require_once("services/session/UserSession.php");
 require_once("services/ScriptLoader.php");
 
 $router = new Router();
@@ -9,7 +9,10 @@ $router = new Router();
 // home & default view
 $router->add("/", "views/home.php");
 
-// account profile & public proqfile view
+// bookings
+$router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
+
+// account profile & public profile view
 $router->add("/profil", "views/account/profile.php");
 
 // backoffices views

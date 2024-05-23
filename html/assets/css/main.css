@@ -1,9 +1,9 @@
-/* Error: Can't find stylesheet to import.
+/* Error: expected "{".
  *    ,
- * 18 | @import "details-logement.scss";
- *    |         ^^^^^^^^^^^^^^^^^^^^^^^
+ * 64 | @import "views/home.scss";
+ *    |                          ^
  *    '
- *   /sass/main.scss 18:9  root stylesheet */
+ *   /sass/main.scss 64:26  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 18 \2502  @import \"details-logement.scss\";\a    \2502          ^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   /sass/main.scss 18:9  root stylesheet";
+  content: 'Error: expected "{".\a    \2577 \a 64 \2502  @import "views/home.scss";\a    \2502                           ^\a    \2575 \a   /sass/main.scss 64:26  root stylesheet';
 }

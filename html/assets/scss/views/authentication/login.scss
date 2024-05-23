@@ -133,3 +133,11 @@
     }
 
 }
+
+@media screen and (max-width: 490px) {
+    .modal#authentication-modal {
+       &>.center {
+        width: 23em;
+       }
+    }
+}

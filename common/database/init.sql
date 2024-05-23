@@ -262,7 +262,7 @@ CREATE OR REPLACE VIEW logement AS
         logement_amenagement.id_amenagement_5 FROM _logement 
     LEFT JOIN logement_activite ON logement_activite.id_logement = _logement.id_logement
     INNER JOIN _adresse ON _logement.id_adresse = _adresse.id_adresse
-    INNER JOIN logement_amenagement ON logement_amenagement.id_logement = _logement.id_logement;
+    LEFT JOIN logement_amenagement ON logement_amenagement.id_logement = _logement.id_logement;
 
 CREATE OR REPLACE FUNCTION update_locataire() RETURNS TRIGGER AS $BODY$
 DECLARE

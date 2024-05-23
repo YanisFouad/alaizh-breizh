@@ -53,7 +53,7 @@ class Model {
         if(array_key_exists("get", $props)) {
             $getter = $props["get"];
             return is_callable($getter) ? 
-                $getter($this) : $getter;
+                $getter($this->data) : $getter;
         }
         if(!isset($value)) {
             if(array_key_exists("default", $props))
@@ -127,6 +127,10 @@ class Model {
         $request->execute();
 
         return $request;
+    }
+
+    public function getData() {
+        return $this->data;
     }
 
     public function __toString() {

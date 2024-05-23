@@ -1,4 +1,6 @@
 <?php 
+    require_once(__DIR__."/../../../services/session/UserSession.php");
+
     if(!UserSession::isConnected()) {
         require_once(__DIR__."/../authentication/login.php");
         exit;
@@ -43,8 +45,8 @@
             </a>
             <div id="profile">
                 <div class="infos">
-                    <img src="<?php echo $profile->get("photo_profil"); ?>" alt="profile picture" />
-                    <span><?php echo $profile->get("displayname"); ?></span>
+                    <img src="<?=$profile->get("photo_profil"); ?>" alt="<?=$profile->get("displayname")?>" />
+                    <span><?=$profile->get("displayname"); ?></span>
                     <span class="mdi mdi-chevron-up"></span>
                 </div>
 

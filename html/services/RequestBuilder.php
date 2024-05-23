@@ -32,7 +32,7 @@ class RequestBuilder {
         return $this;
     }
 
-    public function where($clausure, $data) {
+    public function where($clausure, ...$data) {
         $this->whereClausures[$clausure] = $data;
         return $this;
     }
@@ -64,9 +64,11 @@ class RequestBuilder {
         if(isset($this->distinct)) {
             $query[] = "DISTINCT";
         }
+
+        if(isset($this->distinct))
+            $query[] = "DISTINCT";
         
         $query[] = join(",", $this->fields);
-
         
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
@@ -74,13 +76,22 @@ class RequestBuilder {
         
         $query[] = $this->tableName;
 
+        // jointures
+        foreach($this->jointures as $jointure) {
+            [$type, $otherTable, $on] = $jointure;
+            $query[] = $type . " JOIN " . $otherTable . " ON";
+            foreach($on as $cond) 
+                $query[] = join(" AND ", $cond);
+        }
+
         // build clausures
         if(count($this->whereClausures) > 0) {
             $query[] = "WHERE";
             $clasures = array();
             foreach($this->whereClausures as $clausure => $data) {
                 $clasures[] = $clausure;
-                $params[] = $data;
+                foreach($data as $d)
+                    $params[] = $d;
             }
             $query[] = join(" AND ", $clasures);
         }
