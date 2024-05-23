@@ -1,6 +1,9 @@
 
-#liste-reservation-locataire-body {
-    margin:4em;
+#liste-reservation-locataire-main{
+    margin:2em 4em;
+    @media screen and (max-width : 431px) {
+        margin: 0.5em 1em;
+    }
     h1{
         margin:1em 0;
     }
@@ -10,6 +13,11 @@
         flex-direction: row;
         justify-content:space-between;
         align-items: center;
+        @media screen and (max-width:431px) {
+            flex-direction: column;
+            margin-bottom: 1em;
+            
+        }
 
     }
 
@@ -105,6 +113,11 @@
             margin-right: 0.2em;
             font-size: 2em;
         }
+        @media screen and (max-width : 431px) {
+            
+            display: none;
+            
+        }
     }
 
     // Bouton filtre
@@ -144,11 +157,16 @@
             border: solid $primary-frontoffice-1 1px;
             border-radius: 20px;
             box-shadow: 0px 0px 2px $primary-frontoffice-1;
-
+           
             div{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                justify-content: center;
+                @media screen and (max-width : 1110px) {
+                    width: 100%;
+                    justify-content: flex-start;
+                }
                 
 
                 #img-container{
@@ -166,33 +184,71 @@
                         border-radius: 10%;
                         object-fit: cover;
                         object-position: center;
-                    } 
+                    }
+                    @media screen and (max-width : 431px) {
+                        width: 100%;
+                        height: unset;
+                        border-radius: 10px;
+                        margin-right: 0;
+                        
+                        img{
+                            border-radius: 10px;
+                        }
+                    }
                 }
-                
 
                 h4{
-                    font-size: 15px;
                     font-family: "poppins-light";
                 }
 
-                h5{
-                    font-size: 12px;
+                .titreDetail{
                     font-family: "poppins-light";
                     color: $gray-2;
                 }
+                
             } 
-
+            @media screen and (max-width : 1110px){
+                flex-direction: column;
+                width: 100%;
+            }
+            @media screen and (max-width : 431px){
+                border: none;
+                box-shadow: none;
+                flex-direction: column;
+                div{
+                    flex-direction: column;
+                    
+                }
+            }
             .liste-reservation-locataire-logement-detail{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap:4em;
-
+                justify-content: space-between;
+                width: 45%;
+                
                 div{
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     white-space: nowrap;
+                }
+                @media screen and (max-width : 1110px) {
+                    width: 100%;
+                }
+            }
+            @media screen and (max-width : 431px) {
+                .liste-reservation-locataire-logement-detail{
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 100%;
+                    gap:0;
+                    div{
+                        flex-direction: row;
+                        justify-content: space-between;
+                        gap:1em;
+                        width :100%;
+                    }
                 }
             }
         }
