@@ -58,7 +58,7 @@ CREATE TABLE _logement (
     id_proprietaire VARCHAR(20) NOT NULL,
     id_adresse INTEGER NOT NULL,
     titre_logement VARCHAR(120) NOT NULL,
-    photo_logement VARCHAR(100) NOT NULL,
+    photo_logement VARCHAR(100),
     accroche_logement VARCHAR(400) NOT NULL,
     description_logement VARCHAR(400) NOT NULL,
     gps_longitude_logement VARCHAR(12) NOT NULL,
@@ -262,7 +262,7 @@ CREATE OR REPLACE VIEW logement AS
         logement_amenagement.id_amenagement_5 FROM _logement 
     LEFT JOIN logement_activite ON logement_activite.id_logement = _logement.id_logement
     INNER JOIN _adresse ON _logement.id_adresse = _adresse.id_adresse
-    INNER JOIN logement_amenagement ON logement_amenagement.id_logement = _logement.id_logement;
+    LEFT JOIN logement_amenagement ON logement_amenagement.id_logement = _logement.id_logement;
 
 CREATE OR REPLACE FUNCTION update_locataire() RETURNS TRIGGER AS $BODY$
 DECLARE
@@ -432,6 +432,8 @@ CREATE OR REPLACE FUNCTION create_logement() RETURNS TRIGGER AS $BODY$
         IF NEW.activite_7 IS NOT NULL THEN
             INSERT INTO _logement_activite (nom_activite, perimetre_activite, id_logement) VALUES (NEW.activite_7, NEW.perimetre_activite_7, new_id_logement);
     	END IF;
+
+        UPDATE _logement SET photo_logement = CONCAT(new_id_logement, '_', NEW.type_logement) WHERE id_logement = new_id_logement;
 	RETURN NEW;
 	END;
     $BODY$
@@ -528,6 +530,10 @@ CREATE OR REPLACE FUNCTION update_logement() RETURNS TRIGGER AS $BODY$
             ELSIF NEW.amenagement_5 IS NOT NULL AND OLD.amenagement_5 IS NOT NULL THEN
                 UPDATE _logement_amenagement SET nom_amenagement = COALESCE(NEW.amenagement_5, OLD.amenagement_5) WHERE id_amenagement = NEW.id_amenagement_5;
             END IF;
+
+            IF NEW.photo_logement IS NOT NULL THEN
+                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.type_logement, OLD.type_logement)) WHERE id_logement = new_id_logement;
+            END IF;
         END IF;
 	RETURN NEW;
 	END;
@@ -539,7 +545,7 @@ CREATE TRIGGER tg_update_logement
     FOR EACH ROW
     EXECUTE PROCEDURE update_logement();
 
-COPY _adresse(id_adresse, numero, complement_numero, rue_adresse, complement_adresse, ville_adresse, code_postal_adresse, pays_adresse) 
+COPY _adresse(numero, complement_numero, rue_adresse, complement_adresse, ville_adresse, code_postal_adresse, pays_adresse) 
 FROM '/docker-entrypoint-initdb.d/adresse.csv'
 DELIMITER ','
 CSV HEADER; 
@@ -559,7 +565,7 @@ FROM '/docker-entrypoint-initdb.d/proprio.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY _logement(id_logement, id_proprietaire, id_adresse, titre_logement, photo_logement, accroche_logement, description_logement, gps_longitude_logement, gps_latitude_logement, categorie_logement, type_logement, surface_logement, max_personne_logement, nb_lits_simples_logement, nb_lits_doubles_logement, prix_ht_logement, prix_ttc_logement, est_visible, duree_minimale_reservation,delais_minimum_reservation, delais_prevenance, classe_energetique)
+COPY _logement(id_proprietaire, id_adresse, titre_logement, photo_logement, accroche_logement, description_logement, gps_longitude_logement, gps_latitude_logement, categorie_logement, type_logement, surface_logement, max_personne_logement, nb_lits_simples_logement, nb_lits_doubles_logement, prix_ht_logement, prix_ttc_logement, est_visible, duree_minimale_reservation,delais_minimum_reservation, delais_prevenance, classe_energetique)
 FROM '/docker-entrypoint-initdb.d/logement.csv'
 DELIMITER ','
 CSV HEADER;

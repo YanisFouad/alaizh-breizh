@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *::after, *::before {
   outline: none;
   padding: 0;
@@ -26,6 +27,10 @@
   src: url(../fonts/comfortaa-semibold.ttf);
 }
 @font-face {
+  font-family: "poppins-semibold";
+  src: url(../fonts/poppins-semibold.ttf);
+}
+@font-face {
   font-family: "poppins-bold";
   src: url(../fonts/poppins-bold.ttf);
 }
@@ -42,12 +47,48 @@
   src: url(../fonts/poppins-regular.ttf);
 }
 @font-face {
-  font-family: "poppins-semibold";
-  src: url(../fonts/poppins-semibold.ttf);
-}
-@font-face {
   font-family: "Material Design Icons";
   src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../assets/fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../assets/fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../../assets/fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../assets/fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../assets/fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-semibold";
+  src: url(../../assets/fonts/poppins-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../assets/fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../assets/fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../assets/fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../assets/fonts/poppins-regular.ttf);
 }
 body {
   font-family: "comfortaa-regular", sans-serif;
@@ -78,8 +119,9 @@ h4 {
   font-size: 1.15em;
 }
 
-p {
+p, a {
   font-family: "comfortaa-medium";
+  color: #222524;
   font-size: 1em;
 }
 
@@ -140,11 +182,11 @@ button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
 .form-field.error > label {
   color: #ce4b4b;
 }
-.form-field.error > input {
+.form-field.error > input, .form-field.error > textarea, .form-field.error > select {
   position: relative;
   border-color: #ce4b4b;
 }
-.form-field.error > input, .form-field.error > input::placeholder {
+.form-field.error > input, .form-field.error > input::placeholder, .form-field.error > textarea, .form-field.error > textarea::placeholder, .form-field.error > select, .form-field.error > select::placeholder {
   color: #ce4b4b;
 }
 .form-field > label {
@@ -154,23 +196,250 @@ button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
   margin-bottom: 0.5em;
   text-align: start;
 }
+.form-field > label.required::after {
+  content: " *";
+  color: #ce4b4b;
+}
 
-input, textarea {
+input, textarea, select {
   font-family: "comfortaa-regular", sans-serif;
   padding: 0.8em 0.5em;
   border-radius: 7px;
   border: 1px solid #676767;
   width: 100%;
 }
-input:disabled, textarea:disabled {
+input:disabled, textarea:disabled, select:disabled {
   opacity: 60%;
 }
-input:is(:hover, :focus), textarea:is(:hover, :focus) {
+input:is(:hover, :focus), textarea:is(:hover, :focus), select:is(:hover, :focus) {
   border-color: #1b5734;
 }
 
 textarea {
   resize: vertical;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox].backoffice:checked + label::after {
+  background-color: #804e2e;
+}
+input[type=checkbox].backoffice:not(:checked):hover + label::before {
+  color: #804e2e;
+}
+input[type=checkbox].backoffice:checked + label::after, input[type=checkbox].backoffice:focus + label::after {
+  box-shadow: 0 0 0 2px rgba(128, 78, 46, 0.2);
+}
+input[type=checkbox].backoffice + label::after {
+  border-color: #804e2e;
+}
+input[type=checkbox]:checked + label::after {
+  background-color: #1b5734;
+}
+input[type=checkbox]:not(:checked):hover + label::before {
+  color: #1b5734;
+}
+input[type=checkbox]:checked + label::after, input[type=checkbox]:focus + label::after {
+  box-shadow: 0 0 0 2px rgba(51, 125, 81, 0.2);
+}
+input[type=checkbox] + label {
+  position: relative;
+  display: block;
+  padding-left: 2em;
+  cursor: pointer;
+}
+input[type=checkbox] + label::before, input[type=checkbox] + label::after {
+  transition: 0.2s all ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[type=checkbox] + label::after {
+  left: 0;
+  content: "";
+  display: block;
+  border: 2px solid #1b5734;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+}
+input[type=checkbox] + label::before {
+  left: 3px;
+  color: white;
+  z-index: 1;
+}
+
+select {
+  position: relative;
+  cursor: pointer;
+  color: #676767;
+  appearance: none;
+  user-select: none;
+}
+
+/* LAYOUT */
+header#frontoffice {
+  position: sticky;
+  top: 0;
+  z-index: 998;
+  font-family: "comfortaa-regular";
+  background-color: white;
+  padding: 1em 2.5em 0 2.5em;
+}
+header#frontoffice .mdi {
+  font-size: 1.5em;
+}
+header#frontoffice img {
+  height: 3em;
+}
+header#frontoffice .fullsize-logo {
+  display: block;
+}
+header#frontoffice .smallsize-logo {
+  display: none;
+}
+header#frontoffice #top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header#frontoffice #top-header ul {
+  display: flex;
+  align-items: center;
+}
+header#frontoffice #top-header ul li {
+  list-style: none;
+  margin-left: 0.5em;
+}
+header#frontoffice #top-header ul li a {
+  color: black;
+  text-decoration: none;
+}
+header#frontoffice #top-header ul li a:hover {
+  font-family: "comfortaa-bold";
+  color: #1b5734;
+}
+header#frontoffice #top-header ul li a:visited {
+  color: black;
+}
+header#frontoffice #sign-in-up-container > form {
+  border-left: 1px solid #eaeaea;
+  padding-left: 1em;
+}
+header#frontoffice #sign-in-up-container > a {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  text-decoration: none;
+  margin-right: 1em;
+  padding: 0.5em 0.5em;
+  padding-right: 1em;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  font-size: 0.8em;
+}
+header#frontoffice #sign-in-up-container > a:hover {
+  background-color: #f7f7f7;
+}
+header#frontoffice #sign-in-up-container > a > img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 100px;
+}
+header#frontoffice #sign-in-up-container, header#frontoffice .sign-in-up-buttons {
+  display: flex;
+  align-items: center;
+  color: #1b5734;
+}
+header#frontoffice #sign-in-up-container button:hover, header#frontoffice .sign-in-up-buttons button:hover {
+  background-color: #e0ffee;
+}
+header#frontoffice #header-bottom-stroke {
+  height: 2px;
+  background-color: #eaeaea;
+  margin: 1em 0 0 0;
+}
+
+@media (min-width: 431px) {
+  #open-burger-button, #close-burger-button {
+    display: none;
+  }
+}
+@media (max-width: 431px) {
+  header {
+    padding: 1em 1em 0 1em;
+  }
+  header .mdi {
+    font-size: 2.5em;
+  }
+  header .fullsize-logo {
+    display: none !important;
+  }
+  header .smallsize-logo {
+    display: block !important;
+  }
+  header #top-header ul {
+    display: none !important;
+  }
+  header .sign-in-up-buttons {
+    display: none !important;
+  }
+  header #open-burger-menu {
+    width: 100%;
+    height: 100vh;
+  }
+  header #open-burger-menu ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  header #open-burger-menu ul a {
+    color: black;
+    text-decoration: none;
+  }
+  header #open-burger-menu ul a span {
+    font-size: 2em;
+  }
+  header #open-burger-menu ul a li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    border-bottom: solid 2px #eaeaea;
+    width: 100%;
+  }
+  header .displayed {
+    display: block;
+  }
+  header .hidden {
+    display: none;
+  }
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "comfortaa-regular";
+  color: white;
+  background-color: black;
+  padding: 1em;
+  margin-top: auto; /* pour conserver le footer en bas de page */
+}
+footer a, footer a:visited {
+  color: white;
+  text-decoration: none;
+}
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+footer nav a {
+  padding-left: 1em;
 }
 
 /* VIEWS */
@@ -190,6 +459,7 @@ textarea {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
+  z-index: 999;
 }
 .modal#authentication-modal > .center {
   background-color: white;
@@ -334,253 +604,711 @@ textarea {
   display: block;
 }
 
-@font-face {
-  font-family: "comfortaa-bold";
-  src: url(../fonts/comfortaa-bold.ttf);
+#finalize-booking {
+  width: 60em;
+  margin: auto;
 }
-@font-face {
-  font-family: "comfortaa-light";
-  src: url(../fonts/comfortaa-light.ttf);
+#finalize-booking > header {
+  text-align: center;
 }
-@font-face {
-  font-family: "comfortaa-medium";
-  src: url(../fonts/comfortaa-medium.ttf);
+#finalize-booking > header > button {
+  float: left;
 }
-@font-face {
-  font-family: "comfortaa-regular";
-  src: url(../fonts/comfortaa-regular.ttf);
+#finalize-booking > div[role=main] {
+  padding: 1em;
+  padding-bottom: 2em;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
 }
-@font-face {
-  font-family: "comfortaa-semibold";
-  src: url(../fonts/comfortaa-semibold.ttf);
+#finalize-booking > div[role=main] > h2 {
+  position: relative;
+  width: 100%;
+  font-size: 1.7em;
+  margin: 0.5em 0;
 }
-@font-face {
-  font-family: "poppins-bold";
-  src: url(../fonts/poppins-bold.ttf);
+#finalize-booking > div[role=main] > h2 > span {
+  display: block;
 }
-@font-face {
-  font-family: "poppins-light";
-  src: url(../fonts/poppins-light.ttf);
+#finalize-booking > div[role=main] > h2 > span:first-of-type {
+  background-color: white;
+  width: fit-content;
+  padding: 0 0.5em;
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+  color: #424645;
+  position: relative;
+  z-index: 2;
 }
-@font-face {
-  font-family: "poppins-medium";
-  src: url(../fonts/poppins-medium.ttf);
+#finalize-booking > div[role=main] > h2 > span:last-of-type {
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+  position: absolute;
+  bottom: 12px;
 }
-@font-face {
-  font-family: "poppins-regular";
-  src: url(../fonts/poppins-regular.ttf);
+#finalize-booking > div[role=main] > article:nth-of-type(1) {
+  display: flex;
+  gap: 1em;
 }
-@font-face {
-  font-family: "poppins-semibold";
-  src: url(../fonts/poppins-semibold.ttf);
+#finalize-booking > div[role=main] > article:nth-of-type(1) > img {
+  width: 20em;
+  border-radius: 10px;
 }
-@font-face {
-  font-family: "Material Design Icons";
-  src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div {
+  padding: 1em;
+  border: 1px solid #eaeaea;
+  border-radius: 20px;
 }
-#liste-reservation-proprietaire-body {
-  margin: 4em;
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h3, #finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h4 {
+  font-weight: normal;
 }
-#liste-reservation-proprietaire-body h1 {
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h3 {
+  font-size: 1.5em;
+  color: #424645;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > h4 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > p {
+  color: #424645;
+  font-family: "comfortaa-regular", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button {
+  float: right;
+  margin-top: 1em;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) {
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div {
+  display: flex;
+  gap: 1em;
+  align-items: center;
   margin: 1em 0;
 }
-
-#liste-reservation-proprietaire-entete {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4 {
+  font-weight: normal;
 }
-#liste-reservation-proprietaire-entete #export-reservation {
-  box-shadow: 0px 0px 2px #804e2e;
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4:last-of-type {
+  font-family: "poppins-bold", sans-serif;
 }
-
-.liste-reservation-proprietaire-recherche {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.liste-reservation-proprietaire-recherche div {
-  padding: 0.6em;
-  background-color: #f7f7f7;
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 {
+  padding: 1em;
   border: 1px solid #eaeaea;
-  border-radius: 10px;
-  margin-right: 0.5em;
+  border-radius: 15px;
+  color: #424645;
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 > span {
+  font-family: "poppins-bold", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  gap: 1em;
 }
-.liste-reservation-proprietaire-recherche div textarea {
-  resize: none;
-  font-size: 13px;
-  font-family: "comfortaa-bold", sans-serif;
-  color: #676767;
-  background-color: #f7f7f7;
-  margin: 0;
-  border: none;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div {
+  flex-grow: 1;
 }
-.liste-reservation-proprietaire-recherche .primary.backoffice {
-  border-radius: 10px;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio] {
+  display: none;
 }
-
-#liste-reservation-proprietaire-onglet {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label {
+  border-color: #1b5734;
 }
-#liste-reservation-proprietaire-onglet a {
-  color: #676767;
-  font-family: "poppins-semibold", sans-serif;
-  font-size: 14px;
-  border-radius: 0;
-  text-decoration: none;
-  padding: 0.5em 1em;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label > h4 {
+  color: #1b5734;
 }
-#liste-reservation-proprietaire-onglet a:is(:focus, .active) {
-  color: #804e2e;
-  border-bottom: 2px solid #804e2e;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label {
+  border: 1px solid #eaeaea;
+  padding: 0.5em 2em;
+  border-radius: 15px;
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
-#liste-reservation-proprietaire-onglet a:hover {
-  color: #804e2e;
-  border-bottom: 2px solid #804e2e;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) {
+  border-color: #1b5734;
 }
-
-#liste-reservation-proprietaire-float-left {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 1em 0em;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) > h4 {
+  color: #1b5734;
 }
-#liste-reservation-proprietaire-float-left a {
-  text-decoration: none;
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > h4 {
+  font-weight: normal;
+  margin-bottom: 1em;
+  font-size: 1.4em;
+  color: #424645;
 }
-
-.liste-reservation-proprietaire-logement {
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > img {
+  display: block;
+  margin: auto;
+  position: relative;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+  width: 20em;
+  top: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+  width: 15em;
+  top: -1.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) {
+  padding: 0 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) > p {
+  font-family: "comfortaa-regular", sans-serif;
+  margin-bottom: 1em;
+}
+#finalize-booking > button.finalize {
+  float: right;
   margin: 1.5em 0;
-  padding: 0.7em 0.7em;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > button.finalize > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+@media screen and (max-width: 972px) {
+  #finalize-booking {
+    width: 90%;
+  }
+  div[role=main] > article:nth-of-type(3) {
+    display: block !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+    width: 10em !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+    width: 6em !important;
+    position: relative !important;
+    top: -8px !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label {
+    border-radius: 10px !important;
+    height: 3em !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-around !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > h4 {
+    font-size: 1em !important;
+    margin-bottom: unset !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > img {
+    position: unset !important;
+  }
+  div[role=main] > article:nth-of-type(2) {
+    display: block !important;
+    border: 1px solid #eaeaea !important;
+    padding: 1em !important;
+    border-radius: 15px !important;
+  }
+  div[role=main] > article:nth-of-type(2) h3 {
+    border: unset !important;
+    padding-left: unset !important;
+    padding-top: unset !important;
+    font-size: 1.15em !important;
+  }
+}
+@media screen and (max-width: 788px) {
+  div[role=main] > article:nth-of-type(1) {
+    flex-wrap: wrap;
+  }
+  div[role=main] > article:nth-of-type(1) > img {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 522px) {
+  #finalize-booking > header {
+    text-align: unset !important;
+  }
+  #finalize-booking > header > button {
+    margin-left: unset !important;
+    float: unset !important;
+  }
+  #finalize-booking > header > h1 {
+    text-align: center !important;
+  }
+}
+@media screen and (max-width: 432px) {
+  #finalize-booking > header > h1 {
+    font-size: 1.5em !important;
+  }
+}
+/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
+/* TOUT METTRE DANS UNE BALISE HOME */
+#home-page button {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.housing-container {
+  display: flex;
+  justify-content: center;
+}
+
+#home-page .mdi, #filter-housing-container .mdi {
+  font-size: 1.5em;
+}
+
+#home-page a, #filter-housing-container a {
+  text-decoration: none;
+}
+#home-page a:visited, #filter-housing-container a:visited {
+  color: black;
+}
+
+#image-cover {
+  height: 350px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 20%;
+  border-radius: 1em;
+  margin: 1em 2.5em;
+  padding: 2em;
+  color: white;
+}
+#image-cover h1 {
+  font-family: "poppins-semibold";
+  font-size: 2.5em;
+}
+#image-cover h2 {
+  font-family: "poppins-regular";
+  font-size: 1.5em;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -2.5em;
+  gap: 0.5em;
+  width: fit-content;
+  padding: 0.5em;
+  border-bottom: 2px #eaeaea solid;
+  box-shadow: 0px 5px 5px #eaeaea;
+  background-color: white;
+  border-radius: 1em;
+  margin: 0 auto;
+}
+#search-bar input, #search-bar button {
+  border: none;
+  border-radius: 1em;
+}
+#search-bar input {
+  font-family: "comfortaa-medium";
+  background-color: #f7f7f7;
+  padding: 1.5em;
+  width: auto;
+}
+#search-bar button {
+  background-color: gray;
+  cursor: not-allowed;
+  padding: 1em;
+}
+#search-bar .mdi-magnify {
+  color: white;
+}
+
+#list-title-container {
+  text-align: center;
+}
+
+.show-more-button-container {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 2.5em;
+  padding: 0.25em 0.5em;
+}
+
+.show-more-button {
+  position: relative;
+  top: -4em;
+}
+
+.housing-list {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, 250px);
+  margin: 0 2.5em 2.5em 2.5em;
+  justify-content: center;
+}
+
+.housing-image-item-container {
+  width: 250px;
+  height: 250px;
+  background-color: #eaeaea;
+  border-radius: 1em;
+}
+
+.housing-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1em;
+}
+.housing-item h4, .housing-item .housing-price-container {
+  font-size: 14px;
+}
+.housing-item .housing-price {
+  font-family: "comfortaa-bold";
+}
+.housing-item:hover {
+  cursor: pointer;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+.housing-description-container {
+  display: flex;
+  align-items: end;
   justify-content: space-between;
-  border: solid #804e2e 1px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 2px #804e2e;
+  width: 250px;
+  margin: 0.5em 0;
 }
-.liste-reservation-proprietaire-logement div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.liste-reservation-proprietaire-logement div img {
-  width: 120px;
-  border-radius: 10%;
-  margin-right: 1em;
-}
-.liste-reservation-proprietaire-logement div h4 {
-  font-size: 15px;
-  font-family: "poppins-light";
-}
-.liste-reservation-proprietaire-logement div h5 {
-  font-size: 12px;
-  font-family: "poppins-light";
-  color: #676767;
-}
-.liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4em;
-}
-.liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+
+.housing-description {
+  font-family: "comfortaa-bold";
+  margin: 0 0.5em 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
 }
 
-.liste-reservation-proprietaire-flex-row {
+.housing-location-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #b6896c;
+  margin-bottom: 0.5em;
+  width: 250px;
+}
+
+.mdi-star {
+  font-size: 1em;
+}
+
+.housing-location {
+  font-family: "comfortaa-regular";
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.housing-price-container {
+  display: flex;
+  font-family: "comfortaa-regular";
+  font-size: small;
+  gap: 0.5em;
+}
+
+.star-notation-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  color: #1b5734;
+  border: solid 1px #1b5734;
+  border-radius: 1em;
+  padding: 0.25em 0.5em;
+  background-color: #e0ffee;
+}
+
+.show-all-button {
+  display: none;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+@media (max-width: 431px) {
+  #home-page, #filter-housing-container {
+    min-width: inherit;
+  }
+  #search-bar {
+    width: 355px;
+    justify-content: space-between;
+  }
+  #search-bar .arrival-date-input, #search-bar .departure-date-input, #search-bar .travelers-number-input {
+    display: none;
+  }
+  #search-bar .mdi-account {
+    display: none;
+  }
+  #search-bar input {
+    width: inherit;
+  }
+  #image-cover {
+    height: 250px;
+    margin: 1em 0em;
+    padding: 1em;
+    border-radius: 0;
+  }
+  #image-cover h1 {
+    font-family: "poppins-semibold";
+    font-size: 2em;
+  }
+  #image-cover h2 {
+    font-family: "poppins-regular";
+    font-size: 1em;
+  }
+  #housing-list-title {
+    font-size: 1em;
+    margin: 0 auto 1em auto;
+  }
+  .show-more-button {
+    display: none !important;
+  }
+  .housing-list {
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+  .housing-image-item-container {
+    width: 355px;
+    height: 355px;
+    background-color: #eaeaea;
+    border-radius: 1em;
+  }
+  .housing-description-container {
+    width: 355px;
+  }
+  #home-page .show-all-button-container {
+    display: flex;
+    justify-content: center;
+  }
+  #housing-list-container .show-all-button {
+    display: none;
+  }
+  #home-page .show-all-button {
+    display: flex;
+    align-items: center;
+    padding: 0.25em 1em;
+    color: white;
+    background-color: #1b5734;
+    border: solid 1px #1b5734;
+    border-radius: 2em;
+  }
+  .show-all-button .mdi {
+    margin-left: 8px;
+    font-size: 20px;
+  }
+}
+/***************************************/
+/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/***************************************/
+#filter-housing-container {
+  display: flex;
+}
+
+/* Menu des filtres */
+.displayed {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#filter-container {
+  align-self: flex-start;
+  padding: 2.5em;
+  min-width: 20em;
+  height: 100%;
+}
+#filter-container > section {
+  border-top: solid 1px #676767;
+  margin-bottom: 2em;
+}
+#filter-container > section > :first-child {
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+#filter-container > section > div, #filter-container > section li {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+#filter-container > section > div > input, #filter-container > section li > input {
+  width: auto;
+}
+
+#filter-title-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  /**********************/
-  /* Filtre             */
-  /**********************/
-  /**********************/
-  /* Oeil facture       */
-  /**********************/
-}
-.liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant {
-  color: white;
-}
-.liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline {
-  color: white;
-}
-.liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending {
-  margin-right: 0.2em;
-  font-size: 2em;
+  justify-content: space-between;
+  margin-bottom: 2.5em;
 }
 
-.liste-reservation-proprietaire-bouton-filtre {
-  margin-left: 1em;
-  border-radius: 100px;
-  padding: 0.8em 1.3em;
-  transition: all 0.5s ease;
-  font-family: "comfortaa-regular", sans-serif;
-}
-.liste-reservation-proprietaire-bouton-filtre:hover {
-  background-color: #eaeaea;
+#validation-filter-button-container {
+  display: none;
 }
 
-.mdi.mdi-magnify {
-  font-size: 2em;
-  border-radius: 5px;
-}
-
-#liste-reservation-proprietaire {
-  margin: 2em 0;
-}
-
-.liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
-  margin-left: 0.2em;
-  color: white;
-  font-size: 100px;
-}
-
-#liste-reservation-proprietaire-pagination {
+/**********************/
+/* Résultats logement */
+/**********************/
+.back-button {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  padding: 0;
+}
+
+#housing-title-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compact-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background-color: white;
+  border-radius: 1em;
+}
+.compact-search-bar div {
+  display: flex;
+}
+.compact-search-bar input, .compact-search-bar button {
+  border: none;
+  border-radius: 1em;
+}
+.compact-search-bar input {
+  font-family: "comfortaa-medium";
+  background-color: #f7f7f7;
+  padding: 1.5em;
+}
+.compact-search-bar #search-input-compact {
+  border-radius: 1em 0 0 1em;
+  border: solid 2px #eaeaea;
+  width: 150px;
+}
+.compact-search-bar #date-input-compact {
+  border-radius: 0;
+  width: 150px;
+  border-top: solid 2px #eaeaea;
+  border-bottom: solid 2px #eaeaea;
+}
+.compact-search-bar #travelers-input-compact {
+  border-radius: 0 1em 1em 0;
+  border: solid 2px #eaeaea;
+  width: 150px;
+}
+.compact-search-bar button {
+  background-color: #1b5734;
+  padding: 1em;
+}
+.compact-search-bar .mdi-magnify {
+  color: white;
+}
+
+#filter-sort-buttons-container {
+  display: flex;
+}
+
+#filter-button {
+  border-radius: 1em;
+}
+
+.housing-list {
+  margin: 1em 0 2.5em 0;
+}
+
+#housing-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5em;
+  border-left: solid 2px #eaeaea;
+}
+
+.pagination {
+  display: flex;
   justify-content: center;
   gap: 0.75em;
-}
-#liste-reservation-proprietaire-pagination .button-cliquable, #liste-reservation-proprietaire-pagination #button-clique {
-  border: 1px solid #804e2e;
-  border-radius: 50%;
   font-family: "comfortaa-bold";
-  text-align: center;
-  color: #804e2e;
+  color: #1b5734;
+  margin-bottom: 2.5em;
 }
-#liste-reservation-proprietaire-pagination .button-cliquable:hover, #liste-reservation-proprietaire-pagination #button-clique:hover {
-  color: white;
-  background-color: #804e2e;
-  transition: all 0.5s ease;
+.pagination li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 }
-#liste-reservation-proprietaire-pagination #button-clique {
-  color: white;
-  background-color: #804e2e;
+.pagination button {
+  width: 1em;
+  height: 1em;
+  padding: 1.6em;
+  position: relative;
 }
-#liste-reservation-proprietaire-pagination .button-non-cliquable {
-  border: 1px solid #b6896c;
-  border-radius: 50%;
-  font-family: "comfortaa-bold";
-  text-align: center;
-  color: #b6896c;
-  pointer-events: none !important;
+.pagination button > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-#liste-reservation-proprietaire-pagination span {
-  height: 2em;
-  width: 2em;
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+@media (max-width: 431px) {
+  .compact-search-bar {
+    display: none;
+  }
+  #filter-container {
+    min-width: 100%;
+  }
+  #filter-container #validation-filter-button-container {
+    display: flex;
+    gap: 0.5em;
+    justify-content: flex-end;
+  }
+  #housing-list-container {
+    padding: 0.5em;
+    align-items: center;
+  }
+  .show-all-button-container {
+    display: none;
+  }
+}
+.secondary.is-disabled {
+  cursor: not-allowed;
+  background-color: #eaeaea;
+  border-color: red;
+  color: red;
 }
 
 header#backoffice {
@@ -780,4 +1508,195 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+
+#new-accommodation {
+  width: 58em;
+  margin: auto;
+}
+#new-accommodation > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#new-accommodation > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-accommodation > form > section:first-of-type {
+  margin-top: unset;
+}
+#new-accommodation > form > section:not(.active) {
+  opacity: 50%;
+}
+#new-accommodation > form > section > h2, #new-accommodation > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#new-accommodation > form > section > h2 {
+  color: #424645;
+}
+#new-accommodation > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#new-accommodation > form .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#new-accommodation > form .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label {
+  background-color: #ffd0d0;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label > .mdi {
+  color: #ce4b4b !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label.uploaded {
+  background-color: #e0ffee !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-check {
+  color: #1b5734 !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > input {
+  width: 41%;
+}
+#new-accommodation > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-number {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-name {
+  width: 16em;
+}
+#new-accommodation > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > .distance {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
 }

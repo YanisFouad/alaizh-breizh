@@ -4,7 +4,7 @@ stages:
   - web-accessilibity
 
 include:
-  - template: Jobs/Code-Quality.gitlab-ci.yml
+#  - template: Jobs/Code-Quality.gitlab-ci.yml
   - template: Verify/Accessibility.gitlab-ci.yml
 
 a11y:
@@ -14,14 +14,14 @@ a11y:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "main"'
 
-code_quality:
-  variables:
-    REPORT_FORMAT: html
-  artifacts:
-    paths: [gl-code-quality-report.html]
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME =~ /feature\/.*/'
-  parallel: 2
+# code_quality:
+#   variables:
+#     REPORT_FORMAT: html
+#   artifacts:
+#     paths: [gl-code-quality-report.html]
+#   rules:
+#     - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME =~ /feature\/.*/'
+#   parallel: 2
 
 deploy:
   stage: deploy

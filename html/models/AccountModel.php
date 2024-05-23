@@ -6,9 +6,9 @@ require_once(__DIR__."/../services/fileManager/FileProprietaire.php");
 require_once(__DIR__."/../services/fileManager/FileLocataire.php");
 
 enum AccountType: string {
-    case TENANT = "pls.locataire";
-    case OWNER = "pls.proprietaire";
-    case DEFAULT = "pls._compte";
+    case TENANT = "locataire";
+    case OWNER = "proprietaire";
+    case DEFAULT = "_compte";
 }
 
 class AccountModel extends Model {

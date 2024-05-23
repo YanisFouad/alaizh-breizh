@@ -6,7 +6,7 @@ require_once(__DIR__."/../services/fileManager/FileLogement.php");
 
 class BookingModel extends Model {
 
-    private static $TABLE_NAME = "pls._reservation";
+    private static $TABLE_NAME = "_reservation";
 
     public function __construct($data = null, $isNew = true) {
         parent::__construct(self::$TABLE_NAME, array(

@@ -4,7 +4,7 @@
             color: $red-1;
         }
 
-        &>input {
+        &>input,&>textarea,&>select {
             position: relative;
             border-color: $red-1;
     
@@ -19,9 +19,14 @@
         color: $gray-2;
         margin-bottom: .5em;
         text-align: start;
+
+        &.required::after {
+            content: " *";
+            color: $red-1;
+        }
     }
 }
-input, textarea { 
+input, textarea, select { 
     font-family: "comfortaa-regular", sans-serif;
     padding: .8em .5em;
     border-radius: 7px;
@@ -34,10 +39,93 @@ input, textarea {
     }
 
     &:is(:hover, :focus) {
-        border-color: $primary-1;
+        border-color: $primary-frontoffice-1;
     }
 }
 
 textarea {
     resize: vertical;
+}
+
+input[type="checkbox"] {
+    &.backoffice {
+        &:checked+label {
+            &::after {
+                background-color: $primary-backoffice-1;
+            }
+        }
+        &:not(:checked):hover+label {
+            &::before {
+                color: $primary-backoffice-1;
+            }
+        }
+        &:checked+label, &:focus+label {
+            &::after {
+                box-shadow: 0 0 0 2px rgba(128, 78, 46, .20);
+            }
+        }
+        &+label::after {
+            border-color: $primary-backoffice-1;
+        }
+    }
+    display: none;
+
+    &:checked+label {
+        &::after {
+            background-color: $primary-frontoffice-1;
+        }
+    }
+
+    &:not(:checked):hover+label {
+        &::before {
+            color: $primary-frontoffice-1;
+        }
+    }
+
+    &:checked+label, &:focus+label {
+        &::after {
+            box-shadow: 0 0 0 2px rgba(51, 125, 81, .20);
+        }
+    }
+        
+    &+label {
+        position: relative;
+        display: block;
+        padding-left: 2em;
+        cursor: pointer;
+
+        &::before, &::after {
+            transition: .2s all ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            left: 0;
+        
+            $size: 20px;
+            content: "";
+            display: block;
+            border: 2px solid $primary-frontoffice-1;
+
+            width: $size;
+            height: $size;
+            border-radius: 7px;
+        }
+
+        &::before {
+            left: 3px;
+            color: $white;
+            z-index: 1;
+        }
+    }
+}
+
+select {
+    position: relative;
+    cursor: pointer;
+    color: $gray-2;
+    appearance: none;
+    user-select: none;
 }
