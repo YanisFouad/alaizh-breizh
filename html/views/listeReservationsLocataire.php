@@ -1,6 +1,6 @@
 <?php
-   
-    require_once(__DIR__."/../../../models/BookingModel.php");
+    include_once(__DIR__."/layout/header.php");
+    require_once(__DIR__."/../models/BookingModel.php");
 
     // ***********************
     // Partie session de l'utilisateur
@@ -11,8 +11,8 @@
     // }
 
     // $profile = UserSession::get();
-    // $id_proprietaire = $profile->get("id_compte");
-    $id_proprietaire = 'MarLe';
+    // $id_locataire = $profile->get("id_compte");
+    $id_locataire = 'MarLe';
 
     function trie_date($date1, $date2){
         if ($date1 == $date2) return 0;
@@ -41,7 +41,7 @@
     $nb_elem_par_page = 4;
 
     //nombre de réservation total pour la période choisi
-    $nb_reservation_periode_en_cours = BookingModel::countByPeriod($tab, $id_proprietaire);
+    $nb_reservation_periode_en_cours = BookingModel::countByPeriod($tab, $id_locataire);
 
     //nombre de page pour la période choisi
     $nb_page = ceil($nb_reservation_periode_en_cours/$nb_elem_par_page);
@@ -56,9 +56,9 @@
     }
 
     //tableau de réservation pour la période
-    $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
+    $tab_reservation = BookingModel::find($id_locataire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
 
-    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
+    $tab_toute_reservation_periode = BookingModel::findAll($id_locataire,$tab);
 
 ?>
 
@@ -71,28 +71,13 @@
     <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
     <title>Liste réservation</title>
 </head>
-<body id="liste-reservation-proprietaire-body">
+<body id="liste-reservation-locataire-body">
     
-    <div id="liste-reservation-proprietaire-entete">
+    <div id="liste-reservation-locataire-entete">
         <h1>Mes réservations</h1>
 
         <!--Rechercher une réservation-->
-        <div class="liste-reservation-proprietaire-recherche">
-            
-            <!-- export des réservations -->
-            <form action="/controllers/csvExport.php" method="POST">
-                <!-- bouton d'export -->
-                <button id="export-reservation" class="primary backoffice export-reservation" type="submit">
-                    Exporter mes réservations
-                    <!-- <span class="mdi mdi-export-variant"></span> -->
-                </button> 
-                <!-- non de fichier pour l'export -->
-                <input type="hidden" name="name" value="export_reservations.csv" />
-                <!-- donnnée pour fichier -->
-                <input type="hidden" name="array" value="<?php echo htmlentities(serialize(array_map(function  ($res){
-                return $res->getData();
-                } ,$tab_toute_reservation_periode))); ?>" />
-            </form>
+        <div class="liste-reservation-locataire-recherche">
 
             <div>
                 <!-- Textarea Rechercher -->
@@ -100,23 +85,23 @@
                 <!-- Textarea date -->
                 <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1" disabled >Dates de réservation...</textarea>
             </div>
-            <button class="primary backoffice" disabled>
+            <button class="primary frontoffice" disabled>
                 <span class="mdi mdi-magnify"></span>
             </button>
         </div>
     </div>
 
     <!-- Onglets affichages des réservations -->
-    <nav id="liste-reservation-proprietaire-onglet">
-        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriod("a_venir", $id_proprietaire)?>)</a>    
-        <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriod("en_cours", $id_proprietaire)?>)</a>
-        <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passée (<?php echo BookingModel::countByPeriod("passe", $id_proprietaire)?>)</a>
+    <nav id="liste-reservation-locataire-onglet">
+        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriod("a_venir", $id_locataire)?>)</a>    
+        <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriod("en_cours", $id_locataire)?>)</a>
+        <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passée (<?php echo BookingModel::countByPeriod("passe", $id_locataire)?>)</a>
     </nav>
     <hr>
 
-    <div id="liste-reservation-proprietaire-float-left">
+    <div id="liste-reservation-locataire-float-left">
         <!-- Bouton filtre -->
-        <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
+        <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
             <span class="mdi mdi-filter-variant"></span>
             Filtre
         </button>
@@ -124,7 +109,7 @@
         <!-- Bouton trie -->
         <!-- trie pas encore fonctionnel -->
         <!-- ?trie=<?php echo $trie === "croissant" ? "decroissant" : "croissant" ?> -->
-        <a href=""><button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre" disabled > 
+        <a href=""><button class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre" disabled > 
             <span class="mdi mdi-sort-ascending"></span>
             trier par date    
         </button></a>
@@ -144,7 +129,7 @@
 
     ?>
     <!-- Liste réservation -->
-    <section id="liste-reservation-proprietaire">
+    <section id="liste-reservation-locataire">
         <!-- ************************** -->
         <!-- Traitement des réservation -->
         <!-- ************************** -->
@@ -152,7 +137,7 @@
         foreach($tab_reservation as $reservation){
             ?>
             <a class="non-souligne" href="chemin_page_de_yanis?id=<?php echo $id;?>">
-                <article class="liste-reservation-proprietaire-logement">
+                <article class="liste-reservation-locataire-logement">
                     <!-- Photo maison + nom maison -->
                     <div>
                         <div id='img-container'>
@@ -163,7 +148,7 @@
                     
 
                     <!-- Description maison -->
-                    <div class="liste-reservation-proprietaire-logement-detail">
+                    <div class="liste-reservation-locataire-logement-detail">
                         <div>
                             <h5>Date de réservation</h5>
                             <h4><?php echo $reservation->get("date_reservation"); ?></h4>
@@ -176,7 +161,7 @@
                             <h5>Prix total</h5>
                             <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
                         </div>
-                        <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
+                        <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
                             <span class="mdi mdi-eye-outline"></span>
                             Facture
                         </button>
@@ -187,7 +172,7 @@
     </section>
 
     <!-- Changement de page de réservation -->
-    <form method="GET" action="#" id="liste-reservation-proprietaire-pagination">
+    <form method="GET" action="#" id="liste-reservation-locataire-pagination">
     
         <!-- Bouton pagination précédent -->
         <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-chevron-cliquable" : "button-chevron-non-cliquable" ?>" type="submit">
