@@ -9,13 +9,14 @@ abstract class BaseFile {
     }
 
     public static function get($fileName) {
-        $path = realpath(static::getPath());
+        $path = __DIR__. "/../../" . static::getPath();
+        var_dump($path);
         $result = glob($path."/".$fileName."*");
         if(count($result) < 1)
             return self::formatFilename("default.webp");
         $file = $result[0];
         $file = basename($file);
-        return "/" . self::formatFilename($file);
+        return self::formatFilename($file);
     }
 
     public static function delete($fileName) {
