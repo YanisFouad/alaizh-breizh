@@ -1,7 +1,6 @@
 <?php
     include_once "controllers/backoffice/HomeBackofficeController.php";
     include_once "services/Adresse.php";
-    include_once "services/UserSession.php";
 
     $controller = new HomeBackofficeController();
 ?>
