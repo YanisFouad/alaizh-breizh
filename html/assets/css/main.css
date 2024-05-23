@@ -5,13 +5,727 @@
  *    '
  *   /sass/main.scss 64:26  root stylesheet */
 
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../fonts/poppins-regular.ttf);
+}
+@font-face {
+  font-family: "Material Design Icons";
+  src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+body {
+  font-family: "comfortaa-regular", sans-serif;
+  color: #222524;
+}
+
+h1, h2 {
+  font-family: "poppins-semibold", sans-serif;
+}
+
+h3, h4 {
+  font-family: "poppins-medium", sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 1.15em;
+}
+
+p {
+  font-family: "comfortaa-medium";
+  font-size: 1em;
+}
+
+button {
+  transition: all 0.5s ease;
+  font-family: "comfortaa-regular", sans-serif;
+  background-color: transparent;
+  border: unset;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 1em 1.3em;
+}
+button.primary:is(.primary, .secondary):not(:disabled):focus, button.secondary:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #abbdc0;
+}
+button.primary.primary:disabled, button.primary.secondary:disabled, button.secondary.primary:disabled, button.secondary.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.primary.primary, button.secondary.primary {
+  background-color: #1b5734;
+  color: white;
+}
+button.primary.primary:not(:disabled):is(:hover, :focus), button.secondary.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #337d51;
+}
+button.primary.secondary, button.secondary.secondary {
+  border: 1px solid #1b5734;
+  color: #1b5734;
+}
+button.primary.secondary:not(:disabled):is(:hover, :focus), button.secondary.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #1b5734;
+  color: white;
+}
+button.backoffice:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #b6896c;
+}
+button.backoffice.primary:disabled, button.backoffice.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.backoffice.primary {
+  background-color: #804e2e;
+  color: white;
+}
+button.backoffice.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #9f6844;
+}
+button.backoffice.secondary {
+  border: 1px solid #804e2e;
+  color: #804e2e;
+}
+button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #804e2e;
+  color: white;
+}
+
+.form-field.error > label {
+  color: #ce4b4b;
+}
+.form-field.error > input, .form-field.error > textarea, .form-field.error > select {
+  position: relative;
+  border-color: #ce4b4b;
+}
+.form-field.error > input, .form-field.error > input::placeholder, .form-field.error > textarea, .form-field.error > textarea::placeholder, .form-field.error > select, .form-field.error > select::placeholder {
+  color: #ce4b4b;
+}
+.form-field > label {
+  font-size: 0.9em;
   display: block;
   padding: 1em;
   margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a    \2577 \a 64 \2502  @import "views/home.scss";\a    \2502                           ^\a    \2575 \a   /sass/main.scss 64:26  root stylesheet';
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > div > p {
+  color: #424645;
+  font-family: "comfortaa-regular", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button {
+  float: right;
+  margin-top: 1em;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) {
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin: 1em 0;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4 {
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > div > div > h4:last-of-type {
+  font-family: "poppins-bold", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 {
+  padding: 1em;
+  border: 1px solid #eaeaea;
+  border-radius: 15px;
+  color: #424645;
+  font-weight: normal;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(2) > h3 > span {
+  font-family: "poppins-bold", sans-serif;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) {
+  display: flex;
+  gap: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div {
+  flex-grow: 1;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio] {
+  display: none;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label {
+  border-color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > input[type=radio]:checked + label > h4 {
+  color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label {
+  border: 1px solid #eaeaea;
+  padding: 0.5em 2em;
+  border-radius: 15px;
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) {
+  border-color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label:is(:hover, :focus) > h4 {
+  color: #1b5734;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > h4 {
+  font-weight: normal;
+  margin-bottom: 1em;
+  font-size: 1.4em;
+  color: #424645;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div > label > img {
+  display: block;
+  margin: auto;
+  position: relative;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+  width: 20em;
+  top: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+  width: 15em;
+  top: -1.5em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) {
+  padding: 0 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(4) > p {
+  font-family: "comfortaa-regular", sans-serif;
+  margin-bottom: 1em;
+}
+#finalize-booking > button.finalize {
+  float: right;
+  margin: 1.5em 0;
+  position: relative;
+  padding-right: 2.5em;
+}
+#finalize-booking > button.finalize > .mdi {
+  font-size: 1.5em;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+@media screen and (max-width: 972px) {
+  #finalize-booking {
+    width: 90%;
+  }
+  div[role=main] > article:nth-of-type(3) {
+    display: block !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:first-of-type > label > img {
+    width: 10em !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div:last-of-type > label > img {
+    width: 6em !important;
+    position: relative !important;
+    top: -8px !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label {
+    border-radius: 10px !important;
+    height: 3em !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-around !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > h4 {
+    font-size: 1em !important;
+    margin-bottom: unset !important;
+  }
+  div[role=main] > article:nth-of-type(3) > div > label > img {
+    position: unset !important;
+  }
+  div[role=main] > article:nth-of-type(2) {
+    display: block !important;
+    border: 1px solid #eaeaea !important;
+    padding: 1em !important;
+    border-radius: 15px !important;
+  }
+  div[role=main] > article:nth-of-type(2) h3 {
+    border: unset !important;
+    padding-left: unset !important;
+    padding-top: unset !important;
+    font-size: 1.15em !important;
+  }
+}
+@media screen and (max-width: 788px) {
+  div[role=main] > article:nth-of-type(1) {
+    flex-wrap: wrap;
+  }
+  div[role=main] > article:nth-of-type(1) > img {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 522px) {
+  #finalize-booking > header {
+    text-align: unset !important;
+  }
+  #finalize-booking > header > button {
+    margin-left: unset !important;
+    float: unset !important;
+  }
+  #finalize-booking > header > h1 {
+    text-align: center !important;
+  }
+}
+@media screen and (max-width: 432px) {
+  #finalize-booking > header > h1 {
+    font-size: 1.5em !important;
+  }
+}
+header#backoffice {
+  background-color: #222524;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 2em;
+  color: white;
+}
+header#backoffice a {
+  color: white;
+  text-decoration: none;
+}
+header#backoffice > a > img {
+  width: 10em;
+  filter: invert(1);
+}
+header#backoffice > nav > ul {
+  list-style: none;
+}
+header#backoffice > nav > ul > li > a {
+  transition: 0.5s ease all;
+}
+header#backoffice > nav > ul > li > a:hover {
+  color: #ffd6bb;
+}
+header#backoffice > aside {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+header#backoffice > aside > a > button {
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  padding-right: 2.8em;
+}
+header#backoffice > aside > a > button > .mdi {
+  font-size: 1.8em;
+  position: absolute;
+  top: 20%;
+  right: 10px;
+}
+header#backoffice > aside > a > button:hover {
+  background-color: white;
+  color: #222524;
+}
+header#backoffice > aside > #profile {
+  position: relative;
+}
+header#backoffice > aside > #profile > .infos {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-right: 2.5em;
+}
+header#backoffice > aside > #profile > .infos > img {
+  width: 2.5em;
+  border-radius: 100px;
+}
+header#backoffice > aside > #profile > .infos > .mdi {
+  font-size: 1.4em;
+  position: absolute;
+  right: 10px;
+  top: 20%;
+}
+header#backoffice > aside > #profile > .dropdown {
+  position: absolute;
+  top: 3em;
+  width: 100%;
+  display: none;
+  background-color: #222524;
+  border-radius: 10px;
+  padding: 0.4em 0;
+  box-shadow: -1px 2px 3px rgba(102, 102, 102, 0.2588235294);
+}
+header#backoffice > aside > #profile > .dropdown * {
+  color: white;
+}
+header#backoffice > aside > #profile > .dropdown > ul {
+  list-style: none;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li {
+  cursor: pointer;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li button {
+  width: 100%;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover {
+  background-color: #424645;
+  transition: 0.5s all ease;
+}
+header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
+  color: #ffd6bb;
+}
+header#backoffice > aside > span.owner {
+  border-radius: 10px;
+  color: #804e2e;
+  background-color: #ffd6bb;
+  font-family: "poppins-medium", sans-serif;
+  padding: 0.3em 0.8em;
+  font-size: 0.9em;
+}
+
+#login {
+  height: 100vh;
+  background-color: #222524;
+}
+#login > form {
+  width: 30em;
+  height: 90%;
+  align-content: center;
+  margin: 0 auto;
+}
+#login > form > .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#login > form > .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#login > form > h2 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: white;
+}
+#login > form > img {
+  width: 14em;
+  margin: 0.5em auto;
+  display: block;
+  filter: invert(1);
+}
+#login > form > .form-field {
+  margin: 1em 0;
+}
+#login > form > .form-field > label {
+  color: white;
+}
+#login > form > .form-field > input {
+  background-color: #424645;
+  color: white;
+  transition: 0.5s ease all;
+}
+#login > form > .form-field > input:is(:hover, :focus) {
+  border-color: white;
+}
+#login > form > .forgot-password {
+  color: #222524;
+  display: block;
+  text-align: end;
+  font-size: 0.9em;
+  margin-bottom: 0.7em;
+  color: white;
+}
+#login > form > button {
+  width: 100%;
+}
+#login > form > button:first-of-type {
+  margin-top: 1em;
+}
+#login > form > .another-choice {
+  display: block;
+  margin: 1.5em 0;
+  color: #676767;
+  text-align: center;
+  position: relative;
+}
+#login > form > .another-choice > .text {
+  display: block;
+  background-color: #222524;
+  margin: auto;
+  width: fit-content;
+  padding: 0 1em;
+  position: relative;
+  z-index: 99;
+  color: white;
+}
+#login > form > .another-choice > .line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f7f7f7;
+}
+
+#new-accommodation {
+  width: 58em;
+  margin: auto;
+}
+#new-accommodation > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#new-accommodation > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-accommodation > form > section:first-of-type {
+  margin-top: unset;
+}
+#new-accommodation > form > section:not(.active) {
+  opacity: 50%;
+}
+#new-accommodation > form > section > h2, #new-accommodation > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#new-accommodation > form > section > h2 {
+  color: #424645;
+}
+#new-accommodation > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#new-accommodation > form .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#new-accommodation > form .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label {
+  background-color: #ffd0d0;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label > .mdi {
+  color: #ce4b4b !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label.uploaded {
+  background-color: #e0ffee !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-check {
+  color: #1b5734 !important;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#new-accommodation > form > section:nth-of-type(2) > .form-field > input {
+  width: 41%;
+}
+#new-accommodation > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-number {
+  width: 5em;
+}
+#new-accommodation > form > section:nth-of-type(2) .address-name {
+  width: 16em;
+}
+#new-accommodation > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#new-accommodation > form > section:nth-of-type(3) .form-field.activities > .distance {
+  display: none;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#new-accommodation > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
 }

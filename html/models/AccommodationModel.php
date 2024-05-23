@@ -7,13 +7,13 @@ require_once(__DIR__."/../services/fileManager/FileLogement.php");
 
 class AccommodationModel extends Model {
 
-    private static $TABLE_NAME = "pls.logement"; 
+    private static $TABLE_NAME = "logement"; 
 
     public function __construct($data = null, $isNew = true) {
         parent::__construct(self::$TABLE_NAME, array(
             "id_logement" => array("primary" => true),
             "id_proprietaire" => array("required" => true),
-            "id_adresse" => array("required" => true),
+            "id_adresse" => array(),
             "titre_logement" => array("required" => true),
             "photo_logement" => array(
                 "get" => array($this, "computeAccomodationPicture")
@@ -23,6 +23,7 @@ class AccommodationModel extends Model {
             "gps_longitude_logement" => array(),
             "gps_latitude_logement" => array(),
             "categorie_logement" => array(),
+            "classe_energetique" => array(),
             "surface_logement" => array(),
             "max_personne_logement" => array(),
             "nb_lits_simples_logement" => array(),
@@ -33,7 +34,6 @@ class AccommodationModel extends Model {
             "duree_minimale_reservation" => array(),
             "delais_minimum_reservation" => array(),
             "delais_prevenance" => array(),
-            "classe_energetique" => array(),
             "type_logement" => array(),
             "numero" => array(),
             "complement_numero" => array(),
@@ -105,7 +105,7 @@ class AccommodationModel extends Model {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
             ->where("id_logement = ?", $id)
-            ->innerJoin("(select id_compte, nom, prenom from pls.proprietaire) p", "pls.logement.id_proprietaire = p.id_compte")
+            ->innerJoin("(select id_compte, nom, prenom from proprietaire) p", "logement.id_proprietaire = p.id_compte")
             ->execute()
             ->fetchOne();
         if($result == null)
