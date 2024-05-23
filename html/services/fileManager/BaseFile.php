@@ -8,9 +8,12 @@ abstract class BaseFile {
         return "/" . static::getPath() . $fileName;
     }
 
+    private static function computedDir() {
+        return __DIR__. "/../../" . static::getPath();
+    }
+
     public static function get($fileName) {
-        $path = __DIR__. "/../../" . static::getPath();
-        $result = glob($path."/".$fileName."*");
+        $result = glob(self::computedDir()."/".$fileName."*");
         if(count($result) < 1)
             return self::formatFilename("default.webp");
         $file = $result[0];
@@ -23,10 +26,9 @@ abstract class BaseFile {
         $file && unlink($file);
         return !!$file;
     }
-    public static function save($fileName, $sourceFile) {
-        $target_dir = static::getPath();
-        $imageFileType = strtolower(pathinfo($sourceFile['name'], PATHINFO_EXTENSION));
-        $target_file = $target_dir . $sourceFile . "." . $imageFileType;
+    public static function save($sourceFile, $name) {
+        $imageFileType = strtolower(pathinfo($sourceFile["name"], PATHINFO_EXTENSION));
+        $target_file = self::computedDir() . $name . "." . $imageFileType;
         $uploadOk = 1;
 
         $check = getimagesize($sourceFile["tmp_name"]);
@@ -51,7 +53,10 @@ abstract class BaseFile {
         if ($uploadOk == 0) {
             return false;
         }
-        return move_uploaded_file($sourceFile["tmp_name"], $target_file);
+        $res = move_uploaded_file($sourceFile["tmp_name"], $target_file);
+        if(!$res)
+            return false;
+        return $target_file;
     }
 
 

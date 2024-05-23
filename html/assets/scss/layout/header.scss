@@ -1,0 +1,155 @@
+
+header#frontoffice {
+   position: sticky;
+   top: 0;
+   z-index: 998;
+   font-family: "comfortaa-regular";
+   background-color: white;
+   padding: 1em 2.5em 0 2.5em;
+   .mdi {
+      font-size: 1.5em;
+   }
+   img {
+      height: 3em;
+   }
+   .fullsize-logo {
+      display: block;
+   }
+   .smallsize-logo {
+      display: none;
+   }
+   #top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ul {
+         display: flex;
+         align-items: center;
+         li {
+            list-style: none;
+            margin-left: .5em;
+            a { 
+               color: black;
+               text-decoration: none;
+               &:hover {
+                  font-family: "comfortaa-bold";
+                  color: $primary-frontoffice-1;
+               }
+               &:visited {
+                  color: black;
+               }
+            }
+         }
+      }
+   }
+   
+   #sign-in-up-container {
+      &>form {
+         border-left: 1px solid $gray-3;
+         padding-left: 1em;
+      }
+
+      &>a {
+         display: flex;
+         align-items: center;
+         gap: 1em;
+         text-decoration: none;
+         margin-right: 1em;
+   
+         padding: .5em .5em;
+         padding-right: 1em;
+         border-radius: 100px;
+
+         transition: all .3s ease;
+         font-size: .8em;
+   
+         &:hover {
+            background-color: $gray-4;
+         }
+   
+         &>img {
+            $size: 2.5em;
+            width: $size;
+            height: $size;
+            border-radius: 100px;
+         }
+      }
+   }
+
+   #sign-in-up-container, .sign-in-up-buttons {
+      display: flex;
+      align-items: center;
+      color: $primary-frontoffice-1;
+      button {
+         &:hover {
+            background-color: $primary-frontoffice-4;
+         }
+      }
+   }
+
+   #header-bottom-stroke {
+      height: 2px;
+      background-color: $gray-3;
+      margin: 1em 0 0 0;
+   }
+}
+
+@media (min-width: 431px) {
+   #open-burger-button, #close-burger-button {
+      display: none;
+   }
+}
+@media (max-width: 431px) {
+   header {
+      padding: 1em 1em 0 1em;
+      .mdi {
+         font-size: 2.5em;
+      }     
+      
+      .fullsize-logo {
+         display: none  !important;
+      }
+      .smallsize-logo {
+         display: block  !important;
+      }
+      #top-header ul {
+         display: none  !important;
+      }
+      .sign-in-up-buttons {
+         display: none  !important;
+      }
+      // Empêcher la fenêtre d'être en-dessous quand ouvert ou on s'en cogne ? 
+      #open-burger-menu {
+         width: 100%;
+         height: 100vh;
+         ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+               a { 
+                  color: black;
+                  text-decoration: none;
+                  span {
+                     font-size: 2em;
+                  }
+                  li {
+                     list-style: none;
+                     display: flex;
+                     align-items: center;
+                     gap: 1em;
+                     padding: 1em;
+                     border-bottom: solid 2px $gray-3;
+                     width: 100%;
+               }
+            }
+         }
+      }
+      .displayed {
+         display: block;
+      }
+      
+      .hidden {
+         display: none;
+      }
+   }
+}

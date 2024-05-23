@@ -4,7 +4,7 @@
             color: $red-1;
         }
 
-        &>input {
+        &>input,&>textarea,&>select {
             position: relative;
             border-color: $red-1;
     
@@ -39,7 +39,7 @@ input, textarea, select {
     }
 
     &:is(:hover, :focus) {
-        border-color: $primary-1;
+        border-color: $primary-frontoffice-1;
     }
 }
 
