@@ -62,6 +62,11 @@ header {
    }
 }
 
+@media (min-width: 376px) {
+   #open-burger-button, #close-burger-button {
+      display: none;
+   }
+}
 @media (max-width: 375px) {
    header {
       padding: 1em 1em 0 1em;
@@ -91,6 +96,7 @@ header {
             width: 100%;
                a { 
                   color: black;
+                  text-decoration: none;
                   span {
                      font-size: 2em;
                   }
@@ -106,15 +112,12 @@ header {
             }
          }
       }
-      #close-burger-button {
+      .displayed {
+         display: block;
+      }
+      
+      .hidden {
          display: none;
       }
    }
-}
-.displayed {
-   display: block;
-}
-
-.hidden {
-   display: none;
 }

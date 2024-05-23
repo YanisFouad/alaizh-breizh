@@ -2,8 +2,8 @@
    $pageTitle = "Page d'accueil"; 
 
    require_once("layout/header.php");
-   require_once("../services/RequestBuilder.php");
-   require_once("../models/AccommodationModel.php");
+   require_once(__DIR__."/../services/RequestBuilder.php");
+   require_once(__DIR__."/../models/AccommodationModel.php");
 
    $accomodations = AccommodationModel::find(0, 10);
 
@@ -47,8 +47,8 @@
             <article class="housing-item">
                <div class="housing-image-item-container">
                   <!-- ⭕️ À REMPLACER PAR LE BON SERVICE -->
-                  <!--<img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Logement">-->
-                  <img src="../../images/logement-test.jpeg" alt="Logement">
+                  <img src="<?php echo $accomodation->get("photo_logement")?>" alt="Logement">
+
                </div>
                <div class="housing-text-details">
                   <div class="housing-description-container">

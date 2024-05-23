@@ -1,5 +1,4 @@
 <?php 
-include_once "../services/ScriptLoader.php";
 ScriptLoader::load("authentication/login.js"); ?>
 <div role="dialog" class="modal" id="authentication-modal">
     <div class="center">

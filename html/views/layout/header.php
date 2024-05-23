@@ -1,4 +1,4 @@
-<?php require_once("../services/UserSession.php"); ?>
+<?php require_once(__DIR__."/../../services/session/UserSession.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,13 +14,13 @@
     <header>
         <nav id="top-header">
             <button id="open-burger-button" class="displayed" onclick="openBurgerMenu(true)"><span class="mdi mdi-menu"></span></button>
-            <button id="close-burger-button" class="hidden" onclick="closeBurgerMenu(false)"><span class="mdi mdi-close"></span></button>
+            <button id="close-burger-button" class="hidden" onclick="openBurgerMenu(false)"><span class="mdi mdi-close"></span></button>
 
             <a class="fullsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_fullsizeh.svg" alt="Logo ALHaiZ Breizh"></a>
             <a class="smallsize-logo" href="#"><img src="../../../images/logo_alhaiz_breizh_mini.svg" alt="Logo ALHaiZ Breizh"></a>
             <ul>
-                <li><a href="../views/home.php"></span>Accueil</a></li>
-                <li><a href="../views/housing-list.php">Logements</a></li>
+                <li><a href="/"></span>Accueil</a></li>
+                <li><a href="/logements">Logements</a></li>
             </ul>
             <div id="sign-in-up-container" onclick="openLoginModal()">
                 <span class="mdi mdi-account-circle-outline"></span>
@@ -31,7 +31,7 @@
 
         <nav id="open-burger-menu" class="hidden">
                 <ul>
-                    <a href="../views/home.php"><li><span class="mdi mdi-home"></span>Accueil</li></a>
+                    <a href="/logements"><li><span class="mdi mdi-home"></span>Accueil</li></a>
                     <a href="../views/housing-list.php"><li><span class="mdi mdi-home-group"></span>Logements</li></a>
                     <a href="#"><li><span class="mdi mdi-login"></span>Connexion</li></a>
                     <a href="#"><li><span class="mdi mdi-account-plus"></span>Inscription</li></a>
@@ -40,7 +40,7 @@
     </header>
     <?php
         // require the login modal with the default header
-        require_once("authentication/login.php");
+        require_once(__DIR__."/../authentication/login.php");
     } else { 
     ?>
         <header>

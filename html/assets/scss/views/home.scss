@@ -1,18 +1,20 @@
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
 
-#home-page body, #filter-housing-container body {
+#home-page, #filter-housing-container {
    display: flex;
    flex-direction: column;
    min-height: 100vh;
    min-width: 1000px;
 }
 
-#home-page button, #filter-housing-container button {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 1em;
+#home-page {
+   button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+   }
 }
 
 .housing-container {
@@ -209,7 +211,7 @@ abbr[title] {
 /*****************/
 
 @media (max-width: 375px) {
-body {
+#home-page, #filter-housing-container {
    min-width: inherit;
 }
    #search-bar {
@@ -274,7 +276,7 @@ body {
       display: none;
    }
 
-   .show-all-button {
+   #home-page .show-all-button {
       display: flex;
       align-items: center;
       padding: .25em 1em;

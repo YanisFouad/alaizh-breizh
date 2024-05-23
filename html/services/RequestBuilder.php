@@ -18,9 +18,10 @@ class RequestBuilder {
     private $offset;
     private $sort;
     private $distinct;
+    private $fields2update = array();
     private $whereClausures = array();
     private $fields = array();
-
+    private $jointures = array();
 
     public function __construct($tableName, $method) {
         $this->tableName = $tableName;
@@ -57,13 +58,37 @@ class RequestBuilder {
         return $this;
     }
 
+    public function innerJoin($otherTable, ...$on) {
+        return $this->join("INNER", $otherTable, $on);
+    }
+
+    public function naturalJoin($otherTable, ...$on) {
+        return $this->join("NATURAL", $otherTable, $on);
+    }
+
+    public function crossJoin($otherTable, ...$on) {
+        return $this->join("CROSS", $otherTable, $on);
+    }
+
+    public function leftJoin($otherTable, ...$on) {
+        return $this->join("LEFT", $otherTable, $on);
+    }
+    
+    public function join($type, $otherTable, ...$on) {
+        $this->jointures[] = [$type, $otherTable, $on];
+        return $this;
+    }
+
+    public function set($field, $value) {
+        if($this->method !== RequestType::UPDATE)
+            throw new Exception("Invalid request type, only works with 'UPDATE' requests.");
+        $this->fields2update[$field] = $value;
+        return $this;
+    }
+
     public function execute() {
         $query = array($this->method);
         $params = array();
-
-        if(isset($this->distinct)) {
-            $query[] = "DISTINCT";
-        }
 
         if(isset($this->distinct))
             $query[] = "DISTINCT";
@@ -73,6 +98,12 @@ class RequestBuilder {
         // avoid "from" for some request type
         if(!in_array($this->method, [RequestType::UPDATE->value]))
             $query[] = "FROM";
+
+        // if we have fields to update then add it to the query
+        foreach($this->fields2update as $field => &$value) {
+            $query[] = "SET " . $field . " = ?";
+            $params[] = $value;
+        }
         
         $query[] = $this->tableName;
 
@@ -88,7 +119,7 @@ class RequestBuilder {
         if(count($this->whereClausures) > 0) {
             $query[] = "WHERE";
             $clasures = array();
-            foreach($this->whereClausures as $clausure => $data) {
+            foreach($this->whereClausures as $clausure => &$data) {
                 $clasures[] = $clausure;
                 foreach($data as $d)
                     $params[] = $d;
@@ -122,7 +153,7 @@ class RequestBuilder {
         $result = $this->result;
         if(count($result) === 0)
             return null;
-        return $result[0];
+        return $this->result[0];
     }
 
     public function fetchMany() {

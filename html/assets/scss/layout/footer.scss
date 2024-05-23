@@ -6,8 +6,9 @@ footer {
    align-items: center;
    font-family: "comfortaa-regular";
    color: white;
-   a:visited {
+   a, a:visited {
        color: white;
+       text-decoration: none;
     }
     background-color: black;
     padding: 1em;

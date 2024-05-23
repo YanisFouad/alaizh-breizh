@@ -8,6 +8,7 @@ $router = new Router();
 
 // home & default view
 $router->add("/", "views/home.php");
+$router->add("/logements", "views/housing-list.php");
 
 // bookings
 $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
