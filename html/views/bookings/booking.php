@@ -70,8 +70,7 @@ require_once(__DIR__."/../layout/header.php");
                         <p>Adresse mail : <?= $controller->getProprietaire()->get("mail") ?></p>
                     </div>
                 </div>
-                <!-- TO DO -->
-                <a href="/">
+                <a href="/logement?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
                     <button class="primary">
                         Accéder à l'annonce
                         <span class="mdi mdi-chevron-right"></span>

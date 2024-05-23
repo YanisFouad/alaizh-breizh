@@ -8,19 +8,19 @@ if (isset($_GET['id'])){
 }
 
 if(!UserSession::isConnected()){
-    header("Location: /");
+    header("Location: /backoffice");
 }
 
 if ($id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation )){
-    header("Location: /");
+    header("Location: /backoffice");
 }
 
 require_once("controllers/backoffice/bookings/BookingProprietaireController.php");
 
 $controller = new BookingProprietaireController($id_reservation);
 
-if($controller->getReservation() == null || $controller->getReservation()->get("id_locataire") != $controller->getUser()->get("id_compte")){
-    header("Location: /");
+if($controller->getReservation() == null || $controller->getLogement()->get("id_proprietaire") != $controller->getUser()->get("id_compte")){
+    header("Location: /backoffice");
 }
 
 require_once(__DIR__."/../layout/header.php");  
@@ -28,10 +28,6 @@ require_once(__DIR__."/../layout/header.php");
 
 <section id="finalize-booking">
     <header>
-        <button id="finalize-booking-back-button">
-            <span class="mdi mdi-arrow-left"></span>
-            Retour
-        </button>
         <h1>Récapitulatif de la réservation</h1>
     </header>
     
@@ -70,7 +66,7 @@ require_once(__DIR__."/../layout/header.php");
                     </div>
                 </div>
                 <!-- TO DO -->
-                <a href="/">
+                <a href="/backoffice/logements/details-logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
                     <button class="primary">
                         Accéder à l'annonce
                         <span class="mdi mdi-chevron-right"></span>
@@ -95,33 +91,39 @@ require_once(__DIR__."/../layout/header.php");
                     <h4><?= $controller->getReservation()->get("nb_voyageur")?></h4>
                 </div>
                 <div class="container-amenagement">
-                    <h4>Aménagement(s):</h4>
-                    <div class="list-amenagement">
-                        <?php
-                        foreach($controller->getLogement()->get("amenagements") as $amenagement) {
-                            switch ($amenagement["name"]) {
-                                case 'jardin':
-                                    echo "<p><span class='mdi mdi-tree-outline'></span>Jardin</p>";
-                                    break;
-                                case 'piscine':
-                                    echo "<p><span class='mdi mdi-pool-outline'></span>Piscine</p>";
-                                    break;
-                                case 'jacuzzi':
-                                    echo "<p><span class='mdi mdi-hot-tub'></span>Jacuzzi</p>";
-                                    break;
-                                case 'terrasse':
-                                    echo "<p><span class='mdi mdi-floor-plan'></span>Terrasse</p>";
-                                    break;
-                                case 'balcon':
-                                    echo "<p><span class='mdi mdi-balcony'></span>Balcon</p>";
-                                    break;
-                                default:
-                                    break;
+                    <?php
+                    if (sizeof($controller->getLogement()->get("amenagements")) != 0 && $controller->getLogement()->get("amenagements")[0]["name"] != NULL) { ?>
+                        <h4>Aménagement(s):</h4>
+                        <div class="list-amenagement">
+                            <?php
+                            foreach($controller->getLogement()->get("amenagements") as $amenagement) {
+                                switch ($amenagement["name"]) {
+                                    case 'jardin':
+                                        echo "<p><span class='mdi mdi-tree-outline'></span>Jardin</p>";
+                                        break;
+                                    case 'piscine':
+                                        echo "<p><span class='mdi mdi-pool-outline'></span>Piscine</p>";
+                                        break;
+                                    case 'jacuzzi':
+                                        echo "<p><span class='mdi mdi-hot-tub'></span>Jacuzzi</p>";
+                                        break;
+                                    case 'terrasse':
+                                        echo "<p><span class='mdi mdi-floor-plan'></span>Terrasse</p>";
+                                        break;
+                                    case 'balcon':
+                                        echo "<p><span class='mdi mdi-balcony'></span>Balcon</p>";
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
-                </div>
+                    <?php
+                    }
+                    ?>
+                    
             </div>
             <?php
             if(strlen(explode(".", $controller->getReservation()->get("prix_total"))[1]) == 1) { 
