@@ -2,28 +2,17 @@
    
     require_once(__DIR__."/../../../models/BookingModel.php");
 
-    $id_proprietaire = "MarLe";
+    // ***********************
+    // Partie session de l'utilisateur
+    // ***********************
 
+    // if(!UserSession::isConnected()){
+    //     header("Location: /");
+    // }
 
-    //************************************/
-    //Création des tableaux de réservations
-    //************************************/
-
-    // //réservation passée
-    // $tab_reservation_passe = array_values(array_filter($tab_reservation, function($reservation) use($date_du_jour) {
-    //     return DateTime::createFromFormat('d-m-Y', $reservation['date_arrive']) > $date_du_jour;
-    // }));
-
-    // //réservation en cours
-    // $tab_reservation_en_cours = array_values(array_filter($tab_reservation, function($reservation) use($date_du_jour) {
-    //     return (DateTime::createFromFormat('d-m-Y', $reservation['date_arrive']) < $date_du_jour)
-    //         && (DateTime::createFromFormat('d-m-Y', $reservation['date_depart']) > $date_du_jour);
-    // }));
-
-    // //réservation à venir
-    // $tab_reservation_a_venir = array_values(array_filter($tab_reservation, function($reservation) use($date_du_jour) {
-    //     return DateTime::createFromFormat('d-m-Y', $reservation['date_depart']) < $date_du_jour;
-    // }));
+    // $profile = UserSession::get();
+    // $id_proprietaire = $profile->get("id_compte");
+    $id_proprietaire = 'MarLe';
 
     function trie_date($date1, $date2){
         if ($date1 == $date2) return 0;
@@ -44,12 +33,6 @@
         $trie = $_GET['trie'];
     }
 
-    $page = '1';
-    if(isset($_GET['page'])) {
-        $page = $_GET['page'];
-    }
-
-
     //**************************** */
     // Traitement pour pagination
     //**************************** */
@@ -59,9 +42,18 @@
 
     //nombre de réservation total pour la période choisi
     $nb_reservation_periode_en_cours = BookingModel::countByPeriod($tab, $id_proprietaire);
-    
+
     //nombre de page pour la période choisi
     $nb_page = ceil($nb_reservation_periode_en_cours/$nb_elem_par_page);
+
+    //gestion de la page actuelle
+    $page = '1';
+    if(isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }
+    if($nb_page<$page || $page<1){
+        $page = '1';
+    }
 
     //tableau de réservation pour la période
     $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
@@ -104,11 +96,11 @@
 
             <div>
                 <!-- Textarea Rechercher -->
-                <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1">Rechercher...</textarea>
+                <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1" disabled >Rechercher...</textarea>
                 <!-- Textarea date -->
-                <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1">Dates de réservation...</textarea>
+                <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1" disabled >Dates de réservation...</textarea>
             </div>
-            <button class="primary backoffice">
+            <button class="primary backoffice" disabled>
                 <span class="mdi mdi-magnify"></span>
             </button>
         </div>
@@ -124,7 +116,7 @@
 
     <div id="liste-reservation-proprietaire-float-left">
         <!-- Bouton filtre -->
-        <button class="primary backoffice liste-reservation-proprietaire-flex-row">
+        <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
             <span class="mdi mdi-filter-variant"></span>
             Filtre
         </button>
@@ -132,7 +124,7 @@
         <!-- Bouton trie -->
         <!-- trie pas encore fonctionnel -->
         <!-- ?trie=<?php echo $trie === "croissant" ? "decroissant" : "croissant" ?> -->
-        <a href=""><button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre">
+        <a href=""><button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre" disabled > 
             <span class="mdi mdi-sort-ascending"></span>
             trier par date    
         </button></a>
@@ -159,7 +151,7 @@
         <?php
         foreach($tab_reservation as $reservation){
             ?>
-            <a class="non-souligne" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">
+            <a class="non-souligne" href="chemin_page_de_yanis?id=<?php echo $id;?>">
                 <article class="liste-reservation-proprietaire-logement">
                     <!-- Photo maison + nom maison -->
                     <div>
@@ -181,7 +173,7 @@
                             <h5>Prix total</h5>
                             <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
                         </div>
-                        <button class="primary backoffice liste-reservation-proprietaire-flex-row">
+                        <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
                             <span class="mdi mdi-eye-outline"></span>
                             Facture
                         </button>
