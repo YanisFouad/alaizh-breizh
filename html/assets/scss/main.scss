@@ -57,7 +57,7 @@ h1, h2 {
 @import "views/account/profile";
 
 // liste réservation
-@import "liste_reservation_proprietaire";
+@import "views/backoffice/booking/liste_reservation_proprietaire.scss";
 
 // backoffice
 @import "views/backoffice/layout/header.scss";

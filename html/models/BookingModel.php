@@ -2,6 +2,7 @@
 require_once(__DIR__."/../services/Model.php");
 require_once(__DIR__."/../services/Database.php");
 require_once(__DIR__."/../services/RequestBuilder.php");
+require_once(__DIR__."/../services/fileManager/FileLogement.php");
 
 class BookingModel extends Model {
 
@@ -12,6 +13,9 @@ class BookingModel extends Model {
             "id_reservation" => array(),
             "id_locataire" => array(),
             "id_logement" => array(),
+            "photo_logement" => array(
+                "get" => array($this, "computeAccomodationPicture")
+            ),
             "titre_logement" => array(),
             "nb_nuit" => array(),
             "date_arrivee" => array("type" => "date"),
@@ -24,6 +28,10 @@ class BookingModel extends Model {
             "est_payee" => array(),
             "est_annulee" => array()
         ), $data, $isNew);
+    }
+
+    public function computeAccomodationPicture($data) {
+        return FileLogement::get($data["photo_logement"]);
     }
 
     public static function find($owner_id, $period,$offset = 0, $limit = 10) {

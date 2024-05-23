@@ -1,12 +1,9 @@
 <?php
    
-    require_once(__DIR__."/models/BookingModel.php");
-
+    require_once(__DIR__."/../../../models/BookingModel.php");
 
     $id_proprietaire = "MarLe";
 
-
-    $date_du_jour = new DateTime();
 
     //************************************/
     //Création des tableaux de réservations
@@ -69,7 +66,8 @@
     //tableau de réservation pour la période
     $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
 
-    $tab_toutes_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
+    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
+
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +75,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
     <title>Liste réservation</title>
 </head>
 <body id="liste-reservation-proprietaire-body">
@@ -89,7 +87,7 @@
         <!--Rechercher une réservation-->
         <div class="liste-reservation-proprietaire-recherche">
             
-        <!-- export des réservations -->
+            <!-- export des réservations -->
             <form action="/controllers/csvExport.php" method="POST">
                 <!-- bouton d'export -->
                 <button id="export-reservation" class="primary backoffice export-reservation" type="submit">
@@ -99,9 +97,9 @@
                 <!-- non de fichier pour l'export -->
                 <input type="hidden" name="name" value="export_reservations.csv" />
                 <!-- donnnée pour fichier -->
-                <input type="hidden" name="array" value="<?php echo htmlentities(serialize(array_map(function ($res){
+                <input type="hidden" name="array" value="<?php echo htmlentities(serialize(array_map(function  ($res){
                 return $res->getData();
-                } ,$tab_toutes_reservation_periode))); ?>" />
+                } ,$tab_toute_reservation_periode))); ?>" />
             </form>
 
             <div>
@@ -159,38 +157,37 @@
         <!-- Traitement des réservation -->
         <!-- ************************** -->
         <?php
-        // for($i = $nb_elem_par_page*($page-1);$i<$nb_elem_par_page*$page && $i<count($tab_reservation_filtrer_trier);$i++) { 
         foreach($tab_reservation as $reservation){
-            // $reservation = $tab_reservation_filtrer_trier[$i];
             ?>
+            <a class="non-souligne" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">
+                <article class="liste-reservation-proprietaire-logement">
+                    <!-- Photo maison + nom maison -->
+                    <div>
+                        <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
+                        <h4><?php echo $reservation->get("titre_logement"); ?></h4>
+                    </div>
 
-            <article class="liste-reservation-proprietaire-logement">
-                <!-- Photo maison + nom maison -->
-                <div>
-                    <img src="\images_test\crown-8FTlOb9PnbY-unsplash.jpg" alt="Logement">
-                    <h4><?php echo $reservation->get("titre_logement") ?></h4>
-                </div>
-
-                <!-- Description maison -->
-                <div class="liste-reservation-proprietaire-logement-detail">
-                    <div>
-                        <h5>Date de réservation</h5>
-                        <h4><?php echo $reservation->get("date_reservation"); ?></h4>
+                    <!-- Description maison -->
+                    <div class="liste-reservation-proprietaire-logement-detail">
+                        <div>
+                            <h5>Date de réservation</h5>
+                            <h4><?php echo $reservation->get("date_reservation"); ?></h4>
+                        </div>
+                        <div>
+                            <h5>Nombre de nuit</h5>
+                            <h4><?php echo $reservation->get("nb_nuit"); ?></h4>
+                        </div>
+                        <div>
+                            <h5>Prix total</h5>
+                            <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
+                        </div>
+                        <button class="primary backoffice liste-reservation-proprietaire-flex-row">
+                            <span class="mdi mdi-eye-outline"></span>
+                            Facture
+                        </button>
                     </div>
-                    <div>
-                        <h5>Nombre de nuit</h5>
-                        <h4><?php echo $reservation->get("nb_nuit"); ?></h4>
-                    </div>
-                    <div>
-                        <h5>Prix total</h5>
-                        <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
-                    </div>
-                    <button class="primary backoffice liste-reservation-proprietaire-flex-row">
-                        <span class="mdi mdi-eye-outline"></span>
-                        Facture
-                    </button>
-                </div>
-            </article>
+                </article>
+            </a>
         <?php } ?>
     </section>
 
