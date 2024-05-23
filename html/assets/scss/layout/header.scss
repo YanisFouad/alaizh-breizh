@@ -1,3 +1,4 @@
+
 header {
    position: sticky;
    top: 0;
@@ -8,9 +9,6 @@ header {
    .mdi {
       font-size: 1.5em;
    }
-   .mdi-menu {
-      display: none;
-   }
    img {
       height: 3em;
    }
@@ -20,7 +18,7 @@ header {
    .smallsize-logo {
       display: none;
    }
-   nav {
+   #top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -32,16 +30,20 @@ header {
             margin-left: .5em;
             a { 
                color: black;
+               text-decoration: none;
                &:hover {
                   font-family: "comfortaa-bold";
                   color: $primary-1;
+               }
+               &:visited {
+                  color: black;
                }
             }
          }
       }
    }
-   
-   #sign-in-up-container, #sign-in-up-button {
+
+   #sign-in-up-container, .sign-in-up-buttons {
       display: flex;
       align-items: center;
       color: $primary-1;
@@ -65,21 +67,54 @@ header {
       padding: 1em 1em 0 1em;
       .mdi {
          font-size: 2.5em;
-      }
-      .mdi-menu {
-         display: block;
-      }
+      }     
+      
       .fullsize-logo {
          display: none;
       }
       .smallsize-logo {
          display: block;
       }
-      nav ul {
+      #top-header ul {
          display: none;
       }
-      #sign-in-up-button {
+      .sign-in-up-buttons {
+         display: none;
+      }
+      // Empêcher la fenêtre d'être en-dessous quand ouvert ou on s'en cogne ? 
+      #open-burger-menu {
+         width: 100%;
+         height: 100vh;
+         ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+               a { 
+                  color: black;
+                  span {
+                     font-size: 2em;
+                  }
+                  li {
+                     list-style: none;
+                     display: flex;
+                     align-items: center;
+                     gap: 1em;
+                     padding: 1em;
+                     border-bottom: solid 2px $gray-3;
+                     width: 100%;
+               }
+            }
+         }
+      }
+      #close-burger-button {
          display: none;
       }
    }
+}
+.displayed {
+   display: block;
+}
+
+.hidden {
+   display: none;
 }

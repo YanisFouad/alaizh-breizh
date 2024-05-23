@@ -1,13 +1,20 @@
 <?php 
    $pageTitle = "Page d'accueil"; 
+
    require_once("layout/header.php");
+   require_once("../services/RequestBuilder.php");
    require_once("../models/AccommodationModel.php");
+
    $accomodations = AccommodationModel::find(0, 10);
 
-   $housingCity = "Perros-Guirec";
-   $housingDepartment = "Côtes d'Armor";
-   $housingRating = "5,0";
-   $pricePerNight = "60";
+   function getDepartmentName($postCode) {
+      $result = RequestBuilder::select("pls._departement")
+          ->projection("nom_departement")
+          ->where("num_departement = ?", $postCode)
+          ->execute()
+          ->fetchOne();
+      return $result["nom_departement"];
+   }
 ?>
 
 <section id="home-page">
@@ -18,11 +25,11 @@
       </div>
       
       <form id="search-bar">
-         <input type="text" placeholder="Rechercher un séjour" class="search-input">
-         <input placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-         <input placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" />
-         <input type="text" placeholder="Nombre de personnes" class="travelers-number-input"><span class="mdi mdi-account"></span>
-         <button><span class="mdi mdi-magnify"></span></button>
+         <input disabled type="text" placeholder="Rechercher un séjour" class="search-input">
+         <input disabled placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input disabled placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input disabled type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
+         <button disabled class="is-disabled"><span class="mdi mdi-magnify"></span></button>
       </form>
    </section>
 
@@ -32,26 +39,30 @@
          <h1 id="housing-list-title">Notre sélection de logements</h1>
       </div>
       <div class="show-more-button-container">
-         <button class="show-more-button">Afficher plus<span class="mdi mdi-chevron-right"></span></button>
+         <a href="./housing-list.php"><button class="secondary show-more-button">Afficher plus<span class="mdi mdi-chevron-right"></span></button></a>
       </div>
 
       <section class="housing-list">
          <?php foreach($accomodations as $accomodation) {?>
             <article class="housing-item">
                <div class="housing-image-item-container">
-                  <img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Photo logement">
+                  <!-- ⭕️ À REMPLACER PAR LE BON SERVICE -->
+                  <!--<img src="../../files/logements/<?php echo $accomodation->get("photo_logement")?>.jpg" alt="Logement">-->
+                  <img src="../../images/logement-test.jpeg" alt="Logement">
                </div>
                <div class="housing-text-details">
                   <div class="housing-description-container">
                      <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
-                     <!--<div class="star-notation-container">
+                     <!-- NOTATION // RETIRÉE
+                     <div class="star-notation-container">
                         <span class="mdi mdi-star"></span>
                         <h4><?php //echo $housingRating; ?></h4>
-                     </div>-->
+                     </div>
+                     -->
                   </div>
                   <div class="housing-location-container">
                      <span class="mdi mdi-map-marker"></span>
-                     <h4 class="housing-location"><abbr title="<?php echo $housingCity; ?>, <?php echo $housingDepartment; ?>"><?php echo $housingCity; ?>, <?php echo $housingDepartment; ?></h4>
+                     <h4 class="housing-location"><abbr title="<?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?>"><?php echo $accomodation->get("ville_adresse"); ?>, <?php echo getDepartmentName(substr($accomodation->get("code_postal_adresse"), 0, 2)) ?></h4>
                   </div>
                   <div class="housing-price-container">
                      <span class="housing-price"><?php echo $accomodation->get("prix_ht_logement"); ?>€</span><span class="per-night">par nuit</span>

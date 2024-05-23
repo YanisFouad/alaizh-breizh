@@ -1,4 +1,6 @@
-<?php ScriptLoader::load("authentication/login.js"); ?>
+<?php 
+include_once "../services/ScriptLoader.php";
+ScriptLoader::load("authentication/login.js"); ?>
 <div role="dialog" class="modal" id="authentication-modal">
     <div class="center">
         <h3>Connexion locataire</h3>

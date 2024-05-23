@@ -1,59 +1,69 @@
 @import "utils/variables";
 @import "utils/variables-front-office";
+@import "utils/_variables-back-office.scss";
 
-*,
-*::after,
-*::before {
-   outline: none;
-   padding: 0;
-   margin: 0;
-   box-sizing: border-box;
+*, *::after, *::before {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 @import "assets/font-loader.scss";
-@import "utils/_variables.scss";
 
-/* IMPORT HERE ALL STYLES FROM VIEWS */
+body {
+   font-family: "comfortaa-regular", sans-serif;
+   color: $black;
+}
 
-@import "details-logement.scss";
+h1, h2 {
+   font-family: "poppins-semibold", sans-serif;
+}
+ 
+ h3, h4 {
+   font-family: "poppins-medium", sans-serif;
+}
+ 
+ h1 {
+    font-size: $size-h1;
+ }
+ h2 {
+    font-size: $size-h2;
+ }
+ h3 {
+    font-size: $size-h3;
+ }
+ h4 {
+    font-size: $size-h4;
+ }
+ 
+ p {
+    font-family: "comfortaa-medium";
+    font-size: $size-paragraph;
+ }
 
-/* HEADER */
-header {
-    font-family: "comfortaa-regular";
-    background-color: white;
-    padding: 1em;
-    border-bottom: 2px solid $secondary-3;
-    img {
-        height: 3em;
-    }
-    nav {
-        ul {
-            display: flex;
-            li {
-                list-style: none;
-            }
-        }
-    }
-  }
+// default components
+@import "assets/buttons";
+@import "assets/inputs";
 
-/* FOOTER */
-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-family: "comfortaa-regular";
-    color: white;
-    a:visited {
-        color: white;
-    }
-    background-color: black;
-    padding: 1em;
-    margin-top: auto; /* pour conserver le footer en bas de page */
-    nav {
-        display: flex;
-        flex-direction: row;
-        a {
-            padding-left: 1em;
-        }
-      }
-  }
+/* LAYOUT */
+@import "layout/header.scss";
+@import "layout/footer.scss";
+
+/* VIEWS */
+// errors
+@import "views/errors/404";
+
+// authentication
+@import "views/authentication/login";
+
+// account
+@import "views/account/profile";
+ 
+@import "views/home.scss";
+
+// backoffice
+@import "views/backoffice/layout/header.scss";
+@import "views/backoffice/authentication/login.scss";
+
+@import "views/backoffice/accomodations/new-accommodation.scss";

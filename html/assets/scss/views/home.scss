@@ -1,12 +1,14 @@
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
-body {
+/* TOUT METTRE DANS UNE BALISE HOME */
+
+#home-page body, #filter-housing-container body {
    display: flex;
    flex-direction: column;
    min-height: 100vh;
    min-width: 1000px;
 }
 
-button {
+#home-page button, #filter-housing-container button {
    display: flex;
    align-items: center;
    justify-content: center;
@@ -18,11 +20,11 @@ button {
    justify-content: center;
 }
 
-.mdi {
+#home-page .mdi, #filter-housing-container .mdi {
    font-size: 1.5em;
 }
 
-a {
+#home-page a, #filter-housing-container a {
    text-decoration: none;
    &:visited {
       color: black;
@@ -77,7 +79,11 @@ a {
       width: auto;
    }
    button {
-      background-color: $primary-1;
+      //background-color: $primary-1;
+      ///////// POURQUOI LE STYLE NE FONCTIONNE PAS !!!!!!!!!!!!!
+      background-color: gray;
+      cursor: not-allowed;
+      /////////
       padding: 1em;
    }
    .mdi-magnify {
@@ -98,12 +104,6 @@ a {
 }
 
 .show-more-button {
-   display: flex;
-   align-items: center;
-   color: $primary-1;
-   border: solid 1px $primary-1;
-   border-radius: 2em;
-   margin-bottom: 1em;
    position: relative;
    top: -4em;
 }
@@ -265,9 +265,13 @@ body {
       width: 355px;
    }
 
-   .show-all-button-container {
+   #home-page .show-all-button-container {
       display: flex;
       justify-content: center;
+   }
+
+   #housing-list-container .show-all-button {
+      display: none;
    }
 
    .show-all-button {
@@ -350,7 +354,13 @@ body {
 //    }
 // }
 
+#validation-filter-button-container {
+   display: none;
+}
+
+/**********************/
 /* Résultats logement */
+/**********************/
 
 .back-button {
    display: flex;
@@ -433,18 +443,17 @@ body {
    gap: .75em;
    font-family: "comfortaa-bold";
    color: $primary-1;
+   margin-bottom: 2.5em;
    li {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style: none;
    }
-   .mdi-chevron-left, .page-number, .mdi-chevron-right {
-      border: solid 1px $primary-1;
-      width: 25px;
-      height: 25px;
-      //padding: .75em;
-      border-radius: 50%;
+   button {
+      width: 1em;
+      height: 1em;
+      padding: 1.6em;
    }
 }
 
@@ -452,12 +461,34 @@ body {
 /* MEDIA QUERIES */
 /*****************/
 
+// 1231mini à droite
+
 @media (max-width: 375px) {
    .compact-search-bar {
       display: none;
    }
 
-   #housing-list-container {
-      //display: none;
+   #filter-container {
+      min-width: 100%;
+      #validation-filter-button-container {
+         display: flex;
+         gap: .5em;
+         justify-content: flex-end;
+      }
    }
+
+   #housing-list-container {
+      padding: .5em;
+   }
+   .show-all-button-container {
+      display: none;
+   }
+}
+
+.secondary.is-disabled {
+   cursor: not-allowed;
+   background-color: $gray-3;
+   border-color: red;
+   color: red;
+
 }

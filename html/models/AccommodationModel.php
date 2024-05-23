@@ -127,6 +127,13 @@ class AccommodationModel extends Model {
             return new self($row, false);
         }, $result);
     }
+    public static function count() {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("count(*)")
+            ->execute()
+            ->fetchOne();
+        return $result["count"] ?? 0;
+    }
 
     public static function findOneById($id, $projection = "*") {
         $result = RequestBuilder::select(self::$TABLE_NAME)
