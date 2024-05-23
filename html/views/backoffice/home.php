@@ -21,34 +21,40 @@
     <section>
     <div class="logements-container">
         <?php
-        foreach ($controller->getLogements() as $key => $logement) {
-            // Commencez une nouvelle div "row-logement" au début et après chaque 4 logements
-            if ($key % 4 == 0) {
-                // Fermez la div précédente si ce n'est pas le premier groupe de logements
-                if ($key != 0) {
-                    echo '</div>';
-                }
-                echo '<div class="row-logement">';
-            }
+        if($controller->getNbLogement() == 0) {
             ?>
-
-            <a href="<?= "/backoffice/logements/details-logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
-                <article class="card-logement">
-                    <div class="img-logement-container">
-                        <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
-                    </div>
-                    <div class="description-logement-container">
-                        <h2 class="title-logement"> <?= $logement->get("titre_logement") ?></h2>
-                        <p class="adresse-logement">
-                            <span class="mdi mdi-map-marker"></span>
-                            <?= $logement->get("ville_adresse") . ", " . Adresse::getDepartement($logement->get("code_postal_adresse")) ?>
-                        </p>
-                    </div>
-                </article>
-            </a>
+            <div class="no-logement-container">
+                <p>Vous n'avez pas encore de logement.</p>
+            </div>
             <?php
+        } else {
+            foreach ($controller->getLogements() as $key => $logement) {
+                if ($key % 4 == 0) {
+                    if ($key != 0) {
+                        echo '</div>';
+                    }
+                    echo '<div class="row-logement">';
+                }
+                ?>
+    
+                <a href="<?= "/backoffice/logements/details-logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
+                    <article class="card-logement">
+                        <div class="img-logement-container">
+                            <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
+                        </div>
+                        <div class="description-logement-container">
+                            <h2 class="title-logement"> <?= $logement->get("titre_logement") ?></h2>
+                            <p class="adresse-logement">
+                                <span class="mdi mdi-map-marker"></span>
+                                <?= $logement->get("ville_adresse") . ", " . Adresse::getDepartement($logement->get("code_postal_adresse")) ?>
+                            </p>
+                        </div>
+                    </article>
+                </a>
+                <?php
+            }
         }
-        // Fermez la dernière div "row-logement"
+        
         echo '</div>';
         ?>
         </div>

@@ -35,9 +35,9 @@ class HomeBackofficeController {
         $this->setLogements($this->getUser()->get("id_compte"), $this->getOffset());
         $this->setNbLogement(sizeof($this->getLogements()));
 
-        if($this->getNbLogement() == 0) {
+        if(sizeof($this->getLogements()) == 0) {
             $this->setOffset(0);
-            $this->setLogements($this->getUser()->get("id_compte"), $this->getOffset(), );
+            $this->setLogements($this->getUser()->get("id_compte"), $this->getOffset());
         }
     }
 
@@ -82,7 +82,7 @@ class HomeBackofficeController {
     }
     
     public function getNextPage() {
-        if ($this->getCurrentPage() * self::NB_ITEM_HOME_BACK > $this->getNbLogement()) {
+        if ($this->getCurrentPage() * self::NB_ITEM_HOME_BACK >= $this->getNbLogement()) {
             return false;
         } else {
             return $this->getCurrentPage() + 1;
