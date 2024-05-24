@@ -1,52 +1,83 @@
 <?php 
-    require_once(__DIR__."/models/AccommodationModel.php");
-    $accomodation = AccommodationModel::findOneById(9);
+    require_once(__DIR__."/../../models/AccommodationModel.php");
+    require_once(__DIR__."/../../services/RequestBuilder.php");
+    require_once(__DIR__."/../../services/ScriptLoader.php");
+    $id_logement = $_GET["id_logement"];
 
-    // s'il n'est pas trouvé
+    if(!isset($id_logement) || !is_numeric($id_logement))
+        exit(header("Location: /"));
+
+    $accomodation = AccommodationModel::findOneById($id_logement);
+    
     if(!isset($accomodation)) {
-        echo "logement avec l'id machin introuvable";
+        exit(header("Location: /"));
     }
+    else{    
+        
+        $amenagements = array();
+        $activites = array();
 
-    $amenagements = array();
+        $activites = $accomodation->get("activites");
+        $tabActivites = [
+            "voile" => "mdi mdi-sail-boat",
+            "accrobranche" => "mdi mdi-pine-tree-variant",
+            "golf" => "mdi mdi-golf",
+            "canoë" => "mdi mdi-kayaking",
+            "randonnée" => "mdi mdi-hiking",
+            "baignade" => "mdi mdi-umbrella",
+            "équitation" => "mdi mdi-horse-human"
+        ];
 
+        $tabAmenagements = [
+            "jardin" => "mdi mdi-tree-outline",
+            "jacuzzi" => "mdi mdi-hot-tub",
+            "piscine" => "mdi mdi-pool",
+            "balcon" => "mdi mdi-balcony",
+            "terrase" => "mdi mdi-land-plots"
+        ];
 
-    while($accomodation as $accomodation->get("amenagement_$i") != null){
-        $amenagements[$i] = $accomodation->get("amenagement_$i");
-    }
+        function getDepartmentName($postCode) {
+            $postCode = substr($postCode,0,2);
+            $result = RequestBuilder::select("pls._departement")
+                ->projection("nom_departement")
+                ->where("num_departement = ?", $postCode)
+                ->execute()
+                ->fetchOne();
+            return $result["nom_departement"];
+        }
 
-    $tabActivites = [
-        "voile" => "mdi mdi-sail-boat",
-        "accrobranche" => "mdi mdi-pine-tree-variant",
-        "golf" => "mdi mdi-golf",
-        "canoë" => "mdi mdi-kayaking",
-        "randonnée" => "mdi mdi-hiking",
-        "baignade" => "mdi mdi-umbrella",
-        "équitation" => "mdi mdi-horse-human"
-    ];
+        $codePostal = $accomodation->get("code_postal_adresse");
+        $dep = getDepartmentName($codePostal);
 
-    require_once(__DIR__"/../layout/headrr.php");
+        include 'devis.php';
+
+        require_once(__DIR__."/../layout/header.php");
+
+        ScriptLoader::load("acccommodations/logement.js");
 ?>
-
-    <div id="pageDetaille">
-        <button><span class="mdi mdi-arrow-left"></span>Retour</button>
+<div id="pageDetaillee">
+    <div>
         <div id="cheminPage">
             <a href="#Liste">Logements</a>
             <span class="mdi mdi-chevron-right"></span>
-            <h4><?php echo $accomodation->get("titre_logement");?></h4>
+            <h4 title="<?php echo $accomodation->get("titre_logement");?>"><?php echo $accomodation->get("titre_logement");?></h4>
         </div>
     </div>
 
     <div id="page">
         <section>
             <article id="blockIntro">
-                <img src="./images/rsz_1frames-for-your-heart-2d4laqalbda-unsplash.jpg" id="imgLogement">
+                <div>    
+                    <!-- <img src="<?php $accomodation->get("photo_logement")?>" id="imgLogement"> -->
+                    <img src="../../images/rsz_1frames-for-your-heart-2d4laqalbda-unsplash.jpg" id="imgLogement">
+                </div>
 
                 <div>
                     <div id="titre">
                         <h1><?php echo $accomodation->get("titre_logement");?></h1>
                     </div>
 
-                    <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2>
+                    <h2><span class="mdi mdi-map-marker"></span><?php echo $accomodation->get("ville_adresse").", "; echo $dep;?></h2>
                     <p><?php echo $accomodation->get("description_logement");?>
                     </p>
 
@@ -95,6 +126,11 @@
             <article id="description">
                 <h3>Description</h3>
                 <p><?php echo $accomodation->get("description_logement");?></p>
+
+                <div>
+                    <h3>Classe energetique</h3>
+                    <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png">
+                </div>
             </article>
 
             <article id="box-Activites-Amenagement">
@@ -102,24 +138,19 @@
                     <div>
                         <h3>Activités</h3>
                         <ul>
-                            <li>
-                                <span class="<?php 
-                                for
-                                $activite = $accomodation->get("activite_1");
-                                echo $tabActivites[$activite]?>"></span>
-                                <?php echo $activite;?>
-                            </li>
+                            <?php foreach ($accomodation->get('activites') as $key => $value) { ?>
+                            <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> 
+                            <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                            <?php }?>
                         </ul>
                     </div>
 
                     <div>
                         <h3>Aménagements</h3>
                         <ul>
-                            <li><span class="mdi mdi-tree-outline"></span> Jardin</li>
-                            <li><span class="mdi mdi-hot-tub"></span> Jacuzzi</li>
-                            <li><span class="mdi mdi-pool"></span> Piscine</li>
-                            <li><span class="mdi mdi-balcony"></span> Balcon</li>
-                            <li><span class="mdi mdi-land-plots"></span> Terrasse</li>
+                        <?php foreach ($accomodation->get('amenagements') as $value) { ?>
+                                    <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li> 
+                        <?php }?>
                         </ul>
                     </div>
                 </div>
@@ -127,12 +158,15 @@
             </article>
         </section>
 
-        <aside>
+        <aside id="blockDevisSticky">
             <article id="profilPropriétaire">
-                <img src="./images/lucasAupry.jpg" alt="Photo de profil propriétaire">
+                <img src="../../images/lucasAupry.jpg" alt="Photo de profil propriétaire">
                 <div>
-                    <h4>AUPRY Lucas</h4>
-
+                    <h4><?php 
+                        echo $accomodation->get("nom")." ";
+                        echo $accomodation->get("prenom");
+                    ?></h4>
+<!-- 
                     <div class="note">
                         <span class="mdi mdi-star"></span>
                         <span class="mdi mdi-star"></span>
@@ -140,7 +174,7 @@
                         <span class="mdi mdi-star"></span>
                         <span class="mdi mdi-star-outline"></span>
                         <span id="nbAvis">(5 avis)</span>
-                    </div>
+                    </div> -->
 
                 </div>
             </article>
@@ -173,9 +207,9 @@
                     <span>Nombre de voyageurs</span>
 
                     <div>
-                        <button>-</button>
-                        <span>3</span>
-                        <button>+</button>
+                        <button id="moins">-</button>
+                        <span id="valeurVoyageurs">1</span>
+                        <button id="plus">+</button>
                     </div>
                 </div>
 
@@ -184,7 +218,7 @@
                 <div id="nbNuits">
                     <div>
                         <span>Nombre de nuits</span>
-                        <h4>3</h4>
+                        <h4 id="nbNuits">3</h4>
                     </div>
 
                     <div>
@@ -205,4 +239,7 @@
             </article>
         </aside>
     </div>
-<?php require_once(__DIR__."/../layou/footer.php") ?>
+</div>
+<?php }?>
+
+<?php require_once(__DIR__."/../layout/footer.php") ?>

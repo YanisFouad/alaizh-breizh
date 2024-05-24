@@ -1,82 +1,4 @@
-@import "../utils/_variables.scss";
-@import "../utils/variables-front-office.scss";
-
-*,
-*::after,
-*::before {
-    outline: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-@font-face {
-    font-family: "comfortaa-bold";
-    src: url(../../fonts/comfortaa-bold.ttf);
-}
-
-@font-face {
-    font-family: "comfortaa-light";
-    src: url(../../fonts/comfortaa-light.ttf);
-}
-
-@font-face {
-    font-family: "comfortaa-medium";
-    src: url(../../fonts/comfortaa-medium.ttf);
-}
-
-@font-face {
-    font-family: "comfortaa-regular";
-    src: url(../../fonts/comfortaa-regular.ttf);
-}
-
-@font-face {
-    font-family: "comfortaa-semibold";
-    src: url(../../fonts/comfortaa-semibold.ttf);
-}
-
-@font-face {
-    font-family: "poppins-bold";
-    src: url(../../fonts/poppins-bold.ttf);
-}
-
-@font-face {
-    font-family: "poppins-light";
-    src: url(../../fonts/poppins-light.ttf);
-}
-
-@font-face {
-    font-family: "poppins-medium";
-    src: url(../../fonts/poppins-medium.ttf);
-}
-
-@font-face {
-    font-family: "poppins-regular";
-    src: url(../../fonts/poppins-regular.ttf);
-}
-
-@font-face {
-    font-family: "Material Design Icons";
-    src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
-}
-
-body {
-    font-family: "comfortaa-regular", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: "poppins-regular";
-}
-
-main#pageDetaille {
-    margin-left: 2em;
-}
-
-main#pageDetaille>div {
+#pageDetaille{
     display: flex;
 
     button {
@@ -96,7 +18,7 @@ main#pageDetaille>div {
     }
 
     a {
-        color: $primary-1;
+        color: $primary-frontoffice-1;
     }
 
     h4 {
@@ -162,7 +84,8 @@ main#pageDetaille>div {
         }
 
         .bulle-Rose {
-            background-color: $brown-1;
+            background-color: $primary-backoffice-4 !important;
+            color: $primary-backoffice-1;
             border-radius: 14.5px;
             padding: 5px 10px 5px 10px;
             margin: 0.2em 0;
@@ -247,11 +170,10 @@ main#pageDetaille>div {
     }
 }
 
-aside {
+aside#blockDevisSticky {
     position: sticky;
     top: 10px;
     margin: 0 2em;
-    width: 25%;
     height: fit-content;
 
     #profilPropriétaire {
@@ -280,7 +202,7 @@ aside {
 
             span {
                 margin: 0;
-                color: $primary-1;
+                color: $primary-frontoffice-1;
 
                 #nbAvis {
                     font-size: 0.8em;
@@ -415,14 +337,14 @@ aside {
             button {
                 position: relative;
                 color: $white;
-                background-color: $primary-1;
+                background-color: $primary-frontoffice-1;
                 height: 3em;
                 width: 100%;
                 border-radius: 21px;
                 font-family: "comfortaa-regular";
 
                 &:hover {
-                    background-color: $primary-2;
+                    background-color: $primary-frontoffice-2;
                 }
 
                 .mdi.mdi-chevron-right {
