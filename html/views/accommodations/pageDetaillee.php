@@ -33,7 +33,7 @@
             "jacuzzi" => "mdi mdi-hot-tub",
             "piscine" => "mdi mdi-pool",
             "balcon" => "mdi mdi-balcony",
-            "terrase" => "mdi mdi-land-plots"
+            "terrasse" => "mdi mdi-land-plots"
         ];
 
         function getDepartmentName($postCode) {
@@ -58,7 +58,7 @@
 <div id="pageDetaillee">
     <div>
         <div id="cheminPage">
-            <a href="#Liste">Logements</a>
+            <a href="/logements">Logements</a>
             <span class="mdi mdi-chevron-right"></span>
             <h4 title="<?php echo $accomodation->get("titre_logement");?>">
                 <?php echo $accomodation->get("titre_logement");?>
