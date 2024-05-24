@@ -87,6 +87,7 @@ class BookingLocataireController
     }
 
     public function getFormatDate($date) {
+        
         $months = [
             '01' => 'Janvier',
             '02' => 'Février',

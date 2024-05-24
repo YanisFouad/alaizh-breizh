@@ -36,14 +36,43 @@ $adresse = RequestBuilder::select("_adresse")
 
 require_once(__DIR__."/../layout/header.php");
 
+function getFormatDate($date) {
+    if (is_string($date)) {
+        $date = new DateTime($date);
+    }
+    
+    $months = [
+        '01' => 'Janvier',
+        '02' => 'Février',
+        '03' => 'Mars',
+        '04' => 'Avril',
+        '05' => 'Mai',
+        '06' => 'Juin',
+        '07' => 'Juillet',
+        '08' => 'Août',
+        '09' => 'Septembre',
+        '10' => 'Octobre',
+        '11' => 'Novembre',
+        '12' => 'Décembre',
+    ];
+    
+    $day = $date->format('d');
+    $month = $months[$date->format('m')];
+    $year = $date->format('Y');
+    
+    return "$day $month $year";
+}
 ?>
 
 <section id="finalize-booking">
     <header>
-        <button id="finalize-booking-back-button">
-            <span class="mdi mdi-arrow-left"></span>
-            Retour
-        </button>
+        <a href="/reservations" id="finalize-booking-back-button">
+            <button>
+                <span class="mdi mdi-arrow-left"></span>
+                Retour
+            </button>
+        </a>
+        
         <h1>Récapitulatif de ma réservation</h1>
     </header>
     
@@ -142,14 +171,28 @@ require_once(__DIR__."/../layout/header.php");
             <span></span>
         </h2>
 
-        <article class="annulation">
+<article class="annulation">
             <p>
             <?php
-                $interval = new DateInterval('P' . $reservation->get("delais_prevenance") . 'D');
-                $dateRemboursement = $reservation->get("date_arrivee");
+                if (is_string($reservation->get("date_arrivee"))) {
+                    $dateArrivee = new DateTime($reservation->get("date_arrivee"));
+                } else {
+                    $dateArrivee = $reservation->get("date_arrivee");
+                }
+
+                $interval = new DateInterval('P' . $logement->get("delais_prevenance") . 'D');
+                $dateRemboursement = $dateArrivee->sub($interval);
                 $currentDate = new DateTime("now");
+
+                if ($reservation->get("date_arrivee") <= $currentDate) { ?>
+                    Votre réservation est en cours ou passée. Vous ne pouvez plus vous la faire rembourser.
+                <?php
+                } else { ?>
+                    En annulant avant le <b><?= getFormatDate($dateRemboursement) ?></b>, vous serez remboursé <b>intégralement</b>. Passée cette date, vous ne serez remboursé qu’à hauteur de 50%.
+                <?php
+                }
+                
             ?>
-                En annulant avant le <b><?= $dateRemboursement ?></b>, vous serez remboursé <b>intégralement</b>. Passée cette date, vous ne serez remboursé qu’à hauteur de 50%.
             </p>
         </article>
     </div>

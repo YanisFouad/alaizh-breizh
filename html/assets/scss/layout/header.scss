@@ -119,6 +119,9 @@ header#frontoffice {
       .sign-in-up-buttons {
          display: none  !important;
       }
+      #sign-in-up-container {
+         display: none !important;
+      }
       // Empêcher la fenêtre d'être en-dessous quand ouvert ou on s'en cogne ? 
       #open-burger-menu {
          width: 100%;

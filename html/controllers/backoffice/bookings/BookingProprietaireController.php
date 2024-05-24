@@ -48,7 +48,7 @@ class BookingProprietaireController
         $this->user = $user;
     }
 
-    public function getAdresse() {
+    public function setAdresse() {
         $result = RequestBuilder::select("pls._adresse")
             ->projection("*")
             ->where("id_adresse = ?", $this->getLogement()->get("id_adresse"))
@@ -74,6 +74,11 @@ class BookingProprietaireController
         $this->logement = AccommodationModel::findOneById($this->getReservation()->get("id_logement"));
     }
 
+
+    public function getAdresse() {
+        return $this->adresse;
+    }
+
     public function adresseToString() {
         $code_postal = $this->getAdresse()["code_postal_adresse"];
         $num_dep = substr($code_postal, 0, 2);
@@ -90,6 +95,10 @@ class BookingProprietaireController
     }
 
     public function getFormatDate($date) {
+        if (is_string($date)) {
+            $date = new DateTime($date);
+        }
+        
         $months = [
             '01' => 'Janvier',
             '02' => 'Février',
