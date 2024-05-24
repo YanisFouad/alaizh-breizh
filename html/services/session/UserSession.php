@@ -17,4 +17,8 @@ class UserSession extends BaseSession {
         return self::isDefined();
     }
 
+    public static function isConnectedAsOwner() {
+        return self::isDefined() && self::get()->get("accountType") === AccountType::OWNER->name;
+    }
+
 }

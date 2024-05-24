@@ -1,7 +1,7 @@
 <?php 
     require_once(__DIR__."/../../../services/session/UserSession.php");
 
-    if(!UserSession::isConnected()) {
+    if(!UserSession::isConnectedAsOwner()) {
         require_once(__DIR__."/../authentication/login.php");
         exit;
     }
