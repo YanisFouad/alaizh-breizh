@@ -132,25 +132,25 @@
     //     $tab_reservation_filtrer_trier = $tab_reservation_en_cours;
     // }
 
-    ?>
-    <!-- Liste réservation -->
-    <section id="liste-reservation-proprietaire">
-        <!-- ************************** -->
-        <!-- Traitement des réservation -->
-        <!-- ************************** -->
-        <?php
-        foreach($tab_reservation as $reservation){
             ?>
-            <a class="non-souligne" href="chemin_page_de_yanis?id=<?php echo $id;?>">
-                <article class="liste-reservation-proprietaire-logement">
-                    <!-- Photo maison + nom maison -->
-                    <div>
-                        <div id='img-container'>
-                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
-                        </div>
-                        <h4><?php echo $reservation->get("titre_logement"); ?></h4>
-                    </div>
-                    
+            <!-- Liste réservation -->
+            <section id="liste-reservation-proprietaire">
+                <!-- ************************** -->
+                <!-- Traitement des réservation -->
+                <!-- ************************** -->
+                <?php
+                foreach($tab_reservation as $reservation){
+                    ?>
+                    <a class="non-souligne" href="/backoffice/reservation?id=<?php echo $reservation->get("id_reservation")?>">
+                        <article class="liste-reservation-proprietaire-logement">
+                            <!-- Photo maison + nom maison -->
+                            <div>
+                                <div id='img-container'>
+                                    <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
+                                </div>
+                                <h4><?php echo $reservation->get("titre_logement"); ?></h4>
+                            </div>
+                            
 
                     <!-- Description maison -->
                     <div class="liste-reservation-proprietaire-logement-detail">
