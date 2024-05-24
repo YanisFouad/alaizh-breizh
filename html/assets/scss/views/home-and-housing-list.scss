@@ -1,14 +1,12 @@
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
 
-#home-page, #filter-housing-container  {
-   body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      min-width: 1000px;
-   }
-}
+// #home-page, #filter-housing-container {
+//    display: flex;
+//    flex-direction: column;
+//    min-height: 100vh;
+//    min-width: 1000px;
+// }
 
 #home-page {
    button {
@@ -204,10 +202,8 @@ abbr[title] {
    background-color: $primary-frontoffice-4;
 }
 
-#home-page, #filter-housing-container {
-   .show-all-button {
-      display: none;
-   }
+.show-all-button {
+   display: none;
 }
 
 /*****************/
@@ -248,7 +244,7 @@ abbr[title] {
    }
 
    #housing-list-title {
-      font-size: 1.4em;
+      font-size: 1em;
       margin: 0 auto 1em auto;
    }
    .show-more-button {
@@ -283,7 +279,7 @@ abbr[title] {
    #home-page .show-all-button {
       display: flex;
       align-items: center;
-      padding: 1em;
+      padding: .25em 1em;
       color: white;
       background-color: $primary-frontoffice-1;
       border: solid 1px $primary-frontoffice-1;
@@ -345,9 +341,6 @@ abbr[title] {
    flex-direction: row;
    justify-content: space-between;
    margin-bottom: 2.5em;
-   button {
-      padding: 1em;
-   }
 }
 
 // .stars-notation-container {
@@ -381,10 +374,6 @@ abbr[title] {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin: 2em;
-   h1 {
-      font-size: 1.4em;
-   }
 }
 
 .compact-search-bar {
@@ -422,11 +411,7 @@ abbr[title] {
       width: 150px;
    }
    button {
-      //background-color: $primary-1;
-      ///////// POURQUOI LE STYLE NE FONCTIONNE PAS !!!!!!!!!!!!!
-      background-color: gray;
-      cursor: not-allowed;
-      /////////
+      background-color: $primary-frontoffice-1;
       padding: 1em;
    }
    .mdi-magnify {
@@ -499,21 +484,6 @@ abbr[title] {
          display: flex;
          gap: .5em;
          justify-content: flex-end;
-      }
-   }
-
-   #filter-sort-buttons-container {
-      button {
-         padding: 1em;
-      }
-   }
-
-   .back-button {
-      display: none;
-   }
-   #filter-title-container {
-      button {
-         padding: 1em;
       }
    }
 

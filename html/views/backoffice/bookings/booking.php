@@ -161,7 +161,7 @@ require_once(__DIR__."/../layout/header.php");
                 $dateRemboursement = $dateArrivee->sub($interval);
                 $currentDate = new DateTime("now");
 
-                if ($currentDate >= $dateRemboursement) { ?>
+                if ($controller->getReservation()->get("date_arrivee") <= $currentDate) { ?>
                     Sa réservation est en cours ou passée. Il/Elle ne peut plus se faire rembourser sa réservation.
                 <?php
                 } else { ?>
