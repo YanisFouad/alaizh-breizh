@@ -146,6 +146,10 @@
 
         .non-souligne{
             all:unset;
+
+            &:hover{
+                cursor: pointer;
+            }
         }
             
         // Ligne d'un logement
