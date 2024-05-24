@@ -16,9 +16,11 @@ footer#foot-global {
     nav {
         display: flex;
         flex-wrap: wrap;
-       flex-direction: row;
+        flex-direction: row;
        a {
-           padding-left: 1em;
+            display: flex;
+            flex-wrap: nowrap;
+            padding-left: 1em;
        }
      }
 }

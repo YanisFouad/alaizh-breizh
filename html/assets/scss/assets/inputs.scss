@@ -120,6 +120,9 @@ input[type="checkbox"] {
             z-index: 1;
         }
     }
+    &:disabled+label {
+        opacity: 60%;
+    }
 }
 
 select {

@@ -30,12 +30,12 @@
         <img src="<?php echo $profile->get("photo_profil"); ?>" alt="<?php echo $profile->get("nom"); ?>" />
         <h2><?php echo $profile->get("displayname") ?></h2>
 
-        <h3>Nom: <span><?php echo $profile->get("nom") ?? "-" ?></span></h3>
-        <h3>Prénom: <span><?php echo $profile->get("prenom") ?? "-" ?></span></h3>
-        <h3>Adresse mail: <span><?php echo $profile->get("mail") ?? "-" ?></span></h3>
-        <h3>Civilité: <span><?php echo $profile->get("civilite") ?? "-" ?></span></h3>
-        <h3>Date de naissance: <span><?=$profile->get("date_naissance") ?? "-" ?></span></h3>
-        <h3>Téléphone: <span><?php echo $profile->get("telephone") ?? "-" ?></span></h3>
+        <h3>Nom : <span><?php echo $profile->get("nom") ?? "-" ?></span></h3>
+        <h3>Prénom : <span><?php echo $profile->get("prenom") ?? "-" ?></span></h3>
+        <h3>Adresse e-mail : <span><?php echo $profile->get("mail") ?? "-" ?></span></h3>
+        <h3>Civilité : <span><?php echo $profile->get("civilite") ?? "-" ?></span></h3>
+        <h3>Date de naissance : <span><?=$profile->get("date_naissance") ?? "-" ?></span></h3>
+        <h3>Téléphone : <span><?php echo $profile->get("telephone") ?? "-" ?></span></h3>
 
         <?php if($profile->get("accountType") === AccountType::OWNER->name && $isOwnProfile) { ?>
             <h2>Informations en tant que propriétaire</h2>
@@ -52,7 +52,7 @@
     <?php } ?>
 
     <?php if($isOwnProfile) { ?>
-        <button class="mdi mdi-pencil edit primary">
+        <button disabled class="mdi mdi-pencil edit primary">
             Modifier mon profil
         </button>
     <?php } ?>
