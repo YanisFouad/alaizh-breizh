@@ -1,360 +1,669 @@
-#pageDetaille{
-    display: flex;
+*,
+*::after,
+*::before {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-    button {
-        background-color: white;
-        border: none
-    }
+@font-face {
+    font-family: "comfortaa-bold";
+    src: url(../../fonts/comfortaa-bold.ttf);
+}
 
-    .mdi.mdi-chevron-right {
-        position: relative;
-        top: 1px;
-        font-size: 1.3em;
-    }
+@font-face {
+    font-family: "comfortaa-light";
+    src: url(../../fonts/comfortaa-light.ttf);
+}
 
-    #cheminPage {
+@font-face {
+    font-family: "comfortaa-medium";
+    src: url(../../fonts/comfortaa-medium.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-regular";
+    src: url(../../fonts/comfortaa-regular.ttf);
+}
+
+@font-face {
+    font-family: "comfortaa-semibold";
+    src: url(../../fonts/comfortaa-semibold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-bold";
+    src: url(../../fonts/poppins-bold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-light";
+    src: url(../../fonts/poppins-light.ttf);
+}
+
+@font-face {
+    font-family: "poppins-medium";
+    src: url(../../fonts/poppins-medium.ttf);
+}
+
+@font-face {
+    font-family: "poppins-regular";
+    src: url(../../fonts/poppins-regular.ttf);
+}
+
+@font-face {
+    font-family: "Material Design Icons";
+    src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+
+body {
+    font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "poppins-regular";
+}
+
+#pageDetaillee {
+    margin-left: 2em;
+
+    &>div {
         display: flex;
-        align-items: center;
-    }
 
-    a {
-        color: $primary-frontoffice-1;
-    }
+        button {
+            background-color: white;
+            border: none
+        }
 
-    h4 {
-        color: $gray-1;
-        font-weight: normal;
+        .mdi.mdi-chevron-right {
+            position: relative;
+            top: 1px;
+            font-size: 1.3em;
+        }
+
+        #cheminPage {
+            display: flex;
+            align-items: center;
+            margin-top: 2em;
+
+        }
+
+        a {
+            color: $primary-frontoffice-1;
+        }
+
+        h4 {
+            color: $gray-1;
+            font-weight: normal;
+        }
+
+
     }
 
     #page {
         display: flex;
         margin-top: 1em;
-    }
-
-    section {
-        width: 75%;
-    }
-}
-
-#imgLogement {
-    width: 38em;
-    border-radius: 13px;
-}
-
-
-#blockIntro {
-    display: flex;
-
-    //Media query pour gerer la disposition des elements 
-    //flex-wrap: wrap;
-
-    >div {
-        margin-left: 2.2em;
-    }
-
-    #titre {
-        display: flex;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
 
-        h1 {
-            font-size: 1.7em;
-            margin: 0;
-            color: $gray-1;
-        }
-    }
-
-    h2 {
-        font-family: "comfortaa-regular";
-        margin: 0.6em 0 1em 0;
-        color: $gray-2;
-        font-size: 1em;
-    }
-
-    #caracteristiques-logement {
-        ul {
-            list-style-type: none;
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            place-items: center start;
-            margin-top: 1.6em;
-            border: solid 1px $gray-3;
-            border-radius: 17px;
-            padding: 1em;
+        @media screen and (max-width:1300px) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .bulle-Rose {
-            background-color: $primary-backoffice-4 !important;
-            color: $primary-backoffice-1;
-            border-radius: 14.5px;
-            padding: 5px 10px 5px 10px;
-            margin: 0.2em 0;
-            max-width: 6em;
-            text-overflow: ellipsis;
-            text-wrap: nowrap;
-            overflow: hidden;
-        }
-    }
-}
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 65%;
+            padding-right: 1em;
 
-#description {
-    h3 {
-        color: $gray-2;
-        font-size: 0.8em;
-        margin: 1.7em 0 0.5em 0;
-    }
-
-    div {
-        display: flex;
-        align-items: center;
-        margin-top: 0.7em;
-
-        h3 {
-            margin: 0;
-        }
-
-        img {
-            width: 3.5em;
-        }
-    }
-
-}
-
-#box-Activites-Amenagement {
-    display: flex;
-    justify-content: center;
-
-    >div {
-        display: flex;
-        box-shadow: 0 0 4px 2px #adadad22;
-        border-radius: 15px;
-        margin: 1em 0;
-        padding: 1em;
-        width: fit-content;
-
-        div {
-            margin: 1em 0 0 1em;
-        }
-
-        >div:first-child {
-            border-right: solid 2px $gray-2;
-        }
-
-        div+div {
-            margin-left: 3em;
-
-            ul {
-                grid-template-columns: 180px 1fr;
+            @media screen and (max-width:1300px) {
+                width: 100%;
             }
         }
     }
 
-    ul {
-        display: grid;
-        grid-template-columns: 283px 1fr;
-        list-style-type: none;
-        margin: 1em 3em 0 0;
-
-        li {
-            margin-top: 1em;
-
-            span {
-                font-size: 1.8em;
-                color: $gray-1;
-            }
-        }
-    }
-
-    h3 {
-        color: $gray-1;
-    }
-}
-
-aside#blockDevisSticky {
-    position: sticky;
-    top: 10px;
-    margin: 0 2em;
-    height: fit-content;
-
-    #profilPropriétaire {
-        display: flex;
-        align-items: center;
-        border: solid 1px $gray-3;
+    #imgLogement {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        max-height: 30em;
         border-radius: 13px;
-        height: 5em;
-        margin-bottom: 1em;
-
-
-        >div {
-            h4 {
-                font-weight: normal;
-                color: $gray-1;
-                margin: 0;
-            }
-
-            margin-left: 10px;
-
-            .note {
-                display: flex;
-                align-items: center;
-                margin-top: 8px;
-            }
-
-            span {
-                margin: 0;
-                color: $primary-frontoffice-1;
-
-                #nbAvis {
-                    font-size: 0.8em;
-                }
-            }
-        }
-
-        img {
-            width: 4em;
-            height: 4em;
-            border-radius: 50%;
-            margin-left: 10px;
-        }
     }
 
-    #box-reservation {
-        border: solid 1px $gray-3;
-        border-radius: 13px;
-        padding: 2em;
 
-        h2 {
-            color: $gray-1;
-            text-align: center;
-        }
+    #blockIntro {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
 
-        .line {
-            border: solid 1px $gray-3;
-            margin: 1em 0;
-        }
-
-        >button {
-            border: solid 1px $gray-1;
-            border-radius: 10px;
-            padding: 0.2em 0;
+        .img-container {
             width: 100%;
-            margin-bottom: 1em;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
 
-            &:hover {
-                background-color: $gray-3;
-            }
+            @media screen and (max-width:1300px) {
+                flex-direction: column;
 
-            span {
-                color: $gray-1;
-            }
+                #caracteristiques-logement {
+                    width: 100%;
 
-            span:first-child {
-                margin-right: 0.5em;
-            }
-
-            .mdi.mdi-calendar-month {
-                font-size: 1.6em;
-            }
-
-            +div {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-
-                div {
-                    h4 {
-                        color: $gray-2;
-                        text-align: center;
-                        font-size: 0.8em;
-
+                    @media screen and (max-width:1300px) {
+                        margin-left: 0;
                     }
 
-                    h3 {
-                        color: $gray-1;
-                        font-size: 0.9em;
+                    ul {
+                        width: 100%;
                     }
                 }
+            }
+
+            &>div {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
 
 
 
-        #nbVoyageurs {
-            color: $gray-2;
+        div+div {
+            margin-left: 1.2em;
+        }
+
+        #titre {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            span:first-child {
-                font-size: 0.9em;
-            }
-
-            div {
-                display: flex;
-                align-items: center;
-
-                span {
-                    margin: 0 0.5em;
-                }
-            }
-
-            button {
-                display: flex;
-                align-items: center;
-
-                height: 1.5em;
-                border: none;
-                background-color: #E0FFEE;
-                border-radius: 50%;
-                padding: 0.5em;
+            h1 {
+                font-size: 1.7em;
+                margin: 0;
+                color: $gray-1;
             }
         }
 
-        #nbNuits {
-            font-size: 0.9em;
+        h2 {
+            font-family: "comfortaa-regular";
+            margin: 0.6em 0 1em 0;
+            color: $gray-2;
+            font-size: 1em;
+        }
+
+        #caracteristiques-logement {
+            ul {
+                list-style-type: none;
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                place-items: center start;
+                margin-top: 1.6em;
+                border: solid 1px $gray-3;
+                border-radius: 17px;
+                padding: 1em;
+            }
+
+            .bulle-Rose {
+                background-color: $primary-backoffice-4;
+                border-radius: 14.5px;
+                padding: 5px 10px 5px 10px;
+                margin: 0.2em 0;
+                text-overflow: ellipsis;
+                text-wrap: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    #description {
+        h3 {
+            color: $gray-2;
+            font-size: 0.8em;
+            margin: 1.7em 0 0.5em 0;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            margin-top: 0.7em;
+
+            h3 {
+                margin: 0;
+            }
+
+            img {
+                width: 3.5em;
+            }
+        }
+
+    }
+
+    #box-Activites-Amenagement {
+        display: flex;
+        justify-content: center;
+
+        @media screen and (max-width: 1300px) {
+            width: 100%;
+
+            >div {
+                width: 100%;
+            }
+        }
+
+        >div {
+            display: flex;
+            box-shadow: 0 0 4px 2px #adadad22;
+            border-radius: 15px;
+            margin: 1em 0;
+            padding: 1em;
 
             div {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+                margin: 1em 0 0 1em;
+            }
 
-                div {
-                    span:nth-child(2) {
-                        margin-left: 0.3em;
+            >div:first-child {
+                border-right: solid 2px $gray-2;
+            }
+
+            div+div {
+                margin-left: 3em;
+
+                ul {
+                    grid-template-columns: 180px 1fr;
+                }
+            }
+
+            .container-amenagement {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 50%;
+
+                .list-amenagement {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    align-items: center;
+
+                    li {
+                        margin-bottom: 8px;
                     }
                 }
             }
 
-            span:nth-child(odd) {
-                color: $gray-2;
+            .container-activite {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 50%;
+                padding-right: 15px;
+
+                .list-activite {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    li {
+                        margin-bottom: 8px;
+                    }
+                }
+            }
+
+            @media screen and (max-width:630px) {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .container-activite,
+                .container-amenagement {
+                    width: 100%;
+                }
+
+                .container-amenagement {
+                    margin-left: 0;
+                }
             }
         }
 
-        #boutonDevis {
-            button {
-                position: relative;
-                color: $white;
-                background-color: $primary-frontoffice-1;
-                height: 3em;
-                width: 100%;
-                border-radius: 21px;
-                font-family: "comfortaa-regular";
+        ul {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            grid-template-rows: 3em;
+            list-style-type: none;
+            margin: 1em 3em 0 0;
 
-                &:hover {
-                    background-color: $primary-frontoffice-2;
+            li {
+                span {
+                    font-size: 1.8em;
+                    color: $gray-1;
+                }
+            }
+        }
+
+        h3 {
+            color: $gray-1;
+        }
+    }
+
+    #blockDevisSticky {
+        position: sticky;
+        top: 10px;
+        margin: 0 2em;
+        width: 25%;
+        height: fit-content;
+
+        @media screen and (max-width: 1300px) {
+            width: 100%;
+        }
+
+        #profilPropriétaire {
+            display: flex;
+            align-items: center;
+            border: solid 1px $gray-3;
+            border-radius: 13px;
+            height: 5em;
+            margin-bottom: 1em;
+
+
+            >div {
+                h4 {
+                    font-weight: normal;
+                    color: $gray-1;
+                    margin: 0;
                 }
 
-                .mdi.mdi-chevron-right {
+                margin-left: 10px;
+
+                // .note {
+                //     display: flex;
+                //     align-items: center;
+                //     margin-top: 8px;
+                // }
+
+                span {
+                    margin: 0;
+                    color: $primary-frontoffice-1;
+
+                    #nbAvis {
+                        font-size: 0.8em;
+                    }
+                }
+            }
+
+            img {
+                width: 4em;
+                height: 4em;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+        }
+
+        #box-reservation {
+            border: solid 1px $gray-3;
+            border-radius: 13px;
+            padding: 2em;
+
+            h2 {
+                color: $gray-1;
+                text-align: center;
+            }
+
+            .line {
+                border: solid 1px $gray-3;
+                margin: 1em 0;
+            }
+
+            >button {
+                border: solid 1px $gray-1;
+                border-radius: 10px;
+                padding: 0.2em 0;
+                width: 100%;
+                margin-bottom: 1em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    background-color: $gray-3;
+                }
+
+                span {
+                    color: $gray-1;
+                }
+
+                span:first-child {
+                    margin-right: 0.5em;
+                }
+
+                .mdi.mdi-calendar-month {
+                    font-size: 1.6em;
+                }
+
+                +div {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+
+                    div {
+                        h4 {
+                            color: $gray-2;
+                            text-align: center;
+                            font-size: 0.8em;
+
+                        }
+
+                        h3 {
+                            color: $gray-1;
+                            font-size: 0.9em;
+                        }
+                    }
+                }
+            }
+
+
+
+            #nbVoyageurs {
+                color: $gray-2;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span:first-child {
+                    font-size: 0.9em;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        margin: 0 0.5em;
+                    }
+                }
+
+                button {
+                    display: flex;
+                    align-items: center;
+
+                    height: 1.5em;
+                    border: none;
+                    background-color: #E0FFEE;
+                    border-radius: 50%;
+                    padding: 0.5em;
+                }
+            }
+
+            #nbNuits {
+                font-size: 0.9em;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    div {
+                        span:nth-child(2) {
+                            margin-left: 0.3em;
+                        }
+                    }
+                }
+
+                span:nth-child(odd) {
+                    color: $gray-2;
+                }
+            }
+
+            #boutonDevis {
+                button {
+                    position: relative;
                     color: $white;
-                    position: absolute;
-                    right: 0.3em;
-                    top: 0.3em;
-                    font-size: 2em;
+                    background-color: $primary-frontoffice-1;
+                    height: 3em;
+                    width: 100%;
+                    border-radius: 21px;
+                    font-family: "comfortaa-regular";
+
+                    &:hover {
+                        background-color: $primary-frontoffice-2;
+                    }
+
+                    .mdi.mdi-chevron-right {
+                        color: $white;
+                        position: absolute;
+                        right: 0.3em;
+                        top: 0.3em;
+                        font-size: 2em;
+                    }
                 }
             }
         }
     }
+
+
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+@media screen and (max-width: 431px) {
+
+    #pageDetaillee {
+        margin: 0 !important;
+
+        div:first-child {
+
+            div {
+                margin: 1em;
+            }
+
+            button {
+                padding: 0 1em 0 0;
+            }
+        }
+
+        #page {
+            flex-wrap: wrap;
+
+            section {
+                width: 100%;
+            }
+        }
+
+        #blockIntro {
+            flex-wrap: wrap;
+            margin: 0;
+            justify-content: center;
+
+            div:first-child {
+                display: flex;
+                justify-content: center;
+
+                #imgLogement {
+                    width: 90%;
+                }
+            }
+
+            div+div {
+                margin: 0 1em;
+            }
+
+            #caracteristiques-logement {
+                .bulle-Rose {
+                    max-width: 5em;
+                }
+
+                li:nth-child(odd) {
+                    margin-right: 1em;
+                }
+            }
+        }
+
+        #description {
+            margin: 0 1em;
+        }
+
+        #box-Activites-Amenagement {
+            >div {
+                flex-wrap: wrap;
+                margin: 1em 1em;
+
+                div {
+                    border: none !important;
+                    margin: 1em 0 0 0;
+                }
+
+                div+div {
+                    margin: 0;
+                }
+            }
+
+            ul {
+                grid-template-columns: 1fr !important;
+                margin: 1em !important;
+            }
+        }
+
+
+        #blockDevisSticky {
+            margin: 0 1em !important;
+            width: 100% !important;
+
+            #box-reservation {
+                margin-bottom: 2em;
+            }
+        }
+
+        #cheminPage {
+
+            h4 {
+                text-overflow: ellipsis;
+                text-wrap: nowrap;
+                overflow: hidden;
+                max-width: 12em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #pageDetaillee {}
 }

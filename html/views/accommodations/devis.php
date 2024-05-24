@@ -1,6 +1,7 @@
 <?php
     require_once(__DIR__."/../../models/AccommodationModel.php");
-  ?>
+    ScriptLoader::load("acccommodations/devis.js");
+?>
 
 
 <div id="modal">
@@ -22,7 +23,7 @@
                     </div>
                     <div>
                         <h4>Voyageur(s):</h4>
-                        <h4 id="valeurVoyageur">1</h4>
+                        <h4>2</h4>
                     </div>
                 </div>
     
@@ -70,7 +71,7 @@
                     <div>
                         <div>
                             <h4>Taxe de séjour:</h4>
-                            <h4 id="taxeSejour">1€ x 1 voyageur x 4 nuits</h4>
+                            <h4>1€ x 3 pers x 4 nuits</h4>
                         </div>
                         <h4>12€<?php 
                             $prix = $prix + 12;

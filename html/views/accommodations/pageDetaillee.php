@@ -1,5 +1,7 @@
 <?php 
     require_once(__DIR__."/../../models/AccommodationModel.php");
+    require_once(__DIR__."/../../models/AccountModel.php");
+
     require_once(__DIR__."/../../services/RequestBuilder.php");
     require_once(__DIR__."/../../services/ScriptLoader.php");
     $id_logement = $_GET["id_logement"] ?? null;
@@ -33,7 +35,7 @@
             "jacuzzi" => "mdi mdi-hot-tub",
             "piscine" => "mdi mdi-pool",
             "balcon" => "mdi mdi-balcony",
-            "terrase" => "mdi mdi-land-plots"
+            "terrasse" => "mdi mdi-land-plots"
         ];
 
         function getDepartmentName($postCode) {
@@ -58,7 +60,7 @@
 <div id="pageDetaillee">
     <div>
         <div id="cheminPage">
-            <a href="#Liste">Logements</a>
+            <a href="/logements">Logements</a>
             <span class="mdi mdi-chevron-right"></span>
             <h4 title="<?php echo $accomodation->get("titre_logement");?>">
                 <?php echo $accomodation->get("titre_logement");?>
@@ -69,20 +71,11 @@
     <div id="page">
         <section>
             <article id="blockIntro">
+                <div class="img-container">
                 <div>    
                     <img src="<?=$accomodation->get("photo_logement")?>" id="imgLogement">
                 </div>
-
-                <div>
-                    <div id="titre">
-                        <h1><?php echo $accomodation->get("titre_logement");?></h1>
-                    </div>
-
-                    <h2><span class="mdi mdi-map-marker"></span><?php echo $accomodation->get("ville_adresse").", "; echo $dep;?></h2>
-                    <p><?php echo $accomodation->get("description_logement");?>
-                    </p>
-
-                    <div id="caracteristiques-logement">
+                <div id="caracteristiques-logement">
                         <ul>
                             <li>
                                 <span class="mdi mdi-tag-multiple-outline"></span>
@@ -118,9 +111,18 @@
                                 <span class="mdi mdi-account-group-outline"></span>
                                 Nombre de personnes max
                             </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
+                            <li class="bulle-Rose" id="nbPersonneMax" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
                         </ul>
                     </div>
+                </div>
+                <div>
+                    <div id="titre">
+                        <h1><?php echo $accomodation->get("titre_logement");?></h1>
+                    </div>
+
+                    <h2><span class="mdi mdi-map-marker"></span><?php echo $accomodation->get("ville_adresse").", "; echo $dep;?></h2>
+                    <p><?php echo $accomodation->get("accroche_logement");?>
+                    </p>
                 </div>
             </article>
 
@@ -136,9 +138,9 @@
 
             <article id="box-Activites-Amenagement">
                 <div>
-                    <div>
+                    <div class="container-activite">
                         <h3>Activités</h3>
-                        <ul>
+                        <ul class="list-activite">
                             <?php foreach ($accomodation->get('activites') as $key => $value) { ?>
                             <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> 
                             <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
@@ -146,9 +148,9 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="container-amenagement">
                         <h3>Aménagements</h3>
-                        <ul>
+                        <ul class="list-amenagement">
                         <?php foreach ($accomodation->get('amenagements') as $value) { ?>
                                     <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li> 
                         <?php }?>
@@ -161,7 +163,7 @@
 
         <aside id="blockDevisSticky">
             <article id="profilPropriétaire">
-                <img src="../../images/lucasAupry.jpg" alt="Photo de profil propriétaire">
+                <img src="<?= AccountModel::findOneById($accomodation->get("id_proprietaire"))->get("photo_profil") ?>" alt="Photo de profil propriétaire">
                 <div>
                     <h4><?php 
                         echo $accomodation->get("nom")." ";
