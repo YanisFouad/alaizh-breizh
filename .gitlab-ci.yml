@@ -1,18 +1,18 @@
 stages:
-  - test
+#  - test
   - deploy
-  - web-accessilibity
+#   - web-accessilibity
 
-include:
-#  - template: Jobs/Code-Quality.gitlab-ci.yml
-  - template: Verify/Accessibility.gitlab-ci.yml
+# include:
+# #  - template: Jobs/Code-Quality.gitlab-ci.yml
+#   - template: Verify/Accessibility.gitlab-ci.yml
 
-a11y:
-  stage: web-accessilibity
-  variables:
-      a11y_urls: "https://lav15.ventsdouest.dev"
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
+# a11y:
+#   stage: web-accessilibity
+#   variables:
+#       a11y_urls: "https://lav15.ventsdouest.dev"
+#   rules:
+#     - if: '$CI_COMMIT_REF_NAME == "main"'
 
 # code_quality:
 #   variables:

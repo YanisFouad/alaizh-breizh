@@ -28,6 +28,12 @@ require_once(__DIR__."/../layout/header.php");
 
 <section id="finalize-booking">
     <header>
+        <a href="/backoffice/reservations" id="finalize-booking-back-button">
+            <button>
+                <span class="mdi mdi-arrow-left"></span>
+                Retour
+            </button>
+        </a>
         <h1>Récapitulatif de la réservation</h1>
     </header>
     
@@ -65,7 +71,6 @@ require_once(__DIR__."/../layout/header.php");
                         <p>Adresse mail : <?= $controller->getLocataire()->get("mail") ?></p>
                     </div>
                 </div>
-                <!-- TO DO -->
                 <a href="/backoffice/logements/details-logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
                     <button class="primary">
                         Accéder à l'annonce
@@ -146,8 +151,14 @@ require_once(__DIR__."/../layout/header.php");
         <article class="annulation">
             <p>
             <?php
+                if (is_string($controller->getReservation()->get("date_arrivee"))) {
+                    $dateArrivee = new DateTime($controller->getReservation()->get("date_arrivee"));
+                } else {
+                    $dateArrivee = $controller->getReservation()->get("date_arrivee");
+                }
+
                 $interval = new DateInterval('P' . $controller->getLogement()->get("delais_prevenance") . 'D');
-                $dateRemboursement = $controller->getReservation()->get("date_arrivee")->sub($interval);
+                $dateRemboursement = $dateArrivee->sub($interval);
                 $currentDate = new DateTime("now");
 
                 if ($controller->getReservation()->get("date_arrivee") <= $currentDate) { ?>
