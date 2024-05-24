@@ -1,21 +1,21 @@
 <?php 
-    require_once(__DIR__."/../layout/header.php");
     require_once(__DIR__."/../../models/AccommodationModel.php");
     require_once(__DIR__."/../../services/session/PurchaseSession.php");
     
-    // @todo gestion des erreurs quand le logement n'existe pas ou n'est pas trouvé
-    // @todo changer ça pour mettre les dates etc dedans parce que là c'est pas bon
-    // $accommodationId = PurchaseSession::get();
-    // if(!PurchaseSession::isDefined()) {
-    //     header("Location: /");
-    //     exit;
-    // }
+    $session = PurchaseSession::get();
 
-    // $accommodation = AccommodationModel::findOneById($accommodationId);
-    // if(!isset($accommodation)) {
-    //     header("Location: /");
-    //     exit;
-    // }
+    if(!PurchaseSession::isDefined() || !isset($session["accommodationId"])) {
+        header("Location: /");
+        exit;
+    }
+
+    $accommodation = AccommodationModel::findOneById($session["accommodationId"]);
+    if(!isset($accommodation)) {
+        header("Location: /");
+        exit;
+    }
+
+    require_once(__DIR__."/../layout/header.php");
 ?>
 
 <section id="finalize-booking">
@@ -66,10 +66,10 @@
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
-                    <h4>2</h4>
+                    <h4><?=$session["nb_voyageurs"]?></h4>
                 </div>
             </div>
-            <h3>Prix total: <span>450 €</span></h3>
+            <h3>Prix total: <span><?=$session["total_ati"]?> €</span></h3>
         </article>
 
         <h2>

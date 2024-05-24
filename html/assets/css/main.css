@@ -439,7 +439,7 @@ header#frontoffice #header-bottom-stroke {
     display: none;
   }
 }
-footer {
+footer#foot-global {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -451,16 +451,16 @@ footer {
   padding: 2em 2em;
   margin-top: auto; /* pour conserver le footer en bas de page */
 }
-footer a, footer a:visited {
+footer#foot-global a, footer#foot-global a:visited {
   color: white;
   text-decoration: none;
 }
-footer nav {
+footer#foot-global nav {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
-footer nav a {
+footer#foot-global nav a {
   padding-left: 1em;
 }
 
@@ -798,7 +798,6 @@ footer nav a {
   margin-bottom: 1em;
 }
 #finalize-booking > button.finalize {
-  float: right;
   margin: 1.5em 0;
   position: relative;
   padding-right: 2.5em;
@@ -3137,144 +3136,6 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire-pagination span {
   font-size: 2em;
-}
-
-button {
-  transition: all 0.5s ease;
-  font-family: "comfortaa-regular", sans-serif;
-  font-size: 1em;
-  background-color: transparent;
-  border: unset;
-  cursor: pointer;
-  border-radius: 100px;
-  padding: 1em 2.5em;
-}
-button.primary:is(.primary, .secondary):not(:disabled):focus, button.secondary:is(.primary, .secondary):not(:disabled):focus {
-  box-shadow: 0 0 0 3px #abbdc0;
-}
-button.primary.primary:disabled, button.primary.secondary:disabled, button.secondary.primary:disabled, button.secondary.secondary:disabled {
-  opacity: 60%;
-  cursor: unset;
-}
-button.primary.primary, button.secondary.primary {
-  background-color: #1b5734;
-  color: white;
-}
-button.primary.primary:not(:disabled):is(:hover, :focus), button.secondary.primary:not(:disabled):is(:hover, :focus) {
-  background-color: #337d51;
-}
-button.primary.secondary, button.secondary.secondary {
-  border: 1px solid #1b5734;
-  color: #1b5734;
-}
-button.primary.secondary:not(:disabled):is(:hover, :focus), button.secondary.secondary:not(:disabled):is(:hover, :focus) {
-  background-color: #1b5734;
-  color: white;
-}
-button.backoffice:is(.primary, .secondary):not(:disabled):focus {
-  box-shadow: 0 0 0 3px #b6896c;
-}
-button.backoffice.primary:disabled, button.backoffice.secondary:disabled {
-  opacity: 60%;
-  cursor: unset;
-}
-button.backoffice.primary {
-  background-color: #804e2e;
-  color: white;
-}
-button.backoffice.primary:not(:disabled):is(:hover, :focus) {
-  background-color: #9f6844;
-}
-button.backoffice.secondary {
-  border: 1px solid #804e2e;
-  color: #804e2e;
-}
-button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
-  background-color: #804e2e;
-  color: white;
-}
-button.tertiary.backoffice {
-  color: #804e2e;
-  background-color: #ffd6bb;
-}
-button.tertiary.backoffice.disabled {
-  opacity: 60%;
-  cursor: unset;
-}
-button.tertiary.backoffice:not(:disabled):is(:hover, :focus) {
-  background-color: #b6896c;
-  color: white;
-}
-
-*,
-*::after,
-*::before {
-  outline: none;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "comfortaa-bold";
-  src: url(../../../../fonts/comfortaa-bold.ttf);
-}
-@font-face {
-  font-family: "comfortaa-light";
-  src: url(../../../../fonts/comfortaa-light.ttf);
-}
-@font-face {
-  font-family: "comfortaa-medium";
-  src: url(../../../../fonts/comfortaa-medium.ttf);
-}
-@font-face {
-  font-family: "comfortaa-regular";
-  src: url(../../../../fonts/comfortaa-regular.ttf);
-}
-@font-face {
-  font-family: "comfortaa-semibold";
-  src: url(../../../../fonts/comfortaa-semibold.ttf);
-}
-@font-face {
-  font-family: "poppins-bold";
-  src: url(../../../../fonts/poppins-bold.ttf);
-}
-@font-face {
-  font-family: "poppins-light";
-  src: url(../../../../fonts/poppins-light.ttf);
-}
-@font-face {
-  font-family: "poppins-medium";
-  src: url(../../../../fonts/poppins-medium.ttf);
-}
-@font-face {
-  font-family: "poppins-regular";
-  src: url(../../../../fonts/poppins-regular.ttf);
-}
-@font-face {
-  font-family: "Material Design Icons";
-  src: url(../../../../fonts/materialdesignicons-webfont.ttf);
-}
-body {
-  font-family: "comfortaa-regular", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: "poppins-regular";
-}
-
-#page {
-  margin: auto;
-  margin-top: 2em;
-  max-width: 80%;
-  display: flex;
-}
-#page h3 {
-  color: #424645;
 }
 
 #mainProprietaireLogement {

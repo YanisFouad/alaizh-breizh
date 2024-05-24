@@ -1,5 +1,5 @@
     </main>
-    <footer>
+    <footer id="foot-global">
         <div>&copy; Copyright - ALHaiZ Breizh - 2024</div>
         <nav>
             <div><a href="">Conditions générales d'utilisation <span class="mdi mdi-open-in-new"></span></a></div>

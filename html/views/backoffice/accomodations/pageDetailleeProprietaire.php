@@ -1,10 +1,9 @@
 <?php 
     require_once(__DIR__."/../../../models/AccommodationModel.php");
-    require_once(__DIR__."/../../../services/FileLogement.php");
-    //include_once(__DIR__."/../layout/header.php");
-    $logement_id = $_GET['logement_id'];
+    $logement_id = $_GET['id_logement'] ?? null;
+    if(!isset($logement_id))
+        exit(header("Location: /"));
     $logement = AccommodationModel::findOneById($logement_id);
-    //print_r($logement->get('id_logement'));
     $tabActivites = [
         "voile" => "mdi mdi-sail-boat",
         "accrobranche" => "mdi mdi-pine-tree-variant",
@@ -19,27 +18,12 @@
         "jacuzzi" => "mdi mdi-hot-tub",
         "piscine" => "mdi mdi-pool",
         "balcon" => "mdi mdi-balcony",
-        "terrasse" => "mdi mdi-land-plots"
+        "terrase" => "mdi mdi-land-plots"
     ];
+
+    require_once(__DIR__."/../layout/header.php");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../../assets/css/main.css">
-    <title>Page détaillée d'un logement</title>
-</head>
-
-<body>
-
-    
-
     <main id ="mainProprietaireLogement">
-        
-            
         <div id="cheminPage">
             <button><span class="mdi mdi-arrow-left"></span>Retour</button>
             <a href="#Liste">Logements</a>
@@ -50,12 +34,11 @@
         <div id="page">
             <section>
                 <article id="blockIntro">
-                    <img src="" id="imgLogement">
+                    <img src="<?=$logement->get("photo_logement")?>" id="imgLogement">
 
                     <div>
                         <div id="titre">
                             <h1><?=$logement->get('titre_logement');?></h1>
-
                         </div>
 
                         <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
@@ -135,7 +118,7 @@
                             <h3>Activités</h3>
                             <ul>
                                 <?php foreach ($logement->get('activites') as $key => $value) { ?>
-                                    <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                                    <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
                                 <?php }?>
                                 
                             </ul>
@@ -145,7 +128,7 @@
                             <h3>Aménagements</h3>
                             <ul>
                                 <?php foreach ($logement->get('amenagements') as $key => $value) { ?>
-                                    <li><span class="<?=$tabAmenagements[$value['name']];?>"></span> <?= ucfirst($value['name']);?></li>
+                                    <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li>
                                 <?php }?>
                             </ul>
                         </div>
@@ -161,6 +144,5 @@
             
         </div>
     </main>
-</body>
 
-</html>
+<?php require_once(__DIR__."/../../layout/footer.php") ?>

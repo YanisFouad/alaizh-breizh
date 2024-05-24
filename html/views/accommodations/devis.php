@@ -1,21 +1,6 @@
 <?php
     require_once(__DIR__."/../../models/AccommodationModel.php");
-    $id_logement = $_GET["id_logement"];
-    $accomodation = AccommodationModel::findOneById($id_logement); 
-
-    // $dom = new DOMDocument();
-
-    
-    // $html = file_get_contents('./pageDetaillee.php'); 
-    
-    // $dom->loadHTML($html);
-
-    // $nbNuits = $dom->getElementById('nbNuits');
-    // $nbVoyageurs = $dom->getElementById('valeurVoyageurs');
-
-    // echo $nbNuits;
-
-    // echo $nbVoyageurs;
+    ScriptLoader::load("acccommodations/devis.js");
 ?>
 
 
@@ -106,9 +91,11 @@
                 <span id="trait"></span>
             </div>
             
-            <button class="primary devis">
+            <button onclick="handleDevis()" class="primary devis">
                 Accepter le devis
                 <span class="mdi mdi-chevron-right"></span>
+
+                <input type="hidden" value="<?=$_GET["id_logement"]?>" id="id_logement">
             </button>
         </div>
         

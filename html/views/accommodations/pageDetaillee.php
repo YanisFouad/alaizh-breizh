@@ -2,7 +2,7 @@
     require_once(__DIR__."/../../models/AccommodationModel.php");
     require_once(__DIR__."/../../services/RequestBuilder.php");
     require_once(__DIR__."/../../services/ScriptLoader.php");
-    $id_logement = $_GET["id_logement"];
+    $id_logement = $_GET["id_logement"] ?? null;
 
     if(!isset($id_logement) || !is_numeric($id_logement))
         exit(header("Location: /"));
@@ -60,7 +60,9 @@
         <div id="cheminPage">
             <a href="#Liste">Logements</a>
             <span class="mdi mdi-chevron-right"></span>
-            <h4 title="<?php echo $accomodation->get("titre_logement");?>"><?php echo $accomodation->get("titre_logement");?></h4>
+            <h4 title="<?php echo $accomodation->get("titre_logement");?>">
+                <?php echo $accomodation->get("titre_logement");?>
+            </h4>
         </div>
     </div>
 
@@ -68,8 +70,7 @@
         <section>
             <article id="blockIntro">
                 <div>    
-                    <!-- <img src="<?php $accomodation->get("photo_logement")?>" id="imgLogement"> -->
-                    <img src="../../images/rsz_1frames-for-your-heart-2d4laqalbda-unsplash.jpg" id="imgLogement">
+                    <img src="<?=$accomodation->get("photo_logement")?>" id="imgLogement">
                 </div>
 
                 <div>
