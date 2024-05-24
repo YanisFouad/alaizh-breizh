@@ -2,6 +2,11 @@
 @import "../../../assets/font-loader.scss";
 
 #liste-reservation-proprietaire-main {
+
+    button {
+        padding: .8em 1em !important;
+    }
+    
     margin:1em 4em;
     h1{
         margin:1em 0;

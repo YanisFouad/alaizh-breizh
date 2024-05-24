@@ -4,6 +4,8 @@ require_once("services/Router.php");
 require_once("services/session/UserSession.php");
 require_once("services/ScriptLoader.php");
 
+ScriptLoader::load("notification.js");
+
 $router = new Router();
 
 // home & default view

@@ -55,8 +55,12 @@ ScriptLoader::load("layout/header.js");
                     <ul>
                         <a href="/"><li><span class="mdi mdi-home"></span>Accueil</li></a>
                         <a href="/logements"><li><span class="mdi mdi-home-group"></span>Logements</li></a>
-                        <a href="#"><li><span class="mdi mdi-login"></span>Connexion</li></a>
-                        <a href="#"><li><span class="mdi mdi-account-plus"></span>Inscription</li></a>
+                        <a href="#" onclick="openLoginModal()">
+                            <li>
+                                <span class="mdi mdi-login"></span>
+                                Connexion / Inscription
+                            </li>
+                        </a>
                     </ul>
             </nav>
         <?php } else { ?>

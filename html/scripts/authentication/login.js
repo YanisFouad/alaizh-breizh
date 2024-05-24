@@ -40,7 +40,9 @@ async function handleLogin(event) {
         }
 
         // then reload the window to take in count the user session
+        window.notify("SUCCESS", "Connecté !");
         window.location.reload();
+        closeLoginModal();
     } catch(e) {
         setErrorMessage(`Erreur interne a eu lieu: ${e}`);
         console.error(e);

@@ -6,5 +6,5 @@ if(isset($_GET) && array_key_exists("redirectTo", $_GET))
     $redirectTo = $_GET["redirectTo"];
 
 UserSession::disconnect();
-header("Location: ". $redirectTo);
+header("Location: ". $redirectTo . "?notification-message=Déconnecté&notification-type=SUCCESS");
 exit;
