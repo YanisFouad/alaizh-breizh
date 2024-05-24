@@ -259,6 +259,14 @@
             text-align: center;
             color: $primary-backoffice-3;
             pointer-events: none !important;
+
+            position: relative;
+            &>.mdi {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
 
         
