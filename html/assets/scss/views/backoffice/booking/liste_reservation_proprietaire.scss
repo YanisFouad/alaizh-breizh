@@ -252,13 +252,12 @@
             background-color: $primary-backoffice-1;
         }
 
-        .button-non-cliquable,.button-chevron-non-cliquable{
-            border: 1px solid $primary-backoffice-3;
+        .button-non-cliquable,.button-chevron-cliquable, .button-chevron-non-cliquable{
+            border: 1px solid $primary-backoffice-1;
             border-radius: 50%;
             font-family: "comfortaa-bold";
             text-align: center;
-            color: $primary-backoffice-3;
-            pointer-events: none !important;
+            color: $primary-backoffice-1;
 
             position: relative;
             &>.mdi {
@@ -268,8 +267,16 @@
                 transform: translate(-50%, -50%);
             }
         }
+        .button-non-cliquable{
+            pointer-events: none !important;
+        }
 
-        
+        .button-chevron-non-cliquable{
+            pointer-events: none !important;
+            color: $primary-backoffice-3;
+            border: 1px solid $primary-backoffice-3;
+        }
+       
         span{
             font-size: 2em;
             
