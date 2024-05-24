@@ -37,7 +37,7 @@
                 }
                 ?>
     
-                <a href="<?= "/backoffice/logements/details-logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
+                <a href="<?= "/backoffice/logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
                     <article class="card-logement">
                         <div class="img-logement-container">
                             <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
