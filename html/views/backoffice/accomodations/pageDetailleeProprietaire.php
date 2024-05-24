@@ -1,9 +1,15 @@
 <?php 
     require_once(__DIR__."/../../../models/AccommodationModel.php");
+    require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
+    require_once(__DIR__."/../../../services/RequestBuilder.php");
+    include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['id_logement'] ?? null;
     if(!isset($logement_id))
         exit(header("Location: /"));
+
+    $logement_id = $_GET['id_logement'];
     $logement = AccommodationModel::findOneById($logement_id);
+
     $tabActivites = [
         "voile" => "mdi mdi-sail-boat",
         "accrobranche" => "mdi mdi-pine-tree-variant",
@@ -18,30 +24,54 @@
         "jacuzzi" => "mdi mdi-hot-tub",
         "piscine" => "mdi mdi-pool",
         "balcon" => "mdi mdi-balcony",
-        "terrase" => "mdi mdi-land-plots"
+        "terrasse" => "mdi mdi-land-plots"
     ];
 
-    require_once(__DIR__."/../layout/header.php");
+    function getDepartmentName($postCode) {
+        $postCode= substr($postCode,0,2);
+        $result = RequestBuilder::select("pls._departement")
+            ->projection("nom_departement")
+            ->where("num_departement = ?", $postCode)
+            ->execute()
+            ->fetchOne();
+        return $result["nom_departement"];
+    }
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <title>Page détaillée d'un logement</title>
+</head>
+
+<body>
+
     <main id ="mainProprietaireLogement">
+            
         <div id="cheminPage">
-            <button><span class="mdi mdi-arrow-left"></span>Retour</button>
-            <a href="#Liste">Logements</a>
+            <h4><a href="/backoffice">Logements</a></h4>
             <span class="mdi mdi-chevron-right"></span>
             <h4><?=$logement->get('titre_logement');?></h4>
         </div>
        
         <div id="page">
             <section>
-                <article id="blockIntro">
-                    <img src="<?=$logement->get("photo_logement")?>" id="imgLogement">
+                <article id="block-intro">
+                    <div id="image-conteneur">
+                        <img src="<?=$logement->get('photo_logement');?>" id="img-logement">
+                    </div>
 
-                    <div>
+                    <div id="intro">
                         <div id="titre">
                             <h1><?=$logement->get('titre_logement');?></h1>
+
                         </div>
 
-                        <h2><span class="mdi mdi-map-marker"></span>Locmariaquer, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
+                        <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse');?> <?php getDepartmentName($logement->get('code_postal_adresse'));?>, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
                         <p><?=$logement->get('accroche_logement')?></p>
 
                         <div id="caracteristiques-logement">
@@ -117,9 +147,11 @@
                         <div>
                             <h3>Activités</h3>
                             <ul>
-                                <?php foreach ($logement->get('activites') as $key => $value) { ?>
-                                    <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
-                                <?php }?>
+                                <?php if ($logement->get('activites')[0]['name'] != null){
+                                        foreach ($logement->get('activites') as $key => $value) { ?>
+                                            <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                                <?php }}?>
+                                
                                 
                             </ul>
                         </div>
@@ -127,9 +159,10 @@
                         <div>
                             <h3>Aménagements</h3>
                             <ul>
-                                <?php foreach ($logement->get('amenagements') as $key => $value) { ?>
-                                    <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li>
-                                <?php }?>
+                                <?php if($logement->get('amenagements')[0]['name'] != null){
+                                    foreach ($logement->get('amenagements') as $key => $value) { ?>
+                                        <li><span class="<?=$tabAmenagements[$value['name']];?>"></span> <?= ucfirst($value['name']);?></li>
+                                <?php }}?>
                             </ul>
                         </div>
                     </div>
@@ -144,5 +177,7 @@
             
         </div>
     </main>
+    <?php include_once(__DIR__."/../../layout/footer.php");?>
+</body>
 
-<?php require_once(__DIR__."/../../layout/footer.php") ?>
+</html>
