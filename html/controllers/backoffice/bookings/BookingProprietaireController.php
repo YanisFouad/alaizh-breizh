@@ -25,6 +25,7 @@ class BookingProprietaireController
         $this->setLogement();
         $this->setLocataire();
         $this->setAdresse();
+        
     }
 
     public function getReservationId() {
