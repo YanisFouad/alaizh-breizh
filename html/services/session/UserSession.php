@@ -9,7 +9,7 @@ class UserSession extends BaseSession {
         return "account";
     }
 
-    public static function disonnect() {
+    public static function disconnect() {
         self::destroy();
     }
 

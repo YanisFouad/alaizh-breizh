@@ -37,6 +37,13 @@
         <h3>Date de naissance: <span><?php echo date_format($profile->get("date_naissance"), "d/m/Y") ?? "-" ?></span></h3>
         <h3>Téléphone: <span><?php echo $profile->get("telephone") ?? "-" ?></span></h3>
 
+        <?php if($profile->get("accountType") === AccountType::OWNER->name && $isOwnProfile) { ?>
+            <h2>Informations en tant que propriétaire</h2>
+            
+            <h3>Numéro d'identité <span><?=$profile->get("num_carte_identite")?></span></h3>
+            <h3>RIB <span><?=$profile->get("rib_proprietaire")?></span></h3>
+        <?php } ?>
+
     <?php } else { ?>
         <div>
             <h1>Profil introuvable</h1>

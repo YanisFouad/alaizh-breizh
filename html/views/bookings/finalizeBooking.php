@@ -1,4 +1,22 @@
-<?php require_once(__DIR__."/../layout/header.php");  ?>
+<?php 
+    require_once(__DIR__."/../layout/header.php");
+    require_once(__DIR__."/../../models/AccommodationModel.php");
+    require_once(__DIR__."/../../services/session/PurchaseSession.php");
+    
+    // @todo gestion des erreurs quand le logement n'existe pas ou n'est pas trouvé
+    // @todo changer ça pour mettre les dates etc dedans parce que là c'est pas bon
+    // $accommodationId = PurchaseSession::get();
+    // if(!PurchaseSession::isDefined()) {
+    //     header("Location: /");
+    //     exit;
+    // }
+
+    // $accommodation = AccommodationModel::findOneById($accommodationId);
+    // if(!isset($accommodation)) {
+    //     header("Location: /");
+    //     exit;
+    // }
+?>
 
 <section id="finalize-booking">
     <header>
@@ -19,20 +37,20 @@
             <img src="/files/logements/1_appartement.jpg" alt="appartement 1">
             <article>
                 <div>
-                    <h3>Villa sur la port</h3>
+                    <h3><?=$accommodation->get("titre_logement")?></h3>
                     <h4>
                         <span class="mdi mdi-map-marker"></span>
-                        Locmariaquer, Morbihan
+                        <?=$accommodation->get("ville_adresse")?>, <?=$accommodation->get("pays_adresse")?>
                     </h4>
-                    <p>
-                        Somptueuse villa bretonne, située en bord de mer. Parfaite pour profiter de la Manche (très froide en ce moment) et faire la fête. Proche du port (attention à ne pas tomber dedans !).
-                    </p>
+                    <p><?=$accommodation->get("description_logement")?></p>
                 </div>
 
-                <button class="primary">
-                    Accéder à l'annonce
-                    <span class="mdi mdi-chevron-right"></span>
-                </button>
+                <a href="/logement?id_logement=<?=$accommodation->get("id_logement")?>">
+                    <button class="primary">
+                        Accéder à l'annonce
+                        <span class="mdi mdi-chevron-right"></span>
+                    </button>
+                </a>
             </article>
         </article>
         

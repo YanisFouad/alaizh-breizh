@@ -307,6 +307,7 @@ header#frontoffice #top-header {
 header#frontoffice #top-header ul {
   display: flex;
   align-items: center;
+  gap: 1em;
 }
 header#frontoffice #top-header ul li {
   list-style: none;
@@ -583,7 +584,8 @@ footer nav a {
 }
 .profile-area > h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin: 1em;
+  font-weight: normal;
   font-family: "poppins-regular", sans-serif;
 }
 .profile-area > h3 {
@@ -674,13 +676,15 @@ footer nav a {
   color: #424645;
   font-family: "comfortaa-regular", sans-serif;
 }
-#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button {
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a {
   float: right;
   margin-top: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a > button {
   position: relative;
   padding-right: 2.5em;
 }
-#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button > .mdi {
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a > button > .mdi {
   font-size: 1.5em;
   right: 10px;
   top: 50%;

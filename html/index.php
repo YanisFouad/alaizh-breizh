@@ -24,4 +24,6 @@ $router->set404View("views/errors/404.php");
 
 $router->start();
 
-?>
+require_once("services/session/PurchaseSession.php");
+require_once("models/AccommodationModel.php");
+PurchaseSession::set(10);
