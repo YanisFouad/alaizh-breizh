@@ -13,7 +13,7 @@ ScriptLoader::load("layout/header.js");
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-    <title>AlhaizBreizh</title>
+    <title>ALHAiZ Breizh</title>
 </head>
 <body>
     <header id="frontoffice">
@@ -69,7 +69,7 @@ ScriptLoader::load("layout/header.js");
                     <a href="/"><li><span class="mdi mdi-home"></span>Accueil</li></a>
                     <a href="/logements"><li><span class="mdi mdi-home-group"></span>Logements</li></a>
                     <a href="/profil"><li><span class="mdi mdi-account"></span>Mon compte</li></a>
-                    <a href="#"><li><span class="mdi mdi-logout"></span>Déconnexion</li></a>
+                    <form method="POST" action="/controllers/authentication/disconnectController.php"><a href="#"><li><span class="mdi mdi-logout"></span>Déconnexion</li></a></form>
                 </ul>
             </nav>
         <?php } ?>

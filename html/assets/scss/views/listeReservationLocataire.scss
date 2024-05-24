@@ -144,6 +144,10 @@
 
         .non-souligne{
             all:unset;
+
+            &:hover{
+                cursor: pointer;
+            }
         }
             
         // Ligne d'un logement
@@ -277,12 +281,17 @@
             border-radius: 50%;
             color: $primary-frontoffice-1;
             font-family: "comfortaa-bold";
-            pointer-events: none;
             &:hover{
                 color:white;
                 background-color: $primary-frontoffice-1;
                 transition: all .5s ease;
             }
+        }
+
+        .button-chevron-non-cliquable{
+            pointer-events: none !important;
+            color: $primary-frontoffice-3;
+            border: 1px solid $primary-frontoffice-3;
         }
         
         #button-clique{

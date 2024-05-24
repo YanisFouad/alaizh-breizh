@@ -290,6 +290,9 @@ input[type=checkbox] + label::before {
   color: white;
   z-index: 1;
 }
+input[type=checkbox]:disabled + label {
+  opacity: 60%;
+}
 
 select {
   position: relative;
@@ -395,6 +398,12 @@ header#frontoffice #header-bottom-stroke {
   header .mdi {
     font-size: 2.5em;
   }
+  header #open-burger-button, header #close-burger-button {
+    padding: 0;
+  }
+  header #filter-button {
+    padding: 1em;
+  }
   header .fullsize-logo {
     display: none !important;
   }
@@ -464,6 +473,8 @@ footer#foot-global nav {
   flex-direction: row;
 }
 footer#foot-global nav a {
+  display: flex;
+  flex-wrap: nowrap;
   padding-left: 1em;
 }
 
@@ -988,6 +999,13 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page body, #filter-housing-container body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 1000px;
+}
+
 #home-page button {
   display: flex;
   align-items: center;
@@ -1171,7 +1189,7 @@ abbr[title] {
   background-color: #e0ffee;
 }
 
-.show-all-button {
+#home-page .show-all-button, #filter-housing-container .show-all-button {
   display: none;
 }
 
@@ -1210,7 +1228,7 @@ abbr[title] {
     font-size: 1em;
   }
   #housing-list-title {
-    font-size: 1em;
+    font-size: 1.4em;
     margin: 0 auto 1em auto;
   }
   .show-more-button {
@@ -1239,7 +1257,7 @@ abbr[title] {
   #home-page .show-all-button {
     display: flex;
     align-items: center;
-    padding: 0.25em 1em;
+    padding: 1em;
     color: white;
     background-color: #1b5734;
     border: solid 1px #1b5734;
@@ -1296,6 +1314,9 @@ abbr[title] {
   justify-content: space-between;
   margin-bottom: 2.5em;
 }
+#filter-title-container button {
+  padding: 1em;
+}
 
 #validation-filter-button-container {
   display: none;
@@ -1314,6 +1335,10 @@ abbr[title] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2em;
+}
+#housing-title-search-container h1 {
+  font-size: 1.4em;
 }
 
 .compact-search-bar {
@@ -1352,7 +1377,8 @@ abbr[title] {
   width: 150px;
 }
 .compact-search-bar button {
-  background-color: #1b5734;
+  background-color: gray;
+  cursor: not-allowed;
   padding: 1em;
 }
 .compact-search-bar .mdi-magnify {
@@ -1420,6 +1446,15 @@ abbr[title] {
     display: flex;
     gap: 0.5em;
     justify-content: flex-end;
+  }
+  #filter-sort-buttons-container button {
+    padding: 1em;
+  }
+  .back-button {
+    display: none;
+  }
+  #filter-title-container button {
+    padding: 1em;
   }
   #housing-list-container {
     padding: 0.5em;
@@ -1648,6 +1683,9 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
   all: unset;
 }
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne:hover {
+  cursor: pointer;
+}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
   padding: 0.7em 0.7em;
@@ -1713,14 +1751,17 @@ abbr[title] {
   justify-content: center;
   gap: 0.75em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable {
+  text-align: center;
+  width: 3em;
+  height: 3em;
+  padding: 0;
   border: 1px solid #804e2e;
   border-radius: 50%;
-  font-family: "comfortaa-bold";
-  text-align: center;
   color: #804e2e;
+  font-family: "comfortaa-bold";
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable:hover {
   color: white;
   background-color: #804e2e;
   transition: all 0.5s ease;
@@ -1729,80 +1770,430 @@ abbr[title] {
   color: white;
   background-color: #804e2e;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
-  border: 1px solid #b6896c;
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
+  border: 1px solid #804e2e;
   border-radius: 50%;
   font-family: "comfortaa-bold";
   text-align: center;
-  color: #b6896c;
+  color: #804e2e;
+  position: relative;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable > .mdi, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable > .mdi, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable > .mdi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable {
   pointer-events: none !important;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
-  padding: 0.45em 0.55em;
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
+  pointer-events: none !important;
+  color: #b6896c;
+  border: 1px solid #b6896c;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination span {
   font-size: 2em;
 }
 
-#pageDetaille {
+#liste-reservation-locataire-main {
+  margin: 2em 4em;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main {
+    margin: 0.5em 1em;
+  }
+}
+#liste-reservation-locataire-main h1 {
+  margin: 1em 0;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-entete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire-entete {
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-recherche {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-recherche div {
+  padding: 0.6em;
+  background-color: #f7f7f7;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  margin-right: 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-recherche div textarea {
+  resize: none;
+  font-size: 13px;
+  font-family: "comfortaa-bold", sans-serif;
+  color: #676767;
+  background-color: #f7f7f7;
+  margin: 0;
+  border: none;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-recherche div #inputRechercher {
+  border-right: 2px solid #eaeaea;
+  border-radius: 0 0 0 0;
+  margin-right: 0.5em;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-recherche .primary {
+  border-radius: 10px;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-onglet {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-onglet a {
+  color: #676767;
+  font-family: "poppins-semibold", sans-serif;
+  font-size: 14px;
+  border-radius: 0;
+  text-decoration: none;
+  padding: 0.5em 1em;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-onglet a:is(:focus, .active) {
+  color: #1b5734;
+  border-bottom: 2px solid #1b5734;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-onglet a:hover {
+  color: #1b5734;
+  border-bottom: 2px solid #1b5734;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-float-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1em 0em;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-float-left a {
+  text-decoration: none;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /******************************/
+  /* Filtre,Oeil facture ,export*/
+  /******************************/
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-export-variant {
+  color: white;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-ascending {
+  margin-right: 0.2em;
+  font-size: 2em;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main .liste-reservation-locataire-flex-row {
+    display: none;
+  }
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-bouton-filtre {
+  margin-left: 1em;
+  border-radius: 100px;
+  padding: 0.8em 1.3em;
+  transition: all 0.5s ease;
+  font-family: "comfortaa-regular", sans-serif;
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-bouton-filtre:hover {
+  background-color: #eaeaea;
+}
+#liste-reservation-locataire-main .mdi.mdi-magnify {
+  font-size: 2em;
+  border-radius: 5px;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire {
+  margin: 2em 0;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .non-souligne {
+  all: unset;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .non-souligne:hover {
+  cursor: pointer;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+  margin: 1.5em 0;
+  padding: 0.7em 0.7em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: solid #1b5734 1px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px #1b5734;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1110px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 12em;
+  height: 8em;
+  border-radius: 10%;
+  margin-right: 1em;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  object-fit: cover;
+  object-position: center;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
+    width: 100%;
+    height: unset;
+    border-radius: 10px;
+    margin-right: 0;
+  }
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
+    border-radius: 10px;
+  }
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div h4 {
+  font-family: "poppins-light";
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div .titreDetail {
+  font-family: "poppins-light";
+  color: #676767;
+}
+@media screen and (max-width: 1110px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+    border: none;
+    box-shadow: none;
+    flex-direction: column;
+  }
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+    flex-direction: column;
+  }
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: nowrap;
+}
+@media screen and (max-width: 1110px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0;
+  }
+  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+  }
+}
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row > .mdi.mdi-eye-outline > p {
+  margin-left: 0.2em;
+  color: white;
+  font-size: 100px;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable {
+  text-align: center;
+  width: 3em;
+  height: 3em;
+  padding: 0;
+  border: 1px solid #1b5734;
+  border-radius: 50%;
+  color: #1b5734;
+  font-family: "comfortaa-bold";
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable:hover {
+  color: white;
+  background-color: #1b5734;
+  transition: all 0.5s ease;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable {
+  pointer-events: none !important;
+  color: #abbdc0;
+  border: 1px solid #abbdc0;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique {
+  color: white;
+  background-color: #1b5734;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire-pagination span {
+  font-size: 2em;
+}
+
+*,
+*::after,
+*::before {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../../fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../fonts/poppins-regular.ttf);
+}
+@font-face {
+  font-family: "Material Design Icons";
+  src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+body {
+  font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "poppins-regular";
+}
+
+#pageDetaillee {
+  margin-left: 2em;
+}
+#pageDetaillee > div {
   display: flex;
 }
-#pageDetaille button {
+#pageDetaillee > div button {
   background-color: white;
   border: none;
 }
-#pageDetaille .mdi.mdi-chevron-right {
+#pageDetaillee > div .mdi.mdi-chevron-right {
   position: relative;
   top: 1px;
   font-size: 1.3em;
 }
-#pageDetaille #cheminPage {
+#pageDetaillee > div #cheminPage {
   display: flex;
   align-items: center;
 }
-#pageDetaille a {
+#pageDetaillee > div a {
   color: #1b5734;
 }
-#pageDetaille h4 {
+#pageDetaillee > div h4 {
   color: #424645;
   font-weight: normal;
 }
-#pageDetaille #page {
+#pageDetaillee #page {
   display: flex;
   margin-top: 1em;
 }
-#pageDetaille section {
+#pageDetaillee #page section {
   width: 75%;
+  padding-right: 1em;
 }
-
-#imgLogement {
-  width: 38em;
+#pageDetaillee #imgLogement {
+  width: 35em;
+  max-height: 30em;
   border-radius: 13px;
 }
-
-#blockIntro {
+#pageDetaillee #blockIntro {
   display: flex;
 }
-#blockIntro > div {
-  margin-left: 2.2em;
+#pageDetaillee #blockIntro div + div {
+  margin-left: 1.2em;
 }
-#blockIntro #titre {
+#pageDetaillee #blockIntro #titre {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#blockIntro #titre h1 {
+#pageDetaillee #blockIntro #titre h1 {
   font-size: 1.7em;
   margin: 0;
   color: #424645;
 }
-#blockIntro h2 {
+#pageDetaillee #blockIntro h2 {
   font-family: "comfortaa-regular";
   margin: 0.6em 0 1em 0;
   color: #676767;
   font-size: 1em;
 }
-#blockIntro #caracteristiques-logement ul {
+#pageDetaillee #blockIntro #caracteristiques-logement ul {
   list-style-type: none;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -1812,83 +2203,77 @@ abbr[title] {
   border-radius: 17px;
   padding: 1em;
 }
-#blockIntro #caracteristiques-logement .bulle-Rose {
-  background-color: #ffd6bb !important;
-  color: #804e2e;
+#pageDetaillee #blockIntro #caracteristiques-logement .bulle-Rose {
+  background-color: #ffd6bb;
   border-radius: 14.5px;
   padding: 5px 10px 5px 10px;
   margin: 0.2em 0;
-  max-width: 6em;
+  max-width: 5em;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
 }
-
-#description h3 {
+#pageDetaillee #description h3 {
   color: #676767;
   font-size: 0.8em;
   margin: 1.7em 0 0.5em 0;
 }
-#description div {
+#pageDetaillee #description div {
   display: flex;
   align-items: center;
   margin-top: 0.7em;
 }
-#description div h3 {
+#pageDetaillee #description div h3 {
   margin: 0;
 }
-#description div img {
+#pageDetaillee #description div img {
   width: 3.5em;
 }
-
-#box-Activites-Amenagement {
+#pageDetaillee #box-Activites-Amenagement {
   display: flex;
   justify-content: center;
 }
-#box-Activites-Amenagement > div {
+#pageDetaillee #box-Activites-Amenagement > div {
   display: flex;
   box-shadow: 0 0 4px 2px rgba(173, 173, 173, 0.1333333333);
   border-radius: 15px;
   margin: 1em 0;
   padding: 1em;
-  width: fit-content;
 }
-#box-Activites-Amenagement > div div {
+#pageDetaillee #box-Activites-Amenagement > div div {
   margin: 1em 0 0 1em;
 }
-#box-Activites-Amenagement > div > div:first-child {
+#pageDetaillee #box-Activites-Amenagement > div > div:first-child {
   border-right: solid 2px #676767;
 }
-#box-Activites-Amenagement > div div + div {
+#pageDetaillee #box-Activites-Amenagement > div div + div {
   margin-left: 3em;
 }
-#box-Activites-Amenagement > div div + div ul {
+#pageDetaillee #box-Activites-Amenagement > div div + div ul {
   grid-template-columns: 180px 1fr;
 }
-#box-Activites-Amenagement ul {
+#pageDetaillee #box-Activites-Amenagement ul {
   display: grid;
-  grid-template-columns: 283px 1fr;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 3em;
   list-style-type: none;
   margin: 1em 3em 0 0;
 }
-#box-Activites-Amenagement ul li {
-  margin-top: 1em;
-}
-#box-Activites-Amenagement ul li span {
+#pageDetaillee #box-Activites-Amenagement ul li span {
   font-size: 1.8em;
   color: #424645;
 }
-#box-Activites-Amenagement h3 {
+#pageDetaillee #box-Activites-Amenagement h3 {
   color: #424645;
 }
-
-aside#blockDevisSticky {
+#pageDetaillee #blockDevisSticky {
   position: sticky;
   top: 10px;
   margin: 0 2em;
+  width: 25%;
   height: fit-content;
 }
-aside#blockDevisSticky #profilPropriétaire {
+#pageDetaillee #blockDevisSticky #profilPropriétaire {
   display: flex;
   align-items: center;
   border: solid 1px #eaeaea;
@@ -1896,46 +2281,41 @@ aside#blockDevisSticky #profilPropriétaire {
   height: 5em;
   margin-bottom: 1em;
 }
-aside#blockDevisSticky #profilPropriétaire > div {
+#pageDetaillee #blockDevisSticky #profilPropriétaire > div {
   margin-left: 10px;
 }
-aside#blockDevisSticky #profilPropriétaire > div h4 {
+#pageDetaillee #blockDevisSticky #profilPropriétaire > div h4 {
   font-weight: normal;
   color: #424645;
   margin: 0;
 }
-aside#blockDevisSticky #profilPropriétaire > div .note {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-}
-aside#blockDevisSticky #profilPropriétaire > div span {
+#pageDetaillee #blockDevisSticky #profilPropriétaire > div span {
   margin: 0;
   color: #1b5734;
 }
-aside#blockDevisSticky #profilPropriétaire > div span #nbAvis {
+#pageDetaillee #blockDevisSticky #profilPropriétaire > div span #nbAvis {
   font-size: 0.8em;
 }
-aside#blockDevisSticky #profilPropriétaire img {
+#pageDetaillee #blockDevisSticky #profilPropriétaire img {
   width: 4em;
   height: 4em;
   border-radius: 50%;
   margin-left: 10px;
 }
-aside#blockDevisSticky #box-reservation {
+#pageDetaillee #blockDevisSticky #box-reservation {
   border: solid 1px #eaeaea;
   border-radius: 13px;
   padding: 2em;
 }
-aside#blockDevisSticky #box-reservation h2 {
+#pageDetaillee #blockDevisSticky #box-reservation h2 {
   color: #424645;
   text-align: center;
 }
-aside#blockDevisSticky #box-reservation .line {
+#pageDetaillee #blockDevisSticky #box-reservation .line {
   border: solid 1px #eaeaea;
   margin: 1em 0;
 }
-aside#blockDevisSticky #box-reservation > button {
+#pageDetaillee #blockDevisSticky #box-reservation > button {
   border: solid 1px #424645;
   border-radius: 10px;
   padding: 0.2em 0;
@@ -1945,49 +2325,49 @@ aside#blockDevisSticky #box-reservation > button {
   align-items: center;
   justify-content: center;
 }
-aside#blockDevisSticky #box-reservation > button:hover {
+#pageDetaillee #blockDevisSticky #box-reservation > button:hover {
   background-color: #eaeaea;
 }
-aside#blockDevisSticky #box-reservation > button span {
+#pageDetaillee #blockDevisSticky #box-reservation > button span {
   color: #424645;
 }
-aside#blockDevisSticky #box-reservation > button span:first-child {
+#pageDetaillee #blockDevisSticky #box-reservation > button span:first-child {
   margin-right: 0.5em;
 }
-aside#blockDevisSticky #box-reservation > button .mdi.mdi-calendar-month {
+#pageDetaillee #blockDevisSticky #box-reservation > button .mdi.mdi-calendar-month {
   font-size: 1.6em;
 }
-aside#blockDevisSticky #box-reservation > button + div {
+#pageDetaillee #blockDevisSticky #box-reservation > button + div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-aside#blockDevisSticky #box-reservation > button + div div h4 {
+#pageDetaillee #blockDevisSticky #box-reservation > button + div div h4 {
   color: #676767;
   text-align: center;
   font-size: 0.8em;
 }
-aside#blockDevisSticky #box-reservation > button + div div h3 {
+#pageDetaillee #blockDevisSticky #box-reservation > button + div div h3 {
   color: #424645;
   font-size: 0.9em;
 }
-aside#blockDevisSticky #box-reservation #nbVoyageurs {
+#pageDetaillee #blockDevisSticky #box-reservation #nbVoyageurs {
   color: #676767;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-aside#blockDevisSticky #box-reservation #nbVoyageurs span:first-child {
+#pageDetaillee #blockDevisSticky #box-reservation #nbVoyageurs span:first-child {
   font-size: 0.9em;
 }
-aside#blockDevisSticky #box-reservation #nbVoyageurs div {
+#pageDetaillee #blockDevisSticky #box-reservation #nbVoyageurs div {
   display: flex;
   align-items: center;
 }
-aside#blockDevisSticky #box-reservation #nbVoyageurs div span {
+#pageDetaillee #blockDevisSticky #box-reservation #nbVoyageurs div span {
   margin: 0 0.5em;
 }
-aside#blockDevisSticky #box-reservation #nbVoyageurs button {
+#pageDetaillee #blockDevisSticky #box-reservation #nbVoyageurs button {
   display: flex;
   align-items: center;
   height: 1.5em;
@@ -1996,21 +2376,21 @@ aside#blockDevisSticky #box-reservation #nbVoyageurs button {
   border-radius: 50%;
   padding: 0.5em;
 }
-aside#blockDevisSticky #box-reservation #nbNuits {
+#pageDetaillee #blockDevisSticky #box-reservation #nbNuits {
   font-size: 0.9em;
 }
-aside#blockDevisSticky #box-reservation #nbNuits div {
+#pageDetaillee #blockDevisSticky #box-reservation #nbNuits div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-aside#blockDevisSticky #box-reservation #nbNuits div div span:nth-child(2) {
+#pageDetaillee #blockDevisSticky #box-reservation #nbNuits div div span:nth-child(2) {
   margin-left: 0.3em;
 }
-aside#blockDevisSticky #box-reservation #nbNuits span:nth-child(odd) {
+#pageDetaillee #blockDevisSticky #box-reservation #nbNuits span:nth-child(odd) {
   color: #676767;
 }
-aside#blockDevisSticky #box-reservation #boutonDevis button {
+#pageDetaillee #blockDevisSticky #box-reservation #boutonDevis button {
   position: relative;
   color: white;
   background-color: #1b5734;
@@ -2019,10 +2399,10 @@ aside#blockDevisSticky #box-reservation #boutonDevis button {
   border-radius: 21px;
   font-family: "comfortaa-regular";
 }
-aside#blockDevisSticky #box-reservation #boutonDevis button:hover {
+#pageDetaillee #blockDevisSticky #box-reservation #boutonDevis button:hover {
   background-color: #337d51;
 }
-aside#blockDevisSticky #box-reservation #boutonDevis button .mdi.mdi-chevron-right {
+#pageDetaillee #blockDevisSticky #box-reservation #boutonDevis button .mdi.mdi-chevron-right {
   color: white;
   position: absolute;
   right: 0.3em;
@@ -2030,6 +2410,78 @@ aside#blockDevisSticky #box-reservation #boutonDevis button .mdi.mdi-chevron-rig
   font-size: 2em;
 }
 
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+@media screen and (max-width: 431px) {
+  #pageDetaillee {
+    margin: 0 !important;
+  }
+  #pageDetaillee div:first-child div {
+    margin: 1em;
+  }
+  #pageDetaillee div:first-child button {
+    padding: 0 1em 0 0;
+  }
+  #pageDetaillee #page {
+    flex-wrap: wrap;
+  }
+  #pageDetaillee #page section {
+    width: 100%;
+  }
+  #pageDetaillee #blockIntro {
+    flex-wrap: wrap;
+    margin: 0;
+    justify-content: center;
+  }
+  #pageDetaillee #blockIntro div:first-child {
+    display: flex;
+    justify-content: center;
+  }
+  #pageDetaillee #blockIntro div:first-child #imgLogement {
+    width: 90%;
+  }
+  #pageDetaillee #blockIntro div + div {
+    margin: 0 1em;
+  }
+  #pageDetaillee #blockIntro #caracteristiques-logement .bulle-Rose {
+    max-width: 5em;
+  }
+  #pageDetaillee #blockIntro #caracteristiques-logement li:nth-child(odd) {
+    margin-right: 1em;
+  }
+  #pageDetaillee #description {
+    margin: 0 1em;
+  }
+  #pageDetaillee #box-Activites-Amenagement > div {
+    flex-wrap: wrap;
+    margin: 1em 1em;
+  }
+  #pageDetaillee #box-Activites-Amenagement > div div {
+    border: none !important;
+    margin: 1em 0 0 0;
+  }
+  #pageDetaillee #box-Activites-Amenagement > div div + div {
+    margin: 0;
+  }
+  #pageDetaillee #box-Activites-Amenagement ul {
+    grid-template-columns: 1fr !important;
+    margin: 1em !important;
+  }
+  #pageDetaillee #blockDevisSticky {
+    margin: 0 1em !important;
+    width: 100% !important;
+  }
+  #pageDetaillee #blockDevisSticky #box-reservation {
+    margin-bottom: 2em;
+  }
+  #pageDetaillee #cheminPage h4 {
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+    max-width: 12em;
+  }
+}
 header#backoffice {
   background-color: #222524;
   display: flex;
@@ -2386,6 +2838,13 @@ header#backoffice > aside > span.owner {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page body, #filter-housing-container body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 1000px;
+}
+
 #home-page button {
   display: flex;
   align-items: center;
@@ -2569,7 +3028,7 @@ abbr[title] {
   background-color: #e0ffee;
 }
 
-.show-all-button {
+#home-page .show-all-button, #filter-housing-container .show-all-button {
   display: none;
 }
 
@@ -2608,7 +3067,7 @@ abbr[title] {
     font-size: 1em;
   }
   #housing-list-title {
-    font-size: 1em;
+    font-size: 1.4em;
     margin: 0 auto 1em auto;
   }
   .show-more-button {
@@ -2637,7 +3096,7 @@ abbr[title] {
   #home-page .show-all-button {
     display: flex;
     align-items: center;
-    padding: 0.25em 1em;
+    padding: 1em;
     color: white;
     background-color: #1b5734;
     border: solid 1px #1b5734;
@@ -2694,6 +3153,9 @@ abbr[title] {
   justify-content: space-between;
   margin-bottom: 2.5em;
 }
+#filter-title-container button {
+  padding: 1em;
+}
 
 #validation-filter-button-container {
   display: none;
@@ -2712,6 +3174,10 @@ abbr[title] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2em;
+}
+#housing-title-search-container h1 {
+  font-size: 1.4em;
 }
 
 .compact-search-bar {
@@ -2750,7 +3216,8 @@ abbr[title] {
   width: 150px;
 }
 .compact-search-bar button {
-  background-color: #1b5734;
+  background-color: gray;
+  cursor: not-allowed;
   padding: 1em;
 }
 .compact-search-bar .mdi-magnify {
@@ -2818,6 +3285,15 @@ abbr[title] {
     display: flex;
     gap: 0.5em;
     justify-content: flex-end;
+  }
+  #filter-sort-buttons-container button {
+    padding: 1em;
+  }
+  .back-button {
+    display: none;
+  }
+  #filter-title-container button {
+    padding: 1em;
   }
   #housing-list-container {
     padding: 0.5em;
@@ -3025,6 +3501,134 @@ abbr[title] {
   font-family: "poppins-regular", sans-serif;
 }
 
+button {
+  transition: all 0.5s ease;
+  font-family: "comfortaa-regular", sans-serif;
+  font-size: 1em;
+  background-color: transparent;
+  border: unset;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 1em 2.5em;
+}
+button.primary:is(.primary, .secondary):not(:disabled):focus, button.secondary:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #abbdc0;
+}
+button.primary.primary:disabled, button.primary.secondary:disabled, button.secondary.primary:disabled, button.secondary.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.primary.primary, button.secondary.primary {
+  background-color: #1b5734;
+  color: white;
+}
+button.primary.primary:not(:disabled):is(:hover, :focus), button.secondary.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #337d51;
+}
+button.primary.secondary, button.secondary.secondary {
+  border: 1px solid #1b5734;
+  color: #1b5734;
+}
+button.primary.secondary:not(:disabled):is(:hover, :focus), button.secondary.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #1b5734;
+  color: white;
+}
+button.backoffice:is(.primary, .secondary):not(:disabled):focus {
+  box-shadow: 0 0 0 3px #b6896c;
+}
+button.backoffice.primary:disabled, button.backoffice.secondary:disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.backoffice.primary {
+  background-color: #804e2e;
+  color: white;
+}
+button.backoffice.primary:not(:disabled):is(:hover, :focus) {
+  background-color: #9f6844;
+}
+button.backoffice.secondary {
+  border: 1px solid #804e2e;
+  color: #804e2e;
+}
+button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
+  background-color: #804e2e;
+  color: white;
+}
+button.tertiary.backoffice {
+  color: #804e2e;
+  background-color: #ffd6bb;
+}
+button.tertiary.backoffice.disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.tertiary.backoffice:not(:disabled):is(:hover, :focus) {
+  background-color: #b6896c;
+  color: white;
+}
+
+*,
+*::after,
+*::before {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "comfortaa-bold";
+  src: url(../../../../fonts/comfortaa-bold.ttf);
+}
+@font-face {
+  font-family: "comfortaa-light";
+  src: url(../../../../fonts/comfortaa-light.ttf);
+}
+@font-face {
+  font-family: "comfortaa-medium";
+  src: url(../../../../fonts/comfortaa-medium.ttf);
+}
+@font-face {
+  font-family: "comfortaa-regular";
+  src: url(../../../../fonts/comfortaa-regular.ttf);
+}
+@font-face {
+  font-family: "comfortaa-semibold";
+  src: url(../../../../fonts/comfortaa-semibold.ttf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(../../../../fonts/poppins-bold.ttf);
+}
+@font-face {
+  font-family: "poppins-light";
+  src: url(../../../../fonts/poppins-light.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(../../../../fonts/poppins-medium.ttf);
+}
+@font-face {
+  font-family: "poppins-regular";
+  src: url(../../../../fonts/poppins-regular.ttf);
+}
+@font-face {
+  font-family: "Material Design Icons";
+  src: url(../../../../fonts/materialdesignicons-webfont.ttf);
+}
+body {
+  font-family: "comfortaa-regular", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "poppins-regular";
+}
+
 #mainProprietaireLogement {
   display: flex;
   flex-direction: column;
@@ -3034,13 +3638,30 @@ abbr[title] {
   top: 1px;
   font-size: 1.3em;
 }
+#mainProprietaireLogement #page {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+#mainProprietaireLogement #page h3 {
+  color: #424645;
+}
 #mainProprietaireLogement #cheminPage {
   display: flex;
-  margin-left: 1em;
+  margin-left: 2em;
   align-items: center;
+  margin-top: 1em;
 }
 #mainProprietaireLogement a {
   color: #804e2e;
+}
+#mainProprietaireLogement a:hover, #mainProprietaireLogement a:active {
+  color: #9f6844;
+}
+#mainProprietaireLogement a:visited {
+  color: #b6896c;
 }
 #mainProprietaireLogement h4 {
   color: #424645;
@@ -3049,57 +3670,64 @@ abbr[title] {
 #mainProprietaireLogement h3 {
   color: #424645;
 }
-
-#imgLogement {
+#mainProprietaireLogement #image-conteneur {
+  height: 30em;
   width: 45em;
-  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
-@media screen and (max-width: 600px) {
-  #imgLogement {
+@media screen and (max-width: 800px) {
+  #mainProprietaireLogement #image-conteneur {
     width: 70%;
   }
 }
-
-#modified-button {
+#mainProprietaireLogement #image-conteneur #img-logement {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+  object-fit: cover;
+  object-position: center;
+}
+#mainProprietaireLogement #modified-button {
   display: none;
   justify-content: right;
 }
-
-#blockIntro {
+#mainProprietaireLogement #block-intro {
   display: flex;
 }
 @media screen and (max-width: 300px) {
-  #blockIntro {
+  #mainProprietaireLogement #block-intro {
     display: flex;
     flex-wrap: wrap;
   }
 }
-#blockIntro > div {
+#mainProprietaireLogement #block-intro #intro {
   margin-left: 2.2em;
 }
-#blockIntro #titre {
+#mainProprietaireLogement #block-intro #titre {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#blockIntro #titre h1 {
+#mainProprietaireLogement #block-intro #titre h1 {
   font-size: 1.7em;
   margin: 0;
   color: #424645;
 }
-#blockIntro p {
+#mainProprietaireLogement #block-intro p {
   text-align: justify;
 }
-#blockIntro h2 {
+#mainProprietaireLogement #block-intro h2 {
   font-family: "comfortaa-regular";
   margin: 0.6em 0 1em 0;
   color: #676767;
   font-size: 1em;
 }
-#blockIntro #caracteristiques-logement {
-  display: flex;
+#mainProprietaireLogement #caracteristiques-logement {
+  width: 100%;
 }
-#blockIntro #caracteristiques-logement ul {
+#mainProprietaireLogement #caracteristiques-logement ul {
   list-style-type: none;
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -3109,71 +3737,69 @@ abbr[title] {
   border-radius: 17px;
   padding: 1em;
 }
-#blockIntro #caracteristiques-logement .bulle-Rose {
+#mainProprietaireLogement #caracteristiques-logement .bulle-Rose {
   background-color: #b6896c;
   border-radius: 14.5px;
   width: fit-content;
   padding: 5px 10px 5px 10px;
   margin: 0.2em 0;
 }
-
-#description h3 {
+#mainProprietaireLogement #description h3 {
   color: #676767;
   font-size: 1.2em;
   margin: 1.7em 0 0.5em 0;
 }
-#description p {
+#mainProprietaireLogement #description p {
   text-align: justify;
 }
-#description div {
+#mainProprietaireLogement #description div {
   display: flex;
   align-items: center;
   margin-top: 0.7em;
 }
-#description div h3 {
+#mainProprietaireLogement #description div h3 {
   margin: 0;
 }
-#description div img {
+#mainProprietaireLogement #description div img {
   width: 3.5em;
 }
-
-#box-Activites-Amenagement {
+#mainProprietaireLogement #box-Activites-Amenagement {
   display: flex;
   justify-content: left;
 }
-#box-Activites-Amenagement > div {
+#mainProprietaireLogement #box-Activites-Amenagement > div {
   display: flex;
   box-shadow: 0 0 4px 2px rgba(173, 173, 173, 0.1333333333);
   border-radius: 15px;
   margin: 1em 0;
-  padding: 1em;
+  padding: 1em 2em 2em;
   width: fit-content;
 }
-#box-Activites-Amenagement > div div {
+#mainProprietaireLogement #box-Activites-Amenagement > div div {
   margin: 1em 0 0 1em;
 }
-#box-Activites-Amenagement > div > div:first-child {
+#mainProprietaireLogement #box-Activites-Amenagement > div > div:first-child {
   border-right: solid 2px #676767;
 }
-#box-Activites-Amenagement > div div + div {
+#mainProprietaireLogement #box-Activites-Amenagement > div div + div {
   margin-left: 3em;
 }
-#box-Activites-Amenagement > div div + div ul {
+#mainProprietaireLogement #box-Activites-Amenagement > div div + div ul {
   grid-template-columns: 1.5fr 1fr;
   margin: auto;
   padding-bottom: 1em;
 }
-#box-Activites-Amenagement ul {
+#mainProprietaireLogement #box-Activites-Amenagement ul {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   list-style-type: none;
   margin: auto;
-  padding-right: 1em;
+  padding-right: 2em;
 }
-#box-Activites-Amenagement ul li {
+#mainProprietaireLogement #box-Activites-Amenagement ul li {
   margin-top: 1em;
 }
-#box-Activites-Amenagement ul li span {
+#mainProprietaireLogement #box-Activites-Amenagement ul li span {
   font-size: 1.8em;
   color: #424645;
 }
