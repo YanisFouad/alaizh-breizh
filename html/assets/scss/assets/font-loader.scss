@@ -8,7 +8,8 @@ $fonts: (
     "poppins-bold",
     "poppins-light",
     "poppins-medium",
-    "poppins-regular"
+    "poppins-regular",
+    "poppins-semibold"
 );
 
 @each $font in $fonts {

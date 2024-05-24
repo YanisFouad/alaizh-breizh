@@ -23,7 +23,8 @@ $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/new
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
-$router->add("/backoffice/reservation", "views/backoffice/bookings/booking.php");
+$router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
+$router->add("/reservations", "views/listeReservationsLocataire.php");
 
 $router->set404View("views/errors/404.php");
 
