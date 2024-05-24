@@ -26,6 +26,9 @@ ScriptLoader::load("layout/header.js");
             <ul>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/logements">Logements</a></li>
+                <?php if(UserSession::isConnected()) { ?>
+                    <li><a href="/reservations">Mes réservations</a></li>
+                <?php } ?>
             </ul>
             
             <?php if(UserSession::isConnected()) { ?>
