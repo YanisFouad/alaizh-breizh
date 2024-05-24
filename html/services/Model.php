@@ -42,7 +42,7 @@ class Model {
         $value = $this->data[$key] ?? null;
         $props = $this->schema[$key] ?? null;
         if(isset($props) && array_key_exists("type", $props)) {
-            if($props["type"] === "date")
+            if($props["type"] === "date" && !date($value))
                 $value = date_create($value);
         }
 
@@ -52,7 +52,7 @@ class Model {
             return is_callable($getter) ? 
                 $getter($this->data) : $getter;
         }
-        if(!isset($value)) {
+        if(!isset($value) && isset($props)) {
             if(array_key_exists("default", $props))
                 return $props["default"];
         }

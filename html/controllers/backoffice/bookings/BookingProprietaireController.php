@@ -49,10 +49,6 @@ class BookingProprietaireController
     }
 
     public function getAdresse() {
-        return $this->adresse;
-    }
-
-    public function setAdresse() {
         $result = RequestBuilder::select("pls._adresse")
             ->projection("*")
             ->where("id_adresse = ?", $this->getLogement()->get("id_adresse"))

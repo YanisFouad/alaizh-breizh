@@ -96,6 +96,8 @@ class BookingModel extends Model {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
             ->where("id_reservation = ?", $id)
+            ->innerJoin("logement", "logement.id_logement = _reservation.id_logement")
+            ->innerJoin("proprietaire", "proprietaire.id_compte = logement.id_proprietaire")
             ->execute()
             ->fetchOne();
         if($result == null)

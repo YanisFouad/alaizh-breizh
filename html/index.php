@@ -12,10 +12,11 @@ $router->add("/logements", "views/housing-list.php");
 
 // bookings
 $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
+$router->add("/reservations", "views/listeReservationsLocataire.php");
 $router->add("/reservation", "views/bookings/booking.php");
 
 // account profile & public profile view
-$router->add("/profil", "views/bookings/reservation.php");
+$router->add("/profil", "views/account/profile.php");
 
 // backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
@@ -24,7 +25,6 @@ $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
-$router->add("/reservations", "views/listeReservationsLocataire.php");
 
 $router->set404View("views/errors/404.php");
 

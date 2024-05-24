@@ -3,9 +3,7 @@ include_once(__DIR__."/../services/RequestBuilder.php");
 include_once(__DIR__."/../models/AccommodationModel.php");
 include_once(__DIR__."/../models/BookingModel.php");
 include_once(__DIR__."/../models/AccountModel.php");
-
-include_once("services/session/UserSession.php");
-
+    
 class BookingLocataireController
 {
     const TABLE_NAME = "pls._reservation";
@@ -19,7 +17,6 @@ class BookingLocataireController
 
     public function __construct($reservationId) {
         $this->reservationId = $reservationId;
-        $this->setUser(UserSession::get());
 
         $this->setReservation();
         $this->setLogement();
@@ -40,11 +37,7 @@ class BookingLocataireController
     }
 
     public function getUser() {
-        return $this->user;
-    }
-
-    public function setUser($user) {
-        $this->user = $user;
+        return UserSession::get();
     }
 
     public function getAdresse() {
@@ -52,6 +45,7 @@ class BookingLocataireController
     }
 
     public function setAdresse() {
+        var_dump($this->getLogement());
         $result = RequestBuilder::select("pls._adresse")
             ->projection("*")
             ->where("id_adresse = ?", $this->getLogement()->get("id_adresse"))
@@ -66,7 +60,7 @@ class BookingLocataireController
     }
 
     public function setProprietaire() {
-        $this->proprietaire = AccountModel::findOneById($this->getLogement()->get("id_proprietaire"));;
+        $this->proprietaire = AccountModel::findOneById(UserSession::get()->get("id_compte"));
     }
 
     public function getLogement() {

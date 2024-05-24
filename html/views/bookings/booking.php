@@ -1,5 +1,12 @@
 <?php
-require_once("services/session/UserSession.php");
+//require_once(__DIR__."/../../controllers/BookingLocataireController.php");
+include_once(__DIR__."/../../services/RequestBuilder.php");
+
+include_once(__DIR__."/../../models/AccommodationModel.php");
+include_once(__DIR__."/../../models/BookingModel.php");
+include_once(__DIR__."/../../models/AccountModel.php");
+
+
 setlocale(LC_TIME, "fr_FR");
 
 if (isset($_GET['id'])){
@@ -8,23 +15,27 @@ if (isset($_GET['id'])){
     $id_reservation = false;
 }
 
-if(!UserSession::isConnected()){
-    header("Location: /backoffice");
+if (!UserSession::isConnected() || $id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation)){
+    exit(header("Location: /"));
 }
 
-if ($id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation )){
-    header("Location: /");
+
+//$controller = new BookingLocataireController($id_reservation); 
+$reservation = BookingModel::findOneById($id_reservation);
+
+if(!isset($reservation) || $reservation->get("id_compte") != UserSession::get()->get("id_compte")){
+    exit(header("Location: /"));
 }
 
-require_once("controllers/BookingLocataireController.php");
+$logement = AccommodationModel::findOneById($reservation->get("id_logement"));
+$prioprio = AccountModel::findOneById($logement->get("id_proprietaire"));
+$adresse = RequestBuilder::select("_adresse")
+    ->where("id_adresse = ?", $logement->get("id_adresse")) 
+    ->execute()
+    ->fetchOne();
 
-$controller = new BookingLocataireController($id_reservation);
+require_once(__DIR__."/../layout/header.php");
 
-if($controller->getReservation() == null || $controller->getReservation()->get("id_locataire") != $controller->getUser()->get("id_compte")){
-    header("Location: /");
-}
-
-require_once(__DIR__."/../layout/header.php");  
 ?>
 
 <section id="finalize-booking">
@@ -44,33 +55,33 @@ require_once(__DIR__."/../layout/header.php");
 
         <article class="logement">
             <div class="img-logement-container">
-                <img src="<?= $controller->getLogement()->get("photo_logement") ?>" alt="<?= $controller->getLogement()->get("titre_logement") ?>">
+                <img src="<?= $logement->get("photo_logement") ?>" alt="<?= $logement->get("titre_logement") ?>">
             </div>
             <article class="logement-container">
                 <div class="description-logement">
-                    <h3><?= $controller->getLogement()->get("titre_logement") ?></h3>
+                    <h3><?= $logement->get("titre_logement") ?></h3>
                     <h4>
                         <span class="mdi mdi-map-marker"></span>
-                        <?= $controller->adresseToString() ?>
+                        <?=$logement->get("ville_adresse")?>, <?$logement->get("pays_adresse")?>
                     </h4>
-                    <p><?= $controller->getLogement()->get("description_logement") ?></p>
+                    <p><?= $logement->get("description_logement") ?></p>
                 </div>
                 <div class="information-proprio">
                     <div class="img-proprio-container">
                         <div class="img-container">
-                            <img src="<?= $controller->getProprietaire()->get("photo_profil")?>" alt="Propriétaire">
+                            <img src="<?= $prioprio->get("photo_profil")?>" alt="Propriétaire">
                         </div>
                         <div class="name-proprietaire">
-                            <p><?= $controller->getProprietaire()->get("nom") ?></p>
-                            <p><?= $controller->getProprietaire()->get("prenom") ?></p>
+                            <p><?= $prioprio->get("nom") ?></p>
+                            <p><?= $prioprio->get("prenom") ?></p>
                         </div>
                     </div>
                     <div class="contact-proprio">
-                        <p>Numéro : <?= $controller->getProprietaire()->get("telephone") ?></p>
-                        <p>Adresse mail : <?= $controller->getProprietaire()->get("mail") ?></p>
+                        <p>Numéro : <?= $prioprio->get("telephone") ?></p>
+                        <p>Adresse mail : <?=$prioprio->get("mail") ?></p>
                     </div>
                 </div>
-                <a href="/logement?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
+                <a href="/logement?id_logement=<?= $logement->get("id_logement") ?>">
                     <button class="primary">
                         Accéder à l'annonce
                         <span class="mdi mdi-chevron-right"></span>
@@ -88,17 +99,17 @@ require_once(__DIR__."/../layout/header.php");
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4><?= $controller->getFormatDate($controller->getReservation()->get("date_arrivee")) ?> - <?= $controller->getFormatDate($controller->getReservation()->get("date_depart"))?></h4>
+                    <h4><?= $reservation->get("date_arrivee")?> - <?= $reservation->get("date_depart")?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
-                    <h4><?= $controller->getReservation()->get("nb_voyageur")?></h4>
+                    <h4><?= $reservation->get("nb_voyageur")?></h4>
                 </div>
                 <div class="container-amenagement">
                     <h4>Aménagement(s):</h4>
                     <div class="list-amenagement">
                         <?php
-                        foreach($controller->getLogement()->get("amenagements") as $amenagement) {
+                        foreach($logement->get("amenagements") as $amenagement) {
                             switch ($amenagement["name"]) {
                                 case 'jardin':
                                     echo "<p><span class='mdi mdi-tree-outline'></span>Jardin</p>";
@@ -123,7 +134,7 @@ require_once(__DIR__."/../layout/header.php");
                     </div>
                 </div>
             </div>
-            <h3>Prix total: <span><?= round($controller->getReservation()->get("prix_total"), 2) ?> &#8364;</span></h3>
+            <h3>Prix total: <span><?= round($reservation->get("prix_total"), 2) ?> &#8364;</span></h3>
         </article>
 
         <h2>
@@ -134,19 +145,11 @@ require_once(__DIR__."/../layout/header.php");
         <article class="annulation">
             <p>
             <?php
-                $interval = new DateInterval('P' . $controller->getLogement()->get("delais_prevenance") . 'D');
-                $dateRemboursement = $controller->getReservation()->get("date_arrivee")->sub($interval);
+                $interval = new DateInterval('P' . $reservation->get("delais_prevenance") . 'D');
+                $dateRemboursement = $reservation->get("date_arrivee");
                 $currentDate = new DateTime("now");
-
-                if ($controller->getReservation()->get("date_arrivee") <= $currentDate) { ?>
-                    Votre réservation est en cours ou passée. Vous ne pouvez plus vous faire rembourser votre réservation.
-                <?php
-                } else { ?>
-                    En annulant avant le <b><?= $controller->getFormatDate($dateRemboursement) ?></b>, vous serez remboursé <b>intégralement</b>. Passée cette date, vous ne serez remboursé qu’à hauteur de 50%.
-                <?php
-                }
-                
             ?>
+                En annulant avant le <b><?= $dateRemboursement ?></b>, vous serez remboursé <b>intégralement</b>. Passée cette date, vous ne serez remboursé qu’à hauteur de 50%.
             </p>
         </article>
     </div>
