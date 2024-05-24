@@ -62,16 +62,6 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../assets/css/main.css">
-        <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
-        <title>Liste réservation</title>
-    </head>
-    <body>
         <main id="liste-reservation-locataire-main">
             <div id="liste-reservation-locataire-entete">
                 <h1>Mes réservations</h1>
@@ -211,5 +201,4 @@
 
             </form>
         </main>
-    </body>
-</html>
+<?php require_once(__DIR__."/layout/footer.php") ?>
