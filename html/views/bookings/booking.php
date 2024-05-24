@@ -15,17 +15,17 @@ if (isset($_GET['id'])){
     $id_reservation = false;
 }
 
-if (!UserSession::isConnected() || $id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation)){
-    exit(header("Location: /"));
-}
+// if (!UserSession::isConnected() || $id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation)){
+//     exit(header("Location: /"));
+// }
 
 
 //$controller = new BookingLocataireController($id_reservation); 
 $reservation = BookingModel::findOneById($id_reservation);
 
-if(!isset($reservation) || $reservation->get("id_compte") != UserSession::get()->get("id_compte")){
-    exit(header("Location: /"));
-}
+// if(!isset($reservation) || $reservation->get("id_compte") != UserSession::get()->get("id_compte")){
+//     exit(header("Location: /"));
+// }
 
 $logement = AccommodationModel::findOneById($reservation->get("id_logement"));
 $prioprio = AccountModel::findOneById($logement->get("id_proprietaire"));
