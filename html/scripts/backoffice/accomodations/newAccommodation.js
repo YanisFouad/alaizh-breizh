@@ -76,7 +76,10 @@ async function handleForm(event) {
              });
         }
         // once we have added the accommodation we can go to the home
-        window.location.href = "/backoffice";
+        const params = new URLSearchParams();
+        params.set("notification-type", "SUCCESS");
+        params.set("notification-message", encodeURIComponent("Logement ajouté à la liste !"));
+        window.location.href = "/backoffice?"+params.toString();
     } catch(e) {
         console.error(e);
         setError({message: "Impossible d'ajouter un logement: " + e});
