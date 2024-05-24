@@ -62,6 +62,16 @@
 
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../assets/css/main.css">
+        <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
+        <title>Liste réservation</title>
+    </head>
+    <body>
         <main id="liste-reservation-locataire-main">
             <div id="liste-reservation-locataire-entete">
                 <h1>Mes réservations</h1>
@@ -126,7 +136,7 @@
                 <?php
                 foreach($tab_reservation as $reservation){
                     ?>
-                    <a class="non-souligne" href="/reservation?id=<?php echo $reservation->get("id_reservation")?>"> 
+                    <a class="non-souligne" href="chemin_page_de_yanis?id=<?php echo $id;?>">
                         <article class="liste-reservation-locataire-logement">
                             <!-- Photo maison + nom maison -->
                             <div>
@@ -201,4 +211,5 @@
 
             </form>
         </main>
-<?php require_once(__DIR__."/layout/footer.php") ?>
+    </body>
+</html>

@@ -128,7 +128,7 @@ function getFormatDate($date) {
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4><?= getFormatDate($reservation->get("date_arrivee"))?> - <?= getFormatDate($reservation->get("date_depart"))?></h4>
+                    <h4><?= $reservation->get("date_arrivee")?> - <?= $reservation->get("date_depart")?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
@@ -184,7 +184,7 @@ function getFormatDate($date) {
                 $dateRemboursement = $dateArrivee->sub($interval);
                 $currentDate = new DateTime("now");
 
-                if ($currentDate >= $dateRemboursement) { ?>
+                if ($reservation->get("date_arrivee") <= $currentDate) { ?>
                     Votre réservation est en cours ou passée. Vous ne pouvez plus vous la faire rembourser.
                 <?php
                 } else { ?>

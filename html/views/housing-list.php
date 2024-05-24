@@ -3,9 +3,11 @@
    require_once(__DIR__."/../services/RequestBuilder.php");
    require_once("layout/header.php"); 
    
+   // Paramètres de pagination
    $articlesParPage = 10;
    $currentPage = isset($_GET['page']) && is_numeric($_GET["page"]) ? intval($_GET['page']) : 1;
    
+   // Calculer l'indice de début pour la pagination
    $indiceDebut = ($currentPage - 1) * $articlesParPage;
    $accomodations = AccommodationModel::find(($currentPage - 1) * $articlesParPage, $articlesParPage);
  
@@ -162,7 +164,7 @@
 
       <div id="filter-sort-buttons-container">
          <!-- onclick="toggleFilterMenu()" -->
-         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <button disabled id="filter-button" class="primary"><span class="mdi mdi-filter-variant"></span>Filtres</button>
          <button disabled><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
       </div>
 
@@ -202,31 +204,25 @@
       </section>
 
       <div>
+         <?php 
+            //echo $currentPage . " " . $totalPages;
+         //$explodedPageNumberUrl = explode("=", $_SERVER['QUERY_STRING']);
+         //$currentPageNumber = $explodedPageNumberUrl[1];
+         ?>
+
          <form class="pagination">
-            <button <?php if ($currentPage === 1) { echo "disabled"; } ?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+            
+            <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
                <span class="mdi mdi-chevron-left"></span>
             </button>
 
-            <?php
-            $start = max(1, $currentPage - 1);
-            $end = min($totalPages, $currentPage + 1);
-
-            if ($end - $start < 2) {
-               if ($start == 1) {
-                     $end = min($totalPages, $start + 2);
-               } else {
-                     $start = max(1, $end - 2);
-               }
-            }
-
-            for ($i = $start; $i <= $end; $i++) {
-            ?>
-               <button class="<?= $i === $currentPage ? "primary" : "secondary" ?>" name="page" value="<?php echo $i ?>">
-                     <span><?php echo $i ?></span>
+            <?php for($i = 0; $i < $totalPages; $i++) { ?>
+               <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
+                  <span><?php echo $i+1?></span>
                </button>
             <?php } ?>
 
-            <button <?php if ($currentPage == $totalPages) { echo "disabled"; } ?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
+            <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
                <span class="mdi mdi-chevron-right"></span>
             </button>
          </form>
