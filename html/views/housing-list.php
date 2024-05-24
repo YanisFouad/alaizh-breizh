@@ -4,7 +4,7 @@
    require_once("layout/header.php"); 
    
    // Paramètres de pagination
-   $articlesParPage = 20;
+   $articlesParPage = 10;
    $currentPage = isset($_GET['page']) && is_numeric($_GET["page"]) ? intval($_GET['page']) : 1;
    
    // Calculer l'indice de début pour la pagination

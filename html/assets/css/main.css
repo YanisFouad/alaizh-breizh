@@ -178,6 +178,18 @@ button.backoffice.secondary:not(:disabled):is(:hover, :focus) {
   background-color: #804e2e;
   color: white;
 }
+button.tertiary.backoffice {
+  color: #804e2e;
+  background-color: #ffd6bb;
+}
+button.tertiary.backoffice.disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+button.tertiary.backoffice:not(:disabled):is(:hover, :focus) {
+  background-color: #b6896c;
+  color: white;
+}
 
 .form-field.error > label {
   color: #ce4b4b;
@@ -307,6 +319,7 @@ header#frontoffice #top-header {
 header#frontoffice #top-header ul {
   display: flex;
   align-items: center;
+  gap: 1em;
 }
 header#frontoffice #top-header ul li {
   list-style: none;
@@ -583,7 +596,8 @@ footer nav a {
 }
 .profile-area > h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin: 1em;
+  font-weight: normal;
   font-family: "poppins-regular", sans-serif;
 }
 .profile-area > h3 {
@@ -674,13 +688,15 @@ footer nav a {
   color: #424645;
   font-family: "comfortaa-regular", sans-serif;
 }
-#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button {
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a {
   float: right;
   margin-top: 1em;
+}
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a > button {
   position: relative;
   padding-right: 2.5em;
 }
-#finalize-booking > div[role=main] > article:nth-of-type(1) > article > button > .mdi {
+#finalize-booking > div[role=main] > article:nth-of-type(1) > article > a > button > .mdi {
   font-size: 1.5em;
   right: 10px;
   top: 50%;
@@ -861,6 +877,104 @@ footer nav a {
     font-size: 1.5em !important;
   }
 }
+#finalize-booking {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#finalize-booking > div[role=main] .annulation,
+#finalize-booking > div[role=main] .logement,
+#finalize-booking > div[role=main] .sejour {
+  padding-left: 0.8em;
+}
+#finalize-booking > div[role=main] .description-logement {
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 788px) {
+  #finalize-booking > div[role=main] .logement {
+    justify-content: center;
+  }
+}
+#finalize-booking > div[role=main] .logement .img-logement-container {
+  display: flex;
+  width: 205px;
+  height: 205px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+#finalize-booking > div[role=main] .logement .img-logement-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#finalize-booking > div[role=main] .logement .logement-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media screen and (max-width: 788px) {
+  #finalize-booking > div[role=main] .logement .logement-container {
+    width: 100%;
+  }
+}
+#finalize-booking > div[role=main] .logement .logement-container .information-proprio {
+  margin-bottom: 20px;
+  width: 100%;
+}
+#finalize-booking > div[role=main] .logement .logement-container .information-proprio .img-proprio-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+#finalize-booking > div[role=main] .logement .logement-container .information-proprio .img-proprio-container .img-container {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#finalize-booking > div[role=main] .logement .logement-container .information-proprio .img-proprio-container .img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#finalize-booking > div[role=main] .name-proprietaire {
+  display: flex;
+  gap: 6px;
+}
+#finalize-booking > div[role=main] .name-proprietaire :first-child {
+  text-transform: uppercase;
+}
+#finalize-booking > div[role=main] .name-proprietaire :last-child {
+  text-transform: capitalize;
+}
+#finalize-booking > div[role=main] .container-amenagement {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start !important;
+}
+#finalize-booking > div[role=main] .container-amenagement .list-amenagement {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 25px;
+}
+#finalize-booking > div[role=main] .container-amenagement .list-amenagement p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#finalize-booking > div[role=main] .container-amenagement .list-amenagement p span {
+  font-size: 1.5em;
+}
+
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
 #home-page button {
@@ -1508,6 +1622,161 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+
+#page-home-backoffice {
+  margin: 35px 90px;
+}
+@media screen and (max-width: 730px) {
+  #page-home-backoffice {
+    margin: 35px 20px;
+  }
+}
+#page-home-backoffice .accueil-logements-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 22px;
+  gap: 15px;
+}
+@media screen and (max-width: 535px) {
+  #page-home-backoffice .accueil-logements-header {
+    justify-content: center;
+  }
+  #page-home-backoffice .accueil-logements-header .link-new-logement {
+    margin-top: 20px;
+  }
+}
+#page-home-backoffice .accueil-logements-header .title-container {
+  display: flex;
+  align-items: center;
+}
+#page-home-backoffice .accueil-logements-header .link-new-logement {
+  text-decoration: none;
+}
+#page-home-backoffice .accueil-logements-header .link-new-logement .new-logement-container button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#page-home-backoffice .accueil-logements-header .link-new-logement .new-logement-container button .plus-icon {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  color: #ffd6bb;
+  background-color: #804e2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#page-home-backoffice .logements-container .row-logement {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+#page-home-backoffice .logements-container .row-logement .link-logement {
+  all: unset;
+}
+#page-home-backoffice .logements-container .row-logement .link-logement:hover {
+  cursor: pointer;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement {
+  flex: 1 1 calc(25% - 10px);
+  max-width: 270px;
+  height: 350px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+@media screen and (max-width: 1010px) {
+  #page-home-backoffice .logements-container .row-logement .card-logement {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement,
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement span {
+  font-size: 1.4em;
+  color: #804e2e;
+  margin-right: 5px;
+}
+#page-home-backoffice .nav-page {
+  width: 100%;
+}
+#page-home-backoffice .nav-page ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+}
+#page-home-backoffice .nav-page ul .btn-page {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #804e2e;
+  color: #804e2e;
+}
+#page-home-backoffice .nav-page ul .btn-page:not(.btn-nav) {
+  padding: 10px;
+}
+#page-home-backoffice .nav-page ul .btn-page.btn-nav {
+  padding: 0;
+  font-size: 1.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#page-home-backoffice .nav-page ul .btn-page:not(.disabled, .is-active):hover {
+  background-color: #804e2e;
+  color: white;
+}
+#page-home-backoffice .nav-page ul .btn-page.btn-nav.disabled {
+  opacity: 60%;
+  cursor: unset;
+}
+#page-home-backoffice .nav-page ul .btn-page.is-active {
+  background-color: #804e2e;
+  color: white;
 }
 
 #new-accommodation {

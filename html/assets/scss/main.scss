@@ -61,6 +61,7 @@ h1, h2 {
  
 // bookings
 @import "views/bookings/finalize-booking.scss";
+@import "views/bookings/booking.scss";
 
 @import "views/home-and-housing-list.scss";
 // liste réservation
@@ -70,5 +71,6 @@ h1, h2 {
 @import "views/backoffice/layout/header.scss";
 @import "views/backoffice/authentication/login.scss";
 
+@import "views/backoffice/home.scss";
 @import "views/backoffice/accomodations/new-accommodation.scss";
 @import "views/listeReservationsLocataire.scss";

@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__."BaseSession.php");
+require_once(__DIR__."/BaseSession.php");
 
 class PurchaseSession extends BaseSession {
 

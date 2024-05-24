@@ -40,15 +40,14 @@ class Model {
      */
     public function get($key) {
         $value = $this->data[$key] ?? null;
-        $props = $this->schema[$key];
-
-        if(array_key_exists("type", $props)) {
+        $props = $this->schema[$key] ?? null;
+        if(isset($props) && array_key_exists("type", $props)) {
             if($props["type"] === "date")
                 $value = date_create($value);
         }
 
         // getters are over than default variables
-        if(array_key_exists("get", $props)) {
+        if(isset($props) && array_key_exists("get", $props)) {
             $getter = $props["get"];
             return is_callable($getter) ? 
                 $getter($this->data) : $getter;

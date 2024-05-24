@@ -39,6 +39,13 @@ ScriptLoader::load("layout/header.js");
                         <button class="sign-in-up-buttons" type="submit">Déconnexion</button>
                     </form>
                 </div>
+            <?php } else { ?>
+                <div id="sign-in-up-container" onclick="openLoginModal()">
+                    <button id="sign-in-up-button">
+                        <span class="mdi mdi-account-circle-outline"></span>
+                        Connexion/Inscription
+                    </button>
+                </div>
             <?php } ?>
         </nav>
         <div id="header-bottom-stroke"></div>

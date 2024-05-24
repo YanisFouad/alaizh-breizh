@@ -74,17 +74,20 @@
                     }
                 }
 
-                &>button {
+                &>a {
                     float: right;
                     margin-top: 1em;
-                    position: relative;
-                    padding-right: 2.5em;
-                    &>.mdi {
-                        font-size: 1.5em;
-                        right: 10px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        position: absolute;
+                    &>button {
+                        position: relative;
+                        padding-right: 2.5em;
+
+                        &>.mdi {
+                            font-size: 1.5em;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            position: absolute;
+                        }
                     }
                 }
             }
