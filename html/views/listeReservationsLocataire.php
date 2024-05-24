@@ -136,7 +136,7 @@
                 <?php
                 foreach($tab_reservation as $reservation){
                     ?>
-                    <a class="non-souligne" href="chemin_page_de_yanis?id=<?php echo $id;?>">
+                    <a class="non-souligne" href="/reservation?id=<?php echo $reservation->get("id_reservation");?>">
                         <article class="liste-reservation-locataire-logement">
                             <!-- Photo maison + nom maison -->
                             <div>
