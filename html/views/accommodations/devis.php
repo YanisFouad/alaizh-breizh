@@ -71,7 +71,7 @@
                     <div>
                         <div>
                             <h4>Taxe de séjour:</h4>
-                            <h4>1€ x 3 pers x 4 nuits</h4>
+                            <h4 id="taxeSejour">1€ x 3 pers x 4 nuits</h4>
                         </div>
                         <h4>12€<?php 
                             $prix = $prix + 12;

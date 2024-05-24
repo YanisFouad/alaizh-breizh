@@ -1,0 +1,1 @@
+/home/jlebeau/Windows/opt/dart-sass/sass --watch --poll html/assets/scss/main.scss:html/assets/css/main.css --no-source-map
