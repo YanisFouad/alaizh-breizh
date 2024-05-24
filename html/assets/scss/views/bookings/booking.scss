@@ -1,0 +1,107 @@
+#finalize-booking {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    &>div[role="main"] {
+        .annulation,
+        .logement,
+        .sejour {
+            padding-left: 0.8em;
+        }
+
+        .description-logement {
+            margin-bottom: 20px;
+        }
+
+        .logement {
+            @media screen and (max-width: 788px) {
+                justify-content: center;
+            }
+            .img-logement-container {
+                display: flex;
+                width: 205px;
+                height: 205px;
+                border-radius: 20px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .logement-container {
+                width: 75%;
+                @media screen and (max-width: 788px) {
+                    width: 100%;
+                }
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                .information-proprio {
+                    margin-bottom: 20px;
+                    width: 100%;
+                    .img-proprio-container {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        gap: 20px;
+                        .img-container {
+                            width: 53px;
+                            height: 53px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .name-proprietaire {
+            display: flex;
+            gap: 6px;
+            :first-child {
+                text-transform: uppercase;
+            }
+
+            :last-child {
+                text-transform: capitalize;
+            }
+        }
+        
+        .container-amenagement {
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start !important;
+
+            .list-amenagement {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                gap: 25px;
+
+                p {
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+                    
+                    span {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+        }
+    }
+}

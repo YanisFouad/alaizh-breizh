@@ -1,0 +1,142 @@
+@import "../utils/_variables.scss";
+@import "../utils/variables-front-office.scss";
+
+.active {
+    display: block;
+}
+
+#modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 1;
+
+    #modal-devis-content {
+        width: 50em;
+        margin: auto;
+        position: sticky;
+        top: 1em;
+
+        &>div {
+            padding: 1em;
+            border-radius: 20px;
+            background-color: white;
+            padding-bottom: 4em;
+            box-shadow: 0 4px 4px 0 rgba(162, 162, 162, .54);
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+
+            &>h2 {
+                position: relative;
+                width: 100%;
+                font-size: 1.7em;
+                margin-top: 1em;
+
+                &>span {
+                    display: block;
+
+                    &:first-of-type {
+                        background-color: $white;
+                        width: fit-content;
+                        padding: 0 .5em;
+                        font-family: "poppins-medium", sans-serif;
+                        font-weight: normal;
+                        color: $gray-1;
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    &:last-of-type {
+                        width: 100%;
+                        height: 1px;
+                        background-color: $gray-3;
+
+                        position: absolute;
+                        bottom: 12px;
+                    }
+                }
+
+            }
+
+            &>article:nth-of-type(1) {
+                &>div {
+                    &>div {
+                        display: flex;
+                        gap: 1em;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin: 1em 0;
+
+                        &>div {
+                            display: flex;
+                            gap: 1em;
+
+                            &>h4 {
+                                font-weight: normal;
+                            }
+                        }
+
+                        &>h4 {
+                            font-weight: normal;
+
+                            &:last-of-type {
+                                font-family: "poppins-bold", sans-serif;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            #trait {
+                width: 96%;
+                height: 1px;
+                background-color: $gray-3;
+
+                position: absolute;
+                bottom: 4em;
+            }
+
+
+            &>button.devis {
+                float: right;
+                margin: 1em 0;
+                position: relative;
+                padding-right: 2.5em;
+
+                &>.mdi {
+                    font-size: 1.5em;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 432px) {
+
+        #modal-devis-content {
+            width: 90%;
+            margin: auto;
+        }
+
+    }
+}

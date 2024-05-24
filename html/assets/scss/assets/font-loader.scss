@@ -4,10 +4,12 @@ $fonts: (
     "comfortaa-medium",
     "comfortaa-regular",
     "comfortaa-semibold",
+    "poppins-semibold",
     "poppins-bold",
     "poppins-light",
     "poppins-medium",
-    "poppins-regular"
+    "poppins-regular",
+    "poppins-semibold"
 );
 
 @each $font in $fonts {
@@ -20,4 +22,11 @@ $fonts: (
 @font-face {
     font-family: "Material Design Icons";
     src: url(../../assets/fonts/materialdesignicons-webfont.ttf);
+}
+
+@each $font in $fonts {
+    @font-face {
+        font-family: $font;
+        src: url(../../assets/fonts/#{$font}.ttf);
+    }
 }

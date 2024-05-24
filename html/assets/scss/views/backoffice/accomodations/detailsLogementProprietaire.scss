@@ -1,0 +1,177 @@
+#mainProprietaireLogement {
+    display: flex;
+    flex-direction: column;
+
+    .mdi.mdi-chevron-right {
+        position: relative;
+        top: 1px;
+        font-size: 1.3em;
+    }
+
+    #cheminPage {
+        display: flex;
+        margin-left: 1em;
+        align-items: center;
+    }
+
+    a {
+        color: $primary-backoffice-1;
+    }
+
+    h4 {
+        color: $gray-1;
+        font-weight: normal;
+    }
+
+
+    h3 {
+       color: $gray-1;
+    }
+}
+
+#imgLogement {
+    @media screen and (max-width: 600px) {
+        width:70%;
+    }
+    width: 45em;
+    border-radius: 13px;
+}
+
+#modified-button {
+    display: none;
+    justify-content: right;
+}
+
+#blockIntro {
+    display: flex;
+
+    @media screen and (max-width: 300px) {
+        display: flex;
+        flex-wrap: wrap;
+    }    
+
+    >div {
+        margin-left: 2.2em;
+    }
+
+    #titre {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 1.7em;
+            margin: 0;
+            color: $gray-1;
+        }
+    }
+    p{
+        text-align: justify;
+    }
+    h2 {
+        font-family: "comfortaa-regular";
+        margin: 0.6em 0 1em 0;
+        color: $gray-2;
+        font-size: 1em;
+    }
+
+    #caracteristiques-logement {
+        display: flex;
+
+        ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            place-items: center start;
+            margin-top: 1.6em;
+            border: solid 1px $gray-3;
+            border-radius: 17px;
+            padding: 1em;
+        }
+
+        .bulle-Rose {
+            background-color: $brown-1;
+            border-radius: 14.5px;
+            width: fit-content;
+            padding: 5px 10px 5px 10px;
+            margin: 0.2em 0;
+        }
+    }
+}
+
+#description {
+    h3 {
+        color: $gray-2;
+        font-size: 1.2em;
+        margin: 1.7em 0 0.5em 0;
+    }
+    p {
+        text-align: justify;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        margin-top: 0.7em;
+
+        h3 {
+            margin: 0;
+        }
+
+        img {
+            width: 3.5em;
+        }
+    }
+
+}
+
+#box-Activites-Amenagement {
+    display: flex;
+    justify-content: left;
+
+    >div {
+        display: flex;
+        box-shadow: 0 0 4px 2px #adadad22;
+        border-radius: 15px;
+        margin: 1em 0;
+        padding: 1em;
+        width: fit-content;
+
+        div {
+            margin: 1em 0 0 1em;
+        }
+
+        >div:first-child {
+            border-right: solid 2px $gray-2;
+        }
+
+        div+div {
+            margin-left: 3em;
+
+            ul {
+                grid-template-columns: 1.5fr 1fr;
+                margin: auto;
+                padding-bottom: 1em;
+                
+            }
+        }
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        list-style-type: none;
+        margin: auto;
+        padding-right: 1em;
+        li {
+            margin-top: 1em;
+
+            span {
+                font-size: 1.8em;
+                color: $gray-1;
+            }
+        }
+    }
+
+    
+}

@@ -1,0 +1,24 @@
+footer#foot-global {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-items: center;
+   font-family: "comfortaa-regular";
+   color: white;
+   a, a:visited {
+       color: white;
+       text-decoration: none;
+    }
+    background-color: black;
+    padding: 2em 2em;
+    margin-top: auto; /* pour conserver le footer en bas de page */
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+       flex-direction: row;
+       a {
+           padding-left: 1em;
+       }
+     }
+}

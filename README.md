@@ -7,15 +7,20 @@
 > `http://localhost:8080`
 
 ## local pgAdmin dashbaord
-> `http://localhost:8081`
+> `http://localhost:8081` \
 
-login: `admin@alhaizbreizh.com`
+login: `admin@alhaizbreizh.com` \
 password: `chantepie`
+
+### Identifiants pour la connexion à la base de données
+Adresse de la base de données: `postgres` \
+Utilisateur: `root` \
+Mot de passe: `chantepie`
 
 ## remote pgAdmin dashboard
 > `https://pgadmin-lav15.ventsdouest.dev/`
 
-login: `lav15@pgadmin-sae.com`
+login: `lav15@pgadmin-sae.com` \
 password: `************`
 
 ## dev & production server URL

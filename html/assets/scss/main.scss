@@ -1,5 +1,4 @@
 @import "utils/variables";
-@import "utils/variables-front-office";
 
 *, *::after, *::before {
     outline: none;
@@ -36,8 +35,9 @@ h1, h2 {
     font-size: $size-h4;
  }
  
- p {
+ p, a {
     font-family: "comfortaa-medium";
+    color: $black;
     font-size: $size-paragraph;
  }
 
@@ -45,8 +45,11 @@ h1, h2 {
 @import "assets/buttons";
 @import "assets/inputs";
 
-/* VIEWS */
+/* LAYOUT */
+@import "layout/header.scss";
+@import "layout/footer.scss";
 
+/* VIEWS */
 // errors
 @import "views/errors/404";
 
@@ -55,3 +58,26 @@ h1, h2 {
 
 // account
 @import "views/account/profile";
+ 
+// bookings
+@import "views/bookings/finalize-booking.scss";
+@import "views/bookings/booking.scss";
+
+@import "views/home-and-housing-list.scss";
+// liste réservation
+@import "views/backoffice/booking/liste_reservation_proprietaire.scss";
+
+@import "views/detailsLogement.scss";
+
+// backoffice
+@import "views/backoffice/layout/header.scss";
+@import "views/backoffice/authentication/login.scss";
+
+@import "views/home-and-housing-list.scss";
+
+@import "views/backoffice/accomodations/new-accommodation.scss";
+@import "views/listeReservationsLocataire.scss";
+
+@import "views/backoffice/accomodations/detailsLogementProprietaire.scss";
+
+@import "views/devisLogement.scss";

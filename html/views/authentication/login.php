@@ -1,11 +1,13 @@
+<?php 
+ScriptLoader::load("authentication/login.js"); ?>
 <div role="dialog" class="modal" id="authentication-modal">
     <div class="center">
-        <h3>Connexion/Inscription</h3>
+        <h3>Connexion locataire</h3>
         <button onclick="closeLoginModal()" class="close">&times;</button>
 
-        <img src="../../assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
+        <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
 
-        <div role="dialog" id="error-message" class="mdi mdi-information error-message"></div>
+        <div role="dialog" class="error-message" class="mdi mdi-information error-message"></div>
 
         <form action="#" onsubmit="handleLogin(event)">
             <div class="form-field">
@@ -34,54 +36,3 @@
         </form>
     </div>
 </div>
-
-<script>
-
-    const authenticationModalElement = document.getElementById("authentication-modal");
-    const errorMessageElement = document.getElementById("error-message");
-
-    function setErrorMessage(message) {
-        if(!message) {
-            errorMessageElement.style.display = "none";
-        } else {
-            errorMessageElement.style.display = "block";
-            errorMessageElement.textContent = message;
-        }
-    }
-
-    function closeLoginModal() {
-        authenticationModalElement.style.display = "none";
-    }
-
-    function openLoginModal() {
-        authenticationModalElement.style.display = "block";
-    }
-
-    async function handleLogin(event) {
-        event.preventDefault();
-
-        try {
-            const formData = new FormData(event.target);
-            const response = await fetch("/controllers/authentication/loginController.php", {
-                method: "POST",
-                body: formData
-            });
-            if(!response.ok) {
-                setErrorMessage("Connexion impossible");
-                console.error(response.status)
-                return;
-            }
-            const data = await response.json();
-            if(data.error) {
-                setErrorMessage(data.error);
-                return;
-            }
-
-            // then reload the window to take in count the user session
-            window.location.reload();
-        } catch(e) {
-            setErrorMessage(`Erreur interne a eu lieu: ${e}`);
-            console.error(e);
-        }
-    }
-</script>

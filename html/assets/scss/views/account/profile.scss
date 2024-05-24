@@ -12,14 +12,20 @@
         margin: auto;
         display: block;
 
-        width: 12em;
+        width: 10em;
+        height: 10em;
+        
+        object-fit: cover;
+        //object-position: top;
+
         border-radius: 100px;
         margin-bottom: 1em;
     }
 
     &>h2 {
         text-align: center;
-        margin-bottom: 1em;
+        margin: 1em;
+        font-weight: normal;
         font-family: "poppins-regular", sans-serif;
     }
 
