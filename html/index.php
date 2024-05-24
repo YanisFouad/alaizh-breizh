@@ -28,8 +28,6 @@ $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/new
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
 $router->add("/backoffice/logement", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
 
-$router->add("/housing-list", "views/housing-list.php");
-
 $router->set404View("views/errors/404.php");
 
 $router->start();
