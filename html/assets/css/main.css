@@ -3848,7 +3848,7 @@ h5 {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
-  z-index: 1;
+  z-index: 999;
 }
 #modal #modal-devis-content {
   width: 50em;
@@ -3860,7 +3860,7 @@ h5 {
   padding: 1em;
   border-radius: 20px;
   background-color: white;
-  padding-bottom: 4em;
+  padding-bottom: 5em;
   box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
 }
 #modal #modal-devis-content > div .close {
@@ -3933,6 +3933,7 @@ h5 {
   margin: 1em 0;
   position: relative;
   padding-right: 2.5em;
+  margin-top: 2.5em;
 }
 #modal #modal-devis-content > div > button.devis > .mdi {
   font-size: 1.5em;

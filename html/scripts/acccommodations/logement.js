@@ -36,7 +36,7 @@ function miseAJourValeurAffichee() {
 moins.addEventListener('click', () => {
     valeur--;
     miseAJourValeurAffichee();
-    document.getElementById("valeurVoyageur").innerHTML = valeur
+    document.getElementById("valeurVoyageurs").innerHTML = valeur
     document.getElementById("taxeSejour").innerHTML = "1 x " + valeur + " voyageurs x 3 nuits";
     
 });
@@ -44,7 +44,7 @@ moins.addEventListener('click', () => {
 plus.addEventListener('click', () => {
         valeur++;
         miseAJourValeurAffichee();
-        document.getElementById("valeurVoyageur").innerHTML = valeur
+        document.getElementById("valeurVoyageurs").innerHTML = valeur
         document.getElementById("taxeSejour").innerHTML = "1 x " + valeur + " voyageurs x 3 nuits";}
 );
 
