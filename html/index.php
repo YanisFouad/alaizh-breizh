@@ -8,7 +8,10 @@ $router = new Router();
 
 // home & default view
 $router->add("/", "views/home.php");
+
+// accommodation
 $router->add("/logements", "views/housing-list.php");
+$router->add("/logement", "views/accommodations/pageDetaillee.php");
 
 // bookings
 $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
@@ -16,13 +19,24 @@ $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
 $router->add("/reservations", "views/listeReservationsLocataire.php");
 $router->add("/reservation", "views/bookings/booking.php");
 
-// account profile & public profile view
+// account profile & public proqfile view
 $router->add("/profil", "views/account/profile.php");
 
 // backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
+
+// backoffices views
+$router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
+
+$router->add("/logement", "views/accomodations/pageDetaillee.php");
+$router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/connexion", "views/backoffice/login.php");
+$router->add("/backoffice/logements/pageDetailleeProprietaire", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
+
+$router->add("/housing-list", "views/housing-list.php");
 
 $router->set404View("views/errors/404.php");
 

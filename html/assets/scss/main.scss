@@ -71,6 +71,9 @@ h1, h2 {
 @import "views/backoffice/layout/header.scss";
 @import "views/backoffice/authentication/login.scss";
 
-@import "views/backoffice/home.scss";
+@import "views/home-and-housing-list.scss";
+
 @import "views/backoffice/accomodations/new-accommodation.scss";
 @import "views/listeReservationsLocataire.scss";
+
+@import "views/backoffice/accomodations/detailsLogementProprietaire.scss";
