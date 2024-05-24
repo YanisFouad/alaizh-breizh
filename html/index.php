@@ -19,6 +19,9 @@ $router->add("/profil", "views/bookings/reservation.php");
 
 // backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/new.php");
+$router->add("/backoffice", "views/backoffice/home.php");
+$router->add("/backoffice/logement/nouveau", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/reservation", "views/backoffice/bookings/booking.php");
 

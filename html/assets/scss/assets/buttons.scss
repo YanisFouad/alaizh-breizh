@@ -55,4 +55,19 @@ button {
             $black
         );
     }
+
+    &.tertiary.backoffice {
+        color: $primary-backoffice-1;
+        background-color: $primary-backoffice-4;
+
+        &.disabled {
+            opacity: 60%;
+            cursor: unset;
+        }
+
+        &:not(:disabled):is(:hover, :focus) {
+            background-color: $primary-backoffice-3;
+            color: $white;
+        }
+    }
 }
