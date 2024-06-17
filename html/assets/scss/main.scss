@@ -36,7 +36,7 @@ h1, h2 {
  }
  
  p, a {
-    font-family: "comfortaa-medium";
+    font-family: "comfortaa-medium", sans-serif;
     color: $black;
     font-size: $size-paragraph;
  }
@@ -65,10 +65,10 @@ h1, h2 {
 
 @import "views/home-and-housing-list.scss";
 // liste réservation
-@import "views/backoffice/booking/liste_reservation_proprietaire.scss";
-@import "views/listeReservationLocataire.scss";
+@import "views/backoffice/booking/liste-reservation-proprietaire";
+@import "views/bookings/liste-reservation-locataire";
 
-@import "views/detailsLogement.scss";
+@import "views/accommodation/details-logement";
 
 // backoffice
 @import "views/backoffice/layout/header.scss";
@@ -79,8 +79,8 @@ h1, h2 {
 
 @import "views/backoffice/accomodations/new-accommodation.scss";
 
-@import "views/backoffice/accomodations/detailsLogementProprietaire.scss";
+@import "views/backoffice/accomodations/details-logement-proprietaire";
 
-@import "views/devisLogement.scss";
+@import "views/accommodation/devis-logement";
 
 @import "views/notification.scss";

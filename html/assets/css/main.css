@@ -128,7 +128,7 @@ h4 {
 }
 
 p, a {
-  font-family: "comfortaa-medium";
+  font-family: "comfortaa-medium", sans-serif;
   color: #222524;
   font-size: 1em;
 }
@@ -1013,7 +1013,7 @@ footer#foot-global nav a {
 
 #image-cover {
   height: 350px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 20%;
@@ -2022,43 +2022,43 @@ abbr[title] {
 
 @font-face {
   font-family: "comfortaa-bold";
-  src: url(../../fonts/comfortaa-bold.ttf);
+  src: url(../../../fonts/comfortaa-bold.ttf);
 }
 @font-face {
   font-family: "comfortaa-light";
-  src: url(../../fonts/comfortaa-light.ttf);
+  src: url(../../../fonts/comfortaa-light.ttf);
 }
 @font-face {
   font-family: "comfortaa-medium";
-  src: url(../../fonts/comfortaa-medium.ttf);
+  src: url(../../../fonts/comfortaa-medium.ttf);
 }
 @font-face {
   font-family: "comfortaa-regular";
-  src: url(../../fonts/comfortaa-regular.ttf);
+  src: url(../../../fonts/comfortaa-regular.ttf);
 }
 @font-face {
   font-family: "comfortaa-semibold";
-  src: url(../../fonts/comfortaa-semibold.ttf);
+  src: url(../../../fonts/comfortaa-semibold.ttf);
 }
 @font-face {
   font-family: "poppins-bold";
-  src: url(../../fonts/poppins-bold.ttf);
+  src: url(../../../fonts/poppins-bold.ttf);
 }
 @font-face {
   font-family: "poppins-light";
-  src: url(../../fonts/poppins-light.ttf);
+  src: url(../../../fonts/poppins-light.ttf);
 }
 @font-face {
   font-family: "poppins-medium";
-  src: url(../../fonts/poppins-medium.ttf);
+  src: url(../../../fonts/poppins-medium.ttf);
 }
 @font-face {
   font-family: "poppins-regular";
-  src: url(../../fonts/poppins-regular.ttf);
+  src: url(../../../fonts/poppins-regular.ttf);
 }
 @font-face {
   font-family: "Material Design Icons";
-  src: url(../../../assets/fonts/materialdesignicons-webfont.ttf);
+  src: url(../../../fonts/materialdesignicons-webfont.ttf);
 }
 body {
   font-family: "comfortaa-regular", sans-serif;
@@ -2921,7 +2921,7 @@ header#backoffice > aside > span.owner {
 
 #image-cover {
   height: 350px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url("../../../images/image-cover.jpeg");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 20%;
@@ -3951,7 +3951,7 @@ h5 {
 
 .notification[role=dialog] {
   position: fixed;
-  bottom: 1em;
+  top: 1em;
   right: 1em;
   display: flex;
   align-items: center;
