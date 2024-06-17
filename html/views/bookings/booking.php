@@ -28,11 +28,16 @@ $reservation = BookingModel::findOneById($id_reservation);
 // }
 
 $logement = AccommodationModel::findOneById($reservation->get("id_logement"));
+if($logement == null){
+    exit(header("Location: /"));
+}
+
 $prioprio = AccountModel::findOneById($logement->get("id_proprietaire"));
-$adresse = RequestBuilder::select("_adresse")
-    ->where("id_adresse = ?", $logement->get("id_adresse")) 
-    ->execute()
-    ->fetchOne();
+$adresse = RequestBuilder::select("pls._adresse")
+                ->projection("*")
+                ->where("id_adresse = ?", $logement->get("id_adresse"))
+                ->execute()
+                ->fetchOne();
 
 require_once(__DIR__."/../layout/header.php");
 
@@ -61,6 +66,32 @@ function getFormatDate($date) {
     $year = $date->format('Y');
     
     return "$day $month $year";
+}
+
+function getPhoneNumber() {
+    $phone = $this->getLocataire()->get("telephone");
+    $phone = str_replace(' ', '', $phone);
+
+    if ($phone[0] != '0') {
+        $phone = '0'.$phone;
+    }
+    
+    return wordwrap($phone, 2, ' ', true);
+}
+
+function adresseToString($adresse) {
+    $code_postal = $adresse["code_postal_adresse"];
+    $num_dep = substr($code_postal, 0, 2);
+
+    if (strlen($num_dep) == 2) {
+        $nom_dep = RequestBuilder::select("pls._departement")
+                    ->projection("nom_departement")
+                    ->where("num_departement = ?", $num_dep)
+                    ->execute()
+                    ->fetchOne();
+    }   
+
+    return  $adresse["numero"] . $adresse["complement_adresse"] . ", ". $adresse["rue_adresse"].", ". $adresse["code_postal_adresse"] .", ".$adresse["ville_adresse"] . ", " . $nom_dep["nom_departement"];
 }
 ?>
 
@@ -91,7 +122,7 @@ function getFormatDate($date) {
                     <h3><?= $logement->get("titre_logement") ?></h3>
                     <h4>
                         <span class="mdi mdi-map-marker"></span>
-                        <?=$logement->get("ville_adresse")?>, <?$logement->get("pays_adresse")?>
+                        <?=adresseToString($adresse)?>
                     </h4>
                     <p><?= $logement->get("description_logement") ?></p>
                 </div>
@@ -128,7 +159,7 @@ function getFormatDate($date) {
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4><?= $reservation->get("date_arrivee")?> - <?= $reservation->get("date_depart")?></h4>
+                    <h4><?= getFormatDate($reservation->get("date_arrivee"))?> - <?= getFormatDate($reservation->get("date_depart"))?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
