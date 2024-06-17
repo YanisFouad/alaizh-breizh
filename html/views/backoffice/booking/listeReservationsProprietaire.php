@@ -100,7 +100,7 @@
     <nav id="liste-reservation-proprietaire-onglet">
         <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriod("a_venir", $id_proprietaire)?>)</a>    
         <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriod("en_cours", $id_proprietaire)?>)</a>
-        <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passée (<?php echo BookingModel::countByPeriod("passe", $id_proprietaire)?>)</a>
+        <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passées (<?php echo BookingModel::countByPeriod("passe", $id_proprietaire)?>)</a>
     </nav>
     <hr>
 
@@ -159,7 +159,7 @@
                             <h4><?php echo $reservation->get("date_reservation"); ?></h4>
                         </div>
                         <div>
-                            <h5>Nombre de nuit</h5>
+                            <h5>Nombre de nuits</h5>
                             <h4><?php echo $reservation->get("nb_nuit"); ?></h4>
                         </div>
                         <div>
