@@ -109,7 +109,7 @@
 
                             <li>
                                 <span class="mdi mdi-account-group-outline"></span>
-                                Nombre de personnes max
+                                Nombre de personne max
                             </li>
                             <li class="bulle-Rose" id="nbPersonneMax" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
                         </ul>
