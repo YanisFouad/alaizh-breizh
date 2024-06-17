@@ -21,8 +21,8 @@ ScriptLoader::load("layout/header.js");
             <button id="open-burger-button" class="displayed" onclick="openBurgerMenu(true)"><span class="mdi mdi-menu"></span></button>
             <button id="close-burger-button" class="hidden" onclick="openBurgerMenu(false)"><span class="mdi mdi-close"></span></button>
 
-            <a class="fullsize-logo" href="/"><img src="/images/logo_alhaiz_breizh_fullsizeh.svg" alt="Logo ALHaiZ Breizh"></a>
-            <a class="smallsize-logo" href="/"><img src="/images/logo_alhaiz_breizh_mini.svg" alt="Logo ALHaiZ Breizh"></a>
+            <a class="fullsize-logo" href="/"><img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="Logo ALHaiZ Breizh"></a>
+            <a class="smallsize-logo" href="/"><img src="/assets/images/logo/logo-alhaiz-breizh-mini.svg" alt="Logo ALHaiZ Breizh"></a>
             <ul>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/logements">Logements</a></li>

@@ -12,8 +12,8 @@ $router = new Router();
 $router->add("/", "views/home.php");
 
 // accommodation
-$router->add("/logements", "views/housing-list.php");
-$router->add("/logement", "views/accommodations/pageDetaillee.php");
+$router->add("/logements", "views/housingList.php");
+$router->add("/logement", "views/accommodation/pageDetaillee.php");
 
 // bookings
 $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
