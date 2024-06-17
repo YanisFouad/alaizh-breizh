@@ -15,7 +15,7 @@ class UserSession extends BaseSession {
 
     public static function isConnected() {
         // connected as tenant (locataire)
-        return self::isDefined() && self::get()->get("accountType") === AccountType::TENANT->name;
+        return self::isDefined();
     }
 
     public static function isConnectedAsOwner() {
