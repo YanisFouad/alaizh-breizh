@@ -79,9 +79,9 @@
                         <ul>
                             <li>
                                 <span class="mdi mdi-tag-multiple-outline"></span>
-                                Categorie
+                                Catégorie
                             </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo $accomodation->get("categorie_logement");?></li>
+                            <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo ucfirst($accomodation->get("categorie_logement"));?></li>
 
                             <li>
                                 <span class="mdi mdi-tag-text-outline"></span>
@@ -131,7 +131,7 @@
                 <p><?php echo $accomodation->get("description_logement");?></p>
 
                 <div>
-                    <h3>Classe energetique</h3>
+                    <h3>Classe énergétique</h3>
                     <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png">
                 </div>
             </article>

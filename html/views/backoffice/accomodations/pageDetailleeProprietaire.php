@@ -78,10 +78,10 @@
                             <ul>
                                 <li>
                                     <span class="mdi mdi-tag-multiple-outline"></span>
-                                    Categorie
+                                    Catégorie
                                 </li>
                                 <li class="bulle-Rose">
-                                    <?=$logement->get('categorie_logement')?>
+                                    <?=ucfirst($logement->get('categorie_logement'))?>
                                 </li>
 
                                 <li>
@@ -136,8 +136,8 @@
 
                     <div>
                         <?php if($logement->get('classe_energetique')){?>
-                            <h3>Classe energetique</h3>
-                            <img src="../../../images/labels/energyLabel<?=$logement->get('classe_energetique');?>.png">
+                            <h3>Classe énergétique</h3>
+                            <img src="/assets/images/labels/energyLabel<?=$logement->get('classe_energetique');?>.png">
                         <?php } ?>
                     </div>
                 </article>
