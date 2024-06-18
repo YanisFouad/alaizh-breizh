@@ -72,57 +72,60 @@
         <section>
             <article id="blockIntro">
                 <div class="img-container">
-                <div>    
-                    <img src="<?=$accomodation->get("photo_logement")?>" id="imgLogement">
-                </div>
-                <div id="caracteristiques-logement">
-                        <ul>
-                            <li>
-                                <span class="mdi mdi-tag-multiple-outline"></span>
-                                Categorie
-                            </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo $accomodation->get("categorie_logement");?></li>
-
-                            <li>
-                                <span class="mdi mdi-tag-text-outline"></span>
-                                Type
-                            </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("type_logement");?>"><?php echo $accomodation->get("type_logement");?></li>
-
-                            <li>
-                                <span class="mdi mdi-texture-box"></span>
-                                Surface
-                            </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("surface_logement");?>"><?php echo $accomodation->get("surface_logement");?>m²</li>
-
-                            <li>
-                                <span class="mdi mdi-bed-outline"></span>
-                                Nombre de lits simples
-                            </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_simples_logement");?>"><?php echo $accomodation->get("nb_lits_simples_logement");?></li>
-
-                            <li>
-                                <span class="mdi mdi-bunk-bed-outline"></span>
-                                Nombre de lits doubles
-                            </li>
-                            <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_doubles_logement");?>"><?php echo $accomodation->get("nb_lits_doubles_logement");?></li>
-
-                            <li>
-                                <span class="mdi mdi-account-group-outline"></span>
-                                Nombre de personnes max
-                            </li>
-                            <li class="bulle-Rose" id="nbPersonneMax" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
-                        </ul>
+                    <div>    
+                        <img src="<?=$accomodation->get("photo_logement")?>" id="imgLogement">
                     </div>
-                </div>
-                <div>
-                    <div id="titre">
-                        <h1><?php echo $accomodation->get("titre_logement");?></h1>
-                    </div>
+                    <div id="titreInfos-container">
+                        <div>
+                            <div id="titre">
+                                <h1><?php echo $accomodation->get("titre_logement");?></h1>
+                            </div>
+                        
+                            <h2><span class="mdi mdi-map-marker"></span><?php echo $accomodation->get("ville_adresse").", "; echo $dep;?></h2>
+                            <p><?php echo $accomodation->get("accroche_logement");?></p>
+                        </div>
 
-                    <h2><span class="mdi mdi-map-marker"></span><?php echo $accomodation->get("ville_adresse").", "; echo $dep;?></h2>
-                    <p><?php echo $accomodation->get("accroche_logement");?>
-                    </p>
+                        <div id="caracteristiques-logement">
+                            <ul>
+                                <li>
+                                    <span class="mdi mdi-tag-multiple-outline"></span>
+                                    Categorie
+                                </li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo ucfirst($accomodation->get("categorie_logement"));?></li>
+
+                                <li>
+                                    <span class="mdi mdi-tag-text-outline"></span>
+                                    Type
+                                </li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("type_logement");?>"><?php echo $accomodation->get("type_logement");?></li>
+
+                                <li>
+                                    <span class="mdi mdi-texture-box"></span>
+                                    Surface
+                                </li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("surface_logement");?>"><?php echo $accomodation->get("surface_logement");?>m²</li>
+
+                                <li>
+                                    <span class="mdi mdi-bed-outline"></span>
+                                    Nombre de lits simples
+                                </li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_simples_logement");?>"><?php echo $accomodation->get("nb_lits_simples_logement");?></li>
+
+                                <li>
+                                    <span class="mdi mdi-bunk-bed-outline"></span>
+                                    Nombre de lits doubles
+                                </li>
+                                <li class="bulle-Rose" title="<?php echo $accomodation->get("nb_lits_doubles_logement");?>"><?php echo $accomodation->get("nb_lits_doubles_logement");?></li>
+
+                                <li>
+                                    <span class="mdi mdi-account-group-outline"></span>
+                                    Nombre de personnes max
+                                </li>
+                                <li class="bulle-Rose" id="nbPersonneMax" title="<?php echo $accomodation->get("max_personne_logement");?>"><?php echo $accomodation->get("max_personne_logement");?></li>
+                            </ul>
+                        </div>
+                    
+                    </div>
                 </div>
             </article>
 
@@ -130,9 +133,12 @@
                 <h3>Description</h3>
                 <p><?php echo $accomodation->get("description_logement");?></p>
 
+                
                 <div>
-                    <h3>Classe energetique</h3>
-                    <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png">
+                    <?php if($accomodation->get("classe_energetique")){?>
+                        <h3>Classe énergétique</h3>
+                        <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png">    
+                    <?php }?>
                 </div>
             </article>
 
@@ -141,20 +147,24 @@
                     <div class="container-activite">
                         <h3>Activités</h3>
                         <ul class="list-activite">
-                            <?php foreach ($accomodation->get('activites') as $key => $value) { ?>
-                            <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> 
-                            <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
-                            <?php }?>
+                            <?php foreach ($accomodation->get('activites') as $key => $value) {
+                                if($value['name'] != null){?>
+                                    <li><span class="<?=$tabActivites[strtolower($value['name'])];?>"></span> 
+                                    <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                            <?php }
+                            }?>
                         </ul>
                     </div>
 
                     <div class="container-amenagement">
-                        <h3>Aménagements</h3>
-                        <ul class="list-amenagement">
-                        <?php foreach ($accomodation->get('amenagements') as $value) { ?>
-                                    <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li> 
-                        <?php }?>
-                        </ul>
+                            <h3>Aménagements</h3>
+                            <ul class="list-amenagement">
+                            <?php foreach ($accomodation->get('amenagements') as $value) {
+                                        if($value['name'] != null){?>
+                                        <li><span class="<?=$tabAmenagements[strtolower($value['name'])];?>"></span> <?= ucfirst($value['name']);?></li> 
+                            <?php }
+                            }?>
+                            </ul>
                     </div>
                 </div>
 
