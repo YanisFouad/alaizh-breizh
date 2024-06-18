@@ -164,7 +164,7 @@
 
       <div id="filter-sort-buttons-container">
          <!-- onclick="toggleFilterMenu()" -->
-         <button disabled id="filter-button" class="primary"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
          <button disabled><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
       </div>
 
@@ -211,17 +211,23 @@
          ?>
 
          <form class="pagination">
-            
-            <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+
+            <!-- Premier bouton chevron -->
+            <button <?php if ($currentPage == 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
                <span class="mdi mdi-chevron-left"></span>
             </button>
 
-            <?php for($i = 0; $i < $totalPages; $i++) { ?>
-               <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
-                  <span><?php echo $i+1?></span>
-               </button>
-            <?php } ?>
+            <!-- Bouton contenant les numéros de pages -->
+            <?php for($i = $currentPage-1; $i < $currentPage+2; $i++) { 
+               if($i>0 && $i<=$totalPages){ 
+                  ?>
+                  <button class="<?=$i==$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i?>">
+                     <span><?php echo $i?></span>
+                  </button>
+               <?php }
+            } ?>
 
+            <!-- Dernier bouton chevron -->
             <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
                <span class="mdi mdi-chevron-right"></span>
             </button>

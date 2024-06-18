@@ -115,19 +115,6 @@
                 </button></a>
             </div>
 
-            <!-- Traitement selon l'onglets réservations -->
-            <?php
-
-            // //Sélection du tableau à utilisé 
-            // if ($tab === "a_venir"){
-            //     $tab_reservation_filtrer_trier = $tab_reservation_a_venir;
-            // }elseif ($tab === "passe" ) {
-            //     $tab_reservation_filtrer_trier = $tab_reservation_passe;
-            // } elseif ($tab === "en_cours") {
-            //     $tab_reservation_filtrer_trier = $tab_reservation_en_cours;
-            // }
-
-            ?>
             <!-- Liste réservation -->
             <section id="liste-reservation-locataire">
                 <!-- ************************** -->
@@ -171,8 +158,29 @@
                 <?php } ?>
             </section>
 
+            <form class="pagination">
+                <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+                <span class="mdi mdi-chevron-left"></span>
+                </button>
+
+                <?php for($i = 0; $i < $totalPages; $i++) { ?>
+                <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
+                    <span><?php echo $i+1?></span>
+                </button>
+                <?php } ?>
+
+                <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
+                <span class="mdi mdi-chevron-right"></span>
+                </button>
+            </form>
+
+
+
+
+
+
             <!-- Changement de page de réservation -->
-            <form method="GET" action="#" id="liste-reservation-locataire-pagination">
+            <form method="GET" action="#" id="liste-reservation-proprietaire-pagination">
             
                 <!-- Bouton pagination précédent -->
                 <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-chevron-cliquable" : "button-chevron-non-cliquable" ?>" type="submit">
@@ -199,7 +207,7 @@
                             <?php echo $page+1; ?>
                         </button>
                 <?php } 
-            ?>
+                ?>
 
                 <!-- Bouton pagination page + 1 -->
                 <button name="page" value="<?php echo $page+1; ?>" class="<?php echo $page+1 <= $nb_page ? "button-chevron-cliquable" : "button-chevron-non-cliquable";?>" type="submit">
