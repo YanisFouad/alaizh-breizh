@@ -5,6 +5,8 @@
 # For MacOS
 .DS_Store
 
+docker-compose.yml
+
 # ignore all files from css file except theses
 html/assets/css/*
 !html/assets/css/main.css

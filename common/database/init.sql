@@ -34,6 +34,10 @@ CREATE TABLE _locataire (
             REFERENCES _compte(id_compte)
 );
 
+CREATE TABLE _token (
+    cle_api VARCHAR(100) PRIMARY KEY
+);
+
 CREATE TABLE _proprietaire (
     id_proprietaire VARCHAR(20) PRIMARY KEY,
     piece_identite VARCHAR(100) NOT NULL,
@@ -41,8 +45,11 @@ CREATE TABLE _proprietaire (
     num_carte_identite VARCHAR(20) NOT NULL,
     rib_proprietaire VARCHAR(40) NOT NULL,
     date_identite DATE NOT NULL,
+    cle_api VARCHAR(100),
     CONSTRAINT proprietaire_fk_compte FOREIGN KEY(id_proprietaire)
-            REFERENCES _compte(id_compte)
+            REFERENCES _compte(id_compte),
+    CONSTRAINT proprietaire_fk_token FOREIGN KEY(cle_api)
+            REFERENCES _token(cle_api)
 );
 
 CREATE TABLE _langue (
@@ -170,17 +177,19 @@ CREATE TABLE _commune (
             REFERENCES _departement(num_departement)
 );
 
-SET SCHEMA 'pls';
 
 CREATE OR REPLACE VIEW proprietaire AS SELECT id_compte,nom,prenom,mot_de_passe,_compte.id_adresse, telephone,mail,date_naissance,civilite,photo_profil,
-    piece_identite,note_proprietaire,num_carte_identite,rib_proprietaire,date_identite,numero,complement_numero,rue_adresse,complement_adresse,ville_adresse,code_postal_adresse,pays_adresse FROM _compte
+    piece_identite,note_proprietaire,num_carte_identite,rib_proprietaire,date_identite,numero,complement_numero,rue_adresse,complement_adresse,ville_adresse,code_postal_adresse,pays_adresse,_token.cle_api
+    FROM _compte
     INNER JOIN _proprietaire ON id_compte = id_proprietaire
-    INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse; 
+    INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse
+    INNER JOIN _token ON _proprietaire.cle_api = _token.cle_api; 
 
 CREATE OR REPLACE VIEW  locataire AS SELECT
     id_compte,nom,prenom,photo_profil,mot_de_passe,telephone,mail,date_naissance,civilite,_compte.id_adresse,numero,complement_numero,rue_adresse,complement_adresse,ville_adresse,code_postal_adresse,pays_adresse FROM _compte 
     INNER JOIN _locataire ON id_compte = id_locataire
     INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse; 
+
 
 CREATE EXTENSION IF NOT EXISTS tablefunc;
 
@@ -339,10 +348,15 @@ BEGIN
     SET 
       numero = COALESCE(NEW.numero, OLD.numero),complement_numero = COALESCE(NEW.complement_numero, OLD.complement_numero),rue_adresse = COALESCE(new.rue_adresse, old.rue_adresse),complement_adresse = COALESCE(new.complement_adresse, old.complement_adresse),ville_adresse = COALESCE(new.ville_adresse, old.ville_adresse),code_postal_adresse = COALESCE(new.code_postal_adresse, old.code_postal_adresse),pays_adresse = COALESCE(new.pays_adresse, old.pays_adresse)
     WHERE id_adresse = compte_id_adresse;
-    
+
+    UPDATE _token 
+    SET 
+      cle_api = COALESCE(new.cle_api,old.cle_api);
+
     UPDATE _proprietaire 
     SET 
-      piece_identite = COALESCE(new.piece_identite, old.piece_identite),note_proprietaire = COALESCE(new.note_proprietaire, old.note_proprietaire),num_carte_identite = COALESCE(new.num_carte_identite, old.num_carte_identite),rib_proprietaire = COALESCE(new.rib_proprietaire, old.rib_proprietaire);
+      piece_identite = COALESCE(new.piece_identite, old.piece_identite),note_proprietaire = COALESCE(new.note_proprietaire, old.note_proprietaire),num_carte_identite = COALESCE(new.num_carte_identite, old.num_carte_identite),rib_proprietaire = COALESCE(new.rib_proprietaire, old.rib_proprietaire),cle_api = COALESCE(new.cle_api,old.cle_api);
+    
   END IF; 
   RETURN NEW;
 END;
