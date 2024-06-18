@@ -2101,12 +2101,12 @@ h5 {
 }
 #pageDetaillee #page {
   display: flex;
-  margin-top: 1em;
+  margin: 1em 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1327px) {
   #pageDetaillee #page {
     flex-direction: column;
     align-items: center;
@@ -2218,7 +2218,7 @@ h5 {
 }
 #pageDetaillee #description h3 {
   color: #676767;
-  font-size: 0.8em;
+  font-size: 1.2em;
   margin: 1.7em 0 0.5em 0;
 }
 #pageDetaillee #description div {
@@ -2236,7 +2236,7 @@ h5 {
   display: flex;
   justify-content: center;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1327px) {
   #pageDetaillee #box-Activites-Amenagement {
     width: 100%;
   }
@@ -2257,7 +2257,7 @@ h5 {
 #pageDetaillee #box-Activites-Amenagement > div > div:first-child {
   border-right: solid 2px #676767;
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 670px) {
   #pageDetaillee #box-Activites-Amenagement > div > div:first-child {
     border: none;
   }
@@ -2277,10 +2277,6 @@ h5 {
 }
 #pageDetaillee #box-Activites-Amenagement > div .container-amenagement .list-amenagement {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
 }
 #pageDetaillee #box-Activites-Amenagement > div .container-amenagement .list-amenagement li {
   margin-bottom: 8px;
@@ -2304,7 +2300,7 @@ h5 {
 #pageDetaillee #box-Activites-Amenagement > div .container-activite .list-activite li {
   margin-bottom: 8px;
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 670px) {
   #pageDetaillee #box-Activites-Amenagement > div {
     flex-direction: column;
     align-items: center;
@@ -2334,14 +2330,14 @@ h5 {
 }
 #pageDetaillee #blockDevisSticky {
   position: sticky;
-  top: 10px;
+  top: 6em;
   margin: 0 2em;
   width: 25%;
   height: fit-content;
 }
 @media screen and (max-width: 1327px) {
   #pageDetaillee #blockDevisSticky {
-    width: 100%;
+    width: 70%;
     margin: 1em 0;
   }
 }
@@ -2449,7 +2445,7 @@ h5 {
   padding: 0.5em;
 }
 #pageDetaillee #blockDevisSticky #box-reservation #nbNuits {
-  font-size: 0.9em;
+  font-size: 1em;
 }
 #pageDetaillee #blockDevisSticky #box-reservation #nbNuits div {
   display: flex;
@@ -2485,6 +2481,13 @@ h5 {
 /*****************/
 /* MEDIA QUERIES */
 /*****************/
+@media screen and (max-width: 1000px) {
+  #pageDetaillee #box-Activites-Amenagement ul {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    margin: 1em !important;
+  }
+}
 @media screen and (max-width: 431px) {
   #pageDetaillee {
     margin: 0 !important;
@@ -2536,8 +2539,7 @@ h5 {
     margin: 1em !important;
   }
   #pageDetaillee #blockDevisSticky {
-    margin: 0 1em;
-    width: 91%;
+    width: 90%;
   }
   #pageDetaillee #blockDevisSticky #box-reservation {
     margin-bottom: 2em;
@@ -2546,7 +2548,7 @@ h5 {
     text-overflow: ellipsis;
     text-wrap: nowrap;
     overflow: hidden;
-    max-width: 12em;
+    max-width: 8em;
   }
 }
 header#backoffice {

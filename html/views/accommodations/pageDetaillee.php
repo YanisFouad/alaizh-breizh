@@ -193,7 +193,7 @@
             </article>
 
             <article id="box-reservation">
-                <h2><?php echo $accomodation->get("prix_ht_logement");?>€ par nuit</h2>
+                <h2><?php echo $accomodation->get("prix_ttc_logement");?>€ par nuit</h2>
 
                 <div class="line"></div>
 
@@ -236,10 +236,10 @@
 
                     <div>
                         <div>
-                            <span><?php echo $accomodation->get("prix_ht_logement");?>€</span>
+                            <span><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
                             <span>x 3 nuits</span>
                         </div>
-                        <h4><?php echo $accomodation->get("prix_ht_logement")*3;?>€</h4>
+                        <h4><?php echo $accomodation->get("prix_ttc_logement")*3;?>€</h4>
                     </div>
                 </div>
 
