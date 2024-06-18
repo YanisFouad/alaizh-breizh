@@ -3,6 +3,8 @@
     require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
     include_once(__DIR__."/../layout/header.php");
+    require_once(__DIR__."/../../../services/ScriptLoader.php");
+
     $logement_id = $_GET['id_logement'] ?? null;
     if(!isset($logement_id))
         exit(header("Location: /"));
@@ -36,6 +38,8 @@
             ->fetchOne();
         return $result["nom_departement"];
     }
+
+    ScriptLoader::load("backoffice/accomodations/boutonActiveDesactive.js");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -51,12 +55,21 @@
 <body>
 
     <main id ="mainProprietaireLogement">
-            
-        <div id="cheminPage">
-            <h4><a href="/backoffice">Logements</a></h4>
-            <span class="mdi mdi-chevron-right"></span>
-            <h4><?=$logement->get('titre_logement');?></h4>
+        <div id="blockCheminPage-SwitchContainer">
+            <div id="cheminPage">
+                <h4><a href="/backoffice">Logements</a></h4>
+                <span class="mdi mdi-chevron-right"></span>
+                <h4><?=$logement->get('titre_logement');?></h4>
+            </div>
+            <div id="switch-container">    
+                <span id="etatLogement"></span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
+
        
         <div id="page">
             <section>
@@ -71,7 +84,7 @@
 
                         </div>
 
-                        <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse');?> <?php getDepartmentName($logement->get('code_postal_adresse'));?>, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
+                        <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse').", ";?> <?php echo getDepartmentName($logement->get('code_postal_adresse'));?></h2>
                         <p><?=$logement->get('accroche_logement')?></p>
 
                         <div id="caracteristiques-logement">

@@ -3678,6 +3678,68 @@ h5 {
   display: flex;
   flex-direction: column;
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer {
+  position: relative;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container {
+  position: absolute;
+  right: 0;
+  top: 1em;
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+  /* Rounded sliders */
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #etatLogement {
+  margin-right: 1em;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider {
+  background-color: #b6896c;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round {
+  border-radius: 34px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round:before {
+  border-radius: 50%;
+}
 #mainProprietaireLogement .mdi.mdi-chevron-right {
   position: relative;
   top: 1px;
@@ -3702,7 +3764,8 @@ h5 {
 #mainProprietaireLogement a {
   color: #804e2e;
 }
-#mainProprietaireLogement a:hover, #mainProprietaireLogement a:active {
+#mainProprietaireLogement a:hover,
+#mainProprietaireLogement a:active {
   color: #9f6844;
 }
 #mainProprietaireLogement a:visited {
