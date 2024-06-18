@@ -3,6 +3,10 @@
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
+    // ***********************
+    // Partie session de l'utilisateur
+    // ***********************
+
     if(!UserSession::isConnected()){
         require_once("views/backoffice/authentication/login.php");
         exit;
@@ -121,35 +125,24 @@
     </div>
 
     <!-- Traitement selon l'onglets réservations -->
-    <?php
 
-    // //Sélection du tableau à utilisé 
-    // if ($tab === "a_venir"){
-    //     $tab_reservation_filtrer_trier = $tab_reservation_a_venir;
-    // }elseif ($tab === "passe" ) {
-    //     $tab_reservation_filtrer_trier = $tab_reservation_passe;
-    // } elseif ($tab === "en_cours") {
-    //     $tab_reservation_filtrer_trier = $tab_reservation_en_cours;
-    // }
-
+    <!-- Liste réservation -->
+    <section id="liste-reservation-proprietaire">
+        <!-- ************************** -->
+        <!-- Traitement des réservation -->
+        <!-- ************************** -->
+            <?php
+            foreach($tab_reservation as $reservation){
             ?>
-            <!-- Liste réservation -->
-            <section id="liste-reservation-proprietaire">
-                <!-- ************************** -->
-                <!-- Traitement des réservation -->
-                <!-- ************************** -->
-                <?php
-                foreach($tab_reservation as $reservation){
-                    ?>
-                    <a class="non-souligne" href="/backoffice/reservation?id=<?php echo $reservation->get("id_reservation")?>">
-                        <article class="liste-reservation-proprietaire-logement">
-                            <!-- Photo maison + nom maison -->
-                            <div>
-                                <div id='img-container'>
-                                    <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
-                                </div>
-                                <h4><?php echo $reservation->get("titre_logement"); ?></h4>
-                            </div>
+            <a class="non-souligne" href="/backoffice/reservation?id=<?php echo $reservation->get("id_reservation")?>">
+                <article class="liste-reservation-proprietaire-logement">
+                    <!-- Photo maison + nom maison -->
+                    <div>
+                        <div id='img-container'>
+                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
+                        </div>
+                        <h4><?php echo $reservation->get("titre_logement"); ?></h4>
+                    </div>
                             
 
                     <!-- Description maison -->
@@ -157,6 +150,10 @@
                         <div>
                             <h5>Date de réservation</h5>
                             <h4><?php echo $reservation->get("date_reservation"); ?></h4>
+                        </div>
+                        <div>
+                            <h5>Date d'arrivée</h5>
+                            <h4><?php echo $reservation->get("date_arrivee"); ?></h4>
                         </div>
                         <div>
                             <h5>Nombre de nuits</h5>
@@ -175,6 +172,7 @@
             </a>
         <?php } ?>
     </section>
+
 
     <!-- Changement de page de réservation -->
     <form method="GET" action="#" class="pagination">
