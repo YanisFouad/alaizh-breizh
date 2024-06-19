@@ -92,7 +92,7 @@ CREATE TABLE _logement (
 CREATE TABLE _icalator (
     cle_api VARCHAR(100) PRIMARY KEY,
     start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
+    end_date DATE NOT NULL
 );
 
 CREATE TABLE _icalator_logement (
