@@ -93,9 +93,6 @@ CREATE TABLE _icalator (
     cle_api VARCHAR(100) PRIMARY KEY,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-
-    CONSTRAINT icalator_fk_token FOREIGN KEY(cle_api) 
-            REFERENCES _token(cle_api)
 );
 
 CREATE TABLE _icalator_logement (
