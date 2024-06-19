@@ -40,6 +40,8 @@
     }
 
     ScriptLoader::load("backoffice/accomodations/boutonActiveDesactive.js");
+
+    include 'popUpValidation.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,13 +63,10 @@
                 <span class="mdi mdi-chevron-right"></span>
                 <h4><?=$logement->get('titre_logement');?></h4>
             </div>
-            <div id="switch-container">    
+            <div id="switch-container">  
                 <span id="etatLogement"></span>
-                <form method="POST" action="/controllers/backoffice/accommodations/DispoLogement.php">
-                    <input type="hidden" name="estVisible" value="<?php echo $logement->get("est_visible") ?>"/>
-                    <input type="submit" id="logementActuel" name="logementActuel" value="<?php echo $logement->get("id_logement");?>" data-php-variable="<?php echo $logement->get("est_visible") ?>"/>
-                    <label class="switch" for="logementActuel">
-                        <input type="checkbox" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
+                    <label class="switch" data-php-variable="<?php echo $logement->get("est_visible") ?>">
+                        <input type="checkbox" id="boutonOnOff" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
                         <span class="slider round"></span>
                     </label>
                 </form>
