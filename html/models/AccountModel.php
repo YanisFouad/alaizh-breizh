@@ -22,7 +22,7 @@ class AccountModel extends Model {
             "prenom"  => array("required" => true),
             "mot_de_passe"  => array(),
             "telephone"  => array(),
-            "date_naissance"  => array("type" => "date"),
+            "date_naissance"  => array(),
             "mail"  => array("required" => true),
             "civilite"  => array(),
             "id_addresse" => array(),

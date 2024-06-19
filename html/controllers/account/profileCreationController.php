@@ -6,7 +6,16 @@
     }
 
     function creation(){
-        $account = new AccountModel("locataire");
+        $account = new AccountModel(AccountType::TENANT);
+
+        if (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
+            $_POST["error_mail"] = "Adresse e-mail invalide.";
+            header("Location: /inscription");
+        }
+            
+        if ($_POST["mot_de_passe"] !== $_POST["mot_de_passe_confirm"]) {
+            $_POST["error_mdp"] = "Les mots de passe ne correspondent pas.";
+        }
         
         foreach ($_POST as $field => $value) {
             if ($field == "date_naissance"){
@@ -17,8 +26,9 @@
                 $value = password_hash($value,PASSWORD_BCRYPT);
                 $account->set($field, $value);
             }
-            //var_dump($field,$value);
-            $account->set($field, $value);
+            if ($field!="mot_de_passe_confirm" && $field!="error_mail" && $field!="error_mdp") {
+                $account->set($field, $value);
+            }
         }
 
         $account->save();
