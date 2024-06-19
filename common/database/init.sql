@@ -98,15 +98,15 @@ CREATE TABLE _icalator (
             REFERENCES _token(cle_api)
 );
 
--- CREATE TABLE _icalator_logement (
---     cle_api VARCHAR(100) PRIMARY KEY,
---     id_logement INTEGER NOT NULL,
+CREATE TABLE _icalator_logement (
+    cle_api VARCHAR(100) PRIMARY KEY,
+    id_logement INTEGER NOT NULL,
 
---     CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY(cle_api) 
---             REFERENCES _icalator(cle_api),
---     CONSTRAINT icalator_logement_fk_logement FOREIGN KEY(id_logement)
---             REFERENCES _logement(id_logement)
--- );
+    CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY(cle_api) 
+            REFERENCES _icalator(cle_api),
+    CONSTRAINT icalator_logement_fk_logement FOREIGN KEY(id_logement)
+            REFERENCES _logement(id_logement)
+);
 
 /* TRIGGER POUR CALCULER PRIX TTC */
 
