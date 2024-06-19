@@ -88,6 +88,10 @@ h5 {
             align-items: center;
             margin-right: 1em;
 
+            #logementActuel {
+                display: none;
+            }
+
             #etatLogement {
                 margin-right: 1em;
             }

@@ -1,20 +1,15 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    var checkbox = document.querySelector('input[type="checkbox"]');
     var etatLogement = document.getElementById('etatLogement');
-    var etat = true; //TODO: recuperer l'etat initial du logement 
-
+    var etatActuel = document.getElementById('logementActuel');
+    var etat = etatActuel.getAttribute('data-php-variable');
     updateText(etat);
 
     checkbox.addEventListener('change', function () {
-        if (checkbox.checked) {
-            etat = true;
+        if (etat) {
             updateText(etat);
-            updateStatus(etat);
         } else {
-            etat = false;
             updateText(etat);
-            updateStatus(etat);
         }
     });
 
@@ -28,16 +23,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour envoyer l'état du checkbox au serveur
     function updateStatus(etat) {
-        fetch('/views/backoffice/accomodations/pageDetailleeProprietaire.php', {
+        fetch('/controllers/backoffice/accommodations/DispoLogement.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: 'etat=' + etat
+            body: 'status=' + etat
         })
             .then(response => response.text())
-            .then(data => {
-                console.log(data);
+            .then(response => {
+                console.log(response);
             })
             .catch(error => {
                 console.error('Erreur de mise à jour du statut:', error);

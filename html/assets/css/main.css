@@ -3690,6 +3690,9 @@ h5 {
   margin-right: 1em;
   /* Rounded sliders */
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #logementActuel {
+  display: none;
+}
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #etatLogement {
   margin-right: 1em;
 }

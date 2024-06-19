@@ -8,7 +8,7 @@ if(isset($_POST['logementActuel']) && isset($_POST["estVisible"])){
     $nouveauEstVisible = !$estVisibleActuel;
 
     $logement = AccommodationModel::findOneById($logementId);
-    $logement->set("est_visible", $nouveauEstVisible);
+    $logement->set("est_visible", $nouveauEstVisible ? "true" : "false");
     $logement->save();   
     //var_dump($logementId, $nouveauEstVisible);
 

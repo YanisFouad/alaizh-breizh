@@ -63,10 +63,14 @@
             </div>
             <div id="switch-container">    
                 <span id="etatLogement"></span>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
+                <form method="POST" action="/controllers/backoffice/accommodations/DispoLogement.php">
+                    <input type="hidden" name="estVisible" value="<?php echo $logement->get("est_visible") ?>"/>
+                    <input type="submit" id="logementActuel" name="logementActuel" value="<?php echo $logement->get("id_logement");?>" data-php-variable="<?php echo $logement->get("est_visible") ?>"/>
+                    <label class="switch" for="logementActuel">
+                        <input type="checkbox" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
+                        <span class="slider round"></span>
+                    </label>
+                </form>
             </div>
         </div>
 
