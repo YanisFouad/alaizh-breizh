@@ -3,7 +3,7 @@
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
-    if(!UserSession::isConnected()){
+    if(!UserSession::isConnectedAsTenant()){
         require_once("views/backoffice/authentication/login.php");
         exit;
     }
