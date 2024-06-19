@@ -129,11 +129,11 @@
                     <div class="liste-reservation-locataire-logement-detail">
                         <div>
                             <h5 class='titreDetail'>Date de réservation</h5>
-                            <h5><?php echo $reservation->get("date_reservation"); ?></h5>
+                            <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_reservation"))); ?></h5>
                         </div>
                         <div>
                             <h5 class='titreDetail'>Date d'arrivée</h5>
-                            <h5><?php echo $reservation->get("date_arrivee"); ?></h5>
+                            <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_arrivee"))); ?></h5>
                         </div>
                         <div>
                             <h5 class='titreDetail'>Nombre de nuits</h5>
