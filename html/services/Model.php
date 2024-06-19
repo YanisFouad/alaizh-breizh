@@ -120,7 +120,7 @@ class Model {
             $request = Database::getConnection()->prepare("UPDATE ".$this->tableName." SET " . $expr . " WHERE ".$primaryField." = ?");
         }
 
-        foreach($values as $k => $v) {
+        foreach($values as $k => &$v) {
             $request->bindParam($k+1, $v);
         }
 
