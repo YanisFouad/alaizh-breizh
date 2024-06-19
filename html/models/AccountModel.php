@@ -29,6 +29,7 @@ class AccountModel extends Model {
             "numero" => array(),
             "complement_numero" => array(),
             "rue_adresse" => array(),
+            "complement_adresse" => array(),
             "ville_adresse" => array(),
             "code_postal_adresse" => array(),
             "pays_adresse" => array(),

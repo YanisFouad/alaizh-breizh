@@ -1,0 +1,77 @@
+.inscription {
+    width: 40%;
+    margin: 1em auto;
+    border-radius: 15px;
+
+    section {
+        margin: 2em 0;
+        padding: 1em 2em;
+        border-radius: 20px;
+        border: 1px solid $primary-frontoffice-1;
+        box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
+    }
+    input,select{
+        font-size: 1em;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1em;
+        color: $gray-1;
+    }
+    .info{
+        margin : 0.5em 0;
+    }
+
+    .profile-container {
+        text-align: center;
+        label{
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-block;
+        background-color: #ddd;
+        margin-bottom: 10px;
+    }
+    
+    .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none; /* Initially hidden */
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: normal;
+        font-family: "poppins-regular", sans-serif;
+    }
+
+    &>h3 {
+        padding: .5em .8em;
+        border: 1px solid $black;
+        border-radius: 15px;
+
+        margin: .5em 0;
+
+        font-size: 1em;
+
+        &>span {
+            font-weight: normal;
+            font-family: "poppins-regular", sans-serif;
+            color: $gray-1;
+        }
+    }
+
+    #valide {
+        margin-top: 1em;
+        margin-left: auto;
+        display: block;
+    }
+}
