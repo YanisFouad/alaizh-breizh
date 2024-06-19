@@ -107,12 +107,12 @@ h5 {
 
     #page {
         display: flex;
-        margin-top: 1em;
+        margin: 1em 0;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
 
-        @media screen and (max-width:1300px) {
+        @media screen and (max-width:1327px) {
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -123,10 +123,10 @@ h5 {
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            width: 65%;
+            width: 70%;
             padding-right: 1em;
 
-            @media screen and (max-width:1300px) {
+            @media screen and (max-width:1327px) {
                 width: 100%;
             }
         }
@@ -154,7 +154,7 @@ h5 {
             justify-content: center;
             margin-bottom: 20px;
 
-            @media screen and (max-width:1300px) {
+            @media screen and (max-width:750px) {
                 flex-direction: column;
 
                 #caracteristiques-logement {
@@ -172,9 +172,20 @@ h5 {
 
             &>div {
                 width: 50%;
+                height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+
+            @media screen and (max-width:750px) {
+                &>div {
+                    width: 100%;
+                }
+            }
+
+            #titreInfos-container {
+                display: block;
             }
         }
 
@@ -220,10 +231,8 @@ h5 {
                 background-color: $primary-backoffice-4;
                 border-radius: 14.5px;
                 padding: 5px 10px 5px 10px;
-                margin: 0.2em 0;
-                text-overflow: ellipsis;
+                margin: 0.2em 0 0.2em 0.3em;
                 text-wrap: nowrap;
-                overflow: hidden;
             }
         }
     }
@@ -231,7 +240,7 @@ h5 {
     #description {
         h3 {
             color: $gray-2;
-            font-size: 0.8em;
+            font-size: 1.2em;
             margin: 1.7em 0 0.5em 0;
         }
 
@@ -255,7 +264,7 @@ h5 {
         display: flex;
         justify-content: center;
 
-        @media screen and (max-width: 1300px) {
+        @media screen and (max-width: 1327px) {
             width: 100%;
 
             >div {
@@ -276,6 +285,10 @@ h5 {
 
             >div:first-child {
                 border-right: solid 2px $gray-2;
+
+                @media screen and (max-width: 670px) {
+                    border: none;
+                }
             }
 
             div+div {
@@ -291,14 +304,10 @@ h5 {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 50%;
+                width: 40%;
 
                 .list-amenagement {
                     width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    align-items: center;
 
                     li {
                         margin-bottom: 8px;
@@ -311,12 +320,13 @@ h5 {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 50%;
+                width: 60%;
                 padding-right: 15px;
 
                 .list-activite {
                     width: 100%;
-                    display: flex;
+                    display: grid;
+                    grid-template-columns: 1fr 0.8fr;
                     justify-content: space-between;
                     align-items: center;
                     flex-wrap: wrap;
@@ -327,7 +337,7 @@ h5 {
                 }
             }
 
-            @media screen and (max-width:630px) {
+            @media screen and (max-width:670px) {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -365,13 +375,14 @@ h5 {
 
     #blockDevisSticky {
         position: sticky;
-        top: 10px;
+        top: 6em;
         margin: 0 2em;
         width: 25%;
         height: fit-content;
 
-        @media screen and (max-width: 1300px) {
-            width: 100%;
+        @media screen and (max-width: 1327px) {
+            width: 70%;
+            margin: 1em 0;
         }
 
         #profilPropriétaire {
@@ -512,7 +523,7 @@ h5 {
             }
 
             #nbNuits {
-                font-size: 0.9em;
+                font-size: 1em;
 
                 div {
                     display: flex;
@@ -563,6 +574,18 @@ h5 {
 /*****************/
 /* MEDIA QUERIES */
 /*****************/
+@media screen and (max-width: 1000px) {
+    #pageDetaillee {
+        #box-Activites-Amenagement {
+            ul {
+                display: block !important;
+                grid-template-columns: 1fr !important;
+                margin: 1em !important;
+            }
+
+        }
+    }
+}
 
 @media screen and (max-width: 431px) {
 
@@ -582,6 +605,7 @@ h5 {
 
         #page {
             flex-wrap: wrap;
+            margin-left: 0.8em;
 
             section {
                 width: 100%;
@@ -594,9 +618,6 @@ h5 {
             justify-content: center;
 
             div:first-child {
-                display: flex;
-                justify-content: center;
-
                 #imgLogement {
                     width: 90%;
                 }
@@ -607,10 +628,6 @@ h5 {
             }
 
             #caracteristiques-logement {
-                .bulle-Rose {
-                    max-width: 5em;
-                }
-
                 li:nth-child(odd) {
                     margin-right: 1em;
                 }
@@ -624,7 +641,7 @@ h5 {
         #box-Activites-Amenagement {
             >div {
                 flex-wrap: wrap;
-                margin: 1em 1em;
+                margin-left: 1em;
 
                 div {
                     border: none !important;
@@ -637,6 +654,7 @@ h5 {
             }
 
             ul {
+                display: block !important;
                 grid-template-columns: 1fr !important;
                 margin: 1em !important;
             }
@@ -644,8 +662,7 @@ h5 {
 
 
         #blockDevisSticky {
-            margin: 0 1em !important;
-            width: 100% !important;
+            width: 90%;
 
             #box-reservation {
                 margin-bottom: 2em;
@@ -658,12 +675,8 @@ h5 {
                 text-overflow: ellipsis;
                 text-wrap: nowrap;
                 overflow: hidden;
-                max-width: 12em;
+                max-width: 8em;
             }
         }
     }
-}
-
-@media screen and (max-width: 1400px) {
-    #pageDetaillee {}
 }

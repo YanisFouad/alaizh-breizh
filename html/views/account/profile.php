@@ -34,7 +34,7 @@
         <h3>Prénom: <span><?php echo $profile->get("prenom") ?? "-" ?></span></h3>
         <h3>Adresse mail: <span><?php echo $profile->get("mail") ?? "-" ?></span></h3>
         <h3>Civilité: <span><?php echo $profile->get("civilite") ?? "-" ?></span></h3>
-        <h3>Date de naissance: <span><?=$profile->get("date_naissance") ?? "-" ?></span></h3>
+        <h3>Date de naissance: <span><?=date('d/m/Y', strtotime($profile->get("date_naissance"))) ?? "-" ?></span></h3>
         <h3>Téléphone: <span><?php echo $profile->get("telephone") ?? "-" ?></span></h3>
 
         <?php if($profile->get("accountType") === AccountType::OWNER->name && $isOwnProfile) { ?>

@@ -30,41 +30,41 @@
                 <div>
                     <div>
                         <h4>Prix nuit:</h4>
-                        <h4><?php echo $accomodation->get("prix_ht_logement")?>€</h4>
+                        <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€</h4>
                     </div>
     
                     <div>
                         <div>
                             <h4>Prix HT:</h4>
-                            <h4><?php echo $accomodation->get("prix_ht_logement")?>€ x 4 nuits</h4>
+                            <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€ x 4 nuits</h4>
                         </div>
                         <h4><?php 
                             $prix = $accomodation->get("prix_ht_logement")*4;
-                            echo $prix;
+                            echo price_format($prix);
                         ?>€</h4>
                     </div>
     
                     <div>
                         <div>
                             <h4>TVA:</h4>
-                            <h4><?php echo $prix?>€ x 10%</h4>
+                            <h4><?php echo price_format($prix)?>€ x 10%</h4>
                         </div>
                         <h4><?php 
                             $tva = $prix*0.1;
                             $prix = $prix + $tva;
-                            echo $tva;
+                            echo price_format($tva);
                         ?>€</h4>
                     </div>
     
                     <div>
                         <div>
                             <h4>Frais de service:</h4>
-                            <h4><?php echo $prix?>€ x 1%</h4>
+                            <h4><?php echo price_format($prix)?>€ x 1%</h4>
                         </div>
                         <h4><?php 
                             $fraisService = $prix*0.01;
                             $prix = $prix + $fraisService;
-                            echo $fraisService;
+                            echo price_format($fraisService);
                         ?>€</h4>
                     </div>
                     
@@ -81,7 +81,7 @@
                     <div>
                         <h4>Prix TTC:</h4>
                         <h4><?php 
-                            echo $prix;
+                            echo price_format($prix);
                         ?>€</h4>
                     </div>
                 </div>

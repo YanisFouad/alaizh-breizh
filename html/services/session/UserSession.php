@@ -14,13 +14,18 @@ class UserSession extends BaseSession {
     }
 
     public static function isConnected() {
-        // connected as tenant (locataire)
-        return self::isDefined() && self::get()->get("accountType") === AccountType::TENANT->name;
+        // connected to court
+        return self::isDefined();
+    }
+
+    public static function isConnectedAsTenant() {
+        // connected as tenant (locataire en FR)
+        return self::isConnected() && self::get()->get("accountType") === AccountType::TENANT->name;
     }
 
     public static function isConnectedAsOwner() {
         // connected as owner
-        return self::isDefined() && self::get()->get("accountType") === AccountType::OWNER->name;
+        return self::isConnected() && self::get()->get("accountType") === AccountType::OWNER->name;
     }
 
 }

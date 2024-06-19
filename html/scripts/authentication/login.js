@@ -18,6 +18,18 @@ function openLoginModal() {
     authenticationElement.style.display = "block";
 }
 
+// just check parameters
+window.addEventListener("DOMContentLoaded", () => {
+    const hash = location.hash;
+    console.log(hash)
+    if(hash && hash === "#connection") {
+        openLoginModal();
+        const url = new URL(location);
+        url.hash = "";
+        history.pushState({}, "", url);
+    }
+})
+
 async function handleLogin(event) {
     event.preventDefault();
 
