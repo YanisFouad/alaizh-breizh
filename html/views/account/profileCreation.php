@@ -24,19 +24,19 @@
                 <h2>Informations personnelles</h2>
                 <div class = "info">
                     <h3><label for="id_compte">Pseudo : </label></h3>
-                    <input type="text" id="id_compte" name="id_compte">
+                    <input type="text" id="id_compte" name="id_compte" maxlength="20" required>
                 </div>
                 <div class = "info">
                     <h3><label for="nom">Nom : </label></h3>
-                    <input type="text" id="nom" name="nom">
+                    <input type="text" id="nom" name="nom" maxlength="50" required>
                 </div>
                 <div class = "info">
                     <h3><label for="prenom">Prénom :</label></h3>
-                    <input type="text" id="prenom" name="prenom">
+                    <input type="text" id="prenom" name="prenom" maxlength="50" required>
                 </div>
                 <div class = "info">
                     <h3><label for="mail">Adresse mail : </label></h3>
-                    <input type="email" id="mail" name="mail">
+                    <input type="email" id="mail" name="mail" maxlength="100" required>
                 </div>
                 <div class = "info">
                     <h3><label for="civilite">Civilité : </label></h3>
@@ -51,7 +51,7 @@
                 </div>
                 <div class = "info">
                     <h3><label for="telephone">Téléphone : </label></h3>
-                    <input type="tel" id="telephone" name="telephone">
+                    <input type="tel" id="telephone" name="telephone" required>
                 </div>
             </section>
             <section>
@@ -59,7 +59,7 @@
 
                 <div class = "info">
                     <h3><label for="rue_adresse">Rue :</label></h3>
-                    <input type="text" id="rue_adresse" name="rue_adresse">
+                    <input type="text" id="rue_adresse" name="rue_adresse" required>
                 </div>
                 <div class = "info">
                     <h3><label for="numero">Numéro de rue : </label></h3>
@@ -75,26 +75,26 @@
                 </div>
                 <div class = "info">
                     <h3><label for="ville_adresse">Ville : </label></h3>
-                    <input type="text" id="ville_adresse" name="ville_adresse">
+                    <input type="text" id="ville_adresse" name="ville_adresse" required>
                 </div>
                 <div class = "info">
                     <h3><label for="code_postal_adresse">Code postal : </label></h3>
-                    <input type="text" id="code_postal_adresse" name="code_postal_adresse">
+                    <input type="text" id="code_postal_adresse" name="code_postal_adresse" required>
                 </div>
                 <div class = "info">
                     <h3><label for="pays_adresse">Pays : </label></h3>
-                    <input type="text" id="pays_adresse" name="pays_adresse">
+                    <input type="text" id="pays_adresse" name="pays_adresse" required>
                 </div>
             </section>
             <section>
                 <h2>Mot de passe</h2>
                 <div class = "info">
                     <h3><label for="mot_de_passe">Mot de passe : </label></h3>
-                    <input type="password" id="mot_de_passe" name="mot_de_passe">
+                    <input type="password" id="mot_de_passe" name="mot_de_passe" required>
                 </div>
                 <div class = "info">
                     <h3><label for="mot_de_passe">Confirmer le mot de passe : </label></h3>
-                    <input type="password" id="mot_de_passe" name="mot_de_passe">
+                    <input type="password" id="mot_de_passe" name="mot_de_passe" required>
                 </div>
             </section>
             <button type="submit" class="primary frontoffice" id="valide">

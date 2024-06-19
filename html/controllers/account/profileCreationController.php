@@ -10,11 +10,7 @@
         
         foreach ($_POST as $field => $value) {
             if ($field == "date_naissance"){
-                $date = date_create($value);
-                var_dump("date create = ",$date);
-                $value = date('Y/m/d', strtotime($value));
-                var_dump("strtotime = ",$value);
-                die;
+                $value = date('Y-m-d', strtotime($value));
                 $account->set($field, $value);
             }
             if ($field == "mot_de_passe"){

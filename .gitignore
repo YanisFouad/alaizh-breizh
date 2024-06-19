@@ -21,4 +21,4 @@ html/assets/scss/**/*.css.map
 # ignore prepros config
 prepros.config
 
-common/scss-entrypoint.sh
+./common/scss-entrypoint.sh
