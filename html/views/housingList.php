@@ -218,14 +218,33 @@
             </button>
 
             <!-- Bouton contenant les numéros de pages -->
-            <?php for($i = $currentPage-1; $i < $currentPage+2; $i++) { 
-               if($i>0 && $i<=$totalPages){ 
-                  ?>
-                  <button class="<?=$i==$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i?>">
-                     <span><?php echo $i?></span>
-                  </button>
-               <?php }
-            } ?>
+            <?php
+ 
+            //gestion du min pour bouton pagination 
+            if($currentPage == $totalPages){
+                $min = $currentPage-2;
+            }else{
+                $min = $currentPage-1;
+            }
+            if($min<1){
+                $min = 1;
+            }
+
+            //gestion du max pour bouton pagination 
+            if($currentPage == 1){
+                $max = 3;
+            }else{
+                $max = $currentPage+1;
+            }
+            if($max > $totalPages){
+                $max = $totalPages;
+            }
+
+            for($i = $min; $i <= $max; $i++) { ?>
+               <button class="<?=$i==$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i?>">
+                  <span><?php echo $i?></span>
+               </button>
+            <?php } ?>
 
             <!-- Dernier bouton chevron -->
             <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">

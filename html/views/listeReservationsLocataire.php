@@ -1,4 +1,11 @@
 <?php
+    
+    //notification si l'utilisateur'est pas connecté
+    if(!UserSession::isConnected()){
+        header("Location: /?notification-message=Vous devez être connecté pour visualiser cette page&notification-type=ERROR");
+        exit;
+    }
+
     include_once(__DIR__."/layout/header.php");
     require_once(__DIR__."/../models/BookingModel.php");
 
@@ -6,10 +13,7 @@
     // Partie session de l'utilisateur
     // ***********************
 
-    if(!UserSession::isConnected()){
-        header("Location: /");
-        exit;
-    }
+    
 
     $profile = UserSession::get();
     $id_locataire = $profile->get("id_compte");
@@ -115,7 +119,7 @@
                     <!-- Photo maison + nom maison -->
                     <div>
                         <div id='img-container'>
-                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
+                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Photo logement">
                         </div>
                         <h4><?php echo $reservation->get("titre_logement"); ?></h4>
                     </div>
@@ -126,6 +130,10 @@
                         <div>
                             <h5 class='titreDetail'>Date de réservation</h5>
                             <h5><?php echo $reservation->get("date_reservation"); ?></h5>
+                        </div>
+                        <div>
+                            <h5 class='titreDetail'>Date d'arrivée</h5>
+                            <h5><?php echo $reservation->get("date_arrivee"); ?></h5>
                         </div>
                         <div>
                             <h5 class='titreDetail'>Nombre de nuits</h5>
@@ -155,14 +163,32 @@
 
         <!-- Bouton contenant les numéros de pages -->
         <?php 
-        for($i = $page-1; $i < $page+2; $i++) { 
-        if($i>0 && $i <= $nb_page){ 
-                ?>
-                <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
-                    <span><?php echo $i?></span>
-                </button>
-        <?php }
-        } ?>
+
+        //gestion du min pour bouton pagination 
+        if($page == $nb_page){
+            $min = $page-2;
+        }else{
+            $min = $page-1;
+        }
+        if($min<1){
+            $min = 1;
+        }
+
+        //gestion du max pour bouton pagination 
+        if($page == 1){
+            $max = 3;
+        }else{
+            $max = $page+1;
+        }
+        if($max > $nb_page){
+            $max = $nb_page;
+        }
+
+        for($i = $min; $i <= $max; $i++) { ?>
+            <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
+                <span><?php echo $i?></span>
+            </button>
+        <?php } ?>
 
         <!-- Dernier bouton chevron -->
         <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">

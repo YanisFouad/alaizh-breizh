@@ -4,7 +4,7 @@
 #liste-reservation-proprietaire-main {
 
     button {
-        padding: .8em 1em !important;
+        padding: .8em 1em ;//!important
     }
     
     margin:1em 4em;
@@ -231,11 +231,16 @@
                 align-items: center;
                 justify-content: space-between;
                 gap:1.2em;
+
                 div{
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     //white-space: nowrap;
+                }
+
+                button{
+                    padding: 0.55em 0.85em;
                 }
             }
 
@@ -332,9 +337,9 @@
             height: 3.3em;
             border-color: $primary-backoffice-1;
             color: $primary-backoffice-1;
-            &:not(:disabled):hover,.bouton-select{
+            &:not(:disabled):hover,.bouton-select,&:focus{
                 background-color:$primary-backoffice-1;
-                color: white;
+                color: white !important;
             }
 
             .mdi{
