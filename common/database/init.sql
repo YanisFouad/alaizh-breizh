@@ -565,8 +565,8 @@ CREATE OR REPLACE FUNCTION update_logement() RETURNS TRIGGER AS $BODY$
                 UPDATE _logement_amenagement SET nom_amenagement = COALESCE(NEW.amenagement_5, OLD.amenagement_5) WHERE id_amenagement = NEW.id_amenagement_5;
             END IF;
 
-            IF NEW.photo_logement IS NOT NULL THEN
-                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.type_logement, OLD.type_logement)) WHERE id_logement = new_id_logement;
+            IF NEW.photo_logement IS NOT NULL AND OLD.photo_logement IS NULL THEN
+                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.type_logement, OLD.type_logement)) WHERE id_logement = OLD.id_logement;
             END IF;
         END IF;
 	RETURN NEW;
