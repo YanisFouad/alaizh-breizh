@@ -7,6 +7,7 @@ class Model {
     private $tableName;
     private $schema = array();
     private $data = array();
+    private $modifiedData = array();
 
     // is it a new row ?
     private $isNew;
@@ -24,6 +25,7 @@ class Model {
      */
     public function set($key, $value) {
         $this->data[$key] = $value;
+        $this->modifiedData[$key] = $value;
     }
 
     /**
@@ -91,9 +93,12 @@ class Model {
      * @return $request the request used to save the delegate or throws an error
      */
     public function save($seqName = null) {
-        $keys = array_keys($this->data);
-        $values = array_values($this->data);
+        // if it's not a new row just update modified data
+        $data = $this->isNew ? $this->data : $this->modifiedData;
+        $keys = array_keys($data);
+        $values = array_values($data);
         $primaryField = $this->getPrimaryField();
+
 
         // if it's a new row then insert it
         if($primaryField === null || $this->isNew) {
@@ -115,11 +120,13 @@ class Model {
             $request = Database::getConnection()->prepare("UPDATE ".$this->tableName." SET " . $expr . " WHERE ".$primaryField." = ?");
         }
 
-        foreach($values as $k => &$v)
+        foreach($values as $k => $v) {
             $request->bindParam($k+1, $v);
+        }
 
         if(!$this->isNew && array_key_exists($primaryField, $this->data))
-            $request->bindParam(sizeof($values), $this->data[$primaryField]);
+            $request->bindParam(sizeof($values)+1, $this->data[$primaryField]);
+        
         
         $request->execute();
         if(!isset($seqName))

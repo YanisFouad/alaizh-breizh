@@ -1,0 +1,169 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+h1 {
+  font-size: $size-h1;
+}
+h2 {
+  font-size: $size-h2;
+}
+h3 {
+  font-size: $size-h3;
+}
+h4 {
+  font-size: $size-h4;
+}
+
+p,
+a {
+  color: $black;
+  font-size: $size-paragraph;
+}
+
+#facture-body {
+  header {
+    display: flex;
+    justify-content: space-between;
+    .enterprise-container {
+      width: 45%;
+
+      .logo-container {
+        margin-bottom: 20px;
+        img {
+          width: 300px;
+        }
+      }
+
+      .enterprise-information {
+        .name {
+          font-size: 1.2em;
+          font-weight: bold;
+          margin-bottom: 15px;
+        }
+        .adresse {
+          margin-bottom: 15px;
+
+          p {
+            margin: 0;
+          }
+        }
+
+        .contact {
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    .contact-container {
+      width: 30%;
+      text-align: right;
+
+      .title {
+        width: 100%;
+        text-align: center;
+        border: 1px solid $gray-2;
+        color: $gray-2;
+        margin-bottom: 20px;
+      }
+
+      .facture-number {
+        margin-bottom: 15px;
+      }
+      .facture-information {
+        margin-bottom: 15px;
+        p {
+          margin: 0;
+        }
+      }
+
+      .client-information-container {
+        .client-information {
+          width: 100%;
+          margin-bottom: 2px;
+          background-color: $gray-4;
+          padding: 5px;
+          text-align: left;
+
+          p {
+            margin: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .facture-price-section {
+    width: 100%;
+    margin: 75px 0;
+
+    .facture-price-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      p {
+        margin: 10px;
+      }
+
+      thead {
+        background-color: $gray-4;
+        color: $gray-2;
+
+        th {
+          padding: 5px;
+          border: 1px solid $gray-2;
+        }
+      }
+
+      td {
+        padding: 5px;
+        border: 1px solid $gray-2;
+      }
+
+      .table-row-description {
+        width: 70%;
+      }
+
+      .table-row-price {
+        width: 30%;
+      }
+    }
+
+    .facture-total-price {
+      width: 30%;
+      margin-top: 20px;
+      text-align: left;
+      border-collapse: collapse;
+
+      p {
+        margin: 10px;
+      }
+
+      th {
+        padding: 5px;
+        background-color: $gray-4;
+        border: 1px solid $gray-2;
+      }
+
+      td {
+        padding: 5px;
+        border: 1px solid $gray-2;
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: $gray-4;
+    color: $gray-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
