@@ -98,15 +98,15 @@ CREATE TABLE _icalator (
             REFERENCES _token(cle_api)
 );
 
-CREATE TABLE _icalator_logement (
-    cle_api VARCHAR(100) PRIMARY KEY,
-    id_logement INTEGER NOT NULL,
+-- CREATE TABLE _icalator_logement (
+--     cle_api VARCHAR(100) PRIMARY KEY,
+--     id_logement INTEGER NOT NULL,
 
-    CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY(cle_api) 
-            REFERENCES _icalator(cle_api),
-    CONSTRAINT icalator_logement_fk_logement FOREIGN KEY(id_logement)
-            REFERENCES _logement(id_logement)
-);
+--     CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY(cle_api) 
+--             REFERENCES _icalator(cle_api),
+--     CONSTRAINT icalator_logement_fk_logement FOREIGN KEY(id_logement)
+--             REFERENCES _logement(id_logement)
+-- );
 
 /* TRIGGER POUR CALCULER PRIX TTC */
 
@@ -203,7 +203,7 @@ CREATE OR REPLACE VIEW proprietaire AS SELECT id_compte,nom,prenom,mot_de_passe,
     FROM _compte
     INNER JOIN _proprietaire ON id_compte = id_proprietaire
     INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse
-    INNER JOIN _token ON _proprietaire.cle_api = _token.cle_api; 
+    LEFT JOIN _token ON _proprietaire.cle_api = _token.cle_api; 
 
 CREATE OR REPLACE VIEW  locataire AS SELECT
     id_compte,nom,prenom,photo_profil,mot_de_passe,telephone,mail,date_naissance,civilite,_compte.id_adresse,numero,complement_numero,rue_adresse,complement_adresse,ville_adresse,code_postal_adresse,pays_adresse FROM _compte 
@@ -302,7 +302,7 @@ BEGIN
   ELSE
     UPDATE _compte 
     SET 
-      photo_profil = COALESCE(NEW.photo_profil, OLD.photo_profil),nom = COALESCE(NEW.nom, OLD.nom),prenom = COALESCE(NEW.prenom, OLD.prenom),mot_de_passe = COALESCE(NEW.mot_de_passe, OLD.mot_de_passe),telephone = COALESCE(NEW.telephone, OLD.telephone),mail = COALESCE(NEW.mail, OLD.mail),date_naissance = COALESCE(TO_DATE(NEW.date_naissance), OLD.date_naissance),civilite = COALESCE(NEW.civilite, OLD.civilite)
+      photo_profil = COALESCE(NEW.photo_profil, OLD.photo_profil),nom = COALESCE(NEW.nom, OLD.nom),prenom = COALESCE(NEW.prenom, OLD.prenom),mot_de_passe = COALESCE(NEW.mot_de_passe, OLD.mot_de_passe),telephone = COALESCE(NEW.telephone, OLD.telephone),mail = COALESCE(NEW.mail, OLD.mail),date_naissance = COALESCE(NEW.date_naissance, OLD.date_naissance),civilite = COALESCE(NEW.civilite, OLD.civilite)
     WHERE id_compte = OLD.id_compte;
     
     SELECT id_adresse INTO compte_id_adresse FROM _compte WHERE id_compte = OLD.id_compte; 
@@ -336,7 +336,7 @@ create or replace function create_locataire() RETURNS TRIGGER AS $BODY$
                     RETURNING id_adresse INTO new_id_adresse;
                     
     INSERT INTO _compte(id_compte,nom,prenom,id_adresse,photo_profil,mot_de_passe,telephone,mail,date_naissance,civilite) 
-                VALUES (new.id_compte,new.nom,new.prenom,new_id_adresse,new.photo_profil,new.mot_de_passe,new.telephone,new.mail,TO_DATE(new.date_naissance),new.civilite);
+                VALUES (new.id_compte,new.nom,new.prenom,new_id_adresse,new.photo_profil,new.mot_de_passe,new.telephone,new.mail,new.date_naissance,new.civilite);
 	  return new;
     INSERT INTO _locataire(id_locataire) 
                 VALUES (new.id_compte);
@@ -359,7 +359,7 @@ BEGIN
   ELSE
     UPDATE _compte 
     SET 
-      photo_profil = COALESCE(new.photo_profil, old.photo_profil),nom = COALESCE(new.nom, old.nom),prenom = COALESCE(new.prenom, old.prenom),mot_de_passe = COALESCE(new.mot_de_passe, old.mot_de_passe),telephone = COALESCE(new.telephone, old.telephone),mail = COALESCE(new.mail, old.mail),date_naissance = COALESCE(TO_DATE(new.date_naissance), old.date_naissance),civilite = COALESCE(new.civilite, old.civilite)
+      photo_profil = COALESCE(new.photo_profil, old.photo_profil),nom = COALESCE(new.nom, old.nom),prenom = COALESCE(new.prenom, old.prenom),mot_de_passe = COALESCE(new.mot_de_passe, old.mot_de_passe),telephone = COALESCE(new.telephone, old.telephone),mail = COALESCE(new.mail, old.mail),date_naissance = COALESCE(new.date_naissance, old.date_naissance),civilite = COALESCE(new.civilite, old.civilite)
     WHERE id_compte = OLD.id_compte;
     
     SELECT id_adresse INTO compte_id_adresse FROM _compte WHERE id_compte = OLD.id_compte; 
@@ -397,10 +397,10 @@ create or replace function create_proprietaire() RETURNS TRIGGER AS $BODY$
                 VALUES (NEW.numero, NEW.complement_numero,new.rue_adresse,new.complement_adresse,new.ville_adresse,new.code_postal_adresse,new.pays_adresse)
                     RETURNING id_adresse INTO new_id_adresse;
 	INSERT INTO _compte(id_compte,photo_profil,nom,prenom,id_adresse,mot_de_passe,telephone,mail,date_naissance,civilite) 
-                VALUES (new.id_compte,new.photo_profil,new.nom,new.prenom,new_id_adresse,new.mot_de_passe,new.telephone,new.mail,TO_DATE(new.date_naissance),new.civilite)
+                VALUES (new.id_compte,new.photo_profil,new.nom,new.prenom,new_id_adresse,new.mot_de_passe,new.telephone,new.mail,new.date_naissance,new.civilite)
                     RETURNING id_compte INTO new_id;
     INSERT INTO _proprietaire(id_proprietaire,piece_identite,note_proprietaire,num_carte_identite,rib_proprietaire,date_identite)
-                VALUES (new_id,new.piece_identite,new.note_proprietaire,new.num_carte_identite,new.rib_proprietaire,TO_DATE(new.date_identite));
+                VALUES (new_id,new.piece_identite,new.note_proprietaire,new.num_carte_identite,new.rib_proprietaire,new.date_identite);
 	  return new;
 	END;
 $BODY$
