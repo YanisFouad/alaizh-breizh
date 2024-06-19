@@ -33,6 +33,10 @@ $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/new
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
 $router->add("/backoffice/logement", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
 
+// facture pdf
+$router->add("/facture", "controllers/facturePdf.php");
+$router->add("/backoffice/facture", "controllers/facturePdf.php");
+
 $router->set404View("views/errors/404.php");
 
 $router->start();
