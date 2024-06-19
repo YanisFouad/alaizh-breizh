@@ -4,7 +4,7 @@
 #liste-reservation-proprietaire-main {
 
     button {
-        padding: .8em 1em !important;
+        padding: .8em 1em; //!important
     }
 
     margin:1em 4em;
@@ -249,6 +249,10 @@
                 align-items: flex-start;
                 //white-space: nowrap;
             }
+
+            button {
+                padding: 0.55em 0.85em;
+            }
         }
 
         @media screen and (max-width : 431px) {
@@ -348,9 +352,10 @@
         color: $primary-backoffice-1;
 
         &:not(:disabled):hover,
-        .bouton-select {
+        .bouton-select,
+        &:focus {
             background-color: $primary-backoffice-1;
-            color: white;
+            color: white !important;
         }
 
         .mdi {

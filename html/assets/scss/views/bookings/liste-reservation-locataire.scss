@@ -209,6 +209,7 @@
 
                 h4 {
                     font-family: "poppins-light";
+                    font-size: 1em;
                 }
 
                 .titreDetail {
@@ -239,13 +240,17 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                width: 45%;
+                gap: 1.2em;
 
                 div {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     white-space: nowrap;
+                }
+
+                button {
+                    padding: 0.55em 0.85em;
                 }
 
                 @media screen and (max-width : 1110px) {

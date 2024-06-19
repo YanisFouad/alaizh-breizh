@@ -1,16 +1,18 @@
 <?php
    
+   //notification si l'utilisateur'est pas connecté
+   if(!UserSession::isConnected()){
+    header("Location: /backoffice?notification-message=Vous devez être connecté pour visualiser cette page&notification-type=ERROR");
+    exit;
+}
+   
+   // TODO => hover sur les boutons de logement et mettre une description lors du survol
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
     // ***********************
     // Partie session de l'utilisateur
     // ***********************
-
-    if(!UserSession::isConnected()){
-        require_once("views/backoffice/authentication/login.php");
-        exit;
-    }
 
     $profile = UserSession::get();
     $id_proprietaire = $profile->get("id_compte");
@@ -184,14 +186,32 @@
             
             <!-- Bouton contenant les numéros de pages -->
             <?php 
-            for($i = $page-1; $i < $page+2; $i++) { 
-               if($i>0 && $i <= $nb_page){ 
-                    ?>
-                    <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
-                        <span><?php echo $i?></span>
-                    </button>
-               <?php }
-            } ?>
+
+            //gestion du min pour bouton pagination 
+            if($page == $nb_page){
+                $min = $page-2;
+            }else{
+                $min = $page-1;
+            }
+            if($min<1){
+                $min = 1;
+            }
+
+            //gestion du max pour bouton pagination 
+            if($page == 1){
+                $max = 3;
+            }else{
+                $max = $page+1;
+            }
+            if($max > $nb_page){
+                $max = $nb_page;
+            }
+
+            for($i = $min; $i <= $max; $i++) { ?>
+                <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
+                    <span><?php echo $i?></span>
+                </button>
+            <?php } ?>
 
             <!-- Dernier bouton chevron -->
             <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">
