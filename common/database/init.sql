@@ -591,7 +591,7 @@ FROM '/docker-entrypoint-initdb.d/locataire.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY _proprietaire(id_proprietaire, piece_identite, note_proprietaire, num_carte_identite, date_identite, rib_proprietaire)
+COPY _proprietaire(id_proprietaire, piece_identite, note_proprietaire, num_carte_identite, date_identite, rib_proprietaire, cle_api)
 FROM '/docker-entrypoint-initdb.d/proprio.csv'
 DELIMITER ','
 CSV HEADER;
@@ -633,5 +633,10 @@ CSV HEADER;
 
 COPY _commune(nom_commune, num_departement, code_postal)
 FROM '/docker-entrypoint-initdb.d/commune.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY _token(cle_api)
+FROM '/docker-entrypoint-initdb.d/token.csv'
 DELIMITER ','
 CSV HEADER;
