@@ -372,6 +372,7 @@ header#frontoffice #sign-in-up-container > a:hover {
 header#frontoffice #sign-in-up-container > a > img {
   width: 2.5em;
   height: 2.5em;
+  object-fit: cover;
   border-radius: 100px;
 }
 header#frontoffice #sign-in-up-container, header#frontoffice .sign-in-up-buttons {
@@ -394,44 +395,44 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 @media (max-width: 431px) {
-  header {
+  header#frontoffice {
     padding: 1em 1em 0 1em;
   }
-  header .mdi {
+  header#frontoffice .mdi {
     font-size: 2.5em;
   }
-  header .fullsize-logo {
+  header#frontoffice .fullsize-logo {
     display: none !important;
   }
-  header .smallsize-logo {
+  header#frontoffice .smallsize-logo {
     display: block !important;
   }
-  header #top-header ul {
+  header#frontoffice #top-header ul {
     display: none !important;
   }
-  header .sign-in-up-buttons {
+  header#frontoffice .sign-in-up-buttons {
     display: none !important;
   }
-  header #sign-in-up-container {
+  header#frontoffice #sign-in-up-container {
     display: none !important;
   }
-  header #open-burger-menu {
+  header#frontoffice #open-burger-menu {
     width: 100%;
     height: 100vh;
   }
-  header #open-burger-menu ul {
+  header#frontoffice #open-burger-menu ul {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  header #open-burger-menu ul a {
+  header#frontoffice #open-burger-menu ul a {
     color: black;
     text-decoration: none;
   }
-  header #open-burger-menu ul a span {
+  header#frontoffice #open-burger-menu ul a span {
     font-size: 2em;
   }
-  header #open-burger-menu ul a li {
+  header#frontoffice #open-burger-menu ul a li {
     list-style: none;
     display: flex;
     align-items: center;
@@ -440,10 +441,10 @@ header#frontoffice #header-bottom-stroke {
     border-bottom: solid 2px #eaeaea;
     width: 100%;
   }
-  header .displayed {
+  header#frontoffice .displayed {
     display: block;
   }
-  header .hidden {
+  header#frontoffice .hidden {
     display: none;
   }
 }
@@ -594,47 +595,102 @@ footer#foot-global nav a {
   }
 }
 .profile-area {
-  width: fit-content;
-  margin: 1em auto;
-  border-radius: 15px;
+  margin: 0 2em;
+}
+.profile-area > header {
+  margin: 1em 0;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.profile-area > header > h1 {
+  font-size: 1.8em;
+}
+.profile-area > header > a {
+  text-decoration: none;
+}
+.profile-area * {
+  font-weight: normal;
 }
 .profile-area > h1 {
-  margin-bottom: 1em;
-  color: #424645;
+  margin: 1em 0;
 }
-.profile-area > img {
-  margin: auto;
-  display: block;
+.profile-area > section {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+.profile-area > section > section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.profile-area article {
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.21);
+  padding: 1em 2em;
+  border-radius: 20px;
+}
+.profile-area section.right {
+  width: 35em;
+  position: relative;
+}
+.profile-area section.right > article {
+  width: 100%;
+}
+.profile-area section.right > article > h2 {
+  margin-bottom: 0.5em;
+}
+.profile-area section.right > article > div {
+  display: grid;
+  row-gap: 1em;
+  column-gap: 3em;
+  grid-template-columns: repeat(2, 1fr);
+}
+.profile-area section.right > article > div > div > h5 {
+  color: #676767;
+}
+.profile-area section.left > article.profile > img {
   width: 10em;
   height: 10em;
   object-fit: cover;
   border-radius: 100px;
-  margin-bottom: 1em;
-}
-.profile-area > h2 {
-  text-align: center;
-  margin: 1em;
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-}
-.profile-area > h3 {
-  padding: 0.5em 0.8em;
-  border: 1px solid #222524;
-  border-radius: 15px;
-  margin: 0.5em 0;
-  font-size: 1em;
-}
-.profile-area > h3 > span {
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-  color: #424645;
-}
-.profile-area > .edit {
-  margin-top: 1em;
-  margin-left: auto;
   display: block;
+  margin: auto;
+}
+.profile-area section.left > article.profile > h3 {
+  color: #1b5734;
+  margin-top: 0.5em;
+  text-align: center;
+  font-weight: normal;
+}
+.profile-area section.left > article.general > h2 {
+  margin-bottom: 0.5em;
+}
+.profile-area section.left > article.general > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
+@media screen and (max-width: 951px) {
+  .profile-area section.right > article > div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (max-width: 826px) {
+  .profile-area > section {
+    flex-wrap: wrap;
+  }
+  .profile-area > section > section.left {
+    width: 35em;
+  }
+}
+@media screen and (max-width: 691px) {
+  .profile-area > header {
+    flex-wrap: wrap;
+  }
+}
 #finalize-booking {
   width: 60em;
   margin: auto;

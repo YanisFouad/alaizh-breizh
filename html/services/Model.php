@@ -33,7 +33,7 @@ class Model {
      * @return boolean if the key exists or not
      */
     public function has($key) {
-        return array_key_exists($key, $this->data);
+        return array_key_exists($key, $this->data) && $this->data[$key] != NULL;
     }
 
     /**
