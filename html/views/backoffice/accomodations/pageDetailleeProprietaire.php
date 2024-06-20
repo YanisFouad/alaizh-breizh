@@ -3,6 +3,7 @@
     require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
     include_once(__DIR__."/../layout/header.php");
+    
     $logement_id = $_GET['id_logement'] ?? null;
     if(!isset($logement_id))
         exit(header("Location: /"));
@@ -51,13 +52,21 @@
 <body>
 
     <main id ="mainProprietaireLogement">
-            
-        <div id="cheminPage">
-            <h4><a href="/backoffice">Logements</a></h4>
-            <span class="mdi mdi-chevron-right"></span>
-            <h4><?=$logement->get('titre_logement');?></h4>
+        
+        <div id="menu">
+            <div id="cheminPage">
+                <h4><a href="/backoffice">Logements</a></h4>
+                <span class="mdi mdi-chevron-right"></span>
+                <h4><?=$logement->get('titre_logement');?></h4>
+            </div>
+            <a id="modifierLogement" href="/backoffice/modification-logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                <button class="primary backoffice modifierLogement" type="submit">
+                    <span class="mdi mdi-pencil"></span>    
+                    Modifier
+                </button> 
+            </a>
         </div>
-       
+        
         <div id="page">
             <section>
                 <article id="block-intro">
