@@ -576,6 +576,11 @@ CREATE TRIGGER tg_update_logement
     FOR EACH ROW
     EXECUTE PROCEDURE update_logement();
 
+COPY _token(cle_api)
+FROM '/docker-entrypoint-initdb.d/token.csv'
+DELIMITER ','
+CSV HEADER;
+
 COPY _adresse(numero, complement_numero, rue_adresse, complement_adresse, ville_adresse, code_postal_adresse, pays_adresse) 
 FROM '/docker-entrypoint-initdb.d/adresse.csv'
 DELIMITER ','
@@ -633,10 +638,5 @@ CSV HEADER;
 
 COPY _commune(nom_commune, num_departement, code_postal)
 FROM '/docker-entrypoint-initdb.d/commune.csv'
-DELIMITER ','
-CSV HEADER;
-
-COPY _token(cle_api)
-FROM '/docker-entrypoint-initdb.d/token.csv'
 DELIMITER ','
 CSV HEADER;
