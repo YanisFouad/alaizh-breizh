@@ -5,14 +5,17 @@ require_once(__DIR__."../../../../models/AccommodationModel.php");
 if(isset($_POST['idLogement'])){
     $logementId = $_POST['idLogement'];
     $logement = AccommodationModel::findOneById($logementId);
-    $estVisibleActuel = $logement->get("est_visble");
+    $estVisibleActuel = $logement->get("est_visible");
+    echo "valeur est visible actuel: ".$estVisibleActuel;
     $nouveauEstVisible = !$estVisibleActuel;
 
-    echo $nouveauEstVisible;
     $logement->set("est_visible", $nouveauEstVisible ? "true" : "false");
     $logement->save(); 
     
 
-    header("Location: /backoffice/logement?id_logement=".$logementId);
+    header("Content-Type: application/json");
+    echo json_encode([
+        "success" => true
+    ]);
     exit;
 }

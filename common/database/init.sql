@@ -464,7 +464,7 @@ CREATE OR REPLACE FUNCTION create_logement() RETURNS TRIGGER AS $BODY$
             INSERT INTO _logement_activite (nom_activite, perimetre_activite, id_logement) VALUES (NEW.activite_7, NEW.perimetre_activite_7, new_id_logement);
     	END IF;
 
-        UPDATE _logement SET photo_logement = CONCAT(new_id_logement, '_', NEW.type_logement) WHERE id_logement = new_id_logement;
+        UPDATE _logement SET photo_logement = CONCAT(new_id_logement, '_', NEW.categorie_logement) WHERE id_logement = new_id_logement;
 	RETURN NEW;
 	END;
     $BODY$
@@ -563,7 +563,7 @@ CREATE OR REPLACE FUNCTION update_logement() RETURNS TRIGGER AS $BODY$
             END IF;
 
             IF NEW.photo_logement IS NOT NULL AND OLD.photo_logement IS NULL THEN
-                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.type_logement, OLD.type_logement)) WHERE id_logement = OLD.id_logement;
+                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.categorie_logement, OLD.categorie_logement)) WHERE id_logement = OLD.id_logement;
             END IF;
         END IF;
 	RETURN NEW;

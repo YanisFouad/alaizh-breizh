@@ -65,7 +65,7 @@
             </div>
             <div id="switch-container">  
                 <span id="etatLogement"></span>
-                    <label class="switch" data-php-variable="<?php echo $logement->get("est_visible") ?>">
+                    <label class="switch">
                         <input type="checkbox" id="boutonOnOff" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
                         <span class="slider round"></span>
                     </label>

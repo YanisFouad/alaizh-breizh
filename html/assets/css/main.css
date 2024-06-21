@@ -2881,6 +2881,9 @@ header#backoffice > aside > span.owner {
   margin-bottom: 10px;
   padding: 0 10px;
 }
+#page-home-backoffice .logements-container .row-logement .card-logement.disabled {
+  opacity: 0.5;
+}
 @media screen and (max-width: 1010px) {
   #page-home-backoffice .logements-container .row-logement .card-logement {
     flex: 1 1 calc(50% - 10px);

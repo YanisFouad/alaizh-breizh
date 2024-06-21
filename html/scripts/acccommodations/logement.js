@@ -3,7 +3,7 @@
 const modal = document.getElementById("modal");
 const btn = document.getElementById("boutonDevis");
 const closeModal = document.querySelector(".close");
-/***Plus/moins nombre de voyageurs ***/
+/***Plus/moins nombre de voyageurs***/
 const moins = document.getElementById("moins");
 const valeurAffichee = document.getElementById("valeurVoyageurs");
 const plus = document.getElementById("plus");
@@ -17,7 +17,7 @@ btn.onclick = function () {
 }
 
 closeModal.onclick = function () {
- 
+
     modal.style.display = "none";
 }
 
@@ -38,14 +38,15 @@ moins.addEventListener('click', () => {
     miseAJourValeurAffichee();
     document.getElementById("valeurVoyageurs").innerHTML = valeur
     document.getElementById("taxeSejour").innerHTML = "1 x " + valeur + " voyageurs x 3 nuits";
-    
+
 });
 
 plus.addEventListener('click', () => {
-        valeur++;
-        miseAJourValeurAffichee();
-        document.getElementById("valeurVoyageurs").innerHTML = valeur
-        document.getElementById("taxeSejour").innerHTML = "1 x " + valeur + " voyageurs x 3 nuits";}
+    valeur++;
+    miseAJourValeurAffichee();
+    document.getElementById("valeurVoyageurs").innerHTML = valeur
+    document.getElementById("taxeSejour").innerHTML = "1 x " + valeur + " voyageurs x 3 nuits";
+}
 );
 
 
