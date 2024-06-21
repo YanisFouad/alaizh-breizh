@@ -1,53 +1,132 @@
 .profile-area {
-    width: fit-content;
-    margin: 1em auto;
-    border-radius: 15px;
+    &>header {
+        margin: 1em 0;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        &>h1 {
+            font-size: 1.8em;
+        }
 
-    &>h1 {
-        margin-bottom: 1em;
-        color: $gray-1;
-    }
-
-    &>img {
-        margin: auto;
-        display: block;
-
-        width: 10em;
-        height: 10em;
-        
-        object-fit: cover;
-        //object-position: top;
-
-        border-radius: 100px;
-        margin-bottom: 1em;
-    }
-
-    &>h2 {
-        text-align: center;
-        margin: 1em;
-        font-weight: normal;
-        font-family: "poppins-regular", sans-serif;
-    }
-
-    &>h3 {
-        padding: .5em .8em;
-        border: 1px solid $black;
-        border-radius: 15px;
-
-        margin: .5em 0;
-
-        font-size: 1em;
-
-        &>span {
-            font-weight: normal;
-            font-family: "poppins-regular", sans-serif;
-            color: $gray-1;
+        &>a {
+            text-decoration: none;
         }
     }
 
-    &>.edit {
-        margin-top: 1em;
+    margin: 0 2em;
+
+    & * {
+        font-weight: normal;
+    }
+
+    &>h1 {
+        margin: 1em 0;
+    }
+
+    &>section {
+        display: flex;
+        gap: 3em;
+        justify-content: center;
+        margin-bottom: 2em;
+
+        &>section {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
+
+    article {
+        box-shadow: 0 0 4px 0 rgb(162 162 162 / 21%);
+        padding: 1em 2em;
+        border-radius: 20px;
+    }
+
+    section.right {
+        width: 35em;
+        position: relative;
+
+        &>article {
+            width: 100%;
+            &>h2 {
+                margin-bottom: .5em;
+            }
+            &>div {
+                display: grid;
+                row-gap: 1em;
+                column-gap: 3em;
+                grid-template-columns: repeat(2, 1fr);
+                
+                &>div {
+                    &>h5 {
+                        color: $gray-2;
+                    }
+                }
+            }
+        }
+    }
+
+    section.left {
+        &>article.profile {
+            &>img {
+                width: 10em;
+                height: 10em;
+                object-fit: cover;
+                border-radius: 100px;
+                display: block;
+                margin: auto;
+            }
+            &>h3 {
+                color: $primary-frontoffice-1;
+                margin-top: .5em;
+                text-align: center;
+                font-weight: normal;
+            }
+        }
+        &>article.general {
+            &>h2 {
+                margin-bottom: .5em;
+            }
+            &>div {
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+            }
+        }
+    }
+
+    &>div.no-profile-found {
+        text-align: center;
+        margin: 5em 0;
+    }
+
+    & button#profile-edition {
+        width: fit-content;
+        padding: .7em .9em;
         margin-left: auto;
-        display: block;
+    }
+}
+
+// responsive
+
+@media screen and (max-width: 951px) {
+    .profile-area section.right > article > div {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 826px) {
+    .profile-area > section {
+        flex-wrap: wrap;
+
+        &>section.left {
+            width: 35em;
+        }
+    }
+}
+
+@media screen and (max-width: 691px) {
+    .profile-area > header {
+        flex-wrap: wrap;
     }
 }

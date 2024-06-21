@@ -72,6 +72,7 @@ header#frontoffice {
             $size: 2.5em;
             width: $size;
             height: $size;
+            object-fit: cover;
             border-radius: 100px;
          }
       }
@@ -101,7 +102,7 @@ header#frontoffice {
    }
 }
 @media (max-width: 431px) {
-   header {
+   header#frontoffice {
       padding: 1em 1em 0 1em;
       .mdi {
          font-size: 2.5em;

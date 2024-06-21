@@ -89,6 +89,7 @@ class AccountModel extends Model {
      */
     public static function findOneById(string $id, $accountType  = AccountType::DEFAULT) {
         // we don't mind about account type here
+        // @todo vérifier si c'est un compte proprio ou locataire
         $result = RequestBuilder::select($accountType->value)
             ->projection("*")
             ->where("id_compte = ?", $id)

@@ -33,7 +33,7 @@ class Model {
      * @return boolean if the key exists or not
      */
     public function has($key) {
-        return array_key_exists($key, $this->data);
+        return array_key_exists($key, $this->data) && $this->data[$key] != NULL;
     }
 
     /**
@@ -99,9 +99,6 @@ class Model {
         $values = array_values($data);
         $primaryField = $this->getPrimaryField();
 
-        if(!$this->isNew) {
-            $data[$primaryField] = $this->data[$primaryField];
-        }
 
         // if it's a new row then insert it
         if($primaryField === null || $this->isNew) {
@@ -123,11 +120,13 @@ class Model {
             $request = Database::getConnection()->prepare("UPDATE ".$this->tableName." SET " . $expr . " WHERE ".$primaryField." = ?");
         }
 
-        foreach($values as $k => &$v)
+        foreach($values as $k => &$v) {
             $request->bindParam($k+1, $v);
+        }
 
         if(!$this->isNew && array_key_exists($primaryField, $this->data))
-            $request->bindParam(sizeof($values), $this->data[$primaryField]);
+            $request->bindParam(sizeof($values)+1, $this->data[$primaryField]);
+        
         
         $request->execute();
         if(!isset($seqName))
