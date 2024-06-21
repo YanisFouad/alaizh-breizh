@@ -3,7 +3,7 @@
    require_once(__DIR__."/../services/RequestBuilder.php");
    require_once(__DIR__."/../models/AccommodationModel.php");
 
-   $accomodations = AccommodationModel::find(0, 10);
+   $accomodations = AccommodationModel::find(0, 10, "*", true);
 
    function getDepartmentName($postCode) {
       $result = RequestBuilder::select("pls._departement")

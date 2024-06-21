@@ -82,21 +82,25 @@ class AccommodationModel extends Model {
         return FileLogement::get($data["photo_logement"]);
     }
 
-    public static function find($offset = 0, $limit = 10, $projection = "*") {
+    public static function find($offset = 0, $limit = 10, $projection = "*", $noDisable = false) {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
             ->limit($limit)
-            ->offset($offset)
-            ->execute()
-            ->fetchMany();
+            ->offset($offset);
+        if($noDisable)
+            $result = $result->where("est_visible = ?", true);
+        $result = $result->execute()
+                ->fetchMany();
         return array_map(function($row) {
             return new self($row, false);
         }, $result);
     }
-    public static function count() {
+    public static function count($noDisable = true) {
         $result = RequestBuilder::select(self::$TABLE_NAME)
-            ->projection("count(*)")
-            ->execute()
+            ->projection("count(*)");
+        if($noDisable) 
+            $result = $result->where("est_visible = ?", true);
+        $result = $result->execute()
             ->fetchOne();
         return $result["count"] ?? 0;
     }
