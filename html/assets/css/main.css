@@ -101,6 +101,7 @@
 body {
   font-family: "comfortaa-regular", sans-serif;
   color: #222524;
+  position: relative;
 }
 
 h1, h2 {
@@ -453,7 +454,6 @@ footer#foot-global {
   color: white;
   background-color: black;
   padding: 2em 2em;
-  margin-top: auto; /* pour conserver le footer en bas de page */
 }
 footer#foot-global a, footer#foot-global a:visited {
   color: white;
@@ -666,6 +666,15 @@ footer#foot-global nav a {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+.profile-area > div.no-profile-found {
+  text-align: center;
+  margin: 5em 0;
+}
+.profile-area button#profile-edition {
+  width: fit-content;
+  padding: 0.7em 0.9em;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 951px) {

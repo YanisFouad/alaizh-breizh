@@ -11,3 +11,8 @@ function obsfuceRIB($rib) {
         true
     );
 }
+
+if(isset($_POST) && isset($_POST["editProfile"])) {
+    extract($_POST);
+    
+}
