@@ -13,6 +13,9 @@
     input,select{
         font-size: 1em;
     }
+    input:focus{
+        box-shadow: 0 0 5px 0 $primary-frontoffice-1;
+    }
 
     h1 {
         text-align: center;
@@ -25,18 +28,15 @@
 
     .profile-container {
         text-align: center;
-        label{
-            margin-bottom: 0.5em;
-        }
     }
 
     .profile-picture {
+        margin-top:1em;
         width: 150px;
         height: 150px;
         border-radius: 50%;
         overflow: hidden;
         display: inline-block;
-        background-color: #ddd;
         margin-bottom: 10px;
     }
     
@@ -44,7 +44,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: none; /* Initially hidden */
     }
 
     h2 {
