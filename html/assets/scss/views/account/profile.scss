@@ -95,6 +95,16 @@
         }
     }
 
+    &>div.no-profile-found {
+        text-align: center;
+        margin: 5em 0;
+    }
+
+    & button#profile-edition {
+        width: fit-content;
+        padding: .7em .9em;
+        margin-left: auto;
+    }
 }
 
 // responsive

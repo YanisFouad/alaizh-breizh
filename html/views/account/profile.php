@@ -109,6 +109,9 @@
                         </div>
                     </article>
                 <?php } ?>
+                <button id="profile-edition" class="mdi mdi-pencil secondary">
+                    Editer mon profil
+                </button>
             </section>
         </section>
 

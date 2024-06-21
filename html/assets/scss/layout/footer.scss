@@ -1,4 +1,8 @@
 footer#foot-global {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
@@ -12,7 +16,6 @@ footer#foot-global {
     }
     background-color: black;
     padding: 2em 2em;
-    margin-top: auto; /* pour conserver le footer en bas de page */
     nav {
         display: flex;
         flex-wrap: wrap;
