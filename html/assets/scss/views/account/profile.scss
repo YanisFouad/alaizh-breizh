@@ -13,6 +13,11 @@
         }
     }
 
+    // by default, hide all fields
+    input {
+        display: none;
+    }
+
     margin: 0 2em;
 
     & * {
@@ -68,6 +73,10 @@
 
     section.left {
         &>article.profile {
+            &>.displaname-input {
+                display: flex;
+                gap: .5em;
+            }
             &>img {
                 width: 10em;
                 height: 10em;
@@ -116,6 +125,9 @@
 }
 
 @media screen and (max-width: 826px) {
+    .profile-area {
+        padding-bottom: 10em;
+    }
     .profile-area > section {
         flex-wrap: wrap;
 

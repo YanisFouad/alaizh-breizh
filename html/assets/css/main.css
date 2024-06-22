@@ -1,5 +1,7 @@
 @charset "UTF-8";
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   outline: none;
   padding: 0;
   margin: 0;
@@ -102,13 +104,16 @@ body {
   font-family: "comfortaa-regular", sans-serif;
   color: #222524;
   position: relative;
+  min-height: 100vh;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "poppins-semibold", sans-serif;
 }
 
-h3, h4 {
+h3,
+h4 {
   font-family: "poppins-medium", sans-serif;
 }
 
@@ -128,7 +133,8 @@ h4 {
   font-size: 1.15em;
 }
 
-p, a {
+p,
+a {
   font-family: "comfortaa-medium", sans-serif;
   color: #222524;
   font-size: 1em;
@@ -445,6 +451,9 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 footer#foot-global {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -604,6 +613,9 @@ footer#foot-global nav a {
 .profile-area > header > a {
   text-decoration: none;
 }
+.profile-area input {
+  display: none;
+}
 .profile-area * {
   font-weight: normal;
 }
@@ -645,6 +657,10 @@ footer#foot-global nav a {
 .profile-area section.right > article > div > div > h5 {
   color: #676767;
 }
+.profile-area section.left > article.profile > .displaname-input {
+  display: flex;
+  gap: 0.5em;
+}
 .profile-area section.left > article.profile > img {
   width: 10em;
   height: 10em;
@@ -683,6 +699,9 @@ footer#foot-global nav a {
   }
 }
 @media screen and (max-width: 826px) {
+  .profile-area {
+    padding-bottom: 10em;
+  }
   .profile-area > section {
     flex-wrap: wrap;
   }
@@ -1053,6 +1072,9 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page {
+  padding-bottom: 3em;
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1320,6 +1342,7 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
+  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -2885,6 +2908,9 @@ header#backoffice > aside > span.owner {
   margin-bottom: 10px;
   padding: 0 10px;
 }
+#page-home-backoffice .logements-container .row-logement .card-logement.disabled {
+  opacity: 0.5;
+}
 @media screen and (max-width: 1010px) {
   #page-home-backoffice .logements-container .row-logement .card-logement {
     flex: 1 1 calc(50% - 10px);
@@ -2972,6 +2998,9 @@ header#backoffice > aside > span.owner {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page {
+  padding-bottom: 3em;
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3239,6 +3268,7 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
+  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -3743,6 +3773,71 @@ h5 {
   display: flex;
   flex-direction: column;
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer {
+  position: relative;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container {
+  position: absolute;
+  right: 0;
+  top: 1em;
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+  /* Rounded sliders */
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #logementActuel {
+  display: none;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #etatLogement {
+  margin-right: 1em;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider {
+  background-color: #b6896c;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round {
+  border-radius: 34px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round:before {
+  border-radius: 50%;
+}
 #mainProprietaireLogement .mdi.mdi-chevron-right {
   position: relative;
   top: 1px;
@@ -3767,7 +3862,8 @@ h5 {
 #mainProprietaireLogement a {
   color: #804e2e;
 }
-#mainProprietaireLogement a:hover, #mainProprietaireLogement a:active {
+#mainProprietaireLogement a:hover,
+#mainProprietaireLogement a:active {
   color: #9f6844;
 }
 #mainProprietaireLogement a:visited {
@@ -4029,6 +4125,7 @@ h5 {
   position: fixed;
   top: 1em;
   right: 1em;
+  z-index: 999;
   display: flex;
   align-items: center;
   gap: 1em;

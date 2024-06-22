@@ -366,9 +366,11 @@ BEGIN
       numero = COALESCE(NEW.numero, OLD.numero),complement_numero = COALESCE(NEW.complement_numero, OLD.complement_numero),rue_adresse = COALESCE(new.rue_adresse, old.rue_adresse),complement_adresse = COALESCE(new.complement_adresse, old.complement_adresse),ville_adresse = COALESCE(new.ville_adresse, old.ville_adresse),code_postal_adresse = COALESCE(new.code_postal_adresse, old.code_postal_adresse),pays_adresse = COALESCE(new.pays_adresse, old.pays_adresse)
     WHERE id_adresse = compte_id_adresse;
 
-    UPDATE _token 
-    SET 
-      cle_api = COALESCE(new.cle_api,old.cle_api);
+    IF new.cle_api != NULL OR old.cle_api != NULL THEN
+        UPDATE _token 
+        SET 
+          cle_api = COALESCE(new.cle_api,old.cle_api);
+    END IF;
 
     UPDATE _proprietaire 
     SET 
