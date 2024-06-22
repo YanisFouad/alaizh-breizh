@@ -4165,52 +4165,71 @@ h5 {
   }
 }
 
-#modalValidation {
-  display: none;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  z-index: 999;
+.inscription {
+  width: 40%;
+  margin: 1em auto;
+  border-radius: 15px;
 }
-#modalValidation #modalValidationContent {
-  width: 33em;
-  margin: auto;
-  margin-top: 1em;
-  position: sticky;
-  top: 1em;
-}
-#modalValidation #modalValidationContent .close {
-  color: #aaa;
-  float: right;
-  font-size: 2em;
-  font-weight: bold;
-}
-#modalValidation #modalValidationContent .close:hover,
-#modalValidation #modalValidationContent .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-#modalValidation #modalValidationContent > div {
-  padding: 1em;
+.inscription section {
+  margin: 2em 0;
+  padding: 1em 2em;
   border-radius: 20px;
-  background-color: white;
-  box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
+  border: 1px solid #1b5734;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
 }
-#modalValidation #modalValidationContent > div h2 {
+.inscription input, .inscription select {
+  font-size: 1em;
+}
+.inscription input:focus {
+  box-shadow: 0 0 5px 0 #1b5734;
+}
+.inscription h1 {
   text-align: center;
   margin-bottom: 1em;
+  color: #424645;
 }
-#modalValidation #modalValidationContent > div p {
+.inscription .info {
+  margin: 0.5em 0;
+}
+.inscription .profile-container {
   text-align: center;
 }
-#modalValidation #modalValidationContent > div div {
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
+.inscription .profile-picture {
+  margin-top: 1em;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 10px;
 }
-#modalValidation #modalValidationContent > div div button {
-  padding: 0.8em 1.5em;
-  margin: 2em 1em 1em 2em;
+.inscription .profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.inscription h2 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+}
+.inscription > h3 {
+  padding: 0.5em 0.8em;
+  border: 1px solid #222524;
+  border-radius: 15px;
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+.inscription > h3 > span {
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: #424645;
+}
+.inscription #valide {
+  margin-top: 1em;
+  margin-left: auto;
+  display: block;
+}
+.inscription .error {
+  color: red;
 }

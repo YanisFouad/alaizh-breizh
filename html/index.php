@@ -25,6 +25,8 @@ $router->add("/reservation", "views/bookings/booking.php");
 
 // account profile & public profile view
 $router->add("/profil", "views/account/profile.php");
+$router->add("/inscription", "views/account/profileCreation.php");
+
 
 // backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
