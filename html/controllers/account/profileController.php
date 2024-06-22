@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__."/../../services/session/UserSession.php");
+require_once(__DIR__."/../../models/AccountModel.php");
 
 function sendJson($key, $message) {
     header("Content-Type: application/json");
@@ -21,14 +22,32 @@ function obsfuceRIB($rib) {
 
 if(isset($_POST) && isset($_POST["editProfile"])) {
     // first remove the edit profile attribute
+    $profilePicture = $_FILES["profilePicture"] ?? NULL;
     unset($_POST["editProfile"]);
+    unset($_POST["profilePicture"]);
+
     $profile = UserSession::get();
+
     
     try {
         foreach($_POST as $key => &$value) {
-            $profile->set($key, $value);
+            $profile->set($key, htmlentities($value));
         }
+        if($profilePicture) {
+            $pictureName = $profile->get("id_compte");
+            if($profile->get("accountType") === AccountType::TENANT->name) {
+                FileLocataire::save($profilePicture, $pictureName);
+            } else {
+                FileProprietaire::save($profilePicture, $pictureName);
+            }
+            $profile->set("photo_profil", $pictureName);
+        }
+
         $profile->save();
+
+        // update the user session profile
+        UserSession::set($profile);
+
         sendJson("success", true);
     } catch(Exception $e) {
         sendJson("error", $e->getMessage());

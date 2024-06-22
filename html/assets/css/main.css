@@ -657,9 +657,29 @@ footer#foot-global nav a {
 .profile-area section.right > article > div > div > h5 {
   color: #676767;
 }
-.profile-area section.left > article.profile > .displaname-input {
+.profile-area section.left > article.profile > div#displayname {
+  margin-top: 0.5em;
   display: flex;
   gap: 0.5em;
+}
+.profile-area section.left > article.profile > label#profile-picture {
+  display: none;
+  cursor: pointer;
+  margin: auto;
+  width: 10em;
+  height: 10em;
+  background-color: #eaeaea;
+  border-radius: 100px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.profile-area section.left > article.profile > label#profile-picture span.mdi.mdi-image {
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .profile-area section.left > article.profile > img {
   width: 10em;
@@ -4163,6 +4183,56 @@ h5 {
   to {
     right: 1em;
   }
+}
+
+#modalValidation {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  z-index: 999;
+}
+#modalValidation #modalValidationContent {
+  width: 33em;
+  margin: auto;
+  margin-top: 1em;
+  position: sticky;
+  top: 1em;
+}
+#modalValidation #modalValidationContent .close {
+  color: #aaa;
+  float: right;
+  font-size: 2em;
+  font-weight: bold;
+}
+#modalValidation #modalValidationContent .close:hover,
+#modalValidation #modalValidationContent .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modalValidation #modalValidationContent > div {
+  padding: 1em;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
+}
+#modalValidation #modalValidationContent > div h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+#modalValidation #modalValidationContent > div p {
+  text-align: center;
+}
+#modalValidation #modalValidationContent > div div {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+}
+#modalValidation #modalValidationContent > div div button {
+  padding: 0.8em 1.5em;
+  margin: 2em 1em 1em 2em;
 }
 
 .inscription {

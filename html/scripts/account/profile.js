@@ -1,5 +1,10 @@
 const profileEditionButton = document.getElementById("profile-edition");
 
+// profile picture section
+const profilePicture = document.getElementById("profile-picture");
+const profilePictureInput = document.getElementById("profile-picture-input");
+let profilePictureFile;
+
 // displayname is a special field :)
 const displayname = {
     inputs: {
@@ -44,13 +49,28 @@ function toggleFields() {
         ...Object.values(fields).map(f => f?.associatedText)
     ].filter(t => t);
 
+    // profile picture profilePicture
+
     inputs.forEach(input => input.style.display = editMode ? "block" : "none");
     associatedTextes.forEach(text => text.style.display = editMode ? "none" : "block");
+
+    // only for profile picture we have to do a tricky thing
+    profilePicture.style.display = editMode ? "block" : "none";
+    document.querySelector("article.profile>img").style.display = editMode ? "none" : "block";
 
     if(!editMode) {
         profileEditionButton.textContent = "Editer mon profil";
         profileEditionButton.classList.add("mdi-pencil");
         profileEditionButton.classList.remove("mdi-check");
+
+        // then update all textes
+        const firstName = displayname.inputs.firstname.value;
+        const lastName = displayname.inputs.lastname.value;
+        displayname.associatedText.textContent = `${lastName.toUpperCase()} ${firstName}`;
+
+        for(const {input, associatedText} of Object.values(fields).filter(f => f)) {
+            associatedText.textContent = input.value;
+        }
     } else {
         profileEditionButton.textContent = "Valider les modifications";
         profileEditionButton.classList.remove("mdi-pencil");
@@ -67,6 +87,9 @@ async function editProfile() {
         if(input.value?.trim())
             formData.append(input.id, input.value);
     }
+
+    if(profilePictureFile)
+        formData.append("profilePicture", profilePictureFile);
     try {
         const response = await fetch("/controllers/account/profileController.php", {
             method: "POST",
@@ -81,8 +104,20 @@ async function editProfile() {
         console.trace(e);
         window.notify("ERROR", `Une erreur est survenue: ${e.stack}`, true);
     }
-    //window.notify("SUCCESS", "Profil mit à jour", true);
 }
+
+profilePictureInput.addEventListener("change", ({target}) => {
+    const file = target.files?.[0];
+    const reader = new FileReader();
+    reader.onload = event => {
+        const filePath = event.target.result;
+        profilePicture.style.backgroundImage = `url(${filePath})`;
+        profilePicture.querySelector("span").remove();
+        document.querySelector("#profile-picture-input + img").setAttribute("src", filePath);
+    }
+    reader.readAsDataURL(file);
+    profilePictureFile = file;
+}, false);
 
 profileEditionButton.addEventListener("click", () => {
     editMode = !editMode;

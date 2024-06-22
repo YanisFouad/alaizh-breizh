@@ -59,7 +59,10 @@ class AccountModel extends Model {
     }
 
     public function computeProfilePicture($data) {
-        return FileLocataire::get($data["id_compte"]);
+        $file = FileLocataire::get($data["id_compte"]);
+        if(str_contains($file, "default"))
+            return FileProprietaire::get($data["id_compte"]);
+        return $file;
     }
 
     public function computeDisplayName($data) {

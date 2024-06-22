@@ -32,6 +32,6 @@
         }
 
         $account->save();
+        UserSession::set($account);
         echo "SUCCESS";
     }  
-?>

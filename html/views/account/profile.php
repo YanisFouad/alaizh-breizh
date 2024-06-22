@@ -35,8 +35,12 @@
         <section>
             <section class="left">
                 <article class="profile">
+                    <label id="profile-picture" for="profile-picture-input">
+                        <span class="mdi mdi-image"></span>
+                    </label>
+                    <input id="profile-picture-input" type="file" />
                     <img src="<?=$user_profile->get("photo_profil"); ?>" alt="<?=$user_profile->get("nom"); ?>" />
-                    <div id="displayname" class="displaname-input">
+                    <div id="displayname">
                         <input id="nom" type="text" value="<?=$user_profile->get("nom") ?>" />
                         <input id="prenom" type="text" value="<?=$user_profile->get("prenom") ?>" />
                     </div>
