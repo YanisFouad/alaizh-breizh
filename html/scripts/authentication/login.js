@@ -1,5 +1,6 @@
 const authenticationElement = document.getElementById("authentication-modal");
 const authenticationErrorElement = authenticationElement.querySelector(".error-message");
+let redirectToUri;
 
 function setErrorMessage(message) {
     if(!message) {
@@ -21,10 +22,12 @@ function openLoginModal() {
 // just check parameters
 window.addEventListener("DOMContentLoaded", () => {
     const hash = location.hash;
-    console.log(hash)
     if(hash && hash === "#connection") {
-        openLoginModal();
         const url = new URL(location);
+        const params = url.searchParams;
+        if(params.has("redirectTo"))
+            redirectToUri = "/"+params.get("redirectTo");
+        openLoginModal();
         url.hash = "";
         history.pushState({}, "", url);
     }
@@ -53,8 +56,11 @@ async function handleLogin(event) {
 
         // then reload the window to take in count the user session
         window.notify("SUCCESS", "Connecté !");
-        window.location.reload();
-        closeLoginModal();
+        // if we have a parameter "redirectTo" then redirect to the page otherwise just reload the current page
+        if(redirectToUri)
+            window.location.href = redirectToUri;
+        else 
+            window.location.reload();
     } catch(e) {
         setErrorMessage(`Erreur interne a eu lieu: ${e}`);
         console.error(e);

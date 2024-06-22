@@ -1,4 +1,11 @@
 <?php
+require_once(__DIR__."/../../services/session/UserSession.php");
+
+function sendJson($key, $message) {
+    header("Content-Type: application/json");
+    echo json_encode(array($key => $message));
+    exit;
+}
 
 function obsfuceRIB($rib) {
     $obsfuceLength = 4;
@@ -13,6 +20,17 @@ function obsfuceRIB($rib) {
 }
 
 if(isset($_POST) && isset($_POST["editProfile"])) {
-    extract($_POST);
+    // first remove the edit profile attribute
+    unset($_POST["editProfile"]);
+    $profile = UserSession::get();
     
+    try {
+        foreach($_POST as $key => &$value) {
+            $profile->set($key, $value);
+        }
+        $profile->save();
+        sendJson("success", true);
+    } catch(Exception $e) {
+        sendJson("error", $e->getMessage());
+    }
 }
