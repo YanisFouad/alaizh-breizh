@@ -9,6 +9,8 @@
 // }
 
 #home-page {
+   padding-bottom: 3em;
+
    button {
       display: flex;
       align-items: center;
@@ -298,6 +300,7 @@ abbr[title] {
 
 #filter-housing-container {
    display: flex;
+   padding-bottom: 3em;
 }
 
 /* Menu des filtres */

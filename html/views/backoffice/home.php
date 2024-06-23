@@ -38,7 +38,7 @@
                 ?>
     
                 <a href="<?= "/backoffice/logement/?id_logement=" . $logement->get("id_logement")?>" class="link-logement">
-                    <article class="card-logement">
+                    <article class="card-logement <?php echo !$logement->get("est_visible") ? "disabled" : "" ?>">
                         <div class="img-logement-container">
                             <img src="<?= $logement->get("photo_logement") ?>" alt="Image Logement" class="img-logement">
                         </div>

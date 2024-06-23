@@ -22,13 +22,14 @@ class AccountModel extends Model {
             "prenom"  => array("required" => true),
             "mot_de_passe"  => array(),
             "telephone"  => array(),
-            "date_naissance"  => array("type" => "date"),
+            "date_naissance"  => array(),
             "mail"  => array("required" => true),
             "civilite"  => array(),
             "id_addresse" => array(),
             "numero" => array(),
             "complement_numero" => array(),
             "rue_adresse" => array(),
+            "complement_adresse" => array(),
             "ville_adresse" => array(),
             "code_postal_adresse" => array(),
             "pays_adresse" => array(),
@@ -58,7 +59,10 @@ class AccountModel extends Model {
     }
 
     public function computeProfilePicture($data) {
-        return FileLocataire::get($data["id_compte"]);
+        $file = FileLocataire::get($data["id_compte"]);
+        if(str_contains($file, "default"))
+            return FileProprietaire::get($data["id_compte"]);
+        return $file;
     }
 
     public function computeDisplayName($data) {

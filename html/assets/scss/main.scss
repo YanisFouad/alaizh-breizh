@@ -1,10 +1,12 @@
 @import "utils/variables";
 
-*, *::after, *::before {
-    outline: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+   outline: none;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
 
 @import "assets/font-loader.scss";
@@ -12,34 +14,43 @@
 body {
    font-family: "comfortaa-regular", sans-serif;
    color: $black;
+   position: relative;
+
+   min-height: 100vh;
 }
 
-h1, h2 {
+h1,
+h2 {
    font-family: "poppins-semibold", sans-serif;
 }
- 
- h3, h4 {
+
+h3,
+h4 {
    font-family: "poppins-medium", sans-serif;
 }
- 
- h1 {
-    font-size: $size-h1;
- }
- h2 {
-    font-size: $size-h2;
- }
- h3 {
-    font-size: $size-h3;
- }
- h4 {
-    font-size: $size-h4;
- }
- 
- p, a {
-    font-family: "comfortaa-medium", sans-serif;
-    color: $black;
-    font-size: $size-paragraph;
- }
+
+h1 {
+   font-size: $size-h1;
+}
+
+h2 {
+   font-size: $size-h2;
+}
+
+h3 {
+   font-size: $size-h3;
+}
+
+h4 {
+   font-size: $size-h4;
+}
+
+p,
+a {
+   font-family: "comfortaa-medium", sans-serif;
+   color: $black;
+   font-size: $size-paragraph;
+}
 
 // default components
 @import "assets/buttons";
@@ -58,7 +69,7 @@ h1, h2 {
 
 // account
 @import "views/account/profile";
- 
+
 // bookings
 @import "views/bookings/finalize-booking.scss";
 @import "views/bookings/booking.scss";
@@ -86,3 +97,6 @@ h1, h2 {
 @import "views/notification.scss";
 
 @import "views/backoffice/icalator/icalator.scss";
+
+@import "views/backoffice/accomodations/popUpValidation.scss";
+@import "views/account/profileCreation.scss";

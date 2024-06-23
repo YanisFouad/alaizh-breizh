@@ -19,7 +19,7 @@ class Model {
             $this->data = $defaultData;
         $this->isNew = $isNew;
     }
-
+    
     /**
      * set a field value to the created model
      */

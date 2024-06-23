@@ -22,3 +22,4 @@ html/assets/scss/**/*.css.map
 prepros.config
 
 html/files/*
+./common/scss-entrypoint.sh

@@ -306,7 +306,7 @@ BEGIN
     SET 
       photo_profil = COALESCE(NEW.photo_profil, OLD.photo_profil),nom = COALESCE(NEW.nom, OLD.nom),prenom = COALESCE(NEW.prenom, OLD.prenom),mot_de_passe = COALESCE(NEW.mot_de_passe, OLD.mot_de_passe),telephone = COALESCE(NEW.telephone, OLD.telephone),mail = COALESCE(NEW.mail, OLD.mail),date_naissance = COALESCE(NEW.date_naissance, OLD.date_naissance),civilite = COALESCE(NEW.civilite, OLD.civilite)
     WHERE id_compte = OLD.id_compte;
-    
+
     SELECT id_adresse INTO compte_id_adresse FROM _compte WHERE id_compte = OLD.id_compte; 
     
     UPDATE _adresse 
@@ -339,7 +339,7 @@ create or replace function create_locataire() RETURNS TRIGGER AS $BODY$
                     
     INSERT INTO _compte(id_compte,nom,prenom,id_adresse,photo_profil,mot_de_passe,telephone,mail,date_naissance,civilite) 
                 VALUES (new.id_compte,new.nom,new.prenom,new_id_adresse,new.photo_profil,new.mot_de_passe,new.telephone,new.mail,new.date_naissance,new.civilite);
-	  return new;
+
     INSERT INTO _locataire(id_locataire) 
                 VALUES (new.id_compte);
 	  return new;
@@ -371,9 +371,11 @@ BEGIN
       numero = COALESCE(NEW.numero, OLD.numero),complement_numero = COALESCE(NEW.complement_numero, OLD.complement_numero),rue_adresse = COALESCE(new.rue_adresse, old.rue_adresse),complement_adresse = COALESCE(new.complement_adresse, old.complement_adresse),ville_adresse = COALESCE(new.ville_adresse, old.ville_adresse),code_postal_adresse = COALESCE(new.code_postal_adresse, old.code_postal_adresse),pays_adresse = COALESCE(new.pays_adresse, old.pays_adresse)
     WHERE id_adresse = compte_id_adresse;
 
-    UPDATE _token 
-    SET 
-      cle_api = COALESCE(new.cle_api,old.cle_api);
+    IF new.cle_api != NULL OR old.cle_api != NULL THEN
+        UPDATE _token 
+        SET 
+          cle_api = COALESCE(new.cle_api,old.cle_api);
+    END IF;
 
     UPDATE _proprietaire 
     SET 
@@ -469,7 +471,7 @@ CREATE OR REPLACE FUNCTION create_logement() RETURNS TRIGGER AS $BODY$
             INSERT INTO _logement_activite (nom_activite, perimetre_activite, id_logement) VALUES (NEW.activite_7, NEW.perimetre_activite_7, new_id_logement);
     	END IF;
 
-        UPDATE _logement SET photo_logement = CONCAT(new_id_logement, '_', NEW.type_logement) WHERE id_logement = new_id_logement;
+        UPDATE _logement SET photo_logement = CONCAT(new_id_logement, '_', NEW.categorie_logement) WHERE id_logement = new_id_logement;
 	RETURN NEW;
 	END;
     $BODY$
@@ -567,8 +569,8 @@ CREATE OR REPLACE FUNCTION update_logement() RETURNS TRIGGER AS $BODY$
                 UPDATE _logement_amenagement SET nom_amenagement = COALESCE(NEW.amenagement_5, OLD.amenagement_5) WHERE id_amenagement = NEW.id_amenagement_5;
             END IF;
 
-            IF NEW.photo_logement IS NOT NULL AND OLD.photo_logement IS NULL THEN
-                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.type_logement, OLD.type_logement)) WHERE id_logement = OLD.id_logement;
+            IF NEW.photo_logement IS NOT NULL THEN
+                UPDATE _logement SET photo_logement = CONCAT(OLD.id_logement, '_', COALESCE(NEW.categorie_logement, OLD.categorie_logement)) WHERE id_logement = OLD.id_logement;
             END IF;
         END IF;
 	RETURN NEW;

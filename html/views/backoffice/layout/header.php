@@ -1,5 +1,6 @@
 <?php 
     require_once(__DIR__."/../../../services/session/UserSession.php");
+    require_once(__DIR__."/../../../services/ScriptLoader.php");
 
     if(!UserSession::isConnectedAsOwner()) {
         require_once(__DIR__."/../authentication/login.php");
