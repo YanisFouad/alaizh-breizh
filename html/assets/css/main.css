@@ -2927,60 +2927,6 @@ header#backoffice > aside > span.owner {
 #page-home-backoffice .nav-page ul .link-logement:hover {
   cursor: pointer;
 }
-#page-home-backoffice .nav-page ul .card-logement {
-  flex: 1 1 calc(25% - 10px);
-  max-width: 270px;
-  height: 350px;
-  margin-bottom: 10px;
-  padding: 0 10px;
-}
-#page-home-backoffice .nav-page ul .card-logement.disabled {
-  opacity: 0.5;
-}
-@media screen and (max-width: 1010px) {
-  #page-home-backoffice .nav-page ul .card-logement {
-    flex: 1 1 calc(50% - 10px);
-  }
-}
-#page-home-backoffice .nav-page ul .card-logement .img-logement-container {
-  width: 100%;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-#page-home-backoffice .nav-page ul .card-logement .img-logement-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-#page-home-backoffice .nav-page ul .card-logement .description-logement-container .title-logement,
-#page-home-backoffice .nav-page ul .card-logement .description-logement-container .adresse-logement {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .nav-page ul .card-logement .description-logement-container .title-logement {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-}
-#page-home-backoffice .nav-page ul .card-logement .description-logement-container .adresse-logement {
-  display: flex;
-  align-items: center;
-  color: #804e2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .nav-page ul .card-logement .description-logement-container .adresse-logement span {
-  font-size: 1.4em;
-  color: #804e2e;
-  margin-right: 5px;
-}
 #page-home-backoffice .nav-page {
   width: 100%;
 }
@@ -3020,6 +2966,70 @@ header#backoffice > aside > span.owner {
 #page-home-backoffice .nav-page ul .btn-page.is-active {
   background-color: #804e2e;
   color: white;
+}
+
+.logements-container.backoffice .row-logement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logements-container.backoffice .row-logement .link-logement {
+  text-decoration: none;
+  cursor: pointer;
+}
+.logements-container.backoffice .row-logement .card-logement {
+  flex: 1 1 calc(25% - 10px);
+  max-width: 270px;
+  height: 350px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.logements-container.backoffice .row-logement .card-logement.disabled {
+  opacity: 0.5;
+}
+@media screen and (max-width: 1010px) {
+  .logements-container.backoffice .row-logement .card-logement {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement,
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement span {
+  font-size: 1.4em;
+  color: #804e2e;
+  margin-right: 5px;
 }
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
