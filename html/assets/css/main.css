@@ -2625,6 +2625,8 @@ header#backoffice > a > img {
 }
 header#backoffice > nav > ul {
   list-style: none;
+  display: flex;
+  gap: 20px;
 }
 header#backoffice > nav > ul > li > a {
   transition: 0.5s ease all;
@@ -2856,70 +2858,6 @@ header#backoffice > aside > span.owner {
   align-items: center;
   justify-content: center;
 }
-#page-home-backoffice .logements-container .row-logement {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
-}
-#page-home-backoffice .logements-container .row-logement .link-logement {
-  all: unset;
-}
-#page-home-backoffice .logements-container .row-logement .link-logement:hover {
-  cursor: pointer;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement {
-  flex: 1 1 calc(25% - 10px);
-  max-width: 270px;
-  height: 350px;
-  margin-bottom: 10px;
-  padding: 0 10px;
-}
-@media screen and (max-width: 1010px) {
-  #page-home-backoffice .logements-container .row-logement .card-logement {
-    flex: 1 1 calc(50% - 10px);
-  }
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container {
-  width: 100%;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement,
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
-  display: flex;
-  align-items: center;
-  color: #804e2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement span {
-  font-size: 1.4em;
-  color: #804e2e;
-  margin-right: 5px;
-}
 #page-home-backoffice .nav-page {
   width: 100%;
 }
@@ -2959,6 +2897,71 @@ header#backoffice > aside > span.owner {
 #page-home-backoffice .nav-page ul .btn-page.is-active {
   background-color: #804e2e;
   color: white;
+}
+
+.logements-container.backoffice .row-logement {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+.logements-container.backoffice .row-logement .link-logement {
+  all: unset;
+}
+.logements-container.backoffice .row-logement .link-logement:hover {
+  cursor: pointer;
+}
+.logements-container.backoffice .row-logement .card-logement {
+  flex: 1 1 calc(25% - 10px);
+  max-width: 270px;
+  height: 350px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+@media screen and (max-width: 1010px) {
+  .logements-container.backoffice .row-logement .card-logement {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement,
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement span {
+  font-size: 1.4em;
+  color: #804e2e;
+  margin-right: 5px;
 }
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
@@ -4057,4 +4060,341 @@ h5 {
   to {
     right: 1em;
   }
+}
+
+#new-icalator-page {
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+}
+#new-icalator-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+#new-icalator-page .error-message {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 7px;
+  user-select: none;
+}
+#new-icalator-page .error-message p {
+  color: red;
+}
+#new-icalator-page .error-message span {
+  font-size: 1.2em;
+}
+#new-icalator-page #form-icalator {
+  margin: auto;
+  max-width: 1250px;
+  padding: 40px 20px;
+}
+#new-icalator-page #form-icalator .date-inputs-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+#new-icalator-page #form-icalator .date-inputs-container fieldset {
+  width: 100%;
+  max-width: 500px;
+  border: unset;
+}
+#new-icalator-page #form-icalator button[type=submit] {
+  margin-top: 40px;
+  margin-left: auto;
+}
+#new-icalator-page #form-icalator .logements-container.backoffice {
+  padding: 20px;
+  border: unset;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-icalator-page #form-icalator .logements-container.backoffice label[for=logements] {
+  font-size: 1.2em;
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+#new-icalator-page .input-logement {
+  position: relative;
+}
+#new-icalator-page .input-logement input[type=checkbox] {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+#new-icalator-page .input-logement input[type=checkbox]:hover {
+  cursor: pointer;
+}
+#new-icalator-page .input-logement input[type=checkbox]:hover + .card-logement {
+  background-color: #ffd6bb;
+}
+#new-icalator-page .input-logement input[type=checkbox]:checked + .card-logement {
+  background-color: #b6896c;
+}
+#new-icalator-page .input-logement input[type=checkbox] + ::after {
+  display: none;
+}
+#new-icalator-page .input-logement .card-logement {
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#icalator-success-page {
+  margin: auto;
+  max-width: 1250px;
+  padding: 40px 20px;
+}
+#icalator-success-page a {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#icalator-success-page a:hover {
+  text-decoration: underline;
+}
+#icalator-success-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 30px;
+}
+#icalator-success-page .success-container {
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  text-align: center;
+  padding: 25px;
+  width: fit-content;
+  margin: auto;
+}
+#icalator-success-page .success-container .icalator-success-title span {
+  margin: auto;
+  font-size: 10em;
+  border-radius: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebfff0;
+  color: #4bb543;
+  width: fit-content;
+}
+#icalator-success-page .success-container .icalator-success-title h2 {
+  text-align: center;
+  color: #4bb543;
+  font-size: 3em;
+}
+#icalator-success-page .success-container .success-description {
+  line-height: 2em;
+}
+
+.chemin-page-backoffice {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+  align-items: center;
+  font-size: 1.1em;
+}
+.chemin-page-backoffice a {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+.chemin-page-backoffice a:hover {
+  text-decoration: underline;
+}
+.chemin-page-backoffice span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#icalator-home-page .icalator-container-home {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+#icalator-home-page .icalator-container-home .icalator-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#icalator-home-page .icalator-home-table-container {
+  overflow-x: auto;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+#icalator-home-page .icalator-home-table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 10px;
+  border: 1px solid #424645;
+  overflow: hidden;
+}
+#icalator-home-page .icalator-home-table th,
+#icalator-home-page .icalator-home-table td {
+  padding: 10px 20px;
+}
+#icalator-home-page .icalator-home-table thead {
+  background-color: #804e2e;
+  color: white;
+}
+#icalator-home-page .icalator-home-table tbody tr {
+  transition: all 0.3s ease;
+}
+#icalator-home-page .icalator-home-table tbody tr:nth-child(even) {
+  background-color: #ffd6bb;
+}
+#icalator-home-page .icalator-home-table tbody tr td .calendar-link {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#icalator-home-page .icalator-home-table tbody tr td .calendar-link:hover {
+  text-decoration: underline;
+}
+#icalator-home-page .icalator-home-table tbody tr .actions-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#icalator-home-page .icalator-home-table tbody tr .actions-cell a {
+  text-decoration: none;
+}
+#icalator-home-page .icalator-home-table tbody tr .calendar-btn {
+  color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+#icalator-home-page .icalator-home-table tbody tr .calendar-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+}
+#icalator-home-page .icalator-home-table tbody tr .read-btn {
+  background-color: #4bb543;
+}
+#icalator-home-page .icalator-home-table tbody tr .read-btn:hover {
+  background-color: #3a9c3a;
+}
+#icalator-home-page .icalator-home-table tbody tr .delete-btn {
+  background-color: #ff3333;
+}
+#icalator-home-page .icalator-home-table tbody tr .delete-btn:hover {
+  background-color: #de0404;
+}
+
+#read-calendar-page {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+}
+#read-calendar-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin: 20px 0;
+}
+#read-calendar-page .calendar-informations {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+#read-calendar-page .calendar-informations div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#read-calendar-page .calendar-informations div p {
+  font-size: 1.4em;
+}
+#read-calendar-page .url-informations {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#read-calendar-page .url-informations .calendar-link {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#read-calendar-page .url-informations .calendar-link:hover {
+  text-decoration: underline;
+}
+#read-calendar-page .url-informations p {
+  font-size: 1.1em;
+}
+#read-calendar-page .logements-container.backoffice {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#read-calendar-page .logements-container.backoffice h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#modal-calendar {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  width: 470px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  background-color: white;
+}
+#modal-calendar h2 {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+#modal-calendar .modal-btn-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal-calendar-background {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }

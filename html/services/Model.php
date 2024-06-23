@@ -123,7 +123,7 @@ class Model {
         foreach($values as $k => &$v) {
             $request->bindParam($k+1, $v);
         }
-
+        
         if(!$this->isNew && array_key_exists($primaryField, $this->data))
             $request->bindParam(sizeof($values)+1, $this->data[$primaryField]);
         
@@ -132,6 +132,19 @@ class Model {
         if(!isset($seqName))
             return true;
         return Database::getConnection()->lastInsertId($seqName);
+    }
+
+    /**
+     * delete the model from the database
+     */
+    public function delete() {
+        $primaryField = $this->getPrimaryField();
+        if($primaryField === null) {
+            throw new SchemaValidationException("Primary key not found.");
+        }
+        $request = Database::getConnection()->prepare("DELETE FROM ".$this->tableName." WHERE ".$primaryField." = ?");
+        $request->bindParam(1, $this->data[$primaryField]);
+        $request->execute();
     }
 
     public function getData() {

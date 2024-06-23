@@ -92,17 +92,22 @@ CREATE TABLE _logement (
 CREATE TABLE _icalator (
     cle_api VARCHAR(100) PRIMARY KEY,
     start_date DATE NOT NULL,
-    end_date DATE NOT NULL
+    end_date DATE NOT NULL,
+    id_compte VARCHAR(100) NOT NULL,
+    
+    CONSTRAINT icalator_fk_compte FOREIGN KEY(id_compte) 
+            REFERENCES _compte(id_compte)
 );
 
 CREATE TABLE _icalator_logement (
-    cle_api VARCHAR(100) PRIMARY KEY,
+    cle_api VARCHAR(100) NOT NULL,
     id_logement INTEGER NOT NULL,
-
-    CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY(cle_api) 
-            REFERENCES _icalator(cle_api),
-    CONSTRAINT icalator_logement_fk_logement FOREIGN KEY(id_logement)
-            REFERENCES _logement(id_logement)
+    
+    CONSTRAINT pk_icalator_logement PRIMARY KEY (cle_api, id_logement),
+    CONSTRAINT icalator_logement_fk_icalator FOREIGN KEY (cle_api)
+        REFERENCES _icalator (cle_api),
+    CONSTRAINT icalator_logement_fk_logement FOREIGN KEY (id_logement)
+        REFERENCES _logement (id_logement)
 );
 
 /* TRIGGER POUR CALCULER PRIX TTC */

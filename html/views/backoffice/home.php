@@ -19,7 +19,7 @@
         </a>
     </section>
     <section>
-    <div class="logements-container">
+    <div class="logements-container backoffice">
         <?php
         if($controller->getNbLogement() == 0) {
             ?>

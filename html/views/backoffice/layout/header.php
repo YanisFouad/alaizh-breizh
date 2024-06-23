@@ -34,6 +34,11 @@
                         Mes logements
                     </a>
                 </li>
+                <li>
+                    <a href="/backoffice/calendrier">
+                        Mes calendriers
+                    </a>
+                </li>
             </ul>
         </nav>
         <aside>
