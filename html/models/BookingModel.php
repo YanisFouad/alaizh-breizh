@@ -131,4 +131,16 @@ class BookingModel extends Model {
             ->fetchOne();
         return $result["count"] ?? 0;
     }
+
+    public static function findAllById($id, $projection = "*") {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection($projection)
+            ->innerJoin("logement", "logement.id_logement = _reservation.id_logement")
+            ->innerJoin("proprietaire", "proprietaire.id_compte = logement.id_proprietaire")
+            ->where("id_proprietaire = ?", $id)
+            ->execute()
+            ->fetchMany();
+
+        return $result;
+    }
 }

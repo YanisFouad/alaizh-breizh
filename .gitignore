@@ -20,3 +20,6 @@ html/assets/scss/**/*.css.map
 
 # ignore prepros config
 prepros.config
+
+html/files/*
+./common/scss-entrypoint.sh

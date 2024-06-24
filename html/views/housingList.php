@@ -9,7 +9,7 @@
    
    // Calculer l'indice de début pour la pagination
    $indiceDebut = ($currentPage - 1) * $articlesParPage;
-   $accomodations = AccommodationModel::find(($currentPage - 1) * $articlesParPage, $articlesParPage);
+   $accomodations = AccommodationModel::find(($currentPage - 1) * $articlesParPage, $articlesParPage, "*", true);
  
    $totalAccomodations = AccommodationModel::count();
    $totalPages = ceil($totalAccomodations / $articlesParPage);

@@ -9,6 +9,19 @@ function price_format($price) {
     return number_format($price, 2, ",", " ");
 }
 
+/**
+ * Format phone number
+ * @param $phone_number a provided phone number
+ * @return string a formatted phone number
+ */
+function phone_number_format($phone_number) {
+    $phone = str_replace(' ', '', $phone_number);
+    if ($phone[0] != '0') {
+        $phone = '0'.$phone;
+    }
+    return wordwrap($phone, 2, " ", true);
+}
+
 
 /**
  * Format a date

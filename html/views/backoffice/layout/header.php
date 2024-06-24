@@ -1,5 +1,6 @@
 <?php 
     require_once(__DIR__."/../../../services/session/UserSession.php");
+    require_once(__DIR__."/../../../services/ScriptLoader.php");
 
     if(!UserSession::isConnectedAsOwner()) {
         require_once(__DIR__."/../authentication/login.php");
@@ -32,6 +33,11 @@
                 <li>
                     <a href="/backoffice/">
                         Mes logements
+                    </a>
+                </li>
+                <li>
+                    <a href="/backoffice/calendrier">
+                        Mes calendriers
                     </a>
                 </li>
             </ul>

@@ -25,6 +25,8 @@ $router->add("/reservation", "views/bookings/booking.php");
 
 // account profile & public profile view
 $router->add("/profil", "views/account/profile.php");
+$router->add("/inscription", "views/account/profileCreation.php");
+
 
 // backoffices views
 $router->add("/backoffice", "views/backoffice/home.php");
@@ -35,6 +37,14 @@ $router->add("/backoffice/logement", "views/backoffice/accomodations/pageDetaill
 // facture pdf
 $router->add("/facture", "controllers/facturePdf.php");
 $router->add("/backoffice/facture", "controllers/facturePdf.php");
+
+// iCalator
+$router->add("/icalator", "services/iCalator.php");
+$router->add("/backoffice/calendrier/nouveau", "views/backoffice/icalator/iCalator.php");
+$router->add("/backoffice/calendrier", "views/backoffice/icalator/homeiCalator.php");
+$router->add("/backoffice/calendrier/succes", "views/backoffice/icalator/iCalatorSuccess.php");
+$router->add("/backoffice/calendrier/voir", "views/backoffice/icalator/iCalatorRead.php");
+$router->add("/backoffice/calendrier/supprimer", "controllers/backoffice/icalator/iCalatorDelete.php");
 
 $router->set404View("views/errors/404.php");
 
