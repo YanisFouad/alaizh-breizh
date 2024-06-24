@@ -3845,7 +3845,7 @@ h5 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #D80000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -3861,7 +3861,7 @@ h5 {
   transition: 0.4s;
 }
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider {
-  background-color: #b6896c;
+  background-color: #337d51;
 }
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider:before {
   -webkit-transform: translateX(21px);
