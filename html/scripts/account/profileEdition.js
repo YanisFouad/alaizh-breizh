@@ -19,7 +19,7 @@ const fields = {
     "date_naissance": null,
     "telephone": null,
     "numero": null,
-    "complete_numer": null,
+    "complement_numero": null,
     "rue_adresse": null,
     "ville_adresse": null,
     "code_postal_adresse": null,
@@ -91,7 +91,7 @@ async function editProfile() {
     if(profilePictureFile)
         formData.append("profilePicture", profilePictureFile);
     try {
-        const response = await fetch("/controllers/account/profileController.php", {
+        const response = await fetch("/controllers/account/profileEditionController.php", {
             method: "POST",
             body: formData
         });

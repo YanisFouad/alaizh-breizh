@@ -16,6 +16,11 @@
     animation: open 1s forwards;
 
     &>h3 {
+        overflow: hidden;
+        text-wrap: nowrap;
+        max-width: 50em;
+        text-overflow: ellipsis;
+
         font-size: 1.1em;
         font-family: "poppins-regular", sans-serif;
     }

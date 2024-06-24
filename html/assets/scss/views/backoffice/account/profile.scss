@@ -1,0 +1,39 @@
+#backoffice-registration {  
+    background-color: $black;
+    color: $white;
+    padding-top: 1em;
+
+    &>img {
+        filter: invert(1);
+        display: block;
+        margin: auto;
+        margin-bottom: .5em;
+        width: 15em;
+    }
+    &>h2 {
+        text-align: center;
+    }
+    &>form {
+        &>.profile-container {
+            margin: auto;
+            width: fit-content;
+        }
+    }
+
+    & .form-field {
+        margin: 1em 0;
+
+        &>label {
+            color: $white;
+        }
+
+        &>input, &>select {
+            background-color: $gray-1;
+            color: $white;
+            transition: .5s ease all;
+            &:is(:hover, :focus) {
+                border-color: $white;
+            }
+        }
+    }
+}

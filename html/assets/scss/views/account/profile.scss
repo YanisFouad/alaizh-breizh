@@ -14,7 +14,8 @@
     }
 
     // by default, hide all fields
-    input {
+    input,
+    select {
         display: none;
     }
 

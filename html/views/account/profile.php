@@ -1,6 +1,6 @@
 <?php
     require_once(__DIR__."/../../models/AccountModel.php");
-    require_once(__DIR__."/../../controllers/account/profileController.php");
+    require_once(__DIR__."/../../controllers/account/profileEditionController.php");
 
     $user_profile = null;
     if(isset($_GET) && isset($_GET["profil_id"])) {
@@ -13,7 +13,7 @@
         $isOwnProfile = true;
     }
     
-    ScriptLoader::load("account/profile.js");
+    ScriptLoader::load("account/profileEdition.js");
     require_once(__DIR__."/../layout/header.php"); 
 ?>
 
@@ -57,7 +57,10 @@
                         </div>
                         <div>
                             <h5>Civilité</h5>
-                            <input id="civilite" type="text" value="<?=$user_profile->get("civilite") ?>" />
+                            <select id="civilite">
+                                <option value="M." <?=$user_profile->get("civilite") === "M." ? "selected" : "" ?>>M.</option>
+                                <option value="Mme" <?=$user_profile->get("civilite") === "Mme" ? "selected" : "" ?>>Mme</option>
+                            </select>
                             <h4><?=$user_profile->get("civilite") ?></h4>
                         </div>
                         <div>
@@ -86,7 +89,7 @@
                         <?php if($user_profile->has("complement_numero")) { ?>
                             <div>
                                 <h5>Complément numéro</h5>
-                                <input id="complete_numer" type="text" value="<?=$user_profile->get("complement_numero") ?>" />
+                                <input id="complement_numero" type="text" value="<?=$user_profile->get("complement_numero") ?>" />
                                 <h4><?=$user_profile->get("complement_numero") ?></h4>
                             </div>
                         <?php } ?>

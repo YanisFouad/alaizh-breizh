@@ -106,6 +106,10 @@
                 background-color: $gray-4;
             }
         }
+
+        &>a>button {
+            width: 100%;
+        }
     }
 
 }

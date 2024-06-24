@@ -1,13 +1,13 @@
 <?php
-    require_once(__DIR__."/../../models/AccountModel.php");
-    require_once(__DIR__."/../../services/session/UserSession.php");
+    require_once(__DIR__."/../../../models/AccountModel.php");
+    require_once(__DIR__."/../../../services/session/UserSession.php");
 
     if ($_POST){
         creation();
     }
 
     function creation() {
-        $account = new AccountModel(AccountType::TENANT, null, false);
+        $account = new AccountModel(AccountType::TENANT);
 
         if (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
             $_POST["error_mail"] = "Adresse e-mail invalide.";

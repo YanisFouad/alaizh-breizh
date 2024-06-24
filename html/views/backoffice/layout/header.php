@@ -2,8 +2,9 @@
     require_once(__DIR__."/../../../services/session/UserSession.php");
     require_once(__DIR__."/../../../services/ScriptLoader.php");
 
+    // allow users to go in inscription page so they can create an account, otherwise just require the login page
     if(!UserSession::isConnectedAsOwner()) {
-        require_once(__DIR__."/../authentication/login.php");
+        require_once(__DIR__."/../authentication/authentication.php");
         exit;
     }
 
@@ -59,7 +60,10 @@
                 <div class="dropdown">
                     <ul>
                         <li>
-                            <form method="POST" action="/controllers/authentication/disconnectController.php?redirecTo=/backoffice/">
+                            <a href="/profil">Mon profil</a>
+                        </li>
+                        <li>
+                            <form method="POST" action="/controllers/authentication/disconnectController.php?redirectTo=%2Fbackoffice">
                                 <button type="submit">Déconnexion</button>
                             </form>
                         </li>

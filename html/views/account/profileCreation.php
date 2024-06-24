@@ -1,5 +1,5 @@
 <?php
-    if(UserSession::isConnected()){
+    if(UserSession::isConnectedAsTenant()){
         header("Location: /");
     }
     require_once(__DIR__."/../../models/AccountModel.php");
@@ -10,7 +10,7 @@
     
 ?>
 
-<div class="inscription" role="main">
+<main class="inscription">
         <h1>
             S'inscrire
         </h1>
@@ -109,6 +109,6 @@
             </button>
         </form>
 
-</div>
+</main>
 
 <?php require_once(__DIR__."/../layout/footer.php"); ?>

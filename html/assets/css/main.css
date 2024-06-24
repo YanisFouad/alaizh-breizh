@@ -613,7 +613,8 @@ footer#foot-global nav a {
 .profile-area > header > a {
   text-decoration: none;
 }
-.profile-area input {
+.profile-area input,
+.profile-area select {
   display: none;
 }
 .profile-area * {
@@ -2721,6 +2722,8 @@ header#backoffice > aside > #profile > .infos {
 }
 header#backoffice > aside > #profile > .infos > img {
   width: 2.5em;
+  height: 2.5em;
+  object-fit: cover;
   border-radius: 100px;
 }
 header#backoffice > aside > #profile > .infos > .mdi {
@@ -2748,14 +2751,21 @@ header#backoffice > aside > #profile > .dropdown > ul {
 header#backoffice > aside > #profile > .dropdown > ul > li {
   cursor: pointer;
 }
+header#backoffice > aside > #profile > .dropdown > ul > li a {
+  display: block;
+  padding: 0.5em 1.5em;
+  text-align: center;
+  width: 100%;
+}
 header#backoffice > aside > #profile > .dropdown > ul > li button {
+  padding: 0.5em 1.5em;
   width: 100%;
 }
 header#backoffice > aside > #profile > .dropdown > ul > li:hover {
   background-color: #424645;
   transition: 0.5s all ease;
 }
-header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
+header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button, header#backoffice > aside > #profile > .dropdown > ul > li:hover a {
   color: #ffd6bb;
 }
 header#backoffice > aside > span.owner {
@@ -2858,6 +2868,9 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+#login > form > a > button {
+  width: 100%;
 }
 
 #page-home-backoffice {
@@ -4046,6 +4059,40 @@ h5 {
   color: #424645;
 }
 
+#backoffice-registration {
+  background-color: #222524;
+  color: white;
+  padding-top: 1em;
+}
+#backoffice-registration > img {
+  filter: invert(1);
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  width: 15em;
+}
+#backoffice-registration > h2 {
+  text-align: center;
+}
+#backoffice-registration > form > .profile-container {
+  margin: auto;
+  width: fit-content;
+}
+#backoffice-registration .form-field {
+  margin: 1em 0;
+}
+#backoffice-registration .form-field > label {
+  color: white;
+}
+#backoffice-registration .form-field > input, #backoffice-registration .form-field > select {
+  background-color: #424645;
+  color: white;
+  transition: 0.5s ease all;
+}
+#backoffice-registration .form-field > input:is(:hover, :focus), #backoffice-registration .form-field > select:is(:hover, :focus) {
+  border-color: white;
+}
+
 .active {
   display: block;
 }
@@ -4171,6 +4218,10 @@ h5 {
   animation: open 1s forwards;
 }
 .notification[role=dialog] > h3 {
+  overflow: hidden;
+  text-wrap: nowrap;
+  max-width: 50em;
+  text-overflow: ellipsis;
   font-size: 1.1em;
   font-family: "poppins-regular", sans-serif;
 }
@@ -4592,6 +4643,7 @@ h5 {
   width: 40%;
   margin: 1em auto;
   border-radius: 15px;
+  padding-bottom: 7em;
 }
 .inscription section {
   margin: 2em 0;
