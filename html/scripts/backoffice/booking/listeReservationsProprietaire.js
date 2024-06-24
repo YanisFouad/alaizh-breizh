@@ -46,6 +46,10 @@ async function updateBookings() {
         const data = await response.json();
         const bookings = data.bookings;
 
+        const url = new URL(location);
+        // save tab get
+        const tab = url.searchParams.get("tab");
+
         bookingList.innerHTML = "";
         bookings.forEach(booking => updateBooking(booking));
         window.notify(
@@ -54,9 +58,9 @@ async function updateBookings() {
             true
         );
 
-        const url = new URL(location);
-        url.searchParams.delete("sortDir");
-        url.searchParams.append("sortDir", sortDir);
+        if(tab)
+            url.searchParams.set("tab", tab);
+        url.searchParams.set("sortDir", sortDir);
         window.history.pushState({}, null, url);
     } catch(e) {
         console.trace(e);
