@@ -1,6 +1,6 @@
 <?php
     require_once(__DIR__."/../../models/AccountModel.php");
-    require_once(__DIR__."/../../controllers/account/profileController.php");
+    require_once(__DIR__."/../../controllers/account/profileEditionController.php");
 
     $user_profile = null;
     if(isset($_GET) && isset($_GET["profil_id"])) {
@@ -13,7 +13,7 @@
         $isOwnProfile = true;
     }
     
-    ScriptLoader::load("account/profile.js");
+    ScriptLoader::load("account/profileEdition.js");
     require_once(__DIR__."/../layout/header.php"); 
 ?>
 
@@ -57,7 +57,10 @@
                         </div>
                         <div>
                             <h5>Civilité</h5>
-                            <input id="civilite" type="text" value="<?=$user_profile->get("civilite") ?>" />
+                            <select id="civilite">
+                                <option value="M." <?=$user_profile->get("civilite") === "M." ? "selected" : "" ?>>M.</option>
+                                <option value="Mme" <?=$user_profile->get("civilite") === "Mme" ? "selected" : "" ?>>Mme</option>
+                            </select>
                             <h4><?=$user_profile->get("civilite") ?></h4>
                         </div>
                         <div>
@@ -86,7 +89,7 @@
                         <?php if($user_profile->has("complement_numero")) { ?>
                             <div>
                                 <h5>Complément numéro</h5>
-                                <input id="complete_numer" type="text" value="<?=$user_profile->get("complement_numero") ?>" />
+                                <input id="complement_numero" type="text" value="<?=$user_profile->get("complement_numero") ?>" />
                                 <h4><?=$user_profile->get("complement_numero") ?></h4>
                             </div>
                         <?php } ?>
@@ -126,6 +129,25 @@
                                 <h5>RIB</h5>
                                 <input id="rib_proprietaire" type="text" value="<?=$user_profile->get("rib_proprietaire")?>" />
                                 <h4><?=$isOwnProfile ? $user_profile->get("rib_proprietaire") : obsfuceRIB($user_profile->get("rib_proprietaire"))?></h4>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="synkronizator">
+                        <h2>Accès API</h2>
+                        <p>Générer une clé API pour utiliser notre client externe SYNKRONISATOR qui permet de récupérer vos logements ou les réservations d'un logement sur une période. Cette accès s'adresse à des développeurs.</p>
+
+                        <div>
+                            <div class="form-field">
+                                <label for="api-key">Clé API</label>
+                                <div>
+                                    <input id="api-key" type="text" value="<?=$user_profile->get("cle_api")?>" readonly>
+                                    <button id="generate-api-key" class="primary frontoffice">
+                                        <span class="mdi mdi-autorenew"></span>
+                                    </button>
+                                    <button id="copy-api-key" class="primary frontoffice" <?=$user_profile->get("cle_api")==NULL?"disabled":""?>>
+                                        <span class="mdi mdi-content-copy"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </article>

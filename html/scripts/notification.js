@@ -14,7 +14,6 @@ window.notify = (type, title, renderDirectly) => {
     if(renderDirectly)
         return render(type, title);
     history.pushState({}, "", url);
-
 }
 
 function handleNotificationChange() {
@@ -36,7 +35,7 @@ function render(type, notificationMessage) {
     document.body.insertAdjacentHTML("afterbegin", `
         <div class="notification ${type.name}" role="dialog">
             <span class="mdi ${type.clazz}"></span>
-            <h3>${notificationMessage}</h3>
+            <h3 title="${notificationMessage}">${notificationMessage}</h3>
         </div>
     `);
 

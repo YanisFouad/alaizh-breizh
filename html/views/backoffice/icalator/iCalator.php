@@ -6,6 +6,7 @@ require_once("services/session/UserSession.php");
 require_once("services/Adresse.php");
 require_once("services/fileManager/FileLogement.php");
 require_once("services/ScriptLoader.php");
+require_once("helpers/apiUtils.php");
 
 $logements = AccommodationModel::findAllById(UserSession::get()->get("id_compte"));
 ScriptLoader::load("icalator/iCalator.js");
@@ -15,7 +16,7 @@ if ($_POST) {
 
         $icalator = new ICalatorModel();
 
-        $icalator->set("cle_api", bin2hex(random_bytes(16)));
+        $icalator->set("cle_api", generate_api_key());
         $icalator->set("start_date", date("Y-m-d", strtotime(htmlspecialchars($_POST["date-debut-souscription"]))));
         $icalator->set("end_date", date("Y-m-d", strtotime(htmlspecialchars($_POST["date-fin-souscription"]))));
         $icalator->set("id_compte", UserSession::get()->get("id_compte"));

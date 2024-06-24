@@ -25,9 +25,9 @@ function messagePopUp() {
 function updateText() {
     if (btnCheckbox.checked) {
         console.log("rentre dans le if updateText");
-        etatLogement.textContent = "Rendre indisponible :";
+        etatLogement.textContent = "En ligne";
     } else {
-        etatLogement.textContent = "Rendre disponible :";
+        etatLogement.textContent = "Hors ligne";
     }
 }
 
