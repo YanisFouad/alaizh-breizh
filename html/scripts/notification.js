@@ -14,7 +14,6 @@ window.notify = (type, title, renderDirectly) => {
     if(renderDirectly)
         return render(type, title);
     history.pushState({}, "", url);
-
 }
 
 function handleNotificationChange() {

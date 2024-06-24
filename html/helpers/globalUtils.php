@@ -54,3 +54,22 @@ function to_french_date($date) {
     
     return "$day $month $year";
 }
+
+/**
+ * Send json response with associated headers
+ * @param $entries a list of entries 
+ */
+function send_json_response(...$entries) {
+    header("Content-type: application/json");
+    echo json_encode(...$entries);
+    exit;
+}
+
+/**
+ * Verify if email is valid or not (based on a regex)
+ * @return boolean if email is valid or not
+ */
+function is_valid_email($email) {
+    $EMAIL_REGEX_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+    return preg_match($EMAIL_REGEX_PATTERN, $email);
+}

@@ -131,6 +131,10 @@ class Model {
         $request->execute();
         if(!isset($seqName))
             return true;
+
+        // if it's not a new row then accept that it's a new one
+        if(!$this->isNew)
+            $this->isNew = true;
         return Database::getConnection()->lastInsertId($seqName);
     }
 

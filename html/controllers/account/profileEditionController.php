@@ -28,7 +28,9 @@ if(isset($_POST) && isset($_POST["editProfile"])) {
 
     $profile = UserSession::get();
 
-    if(date_create($profile->get("date_naissance"))->format("Y") < 18) {
+    $nowYear = intval(date_create()->format("Y"));
+    $selectedYear = intval(date_create($date_naissance)->format("Y")); 
+    if($nowYear-$selectedYear < 18) {
         sendJson("error", "L'âge ne doit pas être inférieur à 18 ans !");
         return;
     }
