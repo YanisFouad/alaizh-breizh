@@ -136,6 +136,7 @@ class BookingModel extends Model {
         return $result["count"] ?? 0;
     }
 
+<<<<<<< HEAD
     //Trouve des réservations selon l'id locataire, une période et l'indice de début et un nombre de réservation 
     public static function findBookingsLocataire($locataire_id, $period,$offset = 0, $limit = 10) {
         $date_du_jour = new DateTime();
@@ -191,5 +192,17 @@ class BookingModel extends Model {
             ->execute()
             ->fetchOne();
         return $result["count"] ?? 0;
+=======
+    public static function findAllById($id, $projection = "*") {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection($projection)
+            ->innerJoin("logement", "logement.id_logement = _reservation.id_logement")
+            ->innerJoin("proprietaire", "proprietaire.id_compte = logement.id_proprietaire")
+            ->where("id_proprietaire = ?", $id)
+            ->execute()
+            ->fetchMany();
+
+        return $result;
+>>>>>>> 6a6517adb4f41df856c535f63f1037c92a3493da
     }
 }

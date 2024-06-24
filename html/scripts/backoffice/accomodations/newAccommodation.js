@@ -55,6 +55,8 @@ async function handleForm(event) {
             }
         }
 
+        console.log(formData);
+
         const response = await fetch(`/controllers/backoffice/accommodations/newAccommodationController.php`, {
             method: "POST",
             body: formData
@@ -72,8 +74,8 @@ async function handleForm(event) {
             return setError({
                 message: data.error,
                 fieldIds: data?.fields,
-                section: parseInt(sectionId) ?? null
-             });
+                section: sectionId ? parseInt(sectionId) : null
+             });    
         }
         // once we have added the accommodation we can go to the home
         window.location.href = "/backoffice";
@@ -105,7 +107,7 @@ function setActiveSection(sectionNumber) {
     activeSection && activeSection.classList.remove("active");
     const section = sections[sectionNumber];
     if(!section)
-        throw new Error("Section not found");
+        throw new Error("Section not found, actual section number: " + sectionNumber);
     section.scrollIntoView({ behavior: "smooth" });
     section.classList.add("active");
     activeSection = section;

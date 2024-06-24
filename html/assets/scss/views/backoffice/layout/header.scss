@@ -19,6 +19,9 @@ header#backoffice {
 
     &>nav>ul {
         list-style: none;
+        display: flex;
+        gap: 20px;
+
         &>li {           
             &>a {
                 transition: .5s ease all;

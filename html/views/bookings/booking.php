@@ -15,10 +15,10 @@ if (isset($_GET['id'])){
     $id_reservation = false;
 }
 
-// if (!UserSession::isConnected() || $id_reservation == 0 || empty($id_reservation) || !is_numeric($id_reservation)){
-//     exit(header("Location: /"));
-// }
-
+if(!UserSession::isConnectedAsTenant() || !isset($id_reservation) || !is_numeric($id_reservation)) {
+    header("Location: /");
+    exit;
+}
 
 //$controller = new BookingLocataireController($id_reservation); 
 $reservation = BookingModel::findOneById($id_reservation);

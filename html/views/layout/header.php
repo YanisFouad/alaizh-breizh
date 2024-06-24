@@ -26,12 +26,12 @@ ScriptLoader::load("layout/header.js");
             <ul>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/logements">Logements</a></li>
-                <?php if(UserSession::isConnected()) { ?>
+                <?php if(UserSession::isConnectedAsTenant()) { ?>
                     <li><a href="/reservations">Mes réservations</a></li>
                 <?php } ?>
             </ul>
             
-            <?php if(UserSession::isConnected()) { ?>
+            <?php if(UserSession::isConnectedAsTenant()) { ?>
                 <!-- 🤔 onclick ou submit ?-->
                 <div id="sign-in-up-container">
                     <a href="/profil">
@@ -53,7 +53,7 @@ ScriptLoader::load("layout/header.js");
         </nav>
         <div id="header-bottom-stroke"></div>
 
-        <?php if(!UserSession::isConnected()) { ?>
+        <?php if(!UserSession::isConnectedAsTenant()) { ?>
             <nav id="open-burger-menu" class="hidden">
                     <ul>
                         <a href="/"><li><span class="mdi mdi-home"></span>Accueil</li></a>

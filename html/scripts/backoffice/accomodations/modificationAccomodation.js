@@ -56,7 +56,7 @@ async function handleForm(event) {
             }
         }
         //modif ligne
-        const response = await fetch(`/controllers/backoffice/accommodations/newAccommodationController.php`, {
+        const response = await fetch(`/controllers/backoffice/accommodations/ModificationAccommodationController.php`, {
             method: "POST",
             body: formData
         });

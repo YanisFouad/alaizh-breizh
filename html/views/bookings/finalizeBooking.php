@@ -2,6 +2,11 @@
     require_once(__DIR__."/../../models/AccommodationModel.php");
     require_once(__DIR__."/../../services/session/PurchaseSession.php");
     
+    if(!UserSession::isConnectedAsTenant()) {
+        header("Location: /#connection?redirectTo=finaliser-ma-reservation");
+        exit;
+    }
+
     $session = PurchaseSession::get();
 
     if(!PurchaseSession::isDefined() || !isset($session["accommodationId"])) {

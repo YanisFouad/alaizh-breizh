@@ -1,5 +1,7 @@
 @charset "UTF-8";
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   outline: none;
   padding: 0;
   margin: 0;
@@ -101,13 +103,18 @@
 body {
   font-family: "comfortaa-regular", sans-serif;
   color: #222524;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5em;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "poppins-semibold", sans-serif;
 }
 
-h3, h4 {
+h3,
+h4 {
   font-family: "poppins-medium", sans-serif;
 }
 
@@ -127,7 +134,8 @@ h4 {
   font-size: 1.15em;
 }
 
-p, a {
+p,
+a {
   font-family: "comfortaa-medium", sans-serif;
   color: #222524;
   font-size: 1em;
@@ -367,6 +375,7 @@ header#frontoffice #sign-in-up-container > a:hover {
 header#frontoffice #sign-in-up-container > a > img {
   width: 2.5em;
   height: 2.5em;
+  object-fit: cover;
   border-radius: 100px;
 }
 header#frontoffice #sign-in-up-container, header#frontoffice .sign-in-up-buttons {
@@ -389,44 +398,44 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 @media (max-width: 431px) {
-  header {
+  header#frontoffice {
     padding: 1em 1em 0 1em;
   }
-  header .mdi {
+  header#frontoffice .mdi {
     font-size: 2.5em;
   }
-  header .fullsize-logo {
+  header#frontoffice .fullsize-logo {
     display: none !important;
   }
-  header .smallsize-logo {
+  header#frontoffice .smallsize-logo {
     display: block !important;
   }
-  header #top-header ul {
+  header#frontoffice #top-header ul {
     display: none !important;
   }
-  header .sign-in-up-buttons {
+  header#frontoffice .sign-in-up-buttons {
     display: none !important;
   }
-  header #sign-in-up-container {
+  header#frontoffice #sign-in-up-container {
     display: none !important;
   }
-  header #open-burger-menu {
+  header#frontoffice #open-burger-menu {
     width: 100%;
     height: 100vh;
   }
-  header #open-burger-menu ul {
+  header#frontoffice #open-burger-menu ul {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  header #open-burger-menu ul a {
+  header#frontoffice #open-burger-menu ul a {
     color: black;
     text-decoration: none;
   }
-  header #open-burger-menu ul a span {
+  header#frontoffice #open-burger-menu ul a span {
     font-size: 2em;
   }
-  header #open-burger-menu ul a li {
+  header#frontoffice #open-burger-menu ul a li {
     list-style: none;
     display: flex;
     align-items: center;
@@ -435,14 +444,17 @@ header#frontoffice #header-bottom-stroke {
     border-bottom: solid 2px #eaeaea;
     width: 100%;
   }
-  header .displayed {
+  header#frontoffice .displayed {
     display: block;
   }
-  header .hidden {
+  header#frontoffice .hidden {
     display: none;
   }
 }
 footer#foot-global {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -452,7 +464,6 @@ footer#foot-global {
   color: white;
   background-color: black;
   padding: 2em 2em;
-  margin-top: auto; /* pour conserver le footer en bas de page */
 }
 footer#foot-global a, footer#foot-global a:visited {
   color: white;
@@ -589,47 +600,141 @@ footer#foot-global nav a {
   }
 }
 .profile-area {
-  width: fit-content;
-  margin: 1em auto;
-  border-radius: 15px;
+  margin: 0 2em;
+}
+.profile-area > header {
+  margin: 1em 0;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.profile-area > header > h1 {
+  font-size: 1.8em;
+}
+.profile-area > header > a {
+  text-decoration: none;
+}
+.profile-area input {
+  display: none;
+}
+.profile-area * {
+  font-weight: normal;
 }
 .profile-area > h1 {
-  margin-bottom: 1em;
-  color: #424645;
+  margin: 1em 0;
 }
-.profile-area > img {
+.profile-area > section {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+.profile-area > section > section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.profile-area article {
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.21);
+  padding: 1em 2em;
+  border-radius: 20px;
+}
+.profile-area section.right {
+  width: 35em;
+  position: relative;
+}
+.profile-area section.right > article {
+  width: 100%;
+}
+.profile-area section.right > article > h2 {
+  margin-bottom: 0.5em;
+}
+.profile-area section.right > article > div {
+  display: grid;
+  row-gap: 1em;
+  column-gap: 3em;
+  grid-template-columns: repeat(2, 1fr);
+}
+.profile-area section.right > article > div > div > h5 {
+  color: #676767;
+}
+.profile-area section.left > article.profile > div#displayname {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+.profile-area section.left > article.profile > label#profile-picture {
+  display: none;
+  cursor: pointer;
   margin: auto;
-  display: block;
+  width: 10em;
+  height: 10em;
+  background-color: #eaeaea;
+  border-radius: 100px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.profile-area section.left > article.profile > label#profile-picture span.mdi.mdi-image {
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.profile-area section.left > article.profile > img {
   width: 10em;
   height: 10em;
   object-fit: cover;
   border-radius: 100px;
-  margin-bottom: 1em;
-}
-.profile-area > h2 {
-  text-align: center;
-  margin: 1em;
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-}
-.profile-area > h3 {
-  padding: 0.5em 0.8em;
-  border: 1px solid #222524;
-  border-radius: 15px;
-  margin: 0.5em 0;
-  font-size: 1em;
-}
-.profile-area > h3 > span {
-  font-weight: normal;
-  font-family: "poppins-regular", sans-serif;
-  color: #424645;
-}
-.profile-area > .edit {
-  margin-top: 1em;
-  margin-left: auto;
   display: block;
+  margin: auto;
+}
+.profile-area section.left > article.profile > h3 {
+  color: #1b5734;
+  margin-top: 0.5em;
+  text-align: center;
+  font-weight: normal;
+}
+.profile-area section.left > article.general > h2 {
+  margin-bottom: 0.5em;
+}
+.profile-area section.left > article.general > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.profile-area > div.no-profile-found {
+  text-align: center;
+  margin: 5em 0;
+}
+.profile-area button#profile-edition {
+  width: fit-content;
+  padding: 0.7em 0.9em;
+  margin-left: auto;
 }
 
+@media screen and (max-width: 951px) {
+  .profile-area section.right > article > div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (max-width: 826px) {
+  .profile-area {
+    padding-bottom: 10em;
+  }
+  .profile-area > section {
+    flex-wrap: wrap;
+  }
+  .profile-area > section > section.left {
+    width: 35em;
+  }
+}
+@media screen and (max-width: 691px) {
+  .profile-area > header {
+    flex-wrap: wrap;
+  }
+}
 #finalize-booking {
   width: 60em;
   margin: auto;
@@ -988,6 +1093,9 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page {
+  padding-bottom: 3em;
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1255,6 +1363,7 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
+  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -2601,6 +2710,8 @@ header#backoffice > a > img {
 }
 header#backoffice > nav > ul {
   list-style: none;
+  display: flex;
+  gap: 20px;
 }
 header#backoffice > nav > ul > li > a {
   transition: 0.5s ease all;
@@ -2832,69 +2943,22 @@ header#backoffice > aside > span.owner {
   align-items: center;
   justify-content: center;
 }
-#page-home-backoffice .logements-container .row-logement {
+#page-home-backoffice .nav-page {
+  width: 100%;
+}
+#page-home-backoffice .nav-page ul {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   gap: 10px;
 }
-#page-home-backoffice .logements-container .row-logement .link-logement {
+#page-home-backoffice .nav-page ul .link-logement {
   all: unset;
 }
-#page-home-backoffice .logements-container .row-logement .link-logement:hover {
+#page-home-backoffice .nav-page ul .link-logement:hover {
   cursor: pointer;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement {
-  flex: 1 1 calc(25% - 10px);
-  max-width: 270px;
-  height: 350px;
-  margin-bottom: 10px;
-  padding: 0 10px;
-}
-@media screen and (max-width: 1010px) {
-  #page-home-backoffice .logements-container .row-logement .card-logement {
-    flex: 1 1 calc(50% - 10px);
-  }
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container {
-  width: 100%;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .img-logement-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement,
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .title-logement {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement {
-  display: flex;
-  align-items: center;
-  color: #804e2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#page-home-backoffice .logements-container .row-logement .card-logement .description-logement-container .adresse-logement span {
-  font-size: 1.4em;
-  color: #804e2e;
-  margin-right: 5px;
 }
 #page-home-backoffice .nav-page {
   width: 100%;
@@ -2937,8 +3001,75 @@ header#backoffice > aside > span.owner {
   color: white;
 }
 
+.logements-container.backoffice .row-logement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logements-container.backoffice .row-logement .link-logement {
+  text-decoration: none;
+  cursor: pointer;
+}
+.logements-container.backoffice .row-logement .card-logement {
+  flex: 1 1 calc(25% - 10px);
+  max-width: 270px;
+  height: 350px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.logements-container.backoffice .row-logement .card-logement.disabled {
+  opacity: 0.5;
+}
+@media screen and (max-width: 1010px) {
+  .logements-container.backoffice .row-logement .card-logement {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.logements-container.backoffice .row-logement .card-logement .img-logement-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement,
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .title-logement {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement {
+  display: flex;
+  align-items: center;
+  color: #804e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logements-container.backoffice .row-logement .card-logement .description-logement-container .adresse-logement span {
+  font-size: 1.4em;
+  color: #804e2e;
+  margin-right: 5px;
+}
+
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
+#home-page {
+  padding-bottom: 3em;
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3206,6 +3337,7 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
+  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -3909,6 +4041,71 @@ h5 {
   display: flex;
   flex-direction: column;
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer {
+  position: relative;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container {
+  position: absolute;
+  right: 0;
+  top: 1em;
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+  /* Rounded sliders */
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #logementActuel {
+  display: none;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container #etatLogement {
+  margin-right: 1em;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider {
+  background-color: #b6896c;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round {
+  border-radius: 34px;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container .slider.round:before {
+  border-radius: 50%;
+}
 #mainProprietaireLogement .mdi.mdi-chevron-right {
   position: relative;
   top: 1px;
@@ -3944,7 +4141,8 @@ h5 {
 #mainProprietaireLogement a {
   color: #804e2e;
 }
-#mainProprietaireLogement a:hover, #mainProprietaireLogement a:active {
+#mainProprietaireLogement a:hover,
+#mainProprietaireLogement a:active {
   color: #9f6844;
 }
 #mainProprietaireLogement a:visited {
@@ -4244,4 +4442,460 @@ h5 {
   to {
     right: 1em;
   }
+}
+
+#new-icalator-page {
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+}
+#new-icalator-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+#new-icalator-page .error-message {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 7px;
+  user-select: none;
+}
+#new-icalator-page .error-message p {
+  color: red;
+}
+#new-icalator-page .error-message span {
+  font-size: 1.2em;
+}
+#new-icalator-page #form-icalator {
+  margin: auto;
+  max-width: 1250px;
+  padding: 40px 20px;
+}
+#new-icalator-page #form-icalator .date-inputs-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+#new-icalator-page #form-icalator .date-inputs-container fieldset {
+  width: 100%;
+  max-width: 500px;
+  border: unset;
+}
+#new-icalator-page #form-icalator button[type=submit] {
+  margin-top: 40px;
+  margin-left: auto;
+}
+#new-icalator-page #form-icalator .logements-container.backoffice {
+  padding: 20px;
+  border: unset;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#new-icalator-page #form-icalator .logements-container.backoffice label[for=logements] {
+  font-size: 1.2em;
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+#new-icalator-page .input-logement {
+  position: relative;
+}
+#new-icalator-page .input-logement input[type=checkbox] {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+#new-icalator-page .input-logement input[type=checkbox]:hover {
+  cursor: pointer;
+}
+#new-icalator-page .input-logement input[type=checkbox]:hover + .card-logement {
+  background-color: #ffd6bb;
+}
+#new-icalator-page .input-logement input[type=checkbox]:checked + .card-logement {
+  background-color: #b6896c;
+}
+#new-icalator-page .input-logement input[type=checkbox] + ::after {
+  display: none;
+}
+#new-icalator-page .input-logement .card-logement {
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#icalator-success-page {
+  margin: auto;
+  max-width: 1250px;
+  padding: 40px 20px;
+}
+#icalator-success-page a {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#icalator-success-page a:hover {
+  text-decoration: underline;
+}
+#icalator-success-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 30px;
+}
+#icalator-success-page .success-container {
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  text-align: center;
+  padding: 25px;
+  width: fit-content;
+  margin: auto;
+}
+#icalator-success-page .success-container .icalator-success-title span {
+  margin: auto;
+  font-size: 10em;
+  border-radius: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebfff0;
+  color: #4bb543;
+  width: fit-content;
+}
+#icalator-success-page .success-container .icalator-success-title h2 {
+  text-align: center;
+  color: #4bb543;
+  font-size: 3em;
+}
+#icalator-success-page .success-container .success-description {
+  line-height: 2em;
+}
+
+.chemin-page-backoffice {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+  align-items: center;
+  font-size: 1.1em;
+}
+.chemin-page-backoffice a {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+.chemin-page-backoffice a:hover {
+  text-decoration: underline;
+}
+.chemin-page-backoffice span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#icalator-home-page .icalator-container-home {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+#icalator-home-page .icalator-container-home .icalator-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#icalator-home-page .icalator-home-table-container {
+  overflow-x: auto;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+#icalator-home-page .icalator-home-table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 10px;
+  border: 1px solid #424645;
+  overflow: hidden;
+}
+#icalator-home-page .icalator-home-table th,
+#icalator-home-page .icalator-home-table td {
+  padding: 10px 20px;
+}
+#icalator-home-page .icalator-home-table thead {
+  background-color: #804e2e;
+  color: white;
+}
+#icalator-home-page .icalator-home-table tbody tr {
+  transition: all 0.3s ease;
+}
+#icalator-home-page .icalator-home-table tbody tr:nth-child(even) {
+  background-color: #ffd6bb;
+}
+#icalator-home-page .icalator-home-table tbody tr td .calendar-link {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#icalator-home-page .icalator-home-table tbody tr td .calendar-link:hover {
+  text-decoration: underline;
+}
+#icalator-home-page .icalator-home-table tbody tr .actions-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#icalator-home-page .icalator-home-table tbody tr .actions-cell a {
+  text-decoration: none;
+}
+#icalator-home-page .icalator-home-table tbody tr .calendar-btn {
+  color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+#icalator-home-page .icalator-home-table tbody tr .calendar-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+}
+#icalator-home-page .icalator-home-table tbody tr .read-btn {
+  background-color: #4bb543;
+}
+#icalator-home-page .icalator-home-table tbody tr .read-btn:hover {
+  background-color: #3a9c3a;
+}
+#icalator-home-page .icalator-home-table tbody tr .delete-btn {
+  background-color: #ff3333;
+}
+#icalator-home-page .icalator-home-table tbody tr .delete-btn:hover {
+  background-color: #de0404;
+}
+
+#read-calendar-page {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+}
+#read-calendar-page h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin: 20px 0;
+}
+#read-calendar-page .calendar-informations {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+#read-calendar-page .calendar-informations div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#read-calendar-page .calendar-informations div p {
+  font-size: 1.4em;
+}
+#read-calendar-page .url-informations {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#read-calendar-page .url-informations .calendar-link {
+  color: #804e2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+#read-calendar-page .url-informations .calendar-link:hover {
+  text-decoration: underline;
+}
+#read-calendar-page .url-informations p {
+  font-size: 1.1em;
+}
+#read-calendar-page .logements-container.backoffice {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#read-calendar-page .logements-container.backoffice h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#modal-calendar {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  width: 470px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+  background-color: white;
+}
+#modal-calendar h2 {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+#modal-calendar .modal-btn-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal-calendar-background {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#modalValidation {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  z-index: 999;
+}
+#modalValidation #modalValidationContent {
+  width: 33em;
+  margin: auto;
+  margin-top: 1em;
+  position: sticky;
+  top: 1em;
+}
+#modalValidation #modalValidationContent .close {
+  color: #aaa;
+  float: right;
+  font-size: 2em;
+  font-weight: bold;
+}
+#modalValidation #modalValidationContent .close:hover,
+#modalValidation #modalValidationContent .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modalValidation #modalValidationContent > div {
+  padding: 1em;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
+}
+#modalValidation #modalValidationContent > div h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+#modalValidation #modalValidationContent > div p {
+  text-align: center;
+}
+#modalValidation #modalValidationContent > div div {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+}
+#modalValidation #modalValidationContent > div div button {
+  padding: 0.8em 1.5em;
+  margin: 2em 1em 1em 2em;
+}
+
+.inscription {
+  width: 40%;
+  margin: 1em auto;
+  border-radius: 15px;
+}
+.inscription section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  border: 1px solid #1b5734;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+.inscription input, .inscription select {
+  font-size: 1em;
+}
+.inscription input:focus {
+  box-shadow: 0 0 5px 0 #1b5734;
+}
+.inscription h1 {
+  text-align: center;
+  margin-bottom: 1em;
+  color: #424645;
+}
+.inscription .info {
+  margin: 0.5em 0;
+}
+.inscription .profile-container {
+  text-align: center;
+}
+.inscription .profile-picture {
+  margin-top: 1em;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.inscription .profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.inscription h2 {
+  text-align: center;
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+}
+.inscription > h3 {
+  padding: 0.5em 0.8em;
+  border: 1px solid #222524;
+  border-radius: 15px;
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+.inscription > h3 > span {
+  font-weight: normal;
+  font-family: "poppins-regular", sans-serif;
+  color: #424645;
+}
+.inscription #valide {
+  margin-top: 1em;
+  margin-left: auto;
+  display: block;
+}
+.inscription .error {
+  color: red;
 }

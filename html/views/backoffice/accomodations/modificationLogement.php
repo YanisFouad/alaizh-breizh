@@ -2,7 +2,7 @@
     $logement_id = $_GET['id_logement'] ?? null;
 
     if(!isset($logement_id))
-        exit(header("Location: /"));
+        exit(header("Location: /backoffice"));
     
     ScriptLoader::load("backoffice/accomodations/modificationAccomodation.js");
     require_once(__DIR__."/../layout/header.php"); 
@@ -127,11 +127,11 @@
                 </div>
                 <div class="form-field">
                     <label for="surface_logement" class="required">Surface (en m²)</label>
-                    <input type="number" id="surface_logement" min="1" value="<?echo $logement->get('surface_logement');?>" name="surface_logement" />
+                    <input type="number" id="surface_logement" min="9" value="<?echo htmlspecialchars($logement->get('surface_logement'), ENT_QUOTES, 'UTF-8');?>" name="surface_logement" />
                 </div>
                 <div class="form-field">
                     <label for="max_personne_logement" class="required">Nombre de personne maximum</label>
-                    <input type="number" id="max_personne_logement" min="0" value="<?echo $logement->get('max_personne_logement');?>" name="max_personne_logement" />
+                    <input type="number" id="max_personne_logement" min="1" value="<?echo $logement->get('max_personne_logement');?>" name="max_personne_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_simples_logement" class="required">Nombre de lits simples</label>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_doubles_logement" class="required">Nombre de lits doubles</label>
-                    <input type="number" id="nb_lits_doubles_logement" min="1" value="<?echo $logement->get('nb_lits_doubles_logement');?>" name="nb_lits_doubles_logement" />
+                    <input type="number" id="nb_lits_doubles_logement" min="0" value="<?echo $logement->get('nb_lits_doubles_logement');?>" name="nb_lits_doubles_logement" />
                 </div>
             </div>
             <!-- <footer>
@@ -289,5 +289,4 @@
         </section>
     </form>
 </div>
-
-<?php require_once(__DIR__."/../../layout/footer.php"); ?>
+<?php require_once(__DIR__."/../../layout/footer.php") ?>

@@ -91,11 +91,11 @@
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_simples_logement" class="required">Nombre de lits simples</label>
-                    <input type="number" id="nb_lits_simples_logement" min="1" value="1" name="nb_lits_simples_logement" />
+                    <input type="number" id="nb_lits_simples_logement" min="0" value="0" name="nb_lits_simples_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_doubles_logement" class="required">Nombre de lits doubles</label>
-                    <input type="number" id="nb_lits_doubles_logement" min="1" value="1" name="nb_lits_doubles_logement" />
+                    <input type="number" id="nb_lits_doubles_logement" min="0" value="0" name="nb_lits_doubles_logement" />
                 </div>
             </div>
             <footer>

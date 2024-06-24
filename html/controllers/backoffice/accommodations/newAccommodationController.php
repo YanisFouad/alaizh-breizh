@@ -11,7 +11,7 @@ function sendResponse(...$entries) {
 
 if(isset($_POST)) {
     $picture = $_FILES["photo_logement"] ?? null;
-    $optionnalFields = ["complement_adresse"];
+    $optionnalFields = ["complement_adresse","nb_lits_doubles_logement","nb_lits_simples_logement"];
 
     $fields = [];
     // prevent from XSS
@@ -21,9 +21,10 @@ if(isset($_POST)) {
     // add all empty fields here
     $badFields = [];
     foreach($fields as $field => $value) {
-        if(empty(trim($value)) && !in_array($optionnalFields, $field))
+        if(empty(trim($value)) && !in_array($field, $optionnalFields))
             $badFields[] = $field;
     }
+    
     if(!isset($picture) || $picture["name"] === "")
         $badFields[] = "photo_logement";
 

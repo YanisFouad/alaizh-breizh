@@ -7,7 +7,7 @@ if (isset($_GET['id'])){
     $id_reservation = false;
 }
 
-if(!UserSession::isConnected()){
+if(!UserSession::isConnectedAsOwner()){
     header("Location: /backoffice");
 }
 

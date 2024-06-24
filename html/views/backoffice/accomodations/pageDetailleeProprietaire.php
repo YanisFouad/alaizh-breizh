@@ -37,6 +37,10 @@
             ->fetchOne();
         return $result["nom_departement"];
     }
+
+    ScriptLoader::load("backoffice/accomodations/boutonActiveDesactive.js");
+
+    include 'popUpValidation.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -80,7 +84,7 @@
 
                         </div>
 
-                        <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse');?> <?php getDepartmentName($logement->get('code_postal_adresse'));?>, Morbihan</h2><!--A remplir quand on aura la base de communes et departements-->
+                        <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse').", ";?> <?php echo getDepartmentName($logement->get('code_postal_adresse'));?></h2>
                         <p><?=$logement->get('accroche_logement')?></p>
 
                         <div id="caracteristiques-logement">
