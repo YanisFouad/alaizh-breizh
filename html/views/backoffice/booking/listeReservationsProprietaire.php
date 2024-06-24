@@ -177,43 +177,31 @@
     </section>
 
     <!-- Changement de page de réservation -->
-    <form method="GET" action="#" id="liste-reservation-proprietaire-pagination">
+    <form method="GET" action="#" class="pagination">
 
-        <!-- Bouton pagination précédent -->
-        <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-chevron-cliquable" : "button-chevron-non-cliquable" ?>" type="submit">
-            <span class="mdi mdi-chevron-left"></span>
-        </button>
+            <!-- Premier bouton chevron -->           
+            <button <?php if ($page == 1) {echo "disabled";}?> name="page" class="secondary" value="<?php echo $page - 1 ?>">
+               <span class="mdi mdi-chevron-left"></span>
+            </button>
+            
+            <!-- Bouton contenant les numéros de pages -->
+            <?php 
+            for($i = $page-1; $i < $page+2; $i++) { 
+               if($i>0 && $i <= $nb_page){ 
+                    ?>
+                    <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
+                        <span><?php echo $i?></span>
+                    </button>
+               <?php }
+            } ?>
 
-        <!-- Bouton pagination page précédente -->
-        <?php
-            if($page-1>0){?>
-                <button name="page" class="button-cliquable" value="<?php echo $page-1 ?>" type="submit">
-                    <?php echo $page-1; ?>
-                </button>
-        <?php }?>
+            <!-- Dernier bouton chevron -->
+            <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">
+               <span class="mdi mdi-chevron-right"></span>
+            </button>
 
-        <!-- Bouton séléctionné -->
-        <button id="button-clique">
-            <?php echo $page; ?>
-        </button>
-        
-        <!-- Bouton pagination page suivante -->
-        <?php
-            if($page+1<=$nb_page){?>
-                <button name="page" class="button-cliquable" value="<?php echo $page+1 ?>" type="submit">
-                    <?php echo $page+1; ?>
-                </button>
-        <?php } 
-    ?>
-
-        <!-- Bouton pagination page + 1 -->
-        <button name="page" value="<?php echo $page+1; ?>" class="<?php echo $page+1 <= $nb_page ? "button-chevron-cliquable" : "button-chevron-non-cliquable";?>" type="submit">
-            <span class="mdi mdi-chevron-right"></span>
-        </button>
-
-        <!-- champs caché contenant l'onglet en cours -->
-        <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
-
+            <!-- champs caché contenant l'onglet en cours -->
+            <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
     </form>
 </main>
 
