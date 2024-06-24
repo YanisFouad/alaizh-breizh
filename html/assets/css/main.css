@@ -3578,6 +3578,205 @@ abbr[title] {
   font-family: "poppins-regular", sans-serif;
 }
 
+#modification-logement {
+  width: 58em;
+  margin: auto;
+}
+#modification-logement > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#modification-logement > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#modification-logement > form > section:first-of-type {
+  margin-top: unset;
+}
+#modification-logement > form > section #image_logement {
+  background-size: cover;
+}
+#modification-logement > form > section .modifie_photo {
+  width: 10px !important;
+  margin-right: 2em;
+  text-align: center;
+}
+#modification-logement > form > section > h2, #modification-logement > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#modification-logement > form > section > h2 {
+  color: #424645;
+}
+#modification-logement > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#modification-logement > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#modification-logement > form .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#modification-logement > form .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label {
+  background-color: #ffd0d0;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label > .mdi {
+  color: #ce4b4b !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label.uploaded {
+  background-color: #e0ffee !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-check {
+  color: #1b5734 !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article #bouton_photo_logement {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#modification-logement > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#modification-logement > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#modification-logement > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#modification-logement > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#modification-logement > form > section:nth-of-type(2) > .form-field > input {
+  width: 41%;
+}
+#modification-logement > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(2) .address-number {
+  width: 5em;
+}
+#modification-logement > form > section:nth-of-type(2) .address-name {
+  width: 16em;
+}
+#modification-logement > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#modification-logement > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities > .distance {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
+}
+
 button {
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
@@ -3715,6 +3914,23 @@ h5 {
   top: 1px;
   font-size: 1.3em;
 }
+#mainProprietaireLogement #menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#mainProprietaireLogement #menu #cheminPage {
+  display: flex;
+  margin-left: 2em;
+  align-items: center;
+  margin-top: 1em;
+}
+#mainProprietaireLogement #menu #modifierLogement {
+  text-decoration: none;
+  margin-right: 2em;
+  margin-top: 1em;
+}
 #mainProprietaireLogement #page {
   margin: auto;
   margin-top: 2em;
@@ -3724,12 +3940,6 @@ h5 {
 }
 #mainProprietaireLogement #page h3 {
   color: #424645;
-}
-#mainProprietaireLogement #cheminPage {
-  display: flex;
-  margin-left: 2em;
-  align-items: center;
-  margin-top: 1em;
 }
 #mainProprietaireLogement a {
   color: #804e2e;

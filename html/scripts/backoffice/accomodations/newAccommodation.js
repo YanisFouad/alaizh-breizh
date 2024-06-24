@@ -153,9 +153,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    for(const acitvity of Array.from(document.querySelectorAll(".activities>input"))) {
-        const distSelector = acitvity.parentElement.querySelector("select");
-        acitvity.onchange = ({target}) => {
+    for(const activity of Array.from(document.querySelectorAll(".activities>input"))) {
+        const distSelector = activity.parentElement.querySelector("select");
+        activity.onchange = ({target}) => {
             if(distSelector)
                 distSelector.style.display = !target.checked ? "none" : "block";
         }

@@ -21,9 +21,16 @@
             border-radius: 20px;
             box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
 
-            &:not(.active) {
-                opacity: 50%;
+            #image_logement{
+                background-size: cover;
             }
+
+            .modifie_photo{
+                width: 10px !important;
+                margin-right: 2em;
+                text-align: center;
+            }
+
             &>h2, &>h3 {
                 font-family: "poppins-medium", sans-serif;
                 font-weight: normal;
@@ -132,6 +139,11 @@
                             display: none;
                         }
                     }
+
+                    #bouton_photo_logement{
+                        display: none;
+                    }
+
                     &:last-of-type {
                         &>.form-field {
                             margin: 1em 0;

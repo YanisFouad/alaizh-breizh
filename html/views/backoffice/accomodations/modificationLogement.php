@@ -25,7 +25,7 @@
     }
     
     //test affichage
-    echo "\naccroche : " . $logement->get('accroche_logement');
+    print_r($logement->get('activites'));
     
 
     $layouts = ["Balcon", "Piscine", "Jacuzzi", "Jardin", "Terrasse"];
@@ -43,6 +43,17 @@
     $categories = ["Appartement", "Maison", "Villa", "Chalet", "Bateau", "Insolite"];
     $types = ["Studio", "T1", "T2", "T3", "T4", "T5 et plus", "F1", "F2", "F3", "F4", "F5 et plus"];
     $distances = ["Sur place", "Moins de 5km", "Moins de 20km", "20km ou plus"];
+
+    // Fonction renvoie la distance de l'activité
+
+    function distanceActivite($nom_activite,$liste_activite) {
+        foreach ($liste_activite as $activity => $distance) {
+            if (strtolower($activity) === $nom_activite) {
+                return $distance;
+            }
+        }
+    }
+
 ?>
 
 <div id="modification-logement">
@@ -55,14 +66,18 @@
             <h2>Informations générales du logement</h2>
             <section>
                 <article>
-                    <label for="photo_logement">
-                        <span class="mdi mdi-image-plus"></span>
-                    </label>
+                    <label id="image_logement" for="photo_logement" data-image="<?php echo $logement->get("photo_logement") ?>"></label>
                     <span class="alert">
                         <span class="mdi mdi-alert"></span>
                         Faites attention aux photos que vous publiez
                     </span>
                     <input type="file" id="photo_logement" name="photo_logement">
+                </article>
+                <article>
+                    <button class="primary backoffice modifie_photo">
+                        <span class="mdi mdi-pencil"></span>
+                        <input type="file" id="bouton_photo_logement" name="photo_logement"> 
+                    </button>
                 </article>
                 <article>
                     <div class="form-field">
@@ -116,11 +131,11 @@
                 </div>
                 <div class="form-field">
                     <label for="max_personne_logement" class="required">Nombre de personne maximum</label>
-                    <input type="number" id="max_personne_logement" min="1" value="<?echo $logement->get('max_personne_logement');?>" name="max_personne_logement" />
+                    <input type="number" id="max_personne_logement" min="0" value="<?echo $logement->get('max_personne_logement');?>" name="max_personne_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_simples_logement" class="required">Nombre de lits simples</label>
-                    <input type="number" id="nb_lits_simples_logement" min="1" value="<?echo $logement->get('nb_lits_simples_logement');?>" name="nb_lits_simples_logement" />
+                    <input type="number" id="nb_lits_simples_logement" min="0" value="<?echo $logement->get('nb_lits_simples_logement');?>" name="nb_lits_simples_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_doubles_logement" class="required">Nombre de lits doubles</label>
@@ -223,13 +238,13 @@
                         <?php if (in_array(strtolower($activity),$logement_activites)) echo 'checked'; ?>
                         >
                     <label class="mdi mdi-check" for="activity_<?=$activity?>"><?=$activity?></label>
-                    
-                    <!-- REVOIR POUR LES DISTAN?CE ACTIVITE -->
-                    <?php if($hasDistance) { ?>
+
+                    <?php if($hasDistance) { ?> 
+                        <!-- REVOIR LE HOVER -->
                         <select name="distance_for_<?=$activity?>" id="distance_for_<?=$activity?>" class="distance">
-                            <?php foreach($distances as $dist) { ?>
-                                <option value="<?=$dist?>"><?=$dist?></option>
-                            <?php } ?>
+                        <?php foreach($distances as $dist) { ?>
+                                <option value="<?=$dist?>" <?php if ($dist==distanceActivite($activity,$activities)) echo 'selected'; ?>><?=$dist?></option>
+                                <?php } ?>
                         </select>
                     <?php } ?>
                 </div>
@@ -250,7 +265,7 @@
             </div>
             <div class="price-ati">
                 <span class="title">Prix TTC (10% de taxes)</span>
-                <span id="price-ati">--,-- €</span>
+                <span id="price-ati"><?php echo $logement->get('prix_ht_logement') + $logement->get('prix_ht_logement')*0.10 . "€" ?></span>
             </div>
 
             <div class="form-field">
