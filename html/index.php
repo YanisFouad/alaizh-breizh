@@ -19,7 +19,7 @@ $router->add("/logement", "views/accommodations/pageDetaillee.php");
 // bookings
 $router->add("/finaliser-ma-reservation", "views/bookings/finalizeBooking.php");
 
-$router->add("/reservations", "views/listeReservationsLocataire.php");
+$router->add("/reservations", "views/bookings/listeReservationsLocataire.php");
 $router->add("/backoffice/reservation", "views/backoffice/bookings/booking.php");
 $router->add("/reservation", "views/bookings/booking.php");
 

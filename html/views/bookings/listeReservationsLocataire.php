@@ -6,8 +6,10 @@
         exit;
     }
 
-    include_once(__DIR__."/layout/header.php");
-    require_once(__DIR__."/../models/BookingModel.php");
+    include_once(__DIR__."/../layout/header.php");
+    require_once(__DIR__."/../../models/BookingModel.php");
+
+    ScriptLoader::load("bookings/listeReservationsLocataire.js");
 
     // ***********************
     // Partie session de l'utilisateur
@@ -29,12 +31,6 @@
         $tab = $_GET['tab'];
     }else if (isset($_GET['tab-form'])){
         $tab = $_GET['tab-form'];
-    }
-
-    //Gestion du trie en cours (à repréciser)
-    $trie = "croissant";
-    if(isset($_GET['trie'])) {
-        $trie = $_GET['trie'];
     }
 
     //**************************** */
@@ -60,7 +56,10 @@
     }
 
     //tableau de réservation pour la période
-    $tab_reservation = BookingModel::findBookingsLocataire($id_locataire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
+    $sortDir = $_GET["sortDir"] ?? "DESC";
+    $offset = ($page-1)*$nb_elem_par_page;
+    $limit = $nb_elem_par_page;
+    $tab_reservation = BookingModel::findBookingsLocataire($id_locataire, $tab, $offset, $limit, $sortDir);
 ?>
 
 <main id="liste-reservation-locataire-main">
@@ -99,11 +98,10 @@
 
         <!-- Bouton trie -->
         <!-- trie pas encore fonctionnel -->
-        <!-- ?trie=<?php echo $trie === "croissant" ? "decroissant" : "croissant" ?> -->
-        <a href=""><button class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre" disabled > 
+        <button id="sort-btn" class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
-            trier par date    
-        </button></a>
+            <span class="label"></span>
+        </button>
     </div>
 
     <!-- Liste réservation -->
@@ -141,7 +139,7 @@
                         </div>
                         <div>
                             <h5 class='titreDetail'>Prix total</h5>
-                            <h5><?php echo $reservation->get("prix_total"); ?>€</h5>
+                            <h5><?php echo price_format($reservation->get("prix_total")); ?>€</h5>
                         </div>
                         <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
                             <span class="mdi mdi-eye-outline"></span>
@@ -197,6 +195,12 @@
 
         <!-- champs caché contenant l'onglet en cours -->
         <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
+
+        <!-- hidden data used for sort, un peu gettho oui -->
+        <input type="hidden" id="offset" value="<?=$offset?>">
+        <input type="hidden" id="limit" value="<?=$limit?>">
+        <input type="hidden" id="tenant_id" value="<?=$id_locataire?>">
+        <input type="hidden" id="period" value="<?=$tab?>">
     </form>
 </main>
-<?php require_once("layout/footer.php"); ?>
+<?php require_once(__DIR__."/../layout/footer.php"); ?>

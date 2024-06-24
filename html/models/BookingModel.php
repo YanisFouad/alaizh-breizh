@@ -150,7 +150,7 @@ class BookingModel extends Model {
     }
 
     //Trouve des réservations selon l'id locataire, une période et l'indice de début et un nombre de réservation 
-    public static function findBookingsLocataire($locataire_id, $period,$offset = 0, $limit = 10) {
+    public static function findBookingsLocataire($locataire_id, $period,$offset = 0, $limit = 10, $sortDir = "DESC") {
         $date_du_jour = new DateTime();
         $date_du_jour = $date_du_jour->format('Y-m-d');
         $result = RequestBuilder::select(self::$TABLE_NAME)
@@ -172,6 +172,7 @@ class BookingModel extends Model {
         }
         $result = $result
             ->offset($offset)
+            ->sortBy("date_arrivee", $sortDir)
             ->execute()
             ->fetchMany();
         return array_map(function($row) {

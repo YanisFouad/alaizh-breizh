@@ -86,7 +86,7 @@
                 <!-- bouton d'export -->
                 <button id="export-reservation" class="primary backoffice export-reservation" type="submit">
                     Exporter mes réservations
-                    <!-- <span class="mdi mdi-export-variant"></span> -->
+                    <span class="mdi mdi-microsoft-excel"></span>
                 </button> 
                 <!-- non de fichier pour l'export -->
                 <input type="hidden" name="name" value="export_reservations.csv" />

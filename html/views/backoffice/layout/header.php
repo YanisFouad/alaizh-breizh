@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <title>Alhaiz Breizh - Backoffice</title>
 </head>
-<body>
+<body id="frontoffice">
     <header id="backoffice">
         <a href="/backoffice/">
             <img alt="AlhaizBreizh's logo" src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" />

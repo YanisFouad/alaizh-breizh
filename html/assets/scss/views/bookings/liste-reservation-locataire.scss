@@ -1,6 +1,10 @@
 
 #liste-reservation-locataire-main{
-    margin:2em 4em;
+    margin: 0 4em;
+    margin-top: 2em;
+    padding-bottom: 5em;
+
+
     @media screen and (max-width : 431px) {
         margin: 0.5em 1em;
     }
@@ -109,7 +113,7 @@
             color: white;
         }
 
-        .mdi.mdi-eye-outline,.mdi.mdi-filter-variant, .mdi.mdi-sort-ascending{
+        .mdi.mdi-eye-outline,.mdi.mdi-filter-variant, .mdi.mdi-sort-ascending, .mdi.mdi-sort-descending{
             margin-right: 0.2em;
             font-size: 2em;
         }
@@ -157,6 +161,7 @@
             border: solid $primary-frontoffice-1 1px;
             border-radius: 20px;
             box-shadow: 0px 0px 2px $primary-frontoffice-1;
+            cursor: pointer;
            
             div{
                 display: flex;
@@ -173,8 +178,8 @@
                     display: flex;
                     align-items: center;
                     justify-items: center;
-                    width: 12em;
-                    height: 8em;
+                    width: 10em;
+                    height: 7em;
                     border-radius: 10%;
                     margin-right: 1em;
 
