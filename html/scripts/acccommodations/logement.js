@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const nbPersonneMax = document.getElementById("nbPersonneMax").innerHTML;
   var valeur = 1;
 
-  const idLogement = new URLSearchParams(window.location.search).get("id_logement");
+  const idLogement = new URLSearchParams(window.location.search).get(
+    "id_logement"
+  );
+
   const btnDate = document.getElementById("boutonDate");
   const minDate = new Date();
   minDate.setDate(minDate.getDate() + 1);
-  let nbMinReservation = 4;
-  let delaisReservation = 4;
+  const nbMinReservation = document.getElementById("duree-minimale-reservation").value;
   const dateDepart = document.getElementById("date-depart");
   const dateArrivee = document.getElementById("date-arrivee");
 
@@ -25,13 +27,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const fp = flatpickr(btnDate, {
     enableTime: false,
-    locale: flatpickr.l10ns.customFr, // Utiliser la locale personnalisée
+    locale: flatpickr.l10ns.customFr,
     dateFormat: "d/m/Y",
     mode: "range",
     minDate: minDate,
-    onClose: function (selectedDates, dateStr, instance) {},
+    onClose: function (selectedDates, dateStr, instance) {
+      const errorMessageList = document.querySelectorAll(".error-message");
+      if (errorMessageList.length > 0) {
+        errorMessageList.forEach((element) => {
+          element.remove();
+        });
+      }
+      if (selectedDates.length === 1) {
+        createErrorMessage("Veuillez choisir une date de départ", btnDate);
+      }
+    },
     onChange: function (selectedDates, dateStr, instance) {
-    //   errorMessage.textContent = "";
+      const errorMessageList = document.querySelectorAll(".error-message");
+      if (errorMessageList.length > 0) {
+        errorMessageList.forEach((element) => {
+          element.remove();
+        });
+      }
       if (selectedDates.length === 2) {
         let startDate = new Date(selectedDates[0]).fp_incr(1);
         let endDate = new Date(selectedDates[1]).fp_incr(1);
@@ -43,9 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (endDate < minEndDate) {
           instance.clear();
-        //   errorMessage.textContent = `La sélection doit être d'au moins ${nbMinReservation} jours.`;
+          createErrorMessage(
+            `La durée de réservation est de ${nbMinReservation} nuits minimum`,
+            btnDate
+          );
         } else {
-          // Réinitialiser les contraintes min/max de la plage de dates
           instance.set("minDate", minDate);
           instance.set("maxDate", null);
         }
@@ -53,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
   getBookingsDate(idLogement, fp);
-
 
   btnDate.addEventListener("click", () => {
     fp.open();
@@ -63,14 +81,26 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target.value) {
       e.target.innerText = e.target.value;
       const selectedDates = fp.selectedDates;
-      if(selectedDates.length === 2) {
-        const selectedStartDate = new Date(selectedDates[0].toISOString().split('T')[0]);
+      if (selectedDates.length === 2) {
+        const selectedStartDate = new Date(
+          selectedDates[0].toISOString().split("T")[0]
+        );
         selectedStartDate.setDate(selectedStartDate.getDate() + 1);
-        dateArrivee.innerText = selectedStartDate.toLocaleDateString('fr-fr', {year:"numeric", month:"long", day:"numeric"});
+        dateArrivee.innerText = selectedStartDate.toLocaleDateString("fr-fr", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
 
-        const selectedEndDate = new Date(selectedDates[1].toISOString().split('T')[0]);
+        const selectedEndDate = new Date(
+          selectedDates[1].toISOString().split("T")[0]
+        );
         selectedEndDate.setDate(selectedEndDate.getDate() + 1);
-        dateDepart.innerText = selectedEndDate.toLocaleDateString('fr-fr', {year:"numeric", month:"long", day:"numeric"});
+        dateDepart.innerText = selectedEndDate.toLocaleDateString("fr-fr", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
         console.log(selectedStartDate, selectedEndDate);
         updateNbNuits(selectedStartDate, selectedEndDate);
       }
@@ -80,6 +110,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   btn.onclick = function () {
+    let datesDevis = document.querySelector(".boutonDate").value;
+    datesDevis = datesDevis.split(" - ");
+
+    if (datesDevis.length != 2) {
+      const errorMessageList = document.querySelectorAll(".error-message");
+      if (errorMessageList.length > 0) {
+        errorMessageList.forEach((element) => {
+          element.remove();
+        });
+      }
+      createErrorMessage("Veuillez choisir une date de départ", btnDate);
+      return;
+    }
+    
     modal.style.display = "block";
   };
 
@@ -95,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function miseAJourValeurAffichee() {
     valeurAffichee.textContent = valeur;
-    moins.disabled = valeur <= 0;
+    moins.disabled = valeur <= 1;
     plus.disabled = valeur == nbPersonneMax;
   }
 
@@ -119,12 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function updateNbNuits(startDate, endDate) {
-    const nbNuits = document.getElementById("nombreNuits");
-    const timeDifference = endDate.getTime() - startDate.getTime();
-    const dayDiff = timeDifference / (1000 * 3600 * 24);
+  const nbNuits = document.getElementById("nombreNuits");
+  const timeDifference = endDate.getTime() - startDate.getTime();
+  const dayDiff = timeDifference / (1000 * 3600 * 24);
 
-    nbNuits.innerText = dayDiff;
-    updateTotal(dayDiff);
+  nbNuits.innerText = dayDiff;
+  updateTotal(dayDiff);
 }
 
 function updateTotal(nbNuits) {
@@ -132,7 +176,7 @@ function updateTotal(nbNuits) {
   const totalNuits = document.getElementById("nb-nuits-total");
 
   totalNuits.innerText = nbNuits;
-  
+
   const total = document.getElementById("total");
   let totalRes = (parseInt(nbNuits) * parseInt(prixNuit)).toFixed(2);
   totalRes = totalRes.replace(".", ",");
@@ -140,24 +184,49 @@ function updateTotal(nbNuits) {
 }
 
 async function getBookingsDate(idLogement, fp) {
-  await fetch(`/controllers/accommodations/devisBookingDates.php?id=${idLogement}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((response) => {
-    if (response.ok) {
-      return response.json();
+  await fetch(
+    `/controllers/accommodations/devisBookingDates.php?id=${idLogement}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }
-  }).then((data) => {
-    setBookingsDate(data, fp);
-  });
+  )
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      setBookingsDate(data, fp);
+    });
 }
 
 function setBookingsDate(dates, fp) {
-  for(const [index, date] of Object.entries(dates)) {
+  for (const [index, date] of Object.entries(dates)) {
     const dateArrivee = new Date(date.date_arrivee);
     const dateDepart = new Date(date.date_depart);
-    fp.config["disable"].push({from: dateArrivee, to: dateDepart});
+    fp.config["disable"].push({ from: dateArrivee, to: dateDepart });
   }
+
+  const delaisPrevenance = document.getElementById("delais-prevenance").value;
+  const prevenanceDate = new Date();
+  prevenanceDate.setDate(prevenanceDate.getDate() + parseInt(delaisPrevenance));
+
+  fp.set("minDate", prevenanceDate);
+  fp.redraw();
+}
+
+function createErrorMessage(message, siblingElement) {
+  const errorMessageContainer = document.createElement("div");
+  const icon = document.createElement("span");
+  icon.classList.add("mdi");
+  icon.classList.add("mdi-alert-circle-outline");
+  const errorMessage = document.createElement("p");
+  errorMessage.innerText = message;
+  errorMessageContainer.appendChild(icon);
+  errorMessageContainer.appendChild(errorMessage);
+  errorMessageContainer.classList.add("error-message");
+  siblingElement.insertAdjacentElement("afterend", errorMessageContainer);
 }

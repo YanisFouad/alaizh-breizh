@@ -2513,17 +2513,30 @@ h5 {
 #pageDetaillee #blockDevisSticky #box-reservation > button .mdi.mdi-calendar-month {
   font-size: 1.6em;
 }
-#pageDetaillee #blockDevisSticky #box-reservation > button + div {
+#pageDetaillee #blockDevisSticky #box-reservation .error-message {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: red;
+  margin-bottom: 1em;
+}
+#pageDetaillee #blockDevisSticky #box-reservation .error-message span {
+  margin-right: 5px;
+}
+#pageDetaillee #blockDevisSticky #box-reservation .error-message p {
+  color: red;
+}
+#pageDetaillee #blockDevisSticky #box-reservation #date {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-#pageDetaillee #blockDevisSticky #box-reservation > button + div div h4 {
+#pageDetaillee #blockDevisSticky #box-reservation #date div h4 {
   color: #676767;
   text-align: center;
   font-size: 0.8em;
 }
-#pageDetaillee #blockDevisSticky #box-reservation > button + div div h3 {
+#pageDetaillee #blockDevisSticky #box-reservation #date div h3 {
   color: #424645;
   font-size: 0.9em;
 }
@@ -2659,6 +2672,20 @@ h5 {
     max-width: 8em;
   }
 }
+.flatpickr-calendar .selected,
+.flatpickr-calendar .endRange {
+  background-color: #1b5734 !important;
+  border: unset;
+}
+.flatpickr-calendar .endRange,
+.flatpickr-calendar .inRange {
+  box-shadow: -10px 0 0 #e0ffee !important;
+}
+.flatpickr-calendar .inRange {
+  border: unset;
+  background-color: #e0ffee !important;
+}
+
 header#backoffice {
   background-color: #222524;
   display: flex;
