@@ -1641,7 +1641,7 @@ abbr[title] {
   margin: 1em 4em;
 }
 #liste-reservation-proprietaire-main button {
-  padding: 0.8em 1em !important;
+  padding: 0.8em 1em;
 }
 #liste-reservation-proprietaire-main h1 {
   margin: 1em 0;
@@ -1772,6 +1772,13 @@ abbr[title] {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1110px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
   display: flex;
@@ -1789,6 +1796,17 @@ abbr[title] {
   object-fit: cover;
   object-position: center;
 }
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+    width: 100%;
+    height: unset;
+    border-radius: 10px;
+    margin-right: 0;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+    border-radius: 10px;
+  }
+}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h4 {
   font-size: 15px;
   font-family: "poppins-light";
@@ -1798,59 +1816,80 @@ abbr[title] {
   font-family: "poppins-light";
   color: #676767;
 }
+@media screen and (max-width: 1110px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+    border: none;
+    box-shadow: none;
+    flex-direction: column;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+    flex-direction: column;
+  }
+}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4em;
+  justify-content: space-between;
+  gap: 1.2em;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  white-space: nowrap;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
+  padding: 0.55em 0.85em;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+  }
 }
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
   margin-left: 0.2em;
   color: white;
   font-size: 100px;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination {
+#liste-reservation-proprietaire-main .pagination {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
   gap: 0.75em;
+  font-size: 1em;
+  font-family: "comfortaa-bold";
+  margin-bottom: 2.5em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable {
-  text-align: center;
-  width: 3em;
-  height: 3em;
-  padding: 0;
-  border: 1px solid #804e2e;
-  border-radius: 50%;
+#liste-reservation-proprietaire-main .pagination button {
+  width: 3.3em;
+  height: 3.3em;
+  border-color: #804e2e;
   color: #804e2e;
-  font-family: "comfortaa-bold";
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable:hover {
-  color: white;
+#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
   background-color: #804e2e;
-  transition: all 0.5s ease;
+  color: white !important;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique {
-  color: white;
+#liste-reservation-proprietaire-main .pagination button .mdi {
+  font-size: 1.7em;
+}
+#liste-reservation-proprietaire-main .pagination .bouton-select {
   background-color: #804e2e;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
-  border: 1px solid #b6896c;
-  border-radius: 50%;
-  font-family: "comfortaa-bold";
-  text-align: center;
-  color: #b6896c;
-  pointer-events: none !important;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination span {
-  font-size: 2em;
+  color: white;
 }
 
 #liste-reservation-locataire-main {
@@ -2031,6 +2070,7 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div h4 {
   font-family: "poppins-light";
+  font-size: 1em;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div .titreDetail {
   font-family: "poppins-light";
@@ -2057,13 +2097,16 @@ abbr[title] {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
+  gap: 1.2em;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   white-space: nowrap;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail button {
+  padding: 0.55em 0.85em;
 }
 @media screen and (max-width: 1110px) {
   #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
@@ -2089,35 +2132,24 @@ abbr[title] {
   color: white;
   font-size: 100px;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination {
+#liste-reservation-locataire-main .pagination {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
   gap: 0.75em;
+  font-size: 1em;
+  font-family: "comfortaa-bold";
+  margin-bottom: 2.5em;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable {
-  text-align: center;
+#liste-reservation-locataire-main .pagination button {
   width: 3em;
   height: 3em;
-  padding: 0;
-  border: 1px solid #1b5734;
-  border-radius: 50%;
-  color: #1b5734;
-  font-family: "comfortaa-bold";
-  pointer-events: none;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable:hover {
-  color: white;
+#liste-reservation-locataire-main .pagination button .mdi {
+  font-size: 1.7em;
+}
+#liste-reservation-locataire-main .pagination .bouton-select {
   background-color: #1b5734;
-  transition: all 0.5s ease;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique {
   color: white;
-  background-color: #1b5734;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination span {
-  font-size: 2em;
 }
 
 *,
@@ -4256,6 +4288,7 @@ h5 {
   padding: 1em;
   border-right: 5px solid #222524;
   background-color: #f7f7f7;
+  z-index: 9999;
   animation: open 1s forwards;
 }
 .notification[role=dialog] > h3 {
