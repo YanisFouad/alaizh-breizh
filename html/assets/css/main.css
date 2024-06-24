@@ -584,6 +584,9 @@ footer#foot-global nav a {
   transform: translateY(-50%);
   background-color: #f7f7f7;
 }
+.modal#authentication-modal > .center > form > a > button {
+  width: 100%;
+}
 @keyframes modal-open {
   from {
     opacity: 0;
@@ -4772,25 +4775,40 @@ h5 {
   margin-bottom: 1em;
   color: #424645;
 }
-.inscription .info {
+.inscription .form-field {
   margin: 0.5em 0;
 }
-.inscription .profile-container {
-  text-align: center;
+.inscription div.profile-container {
+  margin: 2em auto;
+  width: fit-content;
 }
-.inscription .profile-picture {
-  margin-top: 1em;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: inline-block;
-  margin-bottom: 10px;
+.inscription div.profile-container > label {
+  display: block;
+  cursor: pointer;
+  position: relative;
 }
-.inscription .profile-picture img {
-  width: 100%;
-  height: 100%;
+.inscription div.profile-container > label > img {
+  border-radius: 200px;
+  width: 15em;
+  height: 15em;
   object-fit: cover;
+}
+.inscription div.profile-container > label > .add-new > span.opacity {
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #424645;
+  opacity: 50%;
+}
+.inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
 }
 .inscription h2 {
   text-align: center;
