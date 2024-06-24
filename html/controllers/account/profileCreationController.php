@@ -15,7 +15,7 @@
             return;
         }
 
-        if(AccountModel::findOneById($id_compte, AccountType::TENANT) != NULL) {
+        if(AccountModel::findOneById($id_compte) != NULL) {
             send_json_response([
                 "error" => "Le compte '".$id_compte."' existe déjà."
             ]);

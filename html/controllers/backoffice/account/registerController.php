@@ -13,7 +13,7 @@
             ]);
             return;
         }
-        if(AccountModel::findOneById($id_compte, AccountType::OWNER) !== NULL) {
+        if(AccountModel::findOneById($id_compte) !== NULL) {
             send_json_response([
                 "error" => "Le compte avec l'id '".$id_compte."' existe déjà."
             ]);

@@ -133,11 +133,12 @@
                         </div>
                     </article>
                     <article class="synkronizator">
-                        <h2>Synkronisator</h2>
+                        <h2>Accès API</h2>
+                        <p>Générer une clé API pour utiliser notre client externe SYNKRONISATOR qui permet de récupérer vos logements ou les réservations d'un logement sur une période. Cette accès s'adresse à des développeurs.</p>
 
                         <div>
                             <div class="form-field">
-                                <label for="api-key" class="required">Clé API</label>
+                                <label for="api-key">Clé API</label>
                                 <div>
                                     <input id="api-key" type="text" value="<?=$user_profile->get("cle_api")?>" readonly>
                                     <button id="generate-api-key" class="primary frontoffice">
