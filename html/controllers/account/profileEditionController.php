@@ -1,12 +1,8 @@
 <?php
 require_once(__DIR__."/../../services/session/UserSession.php");
 require_once(__DIR__."/../../models/AccountModel.php");
-
-function sendJson($key, $message) {
-    header("Content-Type: application/json");
-    echo json_encode(array($key => $message));
-    exit;
-}
+require_once(__DIR__."/../../helpers/globalUtils.php");
+require_once(__DIR__."/../../helpers/apiUtils.php");
 
 function obsfuceRIB($rib) {
     $obsfuceLength = 4;
@@ -20,18 +16,35 @@ function obsfuceRIB($rib) {
     );
 }
 
+if(isset($_POST) && isset($_POST["generateApiKey"])) {
+    $profile = UserSession::get();
+    try {
+        $apiKeyGenerated = generate_api_key();
+        $profile->set("cle_api", $apiKeyGenerated);
+        $profile->save();
+
+        // update the user session profile
+        UserSession::set($profile);
+
+        send_json_response(["apiKey" => $apiKeyGenerated]);
+    } catch(Exception $e) {
+        send_json_response([
+            "error" => "Erreur lors de la création de l'api key: " . $e->getMessage()
+        ]);
+    }
+}
+
 if(isset($_POST) && isset($_POST["editProfile"])) {
     // first remove the edit profile attribute
     $profilePicture = $_FILES["profilePicture"] ?? NULL;
     unset($_POST["editProfile"]);
-    unset($_POST["profilePicture"]);
-
+    
     $profile = UserSession::get();
 
     $nowYear = intval(date_create()->format("Y"));
     $selectedYear = intval(date_create($date_naissance)->format("Y")); 
     if($nowYear-$selectedYear < 18) {
-        sendJson("error", "L'âge ne doit pas être inférieur à 18 ans !");
+        send_json_response(["error" => "L'âge ne doit pas être inférieur à 18 ans !"]);
         return;
     }
 
@@ -55,8 +68,8 @@ if(isset($_POST) && isset($_POST["editProfile"])) {
         // update the user session profile
         UserSession::set($profile);
 
-        sendJson("success", true);
+        send_json_response(["success" => true]);
     } catch(Exception $e) {
-        sendJson("error", $e->getMessage());
+        send_json_response(["error" => $e->getMessage()]);
     }
 }

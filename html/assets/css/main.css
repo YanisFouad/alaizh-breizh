@@ -105,6 +105,7 @@ body {
   color: #222524;
   position: relative;
   min-height: 100vh;
+  padding-bottom: 6em;
 }
 
 h1,
@@ -660,6 +661,23 @@ footer#foot-global nav a {
 }
 .profile-area section.right > article > div > div > h5 {
   color: #676767;
+}
+.profile-area section.right > article.synkronizator > div {
+  display: block;
+}
+.profile-area section.right > article.synkronizator input {
+  display: block;
+  cursor: unset;
+  opacity: 50%;
+}
+.profile-area section.right > article.synkronizator .form-field > div {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.profile-area section.right > article.synkronizator .form-field > div > button {
+  padding: 0.7em 0.9em;
+  border-radius: 10px;
 }
 .profile-area section.left > article.profile > div#displayname {
   margin-top: 0.5em;

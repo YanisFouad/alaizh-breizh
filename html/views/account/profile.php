@@ -132,6 +132,24 @@
                             </div>
                         </div>
                     </article>
+                    <article class="synkronizator">
+                        <h2>Synkronisator</h2>
+
+                        <div>
+                            <div class="form-field">
+                                <label for="api-key" class="required">Clé API</label>
+                                <div>
+                                    <input id="api-key" type="text" value="<?=$user_profile->get("cle_api")?>" readonly>
+                                    <button id="generate-api-key" class="primary frontoffice">
+                                        <span class="mdi mdi-autorenew"></span>
+                                    </button>
+                                    <button id="copy-api-key" class="primary frontoffice" <?=$user_profile->get("cle_api")==NULL?"disabled":""?>>
+                                        <span class="mdi mdi-content-copy"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 <?php } ?>
                 <?php if($isOwnProfile) { ?>
                     <button id="profile-edition" class="mdi mdi-pencil secondary">
