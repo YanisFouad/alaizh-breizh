@@ -10,6 +10,8 @@
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
+    ScriptLoader::load("backoffice/booking/listeReservationsProprietaire.js");
+
     if(!UserSession::isConnectedAsOwner()){
         header("Location: /backoffice");
         exit;
@@ -60,9 +62,12 @@
     }
 
     //tableau de réservation pour la période
-    $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
+    $offset = ($page-1)*$nb_elem_par_page;
+    $limit = $nb_elem_par_page;
+    $sortDir = $_GET["sortDir"] ?? "DESC";
+    $tab_reservation = BookingModel::find($id_proprietaire, $tab, $offset, $limit, $sortDir);
 
-    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
+    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire, $tab);
 
 
     ScriptLoader::load("backoffice/bookings.js");
@@ -120,11 +125,10 @@
 
         <!-- Bouton trie -->
         <!-- trie pas encore fonctionnel -->
-        <!-- ?trie=<?php echo $trie === "croissant" ? "decroissant" : "croissant" ?> -->
-        <a href=""><button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre" disabled > 
+        <button id="sort-btn" class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
-            trier par date    
-        </button></a>
+            <span class="label"></span>
+        </button>
     </div>
 
     <!-- Traitement selon l'onglets réservations -->
@@ -163,7 +167,7 @@
                         </div>
                         <div>
                             <h5>Prix total</h5>
-                            <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
+                            <h4><?php echo price_format($reservation->get("prix_total")); ?>€</h4>
                         </div>
                         <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
                             <span class="mdi mdi-eye-outline"></span>
@@ -221,6 +225,12 @@
             <!-- champs caché contenant l'onglet en cours -->
             <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
     </form>
+
+    <!-- hidden data used for sort, un peu gettho oui -->
+    <input type="hidden" id="offset" value="<?=$offset?>">
+    <input type="hidden" id="limit" value="<?=$limit?>">
+    <input type="hidden" id="owner_id" value="<?=$id_proprietaire?>">
+    <input type="hidden" id="period" value="<?=$tab?>">
 </main>
 
 <?php require_once(__DIR__."/../../layout/footer.php") ?>

@@ -35,12 +35,11 @@ class BookingModel extends Model {
     }
 
     //trouve des réservations selon l'id propriétaire, l'indice de début et un nombre de réservation 
-    public static function find($owner_id, $period,$offset = 0, $limit = 10) {
+    public static function find($owner_id, $period,$offset = 0, $limit = 10, $sortBy = "DESC") {
         $date_du_jour = new DateTime();
         $date_du_jour = $date_du_jour->format('Y-m-d');
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
-            ->limit($limit)
             ->where("id_proprietaire = ?", $owner_id);
         //réservation à venir
         if($period == "a_venir"){
@@ -55,9 +54,11 @@ class BookingModel extends Model {
             $result = $result->where("date_depart < ?", $date_du_jour);
         }
         $result = $result
+            ->offset($offset)
+            ->limit($limit)
             ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
-            ->offset($offset)
+            ->sortBy("date_reservation", $sortBy)
             ->execute()
             ->fetchMany();
         return array_map(function($row) {
