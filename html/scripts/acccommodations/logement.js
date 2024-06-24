@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const btn = document.getElementById("boutonDevis");
   const closeModal = document.querySelector(".close");
+  const voyageurs = document.querySelector(".voyageurs");
+  const nuits = document.querySelectorAll(".nuits");
+  const datesDevis = document.getElementById("dates");
+  const prix = document.getElementById("prixHT");
+  const prixHTCalcul = document.querySelectorAll(".prixHTCalcul");
+  const prixTVA = document.querySelectorAll(".prixSejourTVA");
   /***Plus/moins nombre de voyageurs***/
   const moins = document.getElementById("moins");
   const valeurAffichee = document.getElementById("valeurVoyageurs");
@@ -29,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
     dateFormat: "d/m/Y",
     mode: "range",
     minDate: minDate,
-    onClose: function (selectedDates, dateStr, instance) {},
+    onClose: function (selectedDates, dateStr, instance) { },
     onChange: function (selectedDates, dateStr, instance) {
-    //   errorMessage.textContent = "";
+      //   errorMessage.textContent = "";
       if (selectedDates.length === 2) {
         let startDate = new Date(selectedDates[0]).fp_incr(1);
         let endDate = new Date(selectedDates[1]).fp_incr(1);
@@ -43,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (endDate < minEndDate) {
           instance.clear();
-        //   errorMessage.textContent = `La sélection doit être d'au moins ${nbMinReservation} jours.`;
+          //   errorMessage.textContent = `La sélection doit être d'au moins ${nbMinReservation} jours.`;
         } else {
           // Réinitialiser les contraintes min/max de la plage de dates
           instance.set("minDate", minDate);
@@ -63,14 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target.value) {
       e.target.innerText = e.target.value;
       const selectedDates = fp.selectedDates;
-      if(selectedDates.length === 2) {
+      if (selectedDates.length === 2) {
         const selectedStartDate = new Date(selectedDates[0].toISOString().split('T')[0]);
         selectedStartDate.setDate(selectedStartDate.getDate() + 1);
-        dateArrivee.innerText = selectedStartDate.toLocaleDateString('fr-fr', {year:"numeric", month:"long", day:"numeric"});
+        dateArrivee.innerText = selectedStartDate.toLocaleDateString('fr-fr', { year: "numeric", month: "long", day: "numeric" });
 
         const selectedEndDate = new Date(selectedDates[1].toISOString().split('T')[0]);
         selectedEndDate.setDate(selectedEndDate.getDate() + 1);
-        dateDepart.innerText = selectedEndDate.toLocaleDateString('fr-fr', {year:"numeric", month:"long", day:"numeric"});
+        dateDepart.innerText = selectedEndDate.toLocaleDateString('fr-fr', { year: "numeric", month: "long", day: "numeric" });
         console.log(selectedStartDate, selectedEndDate);
         updateNbNuits(selectedStartDate, selectedEndDate);
       }
@@ -79,8 +85,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function updateValues(nbNuits, nbVoyageurs) {
+    const form = new FormData();
+    form.append("nbNuits", nbNuits);
+    form.append("nbVoyageurs", nbVoyageurs);
+    fetch('/controllers/backoffice/accommodations/DispoLogementController.php', {
+      method: 'POST',
+      body: form
+    })
+      .then(response => response.text())
+      .then(response => {
+        console.log(response);
+        btnCheckbox.checked = !btnCheckbox.checked;
+        updateText();
+      })
+      .catch(error => {
+        console.error('Erreur de mise à jour du statut:', error);
+      });
+  }
+
   btn.onclick = function () {
     modal.style.display = "block";
+
+    voyageurs.textContent = valeur;
+
+    nuits.forEach(nuit => nuit.textContent = dayDiff);
+
+    datesDevis.textContent = dateDepart.textContent + "-" + dateArrivee.textContent;
+
+    var prixHTSejour = parseFloat(prix.textContent) * nuits[1].textContent;
+    prixHTCalcul.forEach(prixSeul => prixSeul.textContent = prixHTSejour);
+
+    prixTVA.forEach(prixTva => prixTva.textContent = prixHTSejour + prixHTSejour * 0.1);
   };
 
   closeModal.onclick = function () {
@@ -95,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function miseAJourValeurAffichee() {
     valeurAffichee.textContent = valeur;
-    moins.disabled = valeur <= 0;
+    moins.disabled = valeur <= 1;
     plus.disabled = valeur == nbPersonneMax;
   }
 
@@ -119,12 +155,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function updateNbNuits(startDate, endDate) {
-    const nbNuits = document.getElementById("nombreNuits");
-    const timeDifference = endDate.getTime() - startDate.getTime();
-    const dayDiff = timeDifference / (1000 * 3600 * 24);
+  const nbNuits = document.getElementById("nombreNuits");
+  const timeDifference = endDate.getTime() - startDate.getTime();
+  dayDiff = timeDifference / (1000 * 3600 * 24);
 
-    nbNuits.innerText = dayDiff;
-    updateTotal(dayDiff);
+  nbNuits.innerText = dayDiff;
+  updateTotal(dayDiff);
 }
 
 function updateTotal(nbNuits) {
@@ -132,7 +168,7 @@ function updateTotal(nbNuits) {
   const totalNuits = document.getElementById("nb-nuits-total");
 
   totalNuits.innerText = nbNuits;
-  
+
   const total = document.getElementById("total");
   let totalRes = (parseInt(nbNuits) * parseInt(prixNuit)).toFixed(2);
   totalRes = totalRes.replace(".", ",");
@@ -155,9 +191,9 @@ async function getBookingsDate(idLogement, fp) {
 }
 
 function setBookingsDate(dates, fp) {
-  for(const [index, date] of Object.entries(dates)) {
+  for (const [index, date] of Object.entries(dates)) {
     const dateArrivee = new Date(date.date_arrivee);
     const dateDepart = new Date(date.date_depart);
-    fp.config["disable"].push({from: dateArrivee, to: dateDepart});
+    fp.config["disable"].push({ from: dateArrivee, to: dateDepart });
   }
 }

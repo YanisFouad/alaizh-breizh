@@ -143,12 +143,29 @@
         }
     }
 
-    @media screen and (max-width: 432px) {
-
+    @media screen and (max-width: 900px) {
         #modal-devis-content {
             width: 90%;
             margin: auto;
         }
+    }
 
+    @media screen and (max-width: 580px) {
+        position: absolute;
+
+        #modal-devis-content {
+            height: 100%;
+            margin-top: 2em;
+
+            &>div {
+                &>article {
+                    &>div {
+                        &>div {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

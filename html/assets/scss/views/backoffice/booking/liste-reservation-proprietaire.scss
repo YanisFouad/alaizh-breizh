@@ -271,101 +271,101 @@
             }
         }
     }
-}
-
-// Texte facture
-.liste-reservation-proprietaire-flex-row>.mdi.mdi-eye-outline>p {
-    margin-left: 0.2em;
-    color: white;
-    font-size: 100px;
-}
-
-// //Pagination
-// #liste-reservation-proprietaire-pagination{
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: center;
-//     gap:0.75em;
-//     #button-clique,.button-cliquable,.button-chevron-cliquable,.button-chevron-non-cliquable{
-//         text-align: center;
-//         border: 1px solid $primary-backoffice-1;
-//         border-radius: 50%;
-//         color: $primary-backoffice-1;
-//         font-family: "comfortaa-bold";
-//         &:hover{
-//             color:white;
-//             background-color: $primary-backoffice-1;
-//             transition: all .5s ease;
-//         }
-//     }
-
-//     #button-clique,.button-cliquable{
-//         width: 3em;
-//         height: 3em;
-//     }
-
-//     .button-chevron-cliquable,.button-chevron-non-cliquable{
-//         // text-align: center;
-//         line-height: 0.8em;
-//         width: 3em;
-//     }
 
 
-
-//     #button-clique{
-//         color:white;
-//         background-color: $primary-backoffice-1;
-//     }
-
-//     .button-non-cliquable,.button-chevron-non-cliquable{
-//         border-color : $primary-backoffice-3;
-//         //border-radius: 50%;
-//         //font-family: "comfortaa-bold";
-//         //text-align: center;
-//         color: $primary-backoffice-3;
-//         pointer-events: none !important;
-//     }
-
-//     span{
-//         font-size: 2em;
-//     }
-// }
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: .75em;
-    font-size: 1em;
-    font-family: "comfortaa-bold";
-    margin-bottom: 2.5em;
-
-    // li {
-    //    display: flex;
-    //    justify-content: center;
-    //    align-items: center;
-    //    list-style: none;
-    // }
-    button {
-        width: 3.3em;
-        height: 3.3em;
-        border-color: $primary-backoffice-1;
-        color: $primary-backoffice-1;
-
-        &:not(:disabled):hover,
-        .bouton-select,
-        &:focus {
-            background-color: $primary-backoffice-1;
-            color: white !important;
-        }
-
-        .mdi {
-            font-size: 1.7em;
-        }
-    }
-
-    .bouton-select {
-        background-color: $primary-backoffice-1;
+    // Texte facture
+    .liste-reservation-proprietaire-flex-row>.mdi.mdi-eye-outline>p {
+        margin-left: 0.2em;
         color: white;
+        font-size: 100px;
     }
-}
+
+    // //Pagination
+    // #liste-reservation-proprietaire-pagination{
+    //     display: flex;
+    //     flex-direction: row;
+    //     align-items: center;
+    //     justify-content: center;
+    //     gap:0.75em;
+    //     #button-clique,.button-cliquable,.button-chevron-cliquable,.button-chevron-non-cliquable{
+    //         text-align: center;
+    //         border: 1px solid $primary-backoffice-1;
+    //         border-radius: 50%;
+    //         color: $primary-backoffice-1;
+    //         font-family: "comfortaa-bold";
+    //         &:hover{
+    //             color:white;
+    //             background-color: $primary-backoffice-1;
+    //             transition: all .5s ease;
+    //         }
+    //     }
+
+    //     #button-clique,.button-cliquable{
+    //         width: 3em;
+    //         height: 3em;
+    //     }
+
+    //     .button-chevron-cliquable,.button-chevron-non-cliquable{
+    //         // text-align: center;
+    //         line-height: 0.8em;
+    //         width: 3em;
+    //     }
+
+
+
+    //     #button-clique{
+    //         color:white;
+    //         background-color: $primary-backoffice-1;
+    //     }
+
+    //     .button-non-cliquable,.button-chevron-non-cliquable{
+    //         border-color : $primary-backoffice-3;
+    //         //border-radius: 50%;
+    //         //font-family: "comfortaa-bold";
+    //         //text-align: center;
+    //         color: $primary-backoffice-3;
+    //         pointer-events: none !important;
+    //     }
+
+    //     span{
+    //         font-size: 2em;
+    //     }
+    // }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: .75em;
+        font-size: 1em;
+        font-family: "comfortaa-bold";
+        margin-bottom: 2.5em;
+
+        // li {
+        //    display: flex;
+        //    justify-content: center;
+        //    align-items: center;
+        //    list-style: none;
+        // }
+        button {
+            width: 3.3em;
+            height: 3.3em;
+            border-color: $primary-backoffice-1;
+            color: $primary-backoffice-1;
+
+            &:not(:disabled):hover,
+            .bouton-select,
+            &:focus {
+                background-color: $primary-backoffice-1;
+                color: white !important;
+            }
+
+            .mdi {
+                font-size: 1.7em;
+            }
+        }
+
+        .bouton-select {
+            background-color: $primary-backoffice-1;
+            color: white;
+        }
+    }
 }

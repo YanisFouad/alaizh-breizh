@@ -19,19 +19,19 @@
                 <div>
                     <div>
                         <h4>Dates : </h4>
-                        <h4>12 juillet 2024 - 15 juillet 2024</h4>
+                        <h4 id="dates"></h4>
                     </div>
                     <div>
                         <h4>Voyageur(s) : </h4>
-                        <h4>2</h4>
+                        <h4 id="voyageurs">2</h4>
                     </div>
                     <div>
                         <h4>Nombre de nuit(s) : </h4>
-                        <h4>2</h4>
+                        <h4 class="nuits"></h4>
                     </div>
                     <div>
                         <h4>Prix nuitée : </h4>
-                        <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€</h4>
+                        <h4 id="prixHT"><?php echo price_format($accomodation->get("prix_ht_logement"))?>€</h4>
                     </div>
                 </div>  
             </article>
@@ -46,36 +46,25 @@
                     <div>
                         <div>
                             <h4>Prix du séjour HT : </h4>
-                            <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€ x 4 nuits</h4>
+                            <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€ x <span class="nuits"></span> nuits</h4>
                         </div>
-                        <h4><?php 
-                            $prix = $accomodation->get("prix_ht_logement")*4;
-                            echo price_format($prix);
-                        ?>€</h4>
+                        <h4><span class="prixHTCalcul"></span>€</h4>
                     </div>
     
                     <div>
                         <div>
                             <h4>TVA du séjour : </h4>
-                            <h4><?php echo price_format($prix)?>€ x 10%</h4>
+                            <h4><span class="prixHTCalcul"></span>€ x 10%</h4> <!-- TODO: remplacer le 10% par la valeur en base -->
                         </div>
-                        <h4><?php 
-                            $tva = $prix*0.1;
-                            $prix = $prix + $tva;
-                            echo price_format($tva);
-                        ?>€</h4>
+                        <h4><span class="prixSejourTVA"></span>€</h4>
                     </div>
     
                     <div>
                         <div>
                             <h4>Frais de service : </h4>
-                            <h4><?php echo price_format($prix)?>€ x 1%</h4>
+                            <h4><span class="prixSejourTVA"></span>€ x 1%</h4>
                         </div>
-                        <h4><?php 
-                            $fraisService = $prix*0.01;
-                            $prix = $prix + $fraisService;
-                            echo price_format($fraisService);
-                        ?>€</h4>
+                        <h4>€</h4>
                     </div>
 
                         
@@ -94,7 +83,7 @@
                     <div>
                         <div>
                             <h4>Taxe de séjour : </h4>
-                            <h4 id="taxeSejour">1€ x 3 pers x 4 nuits</h4>
+                            <h4 id="taxeSejour">1€ x <span class="voyageurs"></span> x 4 nuits</h4>
                         </div>
                         <h4>12€<?php 
                             $prix = $prix + 12;
