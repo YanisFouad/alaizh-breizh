@@ -3,7 +3,7 @@ session_start();
 require_once("services/Router.php");
 require_once("services/session/UserSession.php");
 require_once("services/ScriptLoader.php");
-require_once("helpers/gobalUtils.php");
+require_once("helpers/globalUtils.php");
 
 ScriptLoader::load("notification.js");
 

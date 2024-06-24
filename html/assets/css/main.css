@@ -4074,12 +4074,53 @@ h5 {
 #backoffice-registration > h2 {
   text-align: center;
 }
-#backoffice-registration > form > .profile-container {
+#backoffice-registration > form {
+  width: 35em;
   margin: auto;
+  padding-bottom: 2em;
+}
+#backoffice-registration > form > div.profile-container {
+  margin: 2em auto;
   width: fit-content;
+}
+#backoffice-registration > form > div.profile-container > label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+#backoffice-registration > form > div.profile-container > label > img {
+  border-radius: 200px;
+  width: 15em;
+  height: 15em;
+  object-fit: cover;
+}
+#backoffice-registration > form > div.profile-container > label > .add-new > span.opacity {
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #424645;
+  opacity: 50%;
+}
+#backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+}
+#backoffice-registration > form > button {
+  margin-top: 0.5em;
+  width: 100%;
 }
 #backoffice-registration .form-field {
   margin: 1em 0;
+}
+#backoffice-registration .form-field:last-of-type {
+  border-bottom: 1px solid #676767;
+  padding-bottom: 2em;
 }
 #backoffice-registration .form-field > label {
   color: white;
