@@ -55,6 +55,9 @@
 
         require_once(__DIR__."/../layout/header.php");
 
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>';
+
         ScriptLoader::load("acccommodations/logement.js");
 ?>
 <div id="pageDetaillee">
@@ -197,21 +200,21 @@
 
                 <div class="line"></div>
 
-                <button>
-                    <span>12 juillet 2024 - 15 juillet 2024</span>
+                <button id="boutonDate">
+                    <span>Choisir une date</span>
                     <span class="mdi mdi-calendar-month"></span>
                 </button>
 
-                <div>
+                <div date>
                     <div>
                         <h4>Arrivée</h4>
-                        <h3>12 juillet 2024</h3>
+                        <h3 id="date-arrivee"></h3>
                     </div>
 
 
                     <div>
                         <h4>Départ</h4>
-                        <h3>15 juillet 2024</h3>
+                        <h3 id="date-depart"></h3>
                     </div>
                 </div>
                 <div class="line"></div>
@@ -231,15 +234,15 @@
                 <div id="nbNuits">
                     <div>
                         <span>Nombre de nuits</span>
-                        <h4 id="nbNuits">3</h4>
+                        <h4 id="nombreNuits">0</h4>
                     </div>
 
                     <div>
                         <div>
-                            <span><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
-                            <span>x 3 nuits</span>
+                            <span id="prix-nuit"><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
+                            <span>x <span id="nb-nuits-total">0</span> nuits</span>
                         </div>
-                        <h4><?php echo $accomodation->get("prix_ttc_logement")*3;?>€</h4>
+                        <h4><span id="total"><?php echo $accomodation->get("prix_ttc_logement")*0; ?></span>€</h4>
                     </div>
                 </div>
 
