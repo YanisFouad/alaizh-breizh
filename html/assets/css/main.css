@@ -1400,6 +1400,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -3391,6 +3392,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
