@@ -11,7 +11,7 @@
 ?>
 
 <main class="inscription">
-    <h1>S'inscrire</h1>
+    <h1>Inscription locataire</h1>
         
     <form id="formProfil" onsubmit="handleForm(event)" method="POST" action="../../controllers/account/profileCreationController.php">
         <div class="profile-container"> 
