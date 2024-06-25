@@ -4356,6 +4356,8 @@ h5 {
   margin: auto;
   margin-top: 20px;
   width: fit-content;
+  max-width: 1350px;
+  width: 100%;
 }
 #new-icalator-page h1 {
   padding-bottom: 15px;
@@ -4409,6 +4411,9 @@ h5 {
   display: block;
   text-align: center;
   margin-bottom: 15px;
+}
+#new-icalator-page #form-icalator .logements-container.backoffice .row-logement {
+  gap: 20px;
 }
 #new-icalator-page .input-logement {
   position: relative;
@@ -4591,6 +4596,12 @@ h5 {
 }
 #icalator-home-page .icalator-home-table tbody tr .delete-btn:hover {
   background-color: #de0404;
+}
+#icalator-home-page .icalator-home-table tbody tr .edit-btn {
+  background-color: #ffbb33;
+}
+#icalator-home-page .icalator-home-table tbody tr .edit-btn:hover {
+  background-color: #e6a300;
 }
 
 #read-calendar-page {

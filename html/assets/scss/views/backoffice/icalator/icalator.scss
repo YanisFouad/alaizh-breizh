@@ -2,6 +2,8 @@
   margin: auto;
   margin-top: 20px;
   width: fit-content;
+  max-width: 1350px;
+  width: 100%;
 
   h1 {
     padding-bottom: 15px;
@@ -60,6 +62,10 @@
         display: block;
         text-align: center;
         margin-bottom: 15px;
+      }
+
+      .row-logement {
+        gap: 20px;
       }
     }
   }
@@ -272,6 +278,13 @@
           background-color: #ff3333;
           &:hover {
             background-color: #de0404;
+          }
+        }
+
+        .edit-btn {
+          background-color: #ffbb33;
+          &:hover {
+            background-color: #e6a300;
           }
         }
       }
