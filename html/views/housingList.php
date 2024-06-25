@@ -77,7 +77,6 @@
                <li>
                   <input disabled type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>" name="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>"/>
                   <label for="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>"><?php echo getDepartmentName($postCode) ?></label>
-               <!-- ⭕️ "Ille-et-Vilaine" / "Côtes d'Armor" CORRIGÉS ? --> 
                </li>
             <?php } ?>
          </ul>
@@ -99,41 +98,6 @@
          </ul>
       </section>
 
-      <!--<section id="notation-filter-container" class="hidden">
-         <div>
-            <h3>Note</h3>
-            <span id="notation-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('stars-notation-container', 'notation-chevron-down', 'notation-chevron-up')"></span>
-            <span id="notation-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('stars-notation-container', 'notation-chevron-down', 'notation-chevron-up')"></span>
-         </div>
-         <ul id="stars-notation-container" class="hidden">
-            <li class="stars-notation">
-                  <a href="">
-                     <span class="mdi mdi-star"></span>
-                     <span class="mdi mdi-star"></span>
-                     <span class="mdi mdi-star"></span>
-                     <span class="mdi mdi-star"></span>
-                     <span>& plus</span>
-                  </a>
-               </li>
-               <li class="stars-notation">
-                  <a href="">
-                     <span class="mdi mdi-star"></span>
-                     <span class="mdi mdi-star"></span>
-                     <span class="mdi mdi-star"></span>
-                     <span>& plus</span>
-                  </a>
-               </li>
-               <li class="stars-notation">  
-                  <span class="mdi mdi-star"></span>
-                  <span class="mdi mdi-star"></span>
-                  <span>& plus</span>
-               </li>
-               <li class="stars-notation">  
-                  <span class="mdi mdi-star"></span>
-                  <span>& plus</span>
-               </li>
-         </ul>
-      </section>-->
       <div id="validation-filter-button-container">
          <button class="secondary">Annuler</button>
          <button disabled class="primary">Valider</button>
@@ -163,9 +127,8 @@
       </div>
 
       <div id="filter-sort-buttons-container">
-         <!-- onclick="toggleFilterMenu()" -->
-         <button disabled id="filter-button" class="primary"><span class="mdi mdi-filter-variant"></span>Filtres</button>
-         <button disabled><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
+         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <button id="sort-btn"><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
       </div>
 
 
@@ -179,12 +142,6 @@
                   <div class="housing-text-details">
                      <div class="housing-description-container">
                         <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
-                        <!-- NOTATION // RETIRÉE
-                           <div class="star-notation-container hidden">
-                           <span class="mdi mdi-star"></span>
-                           <h4><?php //echo $housingRating; ?></h4>
-                        </div>
-                        -->
                      </div>
                      <div class="housing-location-container">
                         <span class="mdi mdi-map-marker"></span>
@@ -204,24 +161,44 @@
       </section>
 
       <div>
-         <?php 
-            //echo $currentPage . " " . $totalPages;
-         //$explodedPageNumberUrl = explode("=", $_SERVER['QUERY_STRING']);
-         //$currentPageNumber = $explodedPageNumberUrl[1];
-         ?>
 
          <form class="pagination">
-            
-            <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+
+            <!-- Premier bouton chevron -->
+            <button <?php if ($currentPage == 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
                <span class="mdi mdi-chevron-left"></span>
             </button>
 
-            <?php for($i = 0; $i < $totalPages; $i++) { ?>
-               <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
-                  <span><?php echo $i+1?></span>
+            <!-- Bouton contenant les numéros de pages -->
+            <?php
+ 
+            //gestion du min pour bouton pagination 
+            if($currentPage == $totalPages){
+                $min = $currentPage-2;
+            }else{
+                $min = $currentPage-1;
+            }
+            if($min<1){
+                $min = 1;
+            }
+
+            //gestion du max pour bouton pagination 
+            if($currentPage == 1){
+                $max = 3;
+            }else{
+                $max = $currentPage+1;
+            }
+            if($max > $totalPages){
+                $max = $totalPages;
+            }
+
+            for($i = $min; $i <= $max; $i++) { ?>
+               <button class="<?=$i==$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i?>">
+                  <span><?php echo $i?></span>
                </button>
             <?php } ?>
 
+            <!-- Dernier bouton chevron -->
             <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
                <span class="mdi mdi-chevron-right"></span>
             </button>

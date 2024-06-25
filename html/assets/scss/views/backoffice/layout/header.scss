@@ -69,6 +69,8 @@ header#backoffice {
 
                 &>img {
                     width: 2.5em;
+                    height: 2.5em;
+                    object-fit: cover;
                     border-radius: 100px;
                 }   
 
@@ -99,13 +101,21 @@ header#backoffice {
                     list-style: none;
                     &>li {
                         cursor: pointer;
+                        & a {
+                            display: block;
+                            padding: .5em 1.5em;
+                            text-align: center;
+                            width: 100%;
+                        }
                         & button {
+                            padding: .5em 1.5em;
                             width: 100%;
                         }
                         &:hover {
                             background-color: $gray-1;
                             transition: .5s all ease;
-                            &>form>button {
+                            &>form>button,
+                            & a {
                                 color: $primary-backoffice-4;
                             }
                         }

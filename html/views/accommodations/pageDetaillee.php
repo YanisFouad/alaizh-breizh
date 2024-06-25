@@ -11,7 +11,7 @@
 
     $accomodation = AccommodationModel::findOneById($id_logement);
     
-    if(!isset($accomodation)) {
+    if(!isset($accomodation) || $accomodation->get("est_visible") == false) {
         exit(header("Location: /"));
     }
     else{    

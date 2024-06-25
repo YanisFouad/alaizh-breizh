@@ -2,6 +2,13 @@ DROP SCHEMA IF EXISTS pls CASCADE;
 CREATE SCHEMA IF NOT EXISTS pls;
 SET SCHEMA 'pls';
 
+CREATE TABLE config(
+    tva_nuits FLOAT DEFAULT 10,
+    tva_taxe_sejour FLOAT DEFAULT 20,
+    commission FLOAT DEFAULT 1,
+    taxe_sejour FLOAT DEFAULT 1
+);
+
 CREATE TABLE _adresse(
     id_adresse SERIAL PRIMARY KEY,
     numero INTEGER,
@@ -147,7 +154,6 @@ CREATE TABLE  _reservation (
     nb_voyageur INTEGER NOT NULL,
     date_reservation DATE NOT NULL,
     frais_de_service FLOAT NOT NULL,
-    prix_nuitee_TTC FLOAT NOT NULL,
     prix_total FLOAT NOT NULL,
     est_payee BOOLEAN DEFAULT FALSE,
     est_annulee BOOLEAN DEFAULT FALSE,
@@ -160,7 +166,11 @@ CREATE TABLE  _reservation (
 
 CREATE TABLE _facture (
     id_reservation INTEGER PRIMARY KEY,
-    moyen_paiement VARCHAR(30) NOT NULL,
+    tva_nuits FLOAT DEFAULT 10 NOT NULL,
+    tva_taxe_sejour FLOAT DEFAULT 20 NOT NULL,
+    prix_nuitee FLOAT NOT NULL,
+    taxe_sejour FLOAT NOT NULL DEFAULT 1,
+    commission FLOAT NOT NULL DEFAULT 1,
     CONSTRAINT facture_fk_reservation FOREIGN KEY(id_reservation)
         REFERENCES _reservation(id_reservation)
 );
@@ -212,6 +222,10 @@ CREATE OR REPLACE VIEW  locataire AS SELECT
     INNER JOIN _locataire ON id_compte = id_locataire
     INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse; 
 
+CREATE OR REPLACE VIEW reservation AS SELECT _reservation.id_reservation,id_locataire,id_logement,nb_nuit,
+    date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission,est_payee,est_annulee
+    FROM _reservation
+    INNER JOIN _facture ON _facture.id_reservation = _reservation.id_reservation;
 
 CREATE EXTENSION IF NOT EXISTS tablefunc;
 
@@ -371,16 +385,19 @@ BEGIN
       numero = COALESCE(NEW.numero, OLD.numero),complement_numero = COALESCE(NEW.complement_numero, OLD.complement_numero),rue_adresse = COALESCE(new.rue_adresse, old.rue_adresse),complement_adresse = COALESCE(new.complement_adresse, old.complement_adresse),ville_adresse = COALESCE(new.ville_adresse, old.ville_adresse),code_postal_adresse = COALESCE(new.code_postal_adresse, old.code_postal_adresse),pays_adresse = COALESCE(new.pays_adresse, old.pays_adresse)
     WHERE id_adresse = compte_id_adresse;
 
-    IF new.cle_api != NULL OR old.cle_api != NULL THEN
-        UPDATE _token 
-        SET 
-          cle_api = COALESCE(new.cle_api,old.cle_api);
+    IF NEW.cle_api <> OLD.cle_api AND NEW.cle_api IS NOT NULL THEN
+        INSERT INTO _token(cle_api)
+            VALUES (NEW.cle_api);
     END IF;
 
     UPDATE _proprietaire 
     SET 
       piece_identite = COALESCE(new.piece_identite, old.piece_identite),note_proprietaire = COALESCE(new.note_proprietaire, old.note_proprietaire),num_carte_identite = COALESCE(new.num_carte_identite, old.num_carte_identite),rib_proprietaire = COALESCE(new.rib_proprietaire, old.rib_proprietaire),cle_api = COALESCE(new.cle_api,old.cle_api);
-    
+
+	IF NEW.cle_api <> OLD.cle_api AND OLD.cle_api IS NOT NULL THEN
+		DELETE FROM _token WHERE cle_api = OLD.cle_api;
+	END IF; 
+
   END IF; 
   RETURN NEW;
 END;
@@ -583,6 +600,24 @@ CREATE TRIGGER tg_update_logement
     FOR EACH ROW
     EXECUTE PROCEDURE update_logement();
 
+create or replace function create_reservation() RETURNS TRIGGER AS $BODY$
+  DECLARE
+  BEGIN
+    INSERT INTO _reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,est_annulee,est_payee)
+        VALUES(NEW.id_locataire,NEW.id_logement,NEW.nb_nuit,NEW.date_arrivee,NEW.date_depart,NEW.nb_voyageur,NEW.date_reservation,NEW.frais_de_service,NEW.prix_total,NEW.est_annulee,NEW.est_payee)
+                RETURNING id_reservation INTO NEW.id_reservation;
+    INSERT INTO _facture(id_reservation,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission)
+        VALUES(NEW.id_reservation,NEW.tva_nuits,NEW.tva_taxe_sejour,NEW.prix_nuitee,NEW.taxe_sejour,NEW.commission);
+    return NEW;
+	END;
+$BODY$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tg_create_reservation
+    INSTEAD OF INSERT on reservation 
+    FOR EACH ROW
+    EXECUTE PROCEDURE create_reservation();
+
 COPY _token(cle_api)
 FROM '/docker-entrypoint-initdb.d/token.csv'
 DELIMITER ','
@@ -633,7 +668,7 @@ FROM '/docker-entrypoint-initdb.d/amenagement.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY _reservation(id_reservation,id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_nuitee_ttc,est_payee,est_annulee,prix_total)
+COPY reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,est_payee,est_annulee,prix_total,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission)
 FROM '/docker-entrypoint-initdb.d/reservation.csv'
 DELIMITER ','
 CSV HEADER;

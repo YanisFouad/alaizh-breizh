@@ -14,16 +14,41 @@ ScriptLoader::load("icalator/calendarLink.js");
     <div class="chemin-page-backoffice">
         <a href="/backoffice/calendrier">Mes calendriers</a>
         <span class="mdi mdi-chevron-right"></span>
-        <p>Création d'un iCal</p>
+        <?php
+        if (isset($_GET["action"]) && $_GET["action"] == "edit") { ?>
+            <p>Modification d'un iCal</p>
+        <?php
+        } else { ?>
+            <h1>Création d'un iCal</h1>
+        <?php
+        }
+        ?>
     </div>
-    <h1>Création d'un iCal</h1>
+
+    <?php
+    if (isset($_GET["action"]) && $_GET["action"] == "edit") { ?>
+        <h1>Modification d'un iCal</h1>
+    <?php
+    } else { ?>
+        <h1>Création d'un iCal</h1>
+    <?php
+    }
+    ?>
     <section class="success-container">
         <div class="icalator-success-title">
             <span class="mdi mdi-check"></span>
             <h2>Succès</h2>
         </div>
         <div class="success-description">
-            <p>Votre calendrier a été créé avec succès</p>
+            <?php
+            if (isset($_GET["action"]) && $_GET["action"] == "edit") { ?>
+                <p>Votre calendrier a été modifié avec succès</p>
+            <?php
+            } else { ?>
+                <p>Votre calendrier a été créé avec succès</p>
+            <?php
+            }
+            ?>
             <p>Vous pouvez maintenant l'utiliser pour synchroniser vos réservations dans votre agenda numérique</p>
             <p><strong>Votre URL de calendrier est : <a href="<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?>" class="calendar-link"><?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?></a></strong></p>
         </div>

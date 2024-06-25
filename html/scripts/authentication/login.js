@@ -22,7 +22,8 @@ function openLoginModal() {
 // just check parameters
 window.addEventListener("DOMContentLoaded", () => {
     const hash = location.hash;
-    if(hash && hash === "#connection") {
+    console.log(hash)
+    if(hash && hash.startsWith("#connection")) {
         const url = new URL(location);
         const params = url.searchParams;
         if(params.has("redirectTo"))

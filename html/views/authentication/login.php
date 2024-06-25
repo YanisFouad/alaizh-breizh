@@ -30,9 +30,11 @@ ScriptLoader::load("authentication/login.js"); ?>
                 <span class="line"></span>
             </h5>
 
-            <button type="button" class="primary">
-                S'inscrire
-            </button>
+            <a href="/inscription">
+                <button type="button" class="primary">
+                    S'inscrire
+                </button>
+            </a>
         </form>
     </div>
 </div>

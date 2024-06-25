@@ -16,9 +16,7 @@ async function deleteCalendar(apiKey, button) {
         method: "POST",
       }
     );
-
     if (response.ok) {
-      console.log(await response.text());
       window.notify("SUCCESS", "Calendrier supprimé avec succès", true);
       button.parentElement.parentElement.remove();
     } else {

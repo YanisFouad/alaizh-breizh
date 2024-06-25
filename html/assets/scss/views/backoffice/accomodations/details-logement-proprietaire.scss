@@ -116,7 +116,7 @@ h5 {
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: #ccc;
+                background-color: #D80000;
                 -webkit-transition: .4s;
                 transition: .4s;
             }
@@ -134,7 +134,7 @@ h5 {
             }
 
             input:checked+.slider {
-                background-color: $primary-3;
+                background-color: #337d51;
             }
 
             input:checked+.slider:before {

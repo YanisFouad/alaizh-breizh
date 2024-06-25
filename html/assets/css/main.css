@@ -451,9 +451,6 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 footer#foot-global {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -584,6 +581,9 @@ footer#foot-global nav a {
   transform: translateY(-50%);
   background-color: #f7f7f7;
 }
+.modal#authentication-modal > .center > form > a > button {
+  width: 100%;
+}
 @keyframes modal-open {
   from {
     opacity: 0;
@@ -613,7 +613,8 @@ footer#foot-global nav a {
 .profile-area > header > a {
   text-decoration: none;
 }
-.profile-area input {
+.profile-area input,
+.profile-area select {
   display: none;
 }
 .profile-area * {
@@ -656,6 +657,30 @@ footer#foot-global nav a {
 }
 .profile-area section.right > article > div > div > h5 {
   color: #676767;
+}
+.profile-area section.right > article.synkronizator > p {
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+  color: #676767;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid #eaeaea;
+}
+.profile-area section.right > article.synkronizator > div {
+  display: block;
+}
+.profile-area section.right > article.synkronizator input {
+  display: block;
+  cursor: unset;
+  opacity: 50%;
+}
+.profile-area section.right > article.synkronizator .form-field > div {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.profile-area section.right > article.synkronizator .form-field > div > button {
+  padding: 0.7em 0.9em;
+  border-radius: 10px;
 }
 .profile-area section.left > article.profile > div#displayname {
   margin-top: 0.5em;
@@ -1092,9 +1117,6 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1362,7 +1384,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -1379,6 +1400,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -1640,7 +1662,7 @@ abbr[title] {
   margin: 1em 4em;
 }
 #liste-reservation-proprietaire-main button {
-  padding: 0.8em 1em !important;
+  padding: 0.8em 1em;
 }
 #liste-reservation-proprietaire-main h1 {
   margin: 1em 0;
@@ -1653,6 +1675,12 @@ abbr[title] {
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire-entete #export-reservation {
   box-shadow: 0px 0px 2px #804e2e;
+  padding: 0.8em 0.8em;
+  border-radius: 100px;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-entete #export-reservation > .mdi.mdi-microsoft-excel {
+  font-size: 1.2em;
+  padding-left: 0.2em;
 }
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-recherche {
   display: flex;
@@ -1732,7 +1760,7 @@ abbr[title] {
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending {
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -1766,18 +1794,26 @@ abbr[title] {
   border: solid #804e2e 1px;
   border-radius: 20px;
   box-shadow: 0px 0px 2px #804e2e;
+  cursor: pointer;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1110px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
   display: flex;
   align-items: center;
   justify-items: center;
-  width: 12em;
-  height: 8em;
+  width: 7em;
+  height: 5em;
   border-radius: 10%;
   margin-right: 1em;
 }
@@ -1788,6 +1824,17 @@ abbr[title] {
   object-fit: cover;
   object-position: center;
 }
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+    width: 100%;
+    height: unset;
+    border-radius: 10px;
+    margin-right: 0;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+    border-radius: 10px;
+  }
+}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h4 {
   font-size: 15px;
   font-family: "poppins-light";
@@ -1797,63 +1844,85 @@ abbr[title] {
   font-family: "poppins-light";
   color: #676767;
 }
+@media screen and (max-width: 1110px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+    border: none;
+    box-shadow: none;
+    flex-direction: column;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+    flex-direction: column;
+  }
+}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4em;
+  justify-content: space-between;
+  gap: 1.2em;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  white-space: nowrap;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
+  padding: 0.55em 0.85em;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0;
+  }
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+  }
 }
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
   margin-left: 0.2em;
   color: white;
   font-size: 100px;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination {
+#liste-reservation-proprietaire-main .pagination {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
   gap: 0.75em;
+  font-size: 1em;
+  font-family: "comfortaa-bold";
+  margin-bottom: 2.5em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable {
-  text-align: center;
-  width: 3em;
-  height: 3em;
-  padding: 0;
-  border: 1px solid #804e2e;
-  border-radius: 50%;
+#liste-reservation-proprietaire-main .pagination button {
+  width: 3.3em;
+  height: 3.3em;
+  border-color: #804e2e;
   color: #804e2e;
-  font-family: "comfortaa-bold";
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-cliquable:hover, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-cliquable:hover {
-  color: white;
+#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
   background-color: #804e2e;
-  transition: all 0.5s ease;
+  color: white !important;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination #button-clique {
-  color: white;
+#liste-reservation-proprietaire-main .pagination button .mdi {
+  font-size: 1.7em;
+}
+#liste-reservation-proprietaire-main .pagination .bouton-select {
   background-color: #804e2e;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-non-cliquable, #liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination .button-chevron-non-cliquable {
-  border: 1px solid #b6896c;
-  border-radius: 50%;
-  font-family: "comfortaa-bold";
-  text-align: center;
-  color: #b6896c;
-  pointer-events: none !important;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire-pagination span {
-  font-size: 2em;
+  color: white;
 }
 
 #liste-reservation-locataire-main {
-  margin: 2em 4em;
+  margin: 0 4em;
+  margin-top: 2em;
 }
 @media screen and (max-width: 431px) {
   #liste-reservation-locataire-main {
@@ -1949,7 +2018,7 @@ abbr[title] {
 #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
-#liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-ascending {
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-descending {
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -1988,6 +2057,7 @@ abbr[title] {
   border: solid #1b5734 1px;
   border-radius: 20px;
   box-shadow: 0px 0px 2px #1b5734;
+  cursor: pointer;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
   display: flex;
@@ -2005,8 +2075,8 @@ abbr[title] {
   display: flex;
   align-items: center;
   justify-items: center;
-  width: 12em;
-  height: 8em;
+  width: 10em;
+  height: 7em;
   border-radius: 10%;
   margin-right: 1em;
 }
@@ -2030,6 +2100,7 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div h4 {
   font-family: "poppins-light";
+  font-size: 1em;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div .titreDetail {
   font-family: "poppins-light";
@@ -2056,13 +2127,16 @@ abbr[title] {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
+  gap: 1.2em;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   white-space: nowrap;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail button {
+  padding: 0.55em 0.85em;
 }
 @media screen and (max-width: 1110px) {
   #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
@@ -2088,35 +2162,24 @@ abbr[title] {
   color: white;
   font-size: 100px;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination {
+#liste-reservation-locataire-main .pagination {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
   gap: 0.75em;
+  font-size: 1em;
+  font-family: "comfortaa-bold";
+  margin-bottom: 2.5em;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable {
-  text-align: center;
+#liste-reservation-locataire-main .pagination button {
   width: 3em;
   height: 3em;
-  padding: 0;
-  border: 1px solid #1b5734;
-  border-radius: 50%;
-  color: #1b5734;
-  font-family: "comfortaa-bold";
-  pointer-events: none;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-non-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-chevron-cliquable:hover, #liste-reservation-locataire-main #liste-reservation-locataire-pagination .button-cliquable:hover {
-  color: white;
+#liste-reservation-locataire-main .pagination button .mdi {
+  font-size: 1.7em;
+}
+#liste-reservation-locataire-main .pagination .bouton-select {
   background-color: #1b5734;
-  transition: all 0.5s ease;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination #button-clique {
   color: white;
-  background-color: #1b5734;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire-pagination span {
-  font-size: 2em;
 }
 
 *,
@@ -2748,6 +2811,8 @@ header#backoffice > aside > #profile > .infos {
 }
 header#backoffice > aside > #profile > .infos > img {
   width: 2.5em;
+  height: 2.5em;
+  object-fit: cover;
   border-radius: 100px;
 }
 header#backoffice > aside > #profile > .infos > .mdi {
@@ -2775,14 +2840,21 @@ header#backoffice > aside > #profile > .dropdown > ul {
 header#backoffice > aside > #profile > .dropdown > ul > li {
   cursor: pointer;
 }
+header#backoffice > aside > #profile > .dropdown > ul > li a {
+  display: block;
+  padding: 0.5em 1.5em;
+  text-align: center;
+  width: 100%;
+}
 header#backoffice > aside > #profile > .dropdown > ul > li button {
+  padding: 0.5em 1.5em;
   width: 100%;
 }
 header#backoffice > aside > #profile > .dropdown > ul > li:hover {
   background-color: #424645;
   transition: 0.5s all ease;
 }
-header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button {
+header#backoffice > aside > #profile > .dropdown > ul > li:hover > form > button, header#backoffice > aside > #profile > .dropdown > ul > li:hover a {
   color: #ffd6bb;
 }
 header#backoffice > aside > span.owner {
@@ -2795,8 +2867,8 @@ header#backoffice > aside > span.owner {
 }
 
 #login {
-  height: 100vh;
   background-color: #222524;
+  height: 100vh;
 }
 #login > form {
   width: 30em;
@@ -2885,6 +2957,9 @@ header#backoffice > aside > span.owner {
   top: 50%;
   transform: translateY(-50%);
   background-color: #f7f7f7;
+}
+#login > form > a > button {
+  width: 100%;
 }
 
 #page-home-backoffice {
@@ -3061,9 +3136,6 @@ header#backoffice > aside > span.owner {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3331,7 +3403,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -3348,6 +3419,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -3872,7 +3944,7 @@ h5 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #D80000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -3888,7 +3960,7 @@ h5 {
   transition: 0.4s;
 }
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider {
-  background-color: #b6896c;
+  background-color: #337d51;
 }
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container input:checked + .slider:before {
   -webkit-transform: translateX(21px);
@@ -4073,6 +4145,82 @@ h5 {
   color: #424645;
 }
 
+#backoffice-registration {
+  background-color: #222524;
+  color: white;
+  padding-top: 1em;
+  padding-bottom: 5em;
+}
+#backoffice-registration > img {
+  filter: invert(1);
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  width: 15em;
+}
+#backoffice-registration > h2 {
+  text-align: center;
+}
+#backoffice-registration > form {
+  width: 35em;
+  margin: auto;
+  padding-bottom: 2em;
+}
+#backoffice-registration > form > div.profile-container {
+  margin: 2em auto;
+  width: fit-content;
+}
+#backoffice-registration > form > div.profile-container > label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+#backoffice-registration > form > div.profile-container > label > img {
+  border-radius: 200px;
+  width: 15em;
+  height: 15em;
+  object-fit: cover;
+}
+#backoffice-registration > form > div.profile-container > label > .add-new > span.opacity {
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #424645;
+  opacity: 50%;
+}
+#backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+}
+#backoffice-registration > form > button {
+  margin-top: 0.5em;
+  width: 100%;
+}
+#backoffice-registration .form-field {
+  margin: 1em 0;
+}
+#backoffice-registration .form-field:last-of-type {
+  border-bottom: 1px solid #676767;
+  padding-bottom: 2em;
+}
+#backoffice-registration .form-field > label {
+  color: white;
+}
+#backoffice-registration .form-field > input, #backoffice-registration .form-field > select {
+  background-color: #424645;
+  color: white;
+  transition: 0.5s ease all;
+}
+#backoffice-registration .form-field > input:is(:hover, :focus), #backoffice-registration .form-field > select:is(:hover, :focus) {
+  border-color: white;
+}
+
 .active {
   display: block;
 }
@@ -4195,9 +4343,14 @@ h5 {
   padding: 1em;
   border-right: 5px solid #222524;
   background-color: #f7f7f7;
+  z-index: 9999;
   animation: open 1s forwards;
 }
 .notification[role=dialog] > h3 {
+  overflow: hidden;
+  text-wrap: nowrap;
+  max-width: 50em;
+  text-overflow: ellipsis;
   font-size: 1.1em;
   font-family: "poppins-regular", sans-serif;
 }
@@ -4232,6 +4385,8 @@ h5 {
   margin: auto;
   margin-top: 20px;
   width: fit-content;
+  max-width: 1350px;
+  width: 100%;
 }
 #new-icalator-page h1 {
   padding-bottom: 15px;
@@ -4285,6 +4440,9 @@ h5 {
   display: block;
   text-align: center;
   margin-bottom: 15px;
+}
+#new-icalator-page #form-icalator .logements-container.backoffice .row-logement {
+  gap: 20px;
 }
 #new-icalator-page .input-logement {
   position: relative;
@@ -4468,6 +4626,12 @@ h5 {
 #icalator-home-page .icalator-home-table tbody tr .delete-btn:hover {
   background-color: #de0404;
 }
+#icalator-home-page .icalator-home-table tbody tr .edit-btn {
+  background-color: #ffbb33;
+}
+#icalator-home-page .icalator-home-table tbody tr .edit-btn:hover {
+  background-color: #e6a300;
+}
 
 #read-calendar-page {
   max-width: 1250px;
@@ -4619,6 +4783,7 @@ h5 {
   width: 40%;
   margin: 1em auto;
   border-radius: 15px;
+  padding-bottom: 7em;
 }
 .inscription section {
   margin: 2em 0;
@@ -4638,25 +4803,40 @@ h5 {
   margin-bottom: 1em;
   color: #424645;
 }
-.inscription .info {
+.inscription .form-field {
   margin: 0.5em 0;
 }
-.inscription .profile-container {
-  text-align: center;
+.inscription div.profile-container {
+  margin: 2em auto;
+  width: fit-content;
 }
-.inscription .profile-picture {
-  margin-top: 1em;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: inline-block;
-  margin-bottom: 10px;
+.inscription div.profile-container > label {
+  display: block;
+  cursor: pointer;
+  position: relative;
 }
-.inscription .profile-picture img {
-  width: 100%;
-  height: 100%;
+.inscription div.profile-container > label > img {
+  border-radius: 200px;
+  width: 15em;
+  height: 15em;
   object-fit: cover;
+}
+.inscription div.profile-container > label > .add-new > span.opacity {
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #424645;
+  opacity: 50%;
+}
+.inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
 }
 .inscription h2 {
   text-align: center;
