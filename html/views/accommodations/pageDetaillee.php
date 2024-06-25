@@ -220,7 +220,7 @@
                 <div class="line"></div>
 
                 <div id="nbVoyageurs">
-                    <span>Nombre de voyageurs</span>
+                    <span>Nombre de voyageur(s)</span>
 
                     <div>
                         <button id="moins">-</button>
@@ -233,14 +233,14 @@
 
                 <div id="nbNuits">
                     <div>
-                        <span>Nombre de nuits</span>
+                        <span>Nombre de nuit(s)</span>
                         <h4 id="nombreNuits">0</h4>
                     </div>
 
                     <div>
                         <div>
                             <span id="prix-nuit"><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
-                            <span>x <span id="nb-nuits-total">0</span> nuits</span>
+                            <span>x <span id="nb-nuits-total">0</span> nuit(s)</span>
                         </div>
                         <h4><span id="total"><?php echo $accomodation->get("prix_ttc_logement")*0; ?></span>€</h4>
                     </div>

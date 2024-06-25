@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const btn = document.getElementById("boutonDevis");
   const closeModal = document.querySelector(".close");
-  const voyageurs = document.querySelector(".voyageurs");
+  const voyageurs = document.querySelectorAll(".voyageurs");
   const nuits = document.querySelectorAll(".nuits");
   const datesDevis = document.getElementById("dates");
   const prix = document.getElementById("prixHT");
   const prixHTCalcul = document.querySelectorAll(".prixHTCalcul");
   const prixTVA = document.querySelectorAll(".prixSejourTVA");
+  const fraisService = document.querySelectorAll(".fraisService");
+  const fraisServiceTVA = document.getElementById("tvaFraisService");
+  const taxeSejour = document.getElementById("taxeSejour");
+  const prixTTC = document.getElementById("prixTotal");
   /***Plus/moins nombre de voyageurs***/
   const moins = document.getElementById("moins");
   const valeurAffichee = document.getElementById("valeurVoyageurs");
@@ -85,38 +89,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function updateValues(nbNuits, nbVoyageurs) {
-    const form = new FormData();
-    form.append("nbNuits", nbNuits);
-    form.append("nbVoyageurs", nbVoyageurs);
-    fetch('/controllers/backoffice/accommodations/DispoLogementController.php', {
-      method: 'POST',
-      body: form
-    })
-      .then(response => response.text())
-      .then(response => {
-        console.log(response);
-        btnCheckbox.checked = !btnCheckbox.checked;
-        updateText();
-      })
-      .catch(error => {
-        console.error('Erreur de mise à jour du statut:', error);
-      });
+  function formatNombre(number) {
+    const nombre = Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(number);
+    return nombre;
   }
 
   btn.onclick = function () {
     modal.style.display = "block";
 
-    voyageurs.textContent = valeur;
-
+    voyageurs.forEach(voyageur => voyageur.textContent = valeur);
     nuits.forEach(nuit => nuit.textContent = dayDiff);
 
     datesDevis.textContent = dateDepart.textContent + "-" + dateArrivee.textContent;
 
-    var prixHTSejour = parseFloat(prix.textContent) * nuits[1].textContent;
-    prixHTCalcul.forEach(prixSeul => prixSeul.textContent = prixHTSejour);
+    let prixHTSejour = parseFloat(prix.textContent) * nuits[1].textContent;
+    for (const prixSeul of prixHTCalcul) {
+      prixSeul.textContent = formatNombre(prixHTSejour);
+    }
 
-    prixTVA.forEach(prixTva => prixTva.textContent = prixHTSejour + prixHTSejour * 0.1);
+    prixTVA.forEach(prixTva => prixTva.textContent = formatNombre(prixHTSejour * 0.1));
+
+    const prixFraisService = parseFloat(prixHTCalcul[0].textContent) * 0.01;
+    const fraisDeService = prixFraisService;
+
+    fraisService.forEach(frais => frais.textContent = formatNombre(fraisDeService));
+
+    fraisServiceTVA.textContent = formatNombre(parseFloat(fraisDeService) * 0.2);
+
+    taxeSejour.textContent = voyageurs[0].textContent * nuits[0].textContent * 1;
+
+    prixTTC.textContent = formatNombre(parseFloat(prixHTCalcul[0].textContent) + parseFloat(prixTVA[0].textContent) + parseFloat(fraisDeService) + parseFloat(fraisServiceTVA.textContent) + parseFloat(taxeSejour.textContent));
   };
 
   closeModal.onclick = function () {
