@@ -106,9 +106,6 @@ body {
   position: relative;
   min-height: 100vh;
 }
-body#frontoffice {
-  padding-bottom: 6em;
-}
 
 h1,
 h2 {
@@ -454,9 +451,6 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 footer#foot-global {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1123,9 +1117,6 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1393,7 +1384,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -1410,6 +1400,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -1932,7 +1923,6 @@ abbr[title] {
 #liste-reservation-locataire-main {
   margin: 0 4em;
   margin-top: 2em;
-  padding-bottom: 5em;
 }
 @media screen and (max-width: 431px) {
   #liste-reservation-locataire-main {
@@ -3119,9 +3109,6 @@ header#backoffice > aside > span.owner {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3389,7 +3376,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -3406,6 +3392,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
