@@ -21,14 +21,29 @@
             border-radius: 20px;
             box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
 
-            #image_logement{
-                background-size: cover;
+            #conteneur_image{
+                height: 15em;
+                width: 25em;
+                display: flex;
+                margin : auto;
+                border-radius: 15px;
             }
 
-            .modifie_photo{
-                width: 10px !important;
-                margin-right: 2em;
-                text-align: center;
+            #image_logement{
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+                position: relative;
+                border-radius: 15px;
+
+                .mdi.mdi-plus-circle {
+                    color: #ffffff;
+                    position:absolute;
+                    transform: translate(-50%, -50%);
+                    top: 50%;
+                    left: 50%;
+                    font-size: 3em;  
+                }
             }
 
             &>h2, &>h3 {

@@ -64,18 +64,16 @@
             <h2>Informations générales du logement</h2>
             <section>
                 <article>
-                    <label id="image_logement" for="photo_logement" data-image="<?php echo $logement->get("photo_logement") ?>"></label>
+                    <div id="conteneur_image">
+                        <label id="image_logement" for="photo_logement" data-image="<?php echo $logement->get("photo_logement") ?>">
+                            <span class="mdi mdi-plus-circle"></span>
+                        </label>
+                    </div>
                     <span class="alert">
                         <span class="mdi mdi-alert"></span>
                         Faites attention aux photos que vous publiez
                     </span>
                     <input type="file" id="photo_logement" name="photo_logement">
-                </article>
-                <article>
-                    <button class="primary backoffice modifie_photo">
-                        <span class="mdi mdi-pencil"></span>
-                        <input type="file" id="bouton_photo_logement" name="photo_logement"> 
-                    </button>
                 </article>
                 <article>
                     <div class="form-field">

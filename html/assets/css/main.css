@@ -3770,13 +3770,27 @@ abbr[title] {
 #modification-logement > form > section:first-of-type {
   margin-top: unset;
 }
+#modification-logement > form > section #conteneur_image {
+  height: 15em;
+  width: 25em;
+  display: flex;
+  margin: auto;
+  border-radius: 15px;
+}
 #modification-logement > form > section #image_logement {
   background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 15px;
 }
-#modification-logement > form > section .modifie_photo {
-  width: 10px !important;
-  margin-right: 2em;
-  text-align: center;
+#modification-logement > form > section #image_logement .mdi.mdi-plus-circle {
+  color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 3em;
 }
 #modification-logement > form > section > h2, #modification-logement > form > section > h3 {
   font-family: "poppins-medium", sans-serif;
@@ -4520,6 +4534,7 @@ h5 {
   position: fixed;
   top: 1em;
   right: 1em;
+  z-index: 999;
   display: flex;
   align-items: center;
   gap: 1em;
