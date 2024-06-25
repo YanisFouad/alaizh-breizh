@@ -162,6 +162,24 @@ h5 {
         font-size: 1.3em;
     }
 
+    #menu{
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        justify-content: space-between;
+        #cheminPage {
+            display: flex;
+            margin-left: 2em;
+            align-items: center;
+            margin-top: 1em;
+        }
+        #modifierLogement {
+            text-decoration:none;
+            margin-right: 2em;
+            margin-top: 1em;
+        }
+    }
+ 
     #page {
         margin: auto;
         margin-top: 2em;
@@ -173,13 +191,6 @@ h5 {
             color: $gray-1;
         }
 
-    }
-
-    #cheminPage {
-        display: flex;
-        margin-left: 2em;
-        align-items: center;
-        margin-top: 1em;
     }
 
     a {

@@ -2,13 +2,14 @@
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
-    include_once(__DIR__."/../layout/header.php");
-    require_once(__DIR__."/../../../services/ScriptLoader.php");
-
+    
     $logement_id = $_GET['id_logement'] ?? null;
-    if(!isset($logement_id))
-        exit(header("Location: /"));
-
+    if(!isset($logement_id)) {
+        header("Location: /backoffice");
+        exit;
+    }
+    
+    include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['id_logement'];
     $logement = AccommodationModel::findOneById($logement_id);
 
@@ -57,23 +58,21 @@
 <body>
 
     <main id ="mainProprietaireLogement">
-        <div id="blockCheminPage-SwitchContainer">
+        
+        <div id="menu">
             <div id="cheminPage">
                 <h4><a href="/backoffice">Logements</a></h4>
                 <span class="mdi mdi-chevron-right"></span>
                 <h4><?=$logement->get('titre_logement');?></h4>
             </div>
-            <div id="switch-container">  
-                <span id="etatLogement"></span>
-                    <label class="switch">
-                        <input type="checkbox" id="boutonOnOff" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
-                        <span class="slider round"></span>
-                    </label>
-                </form>
-            </div>
+            <a id="modifierLogement" href="/backoffice/modification-logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                <button class="primary backoffice modifierLogement" type="submit">
+                    <span class="mdi mdi-pencil"></span>    
+                    Modifier
+                </button> 
+            </a>
         </div>
-
-       
+        
         <div id="page">
             <section>
                 <article id="block-intro">

@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__."/../../../models/AccommodationModel.php");
 require_once(__DIR__."/../../../services/session/UserSession.php");
 
@@ -13,6 +12,10 @@ if(isset($_POST)) {
     $picture = $_FILES["photo_logement"] ?? null;
     $optionnalFields = ["complement_adresse","nb_lits_doubles_logement","nb_lits_simples_logement"];
 
+    //lowercase pour cat logement
+    $categorie = strtolower($_POST["categorie_logement"]);
+    $_POST["categorie_logement"] = $categorie;
+
     $fields = [];
     // prevent from XSS
     foreach($_POST as $k => $v)
@@ -24,19 +27,17 @@ if(isset($_POST)) {
         if(empty(trim($value)) && !in_array($field, $optionnalFields))
             $badFields[] = $field;
     }
-    
-    if(!isset($picture) || $picture["name"] === "")
-        $badFields[] = "photo_logement";
 
     // if we have bad fields then print it
     if(count($badFields) > 0) {
         sendResponse([
-            "error" => "Certains champs sont incomplets.", 
+            "error" => "Certains champs sont incomplets." . count($badFields), 
             "fields" => $badFields
         ]);
     }
     
-    $accommodation = new AccommodationModel();
+    $accommodation = AccommodationModel::findOneById($_POST["id_logement"]);
+    unset($_POST["id_logement"]);
     $insertedFields = [];
 
     // map all activities and layouts
@@ -56,17 +57,15 @@ if(isset($_POST)) {
 
         $insertedFields[$k] = $v;
     }
-
-    $insertedFields["id_proprietaire"] = UserSession::get()->get("id_compte");
     foreach($insertedFields as $field => $value) 
         $accommodation->set($field, $value);
-
+    $insertedFields["id_proprietaire"] = UserSession::get()->get("id_compte");
     try {
-        $lastInsertedId = $accommodation->save("_logement_id_logement_seq");
-
-        $pictureName = $lastInsertedId . "_" . $insertedFields["type_logement"];
-        FileLogement::save($picture, $pictureName);
-
+        $accommodation->save();     
+        // if(trim($picture["name"]) != "") {
+        //     //$pictureName = $_POST["id_logement"] . "_" . $insertedFields["type_logement"];
+        //     FileLogement::save($picture, strtolower($pictureName));
+        // }
         sendResponse(["success" => true]);
     } catch(Exception $e) {
         sendResponse(["error" => "Erreur lors de sauvegarde: " . $e->getMessage()]);

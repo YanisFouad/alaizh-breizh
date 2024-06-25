@@ -10,6 +10,9 @@
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
+    // ***********************
+    // Partie session de l'utilisateur
+    // ***********************
     ScriptLoader::load("backoffice/booking/listeReservationsProprietaire.js");
 
     if(!UserSession::isConnectedAsOwner()){

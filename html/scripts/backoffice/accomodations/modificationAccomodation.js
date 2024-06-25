@@ -1,5 +1,6 @@
-const errorMessage = document.querySelector(".error-message");
+console.log("connecting to");
 
+const errorMessage = document.querySelector(".error-message");
 const allInputsSelector = "form input:not(#prix_ht_logement), form select, form textarea, form #photo_logement";
 const sections = document.querySelectorAll("form>section");
 let activeSectionNumber = 0;
@@ -45,7 +46,7 @@ async function handleForm(event) {
     //     return;
     try {
         const formData = new FormData(event.target);
-        
+        formData.append("id_logement", new URLSearchParams(window.location.search).get("id_logement"))
         // remove activities & distances that hasn't been checked
         for(const activity of Array.from(document.querySelectorAll(".activities>input"))) {
             if(activity && !activity.checked) {
@@ -54,15 +55,16 @@ async function handleForm(event) {
                 formData.delete(`distance_for_${activityName}`);
             }
         }
-
-        console.log(formData);
-
-        const response = await fetch(`/controllers/backoffice/accommodations/newAccommodationController.php`, {
+        
+        //modif ligne
+        const response = await fetch(`/controllers/backoffice/accommodations/modificationAccommodationController.php`, {
             method: "POST",
             body: formData
         });
+        console.log(response);
         if(!response.ok)
             return setError({message: "Impossible d'ajouter le logement"});
+
         const data = await response.json();
         if(data && data.error) {
             let sectionId;
@@ -74,14 +76,14 @@ async function handleForm(event) {
             return setError({
                 message: data.error,
                 fieldIds: data?.fields,
-                section: sectionId ? parseInt(sectionId) : null
-             });    
+                section: parseInt(sectionId) ?? null
+             });
         }
         // once we have added the accommodation we can go to the home
-        window.location.href = "/backoffice";
+        window.location.href = "/backoffice/logement";
     } catch(e) {
         console.error(e);
-        setError({message: "Impossible d'ajouter un logement: " + e});
+        setError({message: "Impossible de modifier le logement: " + e});
     }
 }
 
@@ -97,32 +99,32 @@ function setError({message, section = null, fieldIds}) {
                 field?.parentElement?.classList?.add("error");
             });
         }
-        if(section !== null && section !== undefined) 
-            setActiveSection(section)
+        // if(section !== null && section !== undefined) 
+        //     setActiveSection(section)
     }
 }
 
-/* SECTION ACTIONS */
-function setActiveSection(sectionNumber) {
-    activeSection && activeSection.classList.remove("active");
-    const section = sections[sectionNumber];
-    if(!section)
-        throw new Error("Section not found, actual section number: " + sectionNumber);
-    section.scrollIntoView({ behavior: "smooth" });
-    section.classList.add("active");
-    activeSection = section;
-    activeSectionNumber = sectionNumber;
-}
-function nextSection(index) {
-   if(activeSectionNumber <= sections.length  && activeSectionNumber === index) {
-        setActiveSection(activeSectionNumber+1);
-   }
-}
-function previousSection(index) {
-    if(activeSectionNumber > 0 && activeSectionNumber === index) {
-        setActiveSection(activeSectionNumber-1);
-    }
-}
+// /* SECTION ACTIONS */
+// function setActiveSection(sectionNumber) {
+//     activeSection && activeSection.classList.remove("active");
+//     const section = sections[sectionNumber];
+//     if(!section)
+//         throw new Error("Section not found");
+//     section.scrollIntoView({ behavior: "smooth" });
+//     section.classList.add("active");
+//     activeSection = section;
+//     activeSectionNumber = sectionNumber;
+// }
+// function nextSection(index) {
+//    if(activeSectionNumber <= sections.length  && activeSectionNumber === index) {
+//         setActiveSection(activeSectionNumber+1);
+//    }
+// }
+// function previousSection(index) {
+//     if(activeSectionNumber > 0 && activeSectionNumber === index) {
+//         setActiveSection(activeSectionNumber-1);
+//     }
+// }
 /* SECTION ACTIONS */
 
 /* SECTION SWITCHER */
@@ -146,7 +148,7 @@ function loadSectionSwitchers() {
 /* SECTION EVENTS */
 //window.addEventListener("scroll", handleSectionChange);
 document.addEventListener("DOMContentLoaded", async () => {
-    setActiveSection(activeSectionNumber, false);
+    // setActiveSection(activeSectionNumber, false);
     loadSectionSwitchers();
 
     for(const input of Array.from(document.querySelectorAll(allInputsSelector))) {
@@ -155,22 +157,67 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    for(const activity of Array.from(document.querySelectorAll(".activities>input"))) {
-        const distSelector = activity.parentElement.querySelector("select");
-        activity.onchange = ({target}) => {
+    for(const acitvity of Array.from(document.querySelectorAll(".activities>input"))) {
+        const distSelector = acitvity.parentElement.querySelector("select");
+        if(acitvity.checked) {
+            if(distSelector)
+                distSelector.style.display = !acitvity.checked ? "none" : "block";
+        }
+        acitvity.onchange = ({target}) => {
             if(distSelector)
                 distSelector.style.display = !target.checked ? "none" : "block";
         }
     }
 
-    document.getElementById("photo_logement").onchange = ({target}) => {
-        const uploadLabel = target.parentElement.querySelector("label");
-        const uploadIcon = uploadLabel.querySelector(".mdi");
-        uploadIcon?.classList?.remove("mdi-image-plus");
-        uploadIcon?.classList?.add("mdi-check");
-        uploadLabel?.classList.add("uploaded");
-    }
+    let photoLogement = document.querySelector(`[for="photo_logement"]`);
+    photoLogement.style.backgroundImage = `url(${photoLogement.getAttribute("data-image")})`;
+
+    //document.getElementById('photo_logement').src = window.URL.createObjectURL(this.files[0]);
+    profilePictureInput = document.getElementById("photo_logement")
+    profilePictureInput.addEventListener("change", ({target}) => {
+        const photoModif = document.getElementById('photo_logement').dataset.image;
+        const photo = target.files?.[0];
+        console.log(photo);
+        const reader = new FileReader();
+        reader.onload = event => {
+            const filePath = event.target.result;
+            //picturePath = `url(${filePath})`;
+            //document.querySelector("#profile-picture-input + img").setAttribute("src", filePath);
+            document.getElementById('image_logement').style.background = `url(${filePath})`;
+        }
+        reader.readAsDataURL(photo);
+        profilePictureFile = photo;
+    },false);
+    //     document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"
+        
+    //     // const [file] = target.files;
+    //     // if (file) {
+    //     //     const label = document.getElementById('image_logement');
+    //     //     label.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    //     // }
+    // };
+    // Load initial image if available
+
+
+        //const uploadLabel = target.parentElement.querySelector("label");
+        //const uploadIcon = uploadLabel.querySelector(".mdi");
+        // uploadIcon?.classList?.remove("mdi-image-plus");
+        //uploadIcon?.classList?.add("mdi-check");
+        //uploadLabel?.classList.add("uploaded");
+
+    // photoLogement.onchange = ({target}) => {
+    //     const uploadLabel = target.parentElement.querySelector("label");
+    // }
 });
+
+window.onload = () => {
+    const label = document.getElementById('image_logement');
+    const imageUrl = label.dataset.image;
+    if (imageUrl) {
+        label.style.backgroundImage = `url(${imageUrl})`;
+    }
+};
+
 
 /* PRICE CALCUL SECTION */
 document.getElementById("prix_ht_logement").oninput = ({target}) => {
