@@ -11,7 +11,7 @@
 
     $accomodation = AccommodationModel::findOneById($id_logement);
     
-    if(!isset($accomodation)) {
+    if(!isset($accomodation) || $accomodation->get("est_visible") == false) {
         exit(header("Location: /"));
     }
     else{    
@@ -73,7 +73,7 @@
             <article id="blockIntro">
                 <div class="img-container">
                     <div>    
-                        <img src="<?=$accomodation->get("photo_logement")?>" id="imgLogement">
+                        <img src="<?=$accomodation->get("photo_logement")?>" alt="Photo du Logement" id="imgLogement">
                     </div>
                     <div id="titreInfos-container">
                         <div>
@@ -137,7 +137,7 @@
                 <div>
                     <?php if($accomodation->get("classe_energetique")){?>
                         <h3>Classe énergétique</h3>
-                        <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png">    
+                        <img src="/assets/images/labels/energyLabel<?php echo $accomodation->get("classe_energetique");?>.png" alt="Label energetique">    
                     <?php }?>
                 </div>
             </article>
@@ -247,7 +247,6 @@
 
                 <div id="boutonDevis">
                     <button>Demander un devis<span class="mdi mdi-chevron-right"></span></button>
-
                 </div>
             </article>
         </aside>

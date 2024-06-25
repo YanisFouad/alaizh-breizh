@@ -1,0 +1,102 @@
+.inscription {
+    width: 40%;
+    margin: 1em auto;
+    border-radius: 15px;
+    padding-bottom: 7em;
+
+    section {
+        margin: 2em 0;
+        padding: 1em 2em;
+        border-radius: 20px;
+        border: 1px solid $primary-frontoffice-1;
+        box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
+    }
+    input,select{
+        font-size: 1em;
+    }
+    input:focus{
+        box-shadow: 0 0 5px 0 $primary-frontoffice-1;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1em;
+        color: $gray-1;
+    }
+    .form-field{
+        margin : 0.5em 0;
+    }
+
+    & div.profile-container {
+        margin: 2em auto;
+        width: fit-content;
+
+        &>label {
+            display: block;
+            cursor: pointer;
+            position: relative;
+            
+            &>img {
+                border-radius: 200px;
+                width: 15em;
+                height: 15em;
+                object-fit: cover;
+            }
+
+            &>.add-new {
+                &>span.opacity {
+                    width: 100%;
+                    border-radius: 200px;
+                    height: 100%;
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    background-color: $gray-1;
+                    opacity: 50%;
+                }
+
+                &>span.mdi.mdi-plus-circle {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+
+                    transform: translate(-50%, -50%);
+                    font-size: 3em;
+                }
+            }
+        }
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: normal;
+        font-family: "poppins-regular", sans-serif;
+    }
+
+    &>h3 {
+        padding: .5em .8em;
+        border: 1px solid $black;
+        border-radius: 15px;
+
+        margin: .5em 0;
+
+        font-size: 1em;
+
+        &>span {
+            font-weight: normal;
+            font-family: "poppins-regular", sans-serif;
+            color: $gray-1;
+        }
+    }
+
+    #valide {
+        margin-top: 1em;
+        margin-left: auto;
+        display: block;
+    }
+    .error{
+        color: red;
+    }
+}

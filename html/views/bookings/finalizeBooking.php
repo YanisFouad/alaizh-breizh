@@ -3,7 +3,7 @@
     require_once(__DIR__."/../../services/session/PurchaseSession.php");
     
     if(!UserSession::isConnectedAsTenant()) {
-        header("Location: /#connection");
+        header("Location: /#connection?redirectTo=finaliser-ma-reservation");
         exit;
     }
 

@@ -1,52 +1,40 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css">
+<main id="login">
+    <form action="#" onsubmit="handleLogin(event)">
 
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-    <title>Alhaiz Breizh - Connexion au backoffice</title>
-</head>
-<body>
-    <main id="login">
-        <form action="#" onsubmit="handleLogin(event)">
+        <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
+        <h2>Connexion propriétaire</h2>
 
-            <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
-            <h2>Connexion propriétaire</h2>
+        <div role="dialog" class="error-message" class="mdi mdi-information error-message"></div>
 
-            <div role="dialog" class="error-message" class="mdi mdi-information error-message"></div>
+        <div class="form-field">
+            <label for="email" class="required">Adresse mail</label>
+            <input name="email" id="email" type="email" required />
+        </div>
+        <div class="form-field">
+            <label for="password" class="required">Mot de passe</label>
+            <input name="password" id="password" type="password" required />
+        </div>
 
-            <div class="form-field">
-                <label class="required">Adresse mail</label>
-                <input name="email" type="email" required />
-            </div>
-            <div class="form-field">
-                <label class="required">Mot de passe</label>
-                <input name="password" type="password" required />
-            </div>
+        <a href="#" class="forgot-password">
+            Mot de passe oublié ?
+        </a>
 
-            <a href="#" class="forgot-password">
-                Mot de passe oublié ?
-            </a>
+        <button type="submit" class="primary backoffice">Se connecter</button>
 
-            <button type="submit" class="primary backoffice">Se connecter</button>
+        <h5 class="another-choice">
+            <span class="text">OU</span>
+            <span class="line"></span>
+        </h5>
 
-            <h5 class="another-choice">
-                <span class="text">OU</span>
-                <span class="line"></span>
-            </h5>
-
+        <a href="/backoffice?inscription">
             <button type="button" class="primary backoffice">
                 S'inscrire
             </button>
-        </form>
-    </main>
+        </a>
+    </form>
+</main>
 
-    <?php 
-        ScriptLoader::loadAndRender("backoffice/authentication/login.js"); 
-    ?>
-</body>
-</html>
+<?php 
+    ScriptLoader::loadAndRender("backoffice/authentication/login.js"); 
+?>
+<?php require_once(__DIR__."/../../layout/footer.php") ?>

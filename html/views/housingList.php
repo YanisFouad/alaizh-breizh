@@ -133,6 +133,7 @@
             </div>
          </ul>
       </section>
+
       <div id="validation-filter-button-container">
          <button class="secondary">Annuler</button>
          <button class="primary">Valider</button>
