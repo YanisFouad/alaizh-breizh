@@ -266,7 +266,7 @@
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -275,7 +275,7 @@
         <link rel="stylesheet" href="../../../assets/css/materialdesignicons.min.css">
         <title>Liste réservation</title>
     </head>
-    <body>
+    <body> -->
         <main id="liste-reservation-locataire-main">
             <div id="liste-reservation-locataire-entete">
                 <h1>Mes réservations</h1>
@@ -362,67 +362,40 @@
                 <?php } ?>
             </section>
 
-            <form class="pagination">
-                <button <?php if ($currentPage === 1) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage - 1 ?>">
+            <!-- Changement de page de réservation -->
+            <form method="GET" action="#" class="pagination">
+
+                <!-- Premier bouton chevron -->           
+                <button <?php if ($page == 1) {echo "disabled";}?> name="page" class="secondary" value="<?php echo $page - 1 ?>">
                 <span class="mdi mdi-chevron-left"></span>
                 </button>
 
-                <?php for($i = 0; $i < $totalPages; $i++) { ?>
-                <button class="<?=$i+1===$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i+1?>">
-                    <span><?php echo $i+1?></span>
-                </button>
-                <?php } ?>
+                <!-- Bouton contenant les numéros de pages -->
+                <?php 
+                for($i = $page-1; $i < $page+2; $i++) { 
+                if($i>0 && $i <= $nb_page){ 
+                        ?>
+                        <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
+                            <span><?php echo $i?></span>
+                        </button>
+                <?php }
+                } ?>
 
-                <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
+                <!-- Dernier bouton chevron -->
+                <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">
                 <span class="mdi mdi-chevron-right"></span>
-                </button>
-            </form>
-
-
-
-
-
-
-            <!-- Changement de page de réservation -->
-            <form method="GET" action="#" id="liste-reservation-proprietaire-pagination">
-            
-                <!-- Bouton pagination précédent -->
-                <button name="page" value="<?php echo $page-1; ?>" class="<?php echo $page > 1 ? "button-chevron-cliquable" : "button-chevron-non-cliquable" ?>" type="submit">
-                    <span class="mdi mdi-chevron-left"></span>
-                </button>
-
-                <!-- Bouton pagination page précédente -->
-                <?php
-                    if($page-1>0){?>
-                        <button name="page" class="button-cliquable" value="<?php echo $page-1 ?>" type="submit">
-                            <?php echo $page-1; ?>
-                        </button>
-                <?php }?>
-
-                <!-- Bouton séléctionné -->
-                <button id="button-clique">
-                    <?php echo $page; ?>
-                </button>
-                
-                <!-- Bouton pagination page suivante -->
-                <?php
-                    if($page+1<=$nb_page){?>
-                        <button name="page" class="button-cliquable" value="<?php echo $page+1 ?>" type="submit">
-                            <?php echo $page+1; ?>
-                        </button>
-                <?php } 
-                ?>
-
-                <!-- Bouton pagination page + 1 -->
-                <button name="page" value="<?php echo $page+1; ?>" class="<?php echo $page+1 <= $nb_page ? "button-chevron-cliquable" : "button-chevron-non-cliquable";?>" type="submit">
-                    <span class="mdi mdi-chevron-right"></span>
                 </button>
 
                 <!-- champs caché contenant l'onglet en cours -->
                 <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
-
             </form>
         </main>
+<<<<<<< HEAD
     </body>
 </html>
 >>>>>>> 7f94e8a (updated things)
+=======
+        <?php require_once("layout/footer.php"); ?>
+    <!-- </body>
+</html> -->
+>>>>>>> a2ac5a4 (fix-pagination liste réservation locataire)

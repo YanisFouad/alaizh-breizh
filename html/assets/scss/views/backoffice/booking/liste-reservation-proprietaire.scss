@@ -658,13 +658,17 @@
         //    list-style: none;
         // }
         button {
-            width: 3em;
-            height: 3em;
+            width: 3.3em;
+            height: 3.3em;
             border-color: $primary-backoffice-1;
             color: $primary-backoffice-1;
             &:not(:disabled):hover,.bouton-select{
                 background-color:$primary-backoffice-1;
                 color: white;
+            }
+
+            .mdi{
+                font-size: 1.7em;
             }
         }
 
@@ -672,15 +676,7 @@
             background-color:$primary-backoffice-1;
             color: white;
         }
-     
-        //    &>span {
-        //       position: absolute;
-        //       top: 50%;
-        //       left: 50%;
-        //       transform: translate(-50%, -50%);
-        //    }
-        // }
-     }
+    }
 }
 
 >>>>>>> 7f94e8a (updated things)
