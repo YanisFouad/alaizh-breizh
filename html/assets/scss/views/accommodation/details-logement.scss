@@ -469,29 +469,41 @@ h5 {
                 .mdi.mdi-calendar-month {
                     font-size: 1.6em;
                 }
+            }
 
-                +div {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-around;
-
-                    div {
-                        h4 {
-                            color: $gray-2;
-                            text-align: center;
-                            font-size: 0.8em;
-
-                        }
-
-                        h3 {
-                            color: $gray-1;
-                            font-size: 0.9em;
-                        }
-                    }
+            .error-message {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                color: red;
+                margin-bottom: 1em;
+                span {
+                    margin-right: 5px;
+                }
+                p {
+                    color: red;
                 }
             }
 
+            #date {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
 
+                div {
+                    h4 {
+                        color: $gray-2;
+                        text-align: center;
+                        font-size: 0.8em;
+
+                    }
+
+                    h3 {
+                        color: $gray-1;
+                        font-size: 0.9em;
+                    }
+                }
+            }
 
             #nbVoyageurs {
                 color: $gray-2;
@@ -680,5 +692,25 @@ h5 {
                 max-width: 8em;
             }
         }
+    }
+}
+
+.flatpickr-calendar {
+    .selected,
+    .endRange {
+        background-color: $primary-frontoffice-1 !important;
+        border: unset;
+        // -webkit-box-shadow: -5px 0 0 $primary-frontoffice-4, 5px 0 0 $primary-frontoffice-4 !important;
+        // box-shadow: -5px 0 0 $primary-frontoffice-4, 5px 0 0 $primary-frontoffice-4 !important;
+    }
+
+    .endRange,
+    .inRange {
+        box-shadow: -10px 0 0 $primary-frontoffice-4 !important;
+    }
+
+    .inRange {
+        border: unset;
+        background-color: $primary-frontoffice-4 !important;
     }
 }

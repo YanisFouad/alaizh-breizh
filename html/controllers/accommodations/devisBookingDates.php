@@ -17,10 +17,6 @@ if (isset($_GET["id"]) && $_GET['id']) {
     if (!$bookings) {
         http_response_code(404);
     } else {
-        foreach ($bookings as $key => $booking) {
-            $bookings[$key]["date_arrivee"] = date("d/m/Y", strtotime($booking["date_arrivee"]));
-            $bookings[$key]["date_depart"] = date("d/m/Y", strtotime($booking["date_depart"]));
-        }
         echo json_encode($bookings);
     }
 } else {

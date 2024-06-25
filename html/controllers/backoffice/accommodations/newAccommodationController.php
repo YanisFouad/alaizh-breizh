@@ -21,7 +21,7 @@ if(isset($_POST)) {
     // add all empty fields here
     $badFields = [];
     foreach($fields as $field => $value) {
-        if(empty(trim($value)) && !in_array($optionnalFields, $field))
+        if(empty(trim($value)) && !in_array($field, $optionnalFields))
             $badFields[] = $field;
     }
     if(!isset($picture) || $picture["name"] === "")
@@ -45,12 +45,15 @@ if(isset($_POST)) {
         if(preg_match("/^activity_/", $k)) {
             $v = preg_replace("/^activity_/", "", $k);
             $k = "activite_".$activitiesCount;
+            $activitiesCount++;
         } else if(preg_match("/^distance_for_/", $k)) {
             $v = preg_replace("/^distance_for_/", "", $k);
             $k = "perimetre_activite_".$activitiesCount;
+            $activitiesCount++
         } else if(preg_match("/^layout_/", $k)) {
             $v = preg_replace("/^layout_/", "", $k);
             $k = "amenagement_".$layoutsCount;
+            $layoutsCount++;
         }
 
         $insertedFields[$k] = $v;

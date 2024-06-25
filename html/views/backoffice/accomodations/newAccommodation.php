@@ -2,13 +2,13 @@
     ScriptLoader::load("backoffice/accomodations/newAccommodation.js");
     require_once(__DIR__."/../layout/header.php"); 
 
-    $layouts = ["Balcon", "Piscine", "Jacuzzi", "Jardin", "Terrasse"];
+    $layouts = ["balcon", "piscine", "jacuzzi", "jardin", "terrasse"];
     $activities = [
         "baignade" => true,
         "canoë" => true,
         "voile" => true,
         "accrobranche" => true,
-        "randonné" => false,
+        "randonnée" => false,
         "equitation" => false,
         "terrasse" => false,
         "golf" => false
@@ -17,6 +17,8 @@
     $types = ["appartement", "maison", "villa", "chalet", "bateau", "insolite"];
     $categories = ["Studio", "T1", "T2", "T3", "T4", "T5 et plus", "F1", "F2", "F3", "F4", "F5 et plus"];
     $distances = ["Sur place", "Moins de 5km", "Moins de 20km", "20km ou plus"];
+
+    
 ?>
 
 <div id="new-accommodation">
@@ -24,7 +26,7 @@
         <span class="mdi mdi-arrow-left"></span>
         Retour à la liste des logements
     </button>
-    <form onsubmit="handleForm(event)" method="POST">
+    <form id="new-accommodation-form" onsubmit="handleForm(event)" method="POST">
         <section>
             <h2>Informations générales du logement</h2>
             <section>
@@ -225,6 +227,7 @@
             <div class="error-message"></div>
             <footer>
                 <button type="button" class="secondary previous backoffice">Précédent</button>
+                <button type="button" id="preview" class="primary backoffice">Prévisualiser</button>
                 <button type="submit" class="primary backoffice">Créer le logement</button>
             </footer>
         </section>

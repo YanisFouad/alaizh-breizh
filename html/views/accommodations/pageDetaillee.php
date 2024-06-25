@@ -205,7 +205,7 @@
                     <span class="mdi mdi-calendar-month"></span>
                 </button>
 
-                <div date>
+                <div id="date">
                     <div>
                         <h4>Arrivée</h4>
                         <h3 id="date-arrivee"></h3>
@@ -255,6 +255,10 @@
         </aside>
     </div>
 </div>
+
+<input type="hidden" value="<?= $accomodation->get('duree_minimale_reservation') ?>" id="duree-minimale-reservation">
+<input type="hidden" value="<?= $accomodation->get('delais_prevenance') ?>" id="delais-prevenance">
+
 <?php }?>
 
 <?php require_once(__DIR__."/../layout/footer.php") ?>

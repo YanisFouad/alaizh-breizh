@@ -122,32 +122,50 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   closeModal.onclick = function () {
-    modal.style.display = "none";
+    closeModal.onclick = function () {
+      modal.style.display = "none";
+    };
   };
 
   window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        modal.style.display = "none";
+      }
+    };
   };
 
   function miseAJourValeurAffichee() {
-    valeurAffichee.textContent = valeur;
-    moins.disabled = valeur <= 1;
-    plus.disabled = valeur == nbPersonneMax;
+    function miseAJourValeurAffichee() {
+      valeurAffichee.textContent = valeur;
+      moins.disabled = valeur <= 1;
+      moins.disabled = valeur <= 1;
+      plus.disabled = valeur == nbPersonneMax;
+    }
   }
 
   moins.addEventListener("click", () => {
-    valeur--;
-    miseAJourValeurAffichee();
+    moins.addEventListener("click", () => {
+      valeur--;
+      miseAJourValeurAffichee();
+      document.getElementById("valeurVoyageurs").innerHTML = valeur;
+      document.getElementById("taxeSejour").innerHTML =
+        "1 x " + valeur + " voyageurs x 3 nuits";
+    });
     document.getElementById("valeurVoyageurs").innerHTML = valeur;
     document.getElementById("taxeSejour").innerHTML =
       "1 x " + valeur + " voyageurs x 3 nuits";
   });
 
   plus.addEventListener("click", () => {
-    valeur++;
-    miseAJourValeurAffichee();
+    plus.addEventListener("click", () => {
+      valeur++;
+      miseAJourValeurAffichee();
+      document.getElementById("valeurVoyageurs").innerHTML = valeur;
+      document.getElementById("taxeSejour").innerHTML =
+        "1 x " + valeur + " voyageurs x 3 nuits";
+    });
     document.getElementById("valeurVoyageurs").innerHTML = valeur;
     document.getElementById("taxeSejour").innerHTML =
       "1 x " + valeur + " voyageurs x 3 nuits";
