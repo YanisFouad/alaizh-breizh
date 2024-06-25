@@ -11,11 +11,7 @@
 ?>
 
 <main class="inscription">
-<<<<<<< HEAD
-    <h1>S'inscrire</h1>
-=======
     <h1>S'inscrire en tant que locataire</h1>
->>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
         
     <form id="formProfil" onsubmit="handleForm(event)" method="POST" action="../../controllers/account/profileCreationController.php">
         <div class="profile-container"> 

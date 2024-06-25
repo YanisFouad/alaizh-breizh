@@ -117,10 +117,6 @@
                 Inscription
             </button>
         </form>
-<<<<<<< HEAD
-</main>
-=======
 </main>
 
 <?php require_once(__DIR__."/../../layout/footer.php") ?>
->>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
