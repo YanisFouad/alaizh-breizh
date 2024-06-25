@@ -226,11 +226,25 @@
 =======
 <?php
    
+   //notification si l'utilisateur'est pas connecté
+   if(!UserSession::isConnected()){
+    header("Location: /backoffice?notification-message=Vous devez être connecté pour visualiser cette page&notification-type=ERROR");
+    exit;
+}
+   
+   // TODO => hover sur les boutons de logement et mettre une description lors du survol
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
+<<<<<<< HEAD
     if(!UserSession::isConnected()){
         require_once("views/backoffice/authentication/login.php");
+=======
+    ScriptLoader::load("backoffice/booking/listeReservationsProprietaire.js");
+
+    if(!UserSession::isConnectedAsOwner()){
+        header("Location: /backoffice");
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
         exit;
     }
 
@@ -279,9 +293,12 @@
     }
 
     //tableau de réservation pour la période
-    $tab_reservation = BookingModel::find($id_proprietaire,$tab,($page-1)*$nb_elem_par_page,$nb_elem_par_page);
+    $offset = ($page-1)*$nb_elem_par_page;
+    $limit = $nb_elem_par_page;
+    $sortDir = $_GET["sortDir"] ?? "DESC";
+    $tab_reservation = BookingModel::find($id_proprietaire, $tab, $offset, $limit, $sortDir);
 
-    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire,$tab);
+    $tab_toute_reservation_periode = BookingModel::findAll($id_proprietaire, $tab);
 
 
     ScriptLoader::load("backoffice/bookings.js");
@@ -300,7 +317,7 @@
                 <!-- bouton d'export -->
                 <button id="export-reservation" class="primary backoffice export-reservation" type="submit">
                     Exporter mes réservations
-                    <!-- <span class="mdi mdi-export-variant"></span> -->
+                    <span class="mdi mdi-microsoft-excel"></span>
                 </button> 
                 <!-- non de fichier pour l'export -->
                 <input type="hidden" name="name" value="export_reservations.csv" />
@@ -339,50 +356,41 @@
 
         <!-- Bouton trie -->
         <!-- trie pas encore fonctionnel -->
-        <!-- ?trie=<?php echo $trie === "croissant" ? "decroissant" : "croissant" ?> -->
-        <a href=""><button class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre" disabled > 
+        <button id="sort-btn" class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
-            trier par date    
-        </button></a>
+            <span class="label"></span>
+        </button>
     </div>
 
     <!-- Traitement selon l'onglets réservations -->
-    <?php
 
-    // //Sélection du tableau à utilisé 
-    // if ($tab === "a_venir"){
-    //     $tab_reservation_filtrer_trier = $tab_reservation_a_venir;
-    // }elseif ($tab === "passe" ) {
-    //     $tab_reservation_filtrer_trier = $tab_reservation_passe;
-    // } elseif ($tab === "en_cours") {
-    //     $tab_reservation_filtrer_trier = $tab_reservation_en_cours;
-    // }
-
+    <!-- Liste réservation -->
+    <section id="liste-reservation-proprietaire">
+        <!-- ************************** -->
+        <!-- Traitement des réservation -->
+        <!-- ************************** -->
+            <?php
+            foreach($tab_reservation as $reservation){
             ?>
-            <!-- Liste réservation -->
-            <section id="liste-reservation-proprietaire">
-                <!-- ************************** -->
-                <!-- Traitement des réservation -->
-                <!-- ************************** -->
-                <?php
-                foreach($tab_reservation as $reservation){
-                    ?>
-                    <a class="non-souligne" href="/backoffice/reservation?id=<?php echo $reservation->get("id_reservation")?>">
-                        <article class="liste-reservation-proprietaire-logement">
-                            <!-- Photo maison + nom maison -->
-                            <div>
-                                <div id='img-container'>
-                                    <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
-                                </div>
-                                <h4><?php echo $reservation->get("titre_logement"); ?></h4>
-                            </div>
+            <a class="non-souligne" href="/backoffice/reservation?id=<?php echo $reservation->get("id_reservation")?>">
+                <article class="liste-reservation-proprietaire-logement">
+                    <!-- Photo maison + nom maison -->
+                    <div>
+                        <div id='img-container'>
+                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Logement">
+                        </div>
+                        <h4><?php echo $reservation->get("titre_logement"); ?></h4>
+                    </div>
                             
-
                     <!-- Description maison -->
                     <div class="liste-reservation-proprietaire-logement-detail">
                         <div>
                             <h5>Date de réservation</h5>
-                            <h4><?php echo $reservation->get("date_reservation"); ?></h4>
+                            <h4><?php echo date('d/m/Y', strtotime($reservation->get("date_reservation"))); ?></h4>
+                        </div>
+                        <div>
+                            <h5>Date d'arrivée</h5>
+                            <h4><?php echo date('d/m/Y', strtotime($reservation->get("date_arrivee"))); ?></h4>
                         </div>
                         <div>
                             <h5>Nombre de nuits</h5>
@@ -390,7 +398,7 @@
                         </div>
                         <div>
                             <h5>Prix total</h5>
-                            <h4><?php echo $reservation->get("prix_total"); ?>€</h4>
+                            <h4><?php echo price_format($reservation->get("prix_total")); ?>€</h4>
                         </div>
                         <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
                             <span class="mdi mdi-eye-outline"></span>
@@ -402,6 +410,7 @@
         <?php } ?>
     </section>
 
+
     <!-- Changement de page de réservation -->
     <form method="GET" action="#" class="pagination">
 
@@ -412,6 +421,7 @@
             
             <!-- Bouton contenant les numéros de pages -->
             <?php 
+<<<<<<< HEAD
             for($i = $page-1; $i < $page+2; $i++) { 
                if($i>0 && $i <= $nb_page){ 
                     ?>
@@ -421,6 +431,35 @@
                <?php }
             } ?>
 
+=======
+
+            //gestion du min pour bouton pagination 
+            if($page == $nb_page){
+                $min = $page-2;
+            }else{
+                $min = $page-1;
+            }
+            if($min<1){
+                $min = 1;
+            }
+
+            //gestion du max pour bouton pagination 
+            if($page == 1){
+                $max = 3;
+            }else{
+                $max = $page+1;
+            }
+            if($max > $nb_page){
+                $max = $nb_page;
+            }
+
+            for($i = $min; $i <= $max; $i++) { ?>
+                <button class="<?= $i==$page ? "bouton-select" : "secondary"?>" name="page" value="<?php echo $i?>">
+                    <span><?php echo $i?></span>
+                </button>
+            <?php } ?>
+
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
             <!-- Dernier bouton chevron -->
             <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">
                <span class="mdi mdi-chevron-right"></span>
@@ -429,6 +468,12 @@
             <!-- champs caché contenant l'onglet en cours -->
             <input type="hidden" id="tab-form" name="tab-form" value="<?php echo $tab;?>" />
     </form>
+
+    <!-- hidden data used for sort, un peu gettho oui -->
+    <input type="hidden" id="offset" value="<?=$offset?>">
+    <input type="hidden" id="limit" value="<?=$limit?>">
+    <input type="hidden" id="owner_id" value="<?=$id_proprietaire?>">
+    <input type="hidden" id="period" value="<?=$tab?>">
 </main>
 
 >>>>>>> 7f94e8a (updated things)

@@ -46,18 +46,28 @@ class LogementICalatorModel extends Model {
         return new self($result, false);
     }
 
-    public static function findById($id, $offset = 0, $limit = 10, $projection = "*") {
+    public static function findById($id, $projection = "*") {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
-            ->limit($limit)
             ->where("cle_api = ?", $id)
-            ->offset($offset)
             ->execute()
             ->fetchMany();
 
         return array_map(function($row) {
             return new self($row, false);
         }, $result);
+    }
+
+    public static function findOneByLogementIdAndKey($idLogement, $key, $projection = "*") {
+        $result = RequestBuilder::select(self::$TABLE_NAME)
+            ->projection("*")
+            ->where("id_logement = ?", $idLogement)
+            ->where("cle_api = ?", $key)
+            ->execute()
+            ->fetchOne();
+        if($result == null)
+            return null;
+        return new self($result, false);
     }
 
     public static function findAllById($id, $projection = "*") {

@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <title>Alhaiz Breizh - Backoffice</title>
 </head>
-<body>
+<body id="frontoffice">
     <header id="backoffice">
         <a href="/backoffice/">
             <img alt="AlhaizBreizh's logo" src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" />
@@ -60,7 +60,7 @@
                 <div class="dropdown">
                     <ul>
                         <li>
-                            <a href="/profil">Mon profil</a>
+                            <a href="/backoffice/profil">Mon profil</a>
                         </li>
                         <li>
                             <form method="POST" action="/controllers/authentication/disconnectController.php?redirectTo=%2Fbackoffice">

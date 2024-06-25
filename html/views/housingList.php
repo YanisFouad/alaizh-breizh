@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php    
    require_once(__DIR__."/../models/AccommodationModel.php");
    require_once(__DIR__."/../services/RequestBuilder.php");
@@ -257,6 +258,8 @@
 </section>
 
 =======
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
 <?php    
    require_once(__DIR__."/../models/AccommodationModel.php");
    require_once(__DIR__."/../services/RequestBuilder.php");
@@ -268,7 +271,11 @@
    
    // Calculer l'indice de début pour la pagination
    $indiceDebut = ($currentPage - 1) * $articlesParPage;
+<<<<<<< HEAD
    $accomodations = AccommodationModel::find(($currentPage - 1) * $articlesParPage, $articlesParPage);
+=======
+   $accomodations = AccommodationModel::find(($currentPage - 1) * $articlesParPage, $articlesParPage, "*", true);
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
  
    $totalAccomodations = AccommodationModel::count();
    $totalPages = ceil($totalAccomodations / $articlesParPage);
@@ -336,7 +343,10 @@
                <li>
                   <input disabled type="checkbox" id="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>" name="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>"/>
                   <label for="<?php echo strtolower(str_replace(' ', '-', getDepartmentName($postCode))); ?>"><?php echo getDepartmentName($postCode) ?></label>
+<<<<<<< HEAD
                <!-- ⭕️ "Ille-et-Vilaine" / "Côtes d'Armor" CORRIGÉS ? --> 
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
                </li>
             <?php } ?>
          </ul>
@@ -358,6 +368,7 @@
          </ul>
       </section>
 
+<<<<<<< HEAD
       <!--<section id="notation-filter-container" class="hidden">
          <div>
             <h3>Note</h3>
@@ -393,6 +404,8 @@
                </li>
          </ul>
       </section>-->
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
       <div id="validation-filter-button-container">
          <button class="secondary">Annuler</button>
          <button disabled class="primary">Valider</button>
@@ -422,9 +435,14 @@
       </div>
 
       <div id="filter-sort-buttons-container">
+<<<<<<< HEAD
          <!-- onclick="toggleFilterMenu()" -->
          <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
          <button disabled><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
+=======
+         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <button id="sort-btn"><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
       </div>
 
 
@@ -438,12 +456,15 @@
                   <div class="housing-text-details">
                      <div class="housing-description-container">
                         <h4 class="housing-description"><abbr title="<?php echo $accomodation->get("titre_logement"); ?>"><?php echo $accomodation->get("titre_logement"); ?></abbr></h4>
+<<<<<<< HEAD
                         <!-- NOTATION // RETIRÉE
                            <div class="star-notation-container hidden">
                            <span class="mdi mdi-star"></span>
                            <h4><?php //echo $housingRating; ?></h4>
                         </div>
                         -->
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
                      </div>
                      <div class="housing-location-container">
                         <span class="mdi mdi-map-marker"></span>
@@ -463,11 +484,14 @@
       </section>
 
       <div>
+<<<<<<< HEAD
          <?php 
             //echo $currentPage . " " . $totalPages;
          //$explodedPageNumberUrl = explode("=", $_SERVER['QUERY_STRING']);
          //$currentPageNumber = $explodedPageNumberUrl[1];
          ?>
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
 
          <form class="pagination">
 
@@ -477,6 +501,7 @@
             </button>
 
             <!-- Bouton contenant les numéros de pages -->
+<<<<<<< HEAD
             <?php for($i = $currentPage-1; $i < $currentPage+2; $i++) { 
                if($i>0 && $i<=$totalPages){ 
                   ?>
@@ -485,6 +510,35 @@
                   </button>
                <?php }
             } ?>
+=======
+            <?php
+ 
+            //gestion du min pour bouton pagination 
+            if($currentPage == $totalPages){
+                $min = $currentPage-2;
+            }else{
+                $min = $currentPage-1;
+            }
+            if($min<1){
+                $min = 1;
+            }
+
+            //gestion du max pour bouton pagination 
+            if($currentPage == 1){
+                $max = 3;
+            }else{
+                $max = $currentPage+1;
+            }
+            if($max > $totalPages){
+                $max = $totalPages;
+            }
+
+            for($i = $min; $i <= $max; $i++) { ?>
+               <button class="<?=$i==$currentPage ? "primary" : "secondary"?>" name="page" value="<?php echo $i?>">
+                  <span><?php echo $i?></span>
+               </button>
+            <?php } ?>
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
 
             <!-- Dernier bouton chevron -->
             <button <?php if ($currentPage == $totalPages) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $currentPage + 1 ?>">
@@ -495,5 +549,8 @@
    </section>
 </section>
 
+<<<<<<< HEAD
 >>>>>>> 7f94e8a (updated things)
+=======
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
 <?php require_once("layout/footer.php"); ?>

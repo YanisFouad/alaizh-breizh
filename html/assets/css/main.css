@@ -451,9 +451,6 @@ header#frontoffice #header-bottom-stroke {
   }
 }
 footer#foot-global {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -660,6 +657,30 @@ footer#foot-global nav a {
 }
 .profile-area section.right > article > div > div > h5 {
   color: #676767;
+}
+.profile-area section.right > article.synkronizator > p {
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+  color: #676767;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid #eaeaea;
+}
+.profile-area section.right > article.synkronizator > div {
+  display: block;
+}
+.profile-area section.right > article.synkronizator input {
+  display: block;
+  cursor: unset;
+  opacity: 50%;
+}
+.profile-area section.right > article.synkronizator .form-field > div {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.profile-area section.right > article.synkronizator .form-field > div > button {
+  padding: 0.7em 0.9em;
+  border-radius: 10px;
 }
 .profile-area section.left > article.profile > div#displayname {
   margin-top: 0.5em;
@@ -1096,9 +1117,6 @@ footer#foot-global nav a {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1366,7 +1384,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -1383,6 +1400,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -1657,6 +1675,12 @@ abbr[title] {
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire-entete #export-reservation {
   box-shadow: 0px 0px 2px #804e2e;
+  padding: 0.8em 0.8em;
+  border-radius: 100px;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire-entete #export-reservation > .mdi.mdi-microsoft-excel {
+  font-size: 1.2em;
+  padding-left: 0.2em;
 }
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-recherche {
   display: flex;
@@ -1738,9 +1762,13 @@ abbr[title] {
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
+<<<<<<< HEAD
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending {
+=======
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -1774,6 +1802,7 @@ abbr[title] {
   border: solid #804e2e 1px;
   border-radius: 20px;
   box-shadow: 0px 0px 2px #804e2e;
+  cursor: pointer;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
   display: flex;
@@ -1791,8 +1820,8 @@ abbr[title] {
   display: flex;
   align-items: center;
   justify-items: center;
-  width: 12em;
-  height: 8em;
+  width: 7em;
+  height: 5em;
   border-radius: 10%;
   margin-right: 1em;
 }
@@ -1824,22 +1853,38 @@ abbr[title] {
   color: #676767;
 }
 @media screen and (max-width: 1110px) {
+<<<<<<< HEAD
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire {
+=======
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
+<<<<<<< HEAD
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire {
+=======
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
+<<<<<<< HEAD
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire div {
     flex-direction: column;
   }
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement-detail {
+=======
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+    flex-direction: column;
+  }
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1851,17 +1896,29 @@ abbr[title] {
   flex-direction: column;
   align-items: flex-start;
 }
+<<<<<<< HEAD
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement-detail button {
   padding: 0.55em 0.85em;
 }
 @media screen and (max-width: 431px) {
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement-detail {
+=======
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
+  padding: 0.55em 0.85em;
+}
+@media screen and (max-width: 431px) {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     gap: 0;
   }
+<<<<<<< HEAD
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement-detail div {
+=======
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
@@ -1887,8 +1944,12 @@ abbr[title] {
   border-color: #804e2e;
   color: #804e2e;
 }
+<<<<<<< HEAD
 #liste-reservation-proprietaire-main .pagination button:not(:disabled):hover,
 #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
+=======
+#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
   background-color: #804e2e;
   color: white !important;
 }
@@ -1901,7 +1962,8 @@ abbr[title] {
 }
 
 #liste-reservation-locataire-main {
-  margin: 2em 4em;
+  margin: 0 4em;
+  margin-top: 2em;
 }
 @media screen and (max-width: 431px) {
   #liste-reservation-locataire-main {
@@ -1999,9 +2061,13 @@ abbr[title] {
 #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
+<<<<<<< HEAD
 #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline,
 #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant,
 #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-ascending {
+=======
+#liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-eye-outline, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-filter-variant, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-locataire-main .liste-reservation-locataire-flex-row .mdi.mdi-sort-descending {
+>>>>>>> 508afe2c875d998448a9ab034579c21c0ceea30a
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -2040,6 +2106,7 @@ abbr[title] {
   border: solid #1b5734 1px;
   border-radius: 20px;
   box-shadow: 0px 0px 2px #1b5734;
+  cursor: pointer;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
   display: flex;
@@ -2057,8 +2124,8 @@ abbr[title] {
   display: flex;
   align-items: center;
   justify-items: center;
-  width: 12em;
-  height: 8em;
+  width: 10em;
+  height: 7em;
   border-radius: 10%;
   margin-right: 1em;
 }
@@ -2824,8 +2891,8 @@ header#backoffice > aside > span.owner {
 }
 
 #login {
-  height: 100vh;
   background-color: #222524;
+  height: 100vh;
 }
 #login > form {
   width: 30em;
@@ -3093,9 +3160,6 @@ header#backoffice > aside > span.owner {
 
 /* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
 /* TOUT METTRE DANS UNE BALISE HOME */
-#home-page {
-  padding-bottom: 3em;
-}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3363,7 +3427,6 @@ abbr[title] {
 /***************************************/
 #filter-housing-container {
   display: flex;
-  padding-bottom: 3em;
 }
 
 /* Menu des filtres */
@@ -3380,6 +3443,7 @@ abbr[title] {
   padding: 2.5em;
   min-width: 20em;
   height: 100%;
+  position: relative;
 }
 #filter-container > section {
   border-top: solid 1px #676767;
@@ -4109,6 +4173,7 @@ h5 {
   background-color: #222524;
   color: white;
   padding-top: 1em;
+  padding-bottom: 5em;
 }
 #backoffice-registration > img {
   filter: invert(1);
@@ -4368,6 +4433,8 @@ h5 {
   margin: auto;
   margin-top: 20px;
   width: fit-content;
+  max-width: 1350px;
+  width: 100%;
 }
 #new-icalator-page h1 {
   padding-bottom: 15px;
@@ -4421,6 +4488,9 @@ h5 {
   display: block;
   text-align: center;
   margin-bottom: 15px;
+}
+#new-icalator-page #form-icalator .logements-container.backoffice .row-logement {
+  gap: 20px;
 }
 #new-icalator-page .input-logement {
   position: relative;
@@ -4603,6 +4673,12 @@ h5 {
 }
 #icalator-home-page .icalator-home-table tbody tr .delete-btn:hover {
   background-color: #de0404;
+}
+#icalator-home-page .icalator-home-table tbody tr .edit-btn {
+  background-color: #ffbb33;
+}
+#icalator-home-page .icalator-home-table tbody tr .edit-btn:hover {
+  background-color: #e6a300;
 }
 
 #read-calendar-page {

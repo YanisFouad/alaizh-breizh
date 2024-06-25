@@ -35,14 +35,21 @@ ScriptLoader::load("icalator/calendarLink.js");
                     <tbody>
                         <?php foreach ($calendar as $cal) { ?>
                             <tr>
-                                <td><a class="calendar-link" href="<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?>"><?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?></a></td>
-                                <td><?= $cal->get("start_date") ?></td>
-                                <td><?= $cal->get("end_date") ?></td>
+                                <td><a class="calendar-link" href="https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?>"><?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?></a></td>
+                                <td><?= date("d/m/Y", strtotime($cal->get("start_date"))) ?></td>
+                                <td><?= date("d/m/Y", strtotime($cal->get("end_date"))) ?></td>
                                 <td class="actions-cell">
                                     <a href="/backoffice/calendrier/voir?key=<?= $cal->get("cle_api") ?>">
                                         <button class="calendar-btn read-btn">
                                             <span class="mdi mdi-eye-circle-outline"></span>
                                             Voir
+                                        </button>
+                                    </a>
+
+                                    <a href="/backoffice/calendrier/editer?key=<?= $cal->get("cle_api") ?>">
+                                        <button class="calendar-btn edit-btn">
+                                            <span class="mdi mdi-pencil-outline"></span>
+                                            Editer
                                         </button>
                                     </a>
 
