@@ -17,6 +17,10 @@ body {
    position: relative;
 
    min-height: 100vh;
+
+   &#frontoffice {
+      padding-bottom: 6em;
+   }
 }
 
 h1,
@@ -91,6 +95,7 @@ a {
 @import "views/backoffice/accomodations/new-accommodation.scss";
 
 @import "views/backoffice/accomodations/details-logement-proprietaire";
+@import "views/backoffice/account/profile.scss";
 
 @import "views/accommodation/devis-logement";
 

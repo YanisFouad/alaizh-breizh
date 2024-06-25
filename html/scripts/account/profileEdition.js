@@ -19,7 +19,7 @@ const fields = {
     "date_naissance": null,
     "telephone": null,
     "numero": null,
-    "complete_numer": null,
+    "complement_numero": null,
     "rue_adresse": null,
     "ville_adresse": null,
     "code_postal_adresse": null,
@@ -91,7 +91,7 @@ async function editProfile() {
     if(profilePictureFile)
         formData.append("profilePicture", profilePictureFile);
     try {
-        const response = await fetch("/controllers/account/profileController.php", {
+        const response = await fetch("/controllers/account/profileEditionController.php", {
             method: "POST",
             body: formData
         });
@@ -126,4 +126,69 @@ profileEditionButton.addEventListener("click", () => {
     // once user has edited fields then edit the current profile
     if(!editMode)
         editProfile();
+}, false);
+
+
+const apiKeyInput = document.getElementById("api-key");
+
+document.getElementById("generate-api-key").addEventListener("click", async () => {
+    try {
+        const formData = new FormData();
+        formData.append("generateApiKey", true);
+        const response = await fetch("/controllers/account/profileEditionController.php", {
+            method: "POST",
+            body: formData
+        });
+
+        if(!response.ok) {
+            window.notify(
+                "ERROR",
+                "La réponse n'est pas OK",
+                true
+            );
+            return;
+        }
+        const data = await response.json();
+
+        if(data.error) {
+            window.notify(
+                "ERROR",
+                data.error,
+                true
+            );
+            return;
+        }
+
+        apiKeyInput.value = data.apiKey;
+        apiKeyInput.setAttribute("disabled", false);
+        window.notify(
+            "SUCCESS",
+            "Clé api généré !",
+            true
+        );
+    } catch(e) {
+        window.notify(
+            "ERROR",
+            `Une erreur est survenue: ${e.stack}`,
+            true
+        )
+    }
+});
+
+document.getElementById("copy-api-key").addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText(apiKeyInput.value);
+        window.notify(
+            "SUCCESS",
+            "Clé api copié !",
+            true
+        );
+    } catch(e) {
+        console.trace(e);
+        window.notify(
+            "ERROR",
+            `Impossible de copier: ${e.stack}`,
+            true
+        );
+    }
 }, false);

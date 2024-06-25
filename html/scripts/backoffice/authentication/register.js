@@ -1,25 +1,25 @@
 async function handleForm(event) {
     event.preventDefault();
     try {
-        const formData = new FormData(document.getElementById("formProfil"));
-        const response = await fetch("/controllers/account/profileCreationController.php", {
+        const formData = new FormData(document.getElementById("register-form"));
+
+        const response = await fetch("/controllers/backoffice/account/registerController.php", {
             method: "POST",
             body: formData
         });
 
         if(!response.ok) {
-            window.notify("ERROR", "La réponse n'est pas OK", true); 
+            window.notify("ERROR", "La réponse n'est pas OK", true);
             return;
         }
 
         const data = await response.json();
-
         if(data.error) {
             window.notify("ERROR", data.error, true);
             return;
         }
 
-        window.location.href = "/?notification-type=SUCCESS&notification-message=Vous êtes maintenant incrit !";
+        window.location.href = "/backoffice?notification-type=SUCCESS&notification-message=Vous êtes bien inscrit !";
     } catch(e) {
         console.trace(e);
         window.notify(
@@ -30,9 +30,10 @@ async function handleForm(event) {
     }
 }
 
+// udpate photo section
 document.addEventListener('DOMContentLoaded', function () {
-    const photoInput = document.getElementById("photo_profil");
-    const profileImage = document.querySelector("[for=\"photo_profil\"]>img");
+    const photoInput = document.getElementById("photo");
+    const profileImage = document.querySelector("[for=\"photo\"]>img");
 
     // Met à jour l'image de profil quand un fichier est sélectionné
     photoInput.addEventListener('change', (event) => {

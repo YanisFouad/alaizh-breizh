@@ -2,7 +2,7 @@
 require_once(__DIR__."/../../services/session/UserSession.php");
 
 $redirectTo = "/";
-if(isset($_GET) && array_key_exists("redirectTo", $_GET))
+if(isset($_GET) && isset($_GET["redirectTo"]))
     $redirectTo = $_GET["redirectTo"];
 
 UserSession::disconnect();

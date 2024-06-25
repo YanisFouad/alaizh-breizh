@@ -1,0 +1,91 @@
+#backoffice-registration {  
+    background-color: $black;
+    color: $white;
+    padding-top: 1em;
+    padding-bottom: 5em;
+
+    &>img {
+        filter: invert(1);
+        display: block;
+        margin: auto;
+        margin-bottom: .5em;
+        width: 15em;
+    }
+    &>h2 {
+        text-align: center;
+    }
+    &>form {
+        width: 35em;
+        margin: auto;
+        padding-bottom: 2em;
+
+        &>div.profile-container {
+            margin: 2em auto;
+            width: fit-content;
+
+            &>label {
+                display: block;
+                cursor: pointer;
+                position: relative;
+                
+                &>img {
+                    border-radius: 200px;
+                    width: 15em;
+                    height: 15em;
+                    object-fit: cover;
+                }
+
+                &>.add-new {
+                    &>span.opacity {
+                        width: 100%;
+                        border-radius: 200px;
+                        height: 100%;
+    
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+    
+                        background-color: $gray-1;
+                        opacity: 50%;
+                    }
+    
+                    &>span.mdi.mdi-plus-circle {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+    
+                        transform: translate(-50%, -50%);
+                        font-size: 3em;
+                    }
+                }
+            }
+        }
+
+        &>button {
+            margin-top: .5em;
+            width: 100%;
+        }
+
+    }
+
+    & .form-field {
+        &:last-of-type {
+            border-bottom: 1px solid $gray-2;
+            padding-bottom: 2em;
+        }
+        margin: 1em 0;
+
+        &>label {
+            color: $white;
+        }
+
+        &>input, &>select {
+            background-color: $gray-1;
+            color: $white;
+            transition: .5s ease all;
+            &:is(:hover, :focus) {
+                border-color: $white;
+            }
+        }
+    }
+}

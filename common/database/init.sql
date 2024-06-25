@@ -371,16 +371,19 @@ BEGIN
       numero = COALESCE(NEW.numero, OLD.numero),complement_numero = COALESCE(NEW.complement_numero, OLD.complement_numero),rue_adresse = COALESCE(new.rue_adresse, old.rue_adresse),complement_adresse = COALESCE(new.complement_adresse, old.complement_adresse),ville_adresse = COALESCE(new.ville_adresse, old.ville_adresse),code_postal_adresse = COALESCE(new.code_postal_adresse, old.code_postal_adresse),pays_adresse = COALESCE(new.pays_adresse, old.pays_adresse)
     WHERE id_adresse = compte_id_adresse;
 
-    IF new.cle_api != NULL OR old.cle_api != NULL THEN
-        UPDATE _token 
-        SET 
-          cle_api = COALESCE(new.cle_api,old.cle_api);
+    IF NEW.cle_api <> OLD.cle_api AND NEW.cle_api IS NOT NULL THEN
+        INSERT INTO _token(cle_api)
+            VALUES (NEW.cle_api);
     END IF;
 
     UPDATE _proprietaire 
     SET 
       piece_identite = COALESCE(new.piece_identite, old.piece_identite),note_proprietaire = COALESCE(new.note_proprietaire, old.note_proprietaire),num_carte_identite = COALESCE(new.num_carte_identite, old.num_carte_identite),rib_proprietaire = COALESCE(new.rib_proprietaire, old.rib_proprietaire),cle_api = COALESCE(new.cle_api,old.cle_api);
-    
+
+	IF NEW.cle_api <> OLD.cle_api AND OLD.cle_api IS NOT NULL THEN
+		DELETE FROM _token WHERE cle_api = OLD.cle_api;
+	END IF; 
+
   END IF; 
   RETURN NEW;
 END;
