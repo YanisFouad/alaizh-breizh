@@ -1,35 +1,20 @@
 <?php
-    require_once(__DIR__."/../../models/AccountModel.php");
-    require_once(__DIR__."/../../controllers/account/profileEditionController.php");
+    require_once(__DIR__."/../../../models/AccountModel.php");
+    require_once(__DIR__."/../../../controllers/account/profileEditionController.php");
 
-    $user_profile = null;
-    if(isset($_GET) && isset($_GET["profil_id"])) {
-        $user_profile = AccountModel::findOneById($_GET["profil_id"], AccountType::TENANT);
-        if(!isset($user_profile))
-            $user_profile = AccountModel::findOneById($_GET["profil_id"], AccountType::OWNER);
-        $isOwnProfile = false;
-    } else if(UserSession::isConnectedAsTenant()) {
-        $user_profile = UserSession::get();
-        $isOwnProfile = true;
-    }
+    $user_profile = UserSession::get();
     
     ScriptLoader::load("account/profileEdition.js");
     require_once(__DIR__."/../layout/header.php"); 
 ?>
 
-<main class="profile-area">
+<main id="owner-part" class="profile-area">
     <?php if(isset($user_profile)) { ?>
         <header>
             <a href="/" class="mdi mdi-arrow-left">
                 Retour à l'accueil
             </a>
-            <h1>
-                <?php if($isOwnProfile) { ?>
-                    Mes informations personnelles
-                <?php } else { ?>
-                    Informations de <?=$user_profile->get("displayname") ?>
-                <?php } ?>
-            </h1>
+            <h1>Mes informations personnelles</h1>
         </header>
 
         <section>
@@ -128,7 +113,7 @@
                             <div>
                                 <h5>RIB</h5>
                                 <input id="rib_proprietaire" type="text" value="<?=$user_profile->get("rib_proprietaire")?>" />
-                                <h4><?=$isOwnProfile ? $user_profile->get("rib_proprietaire") : obsfuceRIB($user_profile->get("rib_proprietaire"))?></h4>
+                                <h4><?=$user_profile->get("rib_proprietaire")?></h4>
                             </div>
                         </div>
                     </article>
@@ -141,10 +126,10 @@
                                 <label for="api-key">Clé API</label>
                                 <div>
                                     <input id="api-key" type="text" value="<?=$user_profile->get("cle_api")?>" readonly>
-                                    <button id="generate-api-key" class="primary frontoffice">
+                                    <button id="generate-api-key" class="primary backoffice">
                                         <span class="mdi mdi-autorenew"></span>
                                     </button>
-                                    <button id="copy-api-key" class="primary frontoffice" <?=$user_profile->get("cle_api")==NULL?"disabled":""?>>
+                                    <button id="copy-api-key" class="primary backoffice" <?=$user_profile->get("cle_api")==NULL?"disabled":""?>>
                                         <span class="mdi mdi-content-copy"></span>
                                     </button>
                                 </div>
@@ -152,11 +137,9 @@
                         </div>
                     </article>
                 <?php } ?>
-                <?php if($isOwnProfile) { ?>
-                    <button id="profile-edition" class="mdi mdi-pencil secondary">
-                        Editer mon profil
-                    </button>
-                <?php } ?>
+                <button id="profile-edition" class="mdi mdi-pencil secondary backoffice">
+                    Editer mon profil
+                </button>
             </section>
         </section>
 
@@ -168,4 +151,4 @@
     <?php } ?>
 </main>
 
-<?php require_once(__DIR__."/../layout/footer.php"); ?>
+<?php require_once(__DIR__."/../../layout/footer.php"); ?>

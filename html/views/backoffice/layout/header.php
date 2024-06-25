@@ -60,7 +60,7 @@
                 <div class="dropdown">
                     <ul>
                         <li>
-                            <a href="/profil">Mon profil</a>
+                            <a href="/backoffice/profil">Mon profil</a>
                         </li>
                         <li>
                             <form method="POST" action="/controllers/authentication/disconnectController.php?redirectTo=%2Fbackoffice">

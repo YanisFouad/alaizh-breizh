@@ -35,6 +35,8 @@ $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/new
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
 $router->add("/backoffice/logement", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
 
+$router->add("/backoffice/profil", "views/backoffice/account/profile.php");
+
 // facture pdf
 $router->add("/facture", "controllers/facturePdf.php");
 $router->add("/backoffice/facture", "controllers/facturePdf.php");
