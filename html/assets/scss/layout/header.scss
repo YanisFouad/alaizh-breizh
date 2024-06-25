@@ -94,6 +94,10 @@ header#frontoffice {
       background-color: $gray-3;
       margin: 1em 0 0 0;
    }
+
+   #open-burger-menu {
+      display: none;
+   }
 }
 
 @media (min-width: 431px) {
@@ -150,7 +154,7 @@ header#frontoffice {
          }
       }
       .displayed {
-         display: block;
+         display: block !important;
       }
       
       .hidden {
