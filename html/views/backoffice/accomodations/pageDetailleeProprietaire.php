@@ -2,12 +2,14 @@
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
-    include_once(__DIR__."/../layout/header.php");
     
     $logement_id = $_GET['id_logement'] ?? null;
-    if(!isset($logement_id))
-        exit(header("Location: /"));
-
+    if(!isset($logement_id)) {
+        header("Location: /backoffice");
+        exit;
+    }
+    
+    include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['id_logement'];
     $logement = AccommodationModel::findOneById($logement_id);
 

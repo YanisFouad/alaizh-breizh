@@ -46,7 +46,7 @@ async function handleForm(event) {
     //     return;
     try {
         const formData = new FormData(event.target);
-        
+        formData.append("id_logement", new URLSearchParams(window.location.search).get("id_logement"))
         // remove activities & distances that hasn't been checked
         for(const activity of Array.from(document.querySelectorAll(".activities>input"))) {
             if(activity && !activity.checked) {
@@ -55,14 +55,16 @@ async function handleForm(event) {
                 formData.delete(`distance_for_${activityName}`);
             }
         }
+        
         //modif ligne
-        const response = await fetch(`/controllers/backoffice/accommodations/ModificationAccommodationController.php`, {
+        const response = await fetch(`/controllers/backoffice/accommodations/modificationAccommodationController.php`, {
             method: "POST",
             body: formData
         });
         console.log(response);
         if(!response.ok)
             return setError({message: "Impossible d'ajouter le logement"});
+
         const data = await response.json();
         if(data && data.error) {
             let sectionId;
@@ -168,20 +170,53 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     let photoLogement = document.querySelector(`[for="photo_logement"]`);
-    photoLogement.style.backgroundImage = `url(${photoLogement.getAttribute("data-image")})`
+    photoLogement.style.backgroundImage = `url(${photoLogement.getAttribute("data-image")})`;
 
-    document.getElementById("photo_logement").onchange = ({target}) => {
-        const uploadLabel = target.parentElement.querySelector("label");
-        const uploadIcon = uploadLabel.querySelector(".mdi");
-        uploadIcon?.classList?.remove("mdi-image-plus");
-        uploadIcon?.classList?.add("mdi-check");
-        uploadLabel?.classList.add("uploaded");
-    }
+    //document.getElementById('photo_logement').src = window.URL.createObjectURL(this.files[0]);
+    profilePictureInput = document.getElementById("photo_logement")
+    profilePictureInput.addEventListener("change", ({target}) => {
+        const photoModif = document.getElementById('photo_logement').dataset.image;
+        const photo = target.files?.[0];
+        console.log(photo);
+        const reader = new FileReader();
+        reader.onload = event => {
+            const filePath = event.target.result;
+            //picturePath = `url(${filePath})`;
+            //document.querySelector("#profile-picture-input + img").setAttribute("src", filePath);
+            document.getElementById('image_logement').style.background = `url(${filePath})`;
+        }
+        reader.readAsDataURL(photo);
+        profilePictureFile = photo;
+    },false);
+    //     document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"
+        
+    //     // const [file] = target.files;
+    //     // if (file) {
+    //     //     const label = document.getElementById('image_logement');
+    //     //     label.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    //     // }
+    // };
+    // Load initial image if available
+
+
+        //const uploadLabel = target.parentElement.querySelector("label");
+        //const uploadIcon = uploadLabel.querySelector(".mdi");
+        // uploadIcon?.classList?.remove("mdi-image-plus");
+        //uploadIcon?.classList?.add("mdi-check");
+        //uploadLabel?.classList.add("uploaded");
 
     // photoLogement.onchange = ({target}) => {
     //     const uploadLabel = target.parentElement.querySelector("label");
     // }
 });
+
+window.onload = () => {
+    const label = document.getElementById('image_logement');
+    const imageUrl = label.dataset.image;
+    if (imageUrl) {
+        label.style.backgroundImage = `url(${imageUrl})`;
+    }
+};
 
 
 /* PRICE CALCUL SECTION */

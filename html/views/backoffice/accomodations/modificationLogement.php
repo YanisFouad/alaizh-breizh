@@ -5,6 +5,7 @@
         exit(header("Location: /backoffice"));
     
     ScriptLoader::load("backoffice/accomodations/modificationAccomodation.js");
+    
     require_once(__DIR__."/../layout/header.php"); 
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
@@ -13,6 +14,7 @@
     $logement = AccommodationModel::findOneById($logement_id);
     $logement_layouts = [];
     $logement_activites = [];
+    $_POST["id_logement"]=$logement_id;
 
     //ajout des aménagements du logement
     foreach($logement->get('amenagements') as $key => $value) {
@@ -23,10 +25,6 @@
     foreach($logement->get('activites') as $key => $value) {
         array_push($logement_activites,strtolower($value["name"]));
     }
-    
-    //test affichage
-    print_r($logement->get('activites'));
-    
 
     $layouts = ["Balcon", "Piscine", "Jacuzzi", "Jardin", "Terrasse"];
     $activities = [

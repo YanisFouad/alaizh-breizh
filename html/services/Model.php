@@ -99,7 +99,6 @@ class Model {
         $values = array_values($data);
         $primaryField = $this->getPrimaryField();
 
-
         // if it's a new row then insert it
         if($primaryField === null || $this->isNew) {
             // before inserting, check if it's correspond to the schema
@@ -123,10 +122,9 @@ class Model {
         foreach($values as $k => &$v) {
             $request->bindParam($k+1, $v);
         }
-        
+
         if(!$this->isNew && array_key_exists($primaryField, $this->data))
-            $request->bindParam(sizeof($values)+1, $this->data[$primaryField]);
-        
+            $request->bindParam(sizeof($values)+1, $this->data[$primaryField]);  
         
         $request->execute();
         if(!isset($seqName))

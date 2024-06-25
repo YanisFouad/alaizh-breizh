@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__."/../../../models/AccommodationModel.php");
 require_once(__DIR__."/../../../services/session/UserSession.php");
 
@@ -12,6 +11,10 @@ function sendResponse(...$entries) {
 if(isset($_POST)) {
     $picture = $_FILES["photo_logement"] ?? null;
     $optionnalFields = ["complement_adresse","nb_lits_doubles_logement","nb_lits_simples_logement"];
+
+    //lowercase pour cat logement
+    $categorie = strtolower($_POST["categorie_logement"]);
+    $_POST["categorie_logement"] = $categorie;
 
     $fields = [];
     // prevent from XSS
@@ -33,7 +36,8 @@ if(isset($_POST)) {
         ]);
     }
     
-    $accommodation = new AccommodationModel();
+    $accommodation = AccommodationModel::findOneById($_POST["id_logement"]);
+    unset($_POST["id_logement"]);
     $insertedFields = [];
 
     // map all activities and layouts
@@ -53,18 +57,15 @@ if(isset($_POST)) {
 
         $insertedFields[$k] = $v;
     }
-
-    $insertedFields["id_proprietaire"] = UserSession::get()->get("id_compte");
     foreach($insertedFields as $field => $value) 
         $accommodation->set($field, $value);
-
+    $insertedFields["id_proprietaire"] = UserSession::get()->get("id_compte");
     try {
-        if($picture != null) {
-            $lastInsertedId = $accommodation->save("_logement_id_logement_seq");
-            $pictureName = $lastInsertedId . "_" . $insertedFields["type_logement"];
-            FileLogement::save($picture, $pictureName);
-        }
-
+        $accommodation->save();     
+        // if(trim($picture["name"]) != "") {
+        //     //$pictureName = $_POST["id_logement"] . "_" . $insertedFields["type_logement"];
+        //     FileLogement::save($picture, strtolower($pictureName));
+        // }
         sendResponse(["success" => true]);
     } catch(Exception $e) {
         sendResponse(["error" => "Erreur lors de sauvegarde: " . $e->getMessage()]);
