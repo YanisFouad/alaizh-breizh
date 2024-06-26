@@ -30,12 +30,12 @@ const fields = {
 let editMode = false;
 
 // fill fields variable with all associated fields
-for(const inputId of Object.keys(fields)) {
+for (const inputId of Object.keys(fields)) {
     const input = document.getElementById(inputId);
     // plain text corresponds to the default text that appear    
     const associatedText = document.querySelector(`#${inputId} + h4`);
 
-    if(input && associatedText)
+    if (input && associatedText)
         fields[inputId] = { input, associatedText }
 }
 
@@ -58,7 +58,7 @@ function toggleFields() {
     profilePicture.style.display = editMode ? "block" : "none";
     document.querySelector("article.profile>img").style.display = editMode ? "none" : "block";
 
-    if(!editMode) {
+    if (!editMode) {
         profileEditionButton.textContent = "Editer mon profil";
         profileEditionButton.classList.add("mdi-pencil");
         profileEditionButton.classList.remove("mdi-check");
@@ -68,7 +68,7 @@ function toggleFields() {
         const lastName = displayname.inputs.lastname.value;
         displayname.associatedText.textContent = `${lastName.toUpperCase()} ${firstName}`;
 
-        for(const {input, associatedText} of Object.values(fields).filter(f => f)) {
+        for (const { input, associatedText } of Object.values(fields).filter(f => f)) {
             associatedText.textContent = input.value;
         }
     } else {
@@ -83,12 +83,12 @@ async function editProfile() {
     const formData = new FormData();
     formData.append("editProfile", true);
 
-    for(const input of inputs) {
-        if(input.value?.trim())
+    for (const input of inputs) {
+        if (input.value?.trim())
             formData.append(input.id, input.value);
     }
 
-    if(profilePictureFile)
+    if (profilePictureFile)
         formData.append("profilePicture", profilePictureFile);
     try {
         const response = await fetch("/controllers/account/profileEditionController.php", {
@@ -96,17 +96,17 @@ async function editProfile() {
             body: formData
         });
         const json = await response.json();
-        if(json.error) {
+        if (json.error) {
             window.notify("ERROR", json.error, true);
         }
-        window.notify("SUCCESS", "Profil mit à jour !", true);
-    } catch(e) {
+        window.notify("SUCCESS", "Profil mis à jour !", true);
+    } catch (e) {
         console.trace(e);
         window.notify("ERROR", `Une erreur est survenue: ${e.stack}`, true);
     }
 }
 
-profilePictureInput.addEventListener("change", ({target}) => {
+profilePictureInput.addEventListener("change", ({ target }) => {
     const file = target.files?.[0];
     const reader = new FileReader();
     reader.onload = event => {
@@ -124,7 +124,7 @@ profileEditionButton.addEventListener("click", () => {
     toggleFields();
 
     // once user has edited fields then edit the current profile
-    if(!editMode)
+    if (!editMode)
         editProfile();
 }, false);
 
@@ -140,7 +140,7 @@ document.getElementById("generate-api-key").addEventListener("click", async () =
             body: formData
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             window.notify(
                 "ERROR",
                 "La réponse n'est pas OK",
@@ -150,7 +150,7 @@ document.getElementById("generate-api-key").addEventListener("click", async () =
         }
         const data = await response.json();
 
-        if(data.error) {
+        if (data.error) {
             window.notify(
                 "ERROR",
                 data.error,
@@ -166,7 +166,7 @@ document.getElementById("generate-api-key").addEventListener("click", async () =
             "Clé api généré !",
             true
         );
-    } catch(e) {
+    } catch (e) {
         window.notify(
             "ERROR",
             `Une erreur est survenue: ${e.stack}`,
@@ -183,7 +183,7 @@ document.getElementById("copy-api-key").addEventListener("click", async () => {
             "Clé api copié !",
             true
         );
-    } catch(e) {
+    } catch (e) {
         console.trace(e);
         window.notify(
             "ERROR",
