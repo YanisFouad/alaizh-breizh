@@ -30,7 +30,7 @@
          <input name="arrivesOn" placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
          <input name="departureOn" placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
          <input name="travelersCount" type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
-         <button class="is-disabled"><span class="mdi mdi-magnify"></span></button>
+         <button class="primary frontoffice"><span class="mdi mdi-magnify"></span></button>
       </form>
       <form id="search-bar" class="responsive">
          <input disabled type="text" placeholder="Rechercher..." class="search-input">
