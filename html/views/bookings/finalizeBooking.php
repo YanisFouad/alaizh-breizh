@@ -1,7 +1,10 @@
 <?php 
     require_once(__DIR__."/../../models/AccommodationModel.php");
     require_once(__DIR__."/../../services/session/PurchaseSession.php");
+    require_once(__DIR__."/../../services/ScriptLoader.php");
     
+    ScriptLoader::load("bookings/finalizeButton.js");
+
     if(!UserSession::isConnectedAsTenant()) {
         header("Location: /?redirectTo=finaliser-ma-reservation#connection");
         exit;
@@ -25,10 +28,12 @@
 
 <section id="finalize-booking">
     <header>
-        <button id="finalize-booking-back-button">
-            <span class="mdi mdi-arrow-left"></span>
-            Retour
-        </button>
+        <a href="/logement?id_logement=<?php echo $session["accommodationId"] ?>">
+            <button id="finalize-booking-back-button">
+                <span class="mdi mdi-arrow-left"></span>
+                Retour
+            </button>
+        </a>
         <h1>Finaliser ma réservation</h1>
     </header>
     
@@ -39,7 +44,7 @@
         </h2>
 
         <article>
-            <img src="/files/logements/1_appartement.jpg" alt="appartement 1">
+            <img src="<?=$accommodation->get("photo_logement")?>" alt="Photo logement">
             <article>
                 <div>
                     <h3><?=$accommodation->get("titre_logement")?></h3>
@@ -67,14 +72,14 @@
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4>12 juillet 2024 - 15 juillet 2024</h4>
+                    <h4><?=$session["date_arrivee"]?> - <?=$session["date_depart"]?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
                     <h4><?=$session["nb_voyageurs"]?></h4>
                 </div>
             </div>
-            <h3>Prix total: <span><?=$session["total_ati"]?> €</span></h3>
+            <h3>Prix total : <span><?=$session["total_ati"]?> €</span></h3>
         </article>
 
         <h2>
@@ -116,10 +121,12 @@
         </article>
     </div>
 
-    <button class="primary finalize">
-        Finaliser ma réservation
-        <span class="mdi mdi-chevron-right"></span>
-    </button>
+    <a href="/reservations?notification-message=Réservation effectuée&notification-type=SUCCESS">
+        <button class="primary finalize" >
+            Finaliser ma réservation
+            <span class="mdi mdi-chevron-right"></span>
+        </button>
+    </a>
 </section>
 
 <?php require_once(__DIR__."/../layout/footer.php"); ?>
