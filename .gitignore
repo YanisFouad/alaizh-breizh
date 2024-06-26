@@ -9,6 +9,7 @@ docker-compose.yml
 
 # ignore all files from css file except theses
 html/assets/css/*
+!html/assets/css/template-facture.css
 !html/assets/css/main.css
 !html/assets/css/materialdesignicons.min.css
 
