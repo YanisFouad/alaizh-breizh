@@ -4509,6 +4509,18 @@ h5 {
 #mainProprietaireLogement #blockCheminPage-SwitchContainer {
   position: relative;
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #menu #cheminPage {
+  display: flex;
+  margin-left: 2em;
+  align-items: center;
+  margin-top: 1em;
+}
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container {
   position: absolute;
   right: 0;
@@ -4575,18 +4587,6 @@ h5 {
   position: relative;
   top: 1px;
   font-size: 1.3em;
-}
-#mainProprietaireLogement #menu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-#mainProprietaireLogement #menu #cheminPage {
-  display: flex;
-  margin-left: 2em;
-  align-items: center;
-  margin-top: 1em;
 }
 #mainProprietaireLogement #page {
   margin: auto;
@@ -4865,6 +4865,8 @@ h5 {
   box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
 }
 #modal #modal-devis-content > div .close {
+  position: relative;
+  z-index: 5;
   color: #aaa;
   float: right;
   font-size: 2em;
@@ -4880,7 +4882,6 @@ h5 {
   position: relative;
   width: 100%;
   font-size: 1.7em;
-  margin-top: 1em;
 }
 #modal #modal-devis-content > div h2 > span {
   display: block;
