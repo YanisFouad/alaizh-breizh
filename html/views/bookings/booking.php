@@ -194,7 +194,7 @@ function adresseToString($adresse) {
                     </div>
                 </div>
             </div>
-            <h3>Prix total: <span><?= round($reservation->get("prix_total"), 2) ?> &#8364;</span></h3>
+            <h3>Prix total: <span><?= number_format($reservation->get("prix_total"), 2, ',', ' ')  ?> &#8364;</span></h3>
         </article>
 
         <h2>

@@ -130,17 +130,9 @@ require_once(__DIR__."/../layout/header.php");
                     ?>
                     
             </div>
-            <?php
-            if(strlen(explode(".", $controller->getReservation()->get("prix_total"))[1]) == 1) { 
-                ?>
-                <h3>Prix total: <span><?= $controller->getReservation()->get("prix_total") . 0 ?> &#8364;</span></h3>
-                <?php
-            } else {
-                ?>
-                <h3>Prix total: <span><?= $controller->getReservation()->get("prix_total") ?> &#8364;</span></h3>
-                <?php
-            }
-            ?>
+
+                
+                <h3>Prix total: <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
         </article>
 
         <h2>
