@@ -117,12 +117,6 @@
     <hr>
 
     <div id="liste-reservation-proprietaire-float-left">
-        <!-- Bouton filtre -->
-        <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled >
-            <span class="mdi mdi-filter-variant"></span>
-            Filtre
-        </button>
-
         <!-- Bouton tri -->
         <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre"> 

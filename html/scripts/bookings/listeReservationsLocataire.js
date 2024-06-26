@@ -132,5 +132,4 @@ function updateBooking(booking) {
             </a>
         </div>
     `);
-    console.log(bookingList.innerHTML)
 }

@@ -164,7 +164,10 @@
 
       <div id="filter-sort-buttons-container">
          <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
-         <button><span class="mdi mdi-sort-descending"></span>Trier par prix</button>
+         <button id="sort-btn">
+            <span class="mdi mdi-sort-descending"></span>
+            <span class="label"></span>
+         </button>
       </div>
 
       <section id="accommodation-list">
