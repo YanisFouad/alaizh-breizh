@@ -79,6 +79,10 @@
                             <h1><?=$logement->get('titre_logement');?></h1>
 
                         </div>
+                        <div id="titre">
+                            <h2><?=$logement->get('prix_ttc_logement');?>€ par nuit</h2>
+
+                        </div>
 
                         <h2><span class="mdi mdi-map-marker"></span><?=$logement->get('ville_adresse').", ";?> <?php echo getDepartmentName($logement->get('code_postal_adresse'));?></h2>
                         <p><?=$logement->get('accroche_logement')?></p>

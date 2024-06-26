@@ -245,7 +245,7 @@
 
             <div class="form-field">
                 <label for="prix_ht_logement" class="required">Prix HT (en €)</label>
-                <input type="number" value="<?echo $logement->get('prix_ht_logement');?>" step=".5" id="prix_ht_logement" name="prix_ht_logement">
+                <input type="number" value="<?echo $logement->get('prix_ht_logement');?>" step=".5" id="prix_ht_logement" name="prix_ht_logement" min="0.50">
             </div>
             <div class="price-ati">
                 <span class="title">Prix TTC (10% de taxes)</span>
@@ -254,20 +254,20 @@
 
             <div class="form-field">
                 <label for="duree_minimale_reservation" class="required">Durée minimal réservation</label>
-                <input type="number" value="<?echo $logement->get('duree_minimale_reservation');?>" id="duree_minimale_reservation" name="duree_minimale_reservation">
+                <input type="number" value="<?echo $logement->get('duree_minimale_reservation');?>" id="duree_minimale_reservation" name="duree_minimale_reservation" min="1">
             </div>
             <div class="form-field">
                 <label for="delais_minimum_reservation" class="required">Délai minimum de réservation</label>
-                <input type="number" value="<?echo $logement->get('delais_minimum_reservation');?>" id="delais_minimum_reservation" name="delais_minimum_reservation">
+                <input type="number" value="<?echo $logement->get('delais_minimum_reservation');?>" id="delais_minimum_reservation" name="delais_minimum_reservation" min="1">
             </div>
             <div class="form-field">
                 <label for="delais_prevenance" class="required">Delais de prevenance</label>
-                <input type="number" value="<?echo $logement->get('delais_prevenance');?>" id="delais_prevenance" name="delais_prevenance">
+                <input type="number" value="<?echo $logement->get('delais_prevenance');?>" id="delais_prevenance" name="delais_prevenance" min="1">
             </div>
 
             <div class="error-message"></div>
             <footer>
-                <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>?notification-message=Votre logement à bien été modifié?notification-message=Erreur lors de la génération de la facture&notification-type=ERROR&notification-type=SUCCESS">
                     <button type="button" class="secondary previous backoffice">Annuler</button>
                 </a>
                 <button type="submit" class="primary backoffice">Modifier le logement</button>

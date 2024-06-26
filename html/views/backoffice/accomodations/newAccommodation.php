@@ -8,9 +8,9 @@
         "canoë" => true,
         "voile" => true,
         "accrobranche" => true,
-        "randonnée" => false,
-        "equitation" => false,
-        "golf" => false
+        "randonnée" => true,
+        "equitation" => true,
+        "golf" => true
     ];  
     $energiticClasses = ["A", "B", "C", "D", "E", "F", "G"];
     $types = ["appartement", "maison", "villa", "chalet", "bateau", "insolite"];
@@ -205,7 +205,7 @@
 
             <div class="form-field">
                 <label for="prix_ht_logement" class="required">Prix HT (en €)</label>
-                <input type="number" step=".5" id="prix_ht_logement" name="prix_ht_logement">
+                <input type="number" step=".5" id="prix_ht_logement" name="prix_ht_logement" min="0.50">
             </div>
             <div class="price-ati">
                 <span class="title">Prix TTC (10% de taxes)</span>
@@ -214,15 +214,15 @@
 
             <div class="form-field">
                 <label for="duree_minimale_reservation" class="required">Durée minimal réservation</label>
-                <input type="number" id="duree_minimale_reservation" name="duree_minimale_reservation">
+                <input type="number" id="duree_minimale_reservation" name="duree_minimale_reservation" min="1">
             </div>
             <div class="form-field">
                 <label for="delais_minimum_reservation" class="required">Délai minimum de réservation</label>
-                <input type="number" id="delais_minimum_reservation" name="delais_minimum_reservation">
+                <input type="number" id="delais_minimum_reservation" name="delais_minimum_reservation" min="1">
             </div>
             <div class="form-field">
                 <label for="delais_prevenance" class="required">Delais de prevenance</label>
-                <input type="number" id="delais_prevenance" name="delais_prevenance">
+                <input type="number" id="delais_prevenance" name="delais_prevenance" min="1">
             </div>
 
             <div class="error-message"></div>
