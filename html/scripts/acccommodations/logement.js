@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedEndDate.setDate(selectedEndDate.getDate() + 1);
         dateDepart.innerText = selectedEndDate.toLocaleDateString('fr-fr', { year: "numeric", month: "long", day: "numeric" });
         console.log(selectedStartDate, selectedEndDate);
-        updateNbNuits(selectedStartDate, selectedEndDate);
+        const dayDiff = updateNbNuits(selectedStartDate, selectedEndDate);
+        btn.onclick = () => initDevis(dayDiff);
       }
     } else {
       e.target.innerText = "Choisir une date";
@@ -94,13 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
     return nombre;
   }
 
-  btn.onclick = function () {
+  function initDevis(dayDiff) {
     modal.style.display = "block";
 
     voyageurs.forEach(voyageur => voyageur.textContent = valeur);
     nuits.forEach(nuit => nuit.textContent = dayDiff);
 
-    datesDevis.textContent = dateDepart.textContent + "-" + dateArrivee.textContent;
+    datesDevis.textContent = dateDepart.textContent + " - " + dateArrivee.textContent;
 
     let prixHTSejour = parseFloat(prix.textContent) * nuits[1].textContent;
     for (const prixSeul of prixHTCalcul) {
@@ -111,61 +112,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const prixFraisService = parseFloat(prixHTCalcul[0].textContent) * 0.01;
     const fraisDeService = prixFraisService;
-
+    console.log(fraisDeService);
     fraisService.forEach(frais => frais.textContent = formatNombre(fraisDeService));
 
-    fraisServiceTVA.textContent = formatNombre(parseFloat(fraisDeService) * 0.2);
+    const tvaFraisService = parseFloat(fraisDeService) * 0.2;
+    fraisServiceTVA.textContent = formatNombre(tvaFraisService);
 
     taxeSejour.textContent = voyageurs[0].textContent * nuits[0].textContent * 1;
 
-    prixTTC.textContent = formatNombre(parseFloat(prixHTCalcul[0].textContent) + parseFloat(prixTVA[0].textContent) + parseFloat(fraisDeService) + parseFloat(fraisServiceTVA.textContent) + parseFloat(taxeSejour.textContent));
-  };
-
-  closeModal.onclick = function () {
-    closeModal.onclick = function () {
-      modal.style.display = "none";
-    };
-  };
-
-  window.onclick = function (event) {
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-        modal.style.display = "none";
-      }
-    };
-  };
-
-  function miseAJourValeurAffichee() {
-    function miseAJourValeurAffichee() {
-      valeurAffichee.textContent = valeur;
-      moins.disabled = valeur <= 1;
-      moins.disabled = valeur <= 1;
-      plus.disabled = valeur == nbPersonneMax;
-    }
+    prixTTC.textContent = formatNombre(parseFloat(prixHTCalcul[0].textContent) + parseFloat(prixTVA[0].textContent) + parseFloat(fraisDeService) + parseFloat(tvaFraisService.toFixed(2)) + parseFloat(taxeSejour.textContent));
   }
 
+  closeModal.onclick = function () {
+    modal.style.display = "none";
+  };
+
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+
+
+  function miseAJourValeurAffichee() {
+    valeurAffichee.textContent = valeur;
+    moins.disabled = valeur <= 1;
+    moins.disabled = valeur <= 1;
+    plus.disabled = valeur == nbPersonneMax;
+  }
+
+
   moins.addEventListener("click", () => {
-    moins.addEventListener("click", () => {
-      valeur--;
-      miseAJourValeurAffichee();
-      document.getElementById("valeurVoyageurs").innerHTML = valeur;
-      document.getElementById("taxeSejour").innerHTML =
-        "1 x " + valeur + " voyageurs x 3 nuits";
-    });
+    valeur--;
+    miseAJourValeurAffichee();
     document.getElementById("valeurVoyageurs").innerHTML = valeur;
-    document.getElementById("taxeSejour").innerHTML =
-      "1 x " + valeur + " voyageurs x 3 nuits";
   });
 
+
+
   plus.addEventListener("click", () => {
-    plus.addEventListener("click", () => {
-      valeur++;
-      miseAJourValeurAffichee();
-      document.getElementById("valeurVoyageurs").innerHTML = valeur;
-      document.getElementById("taxeSejour").innerHTML =
-        "1 x " + valeur + " voyageurs x 3 nuits";
-    });
+    valeur++;
+    miseAJourValeurAffichee();
     document.getElementById("valeurVoyageurs").innerHTML = valeur;
     document.getElementById("taxeSejour").innerHTML =
       "1 x " + valeur + " voyageurs x 3 nuits";
@@ -177,10 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateNbNuits(startDate, endDate) {
   const nbNuits = document.getElementById("nombreNuits");
   const timeDifference = endDate.getTime() - startDate.getTime();
-  dayDiff = timeDifference / (1000 * 3600 * 24);
+  const dayDiff = timeDifference / (1000 * 3600 * 24);
 
   nbNuits.innerText = dayDiff;
   updateTotal(dayDiff);
+  return dayDiff;
 }
 
 function updateTotal(nbNuits) {

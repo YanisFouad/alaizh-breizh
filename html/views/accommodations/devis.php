@@ -56,7 +56,7 @@
                     <div>
                         <div>
                             <h4>TVA du séjour : </h4>
-                            <h4 class="prixHTCalcul"> x 10%</h4> <!-- TODO: remplacer le 10% par la valeur en base -->
+                            <h4><span class="prixHTCalcul"></span> x 10%</h4> <!-- TODO: remplacer le 10% par la valeur en base -->
                         </div>
                         <h4 class="prixSejourTVA"></h4>
                     </div>
@@ -64,7 +64,7 @@
                     <div>
                         <div>
                             <h4>Frais de service : </h4>
-                            <h4 class="prixHTCalcul"> x 1%</h4>
+                            <h4><span class="prixHTCalcul"></span> x 1%</h4>
                         </div>
                         <h4 class="fraisService"></h4>
                     </div>
@@ -73,7 +73,7 @@
                     <div>
                         <div>
                             <h4>TVA frais de service : </h4>
-                            <h4 class="fraisService"> x 20%</h4>
+                            <h4><span class="fraisService"></span> x 20%</h4>
                         </div>
                         <h4 id="tvaFraisService"></h4>
                     </div>

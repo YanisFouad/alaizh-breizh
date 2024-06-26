@@ -151,16 +151,26 @@
     }
 
     @media screen and (max-width: 580px) {
-        position: absolute;
-
         #modal-devis-content {
-            height: 100%;
             margin-top: 2em;
 
             &>div {
+                max-height: 80vh;
+                overflow: auto;
+
                 &>article {
                     &>div {
                         &>div {
+                            &>div {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                &>article:first-of-type {
+                    &>div {
+                        &>div:first-child {
                             display: block;
                         }
                     }

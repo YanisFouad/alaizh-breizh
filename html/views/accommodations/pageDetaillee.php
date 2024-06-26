@@ -92,7 +92,7 @@
                             <ul>
                                 <li>
                                     <span class="mdi mdi-tag-multiple-outline"></span>
-                                    Categorie
+                                    Catégorie
                                 </li>
                                 <li class="bulle-Rose" title="<?php echo $accomodation->get("categorie_logement");?>"><?php echo ucfirst($accomodation->get("categorie_logement"));?></li>
 
@@ -233,14 +233,14 @@
 
                 <div id="nbNuits">
                     <div>
-                        <span>Nombre de nuit(s)</span>
+                        <span class="devisGauche">Nombre de nuit(s)</span>
                         <h4 id="nombreNuits">0</h4>
                     </div>
 
                     <div>
                         <div>
-                            <span id="prix-nuit"><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
-                            <span>x <span id="nb-nuits-total">0</span> nuit(s)</span>
+                            <span id="prix-nuit" class="devisGauche"><?php echo $accomodation->get("prix_ttc_logement");?>€</span>
+                            <span class="devisGauche">x <span id="nb-nuits-total" class="devisGauche">0</span> nuit(s)</span>
                         </div>
                         <h4><span id="total"><?php echo $accomodation->get("prix_ttc_logement")*0; ?></span>€</h4>
                     </div>
