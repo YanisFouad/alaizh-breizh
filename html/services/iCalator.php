@@ -54,7 +54,7 @@ foreach ($reservations as $reservation) {
         $calendar .= "DTEND:" . date("Ymd\THis\Z", strtotime($reservation["date_depart"])) . "\n";
         $calendar .= "SUMMARY:Reservation\n";
         $calendar .= "Category:Réservations confirmées\n";
-        $calendar .= "LOCATION:" . $adresseLogement["numero"] . $adresseLogement['complement_numero'] . ' ' . $adresseLogement["rue_adresse"] . ' ' . $adresseLogement['complement_adresse'] . "\, " . $adresseLogement["ville_adresse"] . ' ' . $reservation["code_postal_adresse"] . "\, " . '\n' . $reservation["pays_adresse"] . "\n";
+        $calendar .= "LOCATION:" . $adresseLogement["numero"] . $adresseLogement['complement_numero'] . ' ' . $adresseLogement["rue_adresse"] . ' ' . $adresseLogement['complement_adresse'] . "\, " . $adresseLogement["ville_adresse"] . ' ' . $adresseLogement["code_postal_adresse"] . "\, " . '\n' . $adresseLogement["pays_adresse"] . "\n";
         $calendar .= "DESCRIPTION:Reservation du logement \"" . $reservation["titre_logement"] . "\"" . "par " . "<b> " . $locataire->get("prenom") . ' ' . strtoupper($locataire->get("nom")) . "</b>" .
         '\nEmail: ' . "<b>" . $locataire->get("mail") . "</b>" . " Téléphone: " . "<b>" . $locataire->get("telephone") . "</b>" . '\n\n' . "<a href=" . $_SERVER['HTTP_HOST'] . "/backoffice/reservation?id=" . $reservation["id_reservation"] . ">Voir la réservation</a>\n";
         $calendar .= "STATUS:CONFIRMED\n";
