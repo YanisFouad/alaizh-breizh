@@ -45,9 +45,9 @@
       // FILTRE RECHERCHE TEXTE
       if (strlen($stringSearch) > 0) {
          $request = $request->where("
-            LOWER(titre_logement) LIKE ? OR 
+            (LOWER(titre_logement) LIKE ? OR 
             LOWER(ville_adresse) LIKE ? OR
-            LOWER(categorie_logement) LIKE ?", 
+            LOWER(categorie_logement) LIKE ?)", 
             '%'. $stringSearch . '%', 
             '%'. $stringSearch . '%', 
             '%'. $stringSearch . '%'
@@ -63,6 +63,14 @@
       }
 
       $result = $request->execute()->fetchMany();
+
+// je récupère les dates comme avant
+// itérer sur $result qui contient les resultats des filtres
+// pour récupérer l'id de chaque logement filtrés
+// avec cet id, je peux recuperer toutes les reservations via le request builder
+// avec ces données, on fait les conditions sur les dates (si ça correspond ou pas)
+// si ça correspond pas, on retire le logement de result
+
       echo json_encode($result);
       exit;
    }

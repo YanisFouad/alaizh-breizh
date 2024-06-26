@@ -2,7 +2,6 @@
 /** MAIN **/
 /**********/
 
-
 const clearAllFiltersButton = document.getElementById("clear-all-filters-button");
 const cityList = document.getElementById("city-list");
 const townCheckboxes = document.querySelectorAll("#city-list input[type='checkbox']");
@@ -20,6 +19,7 @@ const dateInputCompact = document.getElementById("date-input-compact");
 const travelersInputCompact = document.getElementById("travelers-input-compact");
 let inputSearchBar = document.getElementById("search-input");
 let inputNumberOfTravelers = document.getElementById("travelers-number-input");
+let compactSearchBarButton = document.getElementById("compact-search-bar-button");
 
 const accommodationPerPage = 10;
 let allResults;
@@ -42,8 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       clearAllFilters();
    });
 
-
-
    //function toggleCheckbox(selectedData, checkboxes, name) {
    toggleCheckbox(selectedTowns, townCheckboxes, "name");
    toggleCheckbox(selectedDepartments, departmentCheckboxes, "dataset.postcode");
@@ -55,19 +53,24 @@ document.addEventListener("DOMContentLoaded", () => {
       compactSearchBar.innerHTML = "";
       renderFullSearchBar();
       attachSearchListener();
+      searchOnClick();
+      attachTravelersInputListener();
    })
    dateInputCompact.addEventListener("focus", () => {
       compactSearchBar.innerHTML = "";
       renderFullSearchBar();
+      searchOnClick();
+      attachTravelersInputListener();
    })
    travelersInputCompact.addEventListener("focus", () => {
       compactSearchBar.innerHTML = "";
       renderFullSearchBar();
       attachTravelersInputListener();
+      searchOnClick();
    })
 
    attachSearchListener();
-   attachTravelersInputListener();
+   //attachTravelersInputListener();
 });
 
 
@@ -76,23 +79,30 @@ document.addEventListener("DOMContentLoaded", () => {
 /** FONCTIONS **/
 /***************/
 
+function searchOnClick() {
+   compactSearchBarButton = document.getElementById("compact-search-bar-button");
+   if (compactSearchBarButton) {
+      compactSearchBarButton.addEventListener("click", () => {
+         refreshAccommodationsResults();
+      }, false);
+   }
+}
 
 function attachSearchListener() {
    inputSearchBar = document.getElementById("search-input");
    if (inputSearchBar) {
       inputSearchBar.addEventListener("input", () => {
          stringEntered = (inputSearchBar.value).toLowerCase();
-         refreshAccommodationsResults();
       });
    }
 }
+
 function attachTravelersInputListener() {
-   inputNumberOfTravelers = document.getElementById("travelers-number-input");
+   const inputNumberOfTravelers = document.getElementById("travelers-number-input");
+   
    if (inputNumberOfTravelers) {
-      inputNumberOfTravelers.addEventListener("input", () => {
+      inputNumberOfTravelers.addEventListener("change", () => {
          travelersSelected = parseInt(inputNumberOfTravelers.value);
-         console.log(travelersSelected)
-         refreshAccommodationsResults();
       });
    }
 }
@@ -129,6 +139,8 @@ function renderFullSearchBar() {
    button.className = 'is-disabled';
    const buttonIcon = document.createElement('span');
    buttonIcon.className = 'mdi mdi-magnify';
+   button.id = 'compact-search-bar-button';
+   button.type = "button";
    button.appendChild(buttonIcon);
 
    compactSearchBar.appendChild(searchInput);
@@ -221,7 +233,7 @@ async function fetchData(url = "", data = {}) {
 /** Récupère les logements sélectionnés et met à jour la liste */ 
 async function refreshAccommodationsResults() {
    accommodationList.innerHTML = ""; // Empêche les logements de se cumuler à chaque nouvelle recherche
-
+   console.log(travelersSelected);
    const accommodationResults = await fetchData("/controllers/accommodationsFilters.php", {
       "towns": selectedTowns,
       "departments": selectedDepartments,
@@ -325,7 +337,7 @@ function renderPagination() {
    });
 
 }
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// limit + offset
 
 /** Génère la liste des logements */
 function renderAccommodationList(accommodation) {
@@ -432,6 +444,11 @@ function clearAllFilters() {
    selectedTowns = [];
    selectedDepartments = [];
    priceRange = [];
+   stringEntered = "";
+   // let arrivalSelected;
+   // let departureSelected;
+   travelersSelected = 1;
+   
    // décocher toutes les checkboxes et vider les inputs
    // ⭕️ TODO GRISER SI AUCUN FILTRE ACTIF
    uncheckAllCheckboxes("town");
