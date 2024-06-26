@@ -50,7 +50,7 @@ ScriptLoader::load("icalator/calendarLink.js");
             }
             ?>
             <p>Vous pouvez maintenant l'utiliser pour synchroniser vos réservations dans votre agenda numérique</p>
-            <p><strong>Votre URL de calendrier est : <a href="<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?>" class="calendar-link"><?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?></a></strong></p>
+            <p><strong>Votre URL de calendrier est : <a href="https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?>" class="calendar-link">https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $api_key ?></a></strong></p>
         </div>
     </section>
 </main>
