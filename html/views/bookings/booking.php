@@ -194,7 +194,7 @@ function adresseToString($adresse) {
                     </div>
                 </div>
             </div>
-            <h3>Prix total: <span><?= round($reservation->get("prix_total"), 2) ?> &#8364;</span></h3>
+            <h3>Prix total: <span><?= number_format($reservation->get("prix_total"), 2, ',', ' ')  ?> &#8364;</span></h3>
         </article>
 
         <h2>
@@ -228,5 +228,11 @@ function adresseToString($adresse) {
         </article>
     </div>
 </section>
+<a href="/backoffice/facture?id=<?= $reservation->get("id_reservation") ?>"  target="_blank" id="btn-facture-detail">
+    <button class="primary btn-facture">
+        <span class="mdi mdi-eye-outline"></span>
+        Facture
+    </button>
+</a>
 
 <?php require_once(__DIR__."/../layout/footer.php"); ?>

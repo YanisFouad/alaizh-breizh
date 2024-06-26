@@ -14,8 +14,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const endDate = formData.get('date-fin-souscription');
         const logement = formData.getAll('logements[]');
 
-        console.log(logement);
-    
         const startDateInput = document.getElementById('date-debut-souscription');
         const endDateInput = document.getElementById('date-fin-souscription');
 

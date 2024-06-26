@@ -1,3 +1,221 @@
+@mixin accommodations-grid($grid-column-count) {
+   $grid-layout-gap: 10px;
+   $grid-item--min-width: 200px;
+   
+   $gap-count: calc($grid-column-count - 1);
+   $total-gap-width: calc($gap-count * $grid-layout-gap);
+   $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
+   
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
+   grid-gap: $grid-layout-gap;
+}
+
+main#home>.hero-header {
+   height: 350px;
+   position: relative;
+   margin: 1em 2.5em;
+
+   &>.image-cover {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 1em;
+
+      &>div.title {
+         position: absolute;
+         margin: 2em 3em;
+         top: 0;
+         z-index: 99;
+         color: $white;
+
+         &>h1 {
+            font-family: "poppins-semibold", sans-serif;
+            font-size: 2.5em;
+         }
+         &>h2 {
+            font-size: 1.5em;
+         }
+      }
+      &>.image {
+         position: absolute;
+         top: 0;
+         border-radius: 1em;
+         background-position-y: 20%;
+         background-size: cover;
+         background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, .4),
+            rgba(0, 0, 255, 0)
+          ), url(/assets/images/home-landscape.jpeg);         
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   #search-bar {
+      position: absolute;
+      top: unset;
+      bottom: -3em;
+      left: 50%;
+
+      height: fit-content;
+
+      transform: translateX(-50%);
+      width: 54em;
+
+      & input {
+         width: 100%;
+      }
+
+      &.responsive {
+         display: none;
+      }
+   }
+}
+
+main#home .accommodations {
+   margin: 0 2.5em;
+   margin-bottom: 3em;
+
+   &>header {
+      margin-top: 9em;
+      margin-bottom: 5em;
+      position: relative;
+   
+      &>h1 {
+         text-align: center;
+      }
+   
+      &>a {
+         position: absolute;
+         top: 50%;
+         right: 2.5em;
+   
+         transform: translateY(-50%);
+      }
+   }
+
+   // housings
+   &>section {
+      $grid-layout-gap: 10px;
+      $grid-column-count: 5;
+      $grid-item--min-width: 200px;
+    
+      $gap-count: calc($grid-column-count - 1);
+      $total-gap-width: calc($gap-count * $grid-layout-gap);
+      $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
+    
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
+      grid-gap: $grid-layout-gap;
+    
+      margin-bottom: 2em;
+
+      &>a {
+         text-decoration: none;
+      }
+
+      & .item {
+         &:hover>.img-container>img {
+            transform: scale(1.1);
+         }
+         &>.img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1em;
+
+            &>img {
+               width: 100%;
+               height: 15em;
+               object-fit: cover;
+   
+               transition: all .5s ease;
+            }
+         }
+
+         // details
+         &>footer {
+            font-size: .9em;
+
+            &>h4.title {     
+               max-width: 95%;       
+               text-wrap: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+            }
+            &>h4.localization {
+               margin: .2em 0;
+               font-family: "comfortaa-regular";
+               color: $brown-1;
+               font-size: 1em;
+            }
+            &>h4.price {
+               font-family: "comfortaa-bold";
+               font-size: 1.1em;
+               &>span:last-of-type {
+                  font-size: .8em;
+               }
+            }
+         }         
+      }
+   }
+
+   &>footer {
+      &>a {
+         &>button {
+            background-color: transparent;
+            color: $black;
+            padding: unset;
+            box-shadow: unset;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 1040px) {
+   main#home .accommodations>header>h1 {
+      text-align: start;
+      margin-left: 1.5em;
+   }
+   main#home #search-bar {
+      width: 94% !important;
+   }
+}
+
+@media screen and (max-width: 766px) {
+   main#home .accommodations>header {
+      &>h1 {
+         margin-left: unset;
+         text-align: center;
+      }
+      &>a {
+         display: none;
+      }
+   }
+}
+
+@media screen and (max-width: 626px) {
+   main#home #search-bar {
+      display: none;
+      &.responsive {
+         display: flex !important;
+      }
+   }
+}
+
+@media screen and (max-width: 502px) {
+   main#home .hero-header .title {
+      &>h1 {
+         font-size: 1.9em !important;
+      }
+      &>h2 {
+         font-size: 1.2em !important;
+      }
+   }
+}
+
 #home-page {
    display: flex;
    flex-direction: column;
@@ -35,11 +253,183 @@
    .mdi {
       font-size: 1.5em;
    }
-   
-   a{
-      text-decoration: none;
-      &:visited {
-         color: black;
+}
+
+#search-bar {
+   display: flex;
+   align-items: center;
+   position: relative;
+   top: -2.5em;
+   gap: .5em;
+   width: fit-content;
+   padding: 0.5em;
+   border-bottom: 2px $gray-3 solid;
+   box-shadow: 0px 5px 5px $gray-3;
+   background-color: white;
+   border-radius: 1em;
+   margin: 0 auto;
+   input, button {
+      border: none;
+      border-radius: 1em;
+   }
+   input {
+      font-family: "comfortaa-medium";
+      background-color: $gray-4;
+      padding: 1.5em;
+      width: auto;
+   }
+   button {
+      //background-color: $primary-1;
+      ///////// POURQUOI LE STYLE NE FONCTIONNE PAS !!!!!!!!!!!!!
+      background-color: gray;
+      cursor: not-allowed;
+      /////////
+      padding: 1em;
+   }
+   .mdi-magnify {
+      color: white;
+   }
+}
+
+#list-title-container {
+   text-align: center;
+}
+
+.show-more-button-container {
+   display: flex;
+   justify-content: flex-end;
+   text-align: right;
+   margin-right: 2.5em;
+   padding: .25em .5em;
+}
+
+.show-more-button {
+   position: relative;
+   top: -4em;
+}
+
+.housing-list {
+   display: grid;
+   gap: 2em;
+   grid-template-columns: repeat(auto-fit, 250px);
+   margin: 0 2.5em 2.5em 2.5em;
+   justify-content: center;
+}
+
+.housing-image-item-container {
+   width: 250px;
+   height: 250px;
+   background-color: $gray-3;
+   border-radius: 1em;
+
+   position: relative;
+   overflow: hidden;
+}
+
+.housing-item {
+   &:hover img {
+      transform: scale(1.1);
+   }
+   img {
+      width: 100%;
+      height: 100%; 
+      object-fit: cover;
+      border-radius: 1em;
+      transition: all .5s ease;
+   }
+   h4, .housing-price-container {
+      font-size: 14px;
+   }
+   .housing-price {
+      font-family: "comfortaa-bold";
+   }
+   &:hover {
+      cursor: pointer;
+   }
+}
+
+abbr[title] {
+   text-decoration: none;
+}
+
+.housing-description-container {
+   display: flex;
+   align-items: end;
+   justify-content: space-between;
+   width: 250px;
+   margin: .5em 0;
+}
+
+.housing-description {
+   font-family: "comfortaa-bold";
+   margin: 0 .5em 0 0;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
+.housing-location-container {
+   display: flex;
+   align-items: center;
+   gap: .5em;
+   color: $brown-1;
+   margin-bottom: .5em; 
+   width: 250px;
+}
+
+.mdi-star {
+   font-size: 1em;
+}
+
+.housing-location { 
+   font-family: "comfortaa-regular";
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
+.housing-price-container {
+   display: flex;
+   font-family: "comfortaa-regular";
+   font-size: small;
+   gap: .5em;
+}
+
+.star-notation-container {
+   display: flex;
+   align-items: center;
+   gap: .5em;
+   width: fit-content;
+   color: $primary-frontoffice-1;
+   border: solid 1px $primary-frontoffice-1;
+   border-radius: 1em;
+   padding: .25em .5em;
+   background-color: $primary-frontoffice-4;
+}
+
+.show-all-button {
+   display: none;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+@media (max-width: 431px) {
+#home-page, #filter-housing-container {
+   min-width: inherit;
+}
+   #search-bar {
+      width: 355px;
+      .arrival-date-input, .departure-date-input, .travelers-number-input {
+         display: none;
+      }
+      .mdi-account {
+         display: none;
+      }
+      justify-content: space-between;
+      input {
+         width: inherit;
       }
    }
    
