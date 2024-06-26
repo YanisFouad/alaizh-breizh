@@ -2,12 +2,6 @@
     <link rel="stylesheet" href="../../assets/css/main.css">
 </head> -->
 
-<?php
-    function formatNumber($nb) {
-        return number_format($nb, 2, ',', ' ');
-    }
-?>
-
 <body id="facture-body">
     <header>
         <div class="enterprise-container">
@@ -74,16 +68,16 @@
             <tbody>
                 <tr class="table-row-description">
                     <td>
-                        <p>Location : <?= formatNumber($prix_nuitee_ht) ?>&euro; X <?= $nb_nuit ?> nuits</p>
+                        <p>Location : <?= $prix_nuitee_ht ?>&euro; X <?= $nb_nuit ?> nuits</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($prix_total_nuitee_ht) ?> &euro;</p>
+                        <p><?= $prix_total_nuitee_ht ?> &euro;</p>
                     </td>
                     <td>
                         <p>10 %</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($prix_total_nuitee_ttc) ?> &euro;</p>
+                        <p><?= $prix_total_nuitee_ttc ?> &euro;</p>
                     </td>
                 </tr>
                 <tr class="table-row-total">
@@ -91,13 +85,13 @@
                         <p>Frais de service ( 1% )</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($total_frais_service_ht) ?> &euro;</p>
+                        <p><?= $frais_de_service ?> &euro;</p>
                     </td>
                     <td>
                         <p>0 %</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($total_frais_service_ttc) ?> &euro;</p>
+                        <p><?= $frais_de_service ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
@@ -123,7 +117,7 @@
                         <p>Total HT</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalHT) ?> &euro;</p>
+                        <p><?= $totalHT ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
@@ -131,7 +125,7 @@
                         <p>TVA</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalTVA) ?> &euro;</p>
+                        <p><?= $totalTVA ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
@@ -139,7 +133,7 @@
                         <p>Total TTC</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalTTC) ?> &euro;</p>
+                        <p><?= $totalTTC ?> &euro;</p>
                     </td>
                 </tr>
             </tbody>

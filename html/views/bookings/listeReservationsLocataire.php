@@ -20,7 +20,7 @@
     $profile = UserSession::get();
     $id_locataire = $profile->get("id_compte");
 
-    function trie_date($date1, $date2){
+    function tri_date($date1, $date2){
         if ($date1 == $date2) return 0;
         return ($date1 < $date2) ? -1 : 1;
     }
@@ -83,7 +83,7 @@
 
     <!-- Onglets affichages des réservations -->
     <nav id="liste-reservation-locataire-onglet">
-        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriodLocataire("a_venir", $id_locataire)?>)</a>    
+        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">À venir (<?php echo BookingModel::countByPeriodLocataire("a_venir", $id_locataire)?>)</a>    
         <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriodLocataire("en_cours", $id_locataire)?>)</a>
         <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passées (<?php echo BookingModel::countByPeriodLocataire("passe", $id_locataire)?>)</a>
     </nav>
@@ -96,8 +96,8 @@
             Filtre
         </button>
 
-        <!-- Bouton trie -->
-        <!-- trie pas encore fonctionnel -->
+        <!-- Bouton tri -->
+        <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
             <span class="label"></span>

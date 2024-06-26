@@ -137,7 +137,7 @@ h5 {
         height: 100%;
         object-fit: cover;
         object-position: center;
-        max-height: 23em;
+        max-height: 30em;
         border-radius: 13px;
     }
 
@@ -304,7 +304,7 @@ h5 {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 35%;
+                width: 40%;
 
                 .list-amenagement {
                     width: 100%;
@@ -320,7 +320,7 @@ h5 {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                width: 65%;
+                width: 60%;
                 padding-right: 15px;
 
                 .list-activite {
@@ -424,7 +424,6 @@ h5 {
                 height: 4em;
                 border-radius: 50%;
                 margin-left: 10px;
-                object-fit: cover;
             }
         }
 
@@ -476,11 +475,9 @@ h5 {
                 justify-content: flex-start;
                 color: red;
                 margin-bottom: 1em;
-
                 span {
                     margin-right: 5px;
                 }
-
                 p {
                     color: red;
                 }
@@ -552,7 +549,7 @@ h5 {
                     }
                 }
 
-                .devisGauche {
+                span:nth-child(odd) {
                     color: $gray-2;
                 }
             }
@@ -697,7 +694,6 @@ h5 {
 }
 
 .flatpickr-calendar {
-
     .selected,
     .endRange {
         background-color: $primary-frontoffice-1 !important;
