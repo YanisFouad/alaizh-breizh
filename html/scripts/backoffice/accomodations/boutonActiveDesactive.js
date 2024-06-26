@@ -1,4 +1,4 @@
-const modalValidation = document.getElementById('modalValidation');
+const modalValidations = document.getElementById('modalValidation');
 const btnCheckbox = document.getElementById("boutonOnOff");
 const btnOui = document.getElementById('boutonOui');
 const btnNon = document.getElementById('boutonNon');
@@ -53,7 +53,7 @@ function updateStatus(id) {
 document.addEventListener('DOMContentLoaded', function () {
     btnCheckbox.onclick = function (e) {
         e.preventDefault();
-        modalValidation.style.display = "block";
+        modalValidations.style.display = "block";
         messagePopUp();
     }
 });
@@ -61,20 +61,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 btnOui.onclick = function () {
     updateStatus(idLogement);
-    modalValidation.style.display = "none";
+    modalValidations.style.display = "none";
 };
 
 btnNon.onclick = function () {
-    modalValidation.style.display = "none";
+    modalValidations.style.display = "none";
 };
 
 closeModal.onclick = function () {
-    modalValidation.style.display = "none";
+    modalValidations.style.display = "none";
 }
 
 window.onclick = function (event) {
-    if (event.target == modalValidation) {
-        modalValidation.style.display = "none";
+    if (event.target == modalValidations) {
+        modalValidations.style.display = "none";
     }
 }
 
