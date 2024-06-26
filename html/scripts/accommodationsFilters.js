@@ -97,8 +97,10 @@ function renderContextFilter({priceRange: {min: minPrice, max: maxPrice}, cities
    cities.forEach(city => renderFilterElementCheckbox(citiesElement, "cities", city));
    departments.forEach(city => renderFilterElementCheckbox(departmentsElement, "departments", city));
 
-   minPriceInput.placeholder = `Prix minimum: ${minPrice}€`;
-   maxPriceInput.placeholder = `Prix maximum: ${maxPrice}€`;
+   const _formatPrice = price =>  Intl.NumberFormat("fr-FR", {style: 'currency', currency: 'EUR'}).format(parseFloat(price));
+
+   minPriceInput.placeholder = `Prix minimum: ${_formatPrice(minPrice)}€`;
+   maxPriceInput.placeholder = `Prix maximum: ${_formatPrice(maxPrice)}€`;
 }
 
 function renderFilterElementCheckbox(filterElement, filterName, data) {
