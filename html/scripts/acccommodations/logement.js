@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tvaFraisService = parseFloat(fraisDeService) * 0.2;
     fraisServiceTVA.textContent = formatNombre(tvaFraisService);
 
-    taxeSejour.textContent = voyageurs[0].textContent * nuits[0].textContent * 1;
+    taxeSejour.textContent = formatNombre(voyageurs[0].textContent * nuits[0].textContent * 1);
 
     prixTTC.textContent = formatNombre(parseFloat(prixHTCalcul[0].textContent) + parseFloat(prixTVA[0].textContent) + parseFloat(fraisDeService) + parseFloat(tvaFraisService.toFixed(2)) + parseFloat(taxeSejour.textContent));
   }
