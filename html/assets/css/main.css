@@ -1784,9 +1784,6 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
   all: unset;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne:hover article {
-  background-color: #f7f7f7;
-}
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
   padding: 0.7em 0.7em;
@@ -2049,9 +2046,6 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .non-souligne {
   all: unset;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .non-souligne:hover article {
-  background-color: #f7f7f7;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
   margin: 1.5em 0;
@@ -4018,10 +4012,8 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-  height: 60%;
-  width: 60%;
-  min-width: 30em;
-  min-height: 30em;
+  height: 30em;
+  width: 45em;
   display: flex;
   align-items: center;
   justify-items: center;
@@ -4044,7 +4036,6 @@ h5 {
 }
 #mainProprietaireLogement #block-intro {
   display: flex;
-  flex-wrap: wrap;
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -4196,12 +4187,13 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #424645;
+  opacity: 50%;
 }
 #backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
   top: 50%;
   left: 50%;
-  color: black;
   transform: translate(-50%, -50%);
   font-size: 3em;
 }
@@ -4839,6 +4831,8 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #424645;
+  opacity: 50%;
 }
 .inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
