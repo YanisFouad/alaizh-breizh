@@ -1,16 +1,6 @@
-@mixin accommodations-grid($grid-column-count) {
-   $grid-layout-gap: 10px;
-   $grid-item--min-width: 200px;
-   
-   $gap-count: calc($grid-column-count - 1);
-   $total-gap-width: calc($gap-count * $grid-layout-gap);
-   $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
-   
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
-   grid-gap: $grid-layout-gap;
-}
 
+
+/* HOME */
 main#home>.hero-header {
    height: 350px;
    position: relative;
@@ -97,71 +87,6 @@ main#home .accommodations {
       }
    }
 
-   // accommodations
-   &>section {
-      $grid-layout-gap: 10px;
-      $grid-column-count: 5;
-      $grid-item--min-width: 200px;
-    
-      $gap-count: calc($grid-column-count - 1);
-      $total-gap-width: calc($gap-count * $grid-layout-gap);
-      $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
-    
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
-      grid-gap: $grid-layout-gap;
-    
-      margin-bottom: 2em;
-
-      &>a {
-         text-decoration: none;
-      }
-
-      & .item {
-         &:hover>.img-container>img {
-            transform: scale(1.1);
-         }
-         &>.img-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1em;
-
-            &>img {
-               width: 100%;
-               height: 15em;
-               object-fit: cover;
-   
-               transition: all .5s ease;
-            }
-         }
-
-         // details
-         &>footer {
-            font-size: .9em;
-
-            &>h4.title {     
-               max-width: 95%;       
-               text-wrap: nowrap;
-               overflow: hidden;
-               text-overflow: ellipsis;
-            }
-            &>h4.localization {
-               margin: .2em 0;
-               font-family: "comfortaa-regular";
-               color: $brown-1;
-               font-size: 1em;
-            }
-            &>h4.price {
-               font-family: "comfortaa-bold";
-               font-size: 1.1em;
-               &>span:last-of-type {
-                  font-size: .8em;
-               }
-            }
-         }         
-      }
-   }
-
    &>footer {
       &>a {
          &>button {
@@ -171,6 +96,71 @@ main#home .accommodations {
             box-shadow: unset;
          }
       }
+   }
+}
+
+main#home .accommodations section,
+#accommodation-list {
+   $grid-layout-gap: 10px;
+   $grid-column-count: 5;
+   $grid-item--min-width: 200px;
+ 
+   $gap-count: calc($grid-column-count - 1);
+   $total-gap-width: calc($gap-count * $grid-layout-gap);
+   $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
+ 
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
+   grid-gap: $grid-layout-gap;
+ 
+   margin-bottom: 2em;
+
+   &>a {
+      text-decoration: none;
+   }
+
+   & .item {
+      &:hover>.img-container>img {
+         transform: scale(1.1);
+      }
+      &>.img-container {
+         position: relative;
+         overflow: hidden;
+         border-radius: 1em;
+
+         &>img {
+            width: 100%;
+            height: 15em;
+            object-fit: cover;
+
+            transition: all .5s ease;
+         }
+      }
+
+      // details
+      &>footer {
+         font-size: .9em;
+
+         &>h4.title {     
+            max-width: 95%;       
+            text-wrap: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+         }
+         &>h4.localization {
+            margin: .2em 0;
+            font-family: "comfortaa-regular";
+            color: $brown-1;
+            font-size: 1em;
+         }
+         &>h4.price {
+            font-family: "comfortaa-bold";
+            font-size: 1.1em;
+            &>span:last-of-type {
+               font-size: .8em;
+            }
+         }
+      }         
    }
 }
 
@@ -215,6 +205,144 @@ main#home .accommodations {
       }
    }
 }
+/* HOME */
+
+/** FILTERS */
+#filter-accommodation-container {
+   position: relative;
+}
+
+#filter-container {
+   border-right: 2px solid $gray-3;
+   height: 100vh !important;
+
+   position: absolute !important;
+   transition: all .5s ease;
+   left: -20em;
+
+   &.extended {
+      left: 0;
+   }
+}
+
+#accommodation-list-container {
+   transition: all .5s ease;
+}
+
+#filter-container.extended ~ #accommodation-list-container {
+   margin-left: 20em;
+}
+
+#filter-container #clear-filters {
+   padding: 0.5em 1em;
+}
+
+// du caca sur du caca et allez !
+@media screen and (max-width: 1170px) {
+   #accommodation-list-container > header {
+      flex-wrap: wrap;
+      gap: 1em;
+   }
+}
+@media screen and (max-width: 909px) {
+   #filter-container {
+      position: fixed !important;
+      top: 0;
+      left: -50em;
+      z-index: 999;
+      background-color: white;
+
+      &.extended {
+         left: 0;
+      }
+   }
+   #validation-filter-button-container {
+      display: block !important;
+   }
+   #filter-container.extended ~ #accommodation-list-container {
+      margin-left: unset !important;
+   }
+}
+
+@media screen and (max-width: 584px) {
+   #accommodation-list-container {
+      padding: unset !important;
+      width: unset !important ;
+   }
+   #accommodation-list-container > header {
+      margin: 1em;
+      justify-content: center !important;
+   }
+   #filter-sort-buttons-container {
+      justify-content: center;
+   }
+   #travelers-input-compact {
+      display: none;
+   }
+   #date-input-compact {
+      border-right: 2px solid #eaeaea;
+      border-top-right-radius: 1em !important;
+      border-bottom-right-radius: 1em !important;
+   }
+}
+@media screen and (max-width: 470px) {
+   #filter-sort-buttons-container {
+      flex-wrap: wrap;
+   }
+   #accommodation-list article.item {
+      width: 21em;
+   }
+}
+
+#filter-container .section {
+   margin: 1em 0;
+   padding-bottom: 1em;
+   border-bottom: 1px solid $gray-2;
+
+   &>ul {
+      display: none;
+      &.opened {
+         display: block
+      }
+   }
+
+   &>h3 {
+      position: relative;
+      cursor: pointer;
+      &>.mdi {
+         position: absolute;
+         right: 0;
+         top: 50%;
+
+         transform: translateY(-50%);
+      }
+   }
+
+   &>.data {
+      margin-top: .5em;
+      list-style: none;
+
+      &.price-range {
+         display: flex;
+         flex-direction: column;
+         gap: .5em;
+      }
+
+      &>li {
+         margin: .5em 0;
+      }
+   }
+
+}
+
+#full-search-bar {
+   display: none;
+}
+
+#no-accommodation-result-area {
+   display: none;
+}
+/* END FILTERS */
 
 #home-page {
    button {
@@ -289,11 +417,7 @@ main#home .accommodations {
       width: auto;
    }
    button {
-      //background-color: $primary-1;
-      ///////// POURQUOI LE STYLE NE FONCTIONNE PAS !!!!!!!!!!!!!
-      background-color: gray;
-      cursor: not-allowed;
-      /////////
+      background-color: $primary-frontoffice-1 !important;
       padding: 1em;
    }
    .mdi-magnify {
@@ -620,8 +744,8 @@ abbr[title] {
       width: 150px;
    }
    button {
-      background-color: $primary-frontoffice-1;
-      padding: 1em;
+      background-color: $primary-frontoffice-1 !important;
+      padding: 1em !important;
    }
    .mdi-magnify {
       color: white;
@@ -649,7 +773,13 @@ abbr[title] {
    flex-direction: column;
    width: 100%;
    padding: 2.5em;
-   border-left: solid 2px $gray-3;
+
+   &>header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: .5em;
+   }
 }
 
 .pagination {
@@ -693,6 +823,7 @@ abbr[title] {
 
    #filter-container {
       min-width: 100%;
+      height: 107vh !important;
       #validation-filter-button-container {
          display: flex;
          gap: .5em;
