@@ -157,34 +157,61 @@
 
     #liste-reservation-proprietaire {
         margin: 2em 0;
+        .container-liste-reservation-proprietaire-logement {
+            margin: 1.5em 0;
+            border: solid $primary-backoffice-1 1px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 2px $primary-backoffice-1;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
 
-        .non-souligne {
-            all: unset;
-
-            .non-souligne {
-                all: unset;
-
-                &:hover {
-                    article {
-                        background-color: $gray-4;
-                    }
-                }
+            &:hover {
+                box-shadow: 0px 0px 5px $primary-backoffice-1;
+                background-color: $gray-4;
             }
 
-            // Ligne d'un logement
-            .liste-reservation-proprietaire-logement {
-                margin: 1.5em 0;
+            .lien-page-detail {
+                width: 100%;
                 padding: 0.7em 0.7em;
+                // height: 100%;
+                text-decoration: unset;
+            }
+
+            .lien-facture {
+                text-decoration: unset;
+                margin-right: 0.7em;
+            }
+
+            .liste-reservation-proprietaire-logement-detail {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                border: solid $primary-backoffice-1 1px;
-                border-radius: 20px;
-                box-shadow: 0px 0px 2px $primary-backoffice-1;
+                gap: 1.2em;
 
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+                    //white-space: nowrap;
+                }
+
+                button {
+                    padding: 0.55em 0.85em;
+                }
+            }
+
+            .liste-reservation-proprietaire-logement {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
                 cursor: pointer;
-
+                
                 div {
                     display: flex;
                     flex-direction: row;
@@ -227,12 +254,12 @@
 
 
                     h4 {
-                        font-size: 15px;
+                        font-size: 0.95em;
                         font-family: "poppins-light";
                     }
 
                     h5 {
-                        font-size: 12px;
+                        font-size: 0.95em;
                         font-family: "poppins-light";
                         color: $gray-2;
                     }
@@ -254,25 +281,6 @@
                     }
                 }
 
-                .liste-reservation-proprietaire-logement-detail {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1.2em;
-
-                    div {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        //white-space: nowrap;
-                    }
-
-                    button {
-                        padding: 0.55em 0.85em;
-                    }
-                }
-
                 @media screen and (max-width : 431px) {
                     .liste-reservation-proprietaire-logement-detail {
                         flex-direction: column;
@@ -289,6 +297,23 @@
                     }
                 }
             }
+        }
+
+        .non-souligne {
+            all: unset;
+
+            .non-souligne {
+                all: unset;
+
+                &:hover {
+                    article {
+                        background-color: $gray-4;
+                    }
+                }
+            }
+
+            // Ligne d'un logement
+            
         }
 
         // Texte facture

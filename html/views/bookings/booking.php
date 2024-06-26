@@ -228,5 +228,11 @@ function adresseToString($adresse) {
         </article>
     </div>
 </section>
+<a href="/backoffice/facture?id=<?= $reservation->get("id_reservation") ?>"  target="_blank" id="btn-facture-detail">
+    <button class="primary btn-facture">
+        <span class="mdi mdi-eye-outline"></span>
+        Facture
+    </button>
+</a>
 
 <?php require_once(__DIR__."/../layout/footer.php"); ?>

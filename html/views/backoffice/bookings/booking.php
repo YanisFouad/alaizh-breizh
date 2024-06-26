@@ -71,8 +71,8 @@ require_once(__DIR__."/../layout/header.php");
                         <p>Adresse mail : <?= $controller->getLocataire()->get("mail") ?></p>
                     </div>
                 </div>
-                <a href="/backoffice/logements/details-logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
-                    <button class="primary">
+                <a href="/backoffice/logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
+                    <button class="primary backoffice">
                         Accéder à l'annonce
                         <span class="mdi mdi-chevron-right"></span>
                     </button>
@@ -174,5 +174,12 @@ require_once(__DIR__."/../layout/header.php");
         </article>
     </div>
 </section>
+
+<a href="/backoffice/facture?id=<?= $controller->getReservation()->get("id_reservation") ?>"  target="_blank" id="btn-facture-detail">
+    <button class="primary backoffice btn-facture">
+        <span class="mdi mdi-eye-outline"></span>
+        Facture
+    </button>
+</a>
 
 <?php require_once("views/layout/footer.php"); ?>
