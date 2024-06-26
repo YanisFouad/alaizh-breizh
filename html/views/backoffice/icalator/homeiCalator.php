@@ -35,7 +35,7 @@ ScriptLoader::load("icalator/calendarLink.js");
                     <tbody>
                         <?php foreach ($calendar as $cal) { ?>
                             <tr>
-                                <td><a class="calendar-link" href="https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?>"><?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?></a></td>
+                                <td><a class="calendar-link" href="https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?>">https://<?= $_SERVER["HTTP_HOST"] . '/icalator?key=' . $cal->get("cle_api") ?></a></td>
                                 <td><?= date("d/m/Y", strtotime($cal->get("start_date"))) ?></td>
                                 <td><?= date("d/m/Y", strtotime($cal->get("end_date"))) ?></td>
                                 <td class="actions-cell">
