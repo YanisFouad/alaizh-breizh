@@ -50,10 +50,8 @@ if(isset($_POST)) {
         if(preg_match("/^activity_/", $k)) {
             $v = preg_replace("/^activity_/", "", $k);
             $k = "activite_".$activitiesCount;
-            $activitiesCount++;
             $v = strtolower($v);
         } else if(preg_match("/^distance_for_/", $k)) {
-            $v = preg_replace("/^distance_for_/", "", $k);
             $k = "perimetre_activite_".$activitiesCount;
             $activitiesCount++;
         } else if(preg_match("/^layout_/", $k)) {
@@ -64,15 +62,20 @@ if(isset($_POST)) {
         }
         $insertedFields[$k] = $v;
     }
+
     $insertedFields["id_proprietaire"] = UserSession::get()->get("id_compte");
     foreach($insertedFields as $field => $value){
         $accommodation->set($field, $value);
     }
     
     try {
+        // echo '<pre>';
+        // var_dump($accommodation);
+        // echo '</pre>';
+        // die;
         $accommodation->save();
         if(trim($picture["name"]) != "") {
-            $pictureName = $_POST["id_logement"] . "_" . $insertedFields["categorie_logement"];
+            $pictureName = $id_logement . "_" . $insertedFields["categorie_logement"];
             FileLogement::save($picture, $pictureName);
         }
         sendResponse(["success" => true]);

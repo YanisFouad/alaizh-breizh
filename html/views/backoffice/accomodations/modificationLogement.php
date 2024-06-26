@@ -32,10 +32,9 @@
         "canoë" => true,
         "voile" => true,
         "accrobranche" => true,
-        "randonné" => false,
-        "equitation" => false,
-        "terrasse" => false,
-        "golf" => false
+        "randonnée" => true,
+        "équitation" => true,
+        "golf" => true
     ];  
     $energiticClasses = ["A", "B", "C", "D", "E", "F", "G"];
     $categories = ["Appartement", "Maison", "Villa", "Chalet", "Bateau", "Insolite"];

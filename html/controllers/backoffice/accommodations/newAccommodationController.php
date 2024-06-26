@@ -42,7 +42,7 @@ if(isset($_POST)) {
     // map all activities and layouts
     $activitiesCount = 1;
     $layoutsCount = 1;
-    foreach($_POST as $k => $v) {
+    foreach($_POST as $k =>     $v) {
         if(preg_match("/^activity_/", $k)) {
             $v = preg_replace("/^activity_/", "", $k);
             $k = "activite_".$activitiesCount;

@@ -156,10 +156,14 @@
                         <div>
                             <h3>Activités</h3>
                             <ul>
-                                <?php if ($logement->get('activites')[0]['name'] != null){
-                                        foreach ($logement->get('activites') as $key => $value) { ?>
-                                            <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
-                                <?php }}?>
+                                <?php 
+                                if ($logement->get('activites')[0]['name'] != null){
+                                        foreach ($logement->get('activites') as $key => $value) { 
+                                            if($key != "activite_8") {?>
+                                                <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                                        <?php
+                                        }
+                                 }}?>
                                 
                                 
                             </ul>

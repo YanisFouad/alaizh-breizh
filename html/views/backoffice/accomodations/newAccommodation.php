@@ -10,7 +10,6 @@
         "accrobranche" => true,
         "randonnée" => false,
         "equitation" => false,
-        "terrasse" => false,
         "golf" => false
     ];  
     $energiticClasses = ["A", "B", "C", "D", "E", "F", "G"];
@@ -87,7 +86,7 @@
                 </div>
                 <div class="form-field">
                     <label for="surface_logement" class="required">Surface (en m²)</label>
-                    <input type="number" id="surface_logement" min="1" value="1" name="surface_logement" />
+                    <input type="number" id="surface_logement" min="9" value="9" name="surface_logement" />
                 </div>
                 <div class="form-field">
                     <label for="max_personne_logement" class="required">Nombre de personne maximum</label>
