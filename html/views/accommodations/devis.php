@@ -31,7 +31,7 @@
                     </div>
                     <div>
                         <h4>Prix nuitée : </h4>
-                        <h4 id="prixHT"><?php echo price_format($accomodation->get("prix_ht_logement"))?>€</h4>
+                        <h4 id="prixHT"><?php echo price_format($accomodation->get("prix_ht_logement"))?> €</h4>
                     </div>
                 </div>  
             </article>
@@ -46,7 +46,7 @@
                     <div>
                         <div>
                             <h4>Prix du séjour HT : </h4>
-                            <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?>€ x <span class="nuits"></span> nuits</h4>
+                            <h4><?php echo price_format($accomodation->get("prix_ht_logement"))?> € x <span class="nuits"></span> nuits</h4>
                         </div>
                         <h4 class="prixHTCalcul"></h4>
                     </div>
@@ -79,7 +79,7 @@
                     <div>
                         <div>
                             <h4>Taxe de séjour : </h4>
-                            <h4>1€ x <span class="voyageurs"></span> pers x <span class="nuits"></span> nuits</h4>
+                            <h4>1 € x <span class="voyageurs"></span> pers x <span class="nuits"></span> nuits</h4>
                         </div>
                         <h4 id="taxeSejour"></h4>
                     </div>
