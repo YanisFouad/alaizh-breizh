@@ -2,7 +2,6 @@
     background-color: $black;
     color: $white;
     padding-top: 1em;
-    padding-bottom: 5em;
 
     &>img {
         filter: invert(1);
@@ -84,5 +83,11 @@
                 border-color: $white;
             }
         }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #backoffice-registration>form {
+        width: 22em;
     }
 }
