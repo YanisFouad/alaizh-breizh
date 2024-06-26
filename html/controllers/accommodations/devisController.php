@@ -11,7 +11,7 @@ if(isset($_POST)) {
     $purcharseSession->set([
         "accommodationId" => $_POST["id_logement"],
         "nb_voyageurs" => $_POST["nb_voyageur"],
-        "total_ati" => $_POST["prix_total"],
+        "total_ati" => $_POST["prix_totalF"],
         "date_arrivee" => $_POST["date_arriveeNF"],
         "date_depart" => $_POST["date_departNF"]
     ]);
