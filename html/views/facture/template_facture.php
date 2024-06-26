@@ -1,29 +1,58 @@
 <!-- <head>
     <link rel="stylesheet" href="../../assets/css/main.css">
 </head> -->
-
 <?php
-    function formatNumber($nb) {
-        return number_format($nb, 2, ',', ' ');
+
+function formatPrice($price)
+{
+    return number_format($price, 2, ',', ' ');
+}
+function formatPhoneNumber($phone)
+{
+    if(strlen($phone) == 9 && $phone[0] != '0') {
+        $phone = '0' . $phone;
     }
+
+    return preg_replace('/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/', '$1 $2 $3 $4 $5', $phone);
+}
+
 ?>
 
 <body id="facture-body">
     <header>
-        <div class="enterprise-container">
-            <div class="logo-container">
-                <img src="<?= $logo ?>" alt="logo">
-            </div>
-            <div class="enterprise-information">
-                <p class="name">Association des Loueurs d&apos;Habitations Individuelles en Zone Breizh </p>
-                <div class="adresse">
-                    <p>IUT, rue &Eacute;douard Branly</p>
-                    <p>22300 Lannion </p>
-                    <p>France</p>
+        <div class="header-left">
+            <div class="enterprise-container">
+                <div class="logo-container">
+                    <img src="<?= $logo ?>" alt="logo">
                 </div>
-                <div class="contact">
-                    <p class="phone">T&eacute;l : 06 06 06 06 06</p>
-                    <p class="email">E-mail : <a href="mailto:contact@alhaiz-breizh.bzh">contact@alhaiz-breizh.bzh</a></p>
+                <div class="enterprise-information">
+                    <p class="name">Association des Loueurs d&apos;Habitations Individuelles en Zone Breizh </p>
+                    <div class="adresse">
+                        <p>IUT, rue &Eacute;douard Branly</p>
+                        <p>22300 Lannion </p>
+                        <p>France</p>
+                    </div>
+                    <div class="contact">
+                        <p class="phone">T&eacute;l : 06 06 06 06 06</p>
+                        <p class="email">E-mail : <a href="mailto:contact@alhaiz-breizh.bzh">contact@alhaiz-breizh.bzh</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="logement-information-container" style="float: left;">
+                <h2>Logement</h2>
+                <div class="client-information">
+                    <p><?= htmlentities($reservation_nom) ?><p>
+                </div>
+                <div class="client-information">
+                    <p>P&eacute;riode r&eacute;servation : <?= $reservation_date_arrivee ?> - <?= $reservation_date_depart ?></p>
+                </div>
+                <div class="client-information">
+                    <p><?= $reservation_rue_adresse ?></p>
+                    <p><?= $reservation_ville_adresse ?></p>
+                    <p><?= $reservation_pays_adresse ?></p>
+                </div>
+                <div class="client-information">
+                    <p>Nombre de personnes : <?= $reservation_nb_voyageur ?></p>
                 </div>
             </div>
         </div>
@@ -35,10 +64,11 @@
                 <p>Facture n&deg; <?= $id_facture ?></p>
             </div>
             <div class="facture-information">
-                <p>Date : <?= date("d/m/Y") ?></p>
+                <p>Date : <?= $reservation_date ?></p>
                 <p>Identifiant client : <?= $userId ?></p>
             </div>
             <div class="client-information-container">
+                <h2>Locataire</h2>
                 <div class="client-information">
                     <p><?= $user_display_name ?></p>
                 </div>
@@ -48,17 +78,39 @@
                     <p><?= $pays_adresse ?></p>
                 </div>
                 <div class="client-information">
-                    <p>T&eacute;l&eacute;phone : <?= $telephone ?></p>
+                    <p>T&eacute;l&eacute;phone : <?= formatPhoneNumber($telephone) ?></p>
                 </div>
             </div>
+            <div class="client-information-container">
+                <h2>Propri&eacute;taire</h2>
+                <div class="client-information">
+                    <p><?= $proprio_display_name ?></p>
+                </div>
+                <div class="client-information">
+                    <p><?= $proprio_rue_adresse ?></p>
+                    <p><?= $proprio_ville_adresse ?></p>
+                    <p><?= $proprio_pays_adresse ?></p>
+                </div>
+                <div class="client-information">
+                    <p>T&eacute;l&eacute;phone : <?= formatPhoneNumber($proprio_telephone) ?></p>
+                </div>
+            </div>
+
         </div>
     </header>
+
     <section class="facture-price-section">
         <table class="facture-price-table">
             <thead>
                 <tr>
                     <th>
                         <p>Description</p>
+                    </th>
+                    <th>
+                        <p>Quantit&eacute;</p>
+                    </th>
+                    <th>
+                        <p>Prix unitaire</p>
                     </th>
                     <th>
                         <p>Total HT</p>
@@ -74,44 +126,56 @@
             <tbody>
                 <tr class="table-row-description">
                     <td>
-                        <p>Location : <?= formatNumber($prix_nuitee_ht) ?>&euro; X <?= $nb_nuit ?> nuits</p>
+                        <p>Nuit&eacute;e</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($prix_total_nuitee_ht) ?> &euro;</p>
+                        <p><?= $nb_nuit ?></p>
+                    </td>
+                    <td>
+                        <p><?= formatPrice($prix_nuitee_ht) ?> &euro;</p>
+                    </td>
+                    <td>
+                        <p><?= formatPrice($prix_total_nuitee_ht) ?> &euro;</p>
                     </td>
                     <td>
                         <p>10 %</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($prix_total_nuitee_ttc) ?> &euro;</p>
+                        <p><?= formatPrice($prix_total_nuitee_ttc) ?> &euro;</p>
                     </td>
                 </tr>
                 <tr class="table-row-total">
                     <td>
                         <p>Frais de service ( 1% )</p>
                     </td>
+                    <td></td>
                     <td>
-                        <p><?= formatNumber($total_frais_service_ht) ?> &euro;</p>
+                        <p><?= formatPrice($frais_service_nuitee_unitaire) ?> &euro;</p>
                     </td>
                     <td>
-                        <p>0 %</p>
+                        <p><?= formatPrice($total_frais_service_ht) ?> &euro;</p>
                     </td>
                     <td>
-                        <p><?= formatNumber($total_frais_service_ttc) ?> &euro;</p>
+                        <p>20 %</p>
+                    </td>
+                    <td>
+                        <p><?= formatPrice($total_frais_service_ttc) ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>Taxe de s&eacute;jour ( <?= $nb_voyageur ?> Voyageur(s) X <?= $nb_nuit ?> Nuit(s) )</p>
+                        <p>Taxe de s&eacute;jour (Nombre voyageurs X Nombre jours)</p>
                     </td>
                     <td>
-                        <p><?= $taxe_sejour ?> &euro;</p>
+                        <p><?= $nb_voyageur * $nb_nuit ?> </p>
                     </td>
                     <td>
-                        <p>0 %</p>
+                        <p><?= formatPrice($tvaTaxeSejour) ?> &euro;</p>
                     </td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <p><?= $taxe_sejour ?> &euro;</p>
+                        <p><?= formatPrice($taxe_sejour) ?> &euro;</p>
                     </td>
                 </tr>
             </tbody>
@@ -123,7 +187,7 @@
                         <p>Total HT</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalHT) ?> &euro;</p>
+                        <p><?= formatPrice($totalHT) ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
@@ -131,7 +195,7 @@
                         <p>TVA</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalTVA) ?> &euro;</p>
+                        <p><?= formatPrice($totalTVA) ?> &euro;</p>
                     </td>
                 </tr>
                 <tr>
@@ -139,7 +203,7 @@
                         <p>Total TTC</p>
                     </th>
                     <td>
-                        <p><?= formatNumber($totalTTC) ?> &euro;</p>
+                        <p><?= formatPrice($totalTTC) ?> &euro;</p>
                     </td>
                 </tr>
             </tbody>

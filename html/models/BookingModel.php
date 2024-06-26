@@ -61,7 +61,7 @@ class BookingModel extends Model {
         $result = $result
             ->offset($offset)
             ->limit($limit)
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->sortBy("date_reservation", $sortBy)
             ->execute()
@@ -91,7 +91,7 @@ class BookingModel extends Model {
             $result = $result->where("date_depart < ?", $date_du_jour);
         }
         $result = $result
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->execute()
             ->fetchMany();

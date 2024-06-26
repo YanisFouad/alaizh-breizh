@@ -1,7 +1,8 @@
 .inscription {
-    width: 34em;
+    width: 35em;
     margin: 1em auto;
     border-radius: 15px;
+    padding-bottom: 7em;
 
     section {
         margin: 2em 0;
@@ -97,9 +98,8 @@
     }
 }
 
-// responsive
-@media screen and (max-width: 551px) {
-    main.inscription {
-        width: 22em;
+@media screen and (max-width: 619px) {
+    .inscription {
+        width: 24em;
     }
 }
