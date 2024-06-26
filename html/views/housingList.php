@@ -36,7 +36,7 @@
    ScriptLoader::load("accommodationsFilters.js");
 ?>
 
-<section id="filter-housing-container">
+<section id="filter-accommodation-container">
    <section id="filter-container" class="hidden">
       <div id="filter-title-container">
          <h1>Filtres</h1>
