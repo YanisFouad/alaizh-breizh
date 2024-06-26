@@ -22,7 +22,6 @@ function openLoginModal() {
 // just check parameters
 window.addEventListener("DOMContentLoaded", () => {
     const hash = location.hash;
-    console.log(hash)
     if(hash && hash.startsWith("#connection")) {
         const url = new URL(location);
         const params = url.searchParams;
@@ -30,6 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
             redirectToUri = "/"+params.get("redirectTo");
         openLoginModal();
         url.hash = "";
+        url.search = "";
         history.pushState({}, "", url);
     }
 })
