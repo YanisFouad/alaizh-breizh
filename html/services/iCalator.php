@@ -3,6 +3,8 @@ require_once(__DIR__ . "/../models/BookingModel.php");
 require_once("models/ICalatorModel.php");
 require_once("models/LogementICalatorModel.php");
 require_once("models/AccountModel.php");
+require_once("models/AccommodationModel.php");
+require_once("services/RequestBuilder.php");
 
 try {
     $key = htmlspecialchars($_GET["key"]);
@@ -32,11 +34,19 @@ try {
 
 $calendar = "BEGIN:VCALENDAR\n";
 $calendar .= "VERSION:2.0\n";
-$calendar .= "PRODID:-//hacksw/handcal//NONSGML v1.0//FR\n";
+$calendar .= "PRODID:-//AlaizBreizh//Calendrier Réservation//FR\n";
 
 foreach ($reservations as $reservation) {
     $idLocataire = $reservation["id_locataire"];
     $locataire = AccountModel::findOneById($idLocataire);
+
+    $logementModel = AccommodationModel::findOneById($reservation["id_logement"]);
+
+    $adresseLogement = RequestBuilder::select("_adresse")
+        ->projection("*")
+        ->where("id_adresse = ?", $logementModel->get("id_adresse"))
+        ->execute()
+        ->fetchOne();
 
     if ($locataire) {
         $calendar .= "BEGIN:VEVENT\n";
@@ -44,7 +54,7 @@ foreach ($reservations as $reservation) {
         $calendar .= "DTEND:" . date("Ymd\THis\Z", strtotime($reservation["date_depart"])) . "\n";
         $calendar .= "SUMMARY:Reservation\n";
         $calendar .= "Category:Réservations confirmées\n";
-        $calendar .= "LOCATION:" . $reservation["numero"] . $reservation['complement_numero'] . ' ' . $reservation["rue_adresse"] . ' ' . $reservation['complement_adresse'] . "\, " . $reservation["ville_adresse"] . ' ' . $reservation["code_postal_adresse"] . "\, " . '\n' . $reservation["pays_adresse"] . "\n";
+        $calendar .= "LOCATION:" . $adresseLogement["numero"] . $adresseLogement['complement_numero'] . ' ' . $adresseLogement["rue_adresse"] . ' ' . $adresseLogement['complement_adresse'] . "\, " . $adresseLogement["ville_adresse"] . ' ' . $adresseLogement["code_postal_adresse"] . "\, " . '\n' . $adresseLogement["pays_adresse"] . "\n";
         $calendar .= "DESCRIPTION:Reservation du logement \"" . $reservation["titre_logement"] . "\"" . "par " . "<b> " . $locataire->get("prenom") . ' ' . strtoupper($locataire->get("nom")) . "</b>" .
         '\nEmail: ' . "<b>" . $locataire->get("mail") . "</b>" . " Téléphone: " . "<b>" . $locataire->get("telephone") . "</b>" . '\n\n' . "<a href=" . $_SERVER['HTTP_HOST'] . "/backoffice/reservation?id=" . $reservation["id_reservation"] . ">Voir la réservation</a>\n";
         $calendar .= "STATUS:CONFIRMED\n";

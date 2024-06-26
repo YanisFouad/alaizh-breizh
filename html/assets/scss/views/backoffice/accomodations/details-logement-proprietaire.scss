@@ -80,6 +80,19 @@ h5 {
     #blockCheminPage-SwitchContainer {
         position: relative;
 
+        #menu{
+            display: flex;
+            flex-direction: row;
+            align-items: center; 
+            justify-content: space-between;
+            #cheminPage {
+                display: flex;
+                margin-left: 2em;
+                align-items: center;
+                margin-top: 1em;
+            }
+        }
+        
         #switch-container {
             position: absolute;
             right: 0;
@@ -160,19 +173,6 @@ h5 {
         position: relative;
         top: 1px;
         font-size: 1.3em;
-    }
-
-    #menu{
-        display: flex;
-        flex-direction: row;
-        align-items: center; 
-        justify-content: space-between;
-        #cheminPage {
-            display: flex;
-            margin-left: 2em;
-            align-items: center;
-            margin-top: 1em;
-        }
     }
  
     #page {
@@ -382,4 +382,4 @@ h5 {
         bottom: 1em;
         margin-bottom: 1em;
     }
-}
+}   

@@ -45,7 +45,7 @@ ScriptLoader::load("icalator/calendarLink.js");
         </div>
         <div class="url-informations">
             <h2>URL :</h2>
-            <p><a href="<?= $_SERVER['HTTP_HOST'] . '/icalator?key' . $calendar->get("cle_api") ?>" class="calendar-link"><?= $_SERVER['HTTP_HOST'] . '/icalator?key' . $calendar->get("cle_api") ?></a></p>
+            <p><a href="https://<?= $_SERVER['HTTP_HOST'] . '/icalator?key' . $calendar->get("cle_api") ?>" class="calendar-link">https://<?= $_SERVER['HTTP_HOST'] . '/icalator?key=' . $calendar->get("cle_api") ?></a></p>
         </div>
         <div>
             <div class="logements-container backoffice">

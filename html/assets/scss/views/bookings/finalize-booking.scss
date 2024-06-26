@@ -52,8 +52,10 @@
             gap: 1em;
 
             &>img {
-                width: 20em;
+                width: 23em;
                 border-radius: 10px;
+                max-height: 14em;
+                object-fit: cover;
             }
 
             &>article {
