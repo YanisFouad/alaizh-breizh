@@ -217,7 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedDates = fp.selectedDates;
     const arriveeDate = fp.formatDate(selectedDates[0], "Y-m-d");
     const departDate = fp.formatDate(selectedDates[1], "Y-m-d");
-    handleDevis(valeur, dayDiff, dateArrivee.textContent, dateDepart.textContent, arriveeDate, departDate, parseFloat(fraisService[0].textContent), prixTTC, parseFloat(prix.textContent));
+
+    let prixTot = formatNombre(parseFloat(prixTTC));
+
+    handleDevis(valeur, dayDiff, dateArrivee.textContent, dateDepart.textContent, arriveeDate, departDate, parseFloat(fraisService[0].textContent), prixTot, prix.textContent);
   };
 });
 

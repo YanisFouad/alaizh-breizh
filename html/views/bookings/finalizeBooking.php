@@ -79,7 +79,7 @@
                     <h4><?=$session["nb_voyageurs"]?></h4>
                 </div>
             </div>
-            <h3>Prix total : <span><?=$session["total_ati"]?> €</span></h3>
+            <h3>Prix total : <span><?=$session["total_ati"]?></span></h3>
         </article>
 
         <h2>
