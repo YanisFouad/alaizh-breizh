@@ -399,11 +399,7 @@ header#frontoffice #open-burger-menu {
     display: none;
   }
 }
-<<<<<<< Updated upstream
 @media (max-width: 759px) {
-=======
-@media (max-width: 431px) {
->>>>>>> Stashed changes
   header#frontoffice {
     padding: 1em 1em 0 1em;
   }
@@ -1122,7 +1118,6 @@ footer#foot-global nav a {
   font-size: 1.5em;
 }
 
-<<<<<<< Updated upstream
 #btn-facture-detail {
   display: flex;
   align-items: flex-end;
@@ -1289,8 +1284,6 @@ main#home .accommodations > footer > a > button {
     font-size: 1.2em !important;
   }
 }
-=======
->>>>>>> Stashed changes
 #home-page {
   display: flex;
   flex-direction: column;
@@ -1303,22 +1296,6 @@ main#home .accommodations > footer > a > button {
 
 .home-and-accommodations-sections {
   min-width: 950px;
-<<<<<<< Updated upstream
-=======
-  /*****************/
-  /* MEDIA QUERIES */
-  /*****************/
-  /***************************************/
-  /* HOUSING-LIST (A DEPLACER PLUS TARD) */
-  /***************************************/
-  /* Menu des filtres */
-  /**********************/
-  /* Résultats logement */
-  /**********************/
-  /*****************/
-  /* MEDIA QUERIES */
-  /*****************/
->>>>>>> Stashed changes
 }
 .home-and-accommodations-sections .displayed {
   display: block;
@@ -1340,37 +1317,8 @@ main#home .accommodations > footer > a > button {
 .home-and-accommodations-sections .mdi {
   font-size: 1.5em;
 }
-<<<<<<< Updated upstream
 
 #search-bar {
-=======
-.home-and-accommodations-sections a {
-  text-decoration: none;
-}
-.home-and-accommodations-sections a:visited {
-  color: black;
-}
-.home-and-accommodations-sections #image-cover {
-  height: 350px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-y: 20%;
-  border-radius: 1em;
-  margin: 1em 2.5em;
-  padding: 2em;
-  color: white;
-}
-.home-and-accommodations-sections #image-cover h1 {
-  font-family: "poppins-semibold";
-  font-size: 2.5em;
-}
-.home-and-accommodations-sections #image-cover h2 {
-  font-family: "poppins-regular";
-  font-size: 1.5em;
-}
-.home-and-accommodations-sections #search-bar {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   position: relative;
@@ -1384,25 +1332,16 @@ main#home .accommodations > footer > a > button {
   border-radius: 1em;
   margin: 0 auto;
 }
-<<<<<<< Updated upstream
 #search-bar input, #search-bar button {
   border: none;
   border-radius: 1em;
 }
 #search-bar input {
-=======
-.home-and-accommodations-sections #search-bar input, .home-and-accommodations-sections #search-bar button {
-  border: none;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections #search-bar input {
->>>>>>> Stashed changes
   font-family: "comfortaa-medium";
   background-color: #f7f7f7;
   padding: 1.5em;
   width: auto;
 }
-<<<<<<< Updated upstream
 #search-bar button {
   background-color: gray;
   cursor: not-allowed;
@@ -1417,26 +1356,12 @@ main#home .accommodations > footer > a > button {
 }
 
 .show-more-button-container {
-=======
-.home-and-accommodations-sections #search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
-}
-.home-and-accommodations-sections #search-bar .mdi-magnify {
-  color: white;
-}
-.home-and-accommodations-sections #list-title-container {
-  text-align: center;
-}
-.home-and-accommodations-sections .show-more-button-container {
->>>>>>> Stashed changes
   display: flex;
   justify-content: flex-end;
   text-align: right;
   margin-right: 2.5em;
   padding: 0.25em 0.5em;
 }
-<<<<<<< Updated upstream
 
 .show-more-button {
   position: relative;
@@ -1452,24 +1377,10 @@ main#home .accommodations > footer > a > button {
 }
 
 .housing-image-item-container {
-=======
-.home-and-accommodations-sections .show-more-button {
-  position: relative;
-  top: -4em;
-}
-.home-and-accommodations-sections #accommodation-list {
-  display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, 250px);
-  margin: 0 2.5em 2.5em 2.5em;
-}
-.home-and-accommodations-sections .accommodation-image-item-container {
->>>>>>> Stashed changes
   width: 250px;
   height: 250px;
   background-color: #eaeaea;
   border-radius: 1em;
-<<<<<<< Updated upstream
   position: relative;
   overflow: hidden;
 }
@@ -1478,15 +1389,10 @@ main#home .accommodations > footer > a > button {
   transform: scale(1.1);
 }
 .housing-item img {
-=======
-}
-.home-and-accommodations-sections .accommodation-item img {
->>>>>>> Stashed changes
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1em;
-<<<<<<< Updated upstream
   transition: all 0.5s ease;
 }
 .housing-item h4, .housing-item .housing-price-container {
@@ -1504,46 +1410,22 @@ abbr[title] {
 }
 
 .housing-description-container {
-=======
-}
-.home-and-accommodations-sections .accommodation-item h4, .home-and-accommodations-sections .accommodation-item .accommodation-price-container {
-  font-size: 14px;
-}
-.home-and-accommodations-sections .accommodation-item .accommodation-price {
-  font-family: "comfortaa-bold";
-}
-.home-and-accommodations-sections .accommodation-item:hover {
-  cursor: pointer;
-}
-.home-and-accommodations-sections abbr[title] {
-  text-decoration: none;
-}
-.home-and-accommodations-sections .accommodation-description-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: end;
   justify-content: space-between;
   width: 250px;
   margin: 0.5em 0;
 }
-<<<<<<< Updated upstream
 
 .housing-description {
-=======
-.home-and-accommodations-sections .accommodation-description {
->>>>>>> Stashed changes
   font-family: "comfortaa-bold";
   margin: 0 0.5em 0 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-<<<<<<< Updated upstream
 
 .housing-location-container {
-=======
-.home-and-accommodations-sections .accommodation-location-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -1551,38 +1433,26 @@ abbr[title] {
   margin-bottom: 0.5em;
   width: 250px;
 }
-<<<<<<< Updated upstream
 
 .mdi-star {
   font-size: 1em;
 }
 
 .housing-location {
-=======
-.home-and-accommodations-sections .accommodation-location {
->>>>>>> Stashed changes
   font-family: "comfortaa-regular";
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-<<<<<<< Updated upstream
 
 .housing-price-container {
-=======
-.home-and-accommodations-sections .accommodation-price-container {
->>>>>>> Stashed changes
   display: flex;
   font-family: "comfortaa-regular";
   font-size: small;
   gap: 0.5em;
 }
-<<<<<<< Updated upstream
 
 .star-notation-container {
-=======
-.home-and-accommodations-sections .star-notation-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -1593,7 +1463,6 @@ abbr[title] {
   padding: 0.25em 0.5em;
   background-color: #e0ffee;
 }
-<<<<<<< Updated upstream
 
 .show-all-button {
   display: none;
@@ -1793,35 +1662,11 @@ abbr[title] {
     width: inherit;
   }
   #image-cover {
-=======
-.home-and-accommodations-sections .show-all-button {
-  display: none;
-}
-@media (max-width: 431px) {
-  .home-and-accommodations-sections .home-and-accommodations-sections {
-    min-width: inherit;
-  }
-  .home-and-accommodations-sections #search-bar {
-    width: 355px;
-    justify-content: space-between;
-  }
-  .home-and-accommodations-sections #search-bar .arrival-date-input, .home-and-accommodations-sections #search-bar .departure-date-input, .home-and-accommodations-sections #search-bar .travelers-number-input {
-    display: none;
-  }
-  .home-and-accommodations-sections #search-bar .mdi-account {
-    display: none;
-  }
-  .home-and-accommodations-sections #search-bar input {
-    width: inherit;
-  }
-  .home-and-accommodations-sections #image-cover {
->>>>>>> Stashed changes
     height: 250px;
     margin: 1em 0em;
     padding: 1em;
     border-radius: 0;
   }
-<<<<<<< Updated upstream
   #image-cover h1 {
     font-family: "poppins-semibold";
     font-size: 2em;
@@ -1838,30 +1683,11 @@ abbr[title] {
     display: none !important;
   }
   .accommodation-image-item-container {
-=======
-  .home-and-accommodations-sections #image-cover h1 {
-    font-family: "poppins-semibold";
-    font-size: 2em;
-  }
-  .home-and-accommodations-sections #image-cover h2 {
-    font-family: "poppins-regular";
-    font-size: 1em;
-  }
-  .home-and-accommodations-sections #accommodation-list-title {
-    font-size: 1em;
-    margin: 0 auto 1em auto;
-  }
-  .home-and-accommodations-sections .show-more-button {
-    display: none !important;
-  }
-  .home-and-accommodations-sections .accommodation-image-item-container {
->>>>>>> Stashed changes
     width: 355px;
     height: 355px;
     background-color: #eaeaea;
     border-radius: 1em;
   }
-<<<<<<< Updated upstream
   .accommodation-description-container {
     width: 355px;
   }
@@ -1873,19 +1699,6 @@ abbr[title] {
     display: none;
   }
   .show-all-button {
-=======
-  .home-and-accommodations-sections .accommodation-description-container {
-    width: 355px;
-  }
-  .home-and-accommodations-sections .show-all-button-container {
-    display: flex;
-    justify-content: center;
-  }
-  .home-and-accommodations-sections #accommodation-list-container .show-all-button {
-    display: none;
-  }
-  .home-and-accommodations-sections .show-all-button {
->>>>>>> Stashed changes
     display: flex;
     align-items: center;
     padding: 0.25em 1em;
@@ -1894,16 +1707,11 @@ abbr[title] {
     border: solid 1px #1b5734;
     border-radius: 2em;
   }
-<<<<<<< Updated upstream
   .show-all-button .mdi {
-=======
-  .home-and-accommodations-sections .show-all-button .mdi {
->>>>>>> Stashed changes
     margin-left: 8px;
     font-size: 20px;
   }
 }
-<<<<<<< Updated upstream
 @media (max-width: 431px) {
   #filter-container {
     align-self: flex-start;
@@ -2064,151 +1872,10 @@ abbr[title] {
     min-width: 100%;
   }
   #filter-container #validation-filter-button-container {
-=======
-.home-and-accommodations-sections #filter-container {
-  align-self: flex-start;
-  padding: 2.5em;
-  min-width: 20em;
-  height: 100%;
-}
-.home-and-accommodations-sections #filter-container > section {
-  border-top: solid 1px #676767;
-  margin-bottom: 2em;
-}
-.home-and-accommodations-sections #filter-container > section > :first-child {
-  justify-content: space-between;
-  margin-bottom: 1em;
-}
-.home-and-accommodations-sections #filter-container > section > div, .home-and-accommodations-sections #filter-container > section li {
-  display: flex;
-  gap: 1em;
-  margin-bottom: 0.5em;
-  list-style: none;
-}
-.home-and-accommodations-sections #filter-container > section > div > input, .home-and-accommodations-sections #filter-container > section li > input {
-  width: auto;
-}
-.home-and-accommodations-sections #filter-container > section .price-input {
-  margin-bottom: 1em;
-}
-.home-and-accommodations-sections #filter-title-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 2.5em;
-}
-.home-and-accommodations-sections #validation-filter-button-container {
-  display: none;
-}
-.home-and-accommodations-sections .back-button {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-.home-and-accommodations-sections #accommodation-title-search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.home-and-accommodations-sections .compact-search-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  background-color: white;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar div {
-  display: flex;
-}
-.home-and-accommodations-sections .compact-search-bar input, .home-and-accommodations-sections .compact-search-bar button {
-  border: none;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar input {
-  font-family: "comfortaa-medium";
-  background-color: #f7f7f7;
-  padding: 1.5em;
-}
-.home-and-accommodations-sections .compact-search-bar #search-input-compact {
-  border-radius: 1em 0 0 1em;
-  border: solid 2px #eaeaea;
-  width: 150px;
-}
-.home-and-accommodations-sections .compact-search-bar #date-input-compact {
-  border-radius: 0;
-  width: 150px;
-  border-top: solid 2px #eaeaea;
-  border-bottom: solid 2px #eaeaea;
-}
-.home-and-accommodations-sections .compact-search-bar #travelers-input-compact {
-  border-radius: 0 1em 1em 0;
-  border: solid 2px #eaeaea;
-  width: 150px;
-}
-.home-and-accommodations-sections .compact-search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar .mdi-magnify {
-  color: white;
-}
-.home-and-accommodations-sections #filter-sort-buttons-container {
-  display: flex;
-}
-.home-and-accommodations-sections #filter-button {
-  border-radius: 1em;
-}
-.home-and-accommodations-sections #accommodation-list {
-  margin: 1em 0 2.5em 0;
-}
-.home-and-accommodations-sections #accommodation-list-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 2.5em;
-  border-left: solid 2px #eaeaea;
-  min-width: 865px;
-}
-.home-and-accommodations-sections .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 0.75em;
-  font-family: "comfortaa-bold";
-  color: #1b5734;
-  margin-bottom: 5.5em;
-}
-.home-and-accommodations-sections .pagination li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-}
-.home-and-accommodations-sections .pagination button {
-  width: 1em;
-  height: 1em;
-  padding: 1.6em;
-  position: relative;
-}
-.home-and-accommodations-sections .pagination button > span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media (max-width: 431px) {
-  .home-and-accommodations-sections .compact-search-bar {
-    display: none;
-  }
-  .home-and-accommodations-sections #filter-container {
-    min-width: 100%;
-  }
-  .home-and-accommodations-sections #filter-container #validation-filter-button-container {
->>>>>>> Stashed changes
     display: flex;
     gap: 0.5em;
     justify-content: flex-end;
   }
-<<<<<<< Updated upstream
   #accommodation-list-container {
     padding: 0.5em;
     align-items: center;
@@ -2225,23 +1892,6 @@ abbr[title] {
     color: red;
   }
 }
-=======
-  .home-and-accommodations-sections #accommodation-list-container {
-    padding: 0.5em;
-    align-items: center;
-  }
-  .home-and-accommodations-sections .show-all-button-container {
-    display: none;
-  }
-}
-.home-and-accommodations-sections .secondary.is-disabled {
-  cursor: not-allowed;
-  background-color: #eaeaea;
-  border-color: red;
-  color: red;
-}
-
->>>>>>> Stashed changes
 @font-face {
   font-family: "comfortaa-bold";
   src: url(../fonts/comfortaa-bold.ttf);
@@ -2433,7 +2083,6 @@ abbr[title] {
   /* Filtre,Oeil facture ,export*/
   /******************************/
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
@@ -2443,12 +2092,6 @@ abbr[title] {
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending,
 #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
-=======
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
-  color: white;
-}
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
->>>>>>> Stashed changes
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -2469,7 +2112,6 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire {
   margin: 2em 0;
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
   border: solid #804e2e 1px;
@@ -2518,44 +2160,18 @@ abbr[title] {
   cursor: pointer;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
-=======
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
-  all: unset;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
-  margin: 1.5em 0;
-  padding: 0.7em 0.7em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border: solid #804e2e 1px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 2px #804e2e;
-  cursor: pointer;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
->>>>>>> Stashed changes
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 @media screen and (max-width: 1110px) {
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
->>>>>>> Stashed changes
     width: 100%;
     justify-content: flex-start;
   }
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container {
-=======
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-items: center;
@@ -2564,11 +2180,7 @@ abbr[title] {
   border-radius: 10%;
   margin-right: 1em;
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container img {
-=======
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
->>>>>>> Stashed changes
   width: 100%;
   height: 100%;
   border-radius: 10%;
@@ -2576,17 +2188,12 @@ abbr[title] {
   object-position: center;
 }
 @media screen and (max-width: 431px) {
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
->>>>>>> Stashed changes
     width: 100%;
     height: unset;
     border-radius: 10px;
     margin-right: 0;
   }
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container img {
     border-radius: 10px;
   }
@@ -2597,88 +2204,39 @@ abbr[title] {
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div h5 {
   font-size: 0.95em;
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
-    border-radius: 10px;
-  }
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h4 {
-  font-size: 15px;
-  font-family: "poppins-light";
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h5 {
-  font-size: 12px;
->>>>>>> Stashed changes
   font-family: "poppins-light";
   color: #676767;
 }
 @media screen and (max-width: 1110px) {
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
->>>>>>> Stashed changes
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
->>>>>>> Stashed changes
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
     flex-direction: column;
   }
 }
 @media screen and (max-width: 431px) {
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
-    flex-direction: column;
-  }
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.2em;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
-  padding: 0.55em 0.85em;
-}
-@media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
->>>>>>> Stashed changes
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     gap: 0;
   }
-<<<<<<< Updated upstream
   #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
-=======
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
->>>>>>> Stashed changes
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
     width: 100%;
   }
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
   all: unset;
 }
@@ -2689,18 +2247,11 @@ abbr[title] {
   background-color: #f7f7f7;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
-=======
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
->>>>>>> Stashed changes
   margin-left: 0.2em;
   color: white;
   font-size: 100px;
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination {
-=======
-#liste-reservation-proprietaire-main .pagination {
->>>>>>> Stashed changes
   display: flex;
   justify-content: center;
   gap: 0.75em;
@@ -2708,17 +2259,12 @@ abbr[title] {
   font-family: "comfortaa-bold";
   margin-bottom: 2.5em;
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button {
-=======
-#liste-reservation-proprietaire-main .pagination button {
->>>>>>> Stashed changes
   width: 3.3em;
   height: 3.3em;
   border-color: #804e2e;
   color: #804e2e;
 }
-<<<<<<< Updated upstream
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:not(:disabled):hover,
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button .bouton-select, #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:focus {
   background-color: #804e2e;
@@ -2728,16 +2274,6 @@ abbr[title] {
   font-size: 1.7em;
 }
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination .bouton-select {
-=======
-#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
-  background-color: #804e2e;
-  color: white !important;
-}
-#liste-reservation-proprietaire-main .pagination button .mdi {
-  font-size: 1.7em;
-}
-#liste-reservation-proprietaire-main .pagination .bouton-select {
->>>>>>> Stashed changes
   background-color: #804e2e;
   color: white;
 }
@@ -2868,7 +2404,6 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .non-souligne {
   all: unset;
-<<<<<<< Updated upstream
   width: 100%;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement {
@@ -2887,48 +2422,26 @@ abbr[title] {
   margin-right: 20px;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
-=======
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
-  margin: 1.5em 0;
->>>>>>> Stashed changes
   padding: 0.7em 0.7em;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-<<<<<<< Updated upstream
   cursor: pointer;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
-=======
-  border: solid #1b5734 1px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 2px #1b5734;
-  cursor: pointer;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
->>>>>>> Stashed changes
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 @media screen and (max-width: 1110px) {
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
->>>>>>> Stashed changes
     width: 100%;
     justify-content: flex-start;
   }
 }
-<<<<<<< Updated upstream
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container {
-=======
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-items: center;
@@ -2937,11 +2450,7 @@ abbr[title] {
   border-radius: 10%;
   margin-right: 1em;
 }
-<<<<<<< Updated upstream
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container img {
-=======
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
->>>>>>> Stashed changes
   width: 100%;
   height: 100%;
   border-radius: 10%;
@@ -2949,17 +2458,12 @@ abbr[title] {
   object-position: center;
 }
 @media screen and (max-width: 431px) {
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
->>>>>>> Stashed changes
     width: 100%;
     height: unset;
     border-radius: 10px;
     margin-right: 0;
   }
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container img {
     border-radius: 10px;
   }
@@ -2975,56 +2479,27 @@ abbr[title] {
 }
 @media screen and (max-width: 1110px) {
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
-    border-radius: 10px;
-  }
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div h4 {
-  font-family: "poppins-light";
-  font-size: 1em;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div .titreDetail {
-  font-family: "poppins-light";
-  color: #676767;
-}
-@media screen and (max-width: 1110px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
->>>>>>> Stashed changes
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
->>>>>>> Stashed changes
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
     flex-direction: column;
   }
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
-    flex-direction: column;
-  }
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
->>>>>>> Stashed changes
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 1.2em;
 }
-<<<<<<< Updated upstream
 #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
   display: flex;
   flex-direction: row;
@@ -3039,24 +2514,10 @@ abbr[title] {
 }
 @media screen and (max-width: 1110px) {
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
-=======
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  white-space: nowrap;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail button {
-  padding: 0.55em 0.85em;
-}
-@media screen and (max-width: 1110px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
->>>>>>> Stashed changes
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-<<<<<<< Updated upstream
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
     flex-direction: column;
     justify-content: flex-start;
@@ -3064,15 +2525,6 @@ abbr[title] {
     gap: 0.5em;
   }
   #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
-=======
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    gap: 0;
-  }
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
->>>>>>> Stashed changes
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
@@ -3498,7 +2950,6 @@ h5 {
 #pageDetaillee #blockDevisSticky #box-reservation > button .mdi.mdi-calendar-month {
   font-size: 1.6em;
 }
-<<<<<<< Updated upstream
 #pageDetaillee #blockDevisSticky #box-reservation .error-message {
   display: flex;
   align-items: flex-start;
@@ -3513,27 +2964,16 @@ h5 {
   color: red;
 }
 #pageDetaillee #blockDevisSticky #box-reservation #date {
-=======
-#pageDetaillee #blockDevisSticky #box-reservation > button + div {
->>>>>>> Stashed changes
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-<<<<<<< Updated upstream
 #pageDetaillee #blockDevisSticky #box-reservation #date div h4 {
-=======
-#pageDetaillee #blockDevisSticky #box-reservation > button + div div h4 {
->>>>>>> Stashed changes
   color: #676767;
   text-align: center;
   font-size: 0.8em;
 }
-<<<<<<< Updated upstream
 #pageDetaillee #blockDevisSticky #box-reservation #date div h3 {
-=======
-#pageDetaillee #blockDevisSticky #box-reservation > button + div div h3 {
->>>>>>> Stashed changes
   color: #424645;
   font-size: 0.9em;
 }
@@ -3669,7 +3109,6 @@ h5 {
     max-width: 8em;
   }
 }
-<<<<<<< Updated upstream
 .flatpickr-calendar .selected,
 .flatpickr-calendar .endRange {
   background-color: #1b5734 !important;
@@ -3684,8 +3123,6 @@ h5 {
   background-color: #e0ffee !important;
 }
 
-=======
->>>>>>> Stashed changes
 header#backoffice {
   background-color: #222524;
   display: flex;
@@ -4071,7 +3508,6 @@ header#backoffice > aside > span.owner {
   margin-right: 5px;
 }
 
-<<<<<<< Updated upstream
 main#home > .hero-header {
   height: 350px;
   position: relative;
@@ -4228,8 +3664,6 @@ main#home .accommodations > footer > a > button {
     font-size: 1.2em !important;
   }
 }
-=======
->>>>>>> Stashed changes
 #home-page {
   display: flex;
   flex-direction: column;
@@ -4242,22 +3676,6 @@ main#home .accommodations > footer > a > button {
 
 .home-and-accommodations-sections {
   min-width: 950px;
-<<<<<<< Updated upstream
-=======
-  /*****************/
-  /* MEDIA QUERIES */
-  /*****************/
-  /***************************************/
-  /* HOUSING-LIST (A DEPLACER PLUS TARD) */
-  /***************************************/
-  /* Menu des filtres */
-  /**********************/
-  /* Résultats logement */
-  /**********************/
-  /*****************/
-  /* MEDIA QUERIES */
-  /*****************/
->>>>>>> Stashed changes
 }
 .home-and-accommodations-sections .displayed {
   display: block;
@@ -4279,37 +3697,8 @@ main#home .accommodations > footer > a > button {
 .home-and-accommodations-sections .mdi {
   font-size: 1.5em;
 }
-<<<<<<< Updated upstream
 
 #search-bar {
-=======
-.home-and-accommodations-sections a {
-  text-decoration: none;
-}
-.home-and-accommodations-sections a:visited {
-  color: black;
-}
-.home-and-accommodations-sections #image-cover {
-  height: 350px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-y: 20%;
-  border-radius: 1em;
-  margin: 1em 2.5em;
-  padding: 2em;
-  color: white;
-}
-.home-and-accommodations-sections #image-cover h1 {
-  font-family: "poppins-semibold";
-  font-size: 2.5em;
-}
-.home-and-accommodations-sections #image-cover h2 {
-  font-family: "poppins-regular";
-  font-size: 1.5em;
-}
-.home-and-accommodations-sections #search-bar {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   position: relative;
@@ -4323,25 +3712,16 @@ main#home .accommodations > footer > a > button {
   border-radius: 1em;
   margin: 0 auto;
 }
-<<<<<<< Updated upstream
 #search-bar input, #search-bar button {
   border: none;
   border-radius: 1em;
 }
 #search-bar input {
-=======
-.home-and-accommodations-sections #search-bar input, .home-and-accommodations-sections #search-bar button {
-  border: none;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections #search-bar input {
->>>>>>> Stashed changes
   font-family: "comfortaa-medium";
   background-color: #f7f7f7;
   padding: 1.5em;
   width: auto;
 }
-<<<<<<< Updated upstream
 #search-bar button {
   background-color: gray;
   cursor: not-allowed;
@@ -4356,26 +3736,12 @@ main#home .accommodations > footer > a > button {
 }
 
 .show-more-button-container {
-=======
-.home-and-accommodations-sections #search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
-}
-.home-and-accommodations-sections #search-bar .mdi-magnify {
-  color: white;
-}
-.home-and-accommodations-sections #list-title-container {
-  text-align: center;
-}
-.home-and-accommodations-sections .show-more-button-container {
->>>>>>> Stashed changes
   display: flex;
   justify-content: flex-end;
   text-align: right;
   margin-right: 2.5em;
   padding: 0.25em 0.5em;
 }
-<<<<<<< Updated upstream
 
 .show-more-button {
   position: relative;
@@ -4391,24 +3757,10 @@ main#home .accommodations > footer > a > button {
 }
 
 .housing-image-item-container {
-=======
-.home-and-accommodations-sections .show-more-button {
-  position: relative;
-  top: -4em;
-}
-.home-and-accommodations-sections #accommodation-list {
-  display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, 250px);
-  margin: 0 2.5em 2.5em 2.5em;
-}
-.home-and-accommodations-sections .accommodation-image-item-container {
->>>>>>> Stashed changes
   width: 250px;
   height: 250px;
   background-color: #eaeaea;
   border-radius: 1em;
-<<<<<<< Updated upstream
   position: relative;
   overflow: hidden;
 }
@@ -4417,15 +3769,10 @@ main#home .accommodations > footer > a > button {
   transform: scale(1.1);
 }
 .housing-item img {
-=======
-}
-.home-and-accommodations-sections .accommodation-item img {
->>>>>>> Stashed changes
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1em;
-<<<<<<< Updated upstream
   transition: all 0.5s ease;
 }
 .housing-item h4, .housing-item .housing-price-container {
@@ -4443,46 +3790,22 @@ abbr[title] {
 }
 
 .housing-description-container {
-=======
-}
-.home-and-accommodations-sections .accommodation-item h4, .home-and-accommodations-sections .accommodation-item .accommodation-price-container {
-  font-size: 14px;
-}
-.home-and-accommodations-sections .accommodation-item .accommodation-price {
-  font-family: "comfortaa-bold";
-}
-.home-and-accommodations-sections .accommodation-item:hover {
-  cursor: pointer;
-}
-.home-and-accommodations-sections abbr[title] {
-  text-decoration: none;
-}
-.home-and-accommodations-sections .accommodation-description-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: end;
   justify-content: space-between;
   width: 250px;
   margin: 0.5em 0;
 }
-<<<<<<< Updated upstream
 
 .housing-description {
-=======
-.home-and-accommodations-sections .accommodation-description {
->>>>>>> Stashed changes
   font-family: "comfortaa-bold";
   margin: 0 0.5em 0 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-<<<<<<< Updated upstream
 
 .housing-location-container {
-=======
-.home-and-accommodations-sections .accommodation-location-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -4490,38 +3813,26 @@ abbr[title] {
   margin-bottom: 0.5em;
   width: 250px;
 }
-<<<<<<< Updated upstream
 
 .mdi-star {
   font-size: 1em;
 }
 
 .housing-location {
-=======
-.home-and-accommodations-sections .accommodation-location {
->>>>>>> Stashed changes
   font-family: "comfortaa-regular";
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-<<<<<<< Updated upstream
 
 .housing-price-container {
-=======
-.home-and-accommodations-sections .accommodation-price-container {
->>>>>>> Stashed changes
   display: flex;
   font-family: "comfortaa-regular";
   font-size: small;
   gap: 0.5em;
 }
-<<<<<<< Updated upstream
 
 .star-notation-container {
-=======
-.home-and-accommodations-sections .star-notation-container {
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -4532,7 +3843,6 @@ abbr[title] {
   padding: 0.25em 0.5em;
   background-color: #e0ffee;
 }
-<<<<<<< Updated upstream
 
 .show-all-button {
   display: none;
@@ -4732,35 +4042,11 @@ abbr[title] {
     width: inherit;
   }
   #image-cover {
-=======
-.home-and-accommodations-sections .show-all-button {
-  display: none;
-}
-@media (max-width: 431px) {
-  .home-and-accommodations-sections .home-and-accommodations-sections {
-    min-width: inherit;
-  }
-  .home-and-accommodations-sections #search-bar {
-    width: 355px;
-    justify-content: space-between;
-  }
-  .home-and-accommodations-sections #search-bar .arrival-date-input, .home-and-accommodations-sections #search-bar .departure-date-input, .home-and-accommodations-sections #search-bar .travelers-number-input {
-    display: none;
-  }
-  .home-and-accommodations-sections #search-bar .mdi-account {
-    display: none;
-  }
-  .home-and-accommodations-sections #search-bar input {
-    width: inherit;
-  }
-  .home-and-accommodations-sections #image-cover {
->>>>>>> Stashed changes
     height: 250px;
     margin: 1em 0em;
     padding: 1em;
     border-radius: 0;
   }
-<<<<<<< Updated upstream
   #image-cover h1 {
     font-family: "poppins-semibold";
     font-size: 2em;
@@ -4777,30 +4063,11 @@ abbr[title] {
     display: none !important;
   }
   .accommodation-image-item-container {
-=======
-  .home-and-accommodations-sections #image-cover h1 {
-    font-family: "poppins-semibold";
-    font-size: 2em;
-  }
-  .home-and-accommodations-sections #image-cover h2 {
-    font-family: "poppins-regular";
-    font-size: 1em;
-  }
-  .home-and-accommodations-sections #accommodation-list-title {
-    font-size: 1em;
-    margin: 0 auto 1em auto;
-  }
-  .home-and-accommodations-sections .show-more-button {
-    display: none !important;
-  }
-  .home-and-accommodations-sections .accommodation-image-item-container {
->>>>>>> Stashed changes
     width: 355px;
     height: 355px;
     background-color: #eaeaea;
     border-radius: 1em;
   }
-<<<<<<< Updated upstream
   .accommodation-description-container {
     width: 355px;
   }
@@ -4812,19 +4079,6 @@ abbr[title] {
     display: none;
   }
   .show-all-button {
-=======
-  .home-and-accommodations-sections .accommodation-description-container {
-    width: 355px;
-  }
-  .home-and-accommodations-sections .show-all-button-container {
-    display: flex;
-    justify-content: center;
-  }
-  .home-and-accommodations-sections #accommodation-list-container .show-all-button {
-    display: none;
-  }
-  .home-and-accommodations-sections .show-all-button {
->>>>>>> Stashed changes
     display: flex;
     align-items: center;
     padding: 0.25em 1em;
@@ -4833,16 +4087,11 @@ abbr[title] {
     border: solid 1px #1b5734;
     border-radius: 2em;
   }
-<<<<<<< Updated upstream
   .show-all-button .mdi {
-=======
-  .home-and-accommodations-sections .show-all-button .mdi {
->>>>>>> Stashed changes
     margin-left: 8px;
     font-size: 20px;
   }
 }
-<<<<<<< Updated upstream
 @media (max-width: 431px) {
   #filter-container {
     align-self: flex-start;
@@ -5003,151 +4252,10 @@ abbr[title] {
     min-width: 100%;
   }
   #filter-container #validation-filter-button-container {
-=======
-.home-and-accommodations-sections #filter-container {
-  align-self: flex-start;
-  padding: 2.5em;
-  min-width: 20em;
-  height: 100%;
-}
-.home-and-accommodations-sections #filter-container > section {
-  border-top: solid 1px #676767;
-  margin-bottom: 2em;
-}
-.home-and-accommodations-sections #filter-container > section > :first-child {
-  justify-content: space-between;
-  margin-bottom: 1em;
-}
-.home-and-accommodations-sections #filter-container > section > div, .home-and-accommodations-sections #filter-container > section li {
-  display: flex;
-  gap: 1em;
-  margin-bottom: 0.5em;
-  list-style: none;
-}
-.home-and-accommodations-sections #filter-container > section > div > input, .home-and-accommodations-sections #filter-container > section li > input {
-  width: auto;
-}
-.home-and-accommodations-sections #filter-container > section .price-input {
-  margin-bottom: 1em;
-}
-.home-and-accommodations-sections #filter-title-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 2.5em;
-}
-.home-and-accommodations-sections #validation-filter-button-container {
-  display: none;
-}
-.home-and-accommodations-sections .back-button {
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-.home-and-accommodations-sections #accommodation-title-search-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.home-and-accommodations-sections .compact-search-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  background-color: white;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar div {
-  display: flex;
-}
-.home-and-accommodations-sections .compact-search-bar input, .home-and-accommodations-sections .compact-search-bar button {
-  border: none;
-  border-radius: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar input {
-  font-family: "comfortaa-medium";
-  background-color: #f7f7f7;
-  padding: 1.5em;
-}
-.home-and-accommodations-sections .compact-search-bar #search-input-compact {
-  border-radius: 1em 0 0 1em;
-  border: solid 2px #eaeaea;
-  width: 150px;
-}
-.home-and-accommodations-sections .compact-search-bar #date-input-compact {
-  border-radius: 0;
-  width: 150px;
-  border-top: solid 2px #eaeaea;
-  border-bottom: solid 2px #eaeaea;
-}
-.home-and-accommodations-sections .compact-search-bar #travelers-input-compact {
-  border-radius: 0 1em 1em 0;
-  border: solid 2px #eaeaea;
-  width: 150px;
-}
-.home-and-accommodations-sections .compact-search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
-}
-.home-and-accommodations-sections .compact-search-bar .mdi-magnify {
-  color: white;
-}
-.home-and-accommodations-sections #filter-sort-buttons-container {
-  display: flex;
-}
-.home-and-accommodations-sections #filter-button {
-  border-radius: 1em;
-}
-.home-and-accommodations-sections #accommodation-list {
-  margin: 1em 0 2.5em 0;
-}
-.home-and-accommodations-sections #accommodation-list-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 2.5em;
-  border-left: solid 2px #eaeaea;
-  min-width: 865px;
-}
-.home-and-accommodations-sections .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 0.75em;
-  font-family: "comfortaa-bold";
-  color: #1b5734;
-  margin-bottom: 5.5em;
-}
-.home-and-accommodations-sections .pagination li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-}
-.home-and-accommodations-sections .pagination button {
-  width: 1em;
-  height: 1em;
-  padding: 1.6em;
-  position: relative;
-}
-.home-and-accommodations-sections .pagination button > span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media (max-width: 431px) {
-  .home-and-accommodations-sections .compact-search-bar {
-    display: none;
-  }
-  .home-and-accommodations-sections #filter-container {
-    min-width: 100%;
-  }
-  .home-and-accommodations-sections #filter-container #validation-filter-button-container {
->>>>>>> Stashed changes
     display: flex;
     gap: 0.5em;
     justify-content: flex-end;
   }
-<<<<<<< Updated upstream
   #accommodation-list-container {
     padding: 0.5em;
     align-items: center;
@@ -5164,23 +4272,6 @@ abbr[title] {
     color: red;
   }
 }
-=======
-  .home-and-accommodations-sections #accommodation-list-container {
-    padding: 0.5em;
-    align-items: center;
-  }
-  .home-and-accommodations-sections .show-all-button-container {
-    display: none;
-  }
-}
-.home-and-accommodations-sections .secondary.is-disabled {
-  cursor: not-allowed;
-  background-color: #eaeaea;
-  border-color: red;
-  color: red;
-}
-
->>>>>>> Stashed changes
 #new-accommodation {
   width: 58em;
   margin: auto;
@@ -5608,15 +4699,10 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-<<<<<<< Updated upstream
   height: 60%;
   width: 60%;
   min-width: 30em;
   min-height: 30em;
-=======
-  height: 30em;
-  width: 45em;
->>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-items: center;
@@ -5639,10 +4725,7 @@ h5 {
 }
 #mainProprietaireLogement #block-intro {
   display: flex;
-<<<<<<< Updated upstream
   flex-wrap: wrap;
-=======
->>>>>>> Stashed changes
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -5795,20 +4878,12 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-<<<<<<< Updated upstream
-=======
-  background-color: #424645;
-  opacity: 50%;
->>>>>>> Stashed changes
 }
 #backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
   top: 50%;
   left: 50%;
-<<<<<<< Updated upstream
   color: black;
-=======
->>>>>>> Stashed changes
   transform: translate(-50%, -50%);
   font-size: 3em;
 }
@@ -5835,14 +4910,11 @@ h5 {
   border-color: white;
 }
 
-<<<<<<< Updated upstream
 @media screen and (max-width: 576px) {
   #backoffice-registration > form {
     width: 23em;
   }
 }
-=======
->>>>>>> Stashed changes
 .active {
   display: block;
 }
@@ -6402,11 +5474,7 @@ h5 {
 }
 
 .inscription {
-<<<<<<< Updated upstream
   width: 35em;
-=======
-  width: 40%;
->>>>>>> Stashed changes
   margin: 1em auto;
   border-radius: 15px;
   padding-bottom: 7em;
@@ -6454,11 +5522,6 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-<<<<<<< Updated upstream
-=======
-  background-color: #424645;
-  opacity: 50%;
->>>>>>> Stashed changes
 }
 .inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
@@ -6491,13 +5554,10 @@ h5 {
 }
 .inscription .error {
   color: red;
-<<<<<<< Updated upstream
 }
 
 @media screen and (max-width: 619px) {
   .inscription {
     width: 24em;
   }
-=======
->>>>>>> Stashed changes
 }
