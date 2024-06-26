@@ -2,13 +2,14 @@
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/fileManager/FileLogement.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
-    include_once(__DIR__."/../layout/header.php");
-    require_once(__DIR__."/../../../services/ScriptLoader.php");
-
+    
     $logement_id = $_GET['id_logement'] ?? null;
-    if(!isset($logement_id))
-        exit(header("Location: /"));
-
+    if(!isset($logement_id)) {
+        header("Location: /backoffice");
+        exit;
+    }
+    
+    include_once(__DIR__."/../layout/header.php");
     $logement_id = $_GET['id_logement'];
     $logement = AccommodationModel::findOneById($logement_id);
 
@@ -57,11 +58,14 @@
 <body>
 
     <main id ="mainProprietaireLogement">
+        
         <div id="blockCheminPage-SwitchContainer">
-            <div id="cheminPage">
-                <h4><a href="/backoffice">Logements</a></h4>
-                <span class="mdi mdi-chevron-right"></span>
-                <h4><?=$logement->get('titre_logement');?></h4>
+            <div id="menu">
+                <div id="cheminPage">
+                    <h4><a href="/backoffice">Logements</a></h4>
+                    <span class="mdi mdi-chevron-right"></span>
+                    <h4><?=$logement->get('titre_logement');?></h4>
+                </div>
             </div>
             <div id="switch-container">  
                 <span id="etatLogement"></span>
@@ -72,8 +76,6 @@
                 </form>
             </div>
         </div>
-
-       
         <div id="page">
             <section>
                 <article id="block-intro">
@@ -84,6 +86,10 @@
                     <div id="intro">
                         <div id="titre">
                             <h1><?=$logement->get('titre_logement');?></h1>
+
+                        </div>
+                        <div id="titre">
+                            <h2><?=$logement->get('prix_ttc_logement');?>€ par nuit</h2>
 
                         </div>
 
@@ -163,10 +169,14 @@
                         <div>
                             <h3>Activités</h3>
                             <ul>
-                                <?php if ($logement->get('activites')[0]['name'] != null){
-                                        foreach ($logement->get('activites') as $key => $value) { ?>
-                                            <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
-                                <?php }}?>
+                                <?php 
+                                if ($logement->get('activites')[0]['name'] != null){
+                                        foreach ($logement->get('activites') as $key => $value) { 
+                                            if($key != "activite_8") {?>
+                                                <li><span class="<?=$tabActivites[$value['name']];?>"></span> <?= ucfirst($value['name']);?> - <?= $value['perimetre'];?></li>
+                                        <?php
+                                        }
+                                 }}?>
                                 
                                 
                             </ul>
@@ -184,11 +194,12 @@
                     </div>
 
                 </article>
-                <div id="modified-button">
-                    <button type="button" class ="primary backoffice" >
+                <a id="modifierLogement" href="/backoffice/modification-logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                    <button class="primary backoffice" type="submit">
+                        <span class="mdi mdi-pencil"></span>    
                         Modifier
-                    </button>
-                </div>
+                    </button> 
+                </a>
             </section>
             
         </div>

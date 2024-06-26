@@ -8,10 +8,9 @@
         "canoë" => true,
         "voile" => true,
         "accrobranche" => true,
-        "randonnée" => false,
-        "equitation" => false,
-        "terrasse" => false,
-        "golf" => false
+        "randonnée" => true,
+        "equitation" => true,
+        "golf" => true
     ];  
     $energiticClasses = ["A", "B", "C", "D", "E", "F", "G"];
     $types = ["appartement", "maison", "villa", "chalet", "bateau", "insolite"];
@@ -22,10 +21,12 @@
 ?>
 
 <div id="new-accommodation">
-    <button class="back">
-        <span class="mdi mdi-arrow-left"></span>
-        Retour à la liste des logements
-    </button>
+    <a href="/backoffice">
+        <button class="back">
+            <span class="mdi mdi-arrow-left"></span>
+            Retour à la liste des logements
+        </button>
+    </a>
     <form id="new-accommodation-form" onsubmit="handleForm(event)" method="POST">
         <section>
             <h2>Informations générales du logement</h2>
@@ -59,7 +60,7 @@
                 <div class="form-field">
                     <label for="categorie_logement" class="required">Catégorie</label>
                     <select id="categorie_logement" name="categorie_logement">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($categories as $category) { ?>
                             <option value="<?=$category?>"><?=$category?></option>
                         <?php } ?>
@@ -68,16 +69,16 @@
                 <div class="form-field">
                     <label for="type_logement" class="required">Type</label>
                     <select id="type_logement" name="type_logement">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($types as $type) { ?>
                             <option value="<?=$type?>"><?=$type?></option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="form-field">
-                    <label for="classe_energetique" class="required">Classe énergitique</label>
+                    <label for="classe_energetique" class="required">Classe énergétique</label>
                     <select id="classe_energetique" name="classe_energetique">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($energiticClasses as $clazz) { ?>
                             <option value="<?=$clazz?>"><?=$clazz?></option>
                         <?php } ?>
@@ -85,19 +86,19 @@
                 </div>
                 <div class="form-field">
                     <label for="surface_logement" class="required">Surface (en m²)</label>
-                    <input type="number" id="surface_logement" min="1" value="1" name="surface_logement" />
+                    <input type="number" id="surface_logement" min="9" value="9" name="surface_logement" />
                 </div>
                 <div class="form-field">
-                    <label for="max_personne_logement" class="required">Nombre de personne maximum</label>
+                    <label for="max_personne_logement" class="required">Nombre de personnes maximum</label>
                     <input type="number" id="max_personne_logement" min="1" value="1" name="max_personne_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_simples_logement" class="required">Nombre de lits simples</label>
-                    <input type="number" id="nb_lits_simples_logement" min="1" value="1" name="nb_lits_simples_logement" />
+                    <input type="number" id="nb_lits_simples_logement" min="0" value="0" name="nb_lits_simples_logement" />
                 </div>
                 <div class="form-field">
                     <label for="nb_lits_doubles_logement" class="required">Nombre de lits doubles</label>
-                    <input type="number" id="nb_lits_doubles_logement" min="1" value="1" name="nb_lits_doubles_logement" />
+                    <input type="number" id="nb_lits_doubles_logement" min="0" value="0" name="nb_lits_doubles_logement" />
                 </div>
             </div>
             <footer>
@@ -118,7 +119,7 @@
 
             <div class="inline">
                 <div class="form-field address-number">
-                    <label for="numero" class="required">Numero</label>
+                    <label for="numero" class="required">Numéro</label>
                     <input min="1" value="1" type="number" id="numero" name="numero">
                 </div>
                 <div class="form-field address-name">
@@ -200,11 +201,11 @@
         </section>
 
         <section>
-            <h2>Prix et delais</h2>
+            <h2>Prix et délais</h2>
 
             <div class="form-field">
                 <label for="prix_ht_logement" class="required">Prix HT (en €)</label>
-                <input type="number" step=".5" id="prix_ht_logement" name="prix_ht_logement">
+                <input type="number" step=".5" id="prix_ht_logement" name="prix_ht_logement" min="0.50">
             </div>
             <div class="price-ati">
                 <span class="title">Prix TTC (10% de taxes)</span>
@@ -212,16 +213,16 @@
             </div>
 
             <div class="form-field">
-                <label for="duree_minimale_reservation" class="required">Durée minimal réservation</label>
-                <input type="number" id="duree_minimale_reservation" name="duree_minimale_reservation">
+                <label for="duree_minimale_reservation" class="required">Durée minimale de réservation</label>
+                <input type="number" id="duree_minimale_reservation" name="duree_minimale_reservation" min="1">
             </div>
             <div class="form-field">
                 <label for="delais_minimum_reservation" class="required">Délai minimum de réservation</label>
-                <input type="number" id="delais_minimum_reservation" name="delais_minimum_reservation">
+                <input type="number" id="delais_minimum_reservation" name="delais_minimum_reservation" min="1">
             </div>
             <div class="form-field">
-                <label for="delais_prevenance" class="required">Delais de prevenance</label>
-                <input type="number" id="delais_prevenance" name="delais_prevenance">
+                <label for="delais_prevenance" class="required">Délai de prévenance</label>
+                <input type="number" id="delais_prevenance" name="delais_prevenance" min="1">
             </div>
 
             <div class="error-message"></div>

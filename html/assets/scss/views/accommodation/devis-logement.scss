@@ -17,16 +17,17 @@
         width: 50em;
         margin: auto;
         position: sticky;
-        top: 1em;
+        top: 2em;
 
         &>div {
-            padding: 1em;
+            padding: 1em 2em;
             border-radius: 20px;
             background-color: white;
-            padding-bottom: 5em;
             box-shadow: 0 4px 4px 0 rgba(162, 162, 162, .54);
 
             .close {
+                position: relative;
+                z-index: 5;
                 color: #aaa;
                 float: right;
                 font-size: 2em;
@@ -35,17 +36,16 @@
 
             .close:hover,
             .close:focus {
-                color: black;
+                color: red;
                 text-decoration: none;
                 cursor: pointer;
             }
 
 
-            &>h2 {
+            h2 {
                 position: relative;
                 width: 100%;
                 font-size: 1.7em;
-                margin-top: 1em;
 
                 &>span {
                     display: block;
@@ -53,7 +53,7 @@
                     &:first-of-type {
                         background-color: $white;
                         width: fit-content;
-                        padding: 0 .5em;
+                        padding: 0 .5em 0 0;
                         font-family: "poppins-medium", sans-serif;
                         font-weight: normal;
                         color: $gray-1;
@@ -73,8 +73,10 @@
 
             }
 
-            &>article:nth-of-type(1) {
+            &>article {
                 &>div {
+                    margin: 0 .5em;
+
                     &>div {
                         display: flex;
                         gap: 1em;
@@ -102,43 +104,79 @@
 
                 }
 
-            }
+                #PrixTTC {
+                    display: flex;
+                    border-top: solid 1px grey;
+                    padding: 0.8em 0;
+                    margin: 0;
+                    background-color: #e0ffee;
+                    justify-content: space-between;
 
-            #trait {
-                width: 96%;
-                height: 1px;
-                background-color: $gray-3;
-
-                position: absolute;
-                bottom: 4em;
-            }
-
-
-            &>button.devis {
-                float: right;
-                margin: 1em 0;
-                position: relative;
-                padding-right: 2.5em;
-
-                margin-top: 2.5em;
-                
-                &>.mdi {
-                    font-size: 1.5em;
-                    right: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    position: absolute;
+                    h4 {
+                        padding: 0 0.5em;
+                    }
                 }
+
+                #trait {
+                    width: 96%;
+                    height: 1px;
+                    background-color: $gray-3;
+
+                    position: absolute;
+                    bottom: 4em;
+                }
+            }
+        }
+
+        button.devis {
+            float: right;
+            margin: 1em 0;
+            position: relative;
+            padding-right: 2.5em;
+
+            &>.mdi {
+                font-size: 1.5em;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
             }
         }
     }
 
-    @media screen and (max-width: 432px) {
-
+    @media screen and (max-width: 900px) {
         #modal-devis-content {
             width: 90%;
             margin: auto;
         }
+    }
 
+    @media screen and (max-width: 580px) {
+        #modal-devis-content {
+            margin-top: 2em;
+
+            &>div {
+                max-height: 80vh;
+                overflow: auto;
+
+                &>article {
+                    &>div {
+                        &>div {
+                            &>div {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                &>article:first-of-type {
+                    &>div {
+                        &>div:first-child {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

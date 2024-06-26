@@ -34,6 +34,7 @@ $router->add("/backoffice", "views/backoffice/home.php");
 $router->add("/backoffice/nouveau-logement", "views/backoffice/accomodations/newAccommodation.php");
 $router->add("/backoffice/reservations", "views/backoffice/booking/listeReservationsProprietaire.php");
 $router->add("/backoffice/logement", "views/backoffice/accomodations/pageDetailleeProprietaire.php");
+$router->add("/backoffice/modification-logement", "views/backoffice/accomodations/modificationLogement.php");
 
 $router->add("/backoffice/previsualisation-logement", "views/backoffice/accomodations/accommodationPreview.php");
 

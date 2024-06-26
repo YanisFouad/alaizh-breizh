@@ -105,6 +105,7 @@ body {
   color: #222524;
   position: relative;
   min-height: 100vh;
+  padding-bottom: 5em;
 }
 
 h1,
@@ -932,12 +933,12 @@ footer#foot-global nav a {
   font-family: "comfortaa-regular", sans-serif;
   margin-bottom: 1em;
 }
-#finalize-booking > button.finalize {
+#finalize-booking > a > button.finalize {
   margin: 1.5em 0;
   position: relative;
   padding-right: 2.5em;
 }
-#finalize-booking > button.finalize > .mdi {
+#finalize-booking > a > button.finalize > .mdi {
   font-size: 1.5em;
   right: 10px;
   top: 50%;
@@ -2755,6 +2756,7 @@ h5 {
   font-size: 0.8em;
 }
 #pageDetaillee #blockDevisSticky #profilPropriétaire img {
+  object-fit: cover;
   width: 4em;
   height: 4em;
   border-radius: 50%;
@@ -3966,7 +3968,7 @@ abbr[title] {
   width: 58em;
   margin: auto;
 }
-#new-accommodation > button.back {
+#new-accommodation > a > button.back {
   font-size: 1em;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -4153,6 +4155,225 @@ abbr[title] {
   font-family: "poppins-regular", sans-serif;
 }
 
+#modification-logement {
+  width: 58em;
+  margin: auto;
+}
+#modification-logement > a > button.back {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: unset;
+  color: #424645;
+}
+#modification-logement > form > section {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(162, 162, 162, 0.54);
+}
+#modification-logement > form > section:first-of-type {
+  margin-top: unset;
+}
+#modification-logement > form > section #conteneur_image {
+  height: 15em;
+  width: 25em;
+  display: flex;
+  margin: auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+#modification-logement > form > section #conteneur_image:hover {
+  cursor: pointer;
+}
+#modification-logement > form > section #image_logement {
+  background-size: cover !important;
+  background-position: center !important; /* L'image est centrée */
+  background-repeat: no-repeat !important; /* L'image ne se répète pas */
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 15px;
+}
+#modification-logement > form > section #image_logement .mdi.mdi-plus-circle {
+  color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 3em;
+}
+#modification-logement > form > section > h2, #modification-logement > form > section > h3 {
+  font-family: "poppins-medium", sans-serif;
+  font-weight: normal;
+}
+#modification-logement > form > section > h2 {
+  color: #424645;
+}
+#modification-logement > form > section > h3 {
+  color: #676767;
+  margin-bottom: 1em;
+}
+#modification-logement > form > section footer {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #eaeaea;
+}
+#modification-logement > form .error-message {
+  background-color: #ffd0d0;
+  color: #ce4b4b;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+  display: none;
+  position: relative;
+  padding-left: 2.3em;
+}
+#modification-logement > form .error-message::before {
+  position: absolute;
+  left: 10px;
+  font-size: 1.2em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) {
+  display: flex;
+  gap: 2em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 50%;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label {
+  background-color: #ffd0d0;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type.error > label > .mdi {
+  color: #ce4b4b !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label.uploaded {
+  background-color: #e0ffee !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi.mdi-check {
+  color: #1b5734 !important;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > label > .mdi {
+  font-size: 4em;
+  color: #424645;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > .alert > .mdi.mdi-alert {
+  color: #ce4b4b;
+  font-size: 1.3em;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:first-of-type > input[type=file] {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article #bouton_photo_logement {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(1) > section:nth-last-of-type(1) > article:last-of-type > .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(1) > .form-field.description {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+#modification-logement > form > section:nth-of-type(1) > .form-field.description > textarea {
+  min-height: 5em;
+}
+#modification-logement > form > section:nth-of-type(1) > .attributes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+#modification-logement > form > section:nth-of-type(1) > .attributes > .form-field input[type=number] {
+  width: 5em;
+}
+#modification-logement > form > section:nth-of-type(2) > .form-field > select {
+  width: 20%;
+}
+#modification-logement > form > section:nth-of-type(2) > .form-field > input {
+  width: 41%;
+}
+#modification-logement > form > section:nth-of-type(2) .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(2) .address-number {
+  width: 5em;
+}
+#modification-logement > form > section:nth-of-type(2) .address-name {
+  width: 16em;
+}
+#modification-logement > form > section:nth-of-type(2) .inline {
+  margin-top: -1em;
+  display: flex;
+  gap: 1em;
+}
+#modification-logement > form > section:nth-of-type(3) > .layouts {
+  display: flex;
+  gap: 2em;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities > select {
+  width: 10em;
+  border-radius: 100px;
+  border-width: 2px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+#modification-logement > form > section:nth-of-type(3) .form-field.activities > .distance {
+  display: none;
+}
+#modification-logement > form > section:nth-of-type(4) > .form-field {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(4) > .form-field > input[type=number] {
+  width: 10%;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati {
+  margin: 1em 0;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > span {
+  display: block;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > .title {
+  font-size: 0.9em;
+  color: #676767;
+}
+#modification-logement > form > section:nth-of-type(4) > .price-ati > #price-ati {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-family: "poppins-regular", sans-serif;
+}
+
 button {
   transition: all 0.5s ease;
   font-family: "comfortaa-regular", sans-serif;
@@ -4288,6 +4509,18 @@ h5 {
 #mainProprietaireLogement #blockCheminPage-SwitchContainer {
   position: relative;
 }
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#mainProprietaireLogement #blockCheminPage-SwitchContainer #menu #cheminPage {
+  display: flex;
+  margin-left: 2em;
+  align-items: center;
+  margin-top: 1em;
+}
 #mainProprietaireLogement #blockCheminPage-SwitchContainer #switch-container {
   position: absolute;
   right: 0;
@@ -4358,18 +4591,12 @@ h5 {
 #mainProprietaireLogement #page {
   margin: auto;
   margin-top: 2em;
-  max-width: 80%;
+  width: 95%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 #mainProprietaireLogement #page h3 {
   color: #424645;
-}
-#mainProprietaireLogement #cheminPage {
-  display: flex;
-  margin-left: 2em;
-  align-items: center;
-  margin-top: 1em;
 }
 #mainProprietaireLogement a {
   color: #804e2e;
@@ -4389,12 +4616,11 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-  height: 60%;
-  width: 60%;
-  min-width: 30em;
-  min-height: 30em;
+  width: 50%;
   display: flex;
   align-items: center;
+  max-height: 25em;
+  max-width: 35em;
   justify-items: center;
 }
 @media screen and (max-width: 800px) {
@@ -4416,6 +4642,7 @@ h5 {
 #mainProprietaireLogement #block-intro {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -4424,6 +4651,7 @@ h5 {
   }
 }
 #mainProprietaireLogement #block-intro #intro {
+  width: 45%;
   margin-left: 2.2em;
 }
 #mainProprietaireLogement #block-intro #titre {
@@ -4451,7 +4679,7 @@ h5 {
 #mainProprietaireLogement #caracteristiques-logement ul {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1.5fr 1fr;
   place-items: center start;
   margin-top: 1.6em;
   border: solid 1px #eaeaea;
@@ -4463,7 +4691,7 @@ h5 {
   border-radius: 14.5px;
   width: fit-content;
   padding: 5px 10px 5px 10px;
-  margin: 0.2em 0;
+  margin: 0.2em 12px;
 }
 #mainProprietaireLogement #description h3 {
   color: #676767;
@@ -4523,6 +4751,13 @@ h5 {
 #mainProprietaireLogement #box-Activites-Amenagement ul li span {
   font-size: 1.8em;
   color: #424645;
+}
+#mainProprietaireLogement #modifierLogement {
+  text-decoration: none;
+  position: sticky;
+  float: right;
+  bottom: 1em;
+  margin-bottom: 1em;
 }
 
 #backoffice-registration {
@@ -4621,16 +4856,17 @@ h5 {
   width: 50em;
   margin: auto;
   position: sticky;
-  top: 1em;
+  top: 2em;
 }
 #modal #modal-devis-content > div {
-  padding: 1em;
+  padding: 1em 2em;
   border-radius: 20px;
   background-color: white;
-  padding-bottom: 5em;
   box-shadow: 0 4px 4px 0 rgba(162, 162, 162, 0.54);
 }
 #modal #modal-devis-content > div .close {
+  position: relative;
+  z-index: 5;
   color: #aaa;
   float: right;
   font-size: 2em;
@@ -4638,81 +4874,108 @@ h5 {
 }
 #modal #modal-devis-content > div .close:hover,
 #modal #modal-devis-content > div .close:focus {
-  color: black;
+  color: red;
   text-decoration: none;
   cursor: pointer;
 }
-#modal #modal-devis-content > div > h2 {
+#modal #modal-devis-content > div h2 {
   position: relative;
   width: 100%;
   font-size: 1.7em;
-  margin-top: 1em;
 }
-#modal #modal-devis-content > div > h2 > span {
+#modal #modal-devis-content > div h2 > span {
   display: block;
 }
-#modal #modal-devis-content > div > h2 > span:first-of-type {
+#modal #modal-devis-content > div h2 > span:first-of-type {
   background-color: white;
   width: fit-content;
-  padding: 0 0.5em;
+  padding: 0 0.5em 0 0;
   font-family: "poppins-medium", sans-serif;
   font-weight: normal;
   color: #424645;
   position: relative;
   z-index: 2;
 }
-#modal #modal-devis-content > div > h2 > span:last-of-type {
+#modal #modal-devis-content > div h2 > span:last-of-type {
   width: 100%;
   height: 1px;
   background-color: #eaeaea;
   position: absolute;
   bottom: 12px;
 }
-#modal #modal-devis-content > div > article:nth-of-type(1) > div > div {
+#modal #modal-devis-content > div > article > div {
+  margin: 0 0.5em;
+}
+#modal #modal-devis-content > div > article > div > div {
   display: flex;
   gap: 1em;
   align-items: center;
   justify-content: space-between;
   margin: 1em 0;
 }
-#modal #modal-devis-content > div > article:nth-of-type(1) > div > div > div {
+#modal #modal-devis-content > div > article > div > div > div {
   display: flex;
   gap: 1em;
 }
-#modal #modal-devis-content > div > article:nth-of-type(1) > div > div > div > h4 {
+#modal #modal-devis-content > div > article > div > div > div > h4 {
   font-weight: normal;
 }
-#modal #modal-devis-content > div > article:nth-of-type(1) > div > div > h4 {
+#modal #modal-devis-content > div > article > div > div > h4 {
   font-weight: normal;
 }
-#modal #modal-devis-content > div > article:nth-of-type(1) > div > div > h4:last-of-type {
+#modal #modal-devis-content > div > article > div > div > h4:last-of-type {
   font-family: "poppins-bold", sans-serif;
 }
-#modal #modal-devis-content > div #trait {
+#modal #modal-devis-content > div > article #PrixTTC {
+  display: flex;
+  border-top: solid 1px grey;
+  padding: 0.8em 0;
+  margin: 0;
+  background-color: #e0ffee;
+  justify-content: space-between;
+}
+#modal #modal-devis-content > div > article #PrixTTC h4 {
+  padding: 0 0.5em;
+}
+#modal #modal-devis-content > div > article #trait {
   width: 96%;
   height: 1px;
   background-color: #eaeaea;
   position: absolute;
   bottom: 4em;
 }
-#modal #modal-devis-content > div > button.devis {
+#modal #modal-devis-content button.devis {
   float: right;
   margin: 1em 0;
   position: relative;
   padding-right: 2.5em;
-  margin-top: 2.5em;
 }
-#modal #modal-devis-content > div > button.devis > .mdi {
+#modal #modal-devis-content button.devis > .mdi {
   font-size: 1.5em;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
 }
-@media screen and (max-width: 432px) {
+@media screen and (max-width: 900px) {
   #modal #modal-devis-content {
     width: 90%;
     margin: auto;
+  }
+}
+@media screen and (max-width: 580px) {
+  #modal #modal-devis-content {
+    margin-top: 2em;
+  }
+  #modal #modal-devis-content > div {
+    max-height: 80vh;
+    overflow: auto;
+  }
+  #modal #modal-devis-content > div > article > div > div > div {
+    display: block;
+  }
+  #modal #modal-devis-content > div > article:first-of-type > div > div:first-child {
+    display: block;
   }
 }
 

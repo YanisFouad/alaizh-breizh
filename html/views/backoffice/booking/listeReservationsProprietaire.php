@@ -10,6 +10,9 @@
     require_once(__DIR__."/../../../models/BookingModel.php");
     include_once(__DIR__."/../layout/header.php");
 
+    // ***********************
+    // Partie session de l'utilisateur
+    // ***********************
     ScriptLoader::load("backoffice/booking/listeReservationsProprietaire.js");
 
     if(!UserSession::isConnectedAsOwner()){
@@ -95,16 +98,6 @@
                 return $res->getData();
                 } ,$tab_toute_reservation_periode))); ?>" />
             </form>
-
-            <div>
-                <!-- Textarea Rechercher -->
-                <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1" disabled >Rechercher...</textarea>
-                <!-- Textarea date -->
-                <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1" disabled >Dates de réservation...</textarea>
-            </div>
-            <button class="primary backoffice" disabled>
-                <span class="mdi mdi-magnify"></span>
-            </button>
         </div>
     </div>
 
@@ -118,7 +111,6 @@
 
     <div id="liste-reservation-proprietaire-float-left">
         <!-- Bouton tri -->
-        <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
             <span class="label"></span>
@@ -215,6 +207,7 @@
                     <span><?php echo $i?></span>
                 </button>
             <?php } ?>
+
 
             <!-- Dernier bouton chevron -->
             <button <?php if ($page == $nb_page) {echo "disabled";}?> class="secondary" name="page" value="<?php echo $page + 1 ?>">

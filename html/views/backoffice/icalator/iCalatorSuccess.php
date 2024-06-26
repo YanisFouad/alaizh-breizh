@@ -19,7 +19,7 @@ ScriptLoader::load("icalator/calendarLink.js");
             <p>Modification d'un iCal</p>
         <?php
         } else { ?>
-            <h1>Création d'un iCal</h1>
+            <p>Création d'un iCal</p>
         <?php
         }
         ?>

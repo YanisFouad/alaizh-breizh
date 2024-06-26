@@ -61,7 +61,7 @@ class AccommodationModel extends Model {
               "perimetre" => $data["perimetre_activite_".$i]
             );
             $i++;
-        } while($data["activite_".$i] !== null);
+        } while($i < 8 && $data["activite_".$i] !== null);
         return $activites;
     }
 
@@ -74,7 +74,7 @@ class AccommodationModel extends Model {
               "id" => $data["id_amenagement_".$i],
             );
             $i++;
-        } while($data["amenagement_".$i] !== null);
+        } while($i < 6 && $data["amenagement_".$i] !== null);
         return $amenagements;
     }
 

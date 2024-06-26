@@ -32,7 +32,7 @@ try {
 
 $calendar = "BEGIN:VCALENDAR\n";
 $calendar .= "VERSION:2.0\n";
-$calendar .= "PRODID:-//hacksw/handcal//NONSGML v1.0//FR\n";
+$calendar .= "PRODID:-//AlaizBreizh//Calendrier Réservation//FR\n";
 
 foreach ($reservations as $reservation) {
     $idLocataire = $reservation["id_locataire"];

@@ -89,7 +89,7 @@ require_once(__DIR__."/../layout/header.php");
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4><?= $controller->getFormatDate($controller->getReservation()->get("date_arrivee")) ?> - <?= $controller->getFormatDate($controller->getReservation()->get("date_depart"))?></h4>
+                    <h4><?= to_french_date($controller->getReservation()->get("date_arrivee")) ?> - <?= to_french_date($controller->getReservation()->get("date_depart"))?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>
@@ -132,7 +132,7 @@ require_once(__DIR__."/../layout/header.php");
             </div>
 
                 
-                <h3>Prix total: <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
+                <h3>Prix total : <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
         </article>
 
         <h2>

@@ -137,7 +137,7 @@ h5 {
         height: 100%;
         object-fit: cover;
         object-position: center;
-        max-height: 30em;
+        max-height: 23em;
         border-radius: 13px;
     }
 
@@ -420,6 +420,7 @@ h5 {
             }
 
             img {
+                object-fit: cover;
                 width: 4em;
                 height: 4em;
                 border-radius: 50%;
@@ -475,9 +476,11 @@ h5 {
                 justify-content: flex-start;
                 color: red;
                 margin-bottom: 1em;
+
                 span {
                     margin-right: 5px;
                 }
+
                 p {
                     color: red;
                 }
@@ -694,6 +697,7 @@ h5 {
 }
 
 .flatpickr-calendar {
+
     .selected,
     .endRange {
         background-color: $primary-frontoffice-1 !important;

@@ -1,4 +1,4 @@
-#new-accommodation {
+#modification-logement {
     width: 58em;
     margin: auto;
 
@@ -21,9 +21,38 @@
             border-radius: 20px;
             box-shadow: 0 0 4px 0 rgba(162, 162, 162, .54);
 
-            &:not(.active) {
-                opacity: 50%;
+            #conteneur_image{
+                height: 15em;
+                width: 25em;
+                display: flex;
+                margin : auto;
+                border-radius: 15px;
+                overflow: hidden;
+                &:hover{
+                    cursor: pointer;
+                }
+                //background-repeat: no-repeat;
             }
+
+            #image_logement{
+                background-size: cover !important;
+                background-position: center !important; /* L'image est centrée */
+                background-repeat: no-repeat !important; /* L'image ne se répète pas */
+                height: 100%;
+                width: 100%;
+                position: relative;
+                border-radius: 15px;
+
+                .mdi.mdi-plus-circle {
+                    color: #ffffff;
+                    position:absolute;
+                    transform: translate(-50%, -50%);
+                    top: 50%;
+                    left: 50%;
+                    font-size: 3em;  
+                }
+            }
+
             &>h2, &>h3 {
                 font-family: "poppins-medium", sans-serif;
                 font-weight: normal;
@@ -132,6 +161,11 @@
                             display: none;
                         }
                     }
+
+                    #bouton_photo_logement{
+                        display: none;
+                    }
+
                     &:last-of-type {
                         &>.form-field {
                             margin: 1em 0;

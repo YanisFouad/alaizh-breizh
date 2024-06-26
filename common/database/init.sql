@@ -166,11 +166,11 @@ CREATE TABLE  _reservation (
 
 CREATE TABLE _facture (
     id_reservation INTEGER PRIMARY KEY,
-    tva_nuits FLOAT DEFAULT 10 NOT NULL,
-    tva_commission FLOAT DEFAULT 20 NOT NULL,
+    tva_nuits FLOAT DEFAULT 10,
+    tva_commission FLOAT DEFAULT 20,
     prix_nuitee FLOAT NOT NULL,
-    taxe_sejour FLOAT NOT NULL DEFAULT 1,
-    commission FLOAT NOT NULL DEFAULT 1,
+    taxe_sejour FLOAT DEFAULT 1,
+    commission FLOAT DEFAULT 1,
     CONSTRAINT facture_fk_reservation FOREIGN KEY(id_reservation)
         REFERENCES _reservation(id_reservation)
 );
@@ -604,10 +604,10 @@ create or replace function create_reservation() RETURNS TRIGGER AS $BODY$
   DECLARE
   BEGIN
     INSERT INTO _reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,est_annulee,est_payee)
-        VALUES(NEW.id_locataire,NEW.id_logement,NEW.nb_nuit,NEW.date_arrivee,NEW.date_depart,NEW.nb_voyageur,NEW.date_reservation,NEW.frais_de_service,NEW.prix_total,NEW.est_annulee,NEW.est_payee)
+        VALUES(NEW.id_locataire,NEW.id_logement,NEW.nb_nuit,NEW.date_arrivee,NEW.date_depart,NEW.nb_voyageur,NEW.date_reservation,NEW.frais_de_service,NEW.prix_total,COALESCE(NEW.est_annulee, false),NEW.est_payee)
                 RETURNING id_reservation INTO NEW.id_reservation;
     INSERT INTO _facture(id_reservation,tva_nuits,tva_commission,prix_nuitee,taxe_sejour,commission)
-        VALUES(NEW.id_reservation,NEW.tva_nuits,NEW.tva_commission,NEW.prix_nuitee,NEW.taxe_sejour,NEW.commission);
+        VALUES(NEW.id_reservation,COALESCE(NEW.tva_nuits, 10),COALESCE(NEW.tva_commission, 20),NEW.prix_nuitee,COALESCE(NEW.taxe_sejour,1),COALESCE(NEW.commission, 1));
     return NEW;
 	END;
 $BODY$
@@ -617,6 +617,25 @@ CREATE TRIGGER tg_create_reservation
     INSTEAD OF INSERT on reservation 
     FOR EACH ROW
     EXECUTE PROCEDURE create_reservation();
+
+
+create or replace function update_reservation() RETURNS TRIGGER AS $BODY$
+  DECLARE
+  BEGIN
+    UPDATE _reservation SET id_locataire=COALESCE(NEW.id_locataire,OLD.id_locataire),id_logement=COALESCE(NEW.id_logement, OLD.id_logement),nb_nuit=COALESCE(NEW.nb_nuit, OLD.nb_nuit),date_arrivee=COALESCE(NEW.date_arrivee, OLD.date_arrivee),date_depart=COALESCE(NEW.date_depart, OLD.date_depart),nb_voyageur=COALESCE(NEW.nb_voyageur, OLD.nb_voyageur),date_reservation=COALESCE(NEW.date_reservation, OLD.date_reservation),frais_de_service=COALESCE(NEW.frais_de_service, OLD.frais_de_service),prix_total=COALESCE(NEW.prix_total, OLD.prix_total),est_annulee=COALESCE(NEW.est_annulee, OLD.est_annulee),est_payee=COALESCE(NEW.est_payee, OLD.est_payee) 
+    WHERE id_reservation = OLD.id_reservation;
+
+    UPDATE _facture SET id_reservation=COALESCE(NEW.id_reservation, OLD.id_reservation),tva_nuits=COALESCE(NEW.tva_nuits, OLD.tva_nuits),tva_commission=COALESCE(NEW.tva_commission,OLD.tva_commission),prix_nuitee=COALESCE(NEW.prix_nuitee,OLD.prix_nuitee),taxe_sejour=COALESCE(NEW.taxe_sejour, OLD.taxe_sejour),commission=COALESCE(NEW.commission, OLD.commission)
+    WHERE id_reservation = OLD.id_reservation;
+    return NEW;
+	END;
+$BODY$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tg_update_reservation
+    INSTEAD OF UPDATE on reservation 
+    FOR EACH ROW
+    EXECUTE PROCEDURE update_reservation();
 
 COPY _token(cle_api)
 FROM '/docker-entrypoint-initdb.d/token.csv'
