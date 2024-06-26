@@ -10,7 +10,7 @@ const minPriceInput = document.getElementById("min-price");
 const maxPriceInput = document.getElementById("max-price");
 const accommodationTitleSearchContainer = document.getElementById("accommodation-title-search-container");
 let accommodationList = document.getElementById("accommodation-list");
-const paginationForm = document.getElementById("pagination");
+let paginationForm = document.getElementById("pagination");
 const leftButton = document.getElementById("left-pagination-button");
 const rightButton = document.getElementById("right-pagination-button");
 const compactSearchBar = document.getElementById("compact-search-bar");
@@ -20,6 +20,8 @@ const travelersInputCompact = document.getElementById("travelers-input-compact")
 let inputSearchBar = document.getElementById("search-input");
 let inputNumberOfTravelers = document.getElementById("travelers-number-input");
 let compactSearchBarButton = document.getElementById("compact-search-bar-button");
+let arrivalDateInput = document.getElementById("arrival-date-input");
+let departureDateInput = document.getElementById("departure-date-input");
 
 const accommodationPerPage = 10;
 let allResults;
@@ -30,12 +32,35 @@ let indiceDebut = (currentPage - 1) * accommodationPerPage;
 let selectedTowns = [];
 let selectedDepartments = [];
 let priceRange = []; // [price_min, price_max] 
- let stringEntered = "";
-// let arrivalSelected;
-// let departureSelected;
+let stringEntered = "";
+let arrivalSelected;
+let departureSelected;
 let travelersSelected = 1;
 
+const DEFAULT_LIMIT = 10;
+let page = 1;
+let limit = DEFAULT_LIMIT;
+
 document.addEventListener("DOMContentLoaded", () => {
+   const url = new URL(location);
+   const params = url.searchParams;
+   if(params.has("page")) {
+      try {page = parseInt(params.get("page"))} catch(e) {}
+   }
+
+   if(params.get("searchQuery")?.trim()) {
+      stringEntered = params.get("searchQuery");
+   }
+   if(params.get("arrivesOn")?.trim()) {
+      arrivalSelected = params.get("arrivesOn");
+   }
+   if(params.get("departureOn")?.trim()) {
+      departureSelected = params.get("departureOn");
+   }
+   if(params.has("travelersCount")) {
+      travelersSelected = parseInt(params.get("travelersCount"));
+   }
+
    refreshAccommodationsResults();
 
    clearAllFiltersButton.addEventListener("click", () => {
@@ -55,34 +80,71 @@ document.addEventListener("DOMContentLoaded", () => {
       attachSearchListener();
       searchOnClick();
       attachTravelersInputListener();
+      getArrivalDate();
+      getDepartureDate();
+      attachSearchListener(); 
+
    })
    dateInputCompact.addEventListener("focus", () => {
       compactSearchBar.innerHTML = "";
       renderFullSearchBar();
       searchOnClick();
       attachTravelersInputListener();
+      getArrivalDate();
+      getDepartureDate();
+      attachSearchListener(); 
+
    })
    travelersInputCompact.addEventListener("focus", () => {
       compactSearchBar.innerHTML = "";
       renderFullSearchBar();
       attachTravelersInputListener();
       searchOnClick();
+      getArrivalDate();
+      getDepartureDate();
+      attachSearchListener(); 
    })
-
-   attachSearchListener();
-   //attachTravelersInputListener();
 });
-
-
 
 /***************/
 /** FONCTIONS **/
 /***************/
 
+function getArrivalDate() {
+   arrivalDateInput = document.getElementById("arrival-date-input");
+   if (arrivalDateInput) {
+      arrivalDateInput.addEventListener("change", () => {
+         arrivalSelected = arrivalDateInput.value;
+         console.log(arrivalSelected);
+      })
+   }
+}
+
+function getDepartureDate() {
+   departureDateInput = document.getElementById("departure-date-input");
+   if (departureDateInput) {
+      departureDateInput.addEventListener("change", () => {
+         departureSelected = departureDateInput.value;
+      })
+   }
+}
+
 function searchOnClick() {
    compactSearchBarButton = document.getElementById("compact-search-bar-button");
    if (compactSearchBarButton) {
       compactSearchBarButton.addEventListener("click", () => {
+         if(arrivalSelected && departureSelected) {
+            const arrivesOn = (new Date(arrivalSelected)).getTime();
+            const departureOn = (new Date(departureSelected)).getTime();
+            if(departureOn < arrivesOn) {
+               window.notify(
+                  "ERROR",
+                  "La date d'arrivée ne peut pas être supérieure à celle de départ.",
+                  true
+               );
+               return;
+            }
+         }
          refreshAccommodationsResults();
       }, false);
    }
@@ -93,7 +155,7 @@ function attachSearchListener() {
    if (inputSearchBar) {
       inputSearchBar.addEventListener("input", () => {
          stringEntered = (inputSearchBar.value).toLowerCase();
-      });
+      }, false);
    }
 }
 
@@ -116,17 +178,29 @@ function renderFullSearchBar() {
 
    const arrivalDateInput = document.createElement('input');
    arrivalDateInput.placeholder = 'Arrivée';
+   arrivalDateInput.id = 'arrival-date-input';
    arrivalDateInput.className = 'arrival-date-input';
    arrivalDateInput.type = 'text';
-   arrivalDateInput.onfocus = function() { this.type = 'date'; };
-   arrivalDateInput.onblur = function() { this.type = 'text'; };
+   arrivalDateInput.onfocus = function() { 
+      this.type = 'date'; 
+   };
+   arrivalDateInput.onblur = function() { 
+      this.type = 'text'; 
+      this.value = this.value.split("-").reverse().join("/");
+   };
 
    const departureDateInput = document.createElement('input');
    departureDateInput.placeholder = 'Départ';
+   departureDateInput.id = 'departure-date-input';
    departureDateInput.className = 'departure-date-input';
    departureDateInput.type = 'text';
-   departureDateInput.onfocus = function() { this.type = 'date'; };
-   departureDateInput.onblur = function() { this.type = 'text'; };
+   departureDateInput.onfocus = function() { 
+      this.type = 'date';
+   };
+   departureDateInput.onblur = function() { 
+      this.type = 'text';
+      this.value = this.value.split("-").reverse().join("/");
+   };
 
    const travelersNumberInput = document.createElement('input');
    travelersNumberInput.id = 'travelers-number-input';
@@ -166,14 +240,15 @@ function getPrices(priceInput, dataName) {
          renderNoResults(); // ne fonctionne pas pour le moment
       }
 
+      page = 1;
       refreshAccommodationsResults();
    });
 }
 
 /** Génère l'affichage du nombre de logements résultant de la recherche ("Logements (35)") */
-function updateAccommodationResultNumber(results) {
+function updateAccommodationResultNumber() {
    const accommodationResultsNumber = document.getElementById("accommodation-results-number");
-   let resultLength = results.length;
+   let resultLength = totalCount;
    
    if (accommodationResultsNumber === null) {
       let accommodationResultNumberH1 = document.createElement("h1");
@@ -208,7 +283,7 @@ function toggleCheckbox(selectedData, checkboxes, name) {
       checkbox.addEventListener("change", async ({ target }) => {
          const checkboxName = name === "dataset.postcode" ? target.dataset.postcode : target.name;
          target.checked ? addCheckboxFilter(selectedData, checkboxName) : removeCheckboxFilter(selectedData, checkboxName);
-
+         page = 1;
 
          refreshAccommodationsResults();
          // recharge la liste complète si toutes les cases sont décochées à la main
@@ -233,37 +308,34 @@ async function fetchData(url = "", data = {}) {
 /** Récupère les logements sélectionnés et met à jour la liste */ 
 async function refreshAccommodationsResults() {
    accommodationList.innerHTML = ""; // Empêche les logements de se cumuler à chaque nouvelle recherche
-   console.log(travelersSelected);
-   const accommodationResults = await fetchData("/controllers/accommodationsFilters.php", {
+   //console.log(travelersSelected);
+   const url = new URL(location);
+   url.searchParams.set("page", page);
+   history.pushState({}, null, url);
+
+   const {communes, items: accommodationResults, totalCount: total} = await fetchData("/controllers/accommodations/accommodationsFilters.php", {
       "towns": selectedTowns,
       "departments": selectedDepartments,
       "priceRange": priceRange,
       "stringSearch": stringEntered,
-      // "arrivalDate": arrivalSelected,
-      // "departureDate": departureSelected,
+      "arrivalDate": arrivalSelected,
+      "departureDate": departureSelected,
       "travelers": travelersSelected, 
+      "offset": (page-1)*limit,
+      "limit": limit
    });
-   accommodationResults ?
+   document.getElementById("pagination").style.display = "flex";
+   document.getElementById("no-accommodation-result-area").innerHTML = "";
+   total > 0 ?
       accommodationResults.forEach((accommodation) => {
          renderAccommodationList(accommodation);
       })
    : renderNoResults();
-
-// console.log("current : " , currentPage);
-
-//    let startIndex = (currentPage - 1) * accommodationPerPage + 1;
-//    let endIndex = currentPage * accommodationPerPage + 1;
-
-//    if (accommodationResults) {
-//       for (let i = startIndex; i < endIndex; i++) {
-//          renderAccommodationList(accommodationResults[i])
-//       } 
-//    } else {
-//       renderNoResults();
-//    }
+   totalCount = total;
    updateAccommodationResultNumber(accommodationResults);
+   renderCommunes(communes);
 
-   allResults = accommodationResults.length;
+   allResults = totalCount;
    totalPages = Math.ceil(allResults / accommodationPerPage);
 
    const buttons = document.querySelectorAll("#pagination > button:not(.action)");
@@ -271,20 +343,22 @@ async function refreshAccommodationsResults() {
       button.remove();
    }   
    renderPagination();
+   window.scrollTo(0, 0);
 }
 
 // PAGINATION ///////////////////////////////////////////////////////
 
 function goPrevPage() {
-   if (currentPage > 1) {
-      currentPage--;
+   if (page > 1) {
+      page--;
       refreshAccommodationsResults();
    }
+   console.log(page)
 }
 
 function goNextPage() {
-   if (currentPage < totalPages) {
-      currentPage++;
+   if (page < totalPages-1) {
+      page++;
       refreshAccommodationsResults();
    }
 }
@@ -302,18 +376,15 @@ function renderPagination() {
    }
    
    // BOUTON PRÉCÉDENT
-   if (currentPage == 1) {
-      leftButton.disabled = true;
-   }
+   leftButton.disabled = page <= 1;
+
    leftButton.value = `${ currentPage - 1 }`;
-   leftButton.addEventListener("click", () => {
-      goPrevPage();
-   });
+   leftButton.onclick = goPrevPage;
    
    // BOUTONS NUMÉROS DE PAGES
    for (let i = min; i <= max; i++) {
       let numberPageButtons = document.createElement("button");
-      numberPageButtons.className = i === currentPage ? "primary" : "secondary";
+      numberPageButtons.className = page === i ? "primary" : "secondary";
       //numberPageButtons.className = "number-pagination-buttons";
       numberPageButtons.name = "page";
       numberPageButtons.value = i;
@@ -322,20 +393,18 @@ function renderPagination() {
       let numberPage = document.createElement("span");
       numberPage.textContent = i;
       numberPageButtons.appendChild(numberPage);
-      numberPageButtons.addEventListener("click", () => {
-         //
-      });
+
+      numberPageButtons.onclick = () => {
+         page = i;
+         refreshAccommodationsResults();
+      }
    }
 
    // BOUTON SUIVANT
-   if (currentPage == totalPages) {
-      rightButton.disabled = true;
-   }
-   rightButton.value = `${ currentPage + 1 }`;
-   rightButton.addEventListener("click", () => {
-      goNextPage();
-   });
+   rightButton.disabled = page >= totalPages-1;
 
+   rightButton.value = `${ currentPage + 1 }`;
+   rightButton.onclick = goNextPage;
 }
 ///////////////////////////////////////////////////////////////////////// limit + offset
 
@@ -407,11 +476,11 @@ function renderAccommodationList(accommodation) {
    accommodationPriceContainer.appendChild(perNight);
 }
 
-// ⭕️ TODO CORRIGER LE CSS
+// ⭕️ TODO AJOUTER CSS
 function renderNoResults() {
-   let noResult = document.createElement("p");
-   noResult.textContent = "Désolé, aucun logement correspondant à votre recherche n'a été trouvé..."; //
-   accommodationList.appendChild(noResult);
+   document.getElementById("no-accommodation-result-area")
+      .insertAdjacentHTML("afterbegin", "<p>Désolé, aucun logement correspondant à votre recherche n'a été trouvé...</p>");
+   document.getElementById("pagination").style.display = "none";
 }
 
 /** Décoche toutes les cases cochées 
@@ -433,32 +502,46 @@ function emptyAllTextInputs() {
    }
 }
 
-// function closeOpenedMenu(menuToClose) {
-//    if (menuToClose.className === "displayed") {
-//       menuToClose.className = "hidden";
-//    }
-// }
-
 /** Retire tous les filtres et réinitialise les résultats des logements */
 function clearAllFilters() {
    selectedTowns = [];
    selectedDepartments = [];
    priceRange = [];
    stringEntered = "";
-   // let arrivalSelected;
-   // let departureSelected;
+   arrivalSelected = null;
+   departureSelected = null;
    travelersSelected = 1;
+   page = 1;
    
    // décocher toutes les checkboxes et vider les inputs
    // ⭕️ TODO GRISER SI AUCUN FILTRE ACTIF
    uncheckAllCheckboxes("town");
    uncheckAllCheckboxes("department");
    emptyAllTextInputs();
-   //closeOpenedMenu(cityList); // 🤔 CONSERVER ?
-
-   // ⭕️ REINITIALISER LES PRIX
 
    // réafficher tous les logements (réinitialiser)
    refreshAccommodationsResults();
 }
 
+
+/** CONTEXT FILTER AREA */
+function renderCommunes(communes) {
+   let cityList = document.getElementById("city-list");
+   cityList.innerHTML = "";
+   communes = [...new Set(communes)].sort((a, b) => b.localeCompare(a));
+   for(const commune of communes) {
+      cityList.insertAdjacentHTML("afterbegin", `
+         <li>
+            <input
+               type="checkbox"
+               class="town-checkboxes"  
+               id="${commune}" 
+               name="${commune}"
+            >
+            <label for="${commune}">
+               ${commune}
+            </label>
+         </li>
+      `);
+   }
+}

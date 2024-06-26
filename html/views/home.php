@@ -24,12 +24,21 @@
          </div>
          <div class="image"></div>
       </div>
+<<<<<<< Updated upstream
 
       <form id="search-bar">
          <input type="text" placeholder="Rechercher un séjour" class="search-input">
          <input placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
          <input placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
          <input type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
+=======
+      
+      <form id="search-bar" method="GET" action="/logements">
+         <input name="searchQuery" type="text" placeholder="Rechercher un séjour" class="search-input">
+         <input name="arrivesOn" placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input name="departureOn" placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input name="travelersCount" type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
+>>>>>>> Stashed changes
          <button class="is-disabled"><span class="mdi mdi-magnify"></span></button>
       </form>
       <form id="search-bar" class="responsive">

@@ -52,24 +52,24 @@
             <span id="city-chevron-up" class="mdi mdi-chevron-up" onclick="switchOpenClose('city-list', 'city-chevron-down', 'city-chevron-up')"></span>
          </div>
          <ul id="city-list" class="hidden">
-         <?php 
-            $cityArray = array();
-            foreach($allAccommodations as $accommodation) {
-               if (!in_array($accommodation->get("ville_adresse"), $cityArray)) {
-                  array_push($cityArray, $accommodation->get("ville_adresse"));
-               }
-            } 
-            sort($cityArray);
-            foreach($cityArray as $city) {?>
-               <li>
-                  <input 
-                     type="checkbox"
-                     class="town-checkboxes"  
-                     id="<?php echo $city; ?>" 
-                     name="<?php echo $city; ?>"/>
-                  <label for="<?php echo $city; ?>"><?php echo $city ?></label>
-               </li>
-            <?php } ?>
+            <?php 
+               $cityArray = array();
+               foreach($allAccommodations as $accommodation) {
+                  if (!in_array($accommodation->get("ville_adresse"), $cityArray)) {
+                     array_push($cityArray, $accommodation->get("ville_adresse"));
+                  }
+               } 
+               sort($cityArray);
+               foreach($cityArray as $city) {?>
+                  <li>
+                     <input 
+                        type="checkbox"
+                        class="town-checkboxes"  
+                        id="<?php echo $city; ?>" 
+                        name="<?php echo $city; ?>"/>
+                     <label for="<?php echo $city; ?>"><?php echo $city ?></label>
+                  </li>
+               <?php } ?>
          </ul>
       </section>
 
@@ -169,11 +169,11 @@
 
       <section id="accommodation-list">
       </section>
-      
-      <div>
+      <div id="no-accommodation-result-area"></div>
+
          <!-- ⭕️ TODO NE PAS AFFICHER SI AUCUN RÉSULTAT
                GÉRER ERREUR (MAUVAISE PAGE EN DUR DANS L'URL) -->
-         <form class="pagination" id="pagination">
+         <div class="pagination" id="pagination">
             <!-- Chevron de gauche -->
             <button class="secondary action" id="left-pagination-button" name="page">
                <span class="mdi mdi-chevron-left"></span>
@@ -185,7 +185,7 @@
             <button class="secondary action" id="right-pagination-button" name="page">
                <span class="mdi mdi-chevron-right"></span>
             </button>
-         </form>
+         </div>
       </div>
    </section>
 </section>
