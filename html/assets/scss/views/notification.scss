@@ -32,13 +32,11 @@
         border-color: $primary-frontoffice-1;
         color: $primary-frontoffice-1;
     }
-
     &.error {
         background-color: $red-1-200;
         border-color: $red-1;
         color: $red-1;
     }
-
     &.warning {
         background-color: rgb(255, 233, 193);
         color: orange;
@@ -53,7 +51,6 @@
         from {
             right: -30em;
         }
-
         to {
             right: 1em;
         }

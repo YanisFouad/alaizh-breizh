@@ -39,10 +39,6 @@ if (UserSession::isConnected()) {
         $id_facture = intval($_GET['id']);
         if ($id_facture != 0) {
             $reservation = getReservation($id_facture);
-            echo '<pre>';
-            var_dump($reservation);
-            echo '</pre>';
-            die;
             if ($reservation != null) {
                 if(checkUser($reservation)) {
                     $logo = "data:image/svg+xml;base64," . base64_encode(file_get_contents(__DIR__ . "/../assets/images/logo/logo-alhaiz-breizh-fullsize.svg"));
@@ -60,29 +56,18 @@ if (UserSession::isConnected()) {
                     $date_depart = date('d/m/Y', strtotime($reservation->get("date_depart")));
                     $nb_nuit = $reservation->get("nb_nuit");
                     $nb_voyageur = $reservation->get("nb_voyageur");
-                    $prix_nuitee_ht =(float) $reservation->get("prix_nuitee");
-                    $prix_total_nuitee_ht = (float)$prix_nuitee_ht * $nb_nuit;
-
-                    $tvaNuit = (int) 1 + $reservation->get("tva_nuits") / 100;
-                    $prix_total_nuitee_ttc =(float) $prix_nuitee_ht * $nb_nuit * $tvaNuit;
-                    $prix_total = (float)$reservation->get("prix_total");
-
-                    $commission = (int) $reservation->get("commission") / 100;
-                    $tvaFraisService = (int) 1 +  $reservation->get("tva_taxe_sejour") / 100;
-
-                    $total_frais_service_ttc = (float) $prix_total_nuitee_ht * $commission * $tvaFraisService;
-                    $total_frais_service_ht = (float) $prix_total_nuitee_ht * $commission;
-                    
+                    $prix_nuitee_ht = number_format((float)$reservation->get("prix_nuitee_ttc") * 0.9, 2, ',', ' ');
+                    $prix_total_nuitee_ht = number_format((float)$prix_nuitee_ht * $nb_nuit, 2, ',', ' ');;
+                    $prix_total_nuitee_ttc = number_format((float)$reservation->get("prix_nuitee_ttc") * $nb_nuit, 2, ',', ' ');;
+                    $prix_total = number_format((float)$reservation->get("prix_total"), 2, ',', ' ');;
+                    $frais_de_service = number_format((float)$reservation->get("frais_de_service"), 2, ',', ' ');;
+                    $est_payee = $reservation->get("est_payee");
                     $nb_voyageur = $reservation->get("nb_voyageur");
-
-                    $tvaTaxeSejour = (int) $reservation->get("taxe_sejour");
-                    
-                    $taxe_sejour = (float) $nb_voyageur * (float) $nb_nuit * $tvaTaxeSejour;
-                    
-                    $totalTTC = $prix_total_nuitee_ttc + $total_frais_service_ttc + $taxe_sejour;
-                    $totalHT = (float) $prix_total_nuitee_ht + (float) $total_frais_service_ht + (float) $taxe_sejour;
-                    $totalTVA = (float) $totalTTC - (float) $totalHT;
-                    
+                    $taxe_sejour = number_format((float) $nb_voyageur * (float) $nb_nuit, 2, ',', ' ');;
+                    $totalTTC = number_format((float) $prix_total_nuitee_ttc + (float) $frais_de_service + (float) $taxe_sejour, 2, ',', ' ');;
+                    $totalHT = number_format((float) $prix_total_nuitee_ht + (float) $frais_de_service + (float) $taxe_sejour, 2, ',', ' ');;
+                    $totalTVA = number_format((float) $totalTTC - (float) $totalHT, 2, ',', ' ');;
+    
                     ob_start();
                     include __DIR__ . "/../views/facture/template_facture.php";
     
