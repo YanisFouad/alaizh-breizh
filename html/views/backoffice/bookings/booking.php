@@ -132,7 +132,7 @@ require_once(__DIR__."/../layout/header.php");
             </div>
 
                 
-                <h3>Prix total: <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
+                <h3>Prix total : <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
         </article>
 
         <h2>

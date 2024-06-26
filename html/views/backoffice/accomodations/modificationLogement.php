@@ -127,7 +127,7 @@
                     <input type="number" id="surface_logement" min="9" value="<?echo htmlspecialchars($logement->get('surface_logement'), ENT_QUOTES, 'UTF-8');?>" name="surface_logement" />
                 </div>
                 <div class="form-field">
-                    <label for="max_personne_logement" class="required">Nombre de personne maximum</label>
+                    <label for="max_personne_logement" class="required">Nombre de personnes maximum</label>
                     <input type="number" id="max_personne_logement" min="1" value="<?echo $logement->get('max_personne_logement');?>" name="max_personne_logement" />
                 </div>
                 <div class="form-field">
@@ -154,7 +154,7 @@
 
             <div class="inline">
                 <div class="form-field address-number">
-                    <label for="numero" class="required">Numero</label>
+                    <label for="numero" class="required">Numéro</label>
                     <input min="1" value="<?echo $logement->get('numero');?>" type="number" id="numero" name="numero">
                 </div>
                 <div class="form-field address-name">
@@ -241,7 +241,7 @@
         </section>
 
         <section>
-            <h2>Prix et delais</h2>
+            <h2>Prix et délais</h2>
 
             <div class="form-field">
                 <label for="prix_ht_logement" class="required">Prix HT (en €)</label>
@@ -253,7 +253,7 @@
             </div>
 
             <div class="form-field">
-                <label for="duree_minimale_reservation" class="required">Durée minimal réservation</label>
+                <label for="duree_minimale_reservation" class="required">Durée minimale de réservation</label>
                 <input type="number" value="<?echo $logement->get('duree_minimale_reservation');?>" id="duree_minimale_reservation" name="duree_minimale_reservation" min="1">
             </div>
             <div class="form-field">
@@ -261,14 +261,14 @@
                 <input type="number" value="<?echo $logement->get('delais_minimum_reservation');?>" id="delais_minimum_reservation" name="delais_minimum_reservation" min="1">
             </div>
             <div class="form-field">
-                <label for="delais_prevenance" class="required">Delais de prevenance</label>
+                <label for="delais_prevenance" class="required">Délai de prévenance</label>
                 <input type="number" value="<?echo $logement->get('delais_prevenance');?>" id="delais_prevenance" name="delais_prevenance" min="1">
             </div>
 
             <div class="error-message"></div>
             <footer>
-                <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>?notification-message=Votre logement à bien été modifié?notification-message=Erreur lors de la génération de la facture&notification-type=ERROR&notification-type=SUCCESS">
-                    <button type="button" class="secondary previous backoffice">Annuler</button>
+                <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>"> 
+                <button type="button" class="secondary previous backoffice">Annuler</button>
                 </a>
                 <button type="submit" class="primary backoffice">Modifier le logement</button>
             </footer>
