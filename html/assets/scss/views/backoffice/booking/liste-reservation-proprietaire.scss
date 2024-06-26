@@ -153,6 +153,11 @@
 
         .non-souligne{
             all:unset;
+            &:hover{
+                article {
+                    background-color: $gray-4;
+                }
+            }
         }
             
         // Ligne d'un logement

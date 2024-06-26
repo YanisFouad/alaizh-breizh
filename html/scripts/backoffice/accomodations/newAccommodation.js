@@ -179,3 +179,59 @@ document.getElementById("prix_ht_logement").oninput = ({target}) => {
     const priceFormat = Intl.NumberFormat("fr-FR", {style: 'currency', currency: 'EUR'}).format(price);
     document.getElementById("price-ati").textContent = priceFormat;
 }
+
+
+// accommodation preview
+async function getURLFrom(file) {
+    return new Promise(resolve => {
+        const fileReader = new FileReader()
+        fileReader.readAsArrayBuffer(file)
+        fileReader.onload = function() {
+            const blob = new Blob([fileReader.result])
+            return resolve(URL.createObjectURL(blob, {type: "image/png"}));
+        }
+    })
+}
+
+document.getElementById("preview").onclick = async () => {
+    const form = new FormData(document.getElementById("new-accommodation-form"));
+    // remove activities & distances that hasn't been checked
+    for(const activity of Array.from(document.querySelectorAll(".activities>input"))) {
+        if(activity && !activity.checked) {
+            form.delete(activity.id);
+            const activityName = activity.id.replace("activity_", "");
+            form.delete(`distance_for_${activityName}`);
+        }
+    }
+
+    const result = {
+        activites: [],
+        amenagements: []
+    };
+    const entries = form.entries();
+
+    if(form.has("photo_logement")) {
+        form.set("photo_logement", await getURLFrom(form.get("photo_logement")));
+    }
+    
+    for(const [k, v] of entries) {
+        if(/^activity_/.test(k)) {
+            let perimetre;
+            const activity = k.replace(/^activity_/, "");
+            for(const [k2, v2] of entries) {
+                if(k2 === `distance_for_${activity}`) {
+                    perimetre = v2;
+                    break;
+                }
+            }
+            result.activites.push({ name: activity, ...perimetre&&{perimetre} });
+        } else if(/^layout_/.test(k)) {
+            result.amenagements.push({ name: k.replace(/^layout_/, "") });
+        } else {
+            result[k] = v;
+        }
+    }
+
+    const encodeData = btoa(encodeURI(JSON.stringify(result)))
+    window.open("/backoffice/previsualisation-logement?data="+encodeData, "_blank");
+}

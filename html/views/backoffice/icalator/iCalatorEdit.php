@@ -20,35 +20,35 @@ if (isset($_GET["key"])) {
     http_response_code(500);
 }
 
-if (isset($_POST)) {
-    if (isset($_POST["date-debut-souscription"]) && isset($_POST["date-fin-souscription"]) && isset($_POST["logements"])) {
-        try {
-            $apiKey = htmlspecialchars($_GET["key"]);
+if (!empty($_POST)) {
+    $apiKey = htmlspecialchars($_GET["key"]);
 
-            $calendar = ICalatorModel::findByKey($apiKey);
-            $calendar->set("start_date", $_POST["date-debut-souscription"]);
-            $calendar->set("end_date", $_POST["date-fin-souscription"]);
-            $calendar->set("id_compte", UserSession::get()->get("id_compte"));
-            $calendar->save();
+    $calendar = ICalatorModel::findByKey($apiKey);
+    $calendar->set("start_date", $_POST["date-debut-souscription"]);
+    $calendar->set("end_date", $_POST["date-fin-souscription"]);
+    $calendar->set("id_compte", UserSession::get()->get("id_compte"));
+    $calendar->save();
 
-            $logementsIcalator = LogementICalatorModel::findAllById($apiKey);
-            foreach ($logementsIcalator as $key => $logement) {
-                $logement = LogementICalatorModel::findOneByLogementIdAndKey($logement["id_logement"], $apiKey);
-                $logement->delete();
-            }
+    $logementsIcalator = LogementICalatorModel::findAllById($apiKey);
 
-            foreach ($_POST["logements"] as $logementId) {
-                $logementICalator = new LogementICalatorModel();
-                $logementICalator->set("id_logement", $logementId);
-                $logementICalator->set("cle_api", $calendar->get("cle_api"));
-                $logementICalator->save();
-            }
-
-            header("Location: /backoffice/calendrier/succes?key=" . $apiKey . "&action=edit");
-        } catch (\Throwable $th) {
-            http_response_code(500);
+    foreach ($logementsIcalator as $key => $logement) {
+        $logementModel = LogementICalatorModel::findOneByLogementIdAndKey($logement["id_logement"], $apiKey);
+        if ($logementModel) {
+            $logementModel->delete();
         }
     }
+
+    if ($logementsIcalator) {
+        foreach ($_POST["logements"] as $logementId) {
+            $logementICalator = new LogementICalatorModel();
+            $logementICalator->set("id_logement", $logementId);
+            $logementICalator->set("cle_api", $calendar->get("cle_api"));
+            $resLogement[] = $logementICalator;
+            $logementICalator->save();
+        }
+    }
+
+    header("Location: /backoffice/calendrier/succes?key=" . $apiKey . "&action=edit");
 }
 require_once(__DIR__ . "/../layout/header.php");
 ScriptLoader::load("icalator/iCalator.js");
@@ -86,13 +86,11 @@ ScriptLoader::load("icalator/iCalator.js");
                 }
             ?>
                 <div class="input-logement">
-                    <input type="checkbox" id="logement-<?= $logement["id_logement"] ?>" name="logements[]" value="<?= $logement["id_logement"] ?>" 
-                    <?php
-                    if(in_array($logement["id_logement"], array_column($logementIdsCalendar, "id_logement"))){
-                        echo "checked";
-                    }
-                    ?>
-                    >
+                    <input type="checkbox" id="logement-<?= $logement["id_logement"] ?>" name="logements[]" value="<?= $logement["id_logement"] ?>" <?php
+                                                                                                                                                    if (in_array($logement["id_logement"], array_column($logementIdsCalendar, "id_logement"))) {
+                                                                                                                                                        echo "checked";
+                                                                                                                                                    }
+                                                                                                                                                    ?>>
                     <label for="logement-<?= $logement["id_logement"] ?>" class="card-logement">
                         <div class="img-logement-container">
                             <img src="<?= FileLogement::get($logement["photo_logement"]) ?>" alt="Image Logement" class="img-logement">

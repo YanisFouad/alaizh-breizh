@@ -54,7 +54,7 @@ async function updateBookings() {
         bookings.forEach(booking => updateBooking(booking));
         window.notify(
             "SUCCESS",
-            "Liste mis à jour !",
+            "Liste mise à jour !",
             true
         );
 
