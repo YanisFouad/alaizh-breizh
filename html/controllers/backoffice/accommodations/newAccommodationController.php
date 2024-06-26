@@ -69,7 +69,7 @@ if(isset($_POST)) {
     try {
         $lastInsertedId = $accommodation->save("_logement_id_logement_seq");
 
-        $pictureName = $lastInsertedId . "_" . $insertedFields["type_logement"];
+        $pictureName = $lastInsertedId . "_" . $insertedFields["categorie_logement"];
         FileLogement::save($picture, $pictureName);
 
         sendResponse(["success" => true]);

@@ -35,7 +35,7 @@
       <form id="search-bar" class="responsive">
          <input disabled type="text" placeholder="Rechercher..." class="search-input">
          <input disabled placeholder="Date arrivée/départ" class="departure-arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-         <button disabled class="is-disabled"><span class="mdi mdi-magnify"></span></button>
+         <button><span class="mdi mdi-magnify"></span></button>
       </form>
    </div>
 

@@ -1129,6 +1129,7 @@ footer#foot-global nav a {
   margin: 25px;
 }
 
+/* HOME */
 main#home > .hero-header {
   height: 350px;
   position: relative;
@@ -1199,56 +1200,67 @@ main#home .accommodations > header > a {
   right: 2.5em;
   transform: translateY(-50%);
 }
-main#home .accommodations > section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
-  grid-gap: 10px;
-  margin-bottom: 2em;
-}
-main#home .accommodations > section > a {
-  text-decoration: none;
-}
-main#home .accommodations > section .item:hover > .img-container > img {
-  transform: scale(1.1);
-}
-main#home .accommodations > section .item > .img-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1em;
-}
-main#home .accommodations > section .item > .img-container > img {
-  width: 100%;
-  height: 15em;
-  object-fit: cover;
-  transition: all 0.5s ease;
-}
-main#home .accommodations > section .item > footer {
-  font-size: 0.9em;
-}
-main#home .accommodations > section .item > footer > h4.title {
-  max-width: 95%;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-main#home .accommodations > section .item > footer > h4.localization {
-  margin: 0.2em 0;
-  font-family: "comfortaa-regular";
-  color: #b6896c;
-  font-size: 1em;
-}
-main#home .accommodations > section .item > footer > h4.price {
-  font-family: "comfortaa-bold";
-  font-size: 1.1em;
-}
-main#home .accommodations > section .item > footer > h4.price > span:last-of-type {
-  font-size: 0.8em;
-}
 main#home .accommodations > footer > a > button {
   background-color: transparent;
   color: #222524;
   padding: unset;
   box-shadow: unset;
+}
+
+main#home .accommodations section,
+#accommodation-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
+  grid-gap: 10px;
+  margin-bottom: 2em;
+}
+main#home .accommodations section > a,
+#accommodation-list > a {
+  text-decoration: none;
+}
+main#home .accommodations section .item:hover > .img-container > img,
+#accommodation-list .item:hover > .img-container > img {
+  transform: scale(1.1);
+}
+main#home .accommodations section .item > .img-container,
+#accommodation-list .item > .img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1em;
+}
+main#home .accommodations section .item > .img-container > img,
+#accommodation-list .item > .img-container > img {
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+main#home .accommodations section .item > footer,
+#accommodation-list .item > footer {
+  font-size: 0.9em;
+}
+main#home .accommodations section .item > footer > h4.title,
+#accommodation-list .item > footer > h4.title {
+  max-width: 95%;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main#home .accommodations section .item > footer > h4.localization,
+#accommodation-list .item > footer > h4.localization {
+  margin: 0.2em 0;
+  font-family: "comfortaa-regular";
+  color: #b6896c;
+  font-size: 1em;
+}
+main#home .accommodations section .item > footer > h4.price,
+#accommodation-list .item > footer > h4.price {
+  font-family: "comfortaa-bold";
+  font-size: 1.1em;
+}
+main#home .accommodations section .item > footer > h4.price > span:last-of-type,
+#accommodation-list .item > footer > h4.price > span:last-of-type {
+  font-size: 0.8em;
 }
 
 @media screen and (max-width: 1040px) {
@@ -1285,6 +1297,131 @@ main#home .accommodations > footer > a > button {
     font-size: 1.2em !important;
   }
 }
+/* HOME */
+/** FILTERS */
+#filter-accommodation-container {
+  position: relative;
+}
+
+#filter-container {
+  border-right: 2px solid #eaeaea;
+  height: 100vh !important;
+  position: absolute !important;
+  transition: all 0.5s ease;
+  left: -20em;
+}
+#filter-container.extended {
+  left: 0;
+}
+
+#accommodation-list-container {
+  transition: all 0.5s ease;
+}
+
+#filter-container.extended ~ #accommodation-list-container {
+  margin-left: 20em;
+}
+
+#filter-container #clear-filters {
+  padding: 0.5em 1em;
+}
+
+@media screen and (max-width: 1170px) {
+  #accommodation-list-container > header {
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+}
+@media screen and (max-width: 909px) {
+  #filter-container {
+    position: fixed !important;
+    top: 0;
+    left: -50em;
+    z-index: 999;
+    background-color: white;
+  }
+  #filter-container.extended {
+    left: 0;
+  }
+  #validation-filter-button-container {
+    display: block !important;
+  }
+  #filter-container.extended ~ #accommodation-list-container {
+    margin-left: unset !important;
+  }
+}
+@media screen and (max-width: 584px) {
+  #accommodation-list-container {
+    padding: unset !important;
+    width: unset !important;
+  }
+  #accommodation-list-container > header {
+    margin: 1em;
+    justify-content: center !important;
+  }
+  #filter-sort-buttons-container {
+    justify-content: center;
+  }
+  #travelers-input-compact {
+    display: none;
+  }
+  #date-input-compact {
+    border-right: 2px solid #eaeaea;
+    border-top-right-radius: 1em !important;
+    border-bottom-right-radius: 1em !important;
+  }
+}
+@media screen and (max-width: 470px) {
+  #filter-sort-buttons-container {
+    flex-wrap: wrap;
+  }
+  #accommodation-list article.item {
+    width: 21em;
+  }
+}
+#filter-container .section {
+  margin: 1em 0;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #676767;
+}
+#filter-container .section > ul {
+  display: none;
+}
+#filter-container .section > ul.opened {
+  display: block;
+}
+#filter-container .section > h3 {
+  position: relative;
+  cursor: pointer;
+}
+#filter-container .section > h3 > .mdi {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#filter-container .section > .data {
+  margin-top: 0.5em;
+  list-style: none;
+}
+#filter-container .section > .data.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+#filter-container .section > .data > li {
+  margin: 0.5em 0;
+}
+
+#full-search-bar {
+  display: none;
+}
+
+#no-accommodation-result-area {
+  display: none;
+}
+
+/* END FILTERS */
 #home-page button {
   display: flex;
   align-items: center;
@@ -1353,8 +1490,7 @@ main#home .accommodations > footer > a > button {
   width: auto;
 }
 #search-bar button {
-  background-color: gray;
-  cursor: not-allowed;
+  background-color: #1b5734 !important;
   padding: 1em;
 }
 #search-bar .mdi-magnify {
@@ -1650,8 +1786,8 @@ abbr[title] {
   width: 150px;
 }
 .compact-search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
+  background-color: #1b5734 !important;
+  padding: 1em !important;
 }
 .compact-search-bar .mdi-magnify {
   color: white;
@@ -1678,7 +1814,12 @@ abbr[title] {
   flex-direction: column;
   width: 100%;
   padding: 2.5em;
-  border-left: solid 2px #eaeaea;
+}
+#accommodation-list-container > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.5em;
 }
 
 .pagination {
@@ -1717,6 +1858,7 @@ abbr[title] {
   }
   #filter-container {
     min-width: 100%;
+    height: 107vh !important;
   }
   #filter-container #validation-filter-button-container {
     display: flex;
@@ -1958,16 +2100,7 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire {
   margin: 2em 0;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
-  all: unset;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne {
-  all: unset;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne:hover article {
-  background-color: #f7f7f7;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
   border: solid #804e2e 1px;
   border-radius: 20px;
@@ -2261,10 +2394,9 @@ abbr[title] {
   all: unset;
   width: 100%;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .non-souligne:hover article {
-  background-color: #f7f7f7;
-}
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement {
+  display: flex;
+  align-items: center;
   margin: 1.5em 0;
   border: solid #1b5734 1px;
   border-radius: 20px;
@@ -3365,6 +3497,7 @@ header#backoffice > aside > span.owner {
   margin-right: 5px;
 }
 
+/* HOME */
 main#home > .hero-header {
   height: 350px;
   position: relative;
@@ -3435,56 +3568,67 @@ main#home .accommodations > header > a {
   right: 2.5em;
   transform: translateY(-50%);
 }
-main#home .accommodations > section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
-  grid-gap: 10px;
-  margin-bottom: 2em;
-}
-main#home .accommodations > section > a {
-  text-decoration: none;
-}
-main#home .accommodations > section .item:hover > .img-container > img {
-  transform: scale(1.1);
-}
-main#home .accommodations > section .item > .img-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1em;
-}
-main#home .accommodations > section .item > .img-container > img {
-  width: 100%;
-  height: 15em;
-  object-fit: cover;
-  transition: all 0.5s ease;
-}
-main#home .accommodations > section .item > footer {
-  font-size: 0.9em;
-}
-main#home .accommodations > section .item > footer > h4.title {
-  max-width: 95%;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-main#home .accommodations > section .item > footer > h4.localization {
-  margin: 0.2em 0;
-  font-family: "comfortaa-regular";
-  color: #b6896c;
-  font-size: 1em;
-}
-main#home .accommodations > section .item > footer > h4.price {
-  font-family: "comfortaa-bold";
-  font-size: 1.1em;
-}
-main#home .accommodations > section .item > footer > h4.price > span:last-of-type {
-  font-size: 0.8em;
-}
 main#home .accommodations > footer > a > button {
   background-color: transparent;
   color: #222524;
   padding: unset;
   box-shadow: unset;
+}
+
+main#home .accommodations section,
+#accommodation-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
+  grid-gap: 10px;
+  margin-bottom: 2em;
+}
+main#home .accommodations section > a,
+#accommodation-list > a {
+  text-decoration: none;
+}
+main#home .accommodations section .item:hover > .img-container > img,
+#accommodation-list .item:hover > .img-container > img {
+  transform: scale(1.1);
+}
+main#home .accommodations section .item > .img-container,
+#accommodation-list .item > .img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1em;
+}
+main#home .accommodations section .item > .img-container > img,
+#accommodation-list .item > .img-container > img {
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+main#home .accommodations section .item > footer,
+#accommodation-list .item > footer {
+  font-size: 0.9em;
+}
+main#home .accommodations section .item > footer > h4.title,
+#accommodation-list .item > footer > h4.title {
+  max-width: 95%;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main#home .accommodations section .item > footer > h4.localization,
+#accommodation-list .item > footer > h4.localization {
+  margin: 0.2em 0;
+  font-family: "comfortaa-regular";
+  color: #b6896c;
+  font-size: 1em;
+}
+main#home .accommodations section .item > footer > h4.price,
+#accommodation-list .item > footer > h4.price {
+  font-family: "comfortaa-bold";
+  font-size: 1.1em;
+}
+main#home .accommodations section .item > footer > h4.price > span:last-of-type,
+#accommodation-list .item > footer > h4.price > span:last-of-type {
+  font-size: 0.8em;
 }
 
 @media screen and (max-width: 1040px) {
@@ -3521,6 +3665,131 @@ main#home .accommodations > footer > a > button {
     font-size: 1.2em !important;
   }
 }
+/* HOME */
+/** FILTERS */
+#filter-accommodation-container {
+  position: relative;
+}
+
+#filter-container {
+  border-right: 2px solid #eaeaea;
+  height: 100vh !important;
+  position: absolute !important;
+  transition: all 0.5s ease;
+  left: -20em;
+}
+#filter-container.extended {
+  left: 0;
+}
+
+#accommodation-list-container {
+  transition: all 0.5s ease;
+}
+
+#filter-container.extended ~ #accommodation-list-container {
+  margin-left: 20em;
+}
+
+#filter-container #clear-filters {
+  padding: 0.5em 1em;
+}
+
+@media screen and (max-width: 1170px) {
+  #accommodation-list-container > header {
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+}
+@media screen and (max-width: 909px) {
+  #filter-container {
+    position: fixed !important;
+    top: 0;
+    left: -50em;
+    z-index: 999;
+    background-color: white;
+  }
+  #filter-container.extended {
+    left: 0;
+  }
+  #validation-filter-button-container {
+    display: block !important;
+  }
+  #filter-container.extended ~ #accommodation-list-container {
+    margin-left: unset !important;
+  }
+}
+@media screen and (max-width: 584px) {
+  #accommodation-list-container {
+    padding: unset !important;
+    width: unset !important;
+  }
+  #accommodation-list-container > header {
+    margin: 1em;
+    justify-content: center !important;
+  }
+  #filter-sort-buttons-container {
+    justify-content: center;
+  }
+  #travelers-input-compact {
+    display: none;
+  }
+  #date-input-compact {
+    border-right: 2px solid #eaeaea;
+    border-top-right-radius: 1em !important;
+    border-bottom-right-radius: 1em !important;
+  }
+}
+@media screen and (max-width: 470px) {
+  #filter-sort-buttons-container {
+    flex-wrap: wrap;
+  }
+  #accommodation-list article.item {
+    width: 21em;
+  }
+}
+#filter-container .section {
+  margin: 1em 0;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #676767;
+}
+#filter-container .section > ul {
+  display: none;
+}
+#filter-container .section > ul.opened {
+  display: block;
+}
+#filter-container .section > h3 {
+  position: relative;
+  cursor: pointer;
+}
+#filter-container .section > h3 > .mdi {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#filter-container .section > .data {
+  margin-top: 0.5em;
+  list-style: none;
+}
+#filter-container .section > .data.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+#filter-container .section > .data > li {
+  margin: 0.5em 0;
+}
+
+#full-search-bar {
+  display: none;
+}
+
+#no-accommodation-result-area {
+  display: none;
+}
+
+/* END FILTERS */
 #home-page button {
   display: flex;
   align-items: center;
@@ -3589,8 +3858,7 @@ main#home .accommodations > footer > a > button {
   width: auto;
 }
 #search-bar button {
-  background-color: gray;
-  cursor: not-allowed;
+  background-color: #1b5734 !important;
   padding: 1em;
 }
 #search-bar .mdi-magnify {
@@ -3886,8 +4154,8 @@ abbr[title] {
   width: 150px;
 }
 .compact-search-bar button {
-  background-color: #1b5734;
-  padding: 1em;
+  background-color: #1b5734 !important;
+  padding: 1em !important;
 }
 .compact-search-bar .mdi-magnify {
   color: white;
@@ -3914,7 +4182,12 @@ abbr[title] {
   flex-direction: column;
   width: 100%;
   padding: 2.5em;
-  border-left: solid 2px #eaeaea;
+}
+#accommodation-list-container > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.5em;
 }
 
 .pagination {
@@ -3953,6 +4226,7 @@ abbr[title] {
   }
   #filter-container {
     min-width: 100%;
+    height: 107vh !important;
   }
   #filter-container #validation-filter-button-container {
     display: flex;
@@ -3978,7 +4252,7 @@ abbr[title] {
   width: 58em;
   margin: auto;
 }
-#new-accommodation > button.back {
+#new-accommodation > a > button.back {
   font-size: 1em;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -4169,7 +4443,7 @@ abbr[title] {
   width: 58em;
   margin: auto;
 }
-#modification-logement > button.back {
+#modification-logement > a > button.back {
   font-size: 1em;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -4191,9 +4465,12 @@ abbr[title] {
   display: flex;
   margin: auto;
   border-radius: 15px;
+  overflow: hidden;
 }
 #modification-logement > form > section #image_logement {
-  background-size: cover;
+  background-size: cover !important;
+  background-position: center !important; /* L'image est centrée */
+  background-repeat: no-repeat !important; /* L'image ne se répète pas */
   height: 100%;
   width: 100%;
   position: relative;
@@ -4592,17 +4869,12 @@ h5 {
   align-items: center;
   margin-top: 1em;
 }
-#mainProprietaireLogement #menu #modifierLogement {
-  text-decoration: none;
-  margin-right: 2em;
-  margin-top: 1em;
-}
 #mainProprietaireLogement #page {
   margin: auto;
   margin-top: 2em;
-  max-width: 80%;
+  width: 95%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 #mainProprietaireLogement #page h3 {
   color: #424645;
@@ -4625,12 +4897,11 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-  height: 60%;
-  width: 60%;
-  min-width: 30em;
-  min-height: 30em;
+  width: 50%;
   display: flex;
   align-items: center;
+  max-height: 25em;
+  max-width: 35em;
   justify-items: center;
 }
 @media screen and (max-width: 800px) {
@@ -4652,6 +4923,7 @@ h5 {
 #mainProprietaireLogement #block-intro {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -4660,6 +4932,7 @@ h5 {
   }
 }
 #mainProprietaireLogement #block-intro #intro {
+  width: 45%;
   margin-left: 2.2em;
 }
 #mainProprietaireLogement #block-intro #titre {
@@ -4687,7 +4960,7 @@ h5 {
 #mainProprietaireLogement #caracteristiques-logement ul {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1.5fr 1fr;
   place-items: center start;
   margin-top: 1.6em;
   border: solid 1px #eaeaea;
@@ -4699,7 +4972,7 @@ h5 {
   border-radius: 14.5px;
   width: fit-content;
   padding: 5px 10px 5px 10px;
-  margin: 0.2em 0;
+  margin: 0.2em 12px;
 }
 #mainProprietaireLogement #description h3 {
   color: #676767;
@@ -4759,6 +5032,13 @@ h5 {
 #mainProprietaireLogement #box-Activites-Amenagement ul li span {
   font-size: 1.8em;
   color: #424645;
+}
+#mainProprietaireLogement #modifierLogement {
+  text-decoration: none;
+  position: sticky;
+  float: right;
+  bottom: 1em;
+  margin-bottom: 1em;
 }
 
 #backoffice-registration {
