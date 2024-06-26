@@ -1757,10 +1757,15 @@ abbr[title] {
   /* Filtre,Oeil facture ,export*/
   /******************************/
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -1784,7 +1789,13 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
   all: unset;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne {
+  all: unset;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne:hover article {
+  background-color: #f7f7f7;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
   padding: 0.7em 0.7em;
   display: flex;
@@ -1796,19 +1807,19 @@ abbr[title] {
   box-shadow: 0px 0px 2px #804e2e;
   cursor: pointer;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div {
     width: 100%;
     justify-content: flex-start;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div #img-container {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -1817,7 +1828,7 @@ abbr[title] {
   border-radius: 10%;
   margin-right: 1em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div #img-container img {
   width: 100%;
   height: 100%;
   border-radius: 10%;
@@ -1825,76 +1836,76 @@ abbr[title] {
   object-position: center;
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div #img-container {
     width: 100%;
     height: unset;
     border-radius: 10px;
     margin-right: 0;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div #img-container img {
     border-radius: 10px;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h4 {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div h4 {
   font-size: 15px;
   font-family: "poppins-light";
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h5 {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div h5 {
   font-size: 12px;
   font-family: "poppins-light";
   color: #676767;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement {
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement {
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement div {
     flex-direction: column;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 1.2em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
   padding: 0.55em 0.85em;
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     gap: 0;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
     width: 100%;
   }
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
   margin-left: 0.2em;
   color: white;
   font-size: 100px;
 }
-#liste-reservation-proprietaire-main .pagination {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination {
   display: flex;
   justify-content: center;
   gap: 0.75em;
@@ -1902,20 +1913,21 @@ abbr[title] {
   font-family: "comfortaa-bold";
   margin-bottom: 2.5em;
 }
-#liste-reservation-proprietaire-main .pagination button {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button {
   width: 3.3em;
   height: 3.3em;
   border-color: #804e2e;
   color: #804e2e;
 }
-#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:not(:disabled):hover,
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button .bouton-select, #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:focus {
   background-color: #804e2e;
   color: white !important;
 }
-#liste-reservation-proprietaire-main .pagination button .mdi {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button .mdi {
   font-size: 1.7em;
 }
-#liste-reservation-proprietaire-main .pagination .bouton-select {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination .bouton-select {
   background-color: #804e2e;
   color: white;
 }
@@ -2046,6 +2058,9 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .non-souligne {
   all: unset;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .non-souligne:hover article {
+  background-color: #f7f7f7;
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
   margin: 1.5em 0;
@@ -4012,8 +4027,10 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-  height: 30em;
-  width: 45em;
+  height: 60%;
+  width: 60%;
+  min-width: 30em;
+  min-height: 30em;
   display: flex;
   align-items: center;
   justify-items: center;
@@ -4036,6 +4053,7 @@ h5 {
 }
 #mainProprietaireLogement #block-intro {
   display: flex;
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -4188,13 +4206,12 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #424645;
-  opacity: 50%;
 }
 #backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
   top: 50%;
   left: 50%;
+  color: black;
   transform: translate(-50%, -50%);
   font-size: 3em;
 }
@@ -4828,8 +4845,6 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #424645;
-  opacity: 50%;
 }
 .inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
