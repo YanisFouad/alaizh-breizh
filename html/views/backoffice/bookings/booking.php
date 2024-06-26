@@ -71,8 +71,8 @@ require_once(__DIR__."/../layout/header.php");
                         <p>Adresse mail : <?= $controller->getLocataire()->get("mail") ?></p>
                     </div>
                 </div>
-                <a href="/backoffice/logements/details-logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
-                    <button class="primary">
+                <a href="/backoffice/logement/?id_logement=<?= $controller->getLogement()->get("id_logement") ?>">
+                    <button class="primary backoffice">
                         Accéder à l'annonce
                         <span class="mdi mdi-chevron-right"></span>
                     </button>
@@ -130,17 +130,9 @@ require_once(__DIR__."/../layout/header.php");
                     ?>
                     
             </div>
-            <?php
-            if(strlen(explode(".", $controller->getReservation()->get("prix_total"))[1]) == 1) { 
-                ?>
-                <h3>Prix total: <span><?= $controller->getReservation()->get("prix_total") . 0 ?> &#8364;</span></h3>
-                <?php
-            } else {
-                ?>
-                <h3>Prix total: <span><?= $controller->getReservation()->get("prix_total") ?> &#8364;</span></h3>
-                <?php
-            }
-            ?>
+
+                
+                <h3>Prix total: <span><?= number_format($controller->getReservation()->get("prix_total"), 2, ",", ' ') ?> &#8364;</span></h3>
         </article>
 
         <h2>
@@ -174,5 +166,12 @@ require_once(__DIR__."/../layout/header.php");
         </article>
     </div>
 </section>
+
+<a href="/backoffice/facture?id=<?= $controller->getReservation()->get("id_reservation") ?>"  target="_blank" id="btn-facture-detail">
+    <button class="primary backoffice btn-facture">
+        <span class="mdi mdi-eye-outline"></span>
+        Facture
+    </button>
+</a>
 
 <?php require_once("views/layout/footer.php"); ?>

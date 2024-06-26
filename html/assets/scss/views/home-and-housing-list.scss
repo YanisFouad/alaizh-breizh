@@ -97,7 +97,7 @@ main#home .accommodations {
       }
    }
 
-   // housings
+   // accommodations
    &>section {
       $grid-layout-gap: 10px;
       $grid-column-count: 5;
@@ -225,16 +225,16 @@ main#home .accommodations {
    }
 }
 
-.housing-container {
+.accommodation-container {
    display: flex;
    justify-content: center;
 }
 
-#home-page .mdi, #filter-housing-container .mdi {
+#home-page .mdi, #filter-accommodation-container .mdi {
    font-size: 1.5em;
 }
 
-#home-page a, #filter-housing-container a {
+#home-page a, #filter-accommodation-container a {
    text-decoration: none;
    &:visited {
       color: black;
@@ -318,7 +318,7 @@ main#home .accommodations {
    top: -4em;
 }
 
-.housing-list {
+#accommodation-list {
    display: grid;
    gap: 2em;
    grid-template-columns: repeat(auto-fit, 250px);
@@ -326,31 +326,24 @@ main#home .accommodations {
    justify-content: center;
 }
 
-.housing-image-item-container {
+.accommodation-image-item-container {
    width: 250px;
    height: 250px;
    background-color: $gray-3;
    border-radius: 1em;
-
-   position: relative;
-   overflow: hidden;
 }
 
-.housing-item {
-   &:hover img {
-      transform: scale(1.1);
-   }
+.accommodation-item {
    img {
       width: 100%;
       height: 100%; 
       object-fit: cover;
       border-radius: 1em;
-      transition: all .5s ease;
    }
-   h4, .housing-price-container {
+   h4, .accommodation-price-container {
       font-size: 14px;
    }
-   .housing-price {
+   .accommodation-price {
       font-family: "comfortaa-bold";
    }
    &:hover {
@@ -362,7 +355,7 @@ abbr[title] {
    text-decoration: none;
 }
 
-.housing-description-container {
+.accommodation-description-container {
    display: flex;
    align-items: end;
    justify-content: space-between;
@@ -370,7 +363,7 @@ abbr[title] {
    margin: .5em 0;
 }
 
-.housing-description {
+.accommodation-description {
    font-family: "comfortaa-bold";
    margin: 0 .5em 0 0;
    text-overflow: ellipsis;
@@ -378,7 +371,7 @@ abbr[title] {
    white-space: nowrap;
 }
 
-.housing-location-container {
+.accommodation-location-container {
    display: flex;
    align-items: center;
    gap: .5em;
@@ -391,14 +384,14 @@ abbr[title] {
    font-size: 1em;
 }
 
-.housing-location { 
+.accommodation-location { 
    font-family: "comfortaa-regular";
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;
 }
 
-.housing-price-container {
+.accommodation-price-container {
    display: flex;
    font-family: "comfortaa-regular";
    font-size: small;
@@ -426,7 +419,7 @@ abbr[title] {
 /*****************/
 
 @media (max-width: 431px) {
-#home-page, #filter-housing-container {
+#home-page, #filter-accommodation-container {
    min-width: inherit;
 }
    #search-bar {
@@ -458,7 +451,7 @@ abbr[title] {
       }
    }
 
-   #housing-list-title {
+   #accommodation-list-title {
       font-size: 1em;
       margin: 0 auto 1em auto;
    }
@@ -466,19 +459,19 @@ abbr[title] {
       display: none !important;
    }
 
-   .housing-list {
+   #accommodation-list {
       justify-content: center;
       grid-template-columns: 1fr;
    }
 
-   .housing-image-item-container {
+   .accommodation-image-item-container {
       width: 355px;
       height: 355px;
       background-color: $gray-3;
       border-radius: 1em;
    }
 
-   .housing-description-container {
+   .accommodation-description-container {
       width: 355px;
    }
 
@@ -487,7 +480,7 @@ abbr[title] {
       justify-content: center;
    }
 
-   #housing-list-container .show-all-button {
+   #accommodation-list-container .show-all-button {
       display: none;
    }
 
@@ -508,10 +501,10 @@ abbr[title] {
 }
 
 /***************************************/
-/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/* accommodation-LIST (A DEPLACER PLUS TARD) */
 /***************************************/
 
-#filter-housing-container {
+#filter-accommodation-container {
    display: flex;
 }
 
@@ -586,7 +579,7 @@ abbr[title] {
    padding: 0;
 }
 
-#housing-title-search-container {
+#accommodation-title-search-container {
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -643,11 +636,15 @@ abbr[title] {
    border-radius: 1em;
 }
 
-.housing-list {
+#accommodation-list {
    margin: 1em 0 2.5em 0;
 }
 
-#housing-list-container {
+#accommodation-list a {
+   text-decoration: none;
+}
+
+#accommodation-list-container {
    display: flex;
    flex-direction: column;
    width: 100%;
@@ -703,7 +700,7 @@ abbr[title] {
       }
    }
 
-   #housing-list-container {
+   #accommodation-list-container {
       padding: .5em;
       align-items: center;
    }

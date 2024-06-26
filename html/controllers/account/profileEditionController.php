@@ -56,8 +56,10 @@ if(isset($_POST) && isset($_POST["editProfile"])) {
         if($profilePicture) {
             $pictureName = $profile->get("id_compte");
             if($profile->get("accountType") === AccountType::TENANT->name) {
+                FileLocataire::delete($pictureName);
                 FileLocataire::save($profilePicture, $pictureName);
             } else {
+                FileProprietaire::delete($pictureName);
                 FileProprietaire::save($profilePicture, $pictureName);
             }
             $profile->set("photo_profil", $pictureName);

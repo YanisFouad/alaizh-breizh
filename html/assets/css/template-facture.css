@@ -1,0 +1,171 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 1.15em;
+}
+
+p,
+a {
+  color: #222524;
+  font-size: 1em;
+}
+
+#facture-body header {
+  display: flex;
+  justify-content: space-between;
+}
+#header-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#facture-body header .enterprise-container .logo-container {
+  margin-bottom: 20px;
+}
+#facture-body header .enterprise-container .logo-container img {
+  width: 300px;
+}
+#facture-body header .enterprise-container .enterprise-information .name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+#facture-body header .enterprise-container .enterprise-information .adresse {
+  margin-bottom: 15px;
+}
+#facture-body header .enterprise-container .enterprise-information .adresse p {
+  margin: 0;
+}
+#facture-body header .enterprise-container .enterprise-information .contact p {
+  margin: 0;
+}
+#facture-body header .logement-information-container {
+  margin-top: 38px;
+}
+#facture-body header .logement-information-container .client-information {
+  width: 100%;
+  margin-bottom: 2px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  text-align: left;
+}
+#facture-body header .logement-information-container .client-information p {
+  margin: 0;
+}
+#facture-body header .contact-container {
+  width: 30%;
+  text-align: right;
+}
+#facture-body header .contact-container .title {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #676767;
+  color: #676767;
+  margin-bottom: 20px;
+}
+#facture-body header .contact-container .facture-number {
+  margin-bottom: 15px;
+}
+#facture-body header .contact-container .facture-information {
+  margin-bottom: 15px;
+}
+#facture-body header .contact-container .facture-information p {
+  margin: 0;
+}
+#facture-body
+  header
+  .contact-container
+  .client-information-container
+  .client-information {
+  width: 100%;
+  margin-bottom: 2px;
+  background-color: #f7f7f7;
+  padding: 5px;
+  text-align: left;
+}
+#facture-body
+  header
+  .contact-container
+  .client-information-container
+  .client-information
+  p {
+  margin: 5px;
+}
+#facture-body .facture-price-section {
+  width: 100%;
+  margin: 75px 0;
+}
+#facture-body .facture-price-section .facture-price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#facture-body .facture-price-section .facture-price-table p {
+  margin: 10px;
+}
+#facture-body .facture-price-section .facture-price-table thead {
+  background-color: #f7f7f7;
+  color: #676767;
+}
+#facture-body .facture-price-section .facture-price-table thead th {
+  padding: 5px;
+  border: 1px solid #676767;
+}
+#facture-body .facture-price-section .facture-price-table td {
+  padding: 5px;
+  border: 1px solid #676767;
+}
+#facture-body
+  .facture-price-section
+  .facture-price-table
+  .table-row-description {
+  width: 70%;
+}
+#facture-body .facture-price-section .facture-price-table .table-row-price {
+  width: 30%;
+}
+#facture-body .facture-price-section .facture-total-price {
+  width: 30%;
+  margin-top: 20px;
+  text-align: left;
+  border-collapse: collapse;
+}
+#facture-body .facture-price-section .facture-total-price p {
+  margin: 10px;
+}
+#facture-body .facture-price-section .facture-total-price th {
+  padding: 5px;
+  background-color: #f7f7f7;
+  border: 1px solid #676767;
+}
+#facture-body .facture-price-section .facture-total-price td {
+  padding: 5px;
+  border: 1px solid #676767;
+}
+#facture-body footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f7f7f7;
+  color: #676767;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

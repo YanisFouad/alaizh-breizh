@@ -17,6 +17,7 @@ body {
    position: relative;
 
    min-height: 100vh;
+   padding-bottom: 5em;
 }
 
 h1,
@@ -89,6 +90,7 @@ a {
 @import "views/home-and-housing-list.scss";
 
 @import "views/backoffice/accomodations/new-accommodation.scss";
+@import "views/backoffice/accomodations/modification-logement.scss";
 
 @import "views/backoffice/accomodations/details-logement-proprietaire";
 @import "views/backoffice/account/profile.scss";

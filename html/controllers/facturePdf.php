@@ -4,6 +4,7 @@ require_once(__DIR__ . "/../vendor/autoload.php");
 require_once(__DIR__ . "/../services/session/UserSession.php");
 require_once(__DIR__ . "/../models/BookingModel.php");
 require_once(__DIR__ . "/../models/AccountModel.php");
+require_once(__DIR__ . "/../models/AccommodationModel.php");
 
 use mikehaertl\wkhtmlto\Pdf;
 
@@ -43,17 +44,17 @@ if (UserSession::isConnected()) {
             if ($reservation != null) {
                 if (checkUser($reservation)) {
                     $logo = "data:image/svg+xml;base64," . base64_encode(file_get_contents(__DIR__ . "/../assets/images/logo/logo-alhaiz-breizh-fullsize.svg"));
-                    
+
                     $user = AccountModel::findOneById($reservation->get("id_locataire"));
                     $userId = $user->get("id_compte");
                     $user_display_name = $user->get("prenom") . " " . $user->get("nom");
-                    
+
                     $adresseLocataire = RequestBuilder::select("_adresse")
                         ->projection("*")
                         ->where("id_adresse = ?", $user->get("id_adresse"))
                         ->execute()
                         ->fetchOne();
-                    
+
                     $rue_adresse = $adresseLocataire["numero"] . $adresseLocataire["complement_numero"] . ', ' . $adresseLocataire['rue_adresse'];
                     $ville_adresse = $adresseLocataire["code_postal_adresse"] . ' ' . $adresseLocataire['ville_adresse'];
                     $pays_adresse = $adresseLocataire["pays_adresse"];
@@ -80,19 +81,16 @@ if (UserSession::isConnected()) {
 
                     $reservation_nb_voyageur = $reservation->get("nb_voyageur");
 
-                    // $adresseLogement = RequestBuilder::select("_adresse")
-                    //     ->projection("*")
-                    //     ->where("id_adresse = ?", $reservation->get("id_adresse"))
-                    //     ->execute()
-                    //     ->fetchOne();
+                    $logementModel = AccommodationModel::findOneById($reservation->get("id_logement"));
+                    $adresseLogement = RequestBuilder::select("_adresse")
+                        ->projection("*")
+                        ->where("id_adresse = ?", $logementModel->get("id_adresse"))
+                        ->execute()
+                        ->fetchOne();
 
-                    //     echo '<pre>';
-                    //     var_dump($adresseLogement);
-                    //     echo '</pre>';
-                    //     die;
-                    $reservation_rue_adresse = $reservation->get("numero") . $reservation->get("complement_numero") . ', ' . $reservation->get('rue_adresse');
-                    $reservation_ville_adresse = $reservation->get("code_postal_adresse") . ' ' . $reservation->get('ville_adresse');
-                    $reservation_pays_adresse = $reservation->get("pays_adresse");
+                    $reservation_rue_adresse = $adresseLogement["numero"] . $adresseLogement["complement_numero"] . ', ' . $adresseLogement['rue_adresse'];
+                    $reservation_ville_adresse = $adresseLogement["code_postal_adresse"] . ' ' . $adresseLogement['ville_adresse'];
+                    $reservation_pays_adresse = $adresseLogement["pays_adresse"];
 
                     $date_arrivee = date('d/m/Y', strtotime($reservation->get("date_arrivee")));
                     $date_depart = date('d/m/Y', strtotime($reservation->get("date_depart")));

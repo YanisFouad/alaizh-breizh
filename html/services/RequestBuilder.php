@@ -22,6 +22,8 @@ class RequestBuilder {
     private $whereClausures = array();
     private $fields = array();
     private $jointures = array();
+    private $exceptClausures = array();
+    private $groupByExpr;
 
     public function __construct($tableName, $method) {
         $this->tableName = $tableName;
@@ -79,6 +81,16 @@ class RequestBuilder {
         return $this;
     }
 
+    public function groupBy(...$fields) {
+        $this->groupByExpr = implode(",",$fields);
+        return $this;
+    } 
+
+    public function except($query, ...$data) {
+        $this->exceptClausures[$query] = $data;
+        return $this;
+    }
+
     public function set($field, $value) {
         if($this->method !== RequestType::UPDATE)
             throw new Exception("Invalid request type, only works with 'UPDATE' requests.");
@@ -125,6 +137,20 @@ class RequestBuilder {
                     $params[] = $d;
             }
             $query[] = join(" AND ", $clasures);
+        }
+
+        // build except clausures
+        if(count($this->exceptClausures) > 0) {
+            foreach($this->exceptClausures as $k => &$data) {
+                $query[] = "EXCEPT " . $k;
+                foreach($data as $d)
+                    $params[] = $d;
+            }
+        }
+
+        // group by expr
+        if(isset($this->groupByExpr)) {
+            $query[] = "GROUP BY " . $this->groupByExpr;
         }
 
         if($this->sort) {

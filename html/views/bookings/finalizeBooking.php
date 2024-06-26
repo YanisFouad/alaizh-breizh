@@ -6,20 +6,20 @@
     ScriptLoader::load("bookings/finalizeButton.js");
 
     if(!UserSession::isConnectedAsTenant()) {
-        header("Location: /#connection?redirectTo=finaliser-ma-reservation");
+        header("Location: /?redirectTo=finaliser-ma-reservation#connection");
         exit;
     }
 
     $session = PurchaseSession::get();
 
     if(!PurchaseSession::isDefined() || !isset($session["accommodationId"])) {
-        header("Location: /");
+        header("Location: /?notification-message=Données invalides, veuillez essayer à nouveau.&notification-type=ERROR");
         exit;
     }
 
     $accommodation = AccommodationModel::findOneById($session["accommodationId"]);
     if(!isset($accommodation)) {
-        header("Location: /");
+        header("Location: /?notification-message=Logement introuvable.&notification-type=ERROR");
         exit;
     }
 

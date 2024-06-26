@@ -3,7 +3,7 @@
    require_once(__DIR__."/../services/RequestBuilder.php");
    require_once(__DIR__."/../models/AccommodationModel.php");
 
-   $accomodations = AccommodationModel::find(0, 10, "*", true);
+   $accommodations = AccommodationModel::find(0, 10);
 
    function getDepartmentName($postCode) {
       $result = RequestBuilder::select("_departement")
@@ -24,13 +24,13 @@
          </div>
          <div class="image"></div>
       </div>
-
-      <form id="search-bar">
-         <input disabled type="text" placeholder="Rechercher un séjour" class="search-input">
-         <input disabled placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-         <input disabled placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-         <input disabled type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
-         <button disabled class="is-disabled"><span class="mdi mdi-magnify"></span></button>
+      
+      <form id="search-bar" method="GET" action="/logements">
+         <input name="searchQuery" type="text" placeholder="Rechercher un séjour" class="search-input">
+         <input name="arrivesOn" placeholder="Arrivée" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input name="departureOn" placeholder="Départ" class="departure-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+         <input name="travelersCount" type="text" placeholder="Nombre de voyageurs" class="travelers-number-input"/><!--<span class="mdi mdi-account"></span>-->
+         <button class="primary frontoffice"><span class="mdi mdi-magnify"></span></button>
       </form>
       <form id="search-bar" class="responsive">
          <input disabled type="text" placeholder="Rechercher..." class="search-input">
@@ -50,7 +50,7 @@
       </header>
 
       <section>
-         <?php foreach($accomodations as $accomodation) {?>
+         <?php foreach($accommodations as $accomodation) {?>
             <a href="/logement?id_logement=<?=$accomodation->get("id_logement")?>">
                <article class="item">
                   <div class="img-container">
