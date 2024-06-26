@@ -1,7 +1,7 @@
 <?php 
-    $logement_id = $_GET['id_logement'] ?? null;
+    $id_logement = $_GET['id_logement'] ?? null;
 
-    if(!isset($logement_id))
+    if(!isset($id_logement))
         exit(header("Location: /backoffice"));
     
     ScriptLoader::load("backoffice/accomodations/modificationAccomodation.js");
@@ -10,11 +10,9 @@
     require_once(__DIR__."/../../../models/AccommodationModel.php");
     require_once(__DIR__."/../../../services/RequestBuilder.php");
 
-    $logement_id = $_GET['id_logement'];
-    $logement = AccommodationModel::findOneById($logement_id);
+    $logement = AccommodationModel::findOneById($id_logement);
     $logement_layouts = [];
     $logement_activites = [];
-    $_POST["id_logement"]=$logement_id;
 
     //ajout des aménagements du logement
     foreach($logement->get('amenagements') as $key => $value) {
@@ -45,7 +43,6 @@
     $distances = ["Sur place", "Moins de 5km", "Moins de 20km", "20km ou plus"];
 
     // Fonction renvoie la distance de l'activité
-
     function distanceActivite($nom_activite,$liste_activite) {
         foreach ($liste_activite as $activity => $distance) {
             if (strtolower($activity) === $nom_activite) {
@@ -64,6 +61,7 @@
         </button>
     </a>
     <form onsubmit="handleForm(event)" method="POST">
+        <input type="hidden" id="id_logement" name="id_logement" value="<?=$id_logement?>">
         <section>
             <h2>Informations générales du logement</h2>
             <section>
@@ -142,9 +140,6 @@
                     <input type="number" id="nb_lits_doubles_logement" min="0" value="<?echo $logement->get('nb_lits_doubles_logement');?>" name="nb_lits_doubles_logement" />
                 </div>
             </div>
-            <!-- <footer>
-                <button type="button" class="primary next backoffice">Suivant</button>
-            </footer> -->
         </section>
 
         <section>
@@ -197,11 +192,6 @@
                     <input type="text" value="<?echo $logement->get('gps_longitude_logement');?>" id="gps_longitude_logement" name="gps_longitude_logement">
                 </div>
             </div>
-
-            <!-- <footer>
-                <button type="button" class="secondary previous backoffice">Précédent</button>
-                <button type="button" class="primary next backoffice">Suivant</button>
-            </footer> -->
         </section>
 
         <section>
@@ -249,11 +239,6 @@
                     <?php } ?>
                 </div>
             <?php } ?>
-
-            <!-- <footer>
-                <button type="button" class="secondary previous backoffice">Précédent</button>
-                <button type="button" class="primary next backoffice">Suivant</button>
-            </footer> -->
         </section>
 
         <section>
