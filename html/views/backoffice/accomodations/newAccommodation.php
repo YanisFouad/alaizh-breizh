@@ -60,7 +60,7 @@
                 <div class="form-field">
                     <label for="categorie_logement" class="required">Catégorie</label>
                     <select id="categorie_logement" name="categorie_logement">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($categories as $category) { ?>
                             <option value="<?=$category?>"><?=$category?></option>
                         <?php } ?>
@@ -69,16 +69,16 @@
                 <div class="form-field">
                     <label for="type_logement" class="required">Type</label>
                     <select id="type_logement" name="type_logement">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($types as $type) { ?>
                             <option value="<?=$type?>"><?=$type?></option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="form-field">
-                    <label for="classe_energetique" class="required">Classe énergitique</label>
+                    <label for="classe_energetique" class="required">Classe énergétique</label>
                     <select id="classe_energetique" name="classe_energetique">
-                        <option value="">choisissez</option>
+                        <option value="">Choisissez</option>
                         <?php foreach($energiticClasses as $clazz) { ?>
                             <option value="<?=$clazz?>"><?=$clazz?></option>
                         <?php } ?>

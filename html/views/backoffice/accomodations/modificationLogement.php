@@ -113,7 +113,7 @@
                     </select>
                 </div>
                 <div class="form-field">
-                    <label for="classe_energetique" class="required">Classe énergitique</label>
+                    <label for="classe_energetique" class="required">Classe énergétique</label>
                     <select id="classe_energetique" name="classe_energetique">
                         <?php foreach($energiticClasses as $clazz) { ?>
                             <option value="<?=$clazz?>" <?php if (strcasecmp($clazz,$logement->get('classe_energetique')) == 0) echo 'selected'; ?>>

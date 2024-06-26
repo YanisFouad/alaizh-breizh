@@ -159,7 +159,7 @@ function adresseToString($adresse) {
             <div>
                 <div>
                     <h4>Dates:</h4>
-                    <h4><?= getFormatDate($reservation->get("date_arrivee"))?> - <?= getFormatDate($reservation->get("date_depart"))?></h4>
+                    <h4><?= to_french_date($reservation->get("date_arrivee"))?> - <?= to_french_date($reservation->get("date_depart"))?></h4>
                 </div>
                 <div>
                     <h4>Voyageur(s):</h4>

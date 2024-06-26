@@ -26,6 +26,8 @@
             box-shadow: 0 4px 4px 0 rgba(162, 162, 162, .54);
 
             .close {
+                position: relative;
+                z-index: 5;
                 color: #aaa;
                 float: right;
                 font-size: 2em;
@@ -44,7 +46,6 @@
                 position: relative;
                 width: 100%;
                 font-size: 1.7em;
-                margin-top: 1em;
 
                 &>span {
                     display: block;
