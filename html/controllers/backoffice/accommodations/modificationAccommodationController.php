@@ -22,7 +22,7 @@ if(isset($_POST)) {
     $fields = [];
     // prevent from XSS
     foreach($_POST as $k => $v)
-        if($v)
+        //if($v)
             $fields[$k] = htmlentities($v);
 
     // add all empty fields here
@@ -31,11 +31,12 @@ if(isset($_POST)) {
         if(empty(trim($value)) && !in_array($field, $optionnalFields))
             $badFields[] = $field;
     }   
+    //var_dump($badFields);
 
     // if we have bad fields then print it
     if(count($badFields) > 0) {
         sendResponse([
-            "error" => "Certains champs sont incomplets." . count($badFields), 
+            "error" => "Certains champs sont incomplets. (" . count($badFields) . ")", 
             "fields" => $badFields
         ]);
     }
