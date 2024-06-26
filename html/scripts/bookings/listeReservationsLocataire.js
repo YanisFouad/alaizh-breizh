@@ -1,7 +1,7 @@
 const sortBtn = document.getElementById("sort-btn");
 let bookingList = document.getElementById("liste-reservation-locataire");
 
-const SORT_LABEL = "Trie par date d'arrivée ";
+const SORT_LABEL = "Tri par date d'arrivée ";
 
 const SortDir = {
     DESC: "DESC",

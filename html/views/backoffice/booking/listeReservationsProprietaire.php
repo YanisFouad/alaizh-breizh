@@ -20,7 +20,7 @@
     $profile = UserSession::get();
     $id_proprietaire = $profile->get("id_compte");
 
-    function trie_date($date1, $date2){
+    function tri_date($date1, $date2){
         if ($date1 == $date2) return 0;
         return ($date1 < $date2) ? -1 : 1;
     }
@@ -33,10 +33,10 @@
         $tab = $_GET['tab-form'];
     }
 
-    //Gestion du trie en cours (à repréciser)
-    $trie = "croissant";
-    if(isset($_GET['trie'])) {
-        $trie = $_GET['trie'];
+    //Gestion du tri en cours (à repréciser)
+    $tri = "croissant";
+    if(isset($_GET['tri'])) {
+        $tri = $_GET['tri'];
     }
 
     //**************************** */
@@ -110,7 +110,7 @@
 
     <!-- Onglets affichages des réservations -->
     <nav id="liste-reservation-proprietaire-onglet">
-        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriod("a_venir", $id_proprietaire)?>)</a>    
+        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">À venir (<?php echo BookingModel::countByPeriod("a_venir", $id_proprietaire)?>)</a>    
         <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriod("en_cours", $id_proprietaire)?>)</a>
         <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passées (<?php echo BookingModel::countByPeriod("passe", $id_proprietaire)?>)</a>
     </nav>
@@ -123,8 +123,8 @@
             Filtre
         </button>
 
-        <!-- Bouton trie -->
-        <!-- trie pas encore fonctionnel -->
+        <!-- Bouton tri -->
+        <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-proprietaire-flex-row liste-reservation-proprietaire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
             <span class="label"></span>
