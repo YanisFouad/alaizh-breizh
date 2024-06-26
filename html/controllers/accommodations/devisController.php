@@ -11,7 +11,7 @@ if(isset($_POST)) {
     $purcharseSession->set([
         "accommodationId" => $_POST["id_logement"],
         "nb_voyageurs" => $_POST["nb_voyageur"],
-        "total_ati" => $_POST["prix_total"],
+        "total_ati" => $_POST["prix_totalF"],
         "date_arrivee" => $_POST["date_arriveeNF"],
         "date_depart" => $_POST["date_departNF"]
     ]);
@@ -19,9 +19,7 @@ if(isset($_POST)) {
     $ajoutReservation = new BookingModel();
     $ajoutReservation->set("id_locataire", $idCompte);
     foreach($_POST as $key => $value){
-        if($key != "date_arriveeNF" && $key != "date_departNF"){
-            // echo $key;
-            // echo $value;
+        if($key != "date_arriveeNF" && $key != "date_departNF" && $key != "prix_totalF"){
             $ajoutReservation->set($key, $value);
         }
     }

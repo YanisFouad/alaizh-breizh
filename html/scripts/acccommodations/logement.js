@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     prixTTC = parseFloat(prixHTSejour) + parseFloat(prixTVA[0].textContent) + parseFloat(fraisDeService) + parseFloat(tvaFraisService.
       toFixed(2)) + parseFloat(taxeSejour.textContent);
-    prixTTCHtml.textContent = formatNombre(prixTTC);
+    prixTTCHtml.textContent = formatNombre(prixTTC); $
   }
 
   btn.onclick = function () {
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let prixTot = formatNombre(parseFloat(prixTTC));
 
-    handleDevis(valeur, dayDiff, dateArrivee.textContent, dateDepart.textContent, arriveeDate, departDate, parseFloat(fraisService[0].textContent), prixTot, prix.textContent);
+    handleDevis(valeur, dayDiff, dateArrivee.textContent, dateDepart.textContent, arriveeDate, departDate, parseFloat(fraisService[0].textContent), prixTTC.toFixed(2), prixTot, parseFloat(prix.textContent).toFixed(2));
   };
 });
 
@@ -296,7 +296,7 @@ function createErrorMessage(message, siblingElement) {
   siblingElement.insertAdjacentElement("afterend", errorMessageContainer);
 }
 
-async function handleDevis(nbVoyageurs, nbNuits, dateArrivee, dateDepart, dateArriveeF, dateDepartF, fraisService, prixTotal, prixNuit) {
+async function handleDevis(nbVoyageurs, nbNuits, dateArrivee, dateDepart, dateArriveeF, dateDepartF, fraisService, prixTotal, prixTotalF, prixNuit) {
   try {
     const formData = new FormData();
     formData.append("nb_voyageur", nbVoyageurs);
@@ -307,6 +307,7 @@ async function handleDevis(nbVoyageurs, nbNuits, dateArrivee, dateDepart, dateAr
     formData.append("date_depart", dateDepartF);
     formData.append("frais_de_service", fraisService);
     formData.append("prix_total", prixTotal);
+    formData.append("prix_totalF", prixTotalF);
     formData.append("prix_nuitee", prixNuit);
     formData.append("id_logement", document.getElementById("id_logement")?.value);
     const response = await fetch(`/controllers/accommodations/devisController.php`, {

@@ -65,20 +65,6 @@
 <main id="liste-reservation-locataire-main">
     <div id="liste-reservation-locataire-entete">
         <h1>Mes réservations</h1>
-
-        <!--Rechercher une réservation-->
-        <div class="liste-reservation-locataire-recherche">
-
-            <div>
-                <!-- Textarea Rechercher -->
-                <textarea id="inputRechercher" name="inputRechercher" autocomplete="on" rows="1" disabled >Rechercher...</textarea>
-                <!-- Textarea date -->
-                <textarea id="inputDateReservations" name="inputDateReservations" autocomplete="on" rows="1" disabled >Dates de réservation...</textarea>
-            </div>
-            <button class="primary frontoffice" disabled>
-                <span class="mdi mdi-magnify"></span>
-            </button>
-        </div>
     </div>
 
     <!-- Onglets affichages des réservations -->
