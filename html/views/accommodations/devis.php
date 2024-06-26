@@ -94,7 +94,7 @@
             </article>
         </div>
         
-        <button onclick="handleDevis()" class="primary devis">
+        <button id="accepterDevis" class="primary devis">
             Accepter le devis
             <span class="mdi mdi-chevron-right"></span>
 

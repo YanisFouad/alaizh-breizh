@@ -396,7 +396,7 @@ header#frontoffice #header-bottom-stroke {
     display: none;
   }
 }
-@media (max-width: 431px) {
+@media (max-width: 807px) {
   header#frontoffice {
     padding: 1em 1em 0 1em;
   }
@@ -4453,7 +4453,6 @@ h5 {
   background-color: #222524;
   color: white;
   padding-top: 1em;
-  padding-bottom: 5em;
 }
 #backoffice-registration > img {
   filter: invert(1);
@@ -4524,6 +4523,11 @@ h5 {
   border-color: white;
 }
 
+@media screen and (max-width: 580px) {
+  #backoffice-registration > form {
+    width: 22em;
+  }
+}
 .active {
   display: block;
 }
@@ -5110,10 +5114,9 @@ h5 {
 }
 
 .inscription {
-  width: 40%;
+  width: 34em;
   margin: 1em auto;
   border-radius: 15px;
-  padding-bottom: 7em;
 }
 .inscription section {
   margin: 2em 0;
@@ -5190,4 +5193,10 @@ h5 {
 }
 .inscription .error {
   color: red;
+}
+
+@media screen and (max-width: 551px) {
+  main.inscription {
+    width: 22em;
+  }
 }
