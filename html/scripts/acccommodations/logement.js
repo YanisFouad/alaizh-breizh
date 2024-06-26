@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
           day: "numeric",
         });
         console.log(selectedStartDate, selectedEndDate);
-        updateNbNuits(selectedStartDate, selectedEndDate);
+        dayDiff = updateNbNuits(selectedStartDate, selectedEndDate);
+        btn.onclick = () => initDevis(dayDiff);
       }
     } else {
       e.target.innerText = "Choisir une date";
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createErrorMessage("Veuillez choisir une date de départ", btnDate);
       return;
     }
-    
+
     modal.style.display = "block";
   };
 
