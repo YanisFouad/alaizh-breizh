@@ -99,8 +99,8 @@ function renderContextFilter({priceRange: {min: minPrice, max: maxPrice}, cities
 
    const _formatPrice = price =>  Intl.NumberFormat("fr-FR", {style: 'currency', currency: 'EUR'}).format(parseFloat(price));
 
-   minPriceInput.placeholder = `Prix minimum: ${_formatPrice(minPrice)}€`;
-   maxPriceInput.placeholder = `Prix maximum: ${_formatPrice(maxPrice)}€`;
+   minPriceInput.placeholder = `Prix minimum: ${_formatPrice(minPrice)}`;
+   maxPriceInput.placeholder = `Prix maximum: ${_formatPrice(maxPrice)}`;
 }
 
 function renderFilterElementCheckbox(filterElement, filterName, data) {
