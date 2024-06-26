@@ -1668,6 +1668,10 @@ abbr[title] {
   margin: 1em 0 2.5em 0;
 }
 
+#accommodation-list a {
+  text-decoration: none;
+}
+
 #accommodation-list-container {
   display: flex;
   flex-direction: column;
@@ -3887,6 +3891,10 @@ abbr[title] {
 
 #accommodation-list {
   margin: 1em 0 2.5em 0;
+}
+
+#accommodation-list a {
+  text-decoration: none;
 }
 
 #accommodation-list-container {

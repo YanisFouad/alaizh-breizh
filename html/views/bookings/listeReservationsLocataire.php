@@ -90,12 +90,6 @@
     <hr>
 
     <div id="liste-reservation-locataire-float-left">
-        <!-- Bouton filtre -->
-        <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
-            <span class="mdi mdi-filter-variant"></span>
-            Filtre
-        </button>
-
         <!-- Bouton tri -->
         <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre"> 

@@ -21,6 +21,7 @@
       $travelers = $response["travelers"];
       $offset = $response["offset"];
       $limit = $response["limit"];
+      $sortDir = $response["sortDir"]??"DESC";
 
       $request = RequestBuilder::select("logement")
          ->distinct()
@@ -79,6 +80,7 @@
             ", $arrivalDate, $departureDate);
       }
 
+      $request = $request->sortBy("prix_ttc_logement", $sortDir);
       $result = $request->execute()->fetchMany();
 
       // totalCount

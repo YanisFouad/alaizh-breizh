@@ -41,6 +41,12 @@ const DEFAULT_LIMIT = 10;
 let page = 1;
 let limit = DEFAULT_LIMIT;
 
+const SortDir = {
+   ASC: "ASC",
+   DESC: "DESC"
+}
+let sortDir = SortDir.DESC;
+
 document.addEventListener("DOMContentLoaded", () => {
    const url = new URL(location);
    const params = url.searchParams;
@@ -48,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
       try {page = parseInt(params.get("page"))} catch(e) {}
    }
 
+   if(params.get("sortDir"))
+      sortDir = params.get("sortDir");
    if(params.get("searchQuery")?.trim()) {
       stringEntered = params.get("searchQuery");
    }
@@ -61,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       travelersSelected = parseInt(params.get("travelersCount"));
    }
 
+   updateSortName();
    refreshAccommodationsResults();
 
    clearAllFiltersButton.addEventListener("click", () => {
@@ -322,7 +331,8 @@ async function refreshAccommodationsResults() {
       "departureDate": departureSelected,
       "travelers": travelersSelected, 
       "offset": (page-1)*limit,
-      "limit": limit
+      "limit": limit,
+      "sortDir": sortDir
    });
    document.getElementById("pagination").style.display = "flex";
    document.getElementById("no-accommodation-result-area").innerHTML = "";
@@ -544,4 +554,30 @@ function renderCommunes(communes) {
          </li>
       `);
    }
+}
+
+/** SORT AREA */
+const sortBtn = document.getElementById("sort-btn");
+const SORT_LABEL = "Tri par prix ";
+
+sortBtn.addEventListener("click", () => {
+   sortDir  = sortDir === SortDir.DESC ? SortDir.ASC : SortDir.DESC;  
+   refreshAccommodationsResults();
+   updateSortName();
+   
+   const url = new URL(location);
+   url.searchParams.set("sortDir", sortDir);
+   window.history.pushState({}, null, url);
+}, false);
+function updateSortName() {
+   const icon = sortBtn.querySelector(".mdi");
+   const label = document.querySelector(".label");
+   if(sortDir === SortDir.ASC) {
+       icon.classList.remove("mdi-sort-descending");
+       icon.classList.add("mdi-sort-ascending");
+   } else {
+       icon.classList.add("mdi-sort-descending");
+       icon.classList.remove("mdi-sort-ascending");
+   }
+   label.textContent = SORT_LABEL + (sortDir === SortDir.ASC ? "décroissant" : "croissant");
 }
