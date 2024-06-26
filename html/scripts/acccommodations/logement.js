@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
   });
+
   getBookingsDate(idLogement, fp);
 
   btnDate.addEventListener("click", () => {
@@ -117,10 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
           day: "numeric",
         });
         console.log(selectedStartDate, selectedEndDate);
-        dayDiff = updateNbNuits(selectedStartDate, selectedEndDate);
-        btn.onclick = () => initDevis(dayDiff);
+        updateNbNuits(selectedStartDate, selectedEndDate);
       }
-
     } else {
       e.target.innerText = "Choisir une date";
     }
@@ -162,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   btn.onclick = function () {
-    let datesDevis = document.querySelector(".boutonDate").value;
+    let datesDevis = document.querySelector("#boutonDate").value;
     datesDevis = datesDevis.split(" - ");
 
     if (datesDevis.length != 2) {
@@ -175,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createErrorMessage("Veuillez choisir une date de départ", btnDate);
       return;
     }
-
+    
     modal.style.display = "block";
   };
 

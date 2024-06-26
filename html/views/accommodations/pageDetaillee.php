@@ -57,6 +57,7 @@
 
         echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">';
         echo '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>';
+        echo '<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>';
 
         ScriptLoader::load("acccommodations/logement.js");
 ?>
