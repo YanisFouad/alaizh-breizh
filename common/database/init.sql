@@ -4,7 +4,7 @@ SET SCHEMA 'pls';
 
 CREATE TABLE config(
     tva_nuits FLOAT DEFAULT 10,
-    tva_commission FLOAT DEFAULT 20,
+    tva_taxe_sejour FLOAT DEFAULT 20,
     commission FLOAT DEFAULT 1,
     taxe_sejour FLOAT DEFAULT 1
 );
@@ -167,7 +167,7 @@ CREATE TABLE  _reservation (
 CREATE TABLE _facture (
     id_reservation INTEGER PRIMARY KEY,
     tva_nuits FLOAT DEFAULT 10 NOT NULL,
-    tva_commission FLOAT DEFAULT 20 NOT NULL,
+    tva_taxe_sejour FLOAT DEFAULT 20 NOT NULL,
     prix_nuitee FLOAT NOT NULL,
     taxe_sejour FLOAT NOT NULL DEFAULT 1,
     commission FLOAT NOT NULL DEFAULT 1,
@@ -223,7 +223,7 @@ CREATE OR REPLACE VIEW  locataire AS SELECT
     INNER JOIN _adresse ON _compte.id_adresse = _adresse.id_adresse; 
 
 CREATE OR REPLACE VIEW reservation AS SELECT _reservation.id_reservation,id_locataire,id_logement,nb_nuit,
-    date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,tva_nuits,tva_commission,prix_nuitee,taxe_sejour,commission,est_payee,est_annulee
+    date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission,est_payee,est_annulee
     FROM _reservation
     INNER JOIN _facture ON _facture.id_reservation = _reservation.id_reservation;
 
@@ -606,8 +606,8 @@ create or replace function create_reservation() RETURNS TRIGGER AS $BODY$
     INSERT INTO _reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,prix_total,est_annulee,est_payee)
         VALUES(NEW.id_locataire,NEW.id_logement,NEW.nb_nuit,NEW.date_arrivee,NEW.date_depart,NEW.nb_voyageur,NEW.date_reservation,NEW.frais_de_service,NEW.prix_total,NEW.est_annulee,NEW.est_payee)
                 RETURNING id_reservation INTO NEW.id_reservation;
-    INSERT INTO _facture(id_reservation,tva_nuits,tva_commission,prix_nuitee,taxe_sejour,commission)
-        VALUES(NEW.id_reservation,NEW.tva_nuits,NEW.tva_commission,NEW.prix_nuitee,NEW.taxe_sejour,NEW.commission);
+    INSERT INTO _facture(id_reservation,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission)
+        VALUES(NEW.id_reservation,NEW.tva_nuits,NEW.tva_taxe_sejour,NEW.prix_nuitee,NEW.taxe_sejour,NEW.commission);
     return NEW;
 	END;
 $BODY$
@@ -668,7 +668,7 @@ FROM '/docker-entrypoint-initdb.d/amenagement.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,est_payee,est_annulee,prix_total,tva_nuits,tva_commission,prix_nuitee,taxe_sejour,commission)
+COPY reservation(id_locataire,id_logement,nb_nuit,date_arrivee,date_depart,nb_voyageur,date_reservation,frais_de_service,est_payee,est_annulee,prix_total,tva_nuits,tva_taxe_sejour,prix_nuitee,taxe_sejour,commission)
 FROM '/docker-entrypoint-initdb.d/reservation.csv'
 DELIMITER ','
 CSV HEADER;
