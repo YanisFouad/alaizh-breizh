@@ -22,10 +22,12 @@
 ?>
 
 <div id="new-accommodation">
-    <button class="back">
-        <span class="mdi mdi-arrow-left"></span>
-        Retour à la liste des logements
-    </button>
+    <a href="/backoffice">
+        <button class="back">
+            <span class="mdi mdi-arrow-left"></span>
+            Retour à la liste des logements
+        </button>
+    </a>
     <form id="new-accommodation-form" onsubmit="handleForm(event)" method="POST">
         <section>
             <h2>Informations générales du logement</h2>

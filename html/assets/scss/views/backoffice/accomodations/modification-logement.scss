@@ -2,7 +2,7 @@
     width: 58em;
     margin: auto;
 
-    &>button.back {
+    &>a>button.back {
         font-size: 1em;
         margin-top: 2em;
         margin-bottom: 1em;
@@ -27,10 +27,14 @@
                 display: flex;
                 margin : auto;
                 border-radius: 15px;
+                overflow: hidden;
+                //background-repeat: no-repeat;
             }
 
             #image_logement{
-                background-size: cover;
+                background-size: cover !important;
+                background-position: center !important; /* L'image est centrée */
+                background-repeat: no-repeat !important; /* L'image ne se répète pas */
                 height: 100%;
                 width: 100%;
                 position: relative;

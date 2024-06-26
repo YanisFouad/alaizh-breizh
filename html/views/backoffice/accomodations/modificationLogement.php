@@ -18,12 +18,14 @@
 
     //ajout des aménagements du logement
     foreach($logement->get('amenagements') as $key => $value) {
-        array_push($logement_layouts,strtolower($value["name"]));
+        if($value["name"])
+            array_push($logement_layouts,strtolower($value["name"]));
     }
 
     //ajout des activites
     foreach($logement->get('activites') as $key => $value) {
-        array_push($logement_activites,strtolower($value["name"]));
+        if($value["name"])
+            array_push($logement_activites,strtolower($value["name"]));
     }
 
     $layouts = ["Balcon", "Piscine", "Jacuzzi", "Jardin", "Terrasse"];
@@ -55,10 +57,12 @@
 ?>
 
 <div id="modification-logement">
-    <button class="back">
-        <span class="mdi mdi-arrow-left"></span>
-        Retour à la liste des logements
-    </button>
+    <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>">
+        <button class="back">
+            <span class="mdi mdi-arrow-left"></span>
+            Retour à la liste des logements
+        </button>
+    </a>
     <form onsubmit="handleForm(event)" method="POST">
         <section>
             <h2>Informations générales du logement</h2>
@@ -279,7 +283,9 @@
 
             <div class="error-message"></div>
             <footer>
-                <button type="button" class="secondary previous backoffice">Précédent</button>
+                <a href="/backoffice/logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                    <button type="button" class="secondary previous backoffice">Annuler</button>
+                </a>
                 <button type="submit" class="primary backoffice">Modifier le logement</button>
             </footer>
         </section>

@@ -65,12 +65,6 @@
                 <span class="mdi mdi-chevron-right"></span>
                 <h4><?=$logement->get('titre_logement');?></h4>
             </div>
-            <a id="modifierLogement" href="/backoffice/modification-logement?id_logement=<?php echo $logement->get('id_logement')?>">
-                <button class="primary backoffice modifierLogement" type="submit">
-                    <span class="mdi mdi-pencil"></span>    
-                    Modifier
-                </button> 
-            </a>
         </div>
         
         <div id="page">
@@ -183,11 +177,12 @@
                     </div>
 
                 </article>
-                <div id="modified-button">
-                    <button type="button" class ="primary backoffice" >
+                <a id="modifierLogement" href="/backoffice/modification-logement?id_logement=<?php echo $logement->get('id_logement')?>">
+                    <button class="primary backoffice" type="submit">
+                        <span class="mdi mdi-pencil"></span>    
                         Modifier
-                    </button>
-                </div>
+                    </button> 
+                </a>
             </section>
             
         </div>
