@@ -1,12 +1,220 @@
-/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
-/* TOUT METTRE DANS UNE BALISE HOME */
+@mixin accommodations-grid($grid-column-count) {
+   $grid-layout-gap: 10px;
+   $grid-item--min-width: 200px;
+   
+   $gap-count: calc($grid-column-count - 1);
+   $total-gap-width: calc($gap-count * $grid-layout-gap);
+   $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
+   
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
+   grid-gap: $grid-layout-gap;
+}
 
-// #home-page, #filter-housing-container {
-//    display: flex;
-//    flex-direction: column;
-//    min-height: 100vh;
-//    min-width: 1000px;
-// }
+main#home>.hero-header {
+   height: 350px;
+   position: relative;
+   margin: 1em 2.5em;
+
+   &>.image-cover {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 1em;
+
+      &>div.title {
+         position: absolute;
+         margin: 2em 3em;
+         top: 0;
+         z-index: 99;
+         color: $white;
+
+         &>h1 {
+            font-family: "poppins-semibold", sans-serif;
+            font-size: 2.5em;
+         }
+         &>h2 {
+            font-size: 1.5em;
+         }
+      }
+      &>.image {
+         position: absolute;
+         top: 0;
+         border-radius: 1em;
+         background-position-y: 20%;
+         background-size: cover;
+         background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, .4),
+            rgba(0, 0, 255, 0)
+          ), url(/assets/images/home-landscape.jpeg);         
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   #search-bar {
+      position: absolute;
+      top: unset;
+      bottom: -3em;
+      left: 50%;
+
+      height: fit-content;
+
+      transform: translateX(-50%);
+      width: 54em;
+
+      & input {
+         width: 100%;
+      }
+
+      &.responsive {
+         display: none;
+      }
+   }
+}
+
+main#home .accommodations {
+   margin: 0 2.5em;
+   margin-bottom: 3em;
+
+   &>header {
+      margin-top: 9em;
+      margin-bottom: 5em;
+      position: relative;
+   
+      &>h1 {
+         text-align: center;
+      }
+   
+      &>a {
+         position: absolute;
+         top: 50%;
+         right: 2.5em;
+   
+         transform: translateY(-50%);
+      }
+   }
+
+   // accommodations
+   &>section {
+      $grid-layout-gap: 10px;
+      $grid-column-count: 5;
+      $grid-item--min-width: 200px;
+    
+      $gap-count: calc($grid-column-count - 1);
+      $total-gap-width: calc($gap-count * $grid-layout-gap);
+      $grid-item--max-width: calc((100% - $total-gap-width) / $grid-column-count);
+    
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(max($grid-item--min-width, $grid-item--max-width), 1fr));
+      grid-gap: $grid-layout-gap;
+    
+      margin-bottom: 2em;
+
+      &>a {
+         text-decoration: none;
+      }
+
+      & .item {
+         &:hover>.img-container>img {
+            transform: scale(1.1);
+         }
+         &>.img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1em;
+
+            &>img {
+               width: 100%;
+               height: 15em;
+               object-fit: cover;
+   
+               transition: all .5s ease;
+            }
+         }
+
+         // details
+         &>footer {
+            font-size: .9em;
+
+            &>h4.title {     
+               max-width: 95%;       
+               text-wrap: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+            }
+            &>h4.localization {
+               margin: .2em 0;
+               font-family: "comfortaa-regular";
+               color: $brown-1;
+               font-size: 1em;
+            }
+            &>h4.price {
+               font-family: "comfortaa-bold";
+               font-size: 1.1em;
+               &>span:last-of-type {
+                  font-size: .8em;
+               }
+            }
+         }         
+      }
+   }
+
+   &>footer {
+      &>a {
+         &>button {
+            background-color: transparent;
+            color: $black;
+            padding: unset;
+            box-shadow: unset;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 1040px) {
+   main#home .accommodations>header>h1 {
+      text-align: start;
+      margin-left: 1.5em;
+   }
+   main#home #search-bar {
+      width: 94% !important;
+   }
+}
+
+@media screen and (max-width: 766px) {
+   main#home .accommodations>header {
+      &>h1 {
+         margin-left: unset;
+         text-align: center;
+      }
+      &>a {
+         display: none;
+      }
+   }
+}
+
+@media screen and (max-width: 626px) {
+   main#home #search-bar {
+      display: none;
+      &.responsive {
+         display: flex !important;
+      }
+   }
+}
+
+@media screen and (max-width: 502px) {
+   main#home .hero-header .title {
+      &>h1 {
+         font-size: 1.9em !important;
+      }
+      &>h2 {
+         font-size: 1.2em !important;
+      }
+   }
+}
 
 #home-page {
    button {
@@ -17,16 +225,16 @@
    }
 }
 
-.housing-container {
+.accommodation-container {
    display: flex;
    justify-content: center;
 }
 
-#home-page .mdi, #filter-housing-container .mdi {
+#home-page .mdi, #filter-accommodation-container .mdi {
    font-size: 1.5em;
 }
 
-#home-page a, #filter-housing-container a {
+#home-page a, #filter-accommodation-container a {
    text-decoration: none;
    &:visited {
       color: black;
@@ -110,7 +318,7 @@
    top: -4em;
 }
 
-.housing-list {
+#accommodation-list {
    display: grid;
    gap: 2em;
    grid-template-columns: repeat(auto-fit, 250px);
@@ -118,24 +326,24 @@
    justify-content: center;
 }
 
-.housing-image-item-container {
+.accommodation-image-item-container {
    width: 250px;
    height: 250px;
    background-color: $gray-3;
    border-radius: 1em;
 }
 
-.housing-item {
+.accommodation-item {
    img {
       width: 100%;
       height: 100%; 
       object-fit: cover;
       border-radius: 1em;
    }
-   h4, .housing-price-container {
+   h4, .accommodation-price-container {
       font-size: 14px;
    }
-   .housing-price {
+   .accommodation-price {
       font-family: "comfortaa-bold";
    }
    &:hover {
@@ -147,7 +355,7 @@ abbr[title] {
    text-decoration: none;
 }
 
-.housing-description-container {
+.accommodation-description-container {
    display: flex;
    align-items: end;
    justify-content: space-between;
@@ -155,7 +363,7 @@ abbr[title] {
    margin: .5em 0;
 }
 
-.housing-description {
+.accommodation-description {
    font-family: "comfortaa-bold";
    margin: 0 .5em 0 0;
    text-overflow: ellipsis;
@@ -163,7 +371,7 @@ abbr[title] {
    white-space: nowrap;
 }
 
-.housing-location-container {
+.accommodation-location-container {
    display: flex;
    align-items: center;
    gap: .5em;
@@ -176,14 +384,14 @@ abbr[title] {
    font-size: 1em;
 }
 
-.housing-location { 
+.accommodation-location { 
    font-family: "comfortaa-regular";
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;
 }
 
-.housing-price-container {
+.accommodation-price-container {
    display: flex;
    font-family: "comfortaa-regular";
    font-size: small;
@@ -211,7 +419,7 @@ abbr[title] {
 /*****************/
 
 @media (max-width: 431px) {
-#home-page, #filter-housing-container {
+#home-page, #filter-accommodation-container {
    min-width: inherit;
 }
    #search-bar {
@@ -243,7 +451,7 @@ abbr[title] {
       }
    }
 
-   #housing-list-title {
+   #accommodation-list-title {
       font-size: 1em;
       margin: 0 auto 1em auto;
    }
@@ -251,19 +459,19 @@ abbr[title] {
       display: none !important;
    }
 
-   .housing-list {
+   #accommodation-list {
       justify-content: center;
       grid-template-columns: 1fr;
    }
 
-   .housing-image-item-container {
+   .accommodation-image-item-container {
       width: 355px;
       height: 355px;
       background-color: $gray-3;
       border-radius: 1em;
    }
 
-   .housing-description-container {
+   .accommodation-description-container {
       width: 355px;
    }
 
@@ -272,7 +480,7 @@ abbr[title] {
       justify-content: center;
    }
 
-   #housing-list-container .show-all-button {
+   #accommodation-list-container .show-all-button {
       display: none;
    }
 
@@ -293,10 +501,10 @@ abbr[title] {
 }
 
 /***************************************/
-/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/* accommodation-LIST (A DEPLACER PLUS TARD) */
 /***************************************/
 
-#filter-housing-container {
+#filter-accommodation-container {
    display: flex;
 }
 
@@ -371,7 +579,7 @@ abbr[title] {
    padding: 0;
 }
 
-#housing-title-search-container {
+#accommodation-title-search-container {
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -428,11 +636,15 @@ abbr[title] {
    border-radius: 1em;
 }
 
-.housing-list {
+#accommodation-list {
    margin: 1em 0 2.5em 0;
 }
 
-#housing-list-container {
+#accommodation-list a {
+   text-decoration: none;
+}
+
+#accommodation-list-container {
    display: flex;
    flex-direction: column;
    width: 100%;
@@ -488,7 +700,7 @@ abbr[title] {
       }
    }
 
-   #housing-list-container {
+   #accommodation-list-container {
       padding: .5em;
       align-items: center;
    }

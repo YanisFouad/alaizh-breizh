@@ -86,3 +86,9 @@
         }
     }
 }
+
+@media screen and (max-width: 576px) {
+    #backoffice-registration>form {
+        width: 23em;
+    }
+}

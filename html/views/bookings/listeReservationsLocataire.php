@@ -20,7 +20,7 @@
     $profile = UserSession::get();
     $id_locataire = $profile->get("id_compte");
 
-    function trie_date($date1, $date2){
+    function tri_date($date1, $date2){
         if ($date1 == $date2) return 0;
         return ($date1 < $date2) ? -1 : 1;
     }
@@ -83,21 +83,15 @@
 
     <!-- Onglets affichages des réservations -->
     <nav id="liste-reservation-locataire-onglet">
-        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">A venir (<?php echo BookingModel::countByPeriodLocataire("a_venir", $id_locataire)?>)</a>    
+        <a class="<?php echo $tab === "a_venir" ? "active" : "" ;?>" href="?tab=a_venir">À venir (<?php echo BookingModel::countByPeriodLocataire("a_venir", $id_locataire)?>)</a>    
         <a class="<?php echo $tab === "en_cours" ? "active" : "" ;?>" href="?tab=en_cours">En cours (<?php echo BookingModel::countByPeriodLocataire("en_cours", $id_locataire)?>)</a>
         <a class="<?php echo $tab === "passe" ? "active" : "" ;?>" href="?tab=passe">Passées (<?php echo BookingModel::countByPeriodLocataire("passe", $id_locataire)?>)</a>
     </nav>
     <hr>
 
     <div id="liste-reservation-locataire-float-left">
-        <!-- Bouton filtre -->
-        <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
-            <span class="mdi mdi-filter-variant"></span>
-            Filtre
-        </button>
-
-        <!-- Bouton trie -->
-        <!-- trie pas encore fonctionnel -->
+        <!-- Bouton tri -->
+        <!-- tri pas encore fonctionnel -->
         <button id="sort-btn" class="liste-reservation-locataire-flex-row liste-reservation-locataire-bouton-filtre"> 
             <span class="mdi mdi-sort-ascending"></span>
             <span class="label"></span>
@@ -112,42 +106,47 @@
         <?php
         foreach($tab_reservation as $reservation){
             ?>
-            <a class="non-souligne" href="/reservation?id=<?php echo $reservation->get("id_reservation");?>">
-                <article class="liste-reservation-locataire-logement">
-                    <!-- Photo maison + nom maison -->
-                    <div>
-                        <div id='img-container'>
-                            <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Photo logement">
+            <div class="container-liste-reservation-locataire-logement">
+                <a class="non-souligne" href="/reservation?id=<?php echo $reservation->get("id_reservation");?>">
+                    <article class="liste-reservation-locataire-logement">
+                        <!-- Photo maison + nom maison -->
+                        <div>
+                            <div id='img-container'>
+                                <img src="<?php echo $reservation->get("photo_logement"); ?>" alt="Photo logement">
+                            </div>
+                            <h4><?php echo $reservation->get("titre_logement"); ?></h4>
                         </div>
-                        <h4><?php echo $reservation->get("titre_logement"); ?></h4>
-                    </div>
-                    
+                        
 
-                    <!-- Description maison -->
-                    <div class="liste-reservation-locataire-logement-detail">
-                        <div>
-                            <h5 class='titreDetail'>Date de réservation</h5>
-                            <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_reservation"))); ?></h5>
+                        <!-- Description maison -->
+                        <div class="liste-reservation-locataire-logement-detail">
+                            <div>
+                                <h5 class='titreDetail'>Date de réservation : </h5>
+                                <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_reservation"))); ?></h5>
+                            </div>
+                            <div>
+                                <h5 class='titreDetail'>Date d'arrivée : </h5>
+                                <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_arrivee"))); ?></h5>
+                            </div>
+                            <div>
+                                <h5 class='titreDetail'>Nombre de nuits : </h5>
+                                <h5><?php echo $reservation->get("nb_nuit"); ?></h5>
+                            </div>
+                            <div>
+                                <h5 class='titreDetail'>Prix total : </h5>
+                                <h5><?php echo price_format($reservation->get("prix_total")); ?>€</h5>
+                            </div>
+                            
                         </div>
-                        <div>
-                            <h5 class='titreDetail'>Date d'arrivée</h5>
-                            <h5><?php echo date('d/m/Y', strtotime($reservation->get("date_arrivee"))); ?></h5>
-                        </div>
-                        <div>
-                            <h5 class='titreDetail'>Nombre de nuits</h5>
-                            <h5><?php echo $reservation->get("nb_nuit"); ?></h5>
-                        </div>
-                        <div>
-                            <h5 class='titreDetail'>Prix total</h5>
-                            <h5><?php echo price_format($reservation->get("prix_total")); ?>€</h5>
-                        </div>
-                        <button class="primary frontoffice liste-reservation-locataire-flex-row" disabled >
-                            <span class="mdi mdi-eye-outline"></span>
-                            Facture
-                        </button>
-                    </div>
-                </article>
-            </a>
+                    </article>
+                </a>
+                <a href="/facture?id=<?= $reservation->get("id_reservation") ?>" class="lien-facture" target="_blank">
+                    <button class="primary frontoffice liste-reservation-locataire-flex-row">
+                        <span class="mdi mdi-eye-outline"></span>
+                        Facture
+                    </button>
+                </a>
+            </div>
         <?php } ?>
     </section>
 

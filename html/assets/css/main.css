@@ -391,13 +391,16 @@ header#frontoffice #header-bottom-stroke {
   background-color: #eaeaea;
   margin: 1em 0 0 0;
 }
+header#frontoffice #open-burger-menu {
+  display: none;
+}
 
 @media (min-width: 431px) {
   #open-burger-button, #close-burger-button {
     display: none;
   }
 }
-@media (max-width: 431px) {
+@media (max-width: 759px) {
   header#frontoffice {
     padding: 1em 1em 0 1em;
   }
@@ -445,7 +448,7 @@ header#frontoffice #header-bottom-stroke {
     width: 100%;
   }
   header#frontoffice .displayed {
-    display: block;
+    display: block !important;
   }
   header#frontoffice .hidden {
     display: none;
@@ -1116,8 +1119,172 @@ footer#foot-global nav a {
   font-size: 1.5em;
 }
 
-/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
-/* TOUT METTRE DANS UNE BALISE HOME */
+#btn-facture-detail {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-decoration: none;
+  position: sticky;
+  bottom: 25px;
+  margin: 25px;
+}
+
+main#home > .hero-header {
+  height: 350px;
+  position: relative;
+  margin: 1em 2.5em;
+}
+main#home > .hero-header > .image-cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+}
+main#home > .hero-header > .image-cover > div.title {
+  position: absolute;
+  margin: 2em 3em;
+  top: 0;
+  z-index: 99;
+  color: white;
+}
+main#home > .hero-header > .image-cover > div.title > h1 {
+  font-family: "poppins-semibold", sans-serif;
+  font-size: 2.5em;
+}
+main#home > .hero-header > .image-cover > div.title > h2 {
+  font-size: 1.5em;
+}
+main#home > .hero-header > .image-cover > .image {
+  position: absolute;
+  top: 0;
+  border-radius: 1em;
+  background-position-y: 20%;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
+  width: 100%;
+  height: 100%;
+}
+main#home > .hero-header #search-bar {
+  position: absolute;
+  top: unset;
+  bottom: -3em;
+  left: 50%;
+  height: fit-content;
+  transform: translateX(-50%);
+  width: 54em;
+}
+main#home > .hero-header #search-bar input {
+  width: 100%;
+}
+main#home > .hero-header #search-bar.responsive {
+  display: none;
+}
+
+main#home .accommodations {
+  margin: 0 2.5em;
+  margin-bottom: 3em;
+}
+main#home .accommodations > header {
+  margin-top: 9em;
+  margin-bottom: 5em;
+  position: relative;
+}
+main#home .accommodations > header > h1 {
+  text-align: center;
+}
+main#home .accommodations > header > a {
+  position: absolute;
+  top: 50%;
+  right: 2.5em;
+  transform: translateY(-50%);
+}
+main#home .accommodations > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
+  grid-gap: 10px;
+  margin-bottom: 2em;
+}
+main#home .accommodations > section > a {
+  text-decoration: none;
+}
+main#home .accommodations > section .item:hover > .img-container > img {
+  transform: scale(1.1);
+}
+main#home .accommodations > section .item > .img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1em;
+}
+main#home .accommodations > section .item > .img-container > img {
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+main#home .accommodations > section .item > footer {
+  font-size: 0.9em;
+}
+main#home .accommodations > section .item > footer > h4.title {
+  max-width: 95%;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main#home .accommodations > section .item > footer > h4.localization {
+  margin: 0.2em 0;
+  font-family: "comfortaa-regular";
+  color: #b6896c;
+  font-size: 1em;
+}
+main#home .accommodations > section .item > footer > h4.price {
+  font-family: "comfortaa-bold";
+  font-size: 1.1em;
+}
+main#home .accommodations > section .item > footer > h4.price > span:last-of-type {
+  font-size: 0.8em;
+}
+main#home .accommodations > footer > a > button {
+  background-color: transparent;
+  color: #222524;
+  padding: unset;
+  box-shadow: unset;
+}
+
+@media screen and (max-width: 1040px) {
+  main#home .accommodations > header > h1 {
+    text-align: start;
+    margin-left: 1.5em;
+  }
+  main#home #search-bar {
+    width: 94% !important;
+  }
+}
+@media screen and (max-width: 766px) {
+  main#home .accommodations > header > h1 {
+    margin-left: unset;
+    text-align: center;
+  }
+  main#home .accommodations > header > a {
+    display: none;
+  }
+}
+@media screen and (max-width: 626px) {
+  main#home #search-bar {
+    display: none;
+  }
+  main#home #search-bar.responsive {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 502px) {
+  main#home .hero-header .title > h1 {
+    font-size: 1.9em !important;
+  }
+  main#home .hero-header .title > h2 {
+    font-size: 1.2em !important;
+  }
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -1125,19 +1292,19 @@ footer#foot-global nav a {
   gap: 1em;
 }
 
-.housing-container {
+.accommodation-container {
   display: flex;
   justify-content: center;
 }
 
-#home-page .mdi, #filter-housing-container .mdi {
+#home-page .mdi, #filter-accommodation-container .mdi {
   font-size: 1.5em;
 }
 
-#home-page a, #filter-housing-container a {
+#home-page a, #filter-accommodation-container a {
   text-decoration: none;
 }
-#home-page a:visited, #filter-housing-container a:visited {
+#home-page a:visited, #filter-accommodation-container a:visited {
   color: black;
 }
 
@@ -1211,7 +1378,7 @@ footer#foot-global nav a {
   top: -4em;
 }
 
-.housing-list {
+#accommodation-list {
   display: grid;
   gap: 2em;
   grid-template-columns: repeat(auto-fit, 250px);
@@ -1219,26 +1386,26 @@ footer#foot-global nav a {
   justify-content: center;
 }
 
-.housing-image-item-container {
+.accommodation-image-item-container {
   width: 250px;
   height: 250px;
   background-color: #eaeaea;
   border-radius: 1em;
 }
 
-.housing-item img {
+.accommodation-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1em;
 }
-.housing-item h4, .housing-item .housing-price-container {
+.accommodation-item h4, .accommodation-item .accommodation-price-container {
   font-size: 14px;
 }
-.housing-item .housing-price {
+.accommodation-item .accommodation-price {
   font-family: "comfortaa-bold";
 }
-.housing-item:hover {
+.accommodation-item:hover {
   cursor: pointer;
 }
 
@@ -1246,7 +1413,7 @@ abbr[title] {
   text-decoration: none;
 }
 
-.housing-description-container {
+.accommodation-description-container {
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -1254,7 +1421,7 @@ abbr[title] {
   margin: 0.5em 0;
 }
 
-.housing-description {
+.accommodation-description {
   font-family: "comfortaa-bold";
   margin: 0 0.5em 0 0;
   text-overflow: ellipsis;
@@ -1262,7 +1429,7 @@ abbr[title] {
   white-space: nowrap;
 }
 
-.housing-location-container {
+.accommodation-location-container {
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -1275,14 +1442,14 @@ abbr[title] {
   font-size: 1em;
 }
 
-.housing-location {
+.accommodation-location {
   font-family: "comfortaa-regular";
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.housing-price-container {
+.accommodation-price-container {
   display: flex;
   font-family: "comfortaa-regular";
   font-size: small;
@@ -1309,7 +1476,7 @@ abbr[title] {
 /* MEDIA QUERIES */
 /*****************/
 @media (max-width: 431px) {
-  #home-page, #filter-housing-container {
+  #home-page, #filter-accommodation-container {
     min-width: inherit;
   }
   #search-bar {
@@ -1339,31 +1506,31 @@ abbr[title] {
     font-family: "poppins-regular";
     font-size: 1em;
   }
-  #housing-list-title {
+  #accommodation-list-title {
     font-size: 1em;
     margin: 0 auto 1em auto;
   }
   .show-more-button {
     display: none !important;
   }
-  .housing-list {
+  #accommodation-list {
     justify-content: center;
     grid-template-columns: 1fr;
   }
-  .housing-image-item-container {
+  .accommodation-image-item-container {
     width: 355px;
     height: 355px;
     background-color: #eaeaea;
     border-radius: 1em;
   }
-  .housing-description-container {
+  .accommodation-description-container {
     width: 355px;
   }
   #home-page .show-all-button-container {
     display: flex;
     justify-content: center;
   }
-  #housing-list-container .show-all-button {
+  #accommodation-list-container .show-all-button {
     display: none;
   }
   #home-page .show-all-button {
@@ -1381,9 +1548,9 @@ abbr[title] {
   }
 }
 /***************************************/
-/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/* accommodation-LIST (A DEPLACER PLUS TARD) */
 /***************************************/
-#filter-housing-container {
+#filter-accommodation-container {
   display: flex;
 }
 
@@ -1441,7 +1608,7 @@ abbr[title] {
   padding: 0;
 }
 
-#housing-title-search-container {
+#accommodation-title-search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1498,11 +1665,15 @@ abbr[title] {
   border-radius: 1em;
 }
 
-.housing-list {
+#accommodation-list {
   margin: 1em 0 2.5em 0;
 }
 
-#housing-list-container {
+#accommodation-list a {
+  text-decoration: none;
+}
+
+#accommodation-list-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -1552,7 +1723,7 @@ abbr[title] {
     gap: 0.5em;
     justify-content: flex-end;
   }
-  #housing-list-container {
+  #accommodation-list-container {
     padding: 0.5em;
     align-items: center;
   }
@@ -1758,10 +1929,15 @@ abbr[title] {
   /* Filtre,Oeil facture ,export*/
   /******************************/
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-export-variant {
   color: white;
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending, #liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-eye-outline,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-filter-variant,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-ascending,
+#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row .mdi.mdi-sort-descending {
   margin-right: 0.2em;
   font-size: 2em;
 }
@@ -1782,34 +1958,66 @@ abbr[title] {
 #liste-reservation-proprietaire-main #liste-reservation-proprietaire {
   margin: 2em 0;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
-  all: unset;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement {
   margin: 1.5em 0;
+  border: solid #804e2e 1px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px #804e2e;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement:hover {
+  box-shadow: 0px 0px 5px #804e2e;
+  background-color: #f7f7f7;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .lien-page-detail {
+  width: 100%;
   padding: 0.7em 0.7em;
+  text-decoration: unset;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .lien-facture {
+  text-decoration: unset;
+  margin-right: 0.7em;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: solid #804e2e 1px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 2px #804e2e;
+  gap: 1.2em;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
+  padding: 0.55em 0.85em;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   cursor: pointer;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
     width: 100%;
     justify-content: flex-start;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -1818,7 +2026,7 @@ abbr[title] {
   border-radius: 10%;
   margin-right: 1em;
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container img {
   width: 100%;
   height: 100%;
   border-radius: 10%;
@@ -1826,76 +2034,70 @@ abbr[title] {
   object-position: center;
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container {
     width: 100%;
     height: unset;
     border-radius: 10px;
     margin-right: 0;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div #img-container img {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div #img-container img {
     border-radius: 10px;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h4 {
-  font-size: 15px;
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div h4 {
+  font-size: 0.95em;
   font-family: "poppins-light";
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div h5 {
-  font-size: 12px;
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div h5 {
+  font-size: 0.95em;
   font-family: "poppins-light";
   color: #676767;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement {
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement {
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement div {
     flex-direction: column;
   }
 }
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.2em;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail button {
-  padding: 0.55em 0.85em;
-}
 @media screen and (max-width: 431px) {
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail {
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     gap: 0;
   }
-  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
+  #liste-reservation-proprietaire-main #liste-reservation-proprietaire .container-liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement .liste-reservation-proprietaire-logement-detail div {
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
     width: 100%;
   }
 }
-#liste-reservation-proprietaire-main .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne {
+  all: unset;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne {
+  all: unset;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .non-souligne .non-souligne:hover article {
+  background-color: #f7f7f7;
+}
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .liste-reservation-proprietaire-flex-row > .mdi.mdi-eye-outline > p {
   margin-left: 0.2em;
   color: white;
   font-size: 100px;
 }
-#liste-reservation-proprietaire-main .pagination {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination {
   display: flex;
   justify-content: center;
   gap: 0.75em;
@@ -1903,20 +2105,21 @@ abbr[title] {
   font-family: "comfortaa-bold";
   margin-bottom: 2.5em;
 }
-#liste-reservation-proprietaire-main .pagination button {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button {
   width: 3.3em;
   height: 3.3em;
   border-color: #804e2e;
   color: #804e2e;
 }
-#liste-reservation-proprietaire-main .pagination button:not(:disabled):hover, #liste-reservation-proprietaire-main .pagination button .bouton-select, #liste-reservation-proprietaire-main .pagination button:focus {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:not(:disabled):hover,
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button .bouton-select, #liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button:focus {
   background-color: #804e2e;
   color: white !important;
 }
-#liste-reservation-proprietaire-main .pagination button .mdi {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination button .mdi {
   font-size: 1.7em;
 }
-#liste-reservation-proprietaire-main .pagination .bouton-select {
+#liste-reservation-proprietaire-main #liste-reservation-proprietaire .pagination .bouton-select {
   background-color: #804e2e;
   color: white;
 }
@@ -2047,32 +2250,44 @@ abbr[title] {
 }
 #liste-reservation-locataire-main #liste-reservation-locataire .non-souligne {
   all: unset;
+  width: 100%;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement {
+  display: flex;
+  align-items: center;
   margin: 1.5em 0;
+  border: solid #1b5734 1px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px #1b5734;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement:hover {
+  background-color: #f7f7f7;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .lien-facture {
+  text-decoration: unset;
+  margin-right: 20px;
+}
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
   padding: 0.7em 0.7em;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: solid #1b5734 1px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 2px #1b5734;
   cursor: pointer;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
     width: 100%;
     justify-content: flex-start;
   }
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -2081,7 +2296,7 @@ abbr[title] {
   border-radius: 10%;
   margin-right: 1em;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container img {
   width: 100%;
   height: 100%;
   border-radius: 10%;
@@ -2089,69 +2304,73 @@ abbr[title] {
   object-position: center;
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container {
     width: 100%;
     height: unset;
     border-radius: 10px;
     margin-right: 0;
   }
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div #img-container img {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div #img-container img {
     border-radius: 10px;
   }
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div h4 {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div h4 {
   font-family: "poppins-light";
-  font-size: 1em;
+  font-size: 0.95em;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div .titreDetail {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div .titreDetail {
   font-family: "poppins-light";
   color: #676767;
+  font-size: 0.95em;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
     flex-direction: column;
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement {
     border: none;
     box-shadow: none;
     flex-direction: column;
   }
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement div {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement div {
     flex-direction: column;
   }
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 1.2em;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center !important;
+  justify-content: center;
   align-items: flex-start;
   white-space: nowrap;
 }
-#liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail button {
+#liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail button {
   padding: 0.55em 0.85em;
 }
 @media screen and (max-width: 1110px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
     width: 100%;
   }
 }
 @media screen and (max-width: 431px) {
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail {
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    gap: 0;
+    gap: 0.5em;
   }
-  #liste-reservation-locataire-main #liste-reservation-locataire .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
+  #liste-reservation-locataire-main #liste-reservation-locataire .container-liste-reservation-locataire-logement .liste-reservation-locataire-logement .liste-reservation-locataire-logement-detail div {
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
@@ -3135,8 +3354,162 @@ header#backoffice > aside > span.owner {
   margin-right: 5px;
 }
 
-/* À CHANGER PLUS TARD, POUR GARDER LE FOOTER EN BAS DE PAGE */
-/* TOUT METTRE DANS UNE BALISE HOME */
+main#home > .hero-header {
+  height: 350px;
+  position: relative;
+  margin: 1em 2.5em;
+}
+main#home > .hero-header > .image-cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+}
+main#home > .hero-header > .image-cover > div.title {
+  position: absolute;
+  margin: 2em 3em;
+  top: 0;
+  z-index: 99;
+  color: white;
+}
+main#home > .hero-header > .image-cover > div.title > h1 {
+  font-family: "poppins-semibold", sans-serif;
+  font-size: 2.5em;
+}
+main#home > .hero-header > .image-cover > div.title > h2 {
+  font-size: 1.5em;
+}
+main#home > .hero-header > .image-cover > .image {
+  position: absolute;
+  top: 0;
+  border-radius: 1em;
+  background-position-y: 20%;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 255, 0)), url(/assets/images/home-landscape.jpeg);
+  width: 100%;
+  height: 100%;
+}
+main#home > .hero-header #search-bar {
+  position: absolute;
+  top: unset;
+  bottom: -3em;
+  left: 50%;
+  height: fit-content;
+  transform: translateX(-50%);
+  width: 54em;
+}
+main#home > .hero-header #search-bar input {
+  width: 100%;
+}
+main#home > .hero-header #search-bar.responsive {
+  display: none;
+}
+
+main#home .accommodations {
+  margin: 0 2.5em;
+  margin-bottom: 3em;
+}
+main#home .accommodations > header {
+  margin-top: 9em;
+  margin-bottom: 5em;
+  position: relative;
+}
+main#home .accommodations > header > h1 {
+  text-align: center;
+}
+main#home .accommodations > header > a {
+  position: absolute;
+  top: 50%;
+  right: 2.5em;
+  transform: translateY(-50%);
+}
+main#home .accommodations > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, (100% - 40px) / 5), 1fr));
+  grid-gap: 10px;
+  margin-bottom: 2em;
+}
+main#home .accommodations > section > a {
+  text-decoration: none;
+}
+main#home .accommodations > section .item:hover > .img-container > img {
+  transform: scale(1.1);
+}
+main#home .accommodations > section .item > .img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1em;
+}
+main#home .accommodations > section .item > .img-container > img {
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+main#home .accommodations > section .item > footer {
+  font-size: 0.9em;
+}
+main#home .accommodations > section .item > footer > h4.title {
+  max-width: 95%;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main#home .accommodations > section .item > footer > h4.localization {
+  margin: 0.2em 0;
+  font-family: "comfortaa-regular";
+  color: #b6896c;
+  font-size: 1em;
+}
+main#home .accommodations > section .item > footer > h4.price {
+  font-family: "comfortaa-bold";
+  font-size: 1.1em;
+}
+main#home .accommodations > section .item > footer > h4.price > span:last-of-type {
+  font-size: 0.8em;
+}
+main#home .accommodations > footer > a > button {
+  background-color: transparent;
+  color: #222524;
+  padding: unset;
+  box-shadow: unset;
+}
+
+@media screen and (max-width: 1040px) {
+  main#home .accommodations > header > h1 {
+    text-align: start;
+    margin-left: 1.5em;
+  }
+  main#home #search-bar {
+    width: 94% !important;
+  }
+}
+@media screen and (max-width: 766px) {
+  main#home .accommodations > header > h1 {
+    margin-left: unset;
+    text-align: center;
+  }
+  main#home .accommodations > header > a {
+    display: none;
+  }
+}
+@media screen and (max-width: 626px) {
+  main#home #search-bar {
+    display: none;
+  }
+  main#home #search-bar.responsive {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 502px) {
+  main#home .hero-header .title > h1 {
+    font-size: 1.9em !important;
+  }
+  main#home .hero-header .title > h2 {
+    font-size: 1.2em !important;
+  }
+}
 #home-page button {
   display: flex;
   align-items: center;
@@ -3144,19 +3517,19 @@ header#backoffice > aside > span.owner {
   gap: 1em;
 }
 
-.housing-container {
+.accommodation-container {
   display: flex;
   justify-content: center;
 }
 
-#home-page .mdi, #filter-housing-container .mdi {
+#home-page .mdi, #filter-accommodation-container .mdi {
   font-size: 1.5em;
 }
 
-#home-page a, #filter-housing-container a {
+#home-page a, #filter-accommodation-container a {
   text-decoration: none;
 }
-#home-page a:visited, #filter-housing-container a:visited {
+#home-page a:visited, #filter-accommodation-container a:visited {
   color: black;
 }
 
@@ -3230,7 +3603,7 @@ header#backoffice > aside > span.owner {
   top: -4em;
 }
 
-.housing-list {
+#accommodation-list {
   display: grid;
   gap: 2em;
   grid-template-columns: repeat(auto-fit, 250px);
@@ -3238,26 +3611,26 @@ header#backoffice > aside > span.owner {
   justify-content: center;
 }
 
-.housing-image-item-container {
+.accommodation-image-item-container {
   width: 250px;
   height: 250px;
   background-color: #eaeaea;
   border-radius: 1em;
 }
 
-.housing-item img {
+.accommodation-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1em;
 }
-.housing-item h4, .housing-item .housing-price-container {
+.accommodation-item h4, .accommodation-item .accommodation-price-container {
   font-size: 14px;
 }
-.housing-item .housing-price {
+.accommodation-item .accommodation-price {
   font-family: "comfortaa-bold";
 }
-.housing-item:hover {
+.accommodation-item:hover {
   cursor: pointer;
 }
 
@@ -3265,7 +3638,7 @@ abbr[title] {
   text-decoration: none;
 }
 
-.housing-description-container {
+.accommodation-description-container {
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -3273,7 +3646,7 @@ abbr[title] {
   margin: 0.5em 0;
 }
 
-.housing-description {
+.accommodation-description {
   font-family: "comfortaa-bold";
   margin: 0 0.5em 0 0;
   text-overflow: ellipsis;
@@ -3281,7 +3654,7 @@ abbr[title] {
   white-space: nowrap;
 }
 
-.housing-location-container {
+.accommodation-location-container {
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -3294,14 +3667,14 @@ abbr[title] {
   font-size: 1em;
 }
 
-.housing-location {
+.accommodation-location {
   font-family: "comfortaa-regular";
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.housing-price-container {
+.accommodation-price-container {
   display: flex;
   font-family: "comfortaa-regular";
   font-size: small;
@@ -3328,7 +3701,7 @@ abbr[title] {
 /* MEDIA QUERIES */
 /*****************/
 @media (max-width: 431px) {
-  #home-page, #filter-housing-container {
+  #home-page, #filter-accommodation-container {
     min-width: inherit;
   }
   #search-bar {
@@ -3358,31 +3731,31 @@ abbr[title] {
     font-family: "poppins-regular";
     font-size: 1em;
   }
-  #housing-list-title {
+  #accommodation-list-title {
     font-size: 1em;
     margin: 0 auto 1em auto;
   }
   .show-more-button {
     display: none !important;
   }
-  .housing-list {
+  #accommodation-list {
     justify-content: center;
     grid-template-columns: 1fr;
   }
-  .housing-image-item-container {
+  .accommodation-image-item-container {
     width: 355px;
     height: 355px;
     background-color: #eaeaea;
     border-radius: 1em;
   }
-  .housing-description-container {
+  .accommodation-description-container {
     width: 355px;
   }
   #home-page .show-all-button-container {
     display: flex;
     justify-content: center;
   }
-  #housing-list-container .show-all-button {
+  #accommodation-list-container .show-all-button {
     display: none;
   }
   #home-page .show-all-button {
@@ -3400,9 +3773,9 @@ abbr[title] {
   }
 }
 /***************************************/
-/* HOUSING-LIST (A DEPLACER PLUS TARD) */
+/* accommodation-LIST (A DEPLACER PLUS TARD) */
 /***************************************/
-#filter-housing-container {
+#filter-accommodation-container {
   display: flex;
 }
 
@@ -3460,7 +3833,7 @@ abbr[title] {
   padding: 0;
 }
 
-#housing-title-search-container {
+#accommodation-title-search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3517,11 +3890,15 @@ abbr[title] {
   border-radius: 1em;
 }
 
-.housing-list {
+#accommodation-list {
   margin: 1em 0 2.5em 0;
 }
 
-#housing-list-container {
+#accommodation-list a {
+  text-decoration: none;
+}
+
+#accommodation-list-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -3571,7 +3948,7 @@ abbr[title] {
     gap: 0.5em;
     justify-content: flex-end;
   }
-  #housing-list-container {
+  #accommodation-list-container {
     padding: 0.5em;
     align-items: center;
   }
@@ -4237,8 +4614,10 @@ h5 {
   color: #424645;
 }
 #mainProprietaireLogement #image-conteneur {
-  height: 30em;
-  width: 45em;
+  height: 60%;
+  width: 60%;
+  min-width: 30em;
+  min-height: 30em;
   display: flex;
   align-items: center;
   justify-items: center;
@@ -4261,6 +4640,7 @@ h5 {
 }
 #mainProprietaireLogement #block-intro {
   display: flex;
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 300px) {
   #mainProprietaireLogement #block-intro {
@@ -4413,13 +4793,12 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #424645;
-  opacity: 50%;
 }
 #backoffice-registration > form > div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
   top: 50%;
   left: 50%;
+  color: black;
   transform: translate(-50%, -50%);
   font-size: 3em;
 }
@@ -4446,6 +4825,11 @@ h5 {
   border-color: white;
 }
 
+@media screen and (max-width: 576px) {
+  #backoffice-registration > form {
+    width: 23em;
+  }
+}
 .active {
   display: block;
 }
@@ -5005,7 +5389,7 @@ h5 {
 }
 
 .inscription {
-  width: 40%;
+  width: 35em;
   margin: 1em auto;
   border-radius: 15px;
   padding-bottom: 7em;
@@ -5053,8 +5437,6 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #424645;
-  opacity: 50%;
 }
 .inscription div.profile-container > label > .add-new > span.mdi.mdi-plus-circle {
   position: absolute;
@@ -5087,4 +5469,10 @@ h5 {
 }
 .inscription .error {
   color: red;
+}
+
+@media screen and (max-width: 619px) {
+  .inscription {
+    width: 24em;
+  }
 }

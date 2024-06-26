@@ -6,7 +6,7 @@ require_once(__DIR__."/../services/fileManager/FileLogement.php");
 
 class BookingModel extends Model {
 
-    private static $TABLE_NAME = "_reservation";
+    private static $TABLE_NAME = "reservation";
 
     public function __construct($data = null, $isNew = true) {
         parent::__construct(self::$TABLE_NAME, array(
@@ -26,7 +26,12 @@ class BookingModel extends Model {
             "prix_nuitee_ttc" => array(),
             "prix_total" => array(),
             "est_payee" => array(),
-            "est_annulee" => array()
+            "est_annulee" => array(),
+            "tva_nuits" => array(),
+            "tva_commission" => array(),
+            "prix_nuitee" => array(),
+            "taxe_sejour" => array(),
+            "commission" => array(),
         ), $data, $isNew);
     }
 
@@ -56,7 +61,7 @@ class BookingModel extends Model {
         $result = $result
             ->offset($offset)
             ->limit($limit)
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->sortBy("date_reservation", $sortBy)
             ->execute()
@@ -86,7 +91,7 @@ class BookingModel extends Model {
             $result = $result->where("date_depart < ?", $date_du_jour);
         }
         $result = $result
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->execute()
             ->fetchMany();
@@ -99,9 +104,10 @@ class BookingModel extends Model {
     public static function findOneById($id, $projection = "*") {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
-            ->where("id_reservation = ?", $id)
-            ->innerJoin("logement", "logement.id_logement = _reservation.id_logement")
+            ->where("reservation.id_reservation = ?", $id)
+            ->innerJoin("logement", "logement.id_logement = reservation.id_logement")
             ->innerJoin("proprietaire", "proprietaire.id_compte = logement.id_proprietaire")
+            // ->innerJoin("_facture", "_facture.id_reservation = _reservation.id_reservation")
             ->execute()
             ->fetchOne();
         if($result == null)
@@ -115,7 +121,7 @@ class BookingModel extends Model {
         $date_du_jour = $date_du_jour->format('Y-m-d');
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("count(*)")
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->innerJoin("pls.proprietaire", "pls.proprietaire.id_compte = pls.logement.id_proprietaire")
             ->where("id_proprietaire = ?", $owner_id);
 
@@ -140,7 +146,7 @@ class BookingModel extends Model {
     public static function findAllById($id, $projection = "*") {
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection($projection)
-            ->innerJoin("logement", "logement.id_logement = _reservation.id_logement")
+            ->innerJoin("logement", "logement.id_logement = reservation.id_logement")
             ->innerJoin("proprietaire", "proprietaire.id_compte = logement.id_proprietaire")
             ->where("id_proprietaire = ?", $id)
             ->execute()
@@ -155,7 +161,7 @@ class BookingModel extends Model {
         $date_du_jour = $date_du_jour->format('Y-m-d');
         $result = RequestBuilder::select(self::$TABLE_NAME)
             ->projection("*")
-            ->innerJoin("pls.logement", "pls.logement.id_logement = pls._reservation.id_logement")
+            ->innerJoin("pls.logement", "pls.logement.id_logement = pls.reservation.id_logement")
             ->limit($limit)
             ->where("id_locataire = ?", $locataire_id);
         //réservation à venir
