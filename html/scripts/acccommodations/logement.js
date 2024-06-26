@@ -221,20 +221,28 @@ function setBookingsDate(dates, fp) {
 
 async function handleDevis(nbVoyageurs, nbNuits, dateArrivee, dateDepart, fraisService, prixTotal) {
   try {
-    console.log("ok");
+    console.log("voyageurs ", nbVoyageurs);
     const formData = new FormData();
-    formData.append("nb_voyageur", nbVoyageurs);
+    formData.append("nb_voyageurs", nbVoyageurs);
     formData.append("nb_nuit", nbNuits);
     formData.append("date_arrivee", dateArrivee);
     formData.append("date_depart", dateDepart);
     formData.append("frais_de_service", fraisService);
     formData.append("prix_total", prixTotal);
     formData.append("id_logement", document.getElementById("id_logement")?.value);
-    await fetch(`/controllers/accommodations/devisController.php`, {
+    const response = await fetch(`/controllers/accommodations/devisController.php`, {
       method: "POST",
       body: formData
     });
-    window.location.href = "/finaliser-ma-reservation?accommodationId=", document.getElementById("id_logement")?.value;
+
+    if (response.ok) {
+      console.log(await response.text());
+
+      //window.location.href = "/finaliser-ma-reservation?accommodationId=", document.getElementById("id_logement")?.value;
+    }// } else {
+    //TODO notification --> impossible de reserver
+    // }
+
   } catch (e) {
     console.error(e);
   }
