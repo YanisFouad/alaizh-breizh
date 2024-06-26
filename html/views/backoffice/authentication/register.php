@@ -4,7 +4,7 @@
 
 <main id="backoffice-registration">
         <img src="/assets/images/logo/logo-alhaiz-breizh-fullsize.svg" alt="logo fullsize" />
-        <h2>Inscription propriétaire</h2>
+        <h2>S'incrire en tant que Propriétaire</h2>
         
         <form id="register-form" onsubmit="handleForm(event)" method="POST" action="../../controllers/backoffice/account/registerController.php">
             <div class="profile-container"> 

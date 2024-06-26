@@ -86,14 +86,11 @@
                     </div>
                 </div>
             </article>
-            
-            <div>
-                <span id="trait"></span>
-            </div>
-            
-            <button onclick="handleDevis()" class="primary devis">
-                Accepter le devis
-                <span class="mdi mdi-chevron-right"></span>
+        </div>
+        
+        <button id="accepterDevis" class="primary devis">
+            Accepter le devis
+            <span class="mdi mdi-chevron-right"></span>
 
                 <input type="hidden" value="<?=$_GET["id_logement"]?>" id="id_logement">
             </button>

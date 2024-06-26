@@ -105,3 +105,13 @@
         }
     }
 }
+
+#btn-facture-detail {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-decoration: none;
+    position: sticky;
+    bottom: 25px;
+    margin: 25px;
+}

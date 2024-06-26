@@ -1,5 +1,5 @@
 .inscription {
-    width: 40%;
+    width: 35em;
     margin: 1em auto;
     border-radius: 15px;
     padding-bottom: 7em;
@@ -53,10 +53,7 @@
                     top: 0;
                     left: 0;
 
-                    background-color: $gray-1;
-                    opacity: 50%;
                 }
-
                 &>span.mdi.mdi-plus-circle {
                     position: absolute;
                     top: 50%;
@@ -98,5 +95,11 @@
     }
     .error{
         color: red;
+    }
+}
+
+@media screen and (max-width: 619px) {
+    .inscription {
+        width: 24em;
     }
 }
