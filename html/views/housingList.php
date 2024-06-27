@@ -2,197 +2,106 @@
    require_once(__DIR__."/../models/AccommodationModel.php");
    require_once(__DIR__."/../services/RequestBuilder.php");
    require_once("layout/header.php"); 
-   
-   $totalAccommodations = AccommodationModel::count();
-   // tous les logements résultant de la recherche
-   $allAccommodations = AccommodationModel::find(0, $totalAccommodations);
-
-   function getDepartmentName($postCode) {
-      $result = RequestBuilder::select("pls._departement")
-         ->projection("nom_departement")
-         ->where("num_departement = ?", $postCode)
-         ->execute()
-         ->fetchOne();
-      return $result["nom_departement"];
-   }
-
-   function getMinPrice() {
-      $result = RequestBuilder::select("logement")
-         ->projection("MIN(prix_ttc_logement) AS min_price")
-         ->execute()
-         ->fetchOne();
-         return $result["min_price"];
-   }
-
-   function getMaxPrice() {
-      $result = RequestBuilder::select("logement")
-         ->projection("MAX(prix_ttc_logement) AS max_price")
-         ->execute()
-         ->fetchOne();
-         return $result["max_price"];
-   }
 
    ScriptLoader::load("housingList.js");
    ScriptLoader::load("accommodationsFilters.js");
 ?>
 
 <section id="filter-accommodation-container">
-   <section id="filter-container" class="hidden">
+   <section id="filter-container">
       <div id="filter-title-container">
          <h1>Filtres</h1>
-         <!-- ⭕️ TODO PERDRE LE FOCUS -->
-         <button class="secondary" id="clear-all-filters-button">Réinitialiser</button>
+         <button class="secondary" id="clear-filters">Réinitialiser</button>
       </div>
-      
-      <section id="city-filter-container">
-         <div>
-            <!-- Fermé de base parce que la liste peut être longue... -->
-            <h3>Communes</h3>
-            <span id="city-chevron-down" class="mdi mdi-chevron-down hidden" onclick="switchOpenClose('city-list', 'city-chevron-down', 'city-chevron-up')"></span>
-            <span id="city-chevron-up" class="mdi mdi-chevron-up" onclick="switchOpenClose('city-list', 'city-chevron-down', 'city-chevron-up')"></span>
-         </div>
-         <ul id="city-list" class="hidden">
-            <?php 
-               $cityArray = array();
-               foreach($allAccommodations as $accommodation) {
-                  if (!in_array($accommodation->get("ville_adresse"), $cityArray)) {
-                     array_push($cityArray, $accommodation->get("ville_adresse"));
-                  }
-               } 
-               sort($cityArray);
-               foreach($cityArray as $city) {?>
-                  <li>
-                     <input 
-                        type="checkbox"
-                        class="town-checkboxes"  
-                        id="<?php echo $city; ?>" 
-                        name="<?php echo $city; ?>"/>
-                     <label for="<?php echo $city; ?>"><?php echo $city ?></label>
-                  </li>
-               <?php } ?>
-         </ul>
-      </section>
 
-      <section id="department-filter-container">
-         <div>
-            <h3>Départements</h3>
-            <span id="department-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('department-list', 'department-chevron-down', 'department-chevron-up')"></span>
-            <span id="department-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('department-list', 'department-chevron-down', 'department-chevron-up')"></span>
-         </div>
-         <ul id="department-list" class="displayed">
-            <?php 
-            $postCodeDepartmentArray = array();
-            foreach($allAccommodations as $accommodation) {
-               if (!in_array(substr($accommodation->get("code_postal_adresse"), 0, 2), $postCodeDepartmentArray)) {
-                  array_push($postCodeDepartmentArray, substr($accommodation->get("code_postal_adresse"), 0, 2));
-               }
-            } 
-            sort($postCodeDepartmentArray);
-            foreach($postCodeDepartmentArray as $postCode) { ?>
-               <li>
-                  <input
-                     type="checkbox" 
-                     class="department-checkboxes" 
-                     id="<?php echo strtolower(getDepartmentName($postCode)); ?>" 
-                     name="<?php echo strtolower(getDepartmentName($postCode)); ?>"
-                     data-postcode="<?php echo $postCode; ?>"/>
-                  <label for="<?php echo strtolower(getDepartmentName($postCode)); ?>"><?php echo getDepartmentName($postCode) ?></label>
-               </li>
-            <?php } ?> 
-         </ul>
-      </section>
+      <div class="section">
+         <h3 class="cities" onclick="toggleDropdown(event)">
+            Communes
+            <span class="mdi mdi-chevron-down"></span>
+         </h3>
 
-      <!-- ⭕️ TODO INTERDIRE LA SAISIE D'AUTRE CHOSE QUE DES CHIFFRES -->
-      <section id="price-filter-container">
-         <div>
-            <h3>Prix</h3>
-            <span id="price-chevron-down" class="mdi mdi-chevron-down" onclick="switchOpenClose('price-min-max-container', 'price-chevron-down', 'price-chevron-up')"></span>
-            <span id="price-chevron-up" class="mdi mdi-chevron-up hidden" onclick="switchOpenClose('price-min-max-container', 'price-chevron-down', 'price-chevron-up')"></span>
+         <ul class="data" id="cities"></ul>
+      </div>
+
+      <div class="section">
+         <h3 class="department" onclick="toggleDropdown(event)">
+            Départements
+            <span class="mdi mdi-chevron-down"></span>
+         </h3>
+
+         <ul class="data" id="departments"></ul>
+      </div>
+
+      <div class="section">
+         <h3 class="price-range" onclick="toggleDropdown(event)">
+            Prix
+         </h3>
+
+         <div class="data price-range">
+            <input type="number" id="min-price" min="0">
+            <input type="number" id="max-price" min="0">
          </div>
-         <ul id="price-min-max-container" class="displayed">
-            <!-- ⭕️ TODO GÉRER LE PRIX MAX -->   
-            <div>
-               <input 
-                  type="number" 
-                  class="price-input"
-                  id="min-price" 
-                  name="min-price" 
-                  min="0"
-                  data-minprice="<?php echo getMinPrice() ?>"
-                  placeholder="Prix minimum : <?php echo getMinPrice() ?>€"/>
-            </div>
-            <div>
-               <input 
-                  type="number" 
-                  class="price-input"
-                  id="max-price" 
-                  name="max-price" 
-                  min="0"
-                  data-maxprice="<?php echo getMaxPrice() ?>"
-                  placeholder="Prix maximum : <?php echo getMaxPrice() ?>€"/>
-            </div>
-         </ul>
-      </section>
+      </div>
 
       <div id="validation-filter-button-container">
-         <button class="secondary">Annuler</button>
-         <button class="primary">Valider</button>
+         <button onclick="closeFilters()" class="secondary">Annuler</button>
+         <button onclick="closeFilters()" class="primary">Valider</button>
       </div>
    </section>
 
-
-
    <section id="accommodation-list-container">
-      <form onsubmit="return false;">
-        <button type="button" class="back-button" onclick="history.go(-1)">
-            <span class="mdi mdi-arrow-left"></span>Retour
-        </button>
-      </form>
+      <header>
+         <div>
+            <a href="/">
+               <button type="button" class="back-button">
+                     <span class="mdi mdi-arrow-left"></span>
+                     Retour
+               </button>
+            </a>
+            <h1>
+               Logements (<span id="accommodation-results-number">0</span>)
+            </h1>
+         </div>
 
-      <div id="accommodation-title-search-container">
-         <!-- Nombre de résultats affiché ici : Logements (35) -->
-         <form class="compact-search-bar" id="compact-search-bar">
-            <div>
-               <input type="text" placeholder="Rechercher..." id="search-input-compact" class="search-input">
-               <!-- ⭕️ TODO DÉROULER LA BARRE DE RECHERCHE -->
-               <input placeholder="Dates de séjour" id="date-input-compact" class="arrival-date-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/>
-               <input type="text" placeholder="2 voyageurs" id="travelers-input-compact" class="travelers-number-input">
+         <div id="accommodation-search-container">
+            <div class="compact-search-bar" id="compact-search-bar">
+               <div>
+                  <input onfocus="renderFullSearchBar()" type="text" placeholder="Rechercher..." id="search-input-compact" class="search-input">
+                  <input onfocus="renderFullSearchBar()" placeholder="Dates de séjour" id="date-input-compact" class="arrival-date-input" type="text" />
+                  <input onfocus="renderFullSearchBar()" type="text" placeholder="2 voyageurs" id="travelers-input-compact" class="travelers-number-input">
+               </div>
+               <button onclick="renderFullSearchBar()"><span class="mdi mdi-magnify"></span></button>
             </div>
-            <button><span class="mdi mdi-magnify"></span></button>
-         </form> 
-      </div>
+            <div class="compact-search-bar" id="full-search-bar">
+               <input type="text" placeholder="Rechercher un séjour" class="search-input" id="search-query-input">
+               <input placeholder="Arrivée" id="arrival-date-input" class="arrival-date-input" type="text" onfocus="focusDate(this)" onblur="unfocusDate(this)">
+               <input placeholder="Départ" id="departure-date-input" class="departure-date-input" type="text" onfocus="focusDate(this)" onblur="unfocusDate(this)">
+               <input id="travelers-number-input" class="travelers-number-input" type="number" placeholder="Nombre de voyageurs" min="1">
+               <button id="search-button" type="button">
+                  <span class="mdi mdi-magnify"></span>
+               </button>
+            </div>
+         </div>
+      </header>
 
       <div id="filter-sort-buttons-container">
-         <button id="filter-button" class="primary" onclick="toggleFilterMenu()"><span class="mdi mdi-filter-variant"></span>Filtres</button>
+         <button id="filter-button" class="primary">
+            <span class="mdi mdi-filter-variant"></span>
+            Filtres
+         </button>
          <button id="sort-btn">
             <span class="mdi mdi-sort-descending"></span>
             <span class="label"></span>
          </button>
       </div>
 
-      <section id="accommodation-list">
-      </section>
-      <div id="no-accommodation-result-area"></div>
-
-         <!-- ⭕️ TODO NE PAS AFFICHER SI AUCUN RÉSULTAT
-               GÉRER ERREUR (MAUVAISE PAGE EN DUR DANS L'URL) -->
-         <div class="pagination" id="pagination">
-            <!-- Chevron de gauche -->
-            <button class="secondary action" id="left-pagination-button" name="page">
-               <span class="mdi mdi-chevron-left"></span>
-            </button>
-
-            <!-- Boutons contenant les numéros de pages -->
-            
-            <!-- Chevron de droite -->
-            <button class="secondary action" id="right-pagination-button" name="page">
-               <span class="mdi mdi-chevron-right"></span>
-            </button>
-         </div>
+      <section id="accommodation-list"></section>
+      <div id="no-accommodation-result-area">
+         <h1>Aucun logement trouvé !</h1>
       </div>
+
+      <div class="pagination" id="pagination"></div>
    </section>
 </section>
-
-<!-- ⭕️ TODO PROBLÈME DE FOOTER QUI PASSE PAR-DESSUS -->
 
 <?php require_once("layout/footer.php"); ?>

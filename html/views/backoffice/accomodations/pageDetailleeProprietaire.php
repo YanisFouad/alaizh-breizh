@@ -59,14 +59,23 @@
 
     <main id ="mainProprietaireLogement">
         
-        <div id="menu">
-            <div id="cheminPage">
-                <h4><a href="/backoffice">Logements</a></h4>
-                <span class="mdi mdi-chevron-right"></span>
-                <h4><?=$logement->get('titre_logement');?></h4>
+        <div id="blockCheminPage-SwitchContainer">
+            <div id="menu">
+                <div id="cheminPage">
+                    <h4><a href="/backoffice">Logements</a></h4>
+                    <span class="mdi mdi-chevron-right"></span>
+                    <h4><?=$logement->get('titre_logement');?></h4>
+                </div>
+            </div>
+            <div id="switch-container">  
+                <span id="etatLogement"></span>
+                    <label class="switch">
+                        <input type="checkbox" id="boutonOnOff" <?php echo $logement->get("est_visible") ? "checked" : "" ?>>
+                        <span class="slider round"></span>
+                    </label>
+                </form>
             </div>
         </div>
-        
         <div id="page">
             <section>
                 <article id="block-intro">
@@ -77,6 +86,10 @@
                     <div id="intro">
                         <div id="titre">
                             <h1><?=$logement->get('titre_logement');?></h1>
+
+                        </div>
+                        <div id="titre">
+                            <h2><?=$logement->get('prix_ttc_logement');?>€ par nuit</h2>
 
                         </div>
 

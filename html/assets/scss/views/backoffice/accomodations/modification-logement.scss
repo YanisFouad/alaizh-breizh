@@ -28,6 +28,9 @@
                 margin : auto;
                 border-radius: 15px;
                 overflow: hidden;
+                &:hover{
+                    cursor: pointer;
+                }
                 //background-repeat: no-repeat;
             }
 

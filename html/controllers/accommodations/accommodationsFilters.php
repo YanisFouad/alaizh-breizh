@@ -1,63 +1,49 @@
-<?php 
+<?php
    require_once(__DIR__."/../../services/RequestBuilder.php");
    require_once(__DIR__."/../../models/AccommodationModel.php");
    require_once(__DIR__."/../../helpers/globalUtils.php");
    
-   header('Content-Type: application/json');
-   
+
    $content = trim(file_get_contents("php://input"));
    $response = json_decode($content, true);
-   
 
-   if (isset($response)) {
-      $filteredAccommodations = array();
-
-      $selectedTowns = $response["towns"];
-      $selectedDepartments = $response["departments"];
-      $priceRange = $response["priceRange"];
-      $stringSearch = $response["stringSearch"] ?? NULL;
-      $arrivalDate = $response["arrivalDate"] ?? NULL;
-      $departureDate = $response["departureDate"] ?? NULL;
-      $travelers = $response["travelers"];
-      $offset = $response["offset"];
-      $limit = $response["limit"];
-      $sortDir = $response["sortDir"]??"DESC";
-
+   if(isset($response)) {
+      extract($response);
+      
       $request = RequestBuilder::select("logement")
          ->distinct()
-         ->projection("logement.id_logement AS id_logement, titre_logement, photo_logement, code_postal_adresse, ville_adresse, prix_ttc_logement");
+         ->projection("logement.id_logement AS id_logement, titre_logement, photo_logement, nom_departement, ville_adresse, prix_ttc_logement")
+         ->innerJoin("_departement", "SUBSTR(code_postal_adresse, 1, 2) = _departement.num_departement");
    
       // FILTRE COMMUNES
-      if (count($selectedTowns) > 0) {
-         $in = str_repeat('?,', count($selectedTowns) - 1) . '?';
-         $request = $request->where("ville_adresse IN (".$in.")", ...$selectedTowns);
+      if (count($cities) > 0) {
+         $in = str_repeat('?,', count($cities) - 1) . '?';
+         $request = $request->where("ville_adresse IN (".$in.")", ...$cities);
       }
 
       // FILTRE DÉPARTEMENTS
-      if (count($selectedDepartments) > 0) {
-         $in = str_repeat('?,', count($selectedDepartments) - 1) . '?';
-         $request = $request->where("SUBSTR(code_postal_adresse, 1, 2) IN (".$in.")", ...$selectedDepartments);
+      if (count($departments) > 0) {
+         $in = str_repeat('?,', count($departments) - 1) . '?';
+         $request = $request->where("nom_departement IN (".$in.")", ...$departments);
       }
 
       // FILTRE PRIX
-      if (count($priceRange) > 0) {
-         if (isset($priceRange[0])) {
-            $request = $request->where("prix_ttc_logement >= ?", $priceRange[0]);
-         }
-         if (isset($priceRange[1])) {
-            $request = $request->where("prix_ttc_logement <= ?", $priceRange[1]);
-         }
+      if (isset($priceRange["min"])) {
+         $request = $request->where("prix_ttc_logement >= ?", $priceRange["min"]);
+      }
+      if (isset($priceRange["max"])) {
+         $request = $request->where("prix_ttc_logement <= ?", $priceRange["max"]);
       }
 
       // FILTRE RECHERCHE TEXTE
-      if (strlen($stringSearch) > 0) {
+      if (isset($searchQuery) && strlen($searchQuery) > 0) {
          $request = $request->where("
             (LOWER(titre_logement) LIKE ? OR 
             LOWER(ville_adresse) LIKE ? OR
             LOWER(categorie_logement) LIKE ?)", 
-            '%'. $stringSearch . '%', 
-            '%'. $stringSearch . '%', 
-            '%'. $stringSearch . '%'
+            '%'. $searchQuery . '%', 
+            '%'. $searchQuery . '%', 
+            '%'. $searchQuery . '%'
          );
       }
 
@@ -65,11 +51,13 @@
 
 
       // FILTRE NOMBRE DE VOYAGEURS
-      if (isset($travelers)) {
-         $request = $request->where("max_personne_logement >= ?", $travelers);
+      if (isset($nbTravelers)) {
+         $request = $request->where("max_personne_logement >= ?", $nbTravelers);
       }
 
-      if(isset($departureDate) && isset($arrivalDate)) {
+      $departureOn = $dateRange["departureOn"]??NULL;
+      $arrivesOn = $dateRange["arrivesOn"]??NULL;
+      if(isset($departureOn) && isset($arrivesOn)) {
          $request = $request
             ->innerJoin("_reservation", "logement.id_logement = _reservation.id_logement")
             ->except("
@@ -77,7 +65,7 @@
                FROM logement
                INNER JOIN _reservation ON _reservation.id_logement = logement.id_logement
                WHERE ((date_arrivee > ?) AND (date_depart < ?))
-            ", $arrivalDate, $departureDate);
+            ", $arrivesOn, $departureOn);
       }
 
       $request = $request->sortBy("prix_ttc_logement", $sortDir);
@@ -86,30 +74,51 @@
       // totalCount
       $totalCount = count($result);
       // items
-      $items = array_slice($result, $offset, $limit);
+      $items = array_slice(
+         array_map(function ($r) {
+            $r["photo_logement"] = FileLogement::get($r["photo_logement"]);
+            return $r;
+         }, $result)
+      , $offset, $limit);
+      
+      $cities = transform_using($result, "ville_adresse");
+      $departments = transform_using(
+         RequestBuilder::select("logement")
+            ->projection("nom_departement")
+            ->innerJoin("_departement", "SUBSTR(code_postal_adresse, 1, 2) = _departement.num_departement")
+            ->execute()
+            ->fetchMany(), 
+         "nom_departement"
+      );
 
-      $communes = array_map(function($r) {
-         return $r["ville_adresse"];
-      }, $result);
+      $minPrice = RequestBuilder::select("logement")
+         ->projection("MIN(prix_ttc_logement) AS min_price")
+         ->execute()
+         ->fetchOne()["min_price"] ?? 0;
 
-// je récupère les dates comme avant
-// itérer sur $result qui contient les resultats des filtres
-// pour récupérer l'id de chaque logement filtrés
-// avec cet id, je peux recuperer toutes les reservations via le request builder
-// avec ces données, on fait les conditions sur les dates (si ça correspond ou pas)
-// si ça correspond pas, on retire le logement de result
-
-// pour chaque réservation ayant cet ID
-// si la date d'arrivée choisie n'est pas comprise dans la période de réservation
-// ET 
-// (si la date d'arrivée est antérieure à la période de réservation ET que la date de départ est aussi antérieure
-// OU que la date d'arrivée est postérieure à la période de réservation ET que la date de départ est aussi postérieure)
+      $maxPrice = RequestBuilder::select("logement")
+         ->projection("MAX(prix_ttc_logement) AS max_price")
+         ->execute()
+         ->fetchOne()["max_price"] ?? 0;
 
       send_json_response([
          "items" => $items,
-         "communes" => $communes,
-         "totalCount" => $totalCount
+         "totalCount" => $totalCount,
+         "cities" => $cities,
+         "departments" => $departments,
+         "priceRange" => [
+            "min" => $minPrice,
+            "max" => $maxPrice
+         ]
       ]);
-      exit;
    }
-?>
+
+   function transform_using($arr, $key) {
+      $r = array_unique(
+         array_map(function($r) use ($key) {
+            return $r[$key];
+         }, $arr)
+      );
+      rsort($r);
+      return $r;
+   }
