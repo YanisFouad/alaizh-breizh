@@ -1240,8 +1240,10 @@ main#home .accommodations section .item > footer,
 #accommodation-list .item > footer {
   font-size: 0.9em;
 }
-main#home .accommodations section .item > footer > h4.title,
-#accommodation-list .item > footer > h4.title {
+main#home .accommodations section .item > footer > h4.title, main#home .accommodations section .item > footer > h4.localization, main#home .accommodations section .item > footer > h4.price,
+#accommodation-list .item > footer > h4.title,
+#accommodation-list .item > footer > h4.localization,
+#accommodation-list .item > footer > h4.price {
   max-width: 95%;
   text-wrap: nowrap;
   overflow: hidden;
@@ -3608,8 +3610,10 @@ main#home .accommodations section .item > footer,
 #accommodation-list .item > footer {
   font-size: 0.9em;
 }
-main#home .accommodations section .item > footer > h4.title,
-#accommodation-list .item > footer > h4.title {
+main#home .accommodations section .item > footer > h4.title, main#home .accommodations section .item > footer > h4.localization, main#home .accommodations section .item > footer > h4.price,
+#accommodation-list .item > footer > h4.title,
+#accommodation-list .item > footer > h4.localization,
+#accommodation-list .item > footer > h4.price {
   max-width: 95%;
   text-wrap: nowrap;
   overflow: hidden;

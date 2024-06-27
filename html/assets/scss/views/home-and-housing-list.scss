@@ -141,7 +141,7 @@ main#home .accommodations section,
       &>footer {
          font-size: .9em;
 
-         &>h4.title {     
+         &>h4.title, &>h4.localization, &>h4.price {     
             max-width: 95%;       
             text-wrap: nowrap;
             overflow: hidden;

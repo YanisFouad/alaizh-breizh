@@ -17,16 +17,16 @@
       <div class="section">
          <h3 class="cities" onclick="toggleDropdown(event)">
             Communes
-            <span class="mdi mdi-chevron-down"></span>
+            <span class="cities mdi mdi-chevron-down"></span>
          </h3>
 
          <ul class="data" id="cities"></ul>
       </div>
 
       <div class="section">
-         <h3 class="department" onclick="toggleDropdown(event)">
+         <h3 class="departments" onclick="toggleDropdown(event)">
             Départements
-            <span class="mdi mdi-chevron-down"></span>
+            <span class="departments mdi mdi-chevron-down"></span>
          </h3>
 
          <ul class="data" id="departments"></ul>
