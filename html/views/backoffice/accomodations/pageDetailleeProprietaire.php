@@ -89,7 +89,7 @@
 
                         </div>
                         <div id="titre">
-                            <h2><?=$logement->get('prix_ttc_logement');?>€ par nuit</h2>
+                            <h2><?=price_format($logement->get('prix_ttc_logement'));?>€ par nuit</h2>
 
                         </div>
 
