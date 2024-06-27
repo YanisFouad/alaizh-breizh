@@ -54,10 +54,18 @@ async function update({updateURL = true} = {}) {
       if(updateURL) {
          store();
       }
-      const {items, totalCount, ...contextFilter} = await response.json();
+      let {items, totalCount, ...contextFilter} = await response.json();
 
       totalPages = Math.ceil(totalCount/LIMIT);
       noAccommodationFoundElement.style.display = !items.length ? "block" : "none";
+
+      if(sortDir) {
+         if(sortDir === SortDir.DESC) {
+            items = items.sort((a, b) => b.prix_ttc_logement - a.prix_ttc_logement);
+         } else if(sortDir === SortDir.ASC) {
+            items = items.sort((a, b) => a.prix_ttc_logement - b.prix_ttc_logement);
+         }
+      }
 
       renderTotalCount(totalCount);
       renderContextFilter(contextFilter);
@@ -330,7 +338,7 @@ function handlePage(newPage) {
 /** TOGGLE DROPDOWN */
 function toggleDropdown({ target }) {
    const className = target.classList.item(0);
-   const element = document.querySelector("."+className+" + ul");
+   const element = document.querySelector("#"+className);
    if(element) {
       if(element.classList.contains("opened")) 
          element.classList.remove("opened");

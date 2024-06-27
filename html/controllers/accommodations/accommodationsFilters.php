@@ -68,7 +68,6 @@
             ", $arrivesOn, $departureOn);
       }
 
-      $request = $request->sortBy("prix_ttc_logement", $sortDir);
       $result = $request->execute()->fetchMany();
 
       // totalCount
