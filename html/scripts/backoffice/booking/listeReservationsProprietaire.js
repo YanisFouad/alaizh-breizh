@@ -94,41 +94,45 @@ function updateBooking(booking) {
     const _formatPrice = price => Intl.NumberFormat("fr-FR", {style: 'currency', currency: 'EUR'}).format(price);
 
     bookingList.insertAdjacentHTML("beforeend", `
-        <a class="non-souligne" href="/backoffice/reservation?id=${booking.id_reservation}">
-            <article class="liste-reservation-proprietaire-logement">
-                <!-- Photo maison + nom maison -->
-                <div>
-                    <div id='img-container'>
-                        <img src="${booking.photo_logement}" alt="Logement">
-                    </div>
-                    <h4>${booking.titre_logement}</h4>
-                </div>
-                        
-                <!-- Description maison -->
-                <div class="liste-reservation-proprietaire-logement-detail">
-                    <div>
-                        <h5>Date de réservation</h5>
-                        <h4>${_formatDate(booking.date_reservation)}</h4>
-                    </div>
-                    <div>
-                        <h5>Date d'arrivée</h5>
-                        <h4>${_formatDate(booking.date_arrivee)}</h4>
-                    </div>
-                    <div>
-                        <h5>Nombre de nuits</h5>
-                        <h4>${booking.nb_nuit}</h4>
-                    </div>
-                    <div>
-                        <h5>Prix total</h5>
-                        <h4>${_formatPrice(booking.prix_total)}</h4>
-                    </div>
-                    <button class="primary backoffice liste-reservation-proprietaire-flex-row" disabled>
+        <div class="container-liste-reservation-proprietaire-logement">
+                <a href="/backoffice/reservation?id=${booking.id_reservation}" class="lien-page-detail">
+                    <article class="liste-reservation-proprietaire-logement">
+                        <!-- Photo maison + nom maison -->
+                        <div>
+                            <div id='img-container'>
+                                <img src="${booking.photo_logement}" alt="Logement">
+                            </div>
+                            <h4>${booking.titre_logement}</h4>
+                        </div>
+                                
+                        <!-- Description maison -->
+                        <div class="liste-reservation-proprietaire-logement-detail">
+                            <div>
+                                <h5>Date de réservation</h5>
+                                <h4>${_formatDate(booking.date_reservation)}</h4>
+                            </div>
+                            <div>
+                                <h5>Date d'arrivée</h5>
+                                <h4>${_formatDate(booking.date_arrivee)}</h4>
+                            </div>
+                            <div>
+                                <h5>Nombre de nuits</h5>
+                                <h4>${booking.nb_nuit}</h4>
+                            </div>
+                            <div>
+                                <h5>Prix total</h5>
+                                <h4>${_formatPrice(booking.prix_total)}</h4>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <a href="/backoffice/facture?id=${booking.id_reservation}" class="lien-facture" target="_blank">
+                    <button class="primary backoffice liste-reservation-proprietaire-flex-row">
                         <span class="mdi mdi-eye-outline"></span>
                         Facture
                     </button>
-                </div>
-            </article>
-        </a>
+                </a>
+            </div>
     `);
     console.log(bookingList.innerHTML)
 }
